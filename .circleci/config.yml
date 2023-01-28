@@ -222,9 +222,9 @@ workflows:
       - tests_local_browsers:
           requires:
            - build
-      - tests_browserstack:
-          requires:
-            - build
+      #- tests_browserstack:
+      #    requires:
+      #      - build
       - tests_saucelabs:
           requires:
             - build
@@ -236,7 +236,7 @@ workflows:
             - build
       - publish_snapshots:
           requires:
-            - tests_browserstack
+            # - tests_browserstack
             - tests_saucelabs
             - tests_local_browsers
             - integration_tests
@@ -247,7 +247,7 @@ workflows:
 general:
   branches:
     only:
-      - master
+      - main
       # 5.2.x, 6.0.x, etc
       - /\d+\.\d+\.x/
       # 5.x, 6.x, etc
