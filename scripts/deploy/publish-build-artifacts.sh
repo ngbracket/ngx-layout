@@ -9,11 +9,11 @@ set -e
 # Go to the project root directory
 cd $(dirname ${0})/../..
 
-#if [ -z ${FLEX_LAYOUT_BUILDS_TOKEN} ]; then
-#  echo "Error: No access token for GitHub could be found." \
-#       "Please set the environment variable 'FLEX_LAYOUT_BUILDS_TOKEN'."
-#  exit 1
-#fi
+if [ -z ${FLEX_LAYOUT_BUILDS_TOKEN} ]; then
+  echo "Error: No access token for GitHub could be found." \
+       "Please set the environment variable 'FLEX_LAYOUT_BUILDS_TOKEN'."
+  exit 1
+fi
 
 # Layout packages that need to published.
 PACKAGES=(flex-layout)
@@ -99,8 +99,7 @@ publishPackage() {
   git config user.email "${commitAuthorEmail}"
   git config credential.helper "store --file=.git/credentials"
 
-  #echo "https://${FLEX_LAYOUT_BUILDS_TOKEN}:@github.com" > .git/credentials
-  echo "https://git@github.com:DuncanFaulkner/ngx-flexlayout.git" > .git/credentials
+  echo "https://${FLEX_LAYOUT_BUILDS_TOKEN}:@github.com" > .git/credentials
 
   echo "Git configuration has been updated to match the last commit author. Publishing now.."
 
