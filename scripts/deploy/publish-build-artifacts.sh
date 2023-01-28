@@ -17,7 +17,7 @@ fi
 
 # Layout packages that need to published.
 PACKAGES=(flex-layout)
-REPOSITORIES=(flex-layout-builds)
+REPOSITORIES=(ngx-flexlayout-builds)
 
 # Command line arguments.
 COMMAND_ARGS=${*}
