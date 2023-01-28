@@ -16,8 +16,8 @@ if [ -z ${FLEX_LAYOUT_BUILDS_TOKEN} ]; then
 fi
 
 # Layout packages that need to published.
-PACKAGES=(ngx-flexlayout)
-REPOSITORIES=(ngx-flex-layout-builds)
+PACKAGES=(flex-layout)
+REPOSITORIES=(flex-layout-builds)
 
 # Command line arguments.
 COMMAND_ARGS=${*}
