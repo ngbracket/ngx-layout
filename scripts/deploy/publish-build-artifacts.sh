@@ -16,8 +16,8 @@ if [ -z ${FLEX_LAYOUT_BUILDS_TOKEN} ]; then
 fi
 
 # Layout packages that need to published.
-PACKAGES=(flex-layout)
-REPOSITORIES=(flex-layout-builds)
+PACKAGES=(ngx-flexlayout)
+REPOSITORIES=(ngx-flex-layout-builds)
 
 # Command line arguments.
 COMMAND_ARGS=${*}
@@ -42,7 +42,7 @@ publishPackage() {
   buildTagName="${branchName}-${commitSha}"
   buildCommitMessage="${branchName} - ${commitMessage}"
 
-  repoUrl="https://github.com/angular/${packageRepo}.git"
+  repoUrl="https://github.com/DuncanFaulkner/${packageRepo}.git"
   repoDir="tmp/${packageRepo}"
 
   echo "Starting publish process of ${packageName} for ${buildVersionName} into ${branchName}.."
