@@ -112,17 +112,17 @@ jobs:
   # Job that runs the unit tests on Browserstack. The browsers that will be used
   # to run the unit tests on Browserstack are set in: test/browser-providers.js
   # ----------------------------------------------------------------------------
-  tests_browserstack:
-    <<: *job_defaults
-    resource_class: xlarge
-    environment:
-      BROWSER_STACK_USERNAME: 'adamplumer1'
-      BROWSER_STACK_ACCESS_KEY: 'WgLjxoB2zQ3tqmsznKnz'
-    steps:
-      - *checkout_code
-      - *restore_cache
-      - *attach_release_output
-      - run: ./scripts/circleci/run-browserstack-tests.sh
+  # tests_browserstack:
+  #  <<: *job_defaults
+  #  resource_class: xlarge
+  #  environment:
+  #    BROWSER_STACK_USERNAME: 'adamplumer1'
+  #    BROWSER_STACK_ACCESS_KEY: 'WgLjxoB2zQ3tqmsznKnz'
+  #  steps:
+  #    - *checkout_code
+  #    - *restore_cache
+  #    - *attach_release_output
+  #    - run: ./scripts/circleci/run-browserstack-tests.sh
 
   # ----------------------------------------------------------------------------
   # Job that runs the unit tests on Saucelabs. The browsers that will be used
