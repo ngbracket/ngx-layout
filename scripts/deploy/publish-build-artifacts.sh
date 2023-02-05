@@ -28,7 +28,7 @@ COMMAND_ARGS=${*}
 publishPackage() {
   packageName=${1}
   packageRepo=${2}
-
+  echo packageName=${1} packageRepo=${2}
   buildDir="$(pwd)/dist/releases/${packageName}"
   buildVersion=$(node -pe "require('./package.json').version")
   branchName=${CIRCLE_BRANCH:-'master'}
