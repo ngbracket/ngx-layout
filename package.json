@@ -6,7 +6,7 @@
   "bugs": "https://github.com/angular/flex-layout/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/angular/flex-layout.git"
+    "url": "git+https://github.com/DuncanFaulkner/ngx-flex-layout.git"
   },
   "license": "MIT",
   "engines": {
