@@ -17,7 +17,7 @@ fi
 
 # Layout packages that need to published.
 PACKAGES=(flex-layout)
-REPOSITORIES=(ngx-flexlayout-builds)
+REPOSITORIES=(flexlayout-builds)
 
 # Command line arguments.
 COMMAND_ARGS=${*}
@@ -31,7 +31,7 @@ publishPackage() {
   echo packageName=${1} packageRepo=${2}
   buildDir="$(pwd)/dist/releases/${packageName}"
   buildVersion=$(node -pe "require('./package.json').version")
-  branchName=${CIRCLE_BRANCH:-'master'}
+  branchName=${CIRCLE_BRANCH:-'main'}
 
   commitSha=$(git rev-parse --short HEAD)
   commitAuthorName=$(git --no-pager show -s --format='%an' HEAD)
