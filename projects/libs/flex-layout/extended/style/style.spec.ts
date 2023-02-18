@@ -5,23 +5,24 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ComponentFixture, TestBed, inject} from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  ɵMatchMedia as MatchMedia,
   CoreModule,
+  StyleUtils,
+  ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-  StyleUtils,
-} from '@angular/flex-layout/core';
-import {DefaultLayoutDirective} from '@angular/flex-layout/flex';
+} from '@ngbrackets/ngx-layout/core';
+import { DefaultLayoutDirective } from '@ngbrackets/ngx-layout/flex';
 
-import {DefaultStyleDirective} from './style';
-import {customMatchers} from '@angular/flex-layout/_private-utils/testing';
 import {
-  makeCreateTestComponent, expectNativeEl
-} from '@angular/flex-layout/_private-utils/testing';
+  customMatchers,
+  expectNativeEl,
+  makeCreateTestComponent,
+} from '@ngbrackets/ngx-layout/_private-utils/testing';
+import { DefaultStyleDirective } from './style';
 
 describe('style directive', () => {
   let fixture: ComponentFixture<any>;
@@ -30,10 +31,13 @@ describe('style directive', () => {
   let createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestStyleComponent)(template);
 
-    inject([MatchMedia, StyleUtils], (_matchMedia: MockMatchMedia, _styler: StyleUtils) => {
-      mediaController = _matchMedia;
-      styler = _styler;
-    })();
+    inject(
+      [MatchMedia, StyleUtils],
+      (_matchMedia: MockMatchMedia, _styler: StyleUtils) => {
+        mediaController = _matchMedia;
+        styler = _styler;
+      }
+    )();
   };
 
   beforeEach(() => {
@@ -42,18 +46,37 @@ describe('style directive', () => {
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, CoreModule],
-      declarations: [TestStyleComponent, DefaultLayoutDirective, DefaultStyleDirective],
-      providers: [MockMatchMediaProvider]
+      declarations: [
+        TestStyleComponent,
+        DefaultLayoutDirective,
+        DefaultStyleDirective,
+      ],
+      providers: [MockMatchMediaProvider],
     });
   });
 
   [
-    {mq: 'xs', styleStr: "{'font-size': '15px'}", styleObj: {'font-size': '15px'}},
-    {mq: 'sm', styleStr: "{'font-size': '16px'}", styleObj: {'font-size': '16px'}},
-    {mq: 'md', styleStr: "{'font-size': '17px'}", styleObj: {'font-size': '17px'}},
-    {mq: 'lg', styleStr: "{'font-size': '18px'}", styleObj: {'font-size': '18px'}}
-  ]
-  .forEach(testData => {
+    {
+      mq: 'xs',
+      styleStr: "{'font-size': '15px'}",
+      styleObj: { 'font-size': '15px' },
+    },
+    {
+      mq: 'sm',
+      styleStr: "{'font-size': '16px'}",
+      styleObj: { 'font-size': '16px' },
+    },
+    {
+      mq: 'md',
+      styleStr: "{'font-size': '17px'}",
+      styleObj: { 'font-size': '17px' },
+    },
+    {
+      mq: 'lg',
+      styleStr: "{'font-size': '18px'}",
+      styleObj: { 'font-size': '18px' },
+    },
+  ].forEach((testData) => {
     it(`should apply '${testData.styleStr}' with '${testData.mq}' media query`, () => {
       createTestComponent(`
         <div [ngStyle.${testData.mq}]="${testData.styleStr}">
@@ -69,9 +92,12 @@ describe('style directive', () => {
         <div style="color: blue" [ngStyle.xs]="{'font-size.px': '15'}">
         </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({color: 'blue'}, styler);
+    expectNativeEl(fixture).toHaveStyle({ color: 'blue' }, styler);
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle({color: 'blue', 'font-size': '15px'}, styler);
+    expectNativeEl(fixture).toHaveStyle(
+      { color: 'blue', 'font-size': '15px' },
+      styler
+    );
   });
 
   it('should support raw-string notations', () => {
@@ -81,17 +107,22 @@ describe('style directive', () => {
             ngStyle.xs="font-size: 15px; background-color: #fc2929;" >
         </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({color: 'blue'}, styler);
+    expectNativeEl(fixture).toHaveStyle({ color: 'blue' }, styler);
     mediaController.activate('xs');
 
-    expectNativeEl(fixture).toHaveStyle({
-      'color': 'blue',
-      'font-size': '15px'
-    }, styler);
+    expectNativeEl(fixture).toHaveStyle(
+      {
+        color: 'blue',
+        'font-size': '15px',
+      },
+      styler
+    );
 
     // TODO(CaerusKaru): the Domino server impl. does not process colors correctly
-    const backgroundColor = styler.lookupStyle(fixture.debugElement.children[0].nativeElement,
-      'background-color');
+    const backgroundColor = styler.lookupStyle(
+      fixture.debugElement.children[0].nativeElement,
+      'background-color'
+    );
     const hasBackgroundRaw = backgroundColor === '#fc2929';
     const hasBackgroundFormat = backgroundColor === 'rgb(252, 41, 41)';
     const hasBackground = hasBackgroundFormat || hasBackgroundRaw;
@@ -111,20 +142,19 @@ describe('style directive', () => {
     fixture.detectChanges();
 
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle({'display': 'flex'}, styler);
-    expectNativeEl(fixture).toHaveStyle({'font-size': '16px'}, styler);
-    expectNativeEl(fixture).not.toHaveStyle({'font-size': '12px'}, styler);
+    expectNativeEl(fixture).toHaveStyle({ display: 'flex' }, styler);
+    expectNativeEl(fixture).toHaveStyle({ 'font-size': '16px' }, styler);
+    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '12px' }, styler);
 
     mediaController.activate('md');
-    expectNativeEl(fixture).not.toHaveStyle({'font-size': '16px'}, styler);
-    expectNativeEl(fixture).toHaveStyle({'font-size': '12px'}, styler);
+    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '16px' }, styler);
+    expectNativeEl(fixture).toHaveStyle({ 'font-size': '12px' }, styler);
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).not.toHaveStyle({'font-size': '12px'}, styler);
-    expectNativeEl(fixture).not.toHaveStyle({'font-size': '16px'}, styler);
-    expectNativeEl(fixture).toHaveStyle({'font-size': '10px'}, styler);  // original is gone
-    expectNativeEl(fixture).toHaveStyle({'margin-left': '13px'}, styler);   // portion remains
-
+    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '12px' }, styler);
+    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '16px' }, styler);
+    expectNativeEl(fixture).toHaveStyle({ 'font-size': '10px' }, styler); // original is gone
+    expectNativeEl(fixture).toHaveStyle({ 'margin-left': '13px' }, styler); // portion remains
   });
 
   it('should work with special ngStyle px notation', () => {
@@ -133,7 +163,7 @@ describe('style directive', () => {
         </div>
     `);
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle({'font-size': '15px'}, styler);
+    expectNativeEl(fixture).toHaveStyle({ 'font-size': '15px' }, styler);
   });
 
   it('should work with bound values', () => {
@@ -142,7 +172,10 @@ describe('style directive', () => {
         </div>
     `);
     mediaController.activate('xs');
-    expectNativeEl(fixture, {fontSize: 19}).toHaveStyle({'font-size': '19px'}, styler);
+    expectNativeEl(fixture, { fontSize: 19 }).toHaveStyle(
+      { 'font-size': '19px' },
+      styler
+    );
   });
 
   it('should work with URLs', () => {
@@ -151,8 +184,10 @@ describe('style directive', () => {
         </div>
     `);
     fixture.detectChanges();
-    const url = styler.lookupStyle(fixture.debugElement.children[0].nativeElement,
-      'background-image');
+    const url = styler.lookupStyle(
+      fixture.debugElement.children[0].nativeElement,
+      'background-image'
+    );
     const isUrl = url === `url("${URL}")` || url === `url(${URL})`;
     expect(isUrl).toBeTruthy();
   });
@@ -163,10 +198,10 @@ describe('style directive', () => {
         First div
       </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({'background-color': 'red'}, styler);
-    expectNativeEl(fixture).toHaveStyle({'height': '100px'}, styler);
-    expectNativeEl(fixture).toHaveStyle({'width': '100px'}, styler);
-    expectNativeEl(fixture).toHaveStyle({'border': '2px solid green'}, styler);
+    expectNativeEl(fixture).toHaveStyle({ 'background-color': 'red' }, styler);
+    expectNativeEl(fixture).toHaveStyle({ height: '100px' }, styler);
+    expectNativeEl(fixture).toHaveStyle({ width: '100px' }, styler);
+    expectNativeEl(fixture).toHaveStyle({ border: '2px solid green' }, styler);
   });
 });
 
@@ -176,13 +211,14 @@ describe('style directive', () => {
 
 @Component({
   selector: 'test-style-api',
-  template: `<span>PlaceHolder Template HTML</span>`
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
 class TestStyleComponent {
   fontSize: number = 0;
   testUrl = URL;
-  divStyle = {'border': '2px solid green'};
+  divStyle = { border: '2px solid green' };
 }
 
-const URL = 'https://cloud.githubusercontent.com/assets/210413/' +
+const URL =
+  'https://cloud.githubusercontent.com/assets/210413/' +
   '21288118/917e3faa-c440-11e6-9b08-28aff590c7ae.png';

@@ -5,20 +5,23 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TestBed, ComponentFixture, inject} from '@angular/core/testing';
-import {Platform} from '@angular/cdk/platform';
+import { Platform } from '@angular/cdk/platform';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
+  SERVER_TOKEN,
+  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-  SERVER_TOKEN,
-  StyleUtils,
-} from '@angular/flex-layout/core';
-import {GridModule} from '@angular/flex-layout/grid';
-import {customMatchers, expectNativeEl, makeCreateTestComponent} from '@angular/flex-layout/_private-utils/testing';
-
+} from '@ngbrackets/ngx-layout/core';
+import { GridModule } from '@ngbrackets/ngx-layout/grid';
+import {
+  customMatchers,
+  expectNativeEl,
+  makeCreateTestComponent,
+} from '@ngbrackets/ngx-layout/_private-utils/testing';
 
 describe('grid auto parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -26,13 +29,22 @@ describe('grid auto parent directive', () => {
   let mediaController: MockMatchMedia;
   let platform: Platform;
   let createTestComponent = (template: string, styles?: any) => {
-    fixture = makeCreateTestComponent(() => TestGridAutoComponent)(template, styles);
-    inject([StyleUtils, MatchMedia, Platform],
-      (_styler: StyleUtils, _matchMedia: MockMatchMedia, _platform: Platform) => {
-      styler = _styler;
-      mediaController = _matchMedia;
-      platform = _platform;
-    })();
+    fixture = makeCreateTestComponent(() => TestGridAutoComponent)(
+      template,
+      styles
+    );
+    inject(
+      [StyleUtils, MatchMedia, Platform],
+      (
+        _styler: StyleUtils,
+        _matchMedia: MockMatchMedia,
+        _platform: Platform
+      ) => {
+        styler = _styler;
+        mediaController = _matchMedia;
+        platform = _platform;
+      }
+    )();
   };
 
   beforeEach(() => {
@@ -44,7 +56,7 @@ describe('grid auto parent directive', () => {
       declarations: [TestGridAutoComponent],
       providers: [
         MockMatchMediaProvider,
-        {provide: SERVER_TOKEN, useValue: true},
+        { provide: SERVER_TOKEN, useValue: true },
       ],
     });
   });
@@ -60,10 +72,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'row'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
     });
 
     it('should work with inline grid', () => {
@@ -76,10 +91,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'inline-grid',
-        'grid-auto-flow': 'row'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'inline-grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
     });
 
     it('should work with row values', () => {
@@ -92,10 +110,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'row'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
     });
 
     it('should work with column values', () => {
@@ -108,10 +129,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'column'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
     });
 
     it('should work with dense values', () => {
@@ -124,10 +148,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'dense'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'dense',
+        },
+        styler
+      );
     });
 
     it('should filter double dense values', () => {
@@ -140,10 +167,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'dense'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'dense',
+        },
+        styler
+      );
     });
 
     it('should work with column dense values', () => {
@@ -156,10 +186,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'column dense'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column dense',
+        },
+        styler
+      );
     });
 
     it('should work with row dense values', () => {
@@ -172,10 +205,14 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': (platform.IOS || !platform.isBrowser) ? 'row dense' : 'dense',
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow':
+            platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
+        },
+        styler
+      );
     });
 
     it('should work with invalid direction values', () => {
@@ -188,10 +225,14 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': (platform.IOS || !platform.isBrowser) ? 'row dense' : 'dense',
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow':
+            platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
+        },
+        styler
+      );
     });
 
     it('should work with invalid dense values', () => {
@@ -204,10 +245,13 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'column'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
     });
 
     it('should add dynamic area styles', () => {
@@ -216,17 +260,23 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'row'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
 
       fixture.componentInstance.auto = 'column';
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'column'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
     });
   });
 
@@ -238,34 +288,41 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'row'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'column'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-auto-flow': 'row'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
     });
   });
-
 });
-
 
 // *****************************************************************
 // Template Component
 // *****************************************************************
 @Component({
   selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
 class TestGridAutoComponent {
   auto = 'row';

@@ -5,22 +5,25 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {DOCUMENT} from '@angular/common';
-import {Inject, Injectable, NgZone, PLATFORM_ID} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
 import {
   BreakPoint,
-  ɵMatchMedia as MatchMedia,
   BREAKPOINTS,
+  LayoutConfigOptions,
   LAYOUT_CONFIG,
-  LayoutConfigOptions
-} from '@angular/flex-layout/core';
+  ɵMatchMedia as MatchMedia,
+} from '@ngbrackets/ngx-layout/core';
 
 /**
  * Special server-only class to simulate a MediaQueryList and
  * - supports manual activation to simulate mediaQuery matching
  * - manages listeners
  */
-export class ServerMediaQueryList extends EventTarget implements MediaQueryList {
+export class ServerMediaQueryList
+  extends EventTarget
+  implements MediaQueryList
+{
   private _listeners: MediaQueryListListener[] = [];
 
   get matches(): boolean {
@@ -49,8 +52,12 @@ export class ServerMediaQueryList extends EventTarget implements MediaQueryList 
     if (!this._isActive) {
       this._isActive = true;
       this._listeners.forEach((callback) => {
-        const cb: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) = callback!;
-        cb.call(this, {matches: this.matches, media: this.media} as MediaQueryListEvent);
+        const cb: (this: MediaQueryList, ev: MediaQueryListEvent) => any =
+          callback!;
+        cb.call(this, {
+          matches: this.matches,
+          media: this.media,
+        } as MediaQueryListEvent);
       });
     }
     return this;
@@ -61,8 +68,12 @@ export class ServerMediaQueryList extends EventTarget implements MediaQueryList 
     if (this._isActive) {
       this._isActive = false;
       this._listeners.forEach((callback) => {
-        const cb: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) = callback!;
-        cb.call(this, {matches: this.matches, media: this.media} as MediaQueryListEvent);
+        const cb: (this: MediaQueryList, ev: MediaQueryListEvent) => any =
+          callback!;
+        cb.call(this, {
+          matches: this.matches,
+          media: this.media,
+        } as MediaQueryListEvent);
       });
     }
     return this;
@@ -74,20 +85,21 @@ export class ServerMediaQueryList extends EventTarget implements MediaQueryList 
       this._listeners.push(listener);
     }
     if (this._isActive) {
-      const cb: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) = listener!;
-      cb.call(this, {matches: this.matches, media: this.media} as MediaQueryListEvent);
+      const cb: (this: MediaQueryList, ev: MediaQueryListEvent) => any =
+        listener!;
+      cb.call(this, {
+        matches: this.matches,
+        media: this.media,
+      } as MediaQueryListEvent);
     }
   }
 
   /** Don't need to remove listeners in the server environment */
-  removeListener() {
-  }
+  removeListener() {}
 
-  override addEventListener() {
-  }
+  override addEventListener() {}
 
-  override removeEventListener() {
-  }
+  override removeEventListener() {}
 
   override dispatchEvent(_: Event): boolean {
     return false;
@@ -106,31 +118,39 @@ export class ServerMediaQueryList extends EventTarget implements MediaQueryList 
 export class ServerMatchMedia extends MatchMedia {
   private _activeBreakpoints: BreakPoint[] = [];
 
-  constructor(protected override _zone: NgZone,
-              @Inject(PLATFORM_ID) protected override _platformId: Object,
-              @Inject(DOCUMENT) protected override _document: any,
-              @Inject(BREAKPOINTS) protected breakpoints: BreakPoint[],
-              @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions) {
+  constructor(
+    protected override _zone: NgZone,
+    @Inject(PLATFORM_ID) protected override _platformId: Object,
+    @Inject(DOCUMENT) protected override _document: any,
+    @Inject(BREAKPOINTS) protected breakpoints: BreakPoint[],
+    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions
+  ) {
     super(_zone, _platformId, _document);
 
     const serverBps = layoutConfig.ssrObserveBreakpoints;
     if (serverBps) {
-      this._activeBreakpoints = serverBps
-        .reduce((acc: BreakPoint[], serverBp: string) => {
-          const foundBp = breakpoints.find(bp => serverBp === bp.alias);
+      this._activeBreakpoints = serverBps.reduce(
+        (acc: BreakPoint[], serverBp: string) => {
+          const foundBp = breakpoints.find((bp) => serverBp === bp.alias);
           if (!foundBp) {
-            console.warn(`FlexLayoutServerModule: unknown breakpoint alias "${serverBp}"`);
+            console.warn(
+              `FlexLayoutServerModule: unknown breakpoint alias "${serverBp}"`
+            );
           } else {
             acc.push(foundBp);
           }
           return acc;
-        }, []);
+        },
+        []
+      );
     }
   }
 
   /** Activate the specified breakpoint if we're on the server, no-op otherwise */
   activateBreakpoint(bp: BreakPoint) {
-    const lookupBreakpoint = this.registry.get(bp.mediaQuery) as ServerMediaQueryList;
+    const lookupBreakpoint = this.registry.get(
+      bp.mediaQuery
+    ) as ServerMediaQueryList;
     if (lookupBreakpoint) {
       lookupBreakpoint.activate();
     }
@@ -138,7 +158,9 @@ export class ServerMatchMedia extends MatchMedia {
 
   /** Deactivate the specified breakpoint if we're on the server, no-op otherwise */
   deactivateBreakpoint(bp: BreakPoint) {
-    const lookupBreakpoint = this.registry.get(bp.mediaQuery) as ServerMediaQueryList;
+    const lookupBreakpoint = this.registry.get(
+      bp.mediaQuery
+    ) as ServerMediaQueryList;
     if (lookupBreakpoint) {
       lookupBreakpoint.deactivate();
     }
@@ -149,10 +171,14 @@ export class ServerMatchMedia extends MatchMedia {
    * supports 0..n listeners for activation/deactivation
    */
   protected override buildMQL(query: string): ServerMediaQueryList {
-    const isActive = this._activeBreakpoints.some(ab => ab.mediaQuery === query);
+    const isActive = this._activeBreakpoints.some(
+      (ab) => ab.mediaQuery === query
+    );
 
     return new ServerMediaQueryList(query, isActive);
   }
 }
 
-type MediaQueryListListener = ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null;
+type MediaQueryListListener =
+  | ((this: MediaQueryList, ev: MediaQueryListEvent) => any)
+  | null;

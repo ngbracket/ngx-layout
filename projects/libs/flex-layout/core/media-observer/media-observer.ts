@@ -5,8 +5,8 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Injectable, OnDestroy} from '@angular/core';
-import {Subject, asapScheduler, Observable, of} from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { asapScheduler, Observable, of, Subject } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -16,15 +16,17 @@ import {
   takeUntil,
 } from 'rxjs/operators';
 
-import {mergeAlias} from '../add-alias';
-import {MediaChange} from '../media-change';
-import {MatchMedia} from '../match-media/match-media';
-import {PrintHook} from '../media-marshaller/print-hook';
-import {BreakPointRegistry, OptionalBreakPoint} from '../breakpoints/break-point-registry';
+import { mergeAlias } from '../add-alias';
+import {
+  BreakPointRegistry,
+  OptionalBreakPoint,
+} from '../breakpoints/break-point-registry';
+import { MatchMedia } from '../match-media/match-media';
+import { MediaChange } from '../media-change';
+import { PrintHook } from '../media-marshaller/print-hook';
 
-import {sortDescendingPriority} from '../utils/sort';
-import {coerceArray} from '../utils/array';
-
+import { coerceArray } from '../utils/array';
+import { sortDescendingPriority } from '../utils/sort';
 
 /**
  * MediaObserver enables applications to listen for 1..n mediaQuery activations and to determine
@@ -45,7 +47,7 @@ import {coerceArray} from '../utils/array';
  *
  *  // RxJS
  *  import { filter } from 'rxjs/operators';
- *  import { MediaObserver } from '@angular/flex-layout';
+ *  import { MediaObserver } from '@ngbrackets/ngx-layout';
  *
  *  @Component({ ... })
  *  export class AppComponent {
@@ -67,14 +69,16 @@ import {coerceArray} from '../utils/array';
  *    }
  *  }
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class MediaObserver implements OnDestroy {
   /** Filter MediaChange notifications for overlapping breakpoints */
   filterOverlaps = false;
 
-  constructor(protected breakpoints: BreakPointRegistry,
-              protected matchMedia: MatchMedia,
-              protected hook: PrintHook) {
+  constructor(
+    protected breakpoints: BreakPointRegistry,
+    protected matchMedia: MatchMedia,
+    protected hook: PrintHook
+  ) {
     this._media$ = this.watchActivations();
   }
 
@@ -106,7 +110,7 @@ export class MediaObserver implements OnDestroy {
    */
   isActive(value: string | string[]): boolean {
     const aliases = splitQueries(coerceArray(value));
-    return aliases.some(alias => {
+    return aliases.some((alias) => {
       const query = toMediaQuery(alias, this.breakpoints);
       return query !== null && this.matchMedia.isActive(query);
     });
@@ -122,7 +126,7 @@ export class MediaObserver implements OnDestroy {
    * mediaQuery activations
    */
   private watchActivations() {
-    const queries = this.breakpoints.items.map(bp => bp.mediaQuery);
+    const queries = this.breakpoints.items.map((bp) => bp.mediaQuery);
     return this.buildObservable(queries);
   }
 
@@ -142,40 +146,46 @@ export class MediaObserver implements OnDestroy {
    */
   private buildObservable(mqList: string[]): Observable<MediaChange[]> {
     const hasChanges = (changes: MediaChange[]) => {
-      const isValidQuery = (change: MediaChange) => (change.mediaQuery.length > 0);
-      return (changes.filter(isValidQuery).length > 0);
+      const isValidQuery = (change: MediaChange) =>
+        change.mediaQuery.length > 0;
+      return changes.filter(isValidQuery).length > 0;
     };
     const excludeOverlaps = (changes: MediaChange[]) => {
-      return !this.filterOverlaps ? changes : changes.filter(change => {
-        const bp = this.breakpoints.findByQuery(change.mediaQuery);
-        return bp?.overlapping ?? true;
-      });
+      return !this.filterOverlaps
+        ? changes
+        : changes.filter((change) => {
+            const bp = this.breakpoints.findByQuery(change.mediaQuery);
+            return bp?.overlapping ?? true;
+          });
     };
-    const ignoreDuplicates = (previous: MediaChange[], current: MediaChange[]): boolean => {
+    const ignoreDuplicates = (
+      previous: MediaChange[],
+      current: MediaChange[]
+    ): boolean => {
       if (previous.length !== current.length) {
         return false;
       }
 
-      const previousMqs = previous.map(mc => mc.mediaQuery);
-      const currentMqs = new Set(current.map(mc => mc.mediaQuery));
-      const difference = new Set(previousMqs.filter(mq => !currentMqs.has(mq)));
+      const previousMqs = previous.map((mc) => mc.mediaQuery);
+      const currentMqs = new Set(current.map((mc) => mc.mediaQuery));
+      const difference = new Set(
+        previousMqs.filter((mq) => !currentMqs.has(mq))
+      );
 
       return difference.size === 0;
     };
 
     /**
      */
-    return this.matchMedia
-        .observe(this.hook.withPrintQuery(mqList))
-        .pipe(
-            filter((change: MediaChange) => change.matches),
-            debounceTime(0, asapScheduler),
-            switchMap(_ => of(this.findAllActivations())),
-            map(excludeOverlaps),
-            filter(hasChanges),
-            distinctUntilChanged(ignoreDuplicates),
-            takeUntil(this.destroyed$)
-        );
+    return this.matchMedia.observe(this.hook.withPrintQuery(mqList)).pipe(
+      filter((change: MediaChange) => change.matches),
+      debounceTime(0, asapScheduler),
+      switchMap((_) => of(this.findAllActivations())),
+      map(excludeOverlaps),
+      filter(hasChanges),
+      distinctUntilChanged(ignoreDuplicates),
+      takeUntil(this.destroyed$)
+    );
   }
 
   /**
@@ -184,18 +194,19 @@ export class MediaObserver implements OnDestroy {
    */
   private findAllActivations(): MediaChange[] {
     const mergeMQAlias = (change: MediaChange) => {
-      const bp: OptionalBreakPoint = this.breakpoints.findByQuery(change.mediaQuery);
+      const bp: OptionalBreakPoint = this.breakpoints.findByQuery(
+        change.mediaQuery
+      );
       return mergeAlias(change, bp);
     };
     const replaceWithPrintAlias = (change: MediaChange) =>
       this.hook.isPrintEvent(change) ? this.hook.updateEvent(change) : change;
 
-    return this.matchMedia
-        .activations
-        .map(query => new MediaChange(true, query))
-        .map(replaceWithPrintAlias)
-        .map(mergeMQAlias)
-        .sort(sortDescendingPriority);
+    return this.matchMedia.activations
+      .map((query) => new MediaChange(true, query))
+      .map(replaceWithPrintAlias)
+      .map(mergeMQAlias)
+      .sort(sortDescendingPriority);
   }
 
   private readonly _media$: Observable<MediaChange[]>;
@@ -205,7 +216,10 @@ export class MediaObserver implements OnDestroy {
 /**
  * Find associated breakpoint (if any)
  */
-function toMediaQuery(query: string, locator: BreakPointRegistry): string | null {
+function toMediaQuery(
+  query: string,
+  locator: BreakPointRegistry
+): string | null {
   const bp = locator.findByAlias(query) ?? locator.findByQuery(query);
   return bp?.mediaQuery ?? null;
 }
@@ -215,6 +229,7 @@ function toMediaQuery(query: string, locator: BreakPointRegistry): string | null
  * separated.
  */
 function splitQueries(queries: string[]): string[] {
-  return queries.flatMap(query => query.split(','))
-    .map(query => query.trim());
+  return queries
+    .flatMap((query) => query.split(','))
+    .map((query) => query.trim());
 }

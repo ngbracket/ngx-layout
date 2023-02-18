@@ -5,26 +5,32 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, OnChanges, Injectable, Inject} from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Inject,
+  Injectable,
+  OnChanges,
+} from '@angular/core';
 import {
   BaseDirective2,
+  LayoutConfigOptions,
+  LAYOUT_CONFIG,
+  MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-  MediaMarshaller,
-  LAYOUT_CONFIG,
-  LayoutConfigOptions,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
-import {buildLayoutCSS} from '@angular/flex-layout/_private-utils';
+import { buildLayoutCSS } from '@ngbrackets/ngx-layout/_private-utils';
 
 export interface LayoutStyleDisplay {
   readonly display: string;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class LayoutStyleBuilder extends StyleBuilder {
-  buildStyles(input: string, {display}: LayoutStyleDisplay) {
+  buildStyles(input: string, { display }: LayoutStyleDisplay) {
     const css = buildLayoutCSS(input);
     return {
       ...css,
@@ -34,10 +40,20 @@ export class LayoutStyleBuilder extends StyleBuilder {
 }
 
 const inputs = [
-  'fxLayout', 'fxLayout.xs', 'fxLayout.sm', 'fxLayout.md',
-  'fxLayout.lg', 'fxLayout.xl', 'fxLayout.lt-sm', 'fxLayout.lt-md',
-  'fxLayout.lt-lg', 'fxLayout.lt-xl', 'fxLayout.gt-xs', 'fxLayout.gt-sm',
-  'fxLayout.gt-md', 'fxLayout.gt-lg'
+  'fxLayout',
+  'fxLayout.xs',
+  'fxLayout.sm',
+  'fxLayout.md',
+  'fxLayout.lg',
+  'fxLayout.xl',
+  'fxLayout.lt-sm',
+  'fxLayout.lt-md',
+  'fxLayout.lt-lg',
+  'fxLayout.lt-xl',
+  'fxLayout.gt-xs',
+  'fxLayout.gt-sm',
+  'fxLayout.gt-md',
+  'fxLayout.gt-lg',
 ];
 const selector = `
   [fxLayout], [fxLayout.xs], [fxLayout.sm], [fxLayout.md],
@@ -55,32 +71,35 @@ const selector = `
  */
 @Directive()
 export class LayoutDirective extends BaseDirective2 implements OnChanges {
-
   protected override DIRECTIVE_KEY = 'layout';
 
-  constructor(elRef: ElementRef,
-              styleUtils: StyleUtils,
-              styleBuilder: LayoutStyleBuilder,
-              marshal: MediaMarshaller,
-              @Inject(LAYOUT_CONFIG) private _config: LayoutConfigOptions) {
+  constructor(
+    elRef: ElementRef,
+    styleUtils: StyleUtils,
+    styleBuilder: LayoutStyleBuilder,
+    marshal: MediaMarshaller,
+    @Inject(LAYOUT_CONFIG) private _config: LayoutConfigOptions
+  ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();
   }
 
   protected override updateWithValue(input: string) {
     const detectLayoutDisplay = this._config.detectLayoutDisplay;
-    const display = detectLayoutDisplay ? this.styler.lookupStyle(this.nativeElement, 'display') : '';
+    const display = detectLayoutDisplay
+      ? this.styler.lookupStyle(this.nativeElement, 'display')
+      : '';
     this.styleCache = cacheMap.get(display) ?? new Map();
     cacheMap.set(display, this.styleCache);
 
     if (this.currentValue !== input) {
-      this.addStyles(input, {display});
+      this.addStyles(input, { display });
       this.currentValue = input;
     }
   }
 }
 
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultLayoutDirective extends LayoutDirective {
   protected override inputs = inputs;
 }

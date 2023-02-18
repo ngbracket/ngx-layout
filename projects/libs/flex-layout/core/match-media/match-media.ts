@@ -5,12 +5,18 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Inject, Injectable, NgZone, OnDestroy, PLATFORM_ID} from '@angular/core';
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import {BehaviorSubject, Observable, merge, Observer} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import {
+  Inject,
+  Injectable,
+  NgZone,
+  OnDestroy,
+  PLATFORM_ID,
+} from '@angular/core';
+import { BehaviorSubject, merge, Observable, Observer } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
-import {MediaChange} from '../media-change';
+import { MediaChange } from '../media-change';
 
 /**
  * MediaMonitor configures listeners to mediaQuery changes and publishes an Observable facade to
@@ -19,17 +25,18 @@ import {MediaChange} from '../media-change';
  *
  * NOTE: both mediaQuery activations and de-activations are announced in notifications
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class MatchMedia implements OnDestroy {
   /** Initialize source with 'all' so all non-responsive APIs trigger style updates */
   readonly source = new BehaviorSubject<MediaChange>(new MediaChange(true));
   registry = new Map<string, MediaQueryList>();
   private readonly pendingRemoveListenerFns: Array<() => void> = [];
 
-  constructor(protected _zone: NgZone,
-              @Inject(PLATFORM_ID) protected _platformId: Object,
-              @Inject(DOCUMENT) protected _document: any) {
-  }
+  constructor(
+    protected _zone: NgZone,
+    @Inject(PLATFORM_ID) protected _platformId: Object,
+    @Inject(DOCUMENT) protected _document: any
+  ) {}
 
   /**
    * Publish list of all current activations
@@ -49,7 +56,9 @@ export class MatchMedia implements OnDestroy {
    */
   isActive(mediaQuery: string): boolean {
     const mql = this.registry.get(mediaQuery);
-    return mql?.matches ?? this.registerQuery(mediaQuery).some(m => m.matches);
+    return (
+      mql?.matches ?? this.registerQuery(mediaQuery).some((m) => m.matches)
+    );
   }
 
   /**
@@ -60,7 +69,10 @@ export class MatchMedia implements OnDestroy {
    */
   observe(): Observable<MediaChange>;
   observe(mediaQueries: string[]): Observable<MediaChange>;
-  observe(mediaQueries: string[], filterOthers: boolean): Observable<MediaChange>;
+  observe(
+    mediaQueries: string[],
+    filterOthers: boolean
+  ): Observable<MediaChange>;
 
   /**
    * External observers can watch for all (or a specific) mql changes.
@@ -74,20 +86,24 @@ export class MatchMedia implements OnDestroy {
   observe(mqList?: string[], filterOthers = false): Observable<MediaChange> {
     if (mqList && mqList.length) {
       const matchMedia$: Observable<MediaChange> = this._observable$.pipe(
-          filter((change: MediaChange) =>
-            !filterOthers ? true : (mqList.indexOf(change.mediaQuery) > -1))
+        filter((change: MediaChange) =>
+          !filterOthers ? true : mqList.indexOf(change.mediaQuery) > -1
+        )
       );
-      const registration$: Observable<MediaChange> = new Observable((observer: Observer<MediaChange>) => {  // tslint:disable-line:max-line-length
-        const matches: Array<MediaChange> = this.registerQuery(mqList);
-        if (matches.length) {
-          const lastChange = matches.pop()!;
-          matches.forEach((e: MediaChange) => {
-            observer.next(e);
-          });
-          this.source.next(lastChange); // last match is cached
+      const registration$: Observable<MediaChange> = new Observable(
+        (observer: Observer<MediaChange>) => {
+          // tslint:disable-line:max-line-length
+          const matches: Array<MediaChange> = this.registerQuery(mqList);
+          if (matches.length) {
+            const lastChange = matches.pop()!;
+            matches.forEach((e: MediaChange) => {
+              observer.next(e);
+            });
+            this.source.next(lastChange); // last match is cached
+          }
+          observer.complete();
         }
-        observer.complete();
-      });
+      );
       return merge(registration$, matchMedia$);
     }
 
@@ -106,14 +122,18 @@ export class MatchMedia implements OnDestroy {
 
     list.forEach((query: string) => {
       const onMQLEvent = (e: MediaQueryListEvent) => {
-        this._zone.run(() => this.source.next(new MediaChange(e.matches, query)));
+        this._zone.run(() =>
+          this.source.next(new MediaChange(e.matches, query))
+        );
       };
 
       let mql = this.registry.get(query);
       if (!mql) {
         mql = this.buildMQL(query);
         mql.addListener(onMQLEvent);
-        this.pendingRemoveListenerFns.push(() => mql!.removeListener(onMQLEvent));
+        this.pendingRemoveListenerFns.push(() =>
+          mql!.removeListener(onMQLEvent)
+        );
         this.registry.set(query, mql);
       }
 
@@ -127,7 +147,7 @@ export class MatchMedia implements OnDestroy {
 
   ngOnDestroy(): void {
     let fn;
-    while (fn = this.pendingRemoveListenerFns.pop()) {
+    while ((fn = this.pendingRemoveListenerFns.pop())) {
       fn();
     }
   }
@@ -157,7 +177,7 @@ const ALL_STYLES: { [key: string]: any } = {};
  * @param _document
  */
 function buildQueryCss(mediaQueries: string[], _document: Document) {
-  const list = mediaQueries.filter(it => !ALL_STYLES[it]);
+  const list = mediaQueries.filter((it) => !ALL_STYLES[it]);
   if (list.length > 0) {
     const query = list.join(', ');
 
@@ -168,7 +188,7 @@ function buildQueryCss(mediaQueries: string[], _document: Document) {
       if (!(styleEl as any).styleSheet) {
         const cssText = `
 /*
-  @angular/flex-layout - workaround for possible browser quirk with mediaQuery listeners
+  @ngbrackets/ngx-layout - workaround for possible browser quirk with mediaQuery listeners
   see http://bit.ly/2sd4HMP
 */
 @media ${query} {.fx-query-test{ }}
@@ -179,8 +199,7 @@ function buildQueryCss(mediaQueries: string[], _document: Document) {
       _document.head!.appendChild(styleEl);
 
       // Store in private global registry
-      list.forEach(mq => ALL_STYLES[mq] = styleEl);
-
+      list.forEach((mq) => (ALL_STYLES[mq] = styleEl));
     } catch (e) {
       console.error(e);
     }
@@ -201,7 +220,8 @@ function buildMockMql(query: string) {
 }
 
 function constructMql(query: string, isBrowser: boolean): MediaQueryList {
-  const canListen = isBrowser && !!(<Window>window).matchMedia('all').addListener;
+  const canListen =
+    isBrowser && !!(<Window>window).matchMedia('all').addListener;
 
   return canListen ? (<Window>window).matchMedia(query) : buildMockMql(query);
 }

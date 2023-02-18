@@ -5,10 +5,10 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Type, DebugElement} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {extendObject} from '@angular/flex-layout/_private-utils';
+import { DebugElement, Type } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { extendObject } from '@ngbrackets/ngx-layout/_private-utils';
 
 export type ComponentClazzFn = () => Type<any>;
 
@@ -20,26 +20,30 @@ export function makeCreateTestComponent(getClass: ComponentClazzFn) {
   let componentAny: Type<any>;
 
   // Return actual `createTestComponent()` function
-  return function createTestComponent(template: string, styles?: any): ComponentFixture<Type<any>> {
+  return function createTestComponent(
+    template: string,
+    styles?: any
+  ): ComponentFixture<Type<any>> {
     if (!componentAny) {
       // Defer access to Component class to enable metadata to be configured properly...
       componentAny = getClass();
     }
-    return TestBed
-        .overrideComponent(componentAny, {
-          set: {
-            template: template,
-            styles: styles || [],
-          }
-        })
-        .createComponent(componentAny);
+    return TestBed.overrideComponent(componentAny, {
+      set: {
+        template: template,
+        styles: styles || [],
+      },
+    }).createComponent(componentAny);
   };
 }
 
 /**
  *
  */
-export function expectNativeEl(fixture: ComponentFixture<any>, instanceOptions ?: any): any {
+export function expectNativeEl(
+  fixture: ComponentFixture<any>,
+  instanceOptions?: any
+): any {
   extendObject(fixture.componentInstance, instanceOptions || {});
   fixture.detectChanges();
   return expect(fixture.debugElement.children[0].nativeElement);
@@ -52,9 +56,9 @@ export function expectEl(debugEl: DebugElement): any {
   return expect(debugEl.nativeElement);
 }
 
-
-export function queryFor(fixture: ComponentFixture<any>, selector: string): DebugElement[] {
+export function queryFor(
+  fixture: ComponentFixture<any>,
+  selector: string
+): DebugElement[] {
   return fixture.debugElement.queryAll(By.css(selector));
 }
-
-

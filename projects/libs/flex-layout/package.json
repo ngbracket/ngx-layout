@@ -1,5 +1,5 @@
 {
-  "name": "@angular/flex-layout",
+  "name": "@ng-brackets/ngx-layout",
   "version": "0.0.0-PLACEHOLDER",
   "exports": {
     "./mq": {
@@ -11,10 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angular/flex-layout.git"
+    "url": "git+https://github.com/ngbrackets/ngx-layout.git"
   },
   "keywords": [
     "angular",
+    "ngx-layout",
     "flex-layout",
     "flexbox css",
     "media query",
@@ -22,9 +23,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/angular/flex-layout/issues"
+    "url": "https://github.com/ngbrackets/ngx-layout/issues"
   },
-  "homepage": "https://github.com/angular/flex-layout#readme",
+  "homepage": "https://github.com/ngbrackets/ngx-layout#readme",
   "dependencies": {
     "tslib": "^2.3.0"
   },
@@ -35,5 +36,11 @@
     "@angular/platform-browser": "0.0.0-NG",
     "rxjs": "^6.5.3 || ^7.4.0"
   },
-  "type": "module"
+  "type": "module",
+  "description": "Angular Flex-Layout =======",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": ""
 }

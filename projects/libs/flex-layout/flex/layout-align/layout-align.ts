@@ -5,29 +5,33 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, Injectable} from '@angular/core';
+import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
   BaseDirective2,
+  ElementMatcher,
+  MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-  MediaMarshaller,
-  ElementMatcher,
-} from '@angular/flex-layout/core';
-import {takeUntil} from 'rxjs/operators';
+} from '@ngbrackets/ngx-layout/core';
+import { takeUntil } from 'rxjs/operators';
 
-import {extendObject} from '@angular/flex-layout/_private-utils';
-import {LAYOUT_VALUES, isFlowHorizontal} from '@angular/flex-layout/_private-utils';
+import {
+  extendObject,
+  isFlowHorizontal,
+  LAYOUT_VALUES,
+} from '@ngbrackets/ngx-layout/_private-utils';
 
 export interface LayoutAlignParent {
   layout: string;
   inline: boolean;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class LayoutAlignStyleBuilder extends StyleBuilder {
   buildStyles(align: string, parent: LayoutAlignParent) {
-    const css: StyleDefinition = {}, [mainAxis, crossAxis] = align.split(' ');
+    const css: StyleDefinition = {},
+      [mainAxis, crossAxis] = align.split(' ');
 
     // Main axis
     switch (mainAxis) {
@@ -49,8 +53,8 @@ export class LayoutAlignStyleBuilder extends StyleBuilder {
         break;
       case 'start':
       case 'flex-start':
-      default :
-        css['justify-content'] = 'flex-start';  // default main axis
+      default: // default main axis
+        css['justify-content'] = 'flex-start';
         break;
     }
 
@@ -80,28 +84,47 @@ export class LayoutAlignStyleBuilder extends StyleBuilder {
         css['align-items'] = 'baseline';
         break;
       case 'stretch':
-      default : // 'stretch'
-        css['align-items'] = css['align-content'] = 'stretch';   // default cross axis
+      default: // 'stretch'
+      // default cross axis
+        css['align-items'] = css['align-content'] = 'stretch';
         break;
     }
 
     return extendObject(css, {
-      'display' : parent.inline ? 'inline-flex' : 'flex',
-      'flex-direction' : parent.layout,
-      'box-sizing' : 'border-box',
-      'max-width': crossAxis === 'stretch' ?
-        !isFlowHorizontal(parent.layout) ? '100%' : null : null,
-      'max-height': crossAxis === 'stretch' ?
-        isFlowHorizontal(parent.layout) ? '100%' : null : null,
+      display: parent.inline ? 'inline-flex' : 'flex',
+      'flex-direction': parent.layout,
+      'box-sizing': 'border-box',
+      'max-width':
+        crossAxis === 'stretch'
+          ? !isFlowHorizontal(parent.layout)
+            ? '100%'
+            : null
+          : null,
+      'max-height':
+        crossAxis === 'stretch'
+          ? isFlowHorizontal(parent.layout)
+            ? '100%'
+            : null
+          : null,
     }) as StyleDefinition;
   }
 }
 
 const inputs = [
-  'fxLayoutAlign', 'fxLayoutAlign.xs', 'fxLayoutAlign.sm', 'fxLayoutAlign.md',
-  'fxLayoutAlign.lg', 'fxLayoutAlign.xl', 'fxLayoutAlign.lt-sm', 'fxLayoutAlign.lt-md',
-  'fxLayoutAlign.lt-lg', 'fxLayoutAlign.lt-xl', 'fxLayoutAlign.gt-xs', 'fxLayoutAlign.gt-sm',
-  'fxLayoutAlign.gt-md', 'fxLayoutAlign.gt-lg'
+  'fxLayoutAlign',
+  'fxLayoutAlign.xs',
+  'fxLayoutAlign.sm',
+  'fxLayoutAlign.md',
+  'fxLayoutAlign.lg',
+  'fxLayoutAlign.xl',
+  'fxLayoutAlign.lt-sm',
+  'fxLayoutAlign.lt-md',
+  'fxLayoutAlign.lt-lg',
+  'fxLayoutAlign.lt-xl',
+  'fxLayoutAlign.gt-xs',
+  'fxLayoutAlign.gt-sm',
+  'fxLayoutAlign.gt-md',
+  'fxLayoutAlign.gt-lg',
 ];
 const selector = `
   [fxLayoutAlign], [fxLayoutAlign.xs], [fxLayoutAlign.sm], [fxLayoutAlign.md],
@@ -122,16 +145,19 @@ const selector = `
 @Directive()
 export class LayoutAlignDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'layout-align';
-  protected layout = 'row';  // default flex-direction
-  protected inline = false;  // default inline value
+  protected layout = 'row'; // default flex-direction
+  protected inline = false; // default inline value
 
-  constructor(elRef: ElementRef,
-              styleUtils: StyleUtils,
-              styleBuilder: LayoutAlignStyleBuilder,
-              marshal: MediaMarshaller) {
+  constructor(
+    elRef: ElementRef,
+    styleUtils: StyleUtils,
+    styleBuilder: LayoutAlignStyleBuilder,
+    marshal: MediaMarshaller
+  ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();
-    this.marshal.trackValue(this.nativeElement, 'layout')
+    this.marshal
+      .trackValue(this.nativeElement, 'layout')
       .pipe(takeUntil(this.destroySubject))
       .subscribe(this.onLayoutChange.bind(this));
   }
@@ -163,7 +189,7 @@ export class LayoutAlignDirective extends BaseDirective2 {
     } else if (layout === 'column-reverse' && !inline) {
       this.styleCache = layoutAlignVerticalRevCache;
     }
-    this.addStyles(value, {layout, inline});
+    this.addStyles(value, { layout, inline });
   }
 
   /**
@@ -173,14 +199,14 @@ export class LayoutAlignDirective extends BaseDirective2 {
     const layoutKeys: string[] = matcher.value.split(' ');
     this.layout = layoutKeys[0];
     this.inline = matcher.value.includes('inline');
-    if (!LAYOUT_VALUES.find(x => x === this.layout)) {
+    if (!LAYOUT_VALUES.find((x) => x === this.layout)) {
       this.layout = 'row';
     }
     this.triggerUpdate();
   }
 }
 
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultLayoutAlignDirective extends LayoutAlignDirective {
   protected override inputs = inputs;
 }
@@ -189,7 +215,10 @@ const layoutAlignHorizontalCache: Map<string, StyleDefinition> = new Map();
 const layoutAlignVerticalCache: Map<string, StyleDefinition> = new Map();
 const layoutAlignHorizontalRevCache: Map<string, StyleDefinition> = new Map();
 const layoutAlignVerticalRevCache: Map<string, StyleDefinition> = new Map();
-const layoutAlignHorizontalInlineCache: Map<string, StyleDefinition> = new Map();
+const layoutAlignHorizontalInlineCache: Map<string, StyleDefinition> =
+  new Map();
 const layoutAlignVerticalInlineCache: Map<string, StyleDefinition> = new Map();
-const layoutAlignHorizontalRevInlineCache: Map<string, StyleDefinition> = new Map();
-const layoutAlignVerticalRevInlineCache: Map<string, StyleDefinition> = new Map();
+const layoutAlignHorizontalRevInlineCache: Map<string, StyleDefinition> =
+  new Map();
+const layoutAlignVerticalRevInlineCache: Map<string, StyleDefinition> =
+  new Map();

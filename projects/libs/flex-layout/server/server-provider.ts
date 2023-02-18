@@ -5,20 +5,20 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {DOCUMENT} from '@angular/common';
-import {BEFORE_APP_SERIALIZED} from '@angular/platform-server';
+import { DOCUMENT } from '@angular/common';
+import { BEFORE_APP_SERIALIZED } from '@angular/platform-server';
 import {
+  BreakPoint,
   BREAKPOINTS,
   CLASS_NAME,
-  SERVER_TOKEN,
-  BreakPoint,
-  ɵMatchMedia as MatchMedia,
-  StylesheetMap,
-  sortAscendingPriority,
   MediaMarshaller,
-} from '@angular/flex-layout/core';
+  SERVER_TOKEN,
+  sortAscendingPriority,
+  StylesheetMap,
+  ɵMatchMedia as MatchMedia,
+} from '@ngbrackets/ngx-layout/core';
 
-import {ServerMatchMedia} from './server-match-media';
+import { ServerMatchMedia } from './server-match-media';
 
 /**
  * Activate all the registered breakpoints in sequence, and then
@@ -29,10 +29,12 @@ import {ServerMatchMedia} from './server-match-media';
  * @param breakpoints the registered breakpoints to activate/deactivate
  * @param mediaMarshaller the MediaMarshaller service to disable fallback styles dynamically
  */
-export function generateStaticFlexLayoutStyles(serverSheet: StylesheetMap,
-                                               mediaController: ServerMatchMedia,
-                                               breakpoints: BreakPoint[],
-                                               mediaMarshaller: MediaMarshaller) {
+export function generateStaticFlexLayoutStyles(
+  serverSheet: StylesheetMap,
+  mediaController: ServerMatchMedia,
+  breakpoints: BreakPoint[],
+  mediaMarshaller: MediaMarshaller
+) {
   // Store the custom classes in the following map, that way only
   // one class gets allocated per HTMLElement, and each class can
   // be referenced in the static media queries
@@ -64,17 +66,23 @@ export function generateStaticFlexLayoutStyles(serverSheet: StylesheetMap,
  * Create a style tag populated with the dynamic stylings from Flex
  * components and attach it to the head of the DOM
  */
-export function FLEX_SSR_SERIALIZER_FACTORY(serverSheet: StylesheetMap,
-                                            mediaController: ServerMatchMedia,
-                                            _document: Document,
-                                            breakpoints: BreakPoint[],
-                                            mediaMarshaller: MediaMarshaller) {
+export function FLEX_SSR_SERIALIZER_FACTORY(
+  serverSheet: StylesheetMap,
+  mediaController: ServerMatchMedia,
+  _document: Document,
+  breakpoints: BreakPoint[],
+  mediaMarshaller: MediaMarshaller
+) {
   return () => {
     // This is the style tag that gets inserted into the head of the DOM,
     // populated with the manual media queries
     const styleTag = _document.createElement('style');
     const styleText = generateStaticFlexLayoutStyles(
-      serverSheet, mediaController, breakpoints, mediaMarshaller);
+      serverSheet,
+      mediaController,
+      breakpoints,
+      mediaMarshaller
+    );
     styleTag.classList.add(`${CLASS_NAME}ssr`);
     styleTag.textContent = styleText;
     _document.head!.appendChild(styleTag);
@@ -88,30 +96,23 @@ export const SERVER_PROVIDERS = [
   {
     provide: BEFORE_APP_SERIALIZED,
     useFactory: FLEX_SSR_SERIALIZER_FACTORY,
-    deps: [
-      StylesheetMap,
-      MatchMedia,
-      DOCUMENT,
-      BREAKPOINTS,
-      MediaMarshaller,
-    ],
+    deps: [StylesheetMap, MatchMedia, DOCUMENT, BREAKPOINTS, MediaMarshaller],
     multi: true,
   },
   {
     provide: SERVER_TOKEN,
-    useValue: true
+    useValue: true,
   },
   {
     provide: MatchMedia,
-    useClass: ServerMatchMedia
-  }
+    useClass: ServerMatchMedia,
+  },
 ];
-
 
 let nextId = 0;
 const IS_DEBUG_MODE = false;
 
-export type StyleSheet = Map<HTMLElement, Map<string, string|number>>;
+export type StyleSheet = Map<HTMLElement, Map<string, string | number>>;
 export type ClassMap = Map<HTMLElement, string>;
 
 /**
@@ -123,7 +124,11 @@ export type ClassMap = Map<HTMLElement, string>;
  * @param mediaQuery the given @media CSS selector for the current breakpoint
  * @param classMap the map of HTML elements to class names to avoid duplications
  */
-function generateCss(stylesheet: StyleSheet, mediaQuery: string, classMap: ClassMap) {
+function generateCss(
+  stylesheet: StyleSheet,
+  mediaQuery: string,
+  classMap: ClassMap
+) {
   let css = '';
   stylesheet.forEach((styles, el) => {
     let keyVals = '';
@@ -145,7 +150,7 @@ function generateCss(stylesheet: StyleSheet, mediaQuery: string, classMap: Class
 
 /**
  * For debugging purposes, prefix css segment with linefeed(s) for easy
-  * debugging purposes.
+ * debugging purposes.
  */
 function format(...list: string[]): string {
   let result = '';
@@ -164,7 +169,10 @@ function formatSegment(css: string, asPrefix: boolean = true): string {
  * If not found, generate global className and set
  * association.
  */
-function getClassName(element: HTMLElement, classMap: Map<HTMLElement, string>) {
+function getClassName(
+  element: HTMLElement,
+  classMap: Map<HTMLElement, string>
+) {
   let className = classMap.get(element);
   if (!className) {
     className = `${CLASS_NAME}${nextId++}`;

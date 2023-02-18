@@ -5,6 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+import { isPlatformServer, NgStyle } from '@angular/common';
 import {
   Directive,
   DoCheck,
@@ -17,44 +18,44 @@ import {
   SecurityContext,
   Self,
 } from '@angular/core';
-import {isPlatformServer, NgStyle} from '@angular/common';
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import {
   BaseDirective2,
-  StyleUtils,
   MediaMarshaller,
   SERVER_TOKEN,
-} from '@angular/flex-layout/core';
+  StyleUtils,
+} from '@ngbrackets/ngx-layout/core';
 
 import {
-  NgStyleRawList,
-  NgStyleType,
-  NgStyleSanitizer,
+  buildMapFromSet,
   buildRawList,
   getType,
-  buildMapFromSet,
-  NgStyleMap,
-  NgStyleKeyValue,
-  stringToKeyValue,
   keyValuesToMap,
+  NgStyleKeyValue,
+  NgStyleMap,
+  NgStyleRawList,
+  NgStyleSanitizer,
+  NgStyleType,
+  stringToKeyValue,
 } from './style-transforms';
 
 @Directive()
 export class StyleDirective extends BaseDirective2 implements DoCheck {
-
   protected override DIRECTIVE_KEY = 'ngStyle';
   protected fallbackStyles: NgStyleMap;
   protected isServer: boolean;
 
-  constructor(elementRef: ElementRef,
-              styler: StyleUtils,
-              marshal: MediaMarshaller,
-              protected sanitizer: DomSanitizer,
-              differs: KeyValueDiffers,
-              renderer2: Renderer2,
-              @Optional() @Self() private readonly ngStyleInstance: NgStyle,
-              @Inject(SERVER_TOKEN) serverLoaded: boolean,
-              @Inject(PLATFORM_ID) platformId: Object) {
+  constructor(
+    elementRef: ElementRef,
+    styler: StyleUtils,
+    marshal: MediaMarshaller,
+    protected sanitizer: DomSanitizer,
+    differs: KeyValueDiffers,
+    renderer2: Renderer2,
+    @Optional() @Self() private readonly ngStyleInstance: NgStyle,
+    @Inject(SERVER_TOKEN) serverLoaded: boolean,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
     super(elementRef, null!, styler, marshal);
     if (!this.ngStyleInstance) {
       // Create an instance NgStyle Directive instance only if `ngStyle=""` has NOT been
@@ -70,7 +71,7 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
   /** Add generated styles */
   protected override updateWithValue(value: any) {
     const styles = this.buildStyleMap(value);
-    this.ngStyleInstance.ngStyle = {...this.fallbackStyles, ...styles};
+    this.ngStyleInstance.ngStyle = { ...this.fallbackStyles, ...styles };
     if (this.isServer) {
       this.applyStyleToElement(styles);
     }
@@ -95,11 +96,14 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
       this.sanitizer.sanitize(SecurityContext.STYLE, val) ?? '';
     if (styles) {
       switch (getType(styles)) {
-        case 'string':  return buildMapFromList(buildRawList(styles),
-          sanitizer);
-        case 'array' :  return buildMapFromList(styles as NgStyleRawList, sanitizer);
-        case 'set'   :  return buildMapFromSet(styles, sanitizer);
-        default      :  return buildMapFromSet(styles, sanitizer);
+        case 'string':
+          return buildMapFromList(buildRawList(styles), sanitizer);
+        case 'array':
+          return buildMapFromList(styles as NgStyleRawList, sanitizer);
+        case 'set':
+          return buildMapFromSet(styles, sanitizer);
+        default:
+          return buildMapFromSet(styles, sanitizer);
       }
     }
 
@@ -118,9 +122,19 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
 
 const inputs = [
   'ngStyle',
-  'ngStyle.xs', 'ngStyle.sm', 'ngStyle.md', 'ngStyle.lg', 'ngStyle.xl',
-  'ngStyle.lt-sm', 'ngStyle.lt-md', 'ngStyle.lt-lg', 'ngStyle.lt-xl',
-  'ngStyle.gt-xs', 'ngStyle.gt-sm', 'ngStyle.gt-md', 'ngStyle.gt-lg'
+  'ngStyle.xs',
+  'ngStyle.sm',
+  'ngStyle.md',
+  'ngStyle.lg',
+  'ngStyle.xl',
+  'ngStyle.lt-sm',
+  'ngStyle.lt-md',
+  'ngStyle.lt-lg',
+  'ngStyle.lt-xl',
+  'ngStyle.gt-xs',
+  'ngStyle.gt-sm',
+  'ngStyle.gt-md',
+  'ngStyle.gt-lg',
 ];
 
 const selector = `
@@ -134,13 +148,16 @@ const selector = `
  * Directive to add responsive support for ngStyle.
  *
  */
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultStyleDirective extends StyleDirective implements DoCheck {
   protected override inputs = inputs;
 }
 
 /** Build a styles map from a list of styles, while sanitizing bad values first */
-function buildMapFromList(styles: NgStyleRawList, sanitize?: NgStyleSanitizer): NgStyleMap {
+function buildMapFromList(
+  styles: NgStyleRawList,
+  sanitize?: NgStyleSanitizer
+): NgStyleMap {
   const sanitizeValue = (it: NgStyleKeyValue) => {
     if (sanitize) {
       it.value = sanitize(it.value);
@@ -150,7 +167,7 @@ function buildMapFromList(styles: NgStyleRawList, sanitize?: NgStyleSanitizer): 
 
   return styles
     .map(stringToKeyValue)
-    .filter(entry => !!entry)
+    .filter((entry) => !!entry)
     .map(sanitizeValue)
     .reduce(keyValuesToMap, {} as NgStyleMap);
 }

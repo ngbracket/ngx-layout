@@ -5,34 +5,39 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {isPlatformBrowser, isPlatformServer} from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-import {applyCssPrefixes} from '@angular/flex-layout/_private-utils';
-import {StylesheetMap} from '../stylesheet-map/stylesheet-map';
-import {SERVER_TOKEN} from '../tokens/server-token';
-import {LAYOUT_CONFIG, LayoutConfigOptions} from '../tokens/library-config';
+import { applyCssPrefixes } from '@ngbrackets/ngx-layout/_private-utils';
+import { StylesheetMap } from '../stylesheet-map/stylesheet-map';
+import { LayoutConfigOptions, LAYOUT_CONFIG } from '../tokens/library-config';
+import { SERVER_TOKEN } from '../tokens/server-token';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class StyleUtils {
-
-  constructor(private _serverStylesheet: StylesheetMap,
-              @Inject(SERVER_TOKEN) private _serverModuleLoaded: boolean,
-              @Inject(PLATFORM_ID) private _platformId: Object,
-              @Inject(LAYOUT_CONFIG) private layoutConfig: LayoutConfigOptions) {}
+  constructor(
+    private _serverStylesheet: StylesheetMap,
+    @Inject(SERVER_TOKEN) private _serverModuleLoaded: boolean,
+    @Inject(PLATFORM_ID) private _platformId: Object,
+    @Inject(LAYOUT_CONFIG) private layoutConfig: LayoutConfigOptions
+  ) {}
 
   /**
    * Applies styles given via string pair or object map to the directive element
    */
-  applyStyleToElement(element: HTMLElement,
-                      style: StyleDefinition | string,
-                      value: string | number | null = null) {
+  applyStyleToElement(
+    element: HTMLElement,
+    style: StyleDefinition | string,
+    value: string | number | null = null
+  ) {
     let styles: StyleDefinition = {};
     if (typeof style === 'string') {
       styles[style] = value;
       style = styles;
     }
-    styles = this.layoutConfig.disableVendorPrefixes ? style : applyCssPrefixes(style);
+    styles = this.layoutConfig.disableVendorPrefixes
+      ? style
+      : applyCssPrefixes(style);
     this._applyMultiValueStyleToElement(styles, element);
   }
 
@@ -40,8 +45,10 @@ export class StyleUtils {
    * Applies styles given via string pair or object map to the directive's element
    */
   applyStyleToElements(style: StyleDefinition, elements: HTMLElement[] = []) {
-    const styles = this.layoutConfig.disableVendorPrefixes ? style : applyCssPrefixes(style);
-    elements.forEach(el => {
+    const styles = this.layoutConfig.disableVendorPrefixes
+      ? style
+      : applyCssPrefixes(style);
+    elements.forEach((el) => {
       this._applyMultiValueStyleToElement(styles, el);
     });
   }
@@ -54,8 +61,11 @@ export class StyleUtils {
   getFlowDirection(target: HTMLElement): [string, string] {
     const query = 'flex-direction';
     let value = this.lookupStyle(target, query);
-    const hasInlineValue = this.lookupInlineStyle(target, query) ||
-    (isPlatformServer(this._platformId) && this._serverModuleLoaded) ? value : '';
+    const hasInlineValue =
+      this.lookupInlineStyle(target, query) ||
+      (isPlatformServer(this._platformId) && this._serverModuleLoaded)
+        ? value
+        : '';
 
     return [value || 'row', hasInlineValue];
   }
@@ -76,18 +86,23 @@ export class StyleUtils {
    * Find the DOM element's inline style value (if any)
    */
   lookupInlineStyle(element: HTMLElement, styleName: string): string {
-    return isPlatformBrowser(this._platformId) ?
-      element.style.getPropertyValue(styleName) : getServerStyle(element, styleName);
+    return isPlatformBrowser(this._platformId)
+      ? element.style.getPropertyValue(styleName)
+      : getServerStyle(element, styleName);
   }
 
   /**
    * Determine the inline or inherited CSS style
    * NOTE: platform-server has no implementation for getComputedStyle
    */
-  lookupStyle(element: HTMLElement, styleName: string, inlineOnly = false): string {
+  lookupStyle(
+    element: HTMLElement,
+    styleName: string,
+    inlineOnly = false
+  ): string {
     let value = '';
     if (element) {
-      let immediateValue = value = this.lookupInlineStyle(element, styleName);
+      let immediateValue = (value = this.lookupInlineStyle(element, styleName));
       if (!immediateValue) {
         if (isPlatformBrowser(this._platformId)) {
           if (!inlineOnly) {
@@ -95,7 +110,10 @@ export class StyleUtils {
           }
         } else {
           if (this._serverModuleLoaded) {
-            value = this._serverStylesheet.getStyleForElement(element, styleName);
+            value = this._serverStylesheet.getStyleForElement(
+              element,
+              styleName
+            );
           }
         }
       }
@@ -111,22 +129,32 @@ export class StyleUtils {
    * Each value will be added as element style
    * Keys are sorted to add prefixed styles (like -webkit-x) first, before the standard ones
    */
-  private _applyMultiValueStyleToElement(styles: StyleDefinition,
-                                         element: HTMLElement) {
-    Object.keys(styles).sort().forEach(key => {
-      const el = styles[key];
-      const values: (string | number | null)[] = Array.isArray(el) ? el : [el];
-      values.sort();
-      for (let value of values) {
-        value = value ? value + '' : '';
-        if (isPlatformBrowser(this._platformId) || !this._serverModuleLoaded) {
-          isPlatformBrowser(this._platformId) ?
-            element.style.setProperty(key, value) : setServerStyle(element, key, value);
-        } else {
-          this._serverStylesheet.addStyleToElement(element, key, value);
+  private _applyMultiValueStyleToElement(
+    styles: StyleDefinition,
+    element: HTMLElement
+  ) {
+    Object.keys(styles)
+      .sort()
+      .forEach((key) => {
+        const el = styles[key];
+        const values: (string | number | null)[] = Array.isArray(el)
+          ? el
+          : [el];
+        values.sort();
+        for (let value of values) {
+          value = value ? value + '' : '';
+          if (
+            isPlatformBrowser(this._platformId) ||
+            !this._serverModuleLoaded
+          ) {
+            isPlatformBrowser(this._platformId)
+              ? element.style.setProperty(key, value)
+              : setServerStyle(element, key, value);
+          } else {
+            this._serverStylesheet.addStyleToElement(element, key, value);
+          }
         }
-      }
-    });
+      });
   }
 }
 
@@ -135,14 +163,21 @@ function getServerStyle(element: any, styleName: string): string {
   return styleMap[styleName] ?? '';
 }
 
-function setServerStyle(element: any, styleName: string, styleValue?: string|null) {
+function setServerStyle(
+  element: any,
+  styleName: string,
+  styleValue?: string | null
+) {
   styleName = styleName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
   const styleMap = readStyleAttribute(element);
   styleMap[styleName] = styleValue ?? '';
   writeStyleAttribute(element, styleMap);
 }
 
-function writeStyleAttribute(element: any, styleMap: {[name: string]: string}) {
+function writeStyleAttribute(
+  element: any,
+  styleMap: { [name: string]: string }
+) {
   let styleAttrValue = '';
   for (const key in styleMap) {
     const newValue = styleMap[key];
@@ -153,8 +188,8 @@ function writeStyleAttribute(element: any, styleMap: {[name: string]: string}) {
   element.setAttribute('style', styleAttrValue);
 }
 
-function readStyleAttribute(element: any): {[name: string]: string} {
-  const styleMap: {[name: string]: string} = {};
+function readStyleAttribute(element: any): { [name: string]: string } {
+  const styleMap: { [name: string]: string } = {};
   const styleAttribute = element.getAttribute('style');
   if (styleAttribute) {
     const styleList = styleAttribute.split(/;+/g);

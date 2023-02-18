@@ -5,17 +5,22 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {
+  Directive,
+  ElementRef,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+} from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
-import {StyleDefinition, StyleUtils} from '../style-utils/style-utils';
-import {StyleBuilder} from '../style-builder/style-builder';
-import {MediaMarshaller} from '../media-marshaller/media-marshaller';
-import {buildLayoutCSS} from '@angular/flex-layout/_private-utils';
+import { buildLayoutCSS } from '@ngbrackets/ngx-layout/_private-utils';
+import { MediaMarshaller } from '../media-marshaller/media-marshaller';
+import { StyleBuilder } from '../style-builder/style-builder';
+import { StyleDefinition, StyleUtils } from '../style-utils/style-utils';
 
 @Directive()
 export abstract class BaseDirective2 implements OnChanges, OnDestroy {
-
   protected DIRECTIVE_KEY = '';
   protected inputs: string[] = [];
   /** The most recently used styles for the builder */
@@ -38,22 +43,27 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
     return this.marshal.getValue(this.nativeElement, this.DIRECTIVE_KEY);
   }
   set activatedValue(value: string) {
-    this.marshal.setValue(this.nativeElement, this.DIRECTIVE_KEY, value,
-      this.marshal.activatedAlias);
+    this.marshal.setValue(
+      this.nativeElement,
+      this.DIRECTIVE_KEY,
+      value,
+      this.marshal.activatedAlias
+    );
   }
 
   /** Cache map for style computation */
   protected styleCache: Map<string, StyleDefinition> = new Map();
 
-  protected constructor(protected elementRef: ElementRef,
-                        protected styleBuilder: StyleBuilder,
-                        protected styler: StyleUtils,
-                        protected marshal: MediaMarshaller) {
-  }
+  protected constructor(
+    protected elementRef: ElementRef,
+    protected styleBuilder: StyleBuilder,
+    protected styler: StyleUtils,
+    protected marshal: MediaMarshaller
+  ) {}
 
   /** For @Input changes */
   ngOnChanges(changes: SimpleChanges) {
-    Object.keys(changes).forEach(key => {
+    Object.keys(changes).forEach((key) => {
       if (this.inputs.indexOf(key) !== -1) {
         const bp = key.split('.').slice(1).join('.');
         const val = changes[key].currentValue;
@@ -93,14 +103,14 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
       }
     }
 
-    this.mru = {...genStyles};
+    this.mru = { ...genStyles };
     this.applyStyleToElement(genStyles);
     builder.sideEffect(input, genStyles, parent);
   }
 
   /** Remove generated styles from an element using predefined style builder */
   protected clearStyles() {
-    Object.keys(this.mru).forEach(k => {
+    Object.keys(this.mru).forEach((k) => {
       this.mru[k] = '';
     });
     this.applyStyleToElement(this.mru);
@@ -119,7 +129,10 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
    * Check inline style first then check computed (stylesheet) style.
    * And optionally add the flow value to element's inline style.
    */
-  protected getFlexFlowDirection(target: HTMLElement, addIfMissing = false): string {
+  protected getFlexFlowDirection(
+    target: HTMLElement,
+    addIfMissing = false
+  ): string {
     if (target) {
       const [value, hasInlineValue] = this.styler.getFlowDirection(target);
 
@@ -140,9 +153,11 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
   }
 
   /** Applies styles given via string pair or object map to the directive element */
-  protected applyStyleToElement(style: StyleDefinition,
-                                value?: string | number,
-                                element: HTMLElement = this.nativeElement) {
+  protected applyStyleToElement(
+    style: StyleDefinition,
+    value?: string | number,
+    element: HTMLElement = this.nativeElement
+  ) {
     this.styler.applyStyleToElement(element, style, value);
   }
 

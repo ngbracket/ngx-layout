@@ -5,22 +5,25 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TestBed, ComponentFixture, inject} from '@angular/core/testing';
-import {Platform} from '@angular/cdk/platform';
+import { Platform } from '@angular/cdk/platform';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
+  SERVER_TOKEN,
+  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-  SERVER_TOKEN,
-  StyleUtils,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
-import {customMatchers} from '@angular/flex-layout/_private-utils/testing';
-import {expectNativeEl, makeCreateTestComponent} from '@angular/flex-layout/_private-utils/testing';
+import {
+  customMatchers,
+  expectNativeEl,
+  makeCreateTestComponent,
+} from '@ngbrackets/ngx-layout/_private-utils/testing';
 
-import {GridModule} from '../module';
+import { GridModule } from '../module';
 
 describe('grid area parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -30,18 +33,27 @@ describe('grid area parent directive', () => {
   let shouldRun = true;
   let createTestComponent = (template: string, styles?: any) => {
     shouldRun = true;
-    fixture = makeCreateTestComponent(() => TestGridAreaComponent)(template, styles);
-    inject([StyleUtils, MatchMedia, Platform],
-      (_styler: StyleUtils, _matchMedia: MockMatchMedia, _platform: Platform) => {
-      styler = _styler;
-      mediaController = _matchMedia;
-      platform = _platform;
+    fixture = makeCreateTestComponent(() => TestGridAreaComponent)(
+      template,
+      styles
+    );
+    inject(
+      [StyleUtils, MatchMedia, Platform],
+      (
+        _styler: StyleUtils,
+        _matchMedia: MockMatchMedia,
+        _platform: Platform
+      ) => {
+        styler = _styler;
+        mediaController = _matchMedia;
+        platform = _platform;
 
-      // TODO(CaerusKaru): Grid tests won't work with Edge 14
-      if (_platform.EDGE) {
-        shouldRun = false;
+        // TODO(CaerusKaru): Grid tests won't work with Edge 14
+        if (_platform.EDGE) {
+          shouldRun = false;
+        }
       }
-    })();
+    )();
   };
 
   beforeEach(() => {
@@ -53,7 +65,7 @@ describe('grid area parent directive', () => {
       declarations: [TestGridAreaComponent],
       providers: [
         MockMatchMediaProvider,
-        {provide: SERVER_TOKEN, useValue: true},
+        { provide: SERVER_TOKEN, useValue: true },
       ],
     });
   });
@@ -79,10 +91,13 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-areas': '"header" "header" "sidebar" "footer"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-areas': '"header" "header" "sidebar" "footer"',
+        },
+        styler
+      );
     });
 
     it('should work with inline grid', () => {
@@ -105,10 +120,13 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'inline-grid',
-        'grid-template-areas': '"header" "header" "sidebar" "footer"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'inline-grid',
+          'grid-template-areas': '"header" "header" "sidebar" "footer"',
+        },
+        styler
+      );
     });
 
     it('should work with weird spacing', () => {
@@ -131,10 +149,13 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-areas': '"header" "header" "sidebar" "footer"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-areas': '"header" "header" "sidebar" "footer"',
+        },
+        styler
+      );
     });
 
     it('should add dynamic area styles', () => {
@@ -153,16 +174,22 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'grid-template-areas': '"sidebar" "sidebar"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'grid-template-areas': '"sidebar" "sidebar"',
+        },
+        styler
+      );
 
       fixture.componentInstance.areas = 'header | header | sidebar';
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-areas': '"header" "header" "sidebar"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-areas': '"header" "header" "sidebar"',
+        },
+        styler
+      );
     });
   });
 
@@ -184,36 +211,44 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-areas':
-          '"header header header" "sidebar content content" "footer footer footer"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-areas':
+            '"header header header" "sidebar content content" "footer footer footer"',
+        },
+        styler
+      );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-areas': '"header header" "sidebar content" "footer footer"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-areas':
+            '"header header" "sidebar content" "footer footer"',
+        },
+        styler
+      );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-areas':
-          '"header header header" "sidebar content content" "footer footer footer"'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-areas':
+            '"header header header" "sidebar content content" "footer footer footer"',
+        },
+        styler
+      );
     });
   });
-
 });
-
 
 // *****************************************************************
 // Template Component
 // *****************************************************************
 @Component({
   selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
 class TestGridAreaComponent {
   areas = 'sidebar | sidebar';

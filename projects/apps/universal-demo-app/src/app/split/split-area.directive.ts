@@ -1,12 +1,12 @@
-import {Directive, Optional, Self} from '@angular/core';
-import {DefaultFlexDirective} from '@angular/flex-layout';
+import { Directive, Optional, Self } from '@angular/core';
+import { DefaultFlexDirective } from '@ngbrackets/ngx-layout';
 
 @Directive({
   selector: '[ngxSplitArea]',
   host: {
-    style: 'overflow: auto;'
-  }
+    style: 'overflow: auto;',
+  },
 })
 export class SplitAreaDirective {
-  constructor(@Optional() @Self() public flex: DefaultFlexDirective) { }
+  constructor(@Optional() @Self() public flex: DefaultFlexDirective) {}
 }

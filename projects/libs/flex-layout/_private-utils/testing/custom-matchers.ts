@@ -8,12 +8,15 @@
 declare var global: any;
 const _global = <any>(typeof window === 'undefined' ? global : window);
 
-import {_dom as _} from './dom-tools';
+import { _dom as _ } from './dom-tools';
 
-import {applyCssPrefixes, extendObject, } from '@angular/flex-layout/_private-utils';
-import {StyleUtils} from '@angular/flex-layout/core';
+import { StyleUtils } from '@ngbrackets/ngx-layout/core';
+import {
+  applyCssPrefixes,
+  extendObject,
+} from '@ngbrackets/ngx-layout/_private-utils';
 
-export const expect: (actual: any) => NgMatchers = <any> _global.expect;
+export const expect: (actual: any) => NgMatchers = <any>_global.expect;
 
 /**
  * Jasmine matchers that check Angular specific conditions.
@@ -77,12 +80,11 @@ export interface NgMatchers extends jasmine.Matchers<any> {
  *       in `src/lib/flex/api`
  */
 export const customMatchers: jasmine.CustomMatcherFactories = {
-
   toEqual: function (util) {
     return {
       compare: function (actual: any, expected: any) {
-        return {pass: util.equals(actual, expected)};
-      }
+        return { pass: util.equals(actual, expected) };
+      },
     };
   },
 
@@ -94,14 +96,14 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
           pass: actualText == expectedText,
           get message() {
             return 'Expected ' + actualText + ' to be equal to ' + expectedText;
-          }
+          },
         };
-      }
+      },
     };
   },
 
   toHaveCssClass: function () {
-    return {compare: buildError(false), negativeCompare: buildError(true)};
+    return { compare: buildError(false), negativeCompare: buildError(true) };
 
     function buildError(isNot: boolean) {
       return function (actual: any, className: string) {
@@ -112,7 +114,7 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
               Expected ${actual.outerHTML} ${isNot ? 'not ' : ''}
               to contain the CSS class '${className}'
             `;
-          }
+          },
         };
       };
     }
@@ -120,23 +122,28 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
 
   toHaveMap: function () {
     return {
-      compare: function (actual: { [k: string]: string }, map: { [k: string]: string }) {
+      compare: function (
+        actual: { [k: string]: string },
+        map: { [k: string]: string }
+      ) {
         let allPassed: boolean;
         allPassed = Object.keys(map).length !== 0;
-        Object.keys(map).forEach(key => {
-          allPassed = allPassed && (actual[key] === map[key]);
+        Object.keys(map).forEach((key) => {
+          allPassed = allPassed && actual[key] === map[key];
         });
 
         return {
           pass: allPassed,
           get message() {
             return `
-              Expected ${JSON.stringify(actual)} ${!allPassed ? ' ' : 'not '} to contain the
+              Expected ${JSON.stringify(actual)} ${
+              !allPassed ? ' ' : 'not '
+            } to contain the
               '${JSON.stringify(map)}'
             `;
-          }
+          },
         };
-      }
+      },
     };
   },
 
@@ -146,20 +153,24 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
         let allPassed: boolean;
         let attributeNames = Object.keys(map);
         allPassed = attributeNames.length !== 0;
-        attributeNames.forEach(name => {
-          allPassed = allPassed && _.hasAttribute(actual, name)
-              && _.getAttribute(actual, name) === map[name];
+        attributeNames.forEach((name) => {
+          allPassed =
+            allPassed &&
+            _.hasAttribute(actual, name) &&
+            _.getAttribute(actual, name) === map[name];
         });
         return {
           pass: allPassed,
           get message() {
             return `
-              Expected ${actual.outerHTML} ${allPassed ? 'not ' : ''} attributes to contain
+              Expected ${actual.outerHTML} ${
+              allPassed ? 'not ' : ''
+            } attributes to contain
               '${JSON.stringify(map)}'
             `;
-          }
+          },
         };
-      }
+      },
     };
   },
 
@@ -168,20 +179,18 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
    */
   toHaveStyle: function () {
     return {
-      compare: buildCompareStyleFunction(true)
+      compare: buildCompareStyleFunction(true),
     };
   },
-
 
   /**
    * Check element's css stylesheet only (if not present inline)
    */
   toHaveCSS: function () {
     return {
-      compare: buildCompareStyleFunction(false)
+      compare: buildCompareStyleFunction(false),
     };
-  }
-
+  },
 };
 
 /**
@@ -189,9 +198,13 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
  * specified DOM element.
  */
 function buildCompareStyleFunction(inlineOnly = true) {
-  return function (actual: any, styles: { [k: string]: string } | string, styler: StyleUtils) {
+  return function (
+    actual: any,
+    styles: { [k: string]: string } | string,
+    styler: StyleUtils
+  ) {
     const found = {};
-    const styleMap: {[k: string]: string} = {};
+    const styleMap: { [k: string]: string } = {};
 
     if (typeof styles === 'string') {
       styleMap[styles] = '';
@@ -200,9 +213,14 @@ function buildCompareStyleFunction(inlineOnly = true) {
     }
 
     let allPassed = Object.keys(styleMap).length !== 0;
-    Object.keys(styleMap).forEach(prop => {
-      let {elHasStyle, current} = hasPrefixedStyles(actual, prop, styleMap[prop], inlineOnly,
-        styler);
+    Object.keys(styleMap).forEach((prop) => {
+      let { elHasStyle, current } = hasPrefixedStyles(
+        actual,
+        prop,
+        styleMap[prop],
+        inlineOnly,
+        styler
+      );
       allPassed = allPassed && elHasStyle;
       if (!elHasStyle) {
         extendObject(found, current);
@@ -212,14 +230,20 @@ function buildCompareStyleFunction(inlineOnly = true) {
     return {
       pass: allPassed,
       get message() {
-        const expectedValueStr = (typeof styles === 'string') ? styleMap :
-            JSON.stringify(styleMap, null, 2);
-        const foundValueStr = inlineOnly ? actual.outerHTML : JSON.stringify(found);
+        const expectedValueStr =
+          typeof styles === 'string'
+            ? styleMap
+            : JSON.stringify(styleMap, null, 2);
+        const foundValueStr = inlineOnly
+          ? actual.outerHTML
+          : JSON.stringify(found);
         return `
           Expected ${foundValueStr}${!allPassed ? '' : ' not'} to contain the
-          CSS ${typeof styles === 'string' ? 'property' : 'styles'} '${expectedValueStr}'
+          CSS ${
+            typeof styles === 'string' ? 'property' : 'styles'
+          } '${expectedValueStr}'
         `;
-      }
+      },
     };
   };
 }
@@ -229,29 +253,35 @@ function buildCompareStyleFunction(inlineOnly = true) {
  * to possible `prefixed` styles. Useful when some browsers
  * (Safari, IE, etc) will use prefixed style instead of defaults.
  */
-function hasPrefixedStyles(actual: HTMLElement,
-                           key: string,
-                           value: string,
-                           inlineOnly: boolean,
-                           styler: StyleUtils) {
+function hasPrefixedStyles(
+  actual: HTMLElement,
+  key: string,
+  value: string,
+  inlineOnly: boolean,
+  styler: StyleUtils
+) {
   const current = {};
 
   if (value === '*') {
-    return {elHasStyle: styler.lookupStyle(actual, key, inlineOnly) !== '', current};
+    return {
+      elHasStyle: styler.lookupStyle(actual, key, inlineOnly) !== '',
+      current,
+    };
   }
 
   value = value.trim();
   let elHasStyle = styler.lookupStyle(actual, key, inlineOnly) === value;
   if (!elHasStyle) {
-    let prefixedStyles = applyCssPrefixes({[key]: value});
-    Object.keys(prefixedStyles).forEach(prop => {
+    let prefixedStyles = applyCssPrefixes({ [key]: value });
+    Object.keys(prefixedStyles).forEach((prop) => {
       // Search for optional prefixed values
-      elHasStyle = elHasStyle ||
+      elHasStyle =
+        elHasStyle ||
         styler.lookupStyle(actual, prop, inlineOnly) === prefixedStyles[prop];
     });
   }
   // Return BOTH confirmation and current computed key values (if confirmation == false)
-  return {elHasStyle, current};
+  return { elHasStyle, current };
 }
 
 function elementText(n: any): string {
@@ -282,4 +312,3 @@ function elementText(n: any): string {
 
   return _.getText(n);
 }
-

@@ -5,15 +5,15 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, Injectable, Input} from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Directive, ElementRef, Injectable, Input } from '@angular/core';
 import {
   BaseDirective2,
-  StyleUtils,
+  MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
-  MediaMarshaller,
-} from '@angular/flex-layout/core';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
+  StyleUtils,
+} from '@ngbrackets/ngx-layout/core';
 
 const DEFAULT_MAIN = 'start';
 const DEFAULT_CROSS = 'stretch';
@@ -22,7 +22,7 @@ export interface GridAlignRowsParent {
   inline: boolean;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class GridAlignRowsStyleBuilder extends StyleBuilder {
   buildStyles(input: string, parent: GridAlignRowsParent) {
     return buildCss(input || `${DEFAULT_MAIN} ${DEFAULT_CROSS}`, parent.inline);
@@ -31,18 +31,23 @@ export class GridAlignRowsStyleBuilder extends StyleBuilder {
 
 @Directive()
 export class GridAlignRowsDirective extends BaseDirective2 {
-
   protected override DIRECTIVE_KEY = 'grid-align-rows';
 
   @Input('gdInline')
-  get inline(): boolean { return this._inline; }
-  set inline(val: boolean) { this._inline = coerceBooleanProperty(val); }
+  get inline(): boolean {
+    return this._inline;
+  }
+  set inline(val: boolean) {
+    this._inline = coerceBooleanProperty(val);
+  }
   protected _inline = false;
 
-  constructor(elementRef: ElementRef,
-              styleBuilder: GridAlignRowsStyleBuilder,
-              styler: StyleUtils,
-              marshal: MediaMarshaller) {
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: GridAlignRowsStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller
+  ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();
   }
@@ -53,7 +58,7 @@ export class GridAlignRowsDirective extends BaseDirective2 {
 
   protected override updateWithValue(value: string) {
     this.styleCache = this.inline ? alignRowsInlineCache : alignRowsCache;
-    this.addStyles(value, {inline: this.inline});
+    this.addStyles(value, { inline: this.inline });
   }
 }
 
@@ -62,11 +67,19 @@ const alignRowsInlineCache: Map<string, StyleDefinition> = new Map();
 
 const inputs = [
   'gdAlignRows',
-  'gdAlignRows.xs', 'gdAlignRows.sm', 'gdAlignRows.md',
-  'gdAlignRows.lg', 'gdAlignRows.xl', 'gdAlignRows.lt-sm',
-  'gdAlignRows.lt-md', 'gdAlignRows.lt-lg', 'gdAlignRows.lt-xl',
-  'gdAlignRows.gt-xs', 'gdAlignRows.gt-sm', 'gdAlignRows.gt-md',
-  'gdAlignRows.gt-lg'
+  'gdAlignRows.xs',
+  'gdAlignRows.sm',
+  'gdAlignRows.md',
+  'gdAlignRows.lg',
+  'gdAlignRows.xl',
+  'gdAlignRows.lt-sm',
+  'gdAlignRows.lt-md',
+  'gdAlignRows.lt-lg',
+  'gdAlignRows.lt-xl',
+  'gdAlignRows.gt-xs',
+  'gdAlignRows.gt-sm',
+  'gdAlignRows.gt-md',
+  'gdAlignRows.gt-lg',
 ];
 const selector = `
   [gdAlignRows],
@@ -83,13 +96,14 @@ const selector = `
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-18
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-20
  */
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultGridAlignRowsDirective extends GridAlignRowsDirective {
   protected override inputs = inputs;
 }
 
 function buildCss(align: string, inline: boolean): StyleDefinition {
-  const css: {[key: string]: string} = {}, [mainAxis, crossAxis] = align.split(' ');
+  const css: { [key: string]: string } = {},
+    [mainAxis, crossAxis] = align.split(' ');
 
   // Main axis
   switch (mainAxis) {
@@ -102,8 +116,8 @@ function buildCss(align: string, inline: boolean): StyleDefinition {
     case 'stretch':
       css['justify-content'] = mainAxis;
       break;
-    default:
-      css['justify-content'] = DEFAULT_MAIN;  // default main axis
+    default: // default main axis
+      css['justify-content'] = DEFAULT_MAIN;
       break;
   }
 
@@ -115,8 +129,9 @@ function buildCss(align: string, inline: boolean): StyleDefinition {
     case 'stretch':
       css['justify-items'] = crossAxis;
       break;
-    default : // 'stretch'
-      css['justify-items'] = DEFAULT_CROSS;   // default cross axis
+    default: // 'stretch'
+    // default cross axis
+      css['justify-items'] = DEFAULT_CROSS;
       break;
   }
 

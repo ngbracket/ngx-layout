@@ -6,21 +6,26 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {TestBed, inject, async} from '@angular/core/testing';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {BreakPoint, BREAKPOINTS, DEFAULT_BREAKPOINTS, ORIENTATION_BREAKPOINTS} from '@angular/flex-layout/core';
+import { async, inject, TestBed } from '@angular/core/testing';
+import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import {
+  BreakPoint,
+  BREAKPOINTS,
+  DEFAULT_BREAKPOINTS,
+  ORIENTATION_BREAKPOINTS,
+} from '@ngbrackets/ngx-layout/core';
 
 describe('break-point-provider', () => {
   let breakPoints: BreakPoint[];
-  const findByAlias = (alias: string): BreakPoint|null => {
-      let result = null;
-       breakPoints.forEach(bp => {
-          if (bp.alias === alias) {
-            result = {...bp};
-          }
-      });
-      return result;
-    };
+  const findByAlias = (alias: string): BreakPoint | null => {
+    let result = null;
+    breakPoints.forEach((bp) => {
+      if (bp.alias === alias) {
+        result = { ...bp };
+      }
+    });
+    return result;
+  };
 
   describe('with default breakpoints only', () => {
     beforeEach(inject([BREAKPOINTS], (bps: BreakPoint[]) => {
@@ -39,14 +44,14 @@ describe('break-point-provider', () => {
   describe('with merged custom breakpoints', () => {
     let bpList: BreakPoint[];
     const EXTRAS: BreakPoint[] = [
-      {alias: 'lt-ab', mediaQuery: '(max-width: 297px)'},
-      {alias: 'cd', mediaQuery: '(min-width: 298px) and (max-width:414px)'}
+      { alias: 'lt-ab', mediaQuery: '(max-width: 297px)' },
+      { alias: 'cd', mediaQuery: '(min-width: 298px) and (max-width:414px)' },
     ];
 
     beforeEach(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
-        imports: [FlexLayoutModule.withConfig({serverLoaded: true}, EXTRAS)]
+        imports: [FlexLayoutModule.withConfig({ serverLoaded: true }, EXTRAS)],
       });
     });
     beforeEach(inject([BREAKPOINTS], (bps: BreakPoint[]) => {
@@ -65,29 +70,38 @@ describe('break-point-provider', () => {
   });
 
   describe('with custom breakpoint overrides', () => {
-    const gtXsMediaQuery = 'screen and (max-width:20px) and (orientations: landscape)';
+    const gtXsMediaQuery =
+      'screen and (max-width:20px) and (orientations: landscape)';
     const xxxlQuery = 'screen and (min-width:10000px)';
     const EXTRAS: BreakPoint[] = [
-      {alias: 'xxl',  priority: 2000, mediaQuery: xxxlQuery},
-      {alias: 'gt-xsl', priority: 2000, mediaQuery: gtXsMediaQuery},
-      {alias: 'lt-ab', priority: 2000, mediaQuery: '(max-width: 297px)'},
-      {alias: 'cd', priority: 2000, mediaQuery: '(min-width: 298px) and (max-width:414px)'}
+      { alias: 'xxl', priority: 2000, mediaQuery: xxxlQuery },
+      { alias: 'gt-xsl', priority: 2000, mediaQuery: gtXsMediaQuery },
+      { alias: 'lt-ab', priority: 2000, mediaQuery: '(max-width: 297px)' },
+      {
+        alias: 'cd',
+        priority: 2000,
+        mediaQuery: '(min-width: 298px) and (max-width:414px)',
+      },
     ];
     let bpList: BreakPoint[];
     let accumulator: BreakPoint | null = null;
-    let byAlias = (alias: string): BreakPoint | null => bpList.reduce((pos, it) => {
-      return pos || ((it.alias === alias) ? it : null);
-    }, accumulator);
+    let byAlias = (alias: string): BreakPoint | null =>
+      bpList.reduce((pos, it) => {
+        return pos || (it.alias === alias ? it : null);
+      }, accumulator);
 
-    beforeEach(async (() => {
+    beforeEach(async(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
-          FlexLayoutModule.withConfig({
-            addOrientationBps: true,
-            serverLoaded: true,
-          }, EXTRAS)
-        ]
+          FlexLayoutModule.withConfig(
+            {
+              addOrientationBps: true,
+              serverLoaded: true,
+            },
+            EXTRAS
+          ),
+        ],
       });
     }));
     // tslint:disable-next-line:no-shadowed-variable
@@ -96,7 +110,10 @@ describe('break-point-provider', () => {
     }));
 
     it('has merged the custom breakpoints as overrides to existing defaults', () => {
-      const total = ORIENTATION_BREAKPOINTS.length + DEFAULT_BREAKPOINTS.length + EXTRAS.length;
+      const total =
+        ORIENTATION_BREAKPOINTS.length +
+        DEFAULT_BREAKPOINTS.length +
+        EXTRAS.length;
 
       expect(bpList.length).toEqual(total);
 
@@ -108,7 +125,10 @@ describe('break-point-provider', () => {
     });
 
     it('can extend existing default breakpoints with custom settings', () => {
-      const total = ORIENTATION_BREAKPOINTS.length + DEFAULT_BREAKPOINTS.length + EXTRAS.length;
+      const total =
+        ORIENTATION_BREAKPOINTS.length +
+        DEFAULT_BREAKPOINTS.length +
+        EXTRAS.length;
 
       expect(bpList.length).toEqual(total);
       expect(bpList[bpList.length - 2].alias).toEqual('lt-ab');
@@ -121,19 +141,22 @@ describe('break-point-provider', () => {
   describe('with exclusive custom breakpoints', () => {
     let bpList: BreakPoint[];
     const EXTRAS: BreakPoint[] = [
-      {alias: 'lt-ab', mediaQuery: '(max-width: 297px)'},
-      {alias: 'cd', mediaQuery: '(min-width: 298px) and (max-width: 414px)'}
+      { alias: 'lt-ab', mediaQuery: '(max-width: 297px)' },
+      { alias: 'cd', mediaQuery: '(min-width: 298px) and (max-width: 414px)' },
     ];
 
     beforeEach(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
-          FlexLayoutModule.withConfig({
-            disableDefaultBps: true,
-            serverLoaded: true,
-          }, EXTRAS)
-        ]
+          FlexLayoutModule.withConfig(
+            {
+              disableDefaultBps: true,
+              serverLoaded: true,
+            },
+            EXTRAS
+          ),
+        ],
       });
     });
     beforeEach(inject([BREAKPOINTS], (bps: BreakPoint[]) => {
@@ -150,5 +173,4 @@ describe('break-point-provider', () => {
       expect(bpList[bpList.length - 2].suffix).toEqual('LtAb');
     });
   });
-
 });

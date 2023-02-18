@@ -5,22 +5,25 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TestBed, ComponentFixture, inject} from '@angular/core/testing';
-import {Platform} from '@angular/cdk/platform';
+import { Platform } from '@angular/cdk/platform';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
+  SERVER_TOKEN,
+  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-  SERVER_TOKEN,
-  StyleUtils,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
-import {customMatchers} from '@angular/flex-layout/_private-utils/testing';
-import {expectNativeEl, makeCreateTestComponent} from '@angular/flex-layout/_private-utils/testing';
+import {
+  customMatchers,
+  expectNativeEl,
+  makeCreateTestComponent,
+} from '@ngbrackets/ngx-layout/_private-utils/testing';
 
-import {GridModule} from '../module';
+import { GridModule } from '../module';
 
 describe('grid columns parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -30,18 +33,27 @@ describe('grid columns parent directive', () => {
   let shouldRun = true;
   let createTestComponent = (template: string, styles?: any) => {
     shouldRun = true;
-    fixture = makeCreateTestComponent(() => TestGridColumnsComponent)(template, styles);
-    inject([StyleUtils, MatchMedia, Platform],
-      (_styler: StyleUtils, _matchMedia: MockMatchMedia, _platform: Platform) => {
-      styler = _styler;
-      mediaController = _matchMedia;
-      platform = _platform;
+    fixture = makeCreateTestComponent(() => TestGridColumnsComponent)(
+      template,
+      styles
+    );
+    inject(
+      [StyleUtils, MatchMedia, Platform],
+      (
+        _styler: StyleUtils,
+        _matchMedia: MockMatchMedia,
+        _platform: Platform
+      ) => {
+        styler = _styler;
+        mediaController = _matchMedia;
+        platform = _platform;
 
-      // TODO(CaerusKaru): Grid tests won't work with Edge 14
-      if (_platform.EDGE) {
-        shouldRun = false;
+        // TODO(CaerusKaru): Grid tests won't work with Edge 14
+        if (_platform.EDGE) {
+          shouldRun = false;
+        }
       }
-    })();
+    )();
   };
 
   beforeEach(() => {
@@ -53,7 +65,7 @@ describe('grid columns parent directive', () => {
       declarations: [TestGridColumnsComponent],
       providers: [
         MockMatchMediaProvider,
-        {provide: SERVER_TOKEN, useValue: true},
+        { provide: SERVER_TOKEN, useValue: true },
       ],
     });
   });
@@ -73,10 +85,13 @@ describe('grid columns parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-columns': '100px 1fr'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-columns': '100px 1fr',
+        },
+        styler
+      );
     });
 
     it('should add auto column styles for parent', () => {
@@ -96,10 +111,13 @@ describe('grid columns parent directive', () => {
       // TODO(CaerusKaru): Firefox has an issue with auto tracks,
       // caused by rachelandrew/gridbugs#1
       if (!platform.FIREFOX) {
-        expectNativeEl(fixture).toHaveStyle({
-          'display': 'grid',
-          'grid-auto-columns': '100px 1fr auto'
-        }, styler);
+        expectNativeEl(fixture).toHaveStyle(
+          {
+            display: 'grid',
+            'grid-auto-columns': '100px 1fr auto',
+          },
+          styler
+        );
       }
     });
 
@@ -117,10 +135,13 @@ describe('grid columns parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'inline-grid',
-        'grid-template-columns': '100px 1fr'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'inline-grid',
+          'grid-template-columns': '100px 1fr',
+        },
+        styler
+      );
     });
 
     it('should add dynamic columns styles', () => {
@@ -133,17 +154,23 @@ describe('grid columns parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-columns': '50px 1fr'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-columns': '50px 1fr',
+        },
+        styler
+      );
 
       fixture.componentInstance.cols = '100px 1fr';
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-columns': '100px 1fr'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-columns': '100px 1fr',
+        },
+        styler
+      );
     });
   });
 
@@ -159,34 +186,41 @@ describe('grid columns parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-columns': '100px 1fr'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-columns': '100px 1fr',
+        },
+        styler
+      );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-columns': '50px 1fr'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-columns': '50px 1fr',
+        },
+        styler
+      );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle({
-        'display': 'grid',
-        'grid-template-columns': '100px 1fr'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-template-columns': '100px 1fr',
+        },
+        styler
+      );
     });
   });
-
 });
-
 
 // *****************************************************************
 // Template Component
 // *****************************************************************
 @Component({
   selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
 class TestGridColumnsComponent {
   cols = '50px 1fr';

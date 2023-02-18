@@ -3,11 +3,11 @@ APIs, it must be segmented into the server bundle. This also helps avoid includi
 browser bundle.
 
 The main export for this entrypoint, the `FlexLayoutServerModule`, can be imported into a server module
-file, e.g. `app.server.module.ts` as follows: 
+file, e.g. `app.server.module.ts` as follows:
 
 ```typescript
 import {NgModule} from '@angular/core';
-import {FlexLayoutServerModule} from '@angular/flex-layout/server';
+import {FlexLayoutServerModule} from '@ngbrackets/ngx-layout/server';
 
 @NgModule(({
   imports: [

@@ -3,13 +3,13 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@angular/flex-layout": [
-        "dist/releases/flex-layout/angular-flex-layout",
-        "dist/releases/flex-layout"
+      "@ngbrackets/ngx-layout": [
+        "dist/releases/ngx-layout/ngx-layout",
+        "dist/releases/ngx-layout"
       ],
-      "@angular/flex-layout/*": [
-        "dist/releases/flex-layout/angular-flex-layout-*",
-        "dist/releases/flex-layout/*"
+      "@ngbrackets/ngx-layout/*": [
+        "dist/releases/ngx-layout/ngx-layout-*",
+        "dist/releases/ngx-layout/*"
       ]
     },
     "baseUrl": "./",
