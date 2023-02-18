@@ -1,5 +1,5 @@
 {
-  "name": "@ng-brackets/ngx-layout",
+  "name": "@ngbrackets/ngx-layout",
   "version": "0.0.0-PLACEHOLDER",
   "exports": {
     "./mq": {

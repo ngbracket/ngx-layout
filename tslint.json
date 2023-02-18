@@ -1,22 +1,14 @@
 {
-  "rulesDirectory": [
-    "./tools/tslint-rules/"
-  ],
+  "rulesDirectory": ["./tools/tslint-rules/"],
   "rules": {
-    "max-line-length": [true, 100],
+    "max-line-length": [true, 140],
     // Disable this flag because of SHA tslint#48b0c597f9257712c7d1f04b55ed0aa60e333f6a
     // TSLint now shows warnings if types for properties are inferred. This rule needs to be
     // disabled because all properties need to have explicit types set to work for Dgeni.
     "no-inferrable-types": false,
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
-    "indent": [
-      true,
-      "spaces"
-    ],
+    "comment-format": [true, "check-space"],
+    "indent": [true, "spaces"],
     "eofline": true,
     "no-duplicate-variable": true,
     "no-eval": true,
@@ -30,17 +22,13 @@
     "member-access": [true, "no-public"],
     "no-debugger": true,
     "one-line": [
-      true,
+      false,
       "check-catch",
       "check-else",
       "check-open-brace",
       "check-whitespace"
     ],
-    "quotemark": [
-      true,
-      "single",
-      "avoid-escape"
-    ],
+    "quotemark": [true, "single", "avoid-escape"],
     "semicolon": true,
     "typedef-whitespace": [
       true,
@@ -75,7 +63,7 @@
       ["fdescribe"],
       ["xit"],
       ["xdescribe"],
-      {"name": "Object.assign", "message": "Use the spread operator instead."}
+      { "name": "Object.assign", "message": "Use the spread operator instead." }
     ],
     // Avoids inconsistent linebreak styles in source files. Forces developers to use LF linebreaks.
     "linebreak-style": [true, "LF"],
@@ -85,22 +73,20 @@
     // Custom Rules
     "ts-loader": true,
     "no-exposed-todo": true,
-    "validate-decorators": [true, {
-      "Component": {
-        "encapsulation": "\\.None$",
-        "moduleId": "^module\\.id$",
-        "preserveWhitespaces": "false$",
-        "changeDetection": "\\.OnPush$",
-        "!styles": ".*"
-      }
-    }, "src/lib/**/!(*.spec).ts"],
-    "require-license-banner": [
+    "validate-decorators": [
       true,
+      {
+        "Component": {
+          "encapsulation": "\\.None$",
+          "moduleId": "^module\\.id$",
+          "preserveWhitespaces": "false$",
+          "changeDetection": "\\.OnPush$",
+          "!styles": ".*"
+        }
+      },
       "src/lib/**/!(*.spec).ts"
     ],
-    "no-rxjs-patch-imports": [
-      true,
-      "src/lib/**/*.ts"
-    ]
+    "require-license-banner": [true, "src/lib/**/!(*.spec).ts"],
+    "no-rxjs-patch-imports": [true, "src/lib/**/*.ts"]
   }
 }
