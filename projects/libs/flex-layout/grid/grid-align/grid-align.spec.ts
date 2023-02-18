@@ -5,22 +5,25 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ComponentFixture, TestBed, inject} from '@angular/core/testing';
-import {Platform} from '@angular/cdk/platform';
+import { Platform } from '@angular/cdk/platform';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
+  SERVER_TOKEN,
+  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-  SERVER_TOKEN,
-  StyleUtils,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
-import {FlexLayoutModule} from '../../module';
-import {extendObject} from '@angular/flex-layout/_private-utils';
-import {customMatchers} from '@angular/flex-layout/_private-utils/testing';
-import {makeCreateTestComponent, expectNativeEl} from '@angular/flex-layout/_private-utils/testing';
+import { extendObject } from '@ngbrackets/ngx-layout/_private-utils';
+import {
+  customMatchers,
+  expectNativeEl,
+  makeCreateTestComponent,
+} from '@ngbrackets/ngx-layout/_private-utils/testing';
+import { FlexLayoutModule } from '../../module';
 
 describe('align directive', () => {
   let fixture: ComponentFixture<any>;
@@ -31,16 +34,22 @@ describe('align directive', () => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestAlignComponent)(template);
 
-    inject([MatchMedia, StyleUtils, Platform],
-      (_matchMedia: MockMatchMedia, _styler: StyleUtils, _platform: Platform) => {
-      mediaController = _matchMedia;
-      styler = _styler;
+    inject(
+      [MatchMedia, StyleUtils, Platform],
+      (
+        _matchMedia: MockMatchMedia,
+        _styler: StyleUtils,
+        _platform: Platform
+      ) => {
+        mediaController = _matchMedia;
+        styler = _styler;
 
-      // TODO(CaerusKaru): Grid tests won't work with Edge 14
-      if (_platform.EDGE) {
-        shouldRun = false;
+        // TODO(CaerusKaru): Grid tests won't work with Edge 14
+        if (_platform.EDGE) {
+          shouldRun = false;
+        }
       }
-    })();
+    )();
   };
 
   beforeEach(() => {
@@ -52,13 +61,12 @@ describe('align directive', () => {
       declarations: [TestAlignComponent],
       providers: [
         MockMatchMediaProvider,
-        {provide: SERVER_TOKEN, useValue: true}
-      ]
+        { provide: SERVER_TOKEN, useValue: true },
+      ],
     });
   });
 
   describe('with static features', () => {
-
     it('should add correct styles for default `fxLayoutAlign` usage', () => {
       createTestComponent(`<div gdGridAlign></div>`);
 
@@ -66,7 +74,10 @@ describe('align directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({'justify-self': 'stretch'}, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        { 'justify-self': 'stretch' },
+        styler
+      );
     });
 
     describe('for "main-axis" testing', () => {
@@ -78,7 +89,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-          extendObject({'justify-self': 'start'}, COLUMN_DEFAULT), styler
+          extendObject({ 'justify-self': 'start' }, COLUMN_DEFAULT),
+          styler
         );
       });
       it('should add correct styles for `gdGridAlign="center"` usage', () => {
@@ -89,7 +101,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-            extendObject({'justify-self': 'center'}, COLUMN_DEFAULT), styler
+          extendObject({ 'justify-self': 'center' }, COLUMN_DEFAULT),
+          styler
         );
       });
       it('should add correct styles for `gdGridAlign="end"` usage', () => {
@@ -100,7 +113,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-            extendObject({'justify-self': 'end'}, COLUMN_DEFAULT), styler
+          extendObject({ 'justify-self': 'end' }, COLUMN_DEFAULT),
+          styler
         );
       });
       it('should add correct styles for `gdGridAlign="stretch"` usage', () => {
@@ -111,7 +125,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-          extendObject({'justify-self': 'stretch'}, COLUMN_DEFAULT), styler
+          extendObject({ 'justify-self': 'stretch' }, COLUMN_DEFAULT),
+          styler
         );
       });
       it('should add ignore invalid row-axis values', () => {
@@ -122,7 +137,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-            extendObject({'justify-self': 'stretch'}, COLUMN_DEFAULT), styler
+          extendObject({ 'justify-self': 'stretch' }, COLUMN_DEFAULT),
+          styler
         );
       });
     });
@@ -136,7 +152,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-          extendObject(ROW_DEFAULT, {'align-self': 'start'}), styler
+          extendObject(ROW_DEFAULT, { 'align-self': 'start' }),
+          styler
         );
       });
       it('should add correct styles for `gdGridAlign="start center"` usage', () => {
@@ -147,7 +164,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-          extendObject(ROW_DEFAULT, {'align-self': 'center'}), styler
+          extendObject(ROW_DEFAULT, { 'align-self': 'center' }),
+          styler
         );
       });
       it('should add correct styles for `gdGridAlign="start end"` usage', () => {
@@ -158,7 +176,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-          extendObject(ROW_DEFAULT, {'align-self': 'end'}), styler
+          extendObject(ROW_DEFAULT, { 'align-self': 'end' }),
+          styler
         );
       });
       it('should add ignore invalid column-axis values', () => {
@@ -169,7 +188,8 @@ describe('align directive', () => {
         }
 
         expectNativeEl(fixture).toHaveStyle(
-          extendObject(ROW_DEFAULT, {'align-self': 'stretch'}), styler
+          extendObject(ROW_DEFAULT, { 'align-self': 'stretch' }),
+          styler
         );
       });
     });
@@ -183,10 +203,13 @@ describe('align directive', () => {
         }
 
         fixture.componentInstance.alignBy = 'center end';
-        expectNativeEl(fixture).toHaveStyle({
-          'justify-self': 'center',
-          'align-self': 'end'
-        }, styler);
+        expectNativeEl(fixture).toHaveStyle(
+          {
+            'justify-self': 'center',
+            'align-self': 'end',
+          },
+          styler
+        );
 
         fixture.componentInstance.alignBy = 'invalid invalid';
         expectNativeEl(fixture).toHaveStyle(DEFAULT_ALIGNS, styler);
@@ -195,11 +218,9 @@ describe('align directive', () => {
         expectNativeEl(fixture).toHaveStyle(DEFAULT_ALIGNS, styler);
       });
     });
-
   });
 
   describe('with responsive features', () => {
-
     it('should ignore responsive changes when not configured', () => {
       createTestComponent(`<div gdGridAlign='center center'></div>`);
 
@@ -209,10 +230,13 @@ describe('align directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'center',
-        'align-self': 'center'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'center',
+          'align-self': 'center',
+        },
+        styler
+      );
     });
 
     it('should add responsive styles when configured', () => {
@@ -224,20 +248,27 @@ describe('align directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'center',
-        'align-self': 'center'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'center',
+          'align-self': 'center',
+        },
+        styler
+      );
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'end',
-        'align-self': 'stretch'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'end',
+          'align-self': 'stretch',
+        },
+        styler
+      );
     });
 
-    it('should fallback to default styles when the active mediaQuery change is not configured', () => { // tslint:disable-line:max-line-length
+    it('should fallback to default styles when the active mediaQuery change is not configured', () => {
+      // tslint:disable-line:max-line-length
       createTestComponent(`
          <div gdGridAlign='center stretch'
               gdGridAlign.md='end stretch'>
@@ -248,27 +279,37 @@ describe('align directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'center',
-        'align-self': 'stretch'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'center',
+          'align-self': 'stretch',
+        },
+        styler
+      );
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'end',
-        'align-self': 'stretch'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'end',
+          'align-self': 'stretch',
+        },
+        styler
+      );
 
       mediaController.activate('xs');
 
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'center',
-        'align-self': 'stretch'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'center',
+          'align-self': 'stretch',
+        },
+        styler
+      );
     });
 
-    it('should fallback to closest overlapping value when the active mediaQuery change is not configured', () => { // tslint:disable-line:max-line-length
+    it('should fallback to closest overlapping value when the active mediaQuery change is not configured', () => {
+      // tslint:disable-line:max-line-length
       createTestComponent(`
           <div  gdGridAlign='start'
                 gdGridAlign.gt-xs='end'
@@ -282,42 +323,57 @@ describe('align directive', () => {
 
       mediaController.useOverlaps = true;
 
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'start'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'start',
+        },
+        styler
+      );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'start'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'start',
+        },
+        styler
+      );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'center'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'center',
+        },
+        styler
+      );
 
       // Should fallback to value for 'gt-xs' or default
       mediaController.activate('lg', true);
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'end'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'end',
+        },
+        styler
+      );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'start'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'start',
+        },
+        styler
+      );
 
       // Should fallback to value for 'gt-xs' or default
       mediaController.activate('xl', true);
-      expectNativeEl(fixture).toHaveStyle({
-        'justify-self': 'end'
-      }, styler);
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          'justify-self': 'end',
+        },
+        styler
+      );
     });
-
   });
-
 });
-
 
 // *****************************************************************
 // Template Component
@@ -325,7 +381,7 @@ describe('align directive', () => {
 
 @Component({
   selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';
@@ -341,13 +397,10 @@ class TestAlignComponent implements OnInit {
     return `${this.mainAxis} ${this.crossAxis}`;
   }
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
-
 
 // *****************************************************************
 // Template Component
@@ -355,12 +408,11 @@ class TestAlignComponent implements OnInit {
 
 const DEFAULT_ALIGNS = {
   'justify-self': 'stretch',
-  'align-self': 'stretch'
+  'align-self': 'stretch',
 };
 const ROW_DEFAULT = {
-  'justify-self': 'stretch'
+  'justify-self': 'stretch',
 };
 const COLUMN_DEFAULT = {
-  'align-self': 'stretch'
+  'align-self': 'stretch',
 };
-

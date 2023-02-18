@@ -5,15 +5,15 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, Input, Injectable} from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Directive, ElementRef, Injectable, Input } from '@angular/core';
 import {
-  MediaMarshaller,
   BaseDirective2,
+  MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-} from '@angular/flex-layout/core';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
+} from '@ngbrackets/ngx-layout/core';
 
 const DEFAULT_VALUE = 'none';
 const AUTO_SPECIFIER = '!';
@@ -22,7 +22,7 @@ export interface GridColumnsParent {
   inline: boolean;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class GridColumnsStyleBuilder extends StyleBuilder {
   buildStyles(input: string, parent: GridColumnsParent) {
     input = input || DEFAULT_VALUE;
@@ -33,11 +33,11 @@ export class GridColumnsStyleBuilder extends StyleBuilder {
     }
 
     const css = {
-      'display': parent.inline ? 'inline-grid' : 'grid',
+      display: parent.inline ? 'inline-grid' : 'grid',
       'grid-auto-columns': '',
       'grid-template-columns': '',
     };
-    const key = (auto ? 'grid-auto-columns' : 'grid-template-columns');
+    const key = auto ? 'grid-auto-columns' : 'grid-template-columns';
     css[key] = input;
 
     return css;
@@ -49,14 +49,20 @@ export class GridColumnsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-columns';
 
   @Input('gdInline')
-  get inline(): boolean { return this._inline; }
-  set inline(val: boolean) { this._inline = coerceBooleanProperty(val); }
+  get inline(): boolean {
+    return this._inline;
+  }
+  set inline(val: boolean) {
+    this._inline = coerceBooleanProperty(val);
+  }
   protected _inline = false;
 
-  constructor(elementRef: ElementRef,
-              styleBuilder: GridColumnsStyleBuilder,
-              styler: StyleUtils,
-              marshal: MediaMarshaller) {
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: GridColumnsStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller
+  ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();
   }
@@ -67,7 +73,7 @@ export class GridColumnsDirective extends BaseDirective2 {
 
   protected override updateWithValue(value: string) {
     this.styleCache = this.inline ? columnsInlineCache : columnsCache;
-    this.addStyles(value, {inline: this.inline});
+    this.addStyles(value, { inline: this.inline });
   }
 }
 
@@ -76,9 +82,19 @@ const columnsInlineCache: Map<string, StyleDefinition> = new Map();
 
 const inputs = [
   'gdColumns',
-  'gdColumns.xs', 'gdColumns.sm', 'gdColumns.md', 'gdColumns.lg', 'gdColumns.xl',
-  'gdColumns.lt-sm', 'gdColumns.lt-md', 'gdColumns.lt-lg', 'gdColumns.lt-xl',
-  'gdColumns.gt-xs', 'gdColumns.gt-sm', 'gdColumns.gt-md', 'gdColumns.gt-lg'
+  'gdColumns.xs',
+  'gdColumns.sm',
+  'gdColumns.md',
+  'gdColumns.lg',
+  'gdColumns.xl',
+  'gdColumns.lt-sm',
+  'gdColumns.lt-md',
+  'gdColumns.lt-lg',
+  'gdColumns.lt-xl',
+  'gdColumns.gt-xs',
+  'gdColumns.gt-sm',
+  'gdColumns.gt-md',
+  'gdColumns.gt-lg',
 ];
 
 const selector = `
@@ -94,7 +110,7 @@ const selector = `
  * Syntax: <column value> [auto]
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-13
  */
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultGridColumnsDirective extends GridColumnsDirective {
   protected override inputs = inputs;
 }

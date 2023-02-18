@@ -5,19 +5,19 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, Injectable} from '@angular/core';
+import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
-  MediaMarshaller,
   BaseDirective2,
+  MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
 const ROW_DEFAULT = 'stretch';
 const COL_DEFAULT = 'stretch';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class GridAlignStyleBuilder extends StyleBuilder {
   buildStyles(input: string) {
     return buildCss(input || ROW_DEFAULT);
@@ -26,13 +26,14 @@ export class GridAlignStyleBuilder extends StyleBuilder {
 
 @Directive()
 export class GridAlignDirective extends BaseDirective2 {
-
   protected override DIRECTIVE_KEY = 'grid-align';
 
-  constructor(elementRef: ElementRef,
-              styleBuilder: GridAlignStyleBuilder,
-              styler: StyleUtils,
-              marshal: MediaMarshaller) {
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: GridAlignStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller
+  ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();
   }
@@ -44,9 +45,19 @@ const alignCache: Map<string, StyleDefinition> = new Map();
 
 const inputs = [
   'gdGridAlign',
-  'gdGridAlign.xs', 'gdGridAlign.sm', 'gdGridAlign.md', 'gdGridAlign.lg', 'gdGridAlign.xl',
-  'gdGridAlign.lt-sm', 'gdGridAlign.lt-md', 'gdGridAlign.lt-lg', 'gdGridAlign.lt-xl',
-  'gdGridAlign.gt-xs', 'gdGridAlign.gt-sm', 'gdGridAlign.gt-md', 'gdGridAlign.gt-lg'
+  'gdGridAlign.xs',
+  'gdGridAlign.sm',
+  'gdGridAlign.md',
+  'gdGridAlign.lg',
+  'gdGridAlign.xl',
+  'gdGridAlign.lt-sm',
+  'gdGridAlign.lt-md',
+  'gdGridAlign.lt-lg',
+  'gdGridAlign.lt-xl',
+  'gdGridAlign.gt-xs',
+  'gdGridAlign.gt-sm',
+  'gdGridAlign.gt-md',
+  'gdGridAlign.gt-lg',
 ];
 
 const selector = `
@@ -64,13 +75,14 @@ const selector = `
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-justify-self
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-align-self
  */
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultGridAlignDirective extends GridAlignDirective {
   protected override inputs = inputs;
 }
 
 function buildCss(align: string = '') {
-  const css: {[key: string]: string} = {}, [rowAxis, columnAxis] = align.split(' ');
+  const css: { [key: string]: string } = {},
+    [rowAxis, columnAxis] = align.split(' ');
 
   // Row axis
   switch (rowAxis) {
@@ -86,8 +98,8 @@ function buildCss(align: string = '') {
     case 'start':
       css['justify-self'] = 'start';
       break;
-    default:
-      css['justify-self'] = ROW_DEFAULT;  // default row axis
+    default: // default row axis
+      css['justify-self'] = ROW_DEFAULT;
       break;
   }
 
@@ -105,8 +117,8 @@ function buildCss(align: string = '') {
     case 'start':
       css['align-self'] = 'start';
       break;
-    default:
-      css['align-self'] = COL_DEFAULT;  // default column axis
+    default: // default column axis
+      css['align-self'] = COL_DEFAULT;
       break;
   }
 

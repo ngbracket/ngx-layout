@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {MediaChange, MediaObserver} from '@angular/flex-layout';
-import {Observable} from 'rxjs';
+import { Component } from '@angular/core';
+import { MediaChange, MediaObserver } from '@ngbrackets/ngx-layout';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'media-query-status',
@@ -8,8 +8,8 @@ import {Observable} from 'rxjs';
     <div class="mqInfo">
       Active MediaQuery(s):
       <ul>
-        <li *ngFor="let change of (media$ | async) as changes">
-          {{change.mqAlias}} = {{change.mediaQuery}}
+        <li *ngFor="let change of media$ | async as changes">
+          {{ change.mqAlias }} = {{ change.mediaQuery }}
         </li>
       </ul>
     </div>

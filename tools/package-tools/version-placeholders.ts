@@ -1,7 +1,7 @@
-import {readFileSync, writeFileSync} from 'fs';
-import {platform} from 'os';
-import {buildConfig} from './build-config';
-import {spawnSync} from 'child_process';
+import { spawnSync } from 'child_process';
+import { readFileSync, writeFileSync } from 'fs';
+import { platform } from 'os';
+import { buildConfig } from './build-config';
 
 /** Variable that is set to the string for version placeholders. */
 const versionPlaceholderText = '0.0.0-PLACEHOLDER';
@@ -26,7 +26,7 @@ export function replaceVersionPlaceholders(packageDir: string) {
 
   // Walk through every file that contains version placeholders and replace those with the current
   // version of the root package.json file.
-  files.forEach(filePath => {
+  files.forEach((filePath) => {
     const fileContent = readFileSync(filePath, 'utf-8')
       .replace(ngVersionPlaceholderRegex, buildConfig.angularVersion)
       .replace(versionPlaceholderRegex, buildConfig.projectVersion);
@@ -38,8 +38,8 @@ export function replaceVersionPlaceholders(packageDir: string) {
 /** Finds all files in the specified package dir where version placeholders are included. */
 function findFilesWithPlaceholders(packageDir: string): string[] {
   const findCommand = buildPlaceholderFindCommand(packageDir);
-  return spawnSync(findCommand.binary, findCommand.args).stdout
-    .toString()
+  return spawnSync(findCommand.binary, findCommand.args)
+    .stdout.toString()
     .split(/[\n\r]/)
     .filter(String);
 }
@@ -49,14 +49,22 @@ function buildPlaceholderFindCommand(packageDir: string) {
   if (platform() === 'win32') {
     return {
       binary: 'findstr',
-      args: ['/msi', `${ngVersionPlaceholderText} ${versionPlaceholderText}`, `${packageDir}\\*`]
+      args: [
+        '/msi',
+        `${ngVersionPlaceholderText} ${versionPlaceholderText}`,
+        `${packageDir}\\*`,
+      ],
     };
   } else {
     return {
       binary: 'grep',
-      args: ['-ril', `${ngVersionPlaceholderText}\\|${versionPlaceholderText}`, packageDir]
+      args: [
+        '-ril',
+        `${ngVersionPlaceholderText}\\|${versionPlaceholderText}`,
+        packageDir,
+      ],
     };
   }
 }
 
-replaceVersionPlaceholders('./dist/releases/flex-layout');
+replaceVersionPlaceholders('./dist/releases/ngx-layout');

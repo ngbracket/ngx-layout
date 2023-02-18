@@ -5,24 +5,24 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, Injectable} from '@angular/core';
+import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
   BaseDirective2,
+  MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-  MediaMarshaller,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
 const FLEX_FILL_CSS = {
-  'margin': 0,
-  'width': '100%',
-  'height': '100%',
+  margin: 0,
+  width: '100%',
+  height: '100%',
   'min-width': '100%',
-  'min-height': '100%'
+  'min-height': '100%',
 };
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class FlexFillStyleBuilder extends StyleBuilder {
   buildStyles(_input: string) {
     return FLEX_FILL_CSS;
@@ -35,12 +35,14 @@ export class FlexFillStyleBuilder extends StyleBuilder {
  *
  *  NOTE: fxFill is NOT responsive API!!
  */
-@Directive({selector: `[fxFill], [fxFlexFill]`})
+@Directive({ selector: `[fxFill], [fxFlexFill]` })
 export class FlexFillDirective extends BaseDirective2 {
-  constructor(elRef: ElementRef,
-              styleUtils: StyleUtils,
-              styleBuilder: FlexFillStyleBuilder,
-              marshal: MediaMarshaller) {
+  constructor(
+    elRef: ElementRef,
+    styleUtils: StyleUtils,
+    styleBuilder: FlexFillStyleBuilder,
+    marshal: MediaMarshaller
+  ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.addStyles('');
   }

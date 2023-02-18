@@ -1,18 +1,17 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
-import {MatRadioModule} from '@angular/material/radio';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
+import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
 
-import {DocsGridComponent} from './docs-grid/docs-grid.component';
-import {GridLayoutComponent} from './grid-layout/grid-layout.component';
-import {RoutingModule} from './routing.module';
-import {GridNestedComponent} from './grid-nested/grid-nested.component';
-import {GridMinmaxComponent} from './grid-minmax/grid-minmax.component';
-import {GridPositionComponent} from './grid-position/grid-position.component';
-import {GridOverlayComponent} from './grid-overlay/grid-overlay.component';
-
+import { DocsGridComponent } from './docs-grid/docs-grid.component';
+import { GridLayoutComponent } from './grid-layout/grid-layout.component';
+import { GridMinmaxComponent } from './grid-minmax/grid-minmax.component';
+import { GridNestedComponent } from './grid-nested/grid-nested.component';
+import { GridOverlayComponent } from './grid-overlay/grid-overlay.component';
+import { GridPositionComponent } from './grid-position/grid-position.component';
+import { RoutingModule } from './routing.module';
 
 @NgModule({
   imports: [
@@ -30,6 +29,6 @@ import {GridOverlayComponent} from './grid-overlay/grid-overlay.component';
     GridMinmaxComponent,
     GridPositionComponent,
     GridOverlayComponent,
-  ]
+  ],
 })
 export class DocsGridModule {}

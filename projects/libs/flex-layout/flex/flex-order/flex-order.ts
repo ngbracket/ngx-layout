@@ -5,27 +5,37 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, OnChanges, Injectable} from '@angular/core';
+import { Directive, ElementRef, Injectable, OnChanges } from '@angular/core';
 import {
   BaseDirective2,
+  MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-  MediaMarshaller,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class FlexOrderStyleBuilder extends StyleBuilder {
   buildStyles(value: string) {
-    return {order: (value && parseInt(value, 10)) || ''};
+    return { order: (value && parseInt(value, 10)) || '' };
   }
 }
 
 const inputs = [
-  'fxFlexOrder', 'fxFlexOrder.xs', 'fxFlexOrder.sm', 'fxFlexOrder.md',
-  'fxFlexOrder.lg', 'fxFlexOrder.xl', 'fxFlexOrder.lt-sm', 'fxFlexOrder.lt-md',
-  'fxFlexOrder.lt-lg', 'fxFlexOrder.lt-xl', 'fxFlexOrder.gt-xs', 'fxFlexOrder.gt-sm',
-  'fxFlexOrder.gt-md', 'fxFlexOrder.gt-lg'
+  'fxFlexOrder',
+  'fxFlexOrder.xs',
+  'fxFlexOrder.sm',
+  'fxFlexOrder.md',
+  'fxFlexOrder.lg',
+  'fxFlexOrder.xl',
+  'fxFlexOrder.lt-sm',
+  'fxFlexOrder.lt-md',
+  'fxFlexOrder.lt-lg',
+  'fxFlexOrder.lt-xl',
+  'fxFlexOrder.gt-xs',
+  'fxFlexOrder.gt-sm',
+  'fxFlexOrder.gt-md',
+  'fxFlexOrder.gt-lg',
 ];
 const selector = `
   [fxFlexOrder], [fxFlexOrder.xs], [fxFlexOrder.sm], [fxFlexOrder.md],
@@ -41,13 +51,14 @@ const selector = `
  */
 @Directive()
 export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
-
   protected override DIRECTIVE_KEY = 'flex-order';
 
-  constructor(elRef: ElementRef,
-              styleUtils: StyleUtils,
-              styleBuilder: FlexOrderStyleBuilder,
-              marshal: MediaMarshaller) {
+  constructor(
+    elRef: ElementRef,
+    styleUtils: StyleUtils,
+    styleBuilder: FlexOrderStyleBuilder,
+    marshal: MediaMarshaller
+  ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();
   }
@@ -57,7 +68,7 @@ export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
 
 const flexOrderCache: Map<string, StyleDefinition> = new Map();
 
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultFlexOrderDirective extends FlexOrderDirective {
   protected override inputs = inputs;
 }

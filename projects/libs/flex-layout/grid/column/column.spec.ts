@@ -5,26 +5,26 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TestBed, ComponentFixture, inject} from '@angular/core/testing';
-import {Platform} from '@angular/cdk/platform';
+import { Platform } from '@angular/cdk/platform';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
+  SERVER_TOKEN,
+  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-  SERVER_TOKEN,
-  StyleUtils,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
-import {customMatchers} from '@angular/flex-layout/_private-utils/testing';
 import {
+  customMatchers,
   expectEl,
-  queryFor,
   makeCreateTestComponent,
-} from '@angular/flex-layout/_private-utils/testing';
+  queryFor,
+} from '@ngbrackets/ngx-layout/_private-utils/testing';
 
-import {GridModule} from '../module';
+import { GridModule } from '../module';
 
 describe('grid column child directive', () => {
   let fixture: ComponentFixture<any>;
@@ -34,18 +34,27 @@ describe('grid column child directive', () => {
   let shouldRun = true;
   let createTestComponent = (template: string, styles?: any) => {
     shouldRun = true;
-    fixture = makeCreateTestComponent(() => TestGridColumnComponent)(template, styles);
-    inject([StyleUtils, MatchMedia, Platform],
-      (_styler: StyleUtils, _matchMedia: MockMatchMedia, _platform: Platform) => {
-      styler = _styler;
-      mediaController = _matchMedia;
-      platform = _platform;
+    fixture = makeCreateTestComponent(() => TestGridColumnComponent)(
+      template,
+      styles
+    );
+    inject(
+      [StyleUtils, MatchMedia, Platform],
+      (
+        _styler: StyleUtils,
+        _matchMedia: MockMatchMedia,
+        _platform: Platform
+      ) => {
+        styler = _styler;
+        mediaController = _matchMedia;
+        platform = _platform;
 
-      // TODO(CaerusKaru): Grid tests won't work with Edge 14
-      if (_platform.EDGE) {
-        shouldRun = false;
+        // TODO(CaerusKaru): Grid tests won't work with Edge 14
+        if (_platform.EDGE) {
+          shouldRun = false;
+        }
       }
-    })();
+    )();
   };
 
   beforeEach(() => {
@@ -57,7 +66,7 @@ describe('grid column child directive', () => {
       declarations: [TestGridColumnComponent],
       providers: [
         MockMatchMediaProvider,
-        {provide: SERVER_TOKEN, useValue: true},
+        { provide: SERVER_TOKEN, useValue: true },
       ],
     });
   });
@@ -83,12 +92,15 @@ describe('grid column child directive', () => {
       expect(nodes.length).toBe(3);
 
       if (platform.WEBKIT) {
-        expectEl(nodes[1]).toHaveStyle({
-          'grid-column-start': 'span 2',
-          'grid-column-end': '6',
-        }, styler);
+        expectEl(nodes[1]).toHaveStyle(
+          {
+            'grid-column-start': 'span 2',
+            'grid-column-end': '6',
+          },
+          styler
+        );
       } else {
-        expectEl(nodes[1]).toHaveStyle({'grid-column': 'span 2 / 6'}, styler);
+        expectEl(nodes[1]).toHaveStyle({ 'grid-column': 'span 2 / 6' }, styler);
       }
     });
 
@@ -104,9 +116,13 @@ describe('grid column child directive', () => {
 
       fixture.detectChanges();
 
-      let colStyles = styler.lookupStyle(fixture.debugElement.children[0].nativeElement,
-        'grid-column');
-      let correctCol = colStyles === 'apples' || colStyles === 'apples / apples' ||
+      let colStyles = styler.lookupStyle(
+        fixture.debugElement.children[0].nativeElement,
+        'grid-column'
+      );
+      let correctCol =
+        colStyles === 'apples' ||
+        colStyles === 'apples / apples' ||
         colStyles === 'apples apples';
 
       expect(correctCol).toBe(true);
@@ -114,8 +130,13 @@ describe('grid column child directive', () => {
       fixture.componentInstance.col = 'oranges';
       fixture.detectChanges();
 
-      colStyles = styler.lookupStyle(fixture.debugElement.children[0].nativeElement, 'grid-column');
-      correctCol = colStyles === 'oranges' || colStyles === 'oranges / oranges' ||
+      colStyles = styler.lookupStyle(
+        fixture.debugElement.children[0].nativeElement,
+        'grid-column'
+      );
+      correctCol =
+        colStyles === 'oranges' ||
+        colStyles === 'oranges / oranges' ||
         colStyles === 'oranges oranges';
       expect(correctCol).toBe(true);
     });
@@ -133,37 +154,47 @@ describe('grid column child directive', () => {
       }
 
       fixture.detectChanges();
-      let colStyles = styler.lookupStyle(fixture.debugElement.children[0].nativeElement,
-        'grid-column');
-      let correctCol = colStyles === 'sidebar' || colStyles === 'sidebar / sidebar' ||
+      let colStyles = styler.lookupStyle(
+        fixture.debugElement.children[0].nativeElement,
+        'grid-column'
+      );
+      let correctCol =
+        colStyles === 'sidebar' ||
+        colStyles === 'sidebar / sidebar' ||
         colStyles === 'sidebar sidebar';
       expect(correctCol).toBe(true);
 
       mediaController.activate('xs');
-      colStyles = styler.lookupStyle(fixture.debugElement.children[0].nativeElement,
-        'grid-column');
-      correctCol = colStyles === 'footer' || colStyles === 'footer / footer' ||
+      colStyles = styler.lookupStyle(
+        fixture.debugElement.children[0].nativeElement,
+        'grid-column'
+      );
+      correctCol =
+        colStyles === 'footer' ||
+        colStyles === 'footer / footer' ||
         colStyles === 'footer footer';
       expect(correctCol).toBe(true);
 
       mediaController.activate('md');
-      colStyles = styler.lookupStyle(fixture.debugElement.children[0].nativeElement,
-        'grid-column');
-      correctCol = colStyles === 'sidebar' || colStyles === 'sidebar / sidebar' ||
+      colStyles = styler.lookupStyle(
+        fixture.debugElement.children[0].nativeElement,
+        'grid-column'
+      );
+      correctCol =
+        colStyles === 'sidebar' ||
+        colStyles === 'sidebar / sidebar' ||
         colStyles === 'sidebar sidebar';
       expect(correctCol).toBe(true);
     });
   });
-
 });
-
 
 // *****************************************************************
 // Template Component
 // *****************************************************************
 @Component({
   selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
 class TestGridColumnComponent {
   col = 'apples';

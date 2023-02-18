@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterContentInit,
   ContentChild,
@@ -8,19 +9,18 @@ import {
   Input,
   OnDestroy,
   PLATFORM_ID,
-  QueryList
+  QueryList,
 } from '@angular/core';
-import {isPlatformBrowser} from '@angular/common';
-import {FlexDirective} from '@angular/flex-layout';
+import { FlexDirective } from '@ngbrackets/ngx-layout';
 
-import {SplitHandleDirective} from './split-handle.directive';
-import {SplitAreaDirective} from './split-area.directive';
+import { SplitAreaDirective } from './split-area.directive';
+import { SplitHandleDirective } from './split-handle.directive';
 
 @Directive({
   selector: '[ngxSplit]',
   host: {
-    class: 'ngx-split'
-  }
+    class: 'ngx-split',
+  },
 })
 export class SplitDirective implements AfterContentInit, OnDestroy {
   watcher;
@@ -28,15 +28,18 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
   @Input('ngxSplit')
   direction = 'row';
 
-  @ContentChild(SplitHandleDirective, {static: true}) handle: SplitHandleDirective;
+  @ContentChild(SplitHandleDirective, { static: true })
+  handle: SplitHandleDirective;
   @ContentChildren(SplitAreaDirective) areas: QueryList<SplitAreaDirective>;
 
-  constructor(private elementRef: ElementRef,
-              @Inject(PLATFORM_ID) private _platformId: Object) {}
+  constructor(
+    private elementRef: ElementRef,
+    @Inject(PLATFORM_ID) private _platformId: Object
+  ) {}
 
   ngAfterContentInit(): void {
     if (isPlatformBrowser(this._platformId)) {
-      this.watcher = this.handle.drag.subscribe(pos => this.onDrag(pos));
+      this.watcher = this.handle.drag.subscribe((pos) => this.onDrag(pos));
     }
   }
 
@@ -50,13 +53,13 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
    * While dragging, continually update the `flex.activatedValue` for each area
    * managed by the splitter.
    */
-  onDrag({x, y}): void {
-    const dragAmount = (this.direction === 'row') ? x : y;
+  onDrag({ x, y }): void {
+    const dragAmount = this.direction === 'row' ? x : y;
 
     this.areas.forEach((area, i) => {
       // get the cur flex and the % in px
-      const flex = (area.flex as FlexDirective);
-      const delta = (i === 0) ? dragAmount : -dragAmount;
+      const flex = area.flex as FlexDirective;
+      const delta = i === 0 ? dragAmount : -dragAmount;
       const currentValue = flex.activatedValue;
 
       // Update Flex-Layout value to build/inject new flexbox CSS
@@ -84,7 +87,7 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
     const isPercent = () => String(value).indexOf('px') < 0;
     let size = parseFloat(String(value));
     if (isPercent()) {
-      size = parentWidth * (size / 100);  // Convert percentage to actual pixel float value
+      size = parentWidth * (size / 100); // Convert percentage to actual pixel float value
     }
     return size;
   }

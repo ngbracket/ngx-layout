@@ -5,44 +5,51 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { isPlatformServer } from '@angular/common';
 import {
+  AfterViewInit,
   Directive,
   ElementRef,
-  OnChanges,
-  SimpleChanges,
   Inject,
-  PLATFORM_ID,
   Injectable,
-  AfterViewInit,
+  OnChanges,
+  PLATFORM_ID,
+  SimpleChanges,
 } from '@angular/core';
-import {isPlatformServer} from '@angular/common';
 import {
   BaseDirective2,
-  LAYOUT_CONFIG,
   LayoutConfigOptions,
+  LAYOUT_CONFIG,
   MediaMarshaller,
   SERVER_TOKEN,
-  StyleUtils,
   StyleBuilder,
-} from '@angular/flex-layout/core';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import {takeUntil} from 'rxjs/operators';
+  StyleUtils,
+} from '@ngbrackets/ngx-layout/core';
+import { takeUntil } from 'rxjs/operators';
 
 export interface ShowHideParent {
   display: string;
   isServer: boolean;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ShowHideStyleBuilder extends StyleBuilder {
   buildStyles(show: string, parent: ShowHideParent) {
     const shouldShow = show === 'true';
-    return {'display': shouldShow ? parent.display || (parent.isServer ? 'initial' : '') : 'none'};
+    return {
+      display: shouldShow
+        ? parent.display || (parent.isServer ? 'initial' : '')
+        : 'none',
+    };
   }
 }
 
 @Directive()
-export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, OnChanges {
+export class ShowHideDirective
+  extends BaseDirective2
+  implements AfterViewInit, OnChanges
+{
   protected override DIRECTIVE_KEY = 'show-hide';
 
   /** Original DOM Element CSS display style */
@@ -50,13 +57,15 @@ export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, 
   protected hasLayout = false;
   protected hasFlexChild = false;
 
-  constructor(elementRef: ElementRef,
-              styleBuilder: ShowHideStyleBuilder,
-              styler: StyleUtils,
-              marshal: MediaMarshaller,
-              @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
-              @Inject(PLATFORM_ID) protected platformId: Object,
-              @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean) {
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: ShowHideStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller,
+    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
+    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean
+  ) {
     super(elementRef, styleBuilder, styler, marshal);
   }
 
@@ -84,7 +93,11 @@ export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, 
 
     this.init();
     // set the default to show unless explicitly overridden
-    const defaultValue = this.marshal.getValue(this.nativeElement, this.DIRECTIVE_KEY, '');
+    const defaultValue = this.marshal.getValue(
+      this.nativeElement,
+      this.DIRECTIVE_KEY,
+      ''
+    );
     if (defaultValue === undefined || defaultValue === '') {
       this.setValue(true, '');
     } else {
@@ -98,13 +111,16 @@ export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, 
    * Then conditionally override with the mq-activated Input's current value
    */
   override ngOnChanges(changes: SimpleChanges) {
-    Object.keys(changes).forEach(key => {
+    Object.keys(changes).forEach((key) => {
       if (this.inputs.indexOf(key) !== -1) {
         const inputKey = key.split('.');
         const bp = inputKey.slice(1).join('.');
         const inputValue = changes[key].currentValue;
-        let shouldShow = inputValue !== '' ?
-            inputValue !== 0 ? coerceBooleanProperty(inputValue) : false
+        let shouldShow =
+          inputValue !== ''
+            ? inputValue !== 0
+              ? coerceBooleanProperty(inputValue)
+              : false
             : true;
         if (inputKey[0] === 'fxHide') {
           shouldShow = !shouldShow;
@@ -124,11 +140,11 @@ export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, 
   protected trackExtraTriggers() {
     this.hasLayout = this.marshal.hasValue(this.nativeElement, 'layout');
 
-    ['layout', 'layout-align'].forEach(key => {
+    ['layout', 'layout-align'].forEach((key) => {
       this.marshal
-          .trackValue(this.nativeElement, key)
-          .pipe(takeUntil(this.destroySubject))
-          .subscribe(this.triggerUpdate.bind(this));
+        .trackValue(this.nativeElement, key)
+        .pipe(takeUntil(this.destroySubject))
+        .subscribe(this.triggerUpdate.bind(this));
     });
   }
 
@@ -138,8 +154,10 @@ export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, 
    * unless it was already explicitly specified inline or in a CSS stylesheet.
    */
   protected getDisplayStyle(): string {
-    return (this.hasLayout || (this.hasFlexChild && this.layoutConfig.addFlexToParent)) ?
-        'flex' : this.styler.lookupStyle(this.nativeElement, 'display', true);
+    return this.hasLayout ||
+      (this.hasFlexChild && this.layoutConfig.addFlexToParent)
+      ? 'flex'
+      : this.styler.lookupStyle(this.nativeElement, 'display', true);
   }
 
   /** Validate the visibility value and then update the host's inline display style */
@@ -148,7 +166,10 @@ export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, 
       return;
     }
     const isServer = isPlatformServer(this.platformId);
-    this.addStyles(value ? 'true' : 'false', {display: this.display, isServer});
+    this.addStyles(value ? 'true' : 'false', {
+      display: this.display,
+      isServer,
+    });
     if (isServer && this.serverModuleLoaded) {
       this.nativeElement.style.setProperty('display', '');
     }
@@ -159,14 +180,36 @@ export class ShowHideDirective extends BaseDirective2 implements AfterViewInit, 
 const DISPLAY_MAP: WeakMap<HTMLElement, string> = new WeakMap();
 
 const inputs = [
-  'fxShow', 'fxShow.print',
-  'fxShow.xs', 'fxShow.sm', 'fxShow.md', 'fxShow.lg', 'fxShow.xl',
-  'fxShow.lt-sm', 'fxShow.lt-md', 'fxShow.lt-lg', 'fxShow.lt-xl',
-  'fxShow.gt-xs', 'fxShow.gt-sm', 'fxShow.gt-md', 'fxShow.gt-lg',
-  'fxHide', 'fxHide.print',
-  'fxHide.xs', 'fxHide.sm', 'fxHide.md', 'fxHide.lg', 'fxHide.xl',
-  'fxHide.lt-sm', 'fxHide.lt-md', 'fxHide.lt-lg', 'fxHide.lt-xl',
-  'fxHide.gt-xs', 'fxHide.gt-sm', 'fxHide.gt-md', 'fxHide.gt-lg'
+  'fxShow',
+  'fxShow.print',
+  'fxShow.xs',
+  'fxShow.sm',
+  'fxShow.md',
+  'fxShow.lg',
+  'fxShow.xl',
+  'fxShow.lt-sm',
+  'fxShow.lt-md',
+  'fxShow.lt-lg',
+  'fxShow.lt-xl',
+  'fxShow.gt-xs',
+  'fxShow.gt-sm',
+  'fxShow.gt-md',
+  'fxShow.gt-lg',
+  'fxHide',
+  'fxHide.print',
+  'fxHide.xs',
+  'fxHide.sm',
+  'fxHide.md',
+  'fxHide.lg',
+  'fxHide.xl',
+  'fxHide.lt-sm',
+  'fxHide.lt-md',
+  'fxHide.lt-lg',
+  'fxHide.lt-xl',
+  'fxHide.gt-xs',
+  'fxHide.gt-sm',
+  'fxHide.gt-md',
+  'fxHide.gt-lg',
 ];
 
 const selector = `
@@ -183,7 +226,7 @@ const selector = `
 /**
  * 'show' Layout API directive
  */
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultShowHideDirective extends ShowHideDirective {
   protected override inputs = inputs;
 }

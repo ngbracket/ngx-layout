@@ -5,21 +5,28 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Directive, ElementRef, Inject, PLATFORM_ID, Injectable, Input} from '@angular/core';
-import {isPlatformServer} from '@angular/common';
+import { isPlatformServer } from '@angular/common';
 import {
-  MediaMarshaller,
+  Directive,
+  ElementRef,
+  Inject,
+  Injectable,
+  Input,
+  PLATFORM_ID,
+} from '@angular/core';
+import {
   BaseDirective2,
+  MediaMarshaller,
   SERVER_TOKEN,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-} from '@angular/flex-layout/core';
+} from '@ngbrackets/ngx-layout/core';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ImgSrcStyleBuilder extends StyleBuilder {
   buildStyles(url: string) {
-    return {'content': url ? `url(${url})` : ''};
+    return { content: url ? `url(${url})` : '' };
   }
 }
 
@@ -34,12 +41,14 @@ export class ImgSrcDirective extends BaseDirective2 {
     this.setValue(this.defaultSrc, '');
   }
 
-  constructor(elementRef: ElementRef,
-              styleBuilder: ImgSrcStyleBuilder,
-              styler: StyleUtils,
-              marshal: MediaMarshaller,
-              @Inject(PLATFORM_ID) protected platformId: Object,
-              @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean) {
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: ImgSrcStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller,
+    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean
+  ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();
     this.setValue(this.nativeElement.getAttribute('src') || '', '');
@@ -71,9 +80,19 @@ export class ImgSrcDirective extends BaseDirective2 {
 const imgSrcCache: Map<string, StyleDefinition> = new Map();
 
 const inputs = [
-  'src.xs', 'src.sm', 'src.md', 'src.lg', 'src.xl',
-  'src.lt-sm', 'src.lt-md', 'src.lt-lg', 'src.lt-xl',
-  'src.gt-xs', 'src.gt-sm', 'src.gt-md', 'src.gt-lg'
+  'src.xs',
+  'src.sm',
+  'src.md',
+  'src.lg',
+  'src.xl',
+  'src.lt-sm',
+  'src.lt-md',
+  'src.lt-lg',
+  'src.lt-xl',
+  'src.gt-xs',
+  'src.gt-sm',
+  'src.gt-md',
+  'src.gt-lg',
 ];
 
 const selector = `
@@ -91,7 +110,7 @@ const selector = `
  *
  * @see https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-src/
  */
-@Directive({selector, inputs})
+@Directive({ selector, inputs })
 export class DefaultImgSrcDirective extends ImgSrcDirective {
   protected override inputs = inputs;
 }

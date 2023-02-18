@@ -5,13 +5,16 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Component, PLATFORM_ID} from '@angular/core';
-import {CommonModule, isPlatformServer} from '@angular/common';
-import {ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import { CommonModule, isPlatformServer } from '@angular/common';
+import { Component, PLATFORM_ID } from '@angular/core';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
-import {customMatchers} from '@angular/flex-layout/_private-utils/testing';
-import {makeCreateTestComponent, expectNativeEl} from '@angular/flex-layout/_private-utils/testing';
-import {StyleUtils} from './style-utils';
+import {
+  customMatchers,
+  expectNativeEl,
+  makeCreateTestComponent,
+} from '@ngbrackets/ngx-layout/_private-utils/testing';
+import { StyleUtils } from './style-utils';
 
 describe('styler', () => {
   let styler: StyleUtils;
@@ -19,12 +22,18 @@ describe('styler', () => {
   let platformId: Object;
 
   let componentWithTemplate = (template: string, styles?: any) => {
-    fixture = makeCreateTestComponent(() => TestLayoutComponent)(template, styles);
+    fixture = makeCreateTestComponent(() => TestLayoutComponent)(
+      template,
+      styles
+    );
 
-    inject([StyleUtils, PLATFORM_ID], (_styler: StyleUtils, _platformId: Object) => {
-      styler = _styler;
-      platformId = _platformId;
-    })();
+    inject(
+      [StyleUtils, PLATFORM_ID],
+      (_styler: StyleUtils, _platformId: Object) => {
+        styler = _styler;
+        platformId = _platformId;
+      }
+    )();
   };
 
   beforeEach(() => {
@@ -38,19 +47,18 @@ describe('styler', () => {
   });
 
   describe('testing display styles', () => {
-
     it('should not have a default for <div></div>', () => {
       componentWithTemplate(`
         <div></div>
       `);
-      expectNativeEl(fixture).not.toHaveStyle({'display': 'block'}, styler);
+      expectNativeEl(fixture).not.toHaveStyle({ display: 'block' }, styler);
     });
 
     it('should find to "display" for inline style <div></div>', () => {
       componentWithTemplate(`
         <div style="display: flex;"></div>
       `);
-      expectNativeEl(fixture).toHaveCSS({'display': 'flex'}, styler);
+      expectNativeEl(fixture).toHaveCSS({ display: 'flex' }, styler);
     });
 
     it('should find `display` from html style element', () => {
@@ -63,21 +71,22 @@ describe('styler', () => {
 
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectNativeEl(fixture).toHaveCSS({'display': 'inline-block'}, styler);
+        expectNativeEl(fixture).toHaveCSS({ display: 'inline-block' }, styler);
       }
     });
 
     it('should find `display` from component styles', () => {
-      componentWithTemplate(`<div class="extra"></div>`, ['div.extra { display:table; }']);
+      componentWithTemplate(`<div class="extra"></div>`, [
+        'div.extra { display:table; }',
+      ]);
 
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectNativeEl(fixture).toHaveCSS({'display': 'table'}, styler);
+        expectNativeEl(fixture).toHaveCSS({ display: 'table' }, styler);
       }
     });
   });
 });
-
 
 // *****************************************************************
 // Template Component
@@ -85,7 +94,6 @@ describe('styler', () => {
 
 @Component({
   selector: 'test-style-utils',
-  template: `<span>PlaceHolder Template HTML</span>`
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
-class TestLayoutComponent {
-}
+class TestLayoutComponent {}
