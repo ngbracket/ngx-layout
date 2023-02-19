@@ -20,8 +20,8 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
-import { DefaultClassDirective } from '@ngbrackets/ngx-layout/extended';
+} from '@ngbracket/ngx-layout/core';
+import { DefaultClassDirective } from '@ngbracket/ngx-layout/extended';
 
 import {
   customMatchers,
@@ -29,7 +29,7 @@ import {
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('class directive', () => {
   let fixture: ComponentFixture<any>;

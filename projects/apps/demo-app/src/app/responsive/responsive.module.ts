@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 import { MediaQueryStatusModule } from '../media-query-status/media-query-status.module';
 import { DocsResponsiveComponent } from './docs-responsive/docs-responsive.component';

@@ -9,7 +9,7 @@ import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
   SERVER_TOKEN,
   StyleBuilder,
@@ -17,17 +17,17 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 import {
   FlexModule,
   LayoutAlignStyleBuilder,
-} from '@ngbrackets/ngx-layout/flex';
-import { extendObject } from '@ngbrackets/ngx-layout/_private-utils';
+} from '@ngbracket/ngx-layout/flex';
+import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('layout-align directive', () => {
   let fixture: ComponentFixture<any>;

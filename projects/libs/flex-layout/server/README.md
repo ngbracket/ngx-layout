@@ -7,7 +7,7 @@ file, e.g. `app.server.module.ts` as follows:
 
 ```typescript
 import {NgModule} from '@angular/core';
-import {FlexLayoutServerModule} from '@ngbrackets/ngx-layout/server';
+import {FlexLayoutServerModule} from '@ngbracket/ngx-layout/server';
 
 @NgModule(({
   imports: [

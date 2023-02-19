@@ -188,7 +188,7 @@ function buildQueryCss(mediaQueries: string[], _document: Document) {
       if (!(styleEl as any).styleSheet) {
         const cssText = `
 /*
-  @ngbrackets/ngx-layout - workaround for possible browser quirk with mediaQuery listeners
+  @ngbracket/ngx-layout - workaround for possible browser quirk with mediaQuery listeners
   see http://bit.ly/2sd4HMP
 */
 @media ${query} {.fx-query-test{ }}

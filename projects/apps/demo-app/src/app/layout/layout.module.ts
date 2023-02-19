@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 import { DocsLayoutComponent } from './docs-layout/docs-layout.component';
 import { FlexAlignSelfComponent } from './flex-align-self/flex-align-self.component';

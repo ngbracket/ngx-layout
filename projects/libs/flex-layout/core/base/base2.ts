@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { buildLayoutCSS } from '@ngbrackets/ngx-layout/_private-utils';
+import { buildLayoutCSS } from '@ngbracket/ngx-layout/_private-utils';
 import { MediaMarshaller } from '../media-marshaller/media-marshaller';
 import { StyleBuilder } from '../style-builder/style-builder';
 import { StyleDefinition, StyleUtils } from '../style-utils/style-utils';

@@ -7,13 +7,13 @@
  */
 
 import { async, inject, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
   BreakPoint,
   BREAKPOINTS,
   DEFAULT_BREAKPOINTS,
   ORIENTATION_BREAKPOINTS,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
 describe('break-point-provider', () => {
   let breakPoints: BreakPoint[];

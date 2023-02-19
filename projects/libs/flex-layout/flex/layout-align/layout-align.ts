@@ -13,14 +13,14 @@ import {
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 import { takeUntil } from 'rxjs/operators';
 
 import {
   extendObject,
   isFlowHorizontal,
   LAYOUT_VALUES,
-} from '@ngbrackets/ngx-layout/_private-utils';
+} from '@ngbracket/ngx-layout/_private-utils';
 
 export interface LayoutAlignParent {
   layout: string;
@@ -85,7 +85,7 @@ export class LayoutAlignStyleBuilder extends StyleBuilder {
         break;
       case 'stretch':
       default: // 'stretch'
-      // default cross axis
+        // default cross axis
         css['align-items'] = css['align-content'] = 'stretch';
         break;
     }

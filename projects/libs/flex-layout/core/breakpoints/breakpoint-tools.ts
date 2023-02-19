@@ -5,7 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { extendObject } from '@ngbrackets/ngx-layout/_private-utils';
+import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import { BreakPoint } from './break-point';
 
 const ALIAS_DELIMITERS = /(\.|-|_)/g;

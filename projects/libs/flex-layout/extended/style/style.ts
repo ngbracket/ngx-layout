@@ -24,7 +24,7 @@ import {
   MediaMarshaller,
   SERVER_TOKEN,
   StyleUtils,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
 import {
   buildMapFromSet,

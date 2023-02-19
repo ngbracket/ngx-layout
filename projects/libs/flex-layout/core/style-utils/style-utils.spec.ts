@@ -13,7 +13,7 @@ import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 import { StyleUtils } from './style-utils';
 
 describe('styler', () => {

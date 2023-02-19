@@ -8,7 +8,7 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-import { applyCssPrefixes } from '@ngbrackets/ngx-layout/_private-utils';
+import { applyCssPrefixes } from '@ngbracket/ngx-layout/_private-utils';
 import { StylesheetMap } from '../stylesheet-map/stylesheet-map';
 import { LayoutConfigOptions, LAYOUT_CONFIG } from '../tokens/library-config';
 import { SERVER_TOKEN } from '../tokens/server-token';

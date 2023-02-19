@@ -22,8 +22,8 @@ import {
   StyleDefinition,
   StyleUtils,
   ɵmultiply as multiply,
-} from '@ngbrackets/ngx-layout/core';
-import { isFlowHorizontal } from '@ngbrackets/ngx-layout/_private-utils';
+} from '@ngbracket/ngx-layout/core';
+import { isFlowHorizontal } from '@ngbracket/ngx-layout/_private-utils';
 import { takeUntil } from 'rxjs/operators';
 
 export interface FlexOffsetParent {

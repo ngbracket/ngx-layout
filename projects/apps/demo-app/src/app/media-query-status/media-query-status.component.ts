@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MediaChange, MediaObserver } from '@ngbrackets/ngx-layout';
+import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { Observable } from 'rxjs';
 
 @Component({

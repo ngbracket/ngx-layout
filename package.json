@@ -2,11 +2,11 @@
   "name": "ngx-layout-srcs",
   "description": "ngx-layout",
   "version": "15.0.1-beta.42",
-  "homepage": "https://github.com/ngbrackets/ngx-layout",
-  "bugs": "https://github.com/ngbrackets/ngx-layout/issues",
+  "homepage": "https://github.com/ngbracket/ngx-layout",
+  "bugs": "https://github.com/ngbracket/ngx-layout/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngbrackets/ngx-layout.git"
+    "url": "git+https://github.com/ngbracket/ngx-layout.git"
   },
   "license": "MIT",
   "engines": {
@@ -17,12 +17,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build @ngbrackets/ngx-layout",
+    "build": "ng build @ngbracket/ngx-layout",
     "demo:serve": "ng serve demo-app",
     "stamp": "ts-node tools/package-tools/version-placeholders.ts --module=commonjs",
     "build:universal-demo-app": "ng run universal-demo-app:build:production && ng run universal-demo-app:server",
     "serve:universal-demo-app": "ng run universal-demo-app:serve-ssr",
-    "test": "ng test @ngbrackets/ngx-layout",
+    "test": "ng test @ngbracket/ngx-layout",
     "test:ssr": "webpack --config test/webpack-spec-ssr-bundle.js && jasmine --config=test/jasmine-ssr.json",
     "lint": "stylelint projects/libs/**/*.scss --config=stylelint-config.json && tslint --project ./tsconfig.json --config tslint.json",
     "release": "yarn build && yarn stamp",

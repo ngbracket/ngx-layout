@@ -16,7 +16,7 @@ import {
   sortAscendingPriority,
   StylesheetMap,
   ɵMatchMedia as MatchMedia,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
 import { ServerMatchMedia } from './server-match-media';
 

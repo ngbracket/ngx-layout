@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
   MediaObserver,
   SERVER_TOKEN,
@@ -20,15 +20,15 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
-import { ShowHideDirective } from '@ngbrackets/ngx-layout/extended';
+} from '@ngbracket/ngx-layout/core';
+import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
 import {
   customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('show directive', () => {
   let fixture: ComponentFixture<any>;

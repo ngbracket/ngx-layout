@@ -20,10 +20,10 @@ import {
   LayoutConfigOptions,
   LAYOUT_CONFIG,
   SERVER_TOKEN,
-} from '@ngbrackets/ngx-layout/core';
-import { ExtendedModule } from '@ngbrackets/ngx-layout/extended';
-import { FlexModule } from '@ngbrackets/ngx-layout/flex';
-import { GridModule } from '@ngbrackets/ngx-layout/grid';
+} from '@ngbracket/ngx-layout/core';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
+import { GridModule } from '@ngbracket/ngx-layout/grid';
 
 /**
  * FlexLayoutModule -- the main import for all utilities in the Angular Layout library

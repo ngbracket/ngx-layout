@@ -8,7 +8,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
   SERVER_TOKEN,
   StyleBuilder,
@@ -16,15 +16,15 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
-import { FlexModule, LayoutStyleBuilder } from '@ngbrackets/ngx-layout/flex';
+} from '@ngbracket/ngx-layout/core';
+import { FlexModule, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
   customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('layout directive', () => {
   let fixture: ComponentFixture<any>;

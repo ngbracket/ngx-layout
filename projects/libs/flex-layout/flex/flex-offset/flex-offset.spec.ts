@@ -9,24 +9,21 @@ import { DIR_DOCUMENT } from '@angular/cdk/bidi';
 import { CommonModule, isPlatformServer } from '@angular/common';
 import { Component, Injectable, PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
   SERVER_TOKEN,
   StyleBuilder,
   StyleUtils,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
-import {
-  FlexModule,
-  FlexOffsetStyleBuilder,
-} from '@ngbrackets/ngx-layout/flex';
+} from '@ngbracket/ngx-layout/core';
+import { FlexModule, FlexOffsetStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
   customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('flex-offset directive', () => {
   let fixture: ComponentFixture<any>;

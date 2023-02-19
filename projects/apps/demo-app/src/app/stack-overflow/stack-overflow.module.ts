@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 import { ComplexColumnOrderingComponent } from './complex-column-ordering/complex-column-ordering.component';
 import { GridAreaRowSpanComponent } from './grid-area-row-span/grid-area-row-span.component';

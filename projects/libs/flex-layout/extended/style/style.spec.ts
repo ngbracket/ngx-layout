@@ -14,14 +14,14 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
-import { DefaultLayoutDirective } from '@ngbrackets/ngx-layout/flex';
+} from '@ngbracket/ngx-layout/core';
+import { DefaultLayoutDirective } from '@ngbracket/ngx-layout/flex';
 
 import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 import { DefaultStyleDirective } from './style';
 
 describe('style directive', () => {

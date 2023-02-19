@@ -13,14 +13,14 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
-import { extendObject } from '@ngbrackets/ngx-layout/_private-utils';
+import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { Platform } from '@angular/cdk/platform';
 import { GridModule } from '../module';

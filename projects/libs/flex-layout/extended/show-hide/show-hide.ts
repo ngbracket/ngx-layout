@@ -25,7 +25,7 @@ import {
   SERVER_TOKEN,
   StyleBuilder,
   StyleUtils,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 import { takeUntil } from 'rxjs/operators';
 
 export interface ShowHideParent {

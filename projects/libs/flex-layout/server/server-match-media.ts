@@ -13,7 +13,7 @@ import {
   LayoutConfigOptions,
   LAYOUT_CONFIG,
   ɵMatchMedia as MatchMedia,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
 /**
  * Special server-only class to simulate a MediaQueryList and
