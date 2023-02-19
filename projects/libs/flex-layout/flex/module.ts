@@ -7,7 +7,7 @@
  */
 import { BidiModule } from '@angular/cdk/bidi';
 import { NgModule } from '@angular/core';
-import { CoreModule } from '@ngbrackets/ngx-layout/core';
+import { CoreModule } from '@ngbracket/ngx-layout/core';
 
 import { DefaultFlexAlignDirective } from './flex-align/flex-align';
 import { FlexFillDirective } from './flex-fill/flex-fill';

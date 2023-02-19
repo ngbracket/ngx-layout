@@ -47,7 +47,7 @@ import { sortDescendingPriority } from '../utils/sort';
  *
  *  // RxJS
  *  import { filter } from 'rxjs/operators';
- *  import { MediaObserver } from '@ngbrackets/ngx-layout';
+ *  import { MediaObserver } from '@ngbracket/ngx-layout';
  *
  *  @Component({ ... })
  *  export class AppComponent {

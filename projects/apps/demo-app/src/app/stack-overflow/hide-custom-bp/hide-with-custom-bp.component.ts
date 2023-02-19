@@ -1,5 +1,5 @@
 import { Component, Directive } from '@angular/core';
-import { BREAKPOINT, ShowHideDirective } from '@ngbrackets/ngx-layout';
+import { BREAKPOINT, ShowHideDirective } from '@ngbracket/ngx-layout';
 
 const YBA_BREAKPOINT = {
   alias: 'yba',

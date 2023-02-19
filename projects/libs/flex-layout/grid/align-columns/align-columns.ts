@@ -13,7 +13,7 @@ import {
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
 const DEFAULT_MAIN = 'start';
 const DEFAULT_CROSS = 'stretch';
@@ -148,7 +148,7 @@ function buildCss(align: string, inline: boolean): StyleDefinition {
       css['align-items'] = 'stretch';
       break;
     default: // 'stretch'
-    // default cross axis
+      // default cross axis
       css['align-items'] = DEFAULT_CROSS;
       break;
   }

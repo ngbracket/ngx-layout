@@ -14,7 +14,7 @@ import {
   TestBed,
   waitForAsync,
 } from '@angular/core/testing';
-import { FlexLayoutModule } from '@ngbrackets/ngx-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
   SERVER_TOKEN,
   StyleBuilder,
@@ -22,8 +22,8 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
-import { FlexModule, LayoutGapStyleBuilder } from '@ngbrackets/ngx-layout/flex';
+} from '@ngbracket/ngx-layout/core';
+import { FlexModule, LayoutGapStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
   customMatchers,
   expect,
@@ -31,7 +31,7 @@ import {
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('layout-gap directive', () => {
   let fixture: ComponentFixture<any>;

@@ -7,7 +7,7 @@ imported separately to take advantage of tree shaking.
 
 ```typescript
 import {NgModule} from '@angular/core';
-import {FlexModule} from '@ngbrackets/ngx-layout/flex';
+import {FlexModule} from '@ngbracket/ngx-layout/flex';
 
 @NgModule(({
   imports: [

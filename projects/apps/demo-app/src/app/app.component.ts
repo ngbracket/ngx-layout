@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { VERSION } from '@ngbrackets/ngx-layout';
+import { VERSION } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'demo-root',

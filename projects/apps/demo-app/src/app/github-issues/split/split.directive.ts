@@ -8,7 +8,7 @@ import {
   OnDestroy,
   QueryList,
 } from '@angular/core';
-import { FlexDirective } from '@ngbrackets/ngx-layout';
+import { FlexDirective } from '@ngbracket/ngx-layout';
 import { Subscription } from 'rxjs';
 import { SplitAreaDirective } from './split-area.directive';
 import { SplitHandleDirective } from './split-handle.directive';

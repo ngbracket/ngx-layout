@@ -6,7 +6,7 @@ can be imported separately to take advantage of tree shaking.
 
 ```typescript
 import {NgModule} from '@angular/core';
-import {ExtendedModule} from '@ngbrackets/ngx-layout/extended';
+import {ExtendedModule} from '@ngbracket/ngx-layout/extended';
 
 @NgModule(({
   imports: [

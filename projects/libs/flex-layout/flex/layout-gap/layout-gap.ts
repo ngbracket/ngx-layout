@@ -25,8 +25,8 @@ import {
   StyleDefinition,
   StyleUtils,
   ɵmultiply as multiply,
-} from '@ngbrackets/ngx-layout/core';
-import { LAYOUT_VALUES } from '@ngbrackets/ngx-layout/_private-utils';
+} from '@ngbracket/ngx-layout/core';
+import { LAYOUT_VALUES } from '@ngbracket/ngx-layout/_private-utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

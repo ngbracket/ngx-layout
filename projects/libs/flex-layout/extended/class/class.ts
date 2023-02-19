@@ -21,7 +21,7 @@ import {
   BaseDirective2,
   MediaMarshaller,
   StyleUtils,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
 @Directive()
 export class ClassDirective extends BaseDirective2 implements DoCheck {

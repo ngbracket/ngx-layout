@@ -8,7 +8,7 @@
 import { DebugElement, Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { extendObject } from '@ngbrackets/ngx-layout/_private-utils';
+import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 
 export type ComponentClazzFn = () => Type<any>;
 

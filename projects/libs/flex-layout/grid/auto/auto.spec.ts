@@ -15,13 +15,13 @@ import {
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbrackets/ngx-layout/core';
-import { GridModule } from '@ngbrackets/ngx-layout/grid';
+} from '@ngbracket/ngx-layout/core';
+import { GridModule } from '@ngbracket/ngx-layout/grid';
 import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('grid auto parent directive', () => {
   let fixture: ComponentFixture<any>;

@@ -3,11 +3,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@ngbrackets/ngx-layout": [
+      "@ngbracket/ngx-layout": [
         "dist/releases/ngx-layout/ngx-layout",
         "dist/releases/ngx-layout"
       ],
-      "@ngbrackets/ngx-layout/*": [
+      "@ngbracket/ngx-layout/*": [
         "dist/releases/ngx-layout/ngx-layout-*",
         "dist/releases/ngx-layout/*"
       ]

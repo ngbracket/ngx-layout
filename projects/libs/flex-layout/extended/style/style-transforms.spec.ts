@@ -8,7 +8,7 @@
 import {
   customMatchers,
   expect,
-} from '@ngbrackets/ngx-layout/_private-utils/testing';
+} from '@ngbracket/ngx-layout/_private-utils/testing';
 import {
   buildMapFromList,
   buildMapFromSet,

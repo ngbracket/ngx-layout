@@ -19,7 +19,7 @@ import { BreakPoint } from './break-point';
  *  Use this token when build a custom provider (see below).
  */
 export const BREAKPOINTS = new InjectionToken<BreakPoint[]>(
-  'Token (@ngbrackets/ngx-layout) Breakpoints',
+  'Token (@ngbracket/ngx-layout) Breakpoints',
   {
     providedIn: 'root',
     factory: () => {

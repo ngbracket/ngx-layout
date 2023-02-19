@@ -12,7 +12,7 @@ import {
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
 const DEFAULT_VALUE = 'auto';
 

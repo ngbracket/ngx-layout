@@ -23,13 +23,13 @@ import {
   StyleDefinition,
   StyleUtils,
   validateBasis,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 import { takeUntil } from 'rxjs/operators';
 
 import {
   extendObject,
   isFlowHorizontal,
-} from '@ngbrackets/ngx-layout/_private-utils';
+} from '@ngbracket/ngx-layout/_private-utils';
 
 interface FlexBuilderParent {
   direction: string;

@@ -10,11 +10,11 @@ const _global = <any>(typeof window === 'undefined' ? global : window);
 
 import { _dom as _ } from './dom-tools';
 
-import { StyleUtils } from '@ngbrackets/ngx-layout/core';
+import { StyleUtils } from '@ngbracket/ngx-layout/core';
 import {
   applyCssPrefixes,
   extendObject,
-} from '@ngbrackets/ngx-layout/_private-utils';
+} from '@ngbracket/ngx-layout/_private-utils';
 
 export const expect: (actual: any) => NgMatchers = <any>_global.expect;
 

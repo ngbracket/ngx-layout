@@ -20,9 +20,9 @@ import {
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
-} from '@ngbrackets/ngx-layout/core';
+} from '@ngbracket/ngx-layout/core';
 
-import { buildLayoutCSS } from '@ngbrackets/ngx-layout/_private-utils';
+import { buildLayoutCSS } from '@ngbracket/ngx-layout/_private-utils';
 
 export interface LayoutStyleDisplay {
   readonly display: string;
