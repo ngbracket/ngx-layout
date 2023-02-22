@@ -1,4 +1,4 @@
-# Angular Flex Layout Coding Standards
+# Coding Standards
 
 
 ## Code style
