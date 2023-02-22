@@ -1,6 +1,6 @@
-# Contributing to Angular Flex Layout
+# Contributing to ngbracket/ngx-layout
 
-We would love for you to contribute to Angular Flex Layout and help make it ever better!
+We would love for you to contribute to ngbracket/ngx-layout and help make it ever better!
 As a contributor, here are the guidelines we would like you to follow:
 
  - [Code of Conduct](#coc)
@@ -13,11 +13,13 @@ As a contributor, here are the guidelines we would like you to follow:
  - [Signing the CLA](#cla)
 
 ## <a name="coc"></a> Code of Conduct
-Help us keep Angular open and inclusive. Please read and follow our [Code of Conduct][coc].
+Help us be open and inclusive. Please read and follow our [Code of Conduct][coc].
 
 ## <a name="question"></a> Got a Question or Problem?
 
 Please do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on [StackOverflow](https://stackoverflow.com/questions/tagged/angular-flex-layout) where the questions should be tagged with tag `angular-flex-layout`.
+
+We will look to update Stackover Flow with a new tag (keeping the original questions, but adding a reference to ngbracket/ngx-layout.
 
 StackOverflow is a much better place to ask questions since:
 
@@ -236,9 +238,9 @@ changes to be accepted, the CLA must be signed. It's a quick process, we promise
 [coc]: https://github.com/angular/code-of-conduct/blob/main/CODE_OF_CONDUCT.md
 [commit-message-format]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/preview
 [corporate-cla]: http://code.google.com/legal/corporate-cla-v1.0.html
-[github]: https://github.com/angular/flex-layout
+[github]: https://github.com/ngbracket/ngx-layout
 [gitter]: https://gitter.im/angular/flex-layout
 [individual-cla]: http://code.google.com/legal/individual-cla-v1.0.html
 [js-style-guide]: https://google.github.io/styleguide/jsguide.html
-[stackblitz]: https://stackblitz.com/edit/flex-layout-seed
+[stackblitz]: https://stackblitz.com/edit/ngx-layout-seed
 [stackoverflow]: http://stackoverflow.com/
