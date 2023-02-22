@@ -1,4 +1,4 @@
-# Code reviews for Angular Flex Layout
+# Code reviews
 
 * Before any coding begins on new, large, or breaking work, a design discussion should take place.
 * All code changes require a review and approval.
@@ -8,7 +8,7 @@
  
 ## Workflow
 1. The code author sends a PR for review. This request should include:
-  * A mention of the intended reviewer(s) (e.g., `@ThomasBurleson`)
+  * A mention of the intended reviewer(s) (e.g., `@DuncanFaulkner`)
   * A high-level description of the change being made.
   * Links to any relevant issues.
   * Screenshots (for visual changes or new additions)
