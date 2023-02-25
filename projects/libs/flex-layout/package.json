@@ -37,7 +37,7 @@
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "type": "module",
-  "description": "Angular Flex-Layout =======",
+  "description": "ngbracket/ngx-layout =======",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

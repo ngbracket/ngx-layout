@@ -1,4 +1,4 @@
-The [**fxFlexOrder** directive][Order] should be used on elements within a sorted **fxLayout** container and identifies 
+The [**fxFlexOrder** directive][order] should be used on elements within a sorted **fxLayout** container and identifies
 the positional ordering of the element
 
 ```html
@@ -10,14 +10,13 @@ the positional ordering of the element
 </div>
 ```
 
-
 ### fxFlexOrder Options
 
 **fxFlexOrder** takes a single integer as argument, and populates its host element with the following inline CSS styling
 
-| Value | Equivalent CSS | 
-| ----- | -------------- |
-|  `(default)` | `order: 0`     |
-|  `<int>`     | `order: <int>` |
+| Value       | Equivalent CSS |
+| ----------- | -------------- |
+| `(default)` | `order: 0`     |
+| `<int>`     | `order: <int>` |
 
-[Order]: https://github.com/angular/flex-layout/blob/master/src/lib/flex/flex-order/flex-order.ts#41
+[order]: https://github.com/ngbracket/ngx-layout/blob/main/src/lib/flex/flex-order/flex-order.ts#41

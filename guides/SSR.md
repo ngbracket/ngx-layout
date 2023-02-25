@@ -1,8 +1,8 @@
-# Using Flex Layout with Server-Side Rendering (SSR)
+# Using ngx-layout with Server-Side Rendering (SSR)
 
 ### Introduction
 
-In the browser, Flex Layout works by utilizing the global `Window` object's 
+In the browser, ngx-layout works by utilizing the global `Window` object's
 `MatchMedia` interface. When a breakpoint is activated/deactivated, the service
 informs the Flex directives, which inject CSS styles inline as necessary.
 
@@ -24,11 +24,11 @@ the limitations to be aware of when using this utility.
 #### Option 1: Generate static CSS on the server
 
 1. Import the `FlexLayoutServerModule` into the server bundle for your app,
-generally called `app.server.module.ts`:
+   generally called `app.server.module.ts`:
 
 ```typescript
 import {NgModule} from '@angular/core';
-import {FlexLayoutServerModule} from '@angular/flex-layout/server';
+import {FlexLayoutServerModule} from '@ngbracket/ngx-layout/server';
 
 @NgModule(({
   imports: [
@@ -40,18 +40,16 @@ export class AppServerModule {}
 ```
 
 2. Make sure that your import of `FlexLayoutServerModule` comes **after** `FlexLayoutModule` or any
-modules that import `FlexLayoutModule`. This requirement may be lifted in a future release
+   modules that import `FlexLayoutModule`. This requirement may be lifted in a future release
 
 3. That's it! Your app should now be configured to use the server-side
-implementations of the Flex Layout utilities. 
-
+   implementations of the Flex Layout utilities.
 
 #### Option 2: Only generate inline styles (legacy option)
 
 1. Simply don't import the `FlexLayoutServerModule`. You'll receive a warning
-on bootstrap, but this won't prevent you from using the library, and the
-warning won't be logged on the client side
-
+   on bootstrap, but this won't prevent you from using the library, and the
+   warning won't be logged on the client side
 
 #### Option 3: Generate no Flex Layout stylings on the server
 
@@ -59,32 +57,32 @@ warning won't be logged on the client side
 2. DO import the `SERVER_TOKEN` and provide it in your app as follows:
 
 ```typescript
-import {SERVER_TOKEN} from '@angular/flex-layout';
+import {SERVER_TOKEN} from '@ngbracket/ngx-layout';
 
 {provide: SERVER_TOKEN, useValue: true}
 ```
 
-3. This will tell Flex Layout to not generate server stylings. Please note that
-if you provide this token *and* the `FlexLayoutServerModule`, stylings **will**
-still be rendered
+3. This will tell ngx-layout to not generate server stylings. Please note that
+   if you provide this token _and_ the `FlexLayoutServerModule`, stylings **will**
+   still be rendered
 
 ### Limitations
 
 One of the deficiencies of SSR is the lack of a fully-capable DOM rendering
-engine. As such, some functionality of the Flex Layout library is imparied.
+engine. As such, some functionality of the ngx-layout library is imparied.
 For instance, some Flex directives search for parent nodes with flex stylings
 applied to avoid overwriting styles. However, if those styles are defined in
 a style block, the external component styles, or another stylesheet, Flex Layout
 won't be able to find those styles on the server.
 
-The workaround for this is to **inline all Flex-related styles** as necessary. 
+The workaround for this is to **inline all Flex-related styles** as necessary.
 For instance, if in an external stylesheet you have a class that applies
 `flex-direction` to an element, add that styling inline on the element the
 class is applied to. Chances are the impact of this will be minimal, and the
-stylings will be loaded correctly on bootstrap. However, it is an unfortunate 
+stylings will be loaded correctly on bootstrap. However, it is an unfortunate
 reality of SSR and the DOM implementation used on the server.
 
 ### References
 
-The design doc for this utility can be found 
+The design doc for this utility can be found
 [here](https://docs.google.com/document/d/1fg04ihw42dJJHGd6fugdiBe39iJot8aErhiE7CjwfmQ)

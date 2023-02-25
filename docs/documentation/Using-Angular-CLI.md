@@ -1,16 +1,15 @@
-Using Flex-Layout with the the Angular CLI is easy.
+Using ngx-layout with the the Angular CLI is easy.
 
 ## Install the CLI
- 
- ```bash
+
+```bash
 # Global
 npm uninstall -g @angular/cli
 npm install -g @angular/cli
 ```
 
- 
 ## Create a new project
- 
+
 ```bash
  ng new my-project
 ```
@@ -24,27 +23,28 @@ npm install
 
 The new command creates a project with a build system for your Angular app.
 
-## Install Flex-Layout
+## Install ngx-layout
 
 ```bash
-npm install @angular/flex-layout --save
+npm install @ngbracket/ngx-layout --save
 ```
 
->  This installs the most recent npm release of Flex-Layout.
+> This installs the most recent npm release of Flex-Layout.
 
 ```bash
-npm install angular/flex-layout-builds --save
+npm install ngbracket/ngx-layout-builds --save
 ```
 
 > This installs a nightly build which incorporates the latest updates not yet published to NPM
 
-## Import the Angular Flex-Layout NgModule
-  
+## Import the ngx-layout NgModule
+
 **src/app/app.module.ts**
+
 ```typescript
 import {NgModule} from '@angular/core';
-import {FlexLayoutModule} from '@angular/flex-layout';
-// other imports 
+import {FlexLayoutModule} from '@ngbracket/ngx-layout';
+// other imports
 @NgModule({
   imports: [FlexLayoutModule],
   ...
@@ -53,7 +53,8 @@ export class PizzaPartyAppModule {}
 ```
 
 ## Configuring SystemJS
-If your project is using SystemJS for module loading, you will need to add `@angular/flex-layout` 
+
+If your project is using SystemJS for module loading, you will need to add `@ngbracket/ngx-layout`
 to the SystemJS configuration:
 
 ```js
@@ -61,14 +62,14 @@ System.config({
   // existing configuration options
   map: {
     ...,
-    '@angular/flex-layout': 'npm:@angular/flex-layout-builds/bundles/flex-layout.umd.js'
+    '@ngbracket/ngx-layout': 'npm:@ngbracket/ngx-layout-builds/bundles/flex-layout.umd.js'
   }
 });
 ```
 
-## Sample Angular Flex-Layout projects
+## Sample ngx-layout projects
 
 Developers are encouraged to review the live demos and source for the Flex-Layout Demos:
 
-* [Live Demos](https://tburleson-layouts-demos.firebaseapp.com/)
-* [Demo Source Code](https://github.com/angular/flex-layout/blob/master/src/apps/demo-app/)
+- [Live Demos](https://tburleson-layouts-demos.firebaseapp.com/)
+- [Demo Source Code](https://github.com/ngbracket/ngx-layout/blob/main/src/apps/demo-app/)
