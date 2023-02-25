@@ -1,4 +1,4 @@
-The [**fxFlexOffset** directive][Offset] should be used on on elements within a **fxLayout** container and 
+The [**fxFlexOffset** directive][offset] should be used on on elements within a **fxLayout** container and
 dictates the margin between elements (RTL support coming soon!)
 
 ```html
@@ -10,20 +10,18 @@ dictates the margin between elements (RTL support coming soon!)
 </div>
 ```
 
-
 ### fxFlexOffset Options
 
-**fxFlexOffset** takes a single parameter as argument, and populates its host element with the following inline CSS 
+**fxFlexOffset** takes a single parameter as argument, and populates its host element with the following inline CSS
 styling
 
 **Note**: `fxFlexOffset` supports the following suffixes: `% (default) | px | vw | vh`
 
-| Value | Equivalent CSS | 
-| ----- | -------------- |
-| `(default)` | `margin-left: 0%` |
-| `<int><suffix>`     | `margin-left: <int><suffix>` |
+| Value           | Equivalent CSS               |
+| --------------- | ---------------------------- |
+| `(default)`     | `margin-left: 0%`            |
+| `<int><suffix>` | `margin-left: <int><suffix>` |
 
 > RTL support is coming soon, which will automatically apply `margin-right` instead of `margin-left`
 
-
-[Offset]: https://github.com/angular/flex-layout/blob/master/src/lib/flex/flex-offset/flex-offset.ts#L41
+[offset]: https://github.com/ngbracket/ngx-layout/blob/main/src/lib/flex/flex-offset/flex-offset.ts#L41

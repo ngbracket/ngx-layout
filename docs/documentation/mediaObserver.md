@@ -1,5 +1,5 @@
 The injectable **MediaObserver** service will provide mediaQuery **activations** notifications for all
-[registered BreakPoints](https://github.com/angular/flex-layout/wiki/Custom-Breakpoints).
+[registered BreakPoints](https://github.com/ngbracket/ngx-layout/wiki/Custom-Breakpoints).
 
 This service is essentially an Observable that exposes both features to subscribe to mediaQuery
 changes and a validator method `.isActive()` to test if a mediaQuery (or alias) is
@@ -34,7 +34,7 @@ Use the `.asObservable()` accessor method to access the **Observable** and use *
 
 ```typescript
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
@@ -88,7 +88,7 @@ import { Component } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { filter } from 'rxjs/operators/filter';
 
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'responsive-component',
@@ -121,7 +121,7 @@ For example:
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 
 const PRINT_MOBILE = 'print and (max-width: 600px)';
 
