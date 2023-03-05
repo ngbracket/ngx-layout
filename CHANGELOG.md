@@ -1,3 +1,18 @@
+## [15.1.3](https://github.com/ngbracket/ngx-layout/compare/14.0.0-beta.41...15.1.3) (2023-03-05)
+
+
+### Bug Fixes
+
+* **contributions:** update contribution document ([dd530c9](https://github.com/ngbracket/ngx-layout/commit/dd530c9b4016371bd309eb6ef452ebaff302fc6c))
+* **publish:** update repo name ([7a06737](https://github.com/ngbracket/ngx-layout/commit/7a067370c6bf61214b4ba3603a62d097e8a99f45))
+
+
+### Features
+
+* **project:** change name to ngx-layout ([6a2985c](https://github.com/ngbracket/ngx-layout/commit/6a2985cca9334d9ba6d3d7dbd2127b4413f9d3ff))
+
+
+
 # [15.0.0-beta.42](https://github.com/angular/flex-layout/compare/14.0.0-beta.41...15.0.0-beta.42) (2022-11-18)
 
 This release unpins the dependency on Angular and CDK to allow flexibility with future releases.
