@@ -29,7 +29,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "private": true,
-  "requiredAngularVersion": ">=15.0.2",
+  "requiredAngularVersion": ">=16.0.0-next.4",
   "dependencies": {
     "@angular/animations": "~16.0.0-next.4",
     "@angular/common": "~16.0.0-next.4",
