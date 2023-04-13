@@ -1,3 +1,687 @@
+# 16.0.0-beta.2 (2023-04-13)
+
+
+### Bug Fixes
+
+* **api, class, style:** remove deprecated selectors ([#419](https://github.com/ngbracket/ngx-layout/issues/419)) ([e461d17](https://github.com/ngbracket/ngx-layout/commit/e461d17471f713deaf4663e0a0438822f8f0ad86)), closes [#410](https://github.com/ngbracket/ngx-layout/issues/410) [#408](https://github.com/ngbracket/ngx-layout/issues/408) [#273](https://github.com/ngbracket/ngx-layout/issues/273) [#418](https://github.com/ngbracket/ngx-layout/issues/418)
+* **api, class:** fix valid ngClass usages ([db2fd59](https://github.com/ngbracket/ngx-layout/commit/db2fd59319c524e99dec4a1e04523f116b2b16ce)), closes [#428](https://github.com/ngbracket/ngx-layout/issues/428)
+* **api, class:** selector [class] should be removed from ClassDirective. ([#394](https://github.com/ngbracket/ngx-layout/issues/394)) ([7a48c25](https://github.com/ngbracket/ngx-layout/commit/7a48c25f30cf47d7fb9c5037d5f28e9d53060cdf)), closes [#393](https://github.com/ngbracket/ngx-layout/issues/393)
+* **api, layout-align:** fix ‘allowStretching()’  usages ([7bc51c4](https://github.com/ngbracket/ngx-layout/commit/7bc51c48d76309d4be97d4a6703d4b0f179862de))
+* **api:** add overlap fallbacks from gt-<xx> ([2b4e1c4](https://github.com/ngbracket/ngx-layout/commit/2b4e1c404c8ce228e99938dadf29166a9f8ffca4))
+* **api:** defer getComputedStyle() calls until ngOnInit phase ([#374](https://github.com/ngbracket/ngx-layout/issues/374)) ([3611003](https://github.com/ngbracket/ngx-layout/commit/361100380b22689d960471f3d86cee090d9a45dc)), closes [#310](https://github.com/ngbracket/ngx-layout/issues/310)
+* **api:** flex api should support number assignments ([c3e8dd0](https://github.com/ngbracket/ngx-layout/commit/c3e8dd0342547b38ed969fcf5e05cd379be5924e))
+* **api:** flex-align should support baseline and auto. ([f6f15a3](https://github.com/ngbracket/ngx-layout/commit/f6f15a34c35723bb7dd1d38475abbe7414e5b08c))
+* **api:** hide & show did not handle ‘false’ values correctly ([dae913b](https://github.com/ngbracket/ngx-layout/commit/dae913b767a31c82b9750ca4ca211ece9a353590)), closes [#58](https://github.com/ngbracket/ngx-layout/issues/58)
+* **api:** layout with layoutAlign was not responding to reverse directions ([dde6e87](https://github.com/ngbracket/ngx-layout/commit/dde6e87dd5e0764e118b0093d2b79c51b2c35e9d)), closes [#82](https://github.com/ngbracket/ngx-layout/issues/82)
+* **api:** remove circular dependencies ([7bff29e](https://github.com/ngbracket/ngx-layout/commit/7bff29e121ec9d147ef26607f338117ea554fa37)), closes [#88](https://github.com/ngbracket/ngx-layout/issues/88)
+* **api:** remove use of static ngModule.forRoot() ([#167](https://github.com/ngbracket/ngx-layout/issues/167)) ([86010bf](https://github.com/ngbracket/ngx-layout/commit/86010bf68a62d559e14566e8ab3d46acd4c1b481))
+* **api:** resolve RTE with fx-fill and ngOnDestory() ([44faa6f](https://github.com/ngbracket/ngx-layout/commit/44faa6f8449e00be0d758fe26745931e582002c2))
+* **api:** restore orig display mode and more... ([#143](https://github.com/ngbracket/ngx-layout/issues/143)) ([d269d73](https://github.com/ngbracket/ngx-layout/commit/d269d73e78a54445b44b7b4c3b226b841181bf08)), closes [#140](https://github.com/ngbracket/ngx-layout/issues/140) [#141](https://github.com/ngbracket/ngx-layout/issues/141)
+* **api:** support query children on API directives ([#290](https://github.com/ngbracket/ngx-layout/issues/290)) ([f5558de](https://github.com/ngbracket/ngx-layout/commit/f5558de18c7b6701954bdc7acce1f770cd09c8e8))
+* **api:** use 'fl-' namespace prefix instead of 'ng-' ([aa4da6b](https://github.com/ngbracket/ngx-layout/commit/aa4da6b1450f6844a1f7acc97306223cdc7c03bf))
+* **api:** use only Renderer2 instances ([#391](https://github.com/ngbracket/ngx-layout/issues/391)) ([816d85a](https://github.com/ngbracket/ngx-layout/commit/816d85a66dd323fa1092d41f0f8567b7787c22c1)), closes [#386](https://github.com/ngbracket/ngx-layout/issues/386)
+* apply correct RTL margins ([7699957](https://github.com/ngbracket/ngx-layout/commit/769995795fa471bc5991d29f3cf1d65648da3a1e))
+* **auto-prefixer:** resolve perf impacts as reported by LightHouse ([#283](https://github.com/ngbracket/ngx-layout/issues/283)) ([bc0c900](https://github.com/ngbracket/ngx-layout/commit/bc0c90070a49dfccaa63300bba6c8fdf1a1d3879)), closes [#282](https://github.com/ngbracket/ngx-layout/issues/282)
+* **breakpoints:** add global provider for BreakPointRegistry ([7cedf6f](https://github.com/ngbracket/ngx-layout/commit/7cedf6fcc014b48677c5cc77cb48a2d6d9061900))
+* **breakpoints:** resolve 1px hole between lg -> xl breakpoints ([#159](https://github.com/ngbracket/ngx-layout/issues/159)) ([d78527c](https://github.com/ngbracket/ngx-layout/commit/d78527c677b9ae8e0f1bfb1135476c5785ec6ff5)), closes [#149](https://github.com/ngbracket/ngx-layout/issues/149)
+* **breakpoints:** support print media ([#367](https://github.com/ngbracket/ngx-layout/issues/367)) ([37a0b85](https://github.com/ngbracket/ngx-layout/commit/37a0b85c82c5b0b65614db050703f3ec8bdeb6b1)), closes [#361](https://github.com/ngbracket/ngx-layout/issues/361)
+* **breakpoints:** use correct orientation mediaquery ([666aa0a](https://github.com/ngbracket/ngx-layout/commit/666aa0a1dca2b16518fbcda5a2f4c74d5efe7e46)), closes [#763](https://github.com/ngbracket/ngx-layout/issues/763)
+* **build:** add observable-media-service to exported barrel ([#139](https://github.com/ngbracket/ngx-layout/issues/139)) ([b7dffaa](https://github.com/ngbracket/ngx-layout/commit/b7dffaa2a069906d481918de614326f6cf5aec17))
+* **build:** angular versions are not properly inserted ([e3b7fde](https://github.com/ngbracket/ngx-layout/commit/e3b7fde08e602752dd03628c1862e53b547b201f)), closes [#470](https://github.com/ngbracket/ngx-layout/issues/470)
+* **build:** fix 'npm run deploy' to build bundled demo-app ([5c4f0ce](https://github.com/ngbracket/ngx-layout/commit/5c4f0ce08c096218fd9afdd185d1694c467570fe))
+* **build:** remove use of Angular private API ([#195](https://github.com/ngbracket/ngx-layout/issues/195)) ([d95cb09](https://github.com/ngbracket/ngx-layout/commit/d95cb095042e9e2c45d0a63e50b07622474a74c3)), closes [#193](https://github.com/ngbracket/ngx-layout/issues/193)
+* **builds:** build processes should release per Angular guidelines ([0f18521](https://github.com/ngbracket/ngx-layout/commit/0f185213d56834ad432547c079529c179d73aacf))
+* **build:** set tsconfig ‘noEmit:false’ to enable typescript output. ([bc1d45a](https://github.com/ngbracket/ngx-layout/commit/bc1d45a7644e8d30881673c2ecaa5cc0937c9bb0))
+* **builds:** update typescript config options ([ae3a358](https://github.com/ngbracket/ngx-layout/commit/ae3a358ec9619025ee51d93b1fb1018a38c8bb7c))
+* **build:** support Angular 4 and AOT ([#255](https://github.com/ngbracket/ngx-layout/issues/255)) ([fed87fa](https://github.com/ngbracket/ngx-layout/commit/fed87fa53850a873d2ed2b398eb3a5260a6b3e98)), closes [#254](https://github.com/ngbracket/ngx-layout/issues/254) [#236](https://github.com/ngbracket/ngx-layout/issues/236) [#227](https://github.com/ngbracket/ngx-layout/issues/227)
+* **build:** sync typescript version to [@angular](https://github.com/angular) settings ([4f17c88](https://github.com/ngbracket/ngx-layout/commit/4f17c888b5d7805df12439deb7183f0cd5aee594))
+* **build:** update to TypeScript 2.9 and RxJS 6.3  ([aa8fb8c](https://github.com/ngbracket/ngx-layout/commit/aa8fb8cb4c8ae754f468fba11aac1751aea01095)), closes [#828](https://github.com/ngbracket/ngx-layout/issues/828) [#827](https://github.com/ngbracket/ngx-layout/issues/827)
+* **changelog:** fix invalid parentheses and semver checks ([96aaa78](https://github.com/ngbracket/ngx-layout/commit/96aaa784f4a4f26e80357415f6c9b09615b29716))
+* **CI:** reenable saucelabs testing ([#924](https://github.com/ngbracket/ngx-layout/issues/924)) ([146cb16](https://github.com/ngbracket/ngx-layout/commit/146cb16805e849afc5dca39036874287fb52c08e))
+* **closure-compiler:** use Number to cast ([#289](https://github.com/ngbracket/ngx-layout/issues/289)) ([052a4a9](https://github.com/ngbracket/ngx-layout/commit/052a4a959d668c4d5096a1bfe13af0a54d40cdef))
+* **config:** fix versions of TS and Angular. ([3f2aa21](https://github.com/ngbracket/ngx-layout/commit/3f2aa2167efc741f8eab27d8198b17f54a22c21d))
+* **contributions:** update contribution document ([dd530c9](https://github.com/ngbracket/ngx-layout/commit/dd530c9b4016371bd309eb6ef452ebaff302fc6c))
+* **core:** add generic type to ModuleWithProviders to support v10 ([#1260](https://github.com/ngbracket/ngx-layout/issues/1260)) ([f47da38](https://github.com/ngbracket/ngx-layout/commit/f47da38981f9c284c6b73250223540747a78a571))
+* **core:** align breakpoints with those used in CDK ([#1006](https://github.com/ngbracket/ngx-layout/issues/1006)) ([6f43cf6](https://github.com/ngbracket/ngx-layout/commit/6f43cf6c34b39cb36dae91c036077ef6ac1b064d)), closes [#685](https://github.com/ngbracket/ngx-layout/issues/685) [#1001](https://github.com/ngbracket/ngx-layout/issues/1001)
+* **core:** allow for breakpoints with periods in them ([#921](https://github.com/ngbracket/ngx-layout/issues/921)) ([84e811b](https://github.com/ngbracket/ngx-layout/commit/84e811bee97f2016018db22d427670404e4e7690)), closes [#776](https://github.com/ngbracket/ngx-layout/issues/776)
+* **core:** avoid duplicate mediaQuery activations ([#937](https://github.com/ngbracket/ngx-layout/issues/937)) ([23592ee](https://github.com/ngbracket/ngx-layout/commit/23592ee5a55163779c7d1d59820894b7ec495208))
+* **core:** avoid race condition between registration and activation ([#923](https://github.com/ngbracket/ngx-layout/issues/923)) ([232fc6e](https://github.com/ngbracket/ngx-layout/commit/232fc6ed4af5b007497f666f7eeb2f7059d5d04f))
+* **core:** clear recent styles after responsive deactivation ([#927](https://github.com/ngbracket/ngx-layout/issues/927)) ([d322ea7](https://github.com/ngbracket/ngx-layout/commit/d322ea75c00e2f2e9d9f467faccb4517a3868142)), closes [#697](https://github.com/ngbracket/ngx-layout/issues/697) [#296](https://github.com/ngbracket/ngx-layout/issues/296)
+* **core:** correctly handle lack of fallback values ([#949](https://github.com/ngbracket/ngx-layout/issues/949)) ([01c4148](https://github.com/ngbracket/ngx-layout/commit/01c4148cdea4942bea88a571d94940f1b0ce56bb)), closes [#947](https://github.com/ngbracket/ngx-layout/issues/947)
+* **core:** correctly set and restore breakpoints during print ([#1379](https://github.com/ngbracket/ngx-layout/issues/1379)) ([edca0d4](https://github.com/ngbracket/ngx-layout/commit/edca0d4661b960d948380d60bf2fdc96d885d149))
+* **core:** fail-safe check of nullable value ([#1031](https://github.com/ngbracket/ngx-layout/issues/1031)) ([5112a47](https://github.com/ngbracket/ngx-layout/commit/5112a474fe867042830973b2b534efa9a227b5ca)), closes [#958](https://github.com/ngbracket/ngx-layout/issues/958)
+* **core:** ignore null values in breakpoint fallback mechanism ([#1247](https://github.com/ngbracket/ngx-layout/issues/1247)) ([5085909](https://github.com/ngbracket/ngx-layout/commit/5085909e3ec9317dd662cc1bed8225ae4bd397df))
+* **core:** import distinctUntilChanged from rxjs/operators ([#1390](https://github.com/ngbracket/ngx-layout/issues/1390)) ([e8e172b](https://github.com/ngbracket/ngx-layout/commit/e8e172bf2bb9e0a45152a7ccbcbaf02b4c603b03))
+* **core:** improve use of breakpoint priorities ([#955](https://github.com/ngbracket/ngx-layout/issues/955)) ([d57b293](https://github.com/ngbracket/ngx-layout/commit/d57b29392525dc43df5b4c9e2e8a14d997ee544d)), closes [#648](https://github.com/ngbracket/ngx-layout/issues/648) [#426](https://github.com/ngbracket/ngx-layout/issues/426)
+* **core:** only emit changed events from MediaObserver ([#1377](https://github.com/ngbracket/ngx-layout/issues/1377)) ([51b6ebf](https://github.com/ngbracket/ngx-layout/commit/51b6ebf230ad8c4490288d50b75dd38b4d589347))
+* **core:** only trigger style updates when value changes ([#1246](https://github.com/ngbracket/ngx-layout/issues/1246)) ([a96ef13](https://github.com/ngbracket/ngx-layout/commit/a96ef137169f93b832178965ad315e4b7ea42b79))
+* **core:** properly collect deactivated breakpoints before print ([#1380](https://github.com/ngbracket/ngx-layout/issues/1380)) ([d73a3e4](https://github.com/ngbracket/ngx-layout/commit/d73a3e4acbd8f42136b46acf5ca3ab1878ba92e5))
+* **core:** register all breakpoints at startup ([#916](https://github.com/ngbracket/ngx-layout/issues/916)) ([8f1a085](https://github.com/ngbracket/ngx-layout/commit/8f1a0853621feda92b3d36ade6e8d52d7058df46)), closes [#915](https://github.com/ngbracket/ngx-layout/issues/915)
+* **core:** reset current value when directive is cleared ([#1376](https://github.com/ngbracket/ngx-layout/issues/1376)) ([c4f9fe2](https://github.com/ngbracket/ngx-layout/commit/c4f9fe2a19b28787a4100baa7aa1fe6fd8ee1998))
+* **core:** set fractional breakpoints to .98 instead of .9 ([#1308](https://github.com/ngbracket/ngx-layout/issues/1308)) ([c1c545c](https://github.com/ngbracket/ngx-layout/commit/c1c545cdd03d0fe3d4cfcabb5cb4914fcd684e22))
+* **core:** update breakpoint ranges to remove subpixel gaps ([#1004](https://github.com/ngbracket/ngx-layout/issues/1004)) ([1154fae](https://github.com/ngbracket/ngx-layout/commit/1154faea3e8cb50d24805b9aaab9e56e71bcd6f6)), closes [#1001](https://github.com/ngbracket/ngx-layout/issues/1001)
+* **core:** update breakpoints ranges to avoid overlapping ([#1075](https://github.com/ngbracket/ngx-layout/issues/1075)) ([31cb34e](https://github.com/ngbracket/ngx-layout/commit/31cb34eade4e98d0ee52567bd4e01d3fd06e1ddb)), closes [angular/flex-layout#1052](https://github.com/angular/flex-layout/issues/1052) [angular/flex-layout#1001](https://github.com/angular/flex-layout/issues/1001)
+* **core:** update layout-bp mixin to use right overlapping maps ([#1020](https://github.com/ngbracket/ngx-layout/issues/1020)) ([af15a61](https://github.com/ngbracket/ngx-layout/commit/af15a61814bd8b437905fc7737de2f9a8f743de9))
+* **css:** add prefixed styles before standard ones ([99eabfb](https://github.com/ngbracket/ngx-layout/commit/99eabfb950b14594e92884cf4fe218216743cc07)), closes [#467](https://github.com/ngbracket/ngx-layout/issues/467) [#468](https://github.com/ngbracket/ngx-layout/issues/468)
+* **css:** add prefixed values before standard ones ([0c1bf4a](https://github.com/ngbracket/ngx-layout/commit/0c1bf4a10d50e46d027e1ce72bfb8e14c56d5d9d))
+* **demo-app:** add polyfills for IE11 to demo-app ([a425035](https://github.com/ngbracket/ngx-layout/commit/a42503525873d78ed5209d810c0f0be67d1351c1))
+* **demo-app:** fix sizing for layout-gap demo ([0562fcc](https://github.com/ngbracket/ngx-layout/commit/0562fccd2ddfa6a7d4c3d4b9dc34a7c109297289))
+* **demo, media-query-status:** should use async pipe with ObservableMedia ([0e7d2e0](https://github.com/ngbracket/ngx-layout/commit/0e7d2e03102d94dbce9f6b3f31a978b11f5dd661)), closes [#415](https://github.com/ngbracket/ngx-layout/issues/415)
+* **demo:** correct padding css ([5288ac6](https://github.com/ngbracket/ngx-layout/commit/5288ac69c718069695375c99df072003f585b555)), closes [#57](https://github.com/ngbracket/ngx-layout/issues/57)
+* **demo:** correctly use template instead of templateUrl ([#100](https://github.com/ngbracket/ngx-layout/issues/100)) ([c436824](https://github.com/ngbracket/ngx-layout/commit/c4368241895ec8ea7348fc3d3cf17631461c644c))
+* **demo:** fix bindings for fxLayout with AoT ([#101](https://github.com/ngbracket/ngx-layout/issues/101)) ([51ea29e](https://github.com/ngbracket/ngx-layout/commit/51ea29ed6256e569680e45ea46183a103ac124c6))
+* **demo:** import MdCheckboxModule ([5f198a3](https://github.com/ngbracket/ngx-layout/commit/5f198a39cec649289daf37f94bdac2d034e22b62))
+* **demo:** improve use of ObservableMedia service ([#214](https://github.com/ngbracket/ngx-layout/issues/214)) ([64b122a](https://github.com/ngbracket/ngx-layout/commit/64b122a7b706beb6f88eb9194fc2d12c89508b53))
+* **docs:** make splitter demo work in IE ([#982](https://github.com/ngbracket/ngx-layout/issues/982)) ([0ba4bac](https://github.com/ngbracket/ngx-layout/commit/0ba4bac61aa353d9441b9f8246939a3152e49f92))
+* **docs:** restore images within links ([d9edab8](https://github.com/ngbracket/ngx-layout/commit/d9edab85c20ba842259d4c07417dd918528dc988))
+* **flex-offset:** correct type when using with 'strictNullChecks' ([#929](https://github.com/ngbracket/ngx-layout/issues/929)) ([21b6d29](https://github.com/ngbracket/ngx-layout/commit/21b6d296b0fa2c4d0d7416d2686dfdb906173108))
+* **flex:** add min-width to elements with flex basis using px values ([3fe5ea3](https://github.com/ngbracket/ngx-layout/commit/3fe5ea3b16d1add8f7cf60636085db3237b966d1)), closes [#68](https://github.com/ngbracket/ngx-layout/issues/68)
+* **flexbox:** add default display property to getDisplayStyle() ([#301](https://github.com/ngbracket/ngx-layout/issues/301)) ([771f2c9](https://github.com/ngbracket/ngx-layout/commit/771f2c92ad75990a8c9c98d8de8278a61a16a400))
+* **flexbox:** resolve 'renderer.setStyle()' error ([#298](https://github.com/ngbracket/ngx-layout/issues/298)) ([3e1fcbd](https://github.com/ngbracket/ngx-layout/commit/3e1fcbde5610d9188e94eadb20cbba857237144a)), closes [#270](https://github.com/ngbracket/ngx-layout/issues/270)
+* **flexbox:** scan flex-direction in css stylesheet ([#365](https://github.com/ngbracket/ngx-layout/issues/365)) ([635c4f5](https://github.com/ngbracket/ngx-layout/commit/635c4f587037cb8a86af8f07d9e76e0f077e833c)), closes [#272](https://github.com/ngbracket/ngx-layout/issues/272) [#364](https://github.com/ngbracket/ngx-layout/issues/364)
+* **flex:** fix use of values with 'auto' ([#122](https://github.com/ngbracket/ngx-layout/issues/122)) ([04d24d5](https://github.com/ngbracket/ngx-layout/commit/04d24d57300b4e31ee466435bda333a048687163)), closes [#120](https://github.com/ngbracket/ngx-layout/issues/120)
+* **flex:** fxFlex without value will use minute, non-zero basis. ([1447369](https://github.com/ngbracket/ngx-layout/commit/1447369b56ba152567314db0b8ac5d10af8b061c)), closes [/github.com/PolymerElements/iron-flex-layout/blob/master/iron-flex-layout-classes.html#L293](https://github.com//github.com/PolymerElements/iron-flex-layout/blob/master/iron-flex-layout-classes.html/issues/L293)
+* **FlexLayoutModule:** fix AOT compile issue with exported lambdas ([d34a42b](https://github.com/ngbracket/ngx-layout/commit/d34a42bf47434a092e3f213b14b337c02cb8450f)), closes [angular/angular#10789](https://github.com/angular/angular/issues/10789) [#38](https://github.com/ngbracket/ngx-layout/issues/38)
+* **FlexLayoutModule:** remove console.warn() conflicts with ngc+AOT ([#179](https://github.com/ngbracket/ngx-layout/issues/179)) ([0797c85](https://github.com/ngbracket/ngx-layout/commit/0797c859aa023a86c2a95927f43e06a48a0bf127)), closes [/github.com/angular/angular#14410](https://github.com//github.com/angular/angular/issues/14410) [#174](https://github.com/ngbracket/ngx-layout/issues/174) [#175](https://github.com/ngbracket/ngx-layout/issues/175) [#176](https://github.com/ngbracket/ngx-layout/issues/176) [#178](https://github.com/ngbracket/ngx-layout/issues/178)
+* **flexOrder:** change default order value to 0 ([f124771](https://github.com/ngbracket/ngx-layout/commit/f124771d14059e6e7e35b5637fc86d7250d3522b))
+* **flex:** propogate direction when subscribing to layout changes. ([f0730a9](https://github.com/ngbracket/ngx-layout/commit/f0730a9ccdfea6304a2a792331da173dcb6ceec2))
+* **flex:** wait for parent element until template is initialized ([#1237](https://github.com/ngbracket/ngx-layout/issues/1237)) ([93a426a](https://github.com/ngbracket/ngx-layout/commit/93a426a32756483645c57756b730febc0ae4d478))
+* **fxFlex:** apply correct flex-basis stylings ([#629](https://github.com/ngbracket/ngx-layout/issues/629)) ([1e96cea](https://github.com/ngbracket/ngx-layout/commit/1e96ceabe74ea4b75931f12a10152dd7ccd9ca08)), closes [#277](https://github.com/ngbracket/ngx-layout/issues/277) [#280](https://github.com/ngbracket/ngx-layout/issues/280) [#323](https://github.com/ngbracket/ngx-layout/issues/323) [#528](https://github.com/ngbracket/ngx-layout/issues/528) [#534](https://github.com/ngbracket/ngx-layout/issues/534)
+* **fxFlex:** do not eagerly listen to layout changes ([#771](https://github.com/ngbracket/ngx-layout/issues/771)) ([dc431d8](https://github.com/ngbracket/ngx-layout/commit/dc431d8d1ef80e047b513c9538c561c57900b7cf)), closes [#700](https://github.com/ngbracket/ngx-layout/issues/700) [#733](https://github.com/ngbracket/ngx-layout/issues/733)
+* **fxFlexFill, fxFlexAlign:** update selectors and wiki ([8f591c5](https://github.com/ngbracket/ngx-layout/commit/8f591c595765b134e0ff86327c495baa1a5f1821)), closes [#93](https://github.com/ngbracket/ngx-layout/issues/93)
+* **fxFlex:** fix non-wrapping behavior and default fxFlex value ([3cfafd1](https://github.com/ngbracket/ngx-layout/commit/3cfafd11fb74f67297050692543af7c72eee1cd4))
+* **fxFlex:** fix wrapping in older versions of Safari ([3809608](https://github.com/ngbracket/ngx-layout/commit/380960801672e07a6fae9d399dfebf68b9909c62)), closes [/github.com/philipwalton/flexbugs#flexbug-11](https://github.com//github.com/philipwalton/flexbugs/issues/flexbug-11)
+* **fxFlex:** fxFlex=auto with overlapping breakpoints activated ([#183](https://github.com/ngbracket/ngx-layout/issues/183)) ([cb614ed](https://github.com/ngbracket/ngx-layout/commit/cb614ed877ab13f49e07c34cfb44b3210fc36f38)), closes [#135](https://github.com/ngbracket/ngx-layout/issues/135)
+* **fxFlex:** improve support for 'auto' and flex-basis variations ([#212](https://github.com/ngbracket/ngx-layout/issues/212)) ([c28dfc7](https://github.com/ngbracket/ngx-layout/commit/c28dfc71f7d3474f333d53b8f7c41d0d9d8717c0))
+* **fxFlex:** make sure not to set width/height when flex is default ([b152998](https://github.com/ngbracket/ngx-layout/commit/b152998b9b29b2da3d3c2337ebaaf8bf5580ca3c))
+* **fxFlexOffset:** use parent flow direction for margin property ([#369](https://github.com/ngbracket/ngx-layout/issues/369)) ([f0473e9](https://github.com/ngbracket/ngx-layout/commit/f0473e99bf8459f229804c9e526aa9d1d6ac4748)), closes [#328](https://github.com/ngbracket/ngx-layout/issues/328)
+* **fxFlex:** prevent setting min/max-size when grow/shrink is zero ([#160](https://github.com/ngbracket/ngx-layout/issues/160)) ([942939e](https://github.com/ngbracket/ngx-layout/commit/942939e3f172314787a9aad06fefbb72708e7fcd)), closes [#153](https://github.com/ngbracket/ngx-layout/issues/153)
+* **fxFlex:** restore correct styles after fxLayoutAlign is applied ([#1038](https://github.com/ngbracket/ngx-layout/issues/1038)) ([b245229](https://github.com/ngbracket/ngx-layout/commit/b24522945b8bdf66dd587de118a8d0ead8be8d19))
+* **fxFlex:** use correct type for basis validation in reflow case ([#1095](https://github.com/ngbracket/ngx-layout/issues/1095)) ([d02377a](https://github.com/ngbracket/ngx-layout/commit/d02377a4e88aba566c044249086d5ef95df0fd59)), closes [#1089](https://github.com/ngbracket/ngx-layout/issues/1089)
+* **fxHide,fxShow:** fix standalone breakpoint selectors ([#121](https://github.com/ngbracket/ngx-layout/issues/121)) ([0ca7d07](https://github.com/ngbracket/ngx-layout/commit/0ca7d074ec0b529aa5eea91863707790eb12e2db)), closes [#62](https://github.com/ngbracket/ngx-layout/issues/62) [#59](https://github.com/ngbracket/ngx-layout/issues/59) [#105](https://github.com/ngbracket/ngx-layout/issues/105)
+* **fxLayout:** add support for inline-flex ([b201845](https://github.com/ngbracket/ngx-layout/commit/b2018451b9d2316917b97842d5ed496f404f8f7f)), closes [#525](https://github.com/ngbracket/ngx-layout/issues/525)
+* **fxLayoutAlign:** add space-between and space-around options ([#845](https://github.com/ngbracket/ngx-layout/issues/845)) ([5e3ec0e](https://github.com/ngbracket/ngx-layout/commit/5e3ec0e5b69a529f3dc74cb8f016c17822960560)), closes [#841](https://github.com/ngbracket/ngx-layout/issues/841)
+* **fxLayoutAlign:** do not apply cross-axis stretch styles when not needed ([#877](https://github.com/ngbracket/ngx-layout/issues/877)) ([3cd5bc1](https://github.com/ngbracket/ngx-layout/commit/3cd5bc13015c3ea16c0bcaa3657aa322efd16343)), closes [#876](https://github.com/ngbracket/ngx-layout/issues/876)
+* **fxLayoutAlign:** support flex-start and flex-end options ([#239](https://github.com/ngbracket/ngx-layout/issues/239)) ([eb5cb9f](https://github.com/ngbracket/ngx-layout/commit/eb5cb9f7da4c08ed955461732ca31c357af4dcd1)), closes [#232](https://github.com/ngbracket/ngx-layout/issues/232)
+* **fxLayoutGap:** account for responsive fxHide on children elements ([#931](https://github.com/ngbracket/ngx-layout/issues/931)) ([7759b6c](https://github.com/ngbracket/ngx-layout/commit/7759b6cb16fc53ac4c5b245154cb580ada7f4fe6)), closes [#606](https://github.com/ngbracket/ngx-layout/issues/606)
+* **fxLayoutGap:** add gaps to dynamic content ([#124](https://github.com/ngbracket/ngx-layout/issues/124)) ([6482c12](https://github.com/ngbracket/ngx-layout/commit/6482c1268c71ae2f634029c5a8099e58e380ce01)), closes [#95](https://github.com/ngbracket/ngx-layout/issues/95)
+* **fxLayoutGap:** add proper gaps for reverse dir ([3a8041d](https://github.com/ngbracket/ngx-layout/commit/3a8041d040def0cb61530bc65e95802ed8c595c2))
+* **fxLayoutGap:** correctly handle lack of fallback value ([#1037](https://github.com/ngbracket/ngx-layout/issues/1037)) ([ce9b989](https://github.com/ngbracket/ngx-layout/commit/ce9b9892c32e1b8465f842d107c4aaa475eacd43)), closes [#1011](https://github.com/ngbracket/ngx-layout/issues/1011)
+* **fxLayoutGap:** fxLayoutWrap to apply gap logic for reverse directions ([#148](https://github.com/ngbracket/ngx-layout/issues/148)) ([9f7137e](https://github.com/ngbracket/ngx-layout/commit/9f7137ed3caa3771f6fb9a22f8e9af7f719dc913)), closes [#108](https://github.com/ngbracket/ngx-layout/issues/108)
+* **fxLayoutGap:** mutation observer should run outside the ngZone ([#370](https://github.com/ngbracket/ngx-layout/issues/370)) ([9fb0877](https://github.com/ngbracket/ngx-layout/commit/9fb08772619e90b26b38ec9797bac08fa7410752)), closes [#329](https://github.com/ngbracket/ngx-layout/issues/329)
+* **fxLayoutGap:** not working with dynamic fxHide ([#983](https://github.com/ngbracket/ngx-layout/issues/983)) ([0eccec4](https://github.com/ngbracket/ngx-layout/commit/0eccec464364a4cff49b77cbec93fdd11e6b28d3))
+* **fxLayoutGap:** respond correctly to layout changes ([#919](https://github.com/ngbracket/ngx-layout/issues/919)) ([676ddf7](https://github.com/ngbracket/ngx-layout/commit/676ddf7455c076708c68ef2a0a4ab60acc062fc6))
+* **fxLayoutGap:** skip hidden element nodes ([#145](https://github.com/ngbracket/ngx-layout/issues/145)) ([6c45b35](https://github.com/ngbracket/ngx-layout/commit/6c45b35b75918d5992ed73ba5eb34a9f6ea9fdd3)), closes [#136](https://github.com/ngbracket/ngx-layout/issues/136)
+* **fxLayoutGap:** update gap logic when num children reduces to 1. ([43b34fa](https://github.com/ngbracket/ngx-layout/commit/43b34fa91a8ec6eb58fb6de515bfd839ceeec8c0)), closes [#433](https://github.com/ngbracket/ngx-layout/issues/433) [#444](https://github.com/ngbracket/ngx-layout/issues/444)
+* **fxShow, fxHide:** support fxHide+fxShow usages on same element ([#190](https://github.com/ngbracket/ngx-layout/issues/190)) ([eee20b2](https://github.com/ngbracket/ngx-layout/commit/eee20b2f1bfb4df95045bf46e03caa4a83eaad2b))
+* **fxStyle:** enable raw input caching ([#173](https://github.com/ngbracket/ngx-layout/issues/173)) ([d5b283c](https://github.com/ngbracket/ngx-layout/commit/d5b283c6f58c20eb1b5002bf883401157da78e2f))
+* **img-src:** correctly initialize fallback value ([#986](https://github.com/ngbracket/ngx-layout/issues/986)) ([c1fc857](https://github.com/ngbracket/ngx-layout/commit/c1fc857c71df5dd7fefa3e5a48873334e1417d07))
+* import specific symbols from rxjs ([#99](https://github.com/ngbracket/ngx-layout/issues/99)) ([88d1b0f](https://github.com/ngbracket/ngx-layout/commit/88d1b0fd353afbf72c5b89e2ee034379facde302))
+* **layout-align:** add prefixers for align-content ([f27acaf](https://github.com/ngbracket/ngx-layout/commit/f27acaf80306e1d3aaa184f1e575ce95b5729249))
+* **layout-align:** respect inline-flex on sibling fxLayout ([#1036](https://github.com/ngbracket/ngx-layout/issues/1036)) ([c23621c](https://github.com/ngbracket/ngx-layout/commit/c23621cccc473d136c5a7803b3b3a8fb3c3c93bf)), closes [#1009](https://github.com/ngbracket/ngx-layout/issues/1009)
+* **layout-gap:** apply correct gaps based on flex order ([de72903](https://github.com/ngbracket/ngx-layout/commit/de7290324774e800d7a16b0ca213af312a376c84)), closes [#608](https://github.com/ngbracket/ngx-layout/issues/608)
+* **lib, media-query:** support angular/universal ([#353](https://github.com/ngbracket/ngx-layout/issues/353)) ([0f13b14](https://github.com/ngbracket/ngx-layout/commit/0f13b14fdb608fd823bca670cc33c1c2cc5af2ab)), closes [#346](https://github.com/ngbracket/ngx-layout/issues/346) [#187](https://github.com/ngbracket/ngx-layout/issues/187) [#354](https://github.com/ngbracket/ngx-layout/issues/354) [#346](https://github.com/ngbracket/ngx-layout/issues/346)
+* **lib:** add missing export for add-alias.ts functions ([62efbb8](https://github.com/ngbracket/ngx-layout/commit/62efbb8a0e4456076344d8b858b7ec07a4cf2d66))
+* **lib:** fixes for TS 2.0.10 and Angular AOT ([2a1590a](https://github.com/ngbracket/ngx-layout/commit/2a1590a30063a58734951f67f3f6c4bbe71090d7))
+* **lib:** read correct styles during SSR and add test for layout-wrap ([71e2dae](https://github.com/ngbracket/ngx-layout/commit/71e2dae2aabff11201172988a3252a31fb4a6afd))
+* **lib:** remove all uses of [@internal](https://github.com/internal) ([ca64760](https://github.com/ngbracket/ngx-layout/commit/ca647603c77f72d8c4e2542a5a1e65cc3d2c9cb8))
+* **lib:** resolve RegExp Issue in older versions of Safari ([#643](https://github.com/ngbracket/ngx-layout/issues/643)) ([85e8aa2](https://github.com/ngbracket/ngx-layout/commit/85e8aa247a66809aac0067af0ea116b07024a933))
+* **match-media:** unregister media query event listeners on destroy ([#1236](https://github.com/ngbracket/ngx-layout/issues/1236)) ([2ca7848](https://github.com/ngbracket/ngx-layout/commit/2ca78488aac8cd34b2839333f6058030f7ab075d))
+* **matchMediaObservable:** expose observable for rxjs operators ([#133](https://github.com/ngbracket/ngx-layout/issues/133)) ([6e46561](https://github.com/ngbracket/ngx-layout/commit/6e46561e278f7ae3051a6a9cb142c18add149af2)), closes [#125](https://github.com/ngbracket/ngx-layout/issues/125)
+* **MatchMediaObservable:** register breakpoints so observable announces properly ([3555e14](https://github.com/ngbracket/ngx-layout/commit/3555e14c7788ef1d8209e38e853071098386fa74)), closes [#65](https://github.com/ngbracket/ngx-layout/issues/65) [#64](https://github.com/ngbracket/ngx-layout/issues/64)
+* **media-marshaller:** do not propagate undefined value ([#1245](https://github.com/ngbracket/ngx-layout/issues/1245)) ([b05d51a](https://github.com/ngbracket/ngx-layout/commit/b05d51aef4128a652ef8a91e57ae7e7e12b0a918))
+* **media-monitor:** support observing of all mediaQueries ([d5626db](https://github.com/ngbracket/ngx-layout/commit/d5626dbc48327c19a45d28e56c951693eb2e1e71))
+* **media-observer:** return correct value for isActive on init ([#1244](https://github.com/ngbracket/ngx-layout/issues/1244)) ([bf069af](https://github.com/ngbracket/ngx-layout/commit/bf069af1beb458026a7b4512c01cc61768c08b90))
+* **media-query:** fix calculation of activated values ([ebc2fce](https://github.com/ngbracket/ngx-layout/commit/ebc2fce82a8b8271d0a00214877bf3f43453b45f))
+* **mediaQueries:** enable zone.run() ([c901596](https://github.com/ngbracket/ngx-layout/commit/c9015965fce6f66c1ed9602538b500fe9db4c11a)), closes [#26](https://github.com/ngbracket/ngx-layout/issues/26)
+* **mediaQuery:** fix NRE ([5b4972b](https://github.com/ngbracket/ngx-layout/commit/5b4972bb39fef2cd045210c18d95bf65a8d18a08))
+* **mock-match-media:** ensure overlapping breakpoints are activated ([#1265](https://github.com/ngbracket/ngx-layout/issues/1265)) ([af92cb0](https://github.com/ngbracket/ngx-layout/commit/af92cb053eef8fdc908f5e357289e76d5ef0c8c4))
+* **module:** do not require breakpoints in withConfig ([#853](https://github.com/ngbracket/ngx-layout/issues/853)) ([76c110e](https://github.com/ngbracket/ngx-layout/commit/76c110ea85e16f941f1c215a103edbd6bb0c32a0)), closes [#846](https://github.com/ngbracket/ngx-layout/issues/846)
+* **module:** make withConfig AOT compatible ([85e3145](https://github.com/ngbracket/ngx-layout/commit/85e314515db84030eb6c02dfb29b922c1a506f0e))
+* **ngClass,ngStyle:** support proper API usages and ChangeDetectionStrategy.OnPush strategies ([#228](https://github.com/ngbracket/ngx-layout/issues/228)) ([5db01e7](https://github.com/ngbracket/ngx-layout/commit/5db01e7cfea4c5b2a9e48bd706ac4c8261abd0b4)), closes [#206](https://github.com/ngbracket/ngx-layout/issues/206) [#215](https://github.com/ngbracket/ngx-layout/issues/215)
+* **ngClass:** add ngClass selector support ([#223](https://github.com/ngbracket/ngx-layout/issues/223)) ([980d412](https://github.com/ngbracket/ngx-layout/commit/980d4127bfd6bdbd0fe14523e72f1cc4c8429f1b)), closes [#206](https://github.com/ngbracket/ngx-layout/issues/206)
+* **ngClass:** should properly remove classes without fallback ([#995](https://github.com/ngbracket/ngx-layout/issues/995)) ([47248b1](https://github.com/ngbracket/ngx-layout/commit/47248b1e4041b38cc478527a754a3ef71fd311fc)), closes [#992](https://github.com/ngbracket/ngx-layout/issues/992)
+* **ngStyle, ngClass:** StyleDirective security fixes &  merge activated styles ([#198](https://github.com/ngbracket/ngx-layout/issues/198)) ([eb22fe5](https://github.com/ngbracket/ngx-layout/commit/eb22fe53316ae2cb84408ee88b82a23320f16dc5)), closes [#197](https://github.com/ngbracket/ngx-layout/issues/197)
+* **ngStyle:** do not truncate URLs ([#938](https://github.com/ngbracket/ngx-layout/issues/938)) ([1548727](https://github.com/ngbracket/ngx-layout/commit/154872791416db67518e34ff8c57468d8c371e38)), closes [#935](https://github.com/ngbracket/ngx-layout/issues/935)
+* **ngStyle:** should work with preexisting styles ([#939](https://github.com/ngbracket/ngx-layout/issues/939)) ([4be5cef](https://github.com/ngbracket/ngx-layout/commit/4be5cef18a46d543d451d5a49fb9809da8e37f73))
+* **observableMedia:** consistently emit initial value ([f19bff2](https://github.com/ngbracket/ngx-layout/commit/f19bff27fd3b819c200a22e27077d3b2a27efa08))
+* **ObservableMedia:** properly announce 'xs' activation at startup ([#396](https://github.com/ngbracket/ngx-layout/issues/396)) ([66f3717](https://github.com/ngbracket/ngx-layout/commit/66f37174f7b301b7ec89d99c963407bca04d69e8)), closes [#388](https://github.com/ngbracket/ngx-layout/issues/388)
+* **ObservableMedia:** provide consistent reporting of active breakpoint ([#186](https://github.com/ngbracket/ngx-layout/issues/186)) ([aa0dab4](https://github.com/ngbracket/ngx-layout/commit/aa0dab404027b165acc56571a8578db55378c0e4)), closes [#185](https://github.com/ngbracket/ngx-layout/issues/185)
+* **ObservableMedia:** startup should propagate lastReplay value properly ([#313](https://github.com/ngbracket/ngx-layout/issues/313)) ([00ac57a](https://github.com/ngbracket/ngx-layout/commit/00ac57a33c88463cf3e2064cc604dddc897426f0)), closes [#245](https://github.com/ngbracket/ngx-layout/issues/245) [#275](https://github.com/ngbracket/ngx-layout/issues/275) [#303](https://github.com/ngbracket/ngx-layout/issues/303)
+* **orientation:** use tablet landscape screen type ([#1220](https://github.com/ngbracket/ngx-layout/issues/1220)) ([dd772d7](https://github.com/ngbracket/ngx-layout/commit/dd772d7833f8eb1b6238786fbde8fcfca0f5acc3))
+* **prefixer:** improve flex css prefixes ([#276](https://github.com/ngbracket/ngx-layout/issues/276)) ([beb5ed0](https://github.com/ngbracket/ngx-layout/commit/beb5ed0179c7fc1b6af26b75ac7c61fcac28a312))
+* **print-hook:** unregister event listeners on destroy ([#1235](https://github.com/ngbracket/ngx-layout/issues/1235)) ([6d0cd00](https://github.com/ngbracket/ngx-layout/commit/6d0cd001e05e34d6d185dd442178420eb2c9aef6))
+* **private:** remove fallback from flex-direction auto-prefixer ([#1408](https://github.com/ngbracket/ngx-layout/issues/1408)) ([ee5d93a](https://github.com/ngbracket/ngx-layout/commit/ee5d93a328537eb00391a4245af80a9fc3f6a31e)), closes [#1394](https://github.com/ngbracket/ngx-layout/issues/1394)
+* **publish:** update repo name ([7a06737](https://github.com/ngbracket/ngx-layout/commit/7a067370c6bf61214b4ba3603a62d097e8a99f45))
+* **release, build:** fix gulp build:release, build:components, and npm run start ([1f981cc](https://github.com/ngbracket/ngx-layout/commit/1f981cc0acbe3ed4b07f323ebb27cdf862798c46))
+* **release:** fix checkout CHANGELOG.md from origin/master ([e17cdc1](https://github.com/ngbracket/ngx-layout/commit/e17cdc11ace5d58dfa9ca6874a6cb715a19840a6))
+* **release:** fix moduleName to resolve SystemJS errors ([e29f10b](https://github.com/ngbracket/ngx-layout/commit/e29f10bae9508f37fbb483e1a5dc6aea97d21884))
+* **release:** Fix release script by removing ',' of the last item in the list ([0486e85](https://github.com/ngbracket/ngx-layout/commit/0486e85393fecf11e6db31fd685881136fa7e92a))
+* **release:** updates to commit to version changes: ([c2463a5](https://github.com/ngbracket/ngx-layout/commit/c2463a559393e424ca3db8b9fdfb0799b7fccf87))
+* **sass:** update stylesheet with correct keys ([#987](https://github.com/ngbracket/ngx-layout/issues/987)) ([002eb66](https://github.com/ngbracket/ngx-layout/commit/002eb663ae494c8de2313b82301d69c776621e0e))
+* **server:** breakpoints can be used by MediaObserver ([#1087](https://github.com/ngbracket/ngx-layout/issues/1087)) ([6bbfe23](https://github.com/ngbracket/ngx-layout/commit/6bbfe23edb1df363d795baa11168b933f546a23a))
+* **server:** disable breakpoints correctly and avoid style overuse ([#1378](https://github.com/ngbracket/ngx-layout/issues/1378)) ([5874498](https://github.com/ngbracket/ngx-layout/commit/58744986b011cf3dab17e33b6198f06484545e94))
+* **show-hide:** account for fxLayout on same element ([#948](https://github.com/ngbracket/ngx-layout/issues/948)) ([c922ae3](https://github.com/ngbracket/ngx-layout/commit/c922ae3cf5d9562bb8ee5808917a4e747d79b325)), closes [#945](https://github.com/ngbracket/ngx-layout/issues/945)
+* **show-hide:** account for multiple directives on the same element ([ad3e9c9](https://github.com/ngbracket/ngx-layout/commit/ad3e9c910c7ca6f4cccefaa283b3f28d1bdb314b))
+* **show-hide:** set explicit display fallback for SSR ([#1252](https://github.com/ngbracket/ngx-layout/issues/1252)) ([0c5811d](https://github.com/ngbracket/ngx-layout/commit/0c5811d71dde5e776068bd9afb5edf01333ff912))
+* **show-hide:** use initial value as fallback instead of parent ([#1243](https://github.com/ngbracket/ngx-layout/issues/1243)) ([bf2355b](https://github.com/ngbracket/ngx-layout/commit/bf2355bb0426828a8fc74927e7011aa5b0758349))
+* **show-hide:** work with Angular components and elements without fxLayout ([#881](https://github.com/ngbracket/ngx-layout/issues/881)) ([3a0ec5d](https://github.com/ngbracket/ngx-layout/commit/3a0ec5d86dd001958fdcb6bca08e02718f37b281)), closes [#848](https://github.com/ngbracket/ngx-layout/issues/848) [#724](https://github.com/ngbracket/ngx-layout/issues/724)
+* **ssr:** add browser check for MatchMedia ([9dd03c6](https://github.com/ngbracket/ngx-layout/commit/9dd03c686ac4fdb9ff19467d19a4eea582fe8258)), closes [#624](https://github.com/ngbracket/ngx-layout/issues/624)
+* **ssr:** check null _document.defaultView ([#1337](https://github.com/ngbracket/ngx-layout/issues/1337)) ([b43681c](https://github.com/ngbracket/ngx-layout/commit/b43681c74a9ba12532afb10bf23d8faf3f4d20d8))
+* **ssr:** fix lazy-loading functionality ([d4f2514](https://github.com/ngbracket/ngx-layout/commit/d4f2514ab180641ba01320e83326f37cdcac2fe9))
+* **ssr:** reset class counter to zero before each render ([#1153](https://github.com/ngbracket/ngx-layout/issues/1153)) ([d062708](https://github.com/ngbracket/ngx-layout/commit/d0627087a5a388385312d6cf3d005915c947397a))
+* **style:** add SSR capabilities ([#962](https://github.com/ngbracket/ngx-layout/issues/962)) ([f82bbc1](https://github.com/ngbracket/ngx-layout/commit/f82bbc1ce50e7cef388c5a9135daba736e4a7d96)), closes [#813](https://github.com/ngbracket/ngx-layout/issues/813)
+* **test:** enable CI travis testing ([3c8507a](https://github.com/ngbracket/ngx-layout/commit/3c8507a59b1bcd380fbcee02464a6db3025502c3))
+* **test:** fix test for fxFlex='' ([fcf851f](https://github.com/ngbracket/ngx-layout/commit/fcf851fd1ded6a97acbfcaee1a92402efb3e6578))
+* **tests:** enable local tests and CI testing ([8c48587](https://github.com/ngbracket/ngx-layout/commit/8c485873a203cd3f04616dcf2d5af84ef57b430a))
+* **tests:** remove ‘fdescribe’ limiter ([1f0daae](https://github.com/ngbracket/ngx-layout/commit/1f0daaed3a2c13550b26d90193e8d930306dcb39))
+* **tests:** remove unneeded async() wrappers in karma tests ([a77de3c](https://github.com/ngbracket/ngx-layout/commit/a77de3c0123031a6dbf09546542c6cb0584dd7ad))
+* **travis:** add missing karma.conf.js ([5f9174b](https://github.com/ngbracket/ngx-layout/commit/5f9174b8208d067c96fc82071a5cfeff36413c9e))
+* **travis:** fetch GPG key with url ([13c4d91](https://github.com/ngbracket/ngx-layout/commit/13c4d91fed5b7888a321b86634666a81a52a2ff5))
+* **travis:** fix errors with yaml ([b295045](https://github.com/ngbracket/ngx-layout/commit/b295045285b48a5a38e173b4ba6e68b0cfe61ffd))
+* **travis:** fix errors with yaml npm version ([0d2ce68](https://github.com/ngbracket/ngx-layout/commit/0d2ce685611080c4a6886f2035a39431e9c5aae7))
+* **universal:** remove browser check from style-utils ([8dcae02](https://github.com/ngbracket/ngx-layout/commit/8dcae026bbde92bae549b25d82535d790ed55c11)), closes [#466](https://github.com/ngbracket/ngx-layout/issues/466)
+* use correct xl breakpoint ([#809](https://github.com/ngbracket/ngx-layout/issues/809)) ([b64b1b3](https://github.com/ngbracket/ngx-layout/commit/b64b1b3bc51a0997a590fb4db377e2da1f60635f))
+
+
+### Features
+
+* **api:** add responsive API for img elements ([#382](https://github.com/ngbracket/ngx-layout/issues/382)) ([45cfd2e](https://github.com/ngbracket/ngx-layout/commit/45cfd2e90a9af66a584b858c6aecba2e8308599d)), closes [#366](https://github.com/ngbracket/ngx-layout/issues/366) [#376](https://github.com/ngbracket/ngx-layout/issues/376)
+* **api:** add responsive API for img elements ([#384](https://github.com/ngbracket/ngx-layout/issues/384)) ([354f54f](https://github.com/ngbracket/ngx-layout/commit/354f54f6c9266f424143bc562dca33f07b76176f)), closes [#366](https://github.com/ngbracket/ngx-layout/issues/366) [#81](https://github.com/ngbracket/ngx-layout/issues/81) [#376](https://github.com/ngbracket/ngx-layout/issues/376)
+* **api:** add responsive support for ngClass and ngStyle ([#170](https://github.com/ngbracket/ngx-layout/issues/170)) ([f57a63d](https://github.com/ngbracket/ngx-layout/commit/f57a63d5315a89cde3a21fbb2b2d8de0520ce15c))
+* **api:** support calc(...) expression in fx-flex ([18b69d9](https://github.com/ngbracket/ngx-layout/commit/18b69d9dc628befc4adb71583d69b10de6479aec))
+* **beta:** initial release of ngx-layout based on Angular 16 ([2a2b1d7](https://github.com/ngbracket/ngx-layout/commit/2a2b1d726f74258e238bbff84261833ecabfc271))
+* **breakpoints:** support custom breakpoints and enhanced selectors ([#204](https://github.com/ngbracket/ngx-layout/issues/204)) ([ecc6e51](https://github.com/ngbracket/ngx-layout/commit/ecc6e51d5e52c0757f8caec469229fffb01faf4b))
+* change tslib from direct dependency to peerDependency ([#1132](https://github.com/ngbracket/ngx-layout/issues/1132)) ([06268b8](https://github.com/ngbracket/ngx-layout/commit/06268b8a1ce1f83d51c937f56091538ef0196f45))
+* **core:** add ability to override style building ([#884](https://github.com/ngbracket/ngx-layout/issues/884)) ([9148e87](https://github.com/ngbracket/ngx-layout/commit/9148e8709771c26cb9ac4eda9732191ece1b25fa)), closes [#689](https://github.com/ngbracket/ngx-layout/issues/689)
+* **core:** add centralized media marshal service ([#900](https://github.com/ngbracket/ngx-layout/issues/900)) ([cd05cb4](https://github.com/ngbracket/ngx-layout/commit/cd05cb4a31f4807d1fbb749f163eb4ad769cf71b)), closes [#903](https://github.com/ngbracket/ngx-layout/issues/903) [#692](https://github.com/ngbracket/ngx-layout/issues/692)
+* **core:** add memoization to style generation ([#888](https://github.com/ngbracket/ngx-layout/issues/888)) ([4600672](https://github.com/ngbracket/ngx-layout/commit/46006724778bc4512594ffc20b6f80cb2c1e54f2))
+* **core:** add print support with mediaQuery override ([#954](https://github.com/ngbracket/ngx-layout/issues/954)) ([0c9e9cb](https://github.com/ngbracket/ngx-layout/commit/0c9e9cbdb176720042603aed4ebc9f988ff6852d)), closes [#603](https://github.com/ngbracket/ngx-layout/issues/603)
+* **core:** add static scss mixin ([#940](https://github.com/ngbracket/ngx-layout/issues/940)) ([ffd8331](https://github.com/ngbracket/ngx-layout/commit/ffd83318615550cdf3702c2edf8f10c8f5e49f30)), closes [#783](https://github.com/ngbracket/ngx-layout/issues/783)
+* **core:** add support for default unit for unitless values ([#1384](https://github.com/ngbracket/ngx-layout/issues/1384)) ([80b4e5a](https://github.com/ngbracket/ngx-layout/commit/80b4e5af9291c02e9092de46407f2f79fe7170b1))
+* **core:** add validateBasis to core export ([#706](https://github.com/ngbracket/ngx-layout/issues/706)) ([c603a86](https://github.com/ngbracket/ngx-layout/commit/c603a8674a5ef3668fd47fc71cd385690362c32c))
+* **core:** add value multiplication suffix feature ([#1383](https://github.com/ngbracket/ngx-layout/issues/1383)) ([4d36b74](https://github.com/ngbracket/ngx-layout/commit/4d36b74db8f4855b5210a2f329166e3037ff74a2))
+* **core:** implement MediaTrigger to allow manual breakpoint activations ([#997](https://github.com/ngbracket/ngx-layout/issues/997)) ([66e7463](https://github.com/ngbracket/ngx-layout/commit/66e74634430843f1735644575ea47084da605d53))
+* **core:** MediaObserver can report 1..n activations ([#994](https://github.com/ngbracket/ngx-layout/issues/994)) ([8307655](https://github.com/ngbracket/ngx-layout/commit/8307655f9d677f16d5a03aa139d71ccfb3a96cf2))
+* **core:** move MatchMedia to internal scope ([#998](https://github.com/ngbracket/ngx-layout/issues/998)) ([53a6ebb](https://github.com/ngbracket/ngx-layout/commit/53a6ebba30a68f0f3dcf2a8c3e458260ae049d5f))
+* **core:** remove deprecated MediaObserver::media$ ([#1375](https://github.com/ngbracket/ngx-layout/issues/1375)) ([14b8038](https://github.com/ngbracket/ngx-layout/commit/14b803892b26e68b0ee88eeb21963cd326f5eb3c))
+* **core:** support beforeprint and afterprint hooks ([#1080](https://github.com/ngbracket/ngx-layout/issues/1080)) ([8302998](https://github.com/ngbracket/ngx-layout/commit/8302998d88aa93c557c4fefd5ebab4b48cc90e2a)), closes [#603](https://github.com/ngbracket/ngx-layout/issues/603)
+* **demo-app:** add version number to header ([c984937](https://github.com/ngbracket/ngx-layout/commit/c9849377fa2a13f6017caa126ed8f0c82efc3299))
+* **demo-app:** use Angular CLI to build demo and universal apps ([eda12c3](https://github.com/ngbracket/ngx-layout/commit/eda12c382c9ea2cc959ec27252b90c6f052a1fba))
+* **demo-app:** use/register custom breakpoints ([0d4144c](https://github.com/ngbracket/ngx-layout/commit/0d4144c724ef9c433177d6e23fbc177d320d3aed))
+* **demo:** add demo to show fxHide with used with custom breakpoint ([#969](https://github.com/ngbracket/ngx-layout/issues/969)) ([f4eb901](https://github.com/ngbracket/ngx-layout/commit/f4eb90131a4067206663bacd26e4ccbb5dffe7d5)), closes [#961](https://github.com/ngbracket/ngx-layout/issues/961)
+* **demo:** use ace editor for syntax highlighting ([c6e9023](https://github.com/ngbracket/ngx-layout/commit/c6e902324e3810339827e5eb87e851a45f36a31d))
+* **docs:** add ability to submit PRs for docs ([39c78be](https://github.com/ngbracket/ngx-layout/commit/39c78bea5f840484e2486773f285fc5e88b8b5d7)), closes [#550](https://github.com/ngbracket/ngx-layout/issues/550) [#520](https://github.com/ngbracket/ngx-layout/issues/520)
+* **flex:** add support for rem units ([#901](https://github.com/ngbracket/ngx-layout/issues/901)) ([5990ed0](https://github.com/ngbracket/ngx-layout/commit/5990ed07386e14e09cd54b5027d09b8a717bfb59)), closes [#898](https://github.com/ngbracket/ngx-layout/issues/898)
+* **flexbox:** use protected access to allow API directives to be easily extended ([#163](https://github.com/ngbracket/ngx-layout/issues/163)) ([e6bc451](https://github.com/ngbracket/ngx-layout/commit/e6bc4517446d2c0a0de3e591855d66c18753160c))
+* **flex:** detect display precedence in fxLayout directive ([#1385](https://github.com/ngbracket/ngx-layout/issues/1385)) ([f8b1607](https://github.com/ngbracket/ngx-layout/commit/f8b1607643e035e0187948b14237a79092d84e2b))
+* **fxFlex:** compute immediate parent flex-direction ([#220](https://github.com/ngbracket/ngx-layout/issues/220)) ([ba0d85d](https://github.com/ngbracket/ngx-layout/commit/ba0d85dee967d99444c50be722125ff9c5a047bd))
+* **fxLayoutGap:** add gutter functionality to layout-gap ([84ca5c3](https://github.com/ngbracket/ngx-layout/commit/84ca5c3139875d451d6380c17d60cd72f8a4b7bf))
+* **grid:** add CSS Grid directives and demo ([#712](https://github.com/ngbracket/ngx-layout/issues/712)) ([b8c86be](https://github.com/ngbracket/ngx-layout/commit/b8c86be1d167f6e4842cf82f6e3358087dcd0038))
+* **layout-gap:** add x/y options for grid mode ([#1234](https://github.com/ngbracket/ngx-layout/issues/1234)) ([990586b](https://github.com/ngbracket/ngx-layout/commit/990586b103edf826001a757a1f827959b72d320e))
+* **layout:** add wrap options support to fxLayout ([#207](https://github.com/ngbracket/ngx-layout/issues/207)) ([2340a19](https://github.com/ngbracket/ngx-layout/commit/2340a1921bc25c960faa29de5c697ac776fda18e))
+* **lib:** add config options for flex basis and other tokens ([f01e551](https://github.com/ngbracket/ngx-layout/commit/f01e55178859ad6c6a4cb18e8ad3ec88c5b87b56))
+* **media-observer:** migrate ObservableMedia ([#892](https://github.com/ngbracket/ngx-layout/issues/892)) ([1205588](https://github.com/ngbracket/ngx-layout/commit/12055881bc41434f13446dd5ca194b0818bbc99a)), closes [#885](https://github.com/ngbracket/ngx-layout/issues/885)
+* **ObservableMedia:** use ObservableMedia class as provider token ([#158](https://github.com/ngbracket/ngx-layout/issues/158)) ([dad69fe](https://github.com/ngbracket/ngx-layout/commit/dad69feee8b3efbf43bde007994b9f4425ed4cea))
+* **project:** change name to ngx-layout ([6a2985c](https://github.com/ngbracket/ngx-layout/commit/6a2985cca9334d9ba6d3d7dbd2127b4413f9d3ff))
+* **server:** add ability to specify breakpoints for MediaObserver ([#999](https://github.com/ngbracket/ngx-layout/issues/999)) ([1c136bc](https://github.com/ngbracket/ngx-layout/commit/1c136bce3b05ef55dde016f6f55ff0b3c7ff424a)), closes [#991](https://github.com/ngbracket/ngx-layout/issues/991)
+* **ssr:** enhance support for Universal and SSR with stylesheets ([cf5266a](https://github.com/ngbracket/ngx-layout/commit/cf5266adc71cb377a54020d64a500d5f789450ed)), closes [#373](https://github.com/ngbracket/ngx-layout/issues/373) [#567](https://github.com/ngbracket/ngx-layout/issues/567)
+* **tokens:** add configuration for breakpoints and flex styles ([605f4d1](https://github.com/ngbracket/ngx-layout/commit/605f4d16758e7921393760d0e1d0047f0ec0f3fa))
+* upgrade to TypeScript v3.1 ([#860](https://github.com/ngbracket/ngx-layout/issues/860)) ([058ca74](https://github.com/ngbracket/ngx-layout/commit/058ca7485d0effa41f7a49e0e1a0f7ce393bbd5c))
+
+
+### Performance Improvements
+
+* remove duplicate function calls ([#773](https://github.com/ngbracket/ngx-layout/issues/773)) ([bc7f77f](https://github.com/ngbracket/ngx-layout/commit/bc7f77fadd96669bb1c3b1daaba503b26b7df0cc)), closes [#761](https://github.com/ngbracket/ngx-layout/issues/761)
+
+
+### Reverts
+
+* Revert "feat(api): add responsive API for img elements (#382)" (#387) ([d171c33](https://github.com/ngbracket/ngx-layout/commit/d171c33ac836b3c95b68448f3f218e7f5da02e3c)), closes [#382](https://github.com/ngbracket/ngx-layout/issues/382) [#387](https://github.com/ngbracket/ngx-layout/issues/387)
+
+
+### BREAKING CHANGES
+
+* We no longer directly have a direct depedency on `tslib`. Instead it is now listed a `peerDependency`.
+
+Users not using the CLI will need to manually install `tslib` via;
+```
+yarn add tslib
+```
+or
+```
+npm install tslib --save
+```
+
+Reference: TOOL-836
+* **core:** `MediaObserver` is the only supported mechanism to watch breakpoint activations outside the library. Developers should not use `MatchMedia`.
+
+*  MatchMedia is no longer exported as a public utility. 
+*  ServerMatchMedia is no longer exported at all
+* **core:** The stream data type for `asObservable` is now **MediaChange[]** instead of *MediaChange* and `media$` is deprecated in favor of `asObservable()`. 
+
+* `filterOverlaps` now defaults to `false`
+* **media-observer:** `ObservableMedia` is now deprecated in anticipation of RxJS v7.
+The new API is called **`MediaObserver`**, and provides the exact same functionality as ObservableMedia, except you cannot directly subscribe to it,
+You can subscribe to MediaObserver's `media$` property; in place of subscribing directly to ObservableMedia.
+* **lib:** * Four configuration tokens have been removed:
+
+* * `ADD_FLEX_STYLES`
+* * `ADD_ORIENTATION_BREAKPOINTS`
+* * `DISABLE_DEFAULT_BREAKPOINTS`
+* * `DISABLE_VENDOR_PREFIXES`
+
+These tokens have been consolidated into a new configuration token:
+
+* * `LAYOUT_CONFIG`
+
+* The default column flex-basis has been reverted to `1e-9px`. To
+  have that value be `auto` instead, set the config in your top-level
+  module as follows:
+
+```
+FlexLayoutModule.withConfig({useColumnBasisZero: false})
+```
+* **tokens:** * `fxFlex` no longer adds `display: flex; flex-direction: row` by
+  default
+* **ngStyle, ngClass:** * `[style.<alias>]` selectors are deprecated in favor of `[ngStyle.<alias>]` selectors
+* `[class.<alias>]` selectors are deprecated in favor of `[ngClass.<alias>]` selectors
+* default styles are merged with activated styles
+
+```html
+<div  fxLayout
+  [class.xs]="['xs-1', 'xs-2']"
+  [style]="{'font-size': '10px', 'margin-left' : '13px'}"
+  [style.xs]="{'font-size': '16px'}"
+  [style.md]="{'font-size': '12px'}">
+</div>
+```
+
+```html
+<div  fxLayout
+  [ngClass.xs]="['xs-1', 'xs-2']"
+  [ngStyle]="{'font-size': '10px', 'margin-left' : '13px'}"
+  [ngStyle.xs]="{'font-size': '16px'}"
+  [ngStyle.md]="{'font-size': '12px'}">
+</div>
+```
+* **api:** Previously releases used FlexLayoutModule.forRoot(). This has been deprecated and removed.
+* **ObservableMedia:** Deprecated use of `ObservableMediaService` opaque token. Developers now simply use the ObservableMedia class to inject the service.
+
+*before*
+
+```js
+constructor( @Inject(ObserverableMediaService) private media:any ) { ... }
+```
+
+**after**
+```js
+constructor(private media:ObservableMedia) { ... }
+```
+* **matchMediaObservable:** * use opaque token `ObservableMediateService` to inject instance of `MediaService`
+* use `MediaService::asObservable()` to get instance of observable
+
+```js
+// RxJS
+import 'rxjs/add/operator/map';
+
+@Component({ ... })
+export class MyComponent {
+  constructor( @Inject(ObservableMediaService) media) {
+    media.asObservable()
+      .map( (change:MediaChange) => change.mqAlias == 'md' )
+      .subscribe((change:MediaChange) => {
+        let state = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : ""
+        console.log( state );
+      });
+  }
+}
+```
+
+
+
+# 16.0.0-beta.1 (2023-04-13)
+
+
+### Bug Fixes
+
+* **api, class, style:** remove deprecated selectors ([#419](https://github.com/ngbracket/ngx-layout/issues/419)) ([e461d17](https://github.com/ngbracket/ngx-layout/commit/e461d17471f713deaf4663e0a0438822f8f0ad86)), closes [#410](https://github.com/ngbracket/ngx-layout/issues/410) [#408](https://github.com/ngbracket/ngx-layout/issues/408) [#273](https://github.com/ngbracket/ngx-layout/issues/273) [#418](https://github.com/ngbracket/ngx-layout/issues/418)
+* **api, class:** fix valid ngClass usages ([db2fd59](https://github.com/ngbracket/ngx-layout/commit/db2fd59319c524e99dec4a1e04523f116b2b16ce)), closes [#428](https://github.com/ngbracket/ngx-layout/issues/428)
+* **api, class:** selector [class] should be removed from ClassDirective. ([#394](https://github.com/ngbracket/ngx-layout/issues/394)) ([7a48c25](https://github.com/ngbracket/ngx-layout/commit/7a48c25f30cf47d7fb9c5037d5f28e9d53060cdf)), closes [#393](https://github.com/ngbracket/ngx-layout/issues/393)
+* **api, layout-align:** fix ‘allowStretching()’  usages ([7bc51c4](https://github.com/ngbracket/ngx-layout/commit/7bc51c48d76309d4be97d4a6703d4b0f179862de))
+* **api:** add overlap fallbacks from gt-<xx> ([2b4e1c4](https://github.com/ngbracket/ngx-layout/commit/2b4e1c404c8ce228e99938dadf29166a9f8ffca4))
+* **api:** defer getComputedStyle() calls until ngOnInit phase ([#374](https://github.com/ngbracket/ngx-layout/issues/374)) ([3611003](https://github.com/ngbracket/ngx-layout/commit/361100380b22689d960471f3d86cee090d9a45dc)), closes [#310](https://github.com/ngbracket/ngx-layout/issues/310)
+* **api:** flex api should support number assignments ([c3e8dd0](https://github.com/ngbracket/ngx-layout/commit/c3e8dd0342547b38ed969fcf5e05cd379be5924e))
+* **api:** flex-align should support baseline and auto. ([f6f15a3](https://github.com/ngbracket/ngx-layout/commit/f6f15a34c35723bb7dd1d38475abbe7414e5b08c))
+* **api:** hide & show did not handle ‘false’ values correctly ([dae913b](https://github.com/ngbracket/ngx-layout/commit/dae913b767a31c82b9750ca4ca211ece9a353590)), closes [#58](https://github.com/ngbracket/ngx-layout/issues/58)
+* **api:** layout with layoutAlign was not responding to reverse directions ([dde6e87](https://github.com/ngbracket/ngx-layout/commit/dde6e87dd5e0764e118b0093d2b79c51b2c35e9d)), closes [#82](https://github.com/ngbracket/ngx-layout/issues/82)
+* **api:** remove circular dependencies ([7bff29e](https://github.com/ngbracket/ngx-layout/commit/7bff29e121ec9d147ef26607f338117ea554fa37)), closes [#88](https://github.com/ngbracket/ngx-layout/issues/88)
+* **api:** remove use of static ngModule.forRoot() ([#167](https://github.com/ngbracket/ngx-layout/issues/167)) ([86010bf](https://github.com/ngbracket/ngx-layout/commit/86010bf68a62d559e14566e8ab3d46acd4c1b481))
+* **api:** resolve RTE with fx-fill and ngOnDestory() ([44faa6f](https://github.com/ngbracket/ngx-layout/commit/44faa6f8449e00be0d758fe26745931e582002c2))
+* **api:** restore orig display mode and more... ([#143](https://github.com/ngbracket/ngx-layout/issues/143)) ([d269d73](https://github.com/ngbracket/ngx-layout/commit/d269d73e78a54445b44b7b4c3b226b841181bf08)), closes [#140](https://github.com/ngbracket/ngx-layout/issues/140) [#141](https://github.com/ngbracket/ngx-layout/issues/141)
+* **api:** support query children on API directives ([#290](https://github.com/ngbracket/ngx-layout/issues/290)) ([f5558de](https://github.com/ngbracket/ngx-layout/commit/f5558de18c7b6701954bdc7acce1f770cd09c8e8))
+* **api:** use 'fl-' namespace prefix instead of 'ng-' ([aa4da6b](https://github.com/ngbracket/ngx-layout/commit/aa4da6b1450f6844a1f7acc97306223cdc7c03bf))
+* **api:** use only Renderer2 instances ([#391](https://github.com/ngbracket/ngx-layout/issues/391)) ([816d85a](https://github.com/ngbracket/ngx-layout/commit/816d85a66dd323fa1092d41f0f8567b7787c22c1)), closes [#386](https://github.com/ngbracket/ngx-layout/issues/386)
+* apply correct RTL margins ([7699957](https://github.com/ngbracket/ngx-layout/commit/769995795fa471bc5991d29f3cf1d65648da3a1e))
+* **auto-prefixer:** resolve perf impacts as reported by LightHouse ([#283](https://github.com/ngbracket/ngx-layout/issues/283)) ([bc0c900](https://github.com/ngbracket/ngx-layout/commit/bc0c90070a49dfccaa63300bba6c8fdf1a1d3879)), closes [#282](https://github.com/ngbracket/ngx-layout/issues/282)
+* **breakpoints:** add global provider for BreakPointRegistry ([7cedf6f](https://github.com/ngbracket/ngx-layout/commit/7cedf6fcc014b48677c5cc77cb48a2d6d9061900))
+* **breakpoints:** resolve 1px hole between lg -> xl breakpoints ([#159](https://github.com/ngbracket/ngx-layout/issues/159)) ([d78527c](https://github.com/ngbracket/ngx-layout/commit/d78527c677b9ae8e0f1bfb1135476c5785ec6ff5)), closes [#149](https://github.com/ngbracket/ngx-layout/issues/149)
+* **breakpoints:** support print media ([#367](https://github.com/ngbracket/ngx-layout/issues/367)) ([37a0b85](https://github.com/ngbracket/ngx-layout/commit/37a0b85c82c5b0b65614db050703f3ec8bdeb6b1)), closes [#361](https://github.com/ngbracket/ngx-layout/issues/361)
+* **breakpoints:** use correct orientation mediaquery ([666aa0a](https://github.com/ngbracket/ngx-layout/commit/666aa0a1dca2b16518fbcda5a2f4c74d5efe7e46)), closes [#763](https://github.com/ngbracket/ngx-layout/issues/763)
+* **build:** add observable-media-service to exported barrel ([#139](https://github.com/ngbracket/ngx-layout/issues/139)) ([b7dffaa](https://github.com/ngbracket/ngx-layout/commit/b7dffaa2a069906d481918de614326f6cf5aec17))
+* **build:** angular versions are not properly inserted ([e3b7fde](https://github.com/ngbracket/ngx-layout/commit/e3b7fde08e602752dd03628c1862e53b547b201f)), closes [#470](https://github.com/ngbracket/ngx-layout/issues/470)
+* **build:** fix 'npm run deploy' to build bundled demo-app ([5c4f0ce](https://github.com/ngbracket/ngx-layout/commit/5c4f0ce08c096218fd9afdd185d1694c467570fe))
+* **build:** remove use of Angular private API ([#195](https://github.com/ngbracket/ngx-layout/issues/195)) ([d95cb09](https://github.com/ngbracket/ngx-layout/commit/d95cb095042e9e2c45d0a63e50b07622474a74c3)), closes [#193](https://github.com/ngbracket/ngx-layout/issues/193)
+* **builds:** build processes should release per Angular guidelines ([0f18521](https://github.com/ngbracket/ngx-layout/commit/0f185213d56834ad432547c079529c179d73aacf))
+* **build:** set tsconfig ‘noEmit:false’ to enable typescript output. ([bc1d45a](https://github.com/ngbracket/ngx-layout/commit/bc1d45a7644e8d30881673c2ecaa5cc0937c9bb0))
+* **builds:** update typescript config options ([ae3a358](https://github.com/ngbracket/ngx-layout/commit/ae3a358ec9619025ee51d93b1fb1018a38c8bb7c))
+* **build:** support Angular 4 and AOT ([#255](https://github.com/ngbracket/ngx-layout/issues/255)) ([fed87fa](https://github.com/ngbracket/ngx-layout/commit/fed87fa53850a873d2ed2b398eb3a5260a6b3e98)), closes [#254](https://github.com/ngbracket/ngx-layout/issues/254) [#236](https://github.com/ngbracket/ngx-layout/issues/236) [#227](https://github.com/ngbracket/ngx-layout/issues/227)
+* **build:** sync typescript version to [@angular](https://github.com/angular) settings ([4f17c88](https://github.com/ngbracket/ngx-layout/commit/4f17c888b5d7805df12439deb7183f0cd5aee594))
+* **build:** update to TypeScript 2.9 and RxJS 6.3  ([aa8fb8c](https://github.com/ngbracket/ngx-layout/commit/aa8fb8cb4c8ae754f468fba11aac1751aea01095)), closes [#828](https://github.com/ngbracket/ngx-layout/issues/828) [#827](https://github.com/ngbracket/ngx-layout/issues/827)
+* **changelog:** fix invalid parentheses and semver checks ([96aaa78](https://github.com/ngbracket/ngx-layout/commit/96aaa784f4a4f26e80357415f6c9b09615b29716))
+* **CI:** reenable saucelabs testing ([#924](https://github.com/ngbracket/ngx-layout/issues/924)) ([146cb16](https://github.com/ngbracket/ngx-layout/commit/146cb16805e849afc5dca39036874287fb52c08e))
+* **closure-compiler:** use Number to cast ([#289](https://github.com/ngbracket/ngx-layout/issues/289)) ([052a4a9](https://github.com/ngbracket/ngx-layout/commit/052a4a959d668c4d5096a1bfe13af0a54d40cdef))
+* **config:** fix versions of TS and Angular. ([3f2aa21](https://github.com/ngbracket/ngx-layout/commit/3f2aa2167efc741f8eab27d8198b17f54a22c21d))
+* **contributions:** update contribution document ([dd530c9](https://github.com/ngbracket/ngx-layout/commit/dd530c9b4016371bd309eb6ef452ebaff302fc6c))
+* **core:** add generic type to ModuleWithProviders to support v10 ([#1260](https://github.com/ngbracket/ngx-layout/issues/1260)) ([f47da38](https://github.com/ngbracket/ngx-layout/commit/f47da38981f9c284c6b73250223540747a78a571))
+* **core:** align breakpoints with those used in CDK ([#1006](https://github.com/ngbracket/ngx-layout/issues/1006)) ([6f43cf6](https://github.com/ngbracket/ngx-layout/commit/6f43cf6c34b39cb36dae91c036077ef6ac1b064d)), closes [#685](https://github.com/ngbracket/ngx-layout/issues/685) [#1001](https://github.com/ngbracket/ngx-layout/issues/1001)
+* **core:** allow for breakpoints with periods in them ([#921](https://github.com/ngbracket/ngx-layout/issues/921)) ([84e811b](https://github.com/ngbracket/ngx-layout/commit/84e811bee97f2016018db22d427670404e4e7690)), closes [#776](https://github.com/ngbracket/ngx-layout/issues/776)
+* **core:** avoid duplicate mediaQuery activations ([#937](https://github.com/ngbracket/ngx-layout/issues/937)) ([23592ee](https://github.com/ngbracket/ngx-layout/commit/23592ee5a55163779c7d1d59820894b7ec495208))
+* **core:** avoid race condition between registration and activation ([#923](https://github.com/ngbracket/ngx-layout/issues/923)) ([232fc6e](https://github.com/ngbracket/ngx-layout/commit/232fc6ed4af5b007497f666f7eeb2f7059d5d04f))
+* **core:** clear recent styles after responsive deactivation ([#927](https://github.com/ngbracket/ngx-layout/issues/927)) ([d322ea7](https://github.com/ngbracket/ngx-layout/commit/d322ea75c00e2f2e9d9f467faccb4517a3868142)), closes [#697](https://github.com/ngbracket/ngx-layout/issues/697) [#296](https://github.com/ngbracket/ngx-layout/issues/296)
+* **core:** correctly handle lack of fallback values ([#949](https://github.com/ngbracket/ngx-layout/issues/949)) ([01c4148](https://github.com/ngbracket/ngx-layout/commit/01c4148cdea4942bea88a571d94940f1b0ce56bb)), closes [#947](https://github.com/ngbracket/ngx-layout/issues/947)
+* **core:** correctly set and restore breakpoints during print ([#1379](https://github.com/ngbracket/ngx-layout/issues/1379)) ([edca0d4](https://github.com/ngbracket/ngx-layout/commit/edca0d4661b960d948380d60bf2fdc96d885d149))
+* **core:** fail-safe check of nullable value ([#1031](https://github.com/ngbracket/ngx-layout/issues/1031)) ([5112a47](https://github.com/ngbracket/ngx-layout/commit/5112a474fe867042830973b2b534efa9a227b5ca)), closes [#958](https://github.com/ngbracket/ngx-layout/issues/958)
+* **core:** ignore null values in breakpoint fallback mechanism ([#1247](https://github.com/ngbracket/ngx-layout/issues/1247)) ([5085909](https://github.com/ngbracket/ngx-layout/commit/5085909e3ec9317dd662cc1bed8225ae4bd397df))
+* **core:** import distinctUntilChanged from rxjs/operators ([#1390](https://github.com/ngbracket/ngx-layout/issues/1390)) ([e8e172b](https://github.com/ngbracket/ngx-layout/commit/e8e172bf2bb9e0a45152a7ccbcbaf02b4c603b03))
+* **core:** improve use of breakpoint priorities ([#955](https://github.com/ngbracket/ngx-layout/issues/955)) ([d57b293](https://github.com/ngbracket/ngx-layout/commit/d57b29392525dc43df5b4c9e2e8a14d997ee544d)), closes [#648](https://github.com/ngbracket/ngx-layout/issues/648) [#426](https://github.com/ngbracket/ngx-layout/issues/426)
+* **core:** only emit changed events from MediaObserver ([#1377](https://github.com/ngbracket/ngx-layout/issues/1377)) ([51b6ebf](https://github.com/ngbracket/ngx-layout/commit/51b6ebf230ad8c4490288d50b75dd38b4d589347))
+* **core:** only trigger style updates when value changes ([#1246](https://github.com/ngbracket/ngx-layout/issues/1246)) ([a96ef13](https://github.com/ngbracket/ngx-layout/commit/a96ef137169f93b832178965ad315e4b7ea42b79))
+* **core:** properly collect deactivated breakpoints before print ([#1380](https://github.com/ngbracket/ngx-layout/issues/1380)) ([d73a3e4](https://github.com/ngbracket/ngx-layout/commit/d73a3e4acbd8f42136b46acf5ca3ab1878ba92e5))
+* **core:** register all breakpoints at startup ([#916](https://github.com/ngbracket/ngx-layout/issues/916)) ([8f1a085](https://github.com/ngbracket/ngx-layout/commit/8f1a0853621feda92b3d36ade6e8d52d7058df46)), closes [#915](https://github.com/ngbracket/ngx-layout/issues/915)
+* **core:** reset current value when directive is cleared ([#1376](https://github.com/ngbracket/ngx-layout/issues/1376)) ([c4f9fe2](https://github.com/ngbracket/ngx-layout/commit/c4f9fe2a19b28787a4100baa7aa1fe6fd8ee1998))
+* **core:** set fractional breakpoints to .98 instead of .9 ([#1308](https://github.com/ngbracket/ngx-layout/issues/1308)) ([c1c545c](https://github.com/ngbracket/ngx-layout/commit/c1c545cdd03d0fe3d4cfcabb5cb4914fcd684e22))
+* **core:** update breakpoint ranges to remove subpixel gaps ([#1004](https://github.com/ngbracket/ngx-layout/issues/1004)) ([1154fae](https://github.com/ngbracket/ngx-layout/commit/1154faea3e8cb50d24805b9aaab9e56e71bcd6f6)), closes [#1001](https://github.com/ngbracket/ngx-layout/issues/1001)
+* **core:** update breakpoints ranges to avoid overlapping ([#1075](https://github.com/ngbracket/ngx-layout/issues/1075)) ([31cb34e](https://github.com/ngbracket/ngx-layout/commit/31cb34eade4e98d0ee52567bd4e01d3fd06e1ddb)), closes [angular/flex-layout#1052](https://github.com/angular/flex-layout/issues/1052) [angular/flex-layout#1001](https://github.com/angular/flex-layout/issues/1001)
+* **core:** update layout-bp mixin to use right overlapping maps ([#1020](https://github.com/ngbracket/ngx-layout/issues/1020)) ([af15a61](https://github.com/ngbracket/ngx-layout/commit/af15a61814bd8b437905fc7737de2f9a8f743de9))
+* **css:** add prefixed styles before standard ones ([99eabfb](https://github.com/ngbracket/ngx-layout/commit/99eabfb950b14594e92884cf4fe218216743cc07)), closes [#467](https://github.com/ngbracket/ngx-layout/issues/467) [#468](https://github.com/ngbracket/ngx-layout/issues/468)
+* **css:** add prefixed values before standard ones ([0c1bf4a](https://github.com/ngbracket/ngx-layout/commit/0c1bf4a10d50e46d027e1ce72bfb8e14c56d5d9d))
+* **demo-app:** add polyfills for IE11 to demo-app ([a425035](https://github.com/ngbracket/ngx-layout/commit/a42503525873d78ed5209d810c0f0be67d1351c1))
+* **demo-app:** fix sizing for layout-gap demo ([0562fcc](https://github.com/ngbracket/ngx-layout/commit/0562fccd2ddfa6a7d4c3d4b9dc34a7c109297289))
+* **demo, media-query-status:** should use async pipe with ObservableMedia ([0e7d2e0](https://github.com/ngbracket/ngx-layout/commit/0e7d2e03102d94dbce9f6b3f31a978b11f5dd661)), closes [#415](https://github.com/ngbracket/ngx-layout/issues/415)
+* **demo:** correct padding css ([5288ac6](https://github.com/ngbracket/ngx-layout/commit/5288ac69c718069695375c99df072003f585b555)), closes [#57](https://github.com/ngbracket/ngx-layout/issues/57)
+* **demo:** correctly use template instead of templateUrl ([#100](https://github.com/ngbracket/ngx-layout/issues/100)) ([c436824](https://github.com/ngbracket/ngx-layout/commit/c4368241895ec8ea7348fc3d3cf17631461c644c))
+* **demo:** fix bindings for fxLayout with AoT ([#101](https://github.com/ngbracket/ngx-layout/issues/101)) ([51ea29e](https://github.com/ngbracket/ngx-layout/commit/51ea29ed6256e569680e45ea46183a103ac124c6))
+* **demo:** import MdCheckboxModule ([5f198a3](https://github.com/ngbracket/ngx-layout/commit/5f198a39cec649289daf37f94bdac2d034e22b62))
+* **demo:** improve use of ObservableMedia service ([#214](https://github.com/ngbracket/ngx-layout/issues/214)) ([64b122a](https://github.com/ngbracket/ngx-layout/commit/64b122a7b706beb6f88eb9194fc2d12c89508b53))
+* **docs:** make splitter demo work in IE ([#982](https://github.com/ngbracket/ngx-layout/issues/982)) ([0ba4bac](https://github.com/ngbracket/ngx-layout/commit/0ba4bac61aa353d9441b9f8246939a3152e49f92))
+* **docs:** restore images within links ([d9edab8](https://github.com/ngbracket/ngx-layout/commit/d9edab85c20ba842259d4c07417dd918528dc988))
+* **flex-offset:** correct type when using with 'strictNullChecks' ([#929](https://github.com/ngbracket/ngx-layout/issues/929)) ([21b6d29](https://github.com/ngbracket/ngx-layout/commit/21b6d296b0fa2c4d0d7416d2686dfdb906173108))
+* **flex:** add min-width to elements with flex basis using px values ([3fe5ea3](https://github.com/ngbracket/ngx-layout/commit/3fe5ea3b16d1add8f7cf60636085db3237b966d1)), closes [#68](https://github.com/ngbracket/ngx-layout/issues/68)
+* **flexbox:** add default display property to getDisplayStyle() ([#301](https://github.com/ngbracket/ngx-layout/issues/301)) ([771f2c9](https://github.com/ngbracket/ngx-layout/commit/771f2c92ad75990a8c9c98d8de8278a61a16a400))
+* **flexbox:** resolve 'renderer.setStyle()' error ([#298](https://github.com/ngbracket/ngx-layout/issues/298)) ([3e1fcbd](https://github.com/ngbracket/ngx-layout/commit/3e1fcbde5610d9188e94eadb20cbba857237144a)), closes [#270](https://github.com/ngbracket/ngx-layout/issues/270)
+* **flexbox:** scan flex-direction in css stylesheet ([#365](https://github.com/ngbracket/ngx-layout/issues/365)) ([635c4f5](https://github.com/ngbracket/ngx-layout/commit/635c4f587037cb8a86af8f07d9e76e0f077e833c)), closes [#272](https://github.com/ngbracket/ngx-layout/issues/272) [#364](https://github.com/ngbracket/ngx-layout/issues/364)
+* **flex:** fix use of values with 'auto' ([#122](https://github.com/ngbracket/ngx-layout/issues/122)) ([04d24d5](https://github.com/ngbracket/ngx-layout/commit/04d24d57300b4e31ee466435bda333a048687163)), closes [#120](https://github.com/ngbracket/ngx-layout/issues/120)
+* **flex:** fxFlex without value will use minute, non-zero basis. ([1447369](https://github.com/ngbracket/ngx-layout/commit/1447369b56ba152567314db0b8ac5d10af8b061c)), closes [/github.com/PolymerElements/iron-flex-layout/blob/master/iron-flex-layout-classes.html#L293](https://github.com//github.com/PolymerElements/iron-flex-layout/blob/master/iron-flex-layout-classes.html/issues/L293)
+* **FlexLayoutModule:** fix AOT compile issue with exported lambdas ([d34a42b](https://github.com/ngbracket/ngx-layout/commit/d34a42bf47434a092e3f213b14b337c02cb8450f)), closes [angular/angular#10789](https://github.com/angular/angular/issues/10789) [#38](https://github.com/ngbracket/ngx-layout/issues/38)
+* **FlexLayoutModule:** remove console.warn() conflicts with ngc+AOT ([#179](https://github.com/ngbracket/ngx-layout/issues/179)) ([0797c85](https://github.com/ngbracket/ngx-layout/commit/0797c859aa023a86c2a95927f43e06a48a0bf127)), closes [/github.com/angular/angular#14410](https://github.com//github.com/angular/angular/issues/14410) [#174](https://github.com/ngbracket/ngx-layout/issues/174) [#175](https://github.com/ngbracket/ngx-layout/issues/175) [#176](https://github.com/ngbracket/ngx-layout/issues/176) [#178](https://github.com/ngbracket/ngx-layout/issues/178)
+* **flexOrder:** change default order value to 0 ([f124771](https://github.com/ngbracket/ngx-layout/commit/f124771d14059e6e7e35b5637fc86d7250d3522b))
+* **flex:** propogate direction when subscribing to layout changes. ([f0730a9](https://github.com/ngbracket/ngx-layout/commit/f0730a9ccdfea6304a2a792331da173dcb6ceec2))
+* **flex:** wait for parent element until template is initialized ([#1237](https://github.com/ngbracket/ngx-layout/issues/1237)) ([93a426a](https://github.com/ngbracket/ngx-layout/commit/93a426a32756483645c57756b730febc0ae4d478))
+* **fxFlex:** apply correct flex-basis stylings ([#629](https://github.com/ngbracket/ngx-layout/issues/629)) ([1e96cea](https://github.com/ngbracket/ngx-layout/commit/1e96ceabe74ea4b75931f12a10152dd7ccd9ca08)), closes [#277](https://github.com/ngbracket/ngx-layout/issues/277) [#280](https://github.com/ngbracket/ngx-layout/issues/280) [#323](https://github.com/ngbracket/ngx-layout/issues/323) [#528](https://github.com/ngbracket/ngx-layout/issues/528) [#534](https://github.com/ngbracket/ngx-layout/issues/534)
+* **fxFlex:** do not eagerly listen to layout changes ([#771](https://github.com/ngbracket/ngx-layout/issues/771)) ([dc431d8](https://github.com/ngbracket/ngx-layout/commit/dc431d8d1ef80e047b513c9538c561c57900b7cf)), closes [#700](https://github.com/ngbracket/ngx-layout/issues/700) [#733](https://github.com/ngbracket/ngx-layout/issues/733)
+* **fxFlexFill, fxFlexAlign:** update selectors and wiki ([8f591c5](https://github.com/ngbracket/ngx-layout/commit/8f591c595765b134e0ff86327c495baa1a5f1821)), closes [#93](https://github.com/ngbracket/ngx-layout/issues/93)
+* **fxFlex:** fix non-wrapping behavior and default fxFlex value ([3cfafd1](https://github.com/ngbracket/ngx-layout/commit/3cfafd11fb74f67297050692543af7c72eee1cd4))
+* **fxFlex:** fix wrapping in older versions of Safari ([3809608](https://github.com/ngbracket/ngx-layout/commit/380960801672e07a6fae9d399dfebf68b9909c62)), closes [/github.com/philipwalton/flexbugs#flexbug-11](https://github.com//github.com/philipwalton/flexbugs/issues/flexbug-11)
+* **fxFlex:** fxFlex=auto with overlapping breakpoints activated ([#183](https://github.com/ngbracket/ngx-layout/issues/183)) ([cb614ed](https://github.com/ngbracket/ngx-layout/commit/cb614ed877ab13f49e07c34cfb44b3210fc36f38)), closes [#135](https://github.com/ngbracket/ngx-layout/issues/135)
+* **fxFlex:** improve support for 'auto' and flex-basis variations ([#212](https://github.com/ngbracket/ngx-layout/issues/212)) ([c28dfc7](https://github.com/ngbracket/ngx-layout/commit/c28dfc71f7d3474f333d53b8f7c41d0d9d8717c0))
+* **fxFlex:** make sure not to set width/height when flex is default ([b152998](https://github.com/ngbracket/ngx-layout/commit/b152998b9b29b2da3d3c2337ebaaf8bf5580ca3c))
+* **fxFlexOffset:** use parent flow direction for margin property ([#369](https://github.com/ngbracket/ngx-layout/issues/369)) ([f0473e9](https://github.com/ngbracket/ngx-layout/commit/f0473e99bf8459f229804c9e526aa9d1d6ac4748)), closes [#328](https://github.com/ngbracket/ngx-layout/issues/328)
+* **fxFlex:** prevent setting min/max-size when grow/shrink is zero ([#160](https://github.com/ngbracket/ngx-layout/issues/160)) ([942939e](https://github.com/ngbracket/ngx-layout/commit/942939e3f172314787a9aad06fefbb72708e7fcd)), closes [#153](https://github.com/ngbracket/ngx-layout/issues/153)
+* **fxFlex:** restore correct styles after fxLayoutAlign is applied ([#1038](https://github.com/ngbracket/ngx-layout/issues/1038)) ([b245229](https://github.com/ngbracket/ngx-layout/commit/b24522945b8bdf66dd587de118a8d0ead8be8d19))
+* **fxFlex:** use correct type for basis validation in reflow case ([#1095](https://github.com/ngbracket/ngx-layout/issues/1095)) ([d02377a](https://github.com/ngbracket/ngx-layout/commit/d02377a4e88aba566c044249086d5ef95df0fd59)), closes [#1089](https://github.com/ngbracket/ngx-layout/issues/1089)
+* **fxHide,fxShow:** fix standalone breakpoint selectors ([#121](https://github.com/ngbracket/ngx-layout/issues/121)) ([0ca7d07](https://github.com/ngbracket/ngx-layout/commit/0ca7d074ec0b529aa5eea91863707790eb12e2db)), closes [#62](https://github.com/ngbracket/ngx-layout/issues/62) [#59](https://github.com/ngbracket/ngx-layout/issues/59) [#105](https://github.com/ngbracket/ngx-layout/issues/105)
+* **fxLayout:** add support for inline-flex ([b201845](https://github.com/ngbracket/ngx-layout/commit/b2018451b9d2316917b97842d5ed496f404f8f7f)), closes [#525](https://github.com/ngbracket/ngx-layout/issues/525)
+* **fxLayoutAlign:** add space-between and space-around options ([#845](https://github.com/ngbracket/ngx-layout/issues/845)) ([5e3ec0e](https://github.com/ngbracket/ngx-layout/commit/5e3ec0e5b69a529f3dc74cb8f016c17822960560)), closes [#841](https://github.com/ngbracket/ngx-layout/issues/841)
+* **fxLayoutAlign:** do not apply cross-axis stretch styles when not needed ([#877](https://github.com/ngbracket/ngx-layout/issues/877)) ([3cd5bc1](https://github.com/ngbracket/ngx-layout/commit/3cd5bc13015c3ea16c0bcaa3657aa322efd16343)), closes [#876](https://github.com/ngbracket/ngx-layout/issues/876)
+* **fxLayoutAlign:** support flex-start and flex-end options ([#239](https://github.com/ngbracket/ngx-layout/issues/239)) ([eb5cb9f](https://github.com/ngbracket/ngx-layout/commit/eb5cb9f7da4c08ed955461732ca31c357af4dcd1)), closes [#232](https://github.com/ngbracket/ngx-layout/issues/232)
+* **fxLayoutGap:** account for responsive fxHide on children elements ([#931](https://github.com/ngbracket/ngx-layout/issues/931)) ([7759b6c](https://github.com/ngbracket/ngx-layout/commit/7759b6cb16fc53ac4c5b245154cb580ada7f4fe6)), closes [#606](https://github.com/ngbracket/ngx-layout/issues/606)
+* **fxLayoutGap:** add gaps to dynamic content ([#124](https://github.com/ngbracket/ngx-layout/issues/124)) ([6482c12](https://github.com/ngbracket/ngx-layout/commit/6482c1268c71ae2f634029c5a8099e58e380ce01)), closes [#95](https://github.com/ngbracket/ngx-layout/issues/95)
+* **fxLayoutGap:** add proper gaps for reverse dir ([3a8041d](https://github.com/ngbracket/ngx-layout/commit/3a8041d040def0cb61530bc65e95802ed8c595c2))
+* **fxLayoutGap:** correctly handle lack of fallback value ([#1037](https://github.com/ngbracket/ngx-layout/issues/1037)) ([ce9b989](https://github.com/ngbracket/ngx-layout/commit/ce9b9892c32e1b8465f842d107c4aaa475eacd43)), closes [#1011](https://github.com/ngbracket/ngx-layout/issues/1011)
+* **fxLayoutGap:** fxLayoutWrap to apply gap logic for reverse directions ([#148](https://github.com/ngbracket/ngx-layout/issues/148)) ([9f7137e](https://github.com/ngbracket/ngx-layout/commit/9f7137ed3caa3771f6fb9a22f8e9af7f719dc913)), closes [#108](https://github.com/ngbracket/ngx-layout/issues/108)
+* **fxLayoutGap:** mutation observer should run outside the ngZone ([#370](https://github.com/ngbracket/ngx-layout/issues/370)) ([9fb0877](https://github.com/ngbracket/ngx-layout/commit/9fb08772619e90b26b38ec9797bac08fa7410752)), closes [#329](https://github.com/ngbracket/ngx-layout/issues/329)
+* **fxLayoutGap:** not working with dynamic fxHide ([#983](https://github.com/ngbracket/ngx-layout/issues/983)) ([0eccec4](https://github.com/ngbracket/ngx-layout/commit/0eccec464364a4cff49b77cbec93fdd11e6b28d3))
+* **fxLayoutGap:** respond correctly to layout changes ([#919](https://github.com/ngbracket/ngx-layout/issues/919)) ([676ddf7](https://github.com/ngbracket/ngx-layout/commit/676ddf7455c076708c68ef2a0a4ab60acc062fc6))
+* **fxLayoutGap:** skip hidden element nodes ([#145](https://github.com/ngbracket/ngx-layout/issues/145)) ([6c45b35](https://github.com/ngbracket/ngx-layout/commit/6c45b35b75918d5992ed73ba5eb34a9f6ea9fdd3)), closes [#136](https://github.com/ngbracket/ngx-layout/issues/136)
+* **fxLayoutGap:** update gap logic when num children reduces to 1. ([43b34fa](https://github.com/ngbracket/ngx-layout/commit/43b34fa91a8ec6eb58fb6de515bfd839ceeec8c0)), closes [#433](https://github.com/ngbracket/ngx-layout/issues/433) [#444](https://github.com/ngbracket/ngx-layout/issues/444)
+* **fxShow, fxHide:** support fxHide+fxShow usages on same element ([#190](https://github.com/ngbracket/ngx-layout/issues/190)) ([eee20b2](https://github.com/ngbracket/ngx-layout/commit/eee20b2f1bfb4df95045bf46e03caa4a83eaad2b))
+* **fxStyle:** enable raw input caching ([#173](https://github.com/ngbracket/ngx-layout/issues/173)) ([d5b283c](https://github.com/ngbracket/ngx-layout/commit/d5b283c6f58c20eb1b5002bf883401157da78e2f))
+* **img-src:** correctly initialize fallback value ([#986](https://github.com/ngbracket/ngx-layout/issues/986)) ([c1fc857](https://github.com/ngbracket/ngx-layout/commit/c1fc857c71df5dd7fefa3e5a48873334e1417d07))
+* import specific symbols from rxjs ([#99](https://github.com/ngbracket/ngx-layout/issues/99)) ([88d1b0f](https://github.com/ngbracket/ngx-layout/commit/88d1b0fd353afbf72c5b89e2ee034379facde302))
+* **layout-align:** add prefixers for align-content ([f27acaf](https://github.com/ngbracket/ngx-layout/commit/f27acaf80306e1d3aaa184f1e575ce95b5729249))
+* **layout-align:** respect inline-flex on sibling fxLayout ([#1036](https://github.com/ngbracket/ngx-layout/issues/1036)) ([c23621c](https://github.com/ngbracket/ngx-layout/commit/c23621cccc473d136c5a7803b3b3a8fb3c3c93bf)), closes [#1009](https://github.com/ngbracket/ngx-layout/issues/1009)
+* **layout-gap:** apply correct gaps based on flex order ([de72903](https://github.com/ngbracket/ngx-layout/commit/de7290324774e800d7a16b0ca213af312a376c84)), closes [#608](https://github.com/ngbracket/ngx-layout/issues/608)
+* **lib, media-query:** support angular/universal ([#353](https://github.com/ngbracket/ngx-layout/issues/353)) ([0f13b14](https://github.com/ngbracket/ngx-layout/commit/0f13b14fdb608fd823bca670cc33c1c2cc5af2ab)), closes [#346](https://github.com/ngbracket/ngx-layout/issues/346) [#187](https://github.com/ngbracket/ngx-layout/issues/187) [#354](https://github.com/ngbracket/ngx-layout/issues/354) [#346](https://github.com/ngbracket/ngx-layout/issues/346)
+* **lib:** add missing export for add-alias.ts functions ([62efbb8](https://github.com/ngbracket/ngx-layout/commit/62efbb8a0e4456076344d8b858b7ec07a4cf2d66))
+* **lib:** fixes for TS 2.0.10 and Angular AOT ([2a1590a](https://github.com/ngbracket/ngx-layout/commit/2a1590a30063a58734951f67f3f6c4bbe71090d7))
+* **lib:** read correct styles during SSR and add test for layout-wrap ([71e2dae](https://github.com/ngbracket/ngx-layout/commit/71e2dae2aabff11201172988a3252a31fb4a6afd))
+* **lib:** remove all uses of [@internal](https://github.com/internal) ([ca64760](https://github.com/ngbracket/ngx-layout/commit/ca647603c77f72d8c4e2542a5a1e65cc3d2c9cb8))
+* **lib:** resolve RegExp Issue in older versions of Safari ([#643](https://github.com/ngbracket/ngx-layout/issues/643)) ([85e8aa2](https://github.com/ngbracket/ngx-layout/commit/85e8aa247a66809aac0067af0ea116b07024a933))
+* **match-media:** unregister media query event listeners on destroy ([#1236](https://github.com/ngbracket/ngx-layout/issues/1236)) ([2ca7848](https://github.com/ngbracket/ngx-layout/commit/2ca78488aac8cd34b2839333f6058030f7ab075d))
+* **matchMediaObservable:** expose observable for rxjs operators ([#133](https://github.com/ngbracket/ngx-layout/issues/133)) ([6e46561](https://github.com/ngbracket/ngx-layout/commit/6e46561e278f7ae3051a6a9cb142c18add149af2)), closes [#125](https://github.com/ngbracket/ngx-layout/issues/125)
+* **MatchMediaObservable:** register breakpoints so observable announces properly ([3555e14](https://github.com/ngbracket/ngx-layout/commit/3555e14c7788ef1d8209e38e853071098386fa74)), closes [#65](https://github.com/ngbracket/ngx-layout/issues/65) [#64](https://github.com/ngbracket/ngx-layout/issues/64)
+* **media-marshaller:** do not propagate undefined value ([#1245](https://github.com/ngbracket/ngx-layout/issues/1245)) ([b05d51a](https://github.com/ngbracket/ngx-layout/commit/b05d51aef4128a652ef8a91e57ae7e7e12b0a918))
+* **media-monitor:** support observing of all mediaQueries ([d5626db](https://github.com/ngbracket/ngx-layout/commit/d5626dbc48327c19a45d28e56c951693eb2e1e71))
+* **media-observer:** return correct value for isActive on init ([#1244](https://github.com/ngbracket/ngx-layout/issues/1244)) ([bf069af](https://github.com/ngbracket/ngx-layout/commit/bf069af1beb458026a7b4512c01cc61768c08b90))
+* **media-query:** fix calculation of activated values ([ebc2fce](https://github.com/ngbracket/ngx-layout/commit/ebc2fce82a8b8271d0a00214877bf3f43453b45f))
+* **mediaQueries:** enable zone.run() ([c901596](https://github.com/ngbracket/ngx-layout/commit/c9015965fce6f66c1ed9602538b500fe9db4c11a)), closes [#26](https://github.com/ngbracket/ngx-layout/issues/26)
+* **mediaQuery:** fix NRE ([5b4972b](https://github.com/ngbracket/ngx-layout/commit/5b4972bb39fef2cd045210c18d95bf65a8d18a08))
+* **mock-match-media:** ensure overlapping breakpoints are activated ([#1265](https://github.com/ngbracket/ngx-layout/issues/1265)) ([af92cb0](https://github.com/ngbracket/ngx-layout/commit/af92cb053eef8fdc908f5e357289e76d5ef0c8c4))
+* **module:** do not require breakpoints in withConfig ([#853](https://github.com/ngbracket/ngx-layout/issues/853)) ([76c110e](https://github.com/ngbracket/ngx-layout/commit/76c110ea85e16f941f1c215a103edbd6bb0c32a0)), closes [#846](https://github.com/ngbracket/ngx-layout/issues/846)
+* **module:** make withConfig AOT compatible ([85e3145](https://github.com/ngbracket/ngx-layout/commit/85e314515db84030eb6c02dfb29b922c1a506f0e))
+* **ngClass,ngStyle:** support proper API usages and ChangeDetectionStrategy.OnPush strategies ([#228](https://github.com/ngbracket/ngx-layout/issues/228)) ([5db01e7](https://github.com/ngbracket/ngx-layout/commit/5db01e7cfea4c5b2a9e48bd706ac4c8261abd0b4)), closes [#206](https://github.com/ngbracket/ngx-layout/issues/206) [#215](https://github.com/ngbracket/ngx-layout/issues/215)
+* **ngClass:** add ngClass selector support ([#223](https://github.com/ngbracket/ngx-layout/issues/223)) ([980d412](https://github.com/ngbracket/ngx-layout/commit/980d4127bfd6bdbd0fe14523e72f1cc4c8429f1b)), closes [#206](https://github.com/ngbracket/ngx-layout/issues/206)
+* **ngClass:** should properly remove classes without fallback ([#995](https://github.com/ngbracket/ngx-layout/issues/995)) ([47248b1](https://github.com/ngbracket/ngx-layout/commit/47248b1e4041b38cc478527a754a3ef71fd311fc)), closes [#992](https://github.com/ngbracket/ngx-layout/issues/992)
+* **ngStyle, ngClass:** StyleDirective security fixes &  merge activated styles ([#198](https://github.com/ngbracket/ngx-layout/issues/198)) ([eb22fe5](https://github.com/ngbracket/ngx-layout/commit/eb22fe53316ae2cb84408ee88b82a23320f16dc5)), closes [#197](https://github.com/ngbracket/ngx-layout/issues/197)
+* **ngStyle:** do not truncate URLs ([#938](https://github.com/ngbracket/ngx-layout/issues/938)) ([1548727](https://github.com/ngbracket/ngx-layout/commit/154872791416db67518e34ff8c57468d8c371e38)), closes [#935](https://github.com/ngbracket/ngx-layout/issues/935)
+* **ngStyle:** should work with preexisting styles ([#939](https://github.com/ngbracket/ngx-layout/issues/939)) ([4be5cef](https://github.com/ngbracket/ngx-layout/commit/4be5cef18a46d543d451d5a49fb9809da8e37f73))
+* **observableMedia:** consistently emit initial value ([f19bff2](https://github.com/ngbracket/ngx-layout/commit/f19bff27fd3b819c200a22e27077d3b2a27efa08))
+* **ObservableMedia:** properly announce 'xs' activation at startup ([#396](https://github.com/ngbracket/ngx-layout/issues/396)) ([66f3717](https://github.com/ngbracket/ngx-layout/commit/66f37174f7b301b7ec89d99c963407bca04d69e8)), closes [#388](https://github.com/ngbracket/ngx-layout/issues/388)
+* **ObservableMedia:** provide consistent reporting of active breakpoint ([#186](https://github.com/ngbracket/ngx-layout/issues/186)) ([aa0dab4](https://github.com/ngbracket/ngx-layout/commit/aa0dab404027b165acc56571a8578db55378c0e4)), closes [#185](https://github.com/ngbracket/ngx-layout/issues/185)
+* **ObservableMedia:** startup should propagate lastReplay value properly ([#313](https://github.com/ngbracket/ngx-layout/issues/313)) ([00ac57a](https://github.com/ngbracket/ngx-layout/commit/00ac57a33c88463cf3e2064cc604dddc897426f0)), closes [#245](https://github.com/ngbracket/ngx-layout/issues/245) [#275](https://github.com/ngbracket/ngx-layout/issues/275) [#303](https://github.com/ngbracket/ngx-layout/issues/303)
+* **orientation:** use tablet landscape screen type ([#1220](https://github.com/ngbracket/ngx-layout/issues/1220)) ([dd772d7](https://github.com/ngbracket/ngx-layout/commit/dd772d7833f8eb1b6238786fbde8fcfca0f5acc3))
+* **prefixer:** improve flex css prefixes ([#276](https://github.com/ngbracket/ngx-layout/issues/276)) ([beb5ed0](https://github.com/ngbracket/ngx-layout/commit/beb5ed0179c7fc1b6af26b75ac7c61fcac28a312))
+* **print-hook:** unregister event listeners on destroy ([#1235](https://github.com/ngbracket/ngx-layout/issues/1235)) ([6d0cd00](https://github.com/ngbracket/ngx-layout/commit/6d0cd001e05e34d6d185dd442178420eb2c9aef6))
+* **private:** remove fallback from flex-direction auto-prefixer ([#1408](https://github.com/ngbracket/ngx-layout/issues/1408)) ([ee5d93a](https://github.com/ngbracket/ngx-layout/commit/ee5d93a328537eb00391a4245af80a9fc3f6a31e)), closes [#1394](https://github.com/ngbracket/ngx-layout/issues/1394)
+* **publish:** update repo name ([7a06737](https://github.com/ngbracket/ngx-layout/commit/7a067370c6bf61214b4ba3603a62d097e8a99f45))
+* **release, build:** fix gulp build:release, build:components, and npm run start ([1f981cc](https://github.com/ngbracket/ngx-layout/commit/1f981cc0acbe3ed4b07f323ebb27cdf862798c46))
+* **release:** fix checkout CHANGELOG.md from origin/master ([e17cdc1](https://github.com/ngbracket/ngx-layout/commit/e17cdc11ace5d58dfa9ca6874a6cb715a19840a6))
+* **release:** fix moduleName to resolve SystemJS errors ([e29f10b](https://github.com/ngbracket/ngx-layout/commit/e29f10bae9508f37fbb483e1a5dc6aea97d21884))
+* **release:** Fix release script by removing ',' of the last item in the list ([0486e85](https://github.com/ngbracket/ngx-layout/commit/0486e85393fecf11e6db31fd685881136fa7e92a))
+* **release:** updates to commit to version changes: ([c2463a5](https://github.com/ngbracket/ngx-layout/commit/c2463a559393e424ca3db8b9fdfb0799b7fccf87))
+* **sass:** update stylesheet with correct keys ([#987](https://github.com/ngbracket/ngx-layout/issues/987)) ([002eb66](https://github.com/ngbracket/ngx-layout/commit/002eb663ae494c8de2313b82301d69c776621e0e))
+* **server:** breakpoints can be used by MediaObserver ([#1087](https://github.com/ngbracket/ngx-layout/issues/1087)) ([6bbfe23](https://github.com/ngbracket/ngx-layout/commit/6bbfe23edb1df363d795baa11168b933f546a23a))
+* **server:** disable breakpoints correctly and avoid style overuse ([#1378](https://github.com/ngbracket/ngx-layout/issues/1378)) ([5874498](https://github.com/ngbracket/ngx-layout/commit/58744986b011cf3dab17e33b6198f06484545e94))
+* **show-hide:** account for fxLayout on same element ([#948](https://github.com/ngbracket/ngx-layout/issues/948)) ([c922ae3](https://github.com/ngbracket/ngx-layout/commit/c922ae3cf5d9562bb8ee5808917a4e747d79b325)), closes [#945](https://github.com/ngbracket/ngx-layout/issues/945)
+* **show-hide:** account for multiple directives on the same element ([ad3e9c9](https://github.com/ngbracket/ngx-layout/commit/ad3e9c910c7ca6f4cccefaa283b3f28d1bdb314b))
+* **show-hide:** set explicit display fallback for SSR ([#1252](https://github.com/ngbracket/ngx-layout/issues/1252)) ([0c5811d](https://github.com/ngbracket/ngx-layout/commit/0c5811d71dde5e776068bd9afb5edf01333ff912))
+* **show-hide:** use initial value as fallback instead of parent ([#1243](https://github.com/ngbracket/ngx-layout/issues/1243)) ([bf2355b](https://github.com/ngbracket/ngx-layout/commit/bf2355bb0426828a8fc74927e7011aa5b0758349))
+* **show-hide:** work with Angular components and elements without fxLayout ([#881](https://github.com/ngbracket/ngx-layout/issues/881)) ([3a0ec5d](https://github.com/ngbracket/ngx-layout/commit/3a0ec5d86dd001958fdcb6bca08e02718f37b281)), closes [#848](https://github.com/ngbracket/ngx-layout/issues/848) [#724](https://github.com/ngbracket/ngx-layout/issues/724)
+* **ssr:** add browser check for MatchMedia ([9dd03c6](https://github.com/ngbracket/ngx-layout/commit/9dd03c686ac4fdb9ff19467d19a4eea582fe8258)), closes [#624](https://github.com/ngbracket/ngx-layout/issues/624)
+* **ssr:** check null _document.defaultView ([#1337](https://github.com/ngbracket/ngx-layout/issues/1337)) ([b43681c](https://github.com/ngbracket/ngx-layout/commit/b43681c74a9ba12532afb10bf23d8faf3f4d20d8))
+* **ssr:** fix lazy-loading functionality ([d4f2514](https://github.com/ngbracket/ngx-layout/commit/d4f2514ab180641ba01320e83326f37cdcac2fe9))
+* **ssr:** reset class counter to zero before each render ([#1153](https://github.com/ngbracket/ngx-layout/issues/1153)) ([d062708](https://github.com/ngbracket/ngx-layout/commit/d0627087a5a388385312d6cf3d005915c947397a))
+* **style:** add SSR capabilities ([#962](https://github.com/ngbracket/ngx-layout/issues/962)) ([f82bbc1](https://github.com/ngbracket/ngx-layout/commit/f82bbc1ce50e7cef388c5a9135daba736e4a7d96)), closes [#813](https://github.com/ngbracket/ngx-layout/issues/813)
+* **test:** enable CI travis testing ([3c8507a](https://github.com/ngbracket/ngx-layout/commit/3c8507a59b1bcd380fbcee02464a6db3025502c3))
+* **test:** fix test for fxFlex='' ([fcf851f](https://github.com/ngbracket/ngx-layout/commit/fcf851fd1ded6a97acbfcaee1a92402efb3e6578))
+* **tests:** enable local tests and CI testing ([8c48587](https://github.com/ngbracket/ngx-layout/commit/8c485873a203cd3f04616dcf2d5af84ef57b430a))
+* **tests:** remove ‘fdescribe’ limiter ([1f0daae](https://github.com/ngbracket/ngx-layout/commit/1f0daaed3a2c13550b26d90193e8d930306dcb39))
+* **tests:** remove unneeded async() wrappers in karma tests ([a77de3c](https://github.com/ngbracket/ngx-layout/commit/a77de3c0123031a6dbf09546542c6cb0584dd7ad))
+* **travis:** add missing karma.conf.js ([5f9174b](https://github.com/ngbracket/ngx-layout/commit/5f9174b8208d067c96fc82071a5cfeff36413c9e))
+* **travis:** fetch GPG key with url ([13c4d91](https://github.com/ngbracket/ngx-layout/commit/13c4d91fed5b7888a321b86634666a81a52a2ff5))
+* **travis:** fix errors with yaml ([b295045](https://github.com/ngbracket/ngx-layout/commit/b295045285b48a5a38e173b4ba6e68b0cfe61ffd))
+* **travis:** fix errors with yaml npm version ([0d2ce68](https://github.com/ngbracket/ngx-layout/commit/0d2ce685611080c4a6886f2035a39431e9c5aae7))
+* **universal:** remove browser check from style-utils ([8dcae02](https://github.com/ngbracket/ngx-layout/commit/8dcae026bbde92bae549b25d82535d790ed55c11)), closes [#466](https://github.com/ngbracket/ngx-layout/issues/466)
+* use correct xl breakpoint ([#809](https://github.com/ngbracket/ngx-layout/issues/809)) ([b64b1b3](https://github.com/ngbracket/ngx-layout/commit/b64b1b3bc51a0997a590fb4db377e2da1f60635f))
+
+
+### Features
+
+* **api:** add responsive API for img elements ([#382](https://github.com/ngbracket/ngx-layout/issues/382)) ([45cfd2e](https://github.com/ngbracket/ngx-layout/commit/45cfd2e90a9af66a584b858c6aecba2e8308599d)), closes [#366](https://github.com/ngbracket/ngx-layout/issues/366) [#376](https://github.com/ngbracket/ngx-layout/issues/376)
+* **api:** add responsive API for img elements ([#384](https://github.com/ngbracket/ngx-layout/issues/384)) ([354f54f](https://github.com/ngbracket/ngx-layout/commit/354f54f6c9266f424143bc562dca33f07b76176f)), closes [#366](https://github.com/ngbracket/ngx-layout/issues/366) [#81](https://github.com/ngbracket/ngx-layout/issues/81) [#376](https://github.com/ngbracket/ngx-layout/issues/376)
+* **api:** add responsive support for ngClass and ngStyle ([#170](https://github.com/ngbracket/ngx-layout/issues/170)) ([f57a63d](https://github.com/ngbracket/ngx-layout/commit/f57a63d5315a89cde3a21fbb2b2d8de0520ce15c))
+* **api:** support calc(...) expression in fx-flex ([18b69d9](https://github.com/ngbracket/ngx-layout/commit/18b69d9dc628befc4adb71583d69b10de6479aec))
+* **beta:** initial release of ngx-layout based on Angular 16 ([2a2b1d7](https://github.com/ngbracket/ngx-layout/commit/2a2b1d726f74258e238bbff84261833ecabfc271))
+* **breakpoints:** support custom breakpoints and enhanced selectors ([#204](https://github.com/ngbracket/ngx-layout/issues/204)) ([ecc6e51](https://github.com/ngbracket/ngx-layout/commit/ecc6e51d5e52c0757f8caec469229fffb01faf4b))
+* change tslib from direct dependency to peerDependency ([#1132](https://github.com/ngbracket/ngx-layout/issues/1132)) ([06268b8](https://github.com/ngbracket/ngx-layout/commit/06268b8a1ce1f83d51c937f56091538ef0196f45))
+* **core:** add ability to override style building ([#884](https://github.com/ngbracket/ngx-layout/issues/884)) ([9148e87](https://github.com/ngbracket/ngx-layout/commit/9148e8709771c26cb9ac4eda9732191ece1b25fa)), closes [#689](https://github.com/ngbracket/ngx-layout/issues/689)
+* **core:** add centralized media marshal service ([#900](https://github.com/ngbracket/ngx-layout/issues/900)) ([cd05cb4](https://github.com/ngbracket/ngx-layout/commit/cd05cb4a31f4807d1fbb749f163eb4ad769cf71b)), closes [#903](https://github.com/ngbracket/ngx-layout/issues/903) [#692](https://github.com/ngbracket/ngx-layout/issues/692)
+* **core:** add memoization to style generation ([#888](https://github.com/ngbracket/ngx-layout/issues/888)) ([4600672](https://github.com/ngbracket/ngx-layout/commit/46006724778bc4512594ffc20b6f80cb2c1e54f2))
+* **core:** add print support with mediaQuery override ([#954](https://github.com/ngbracket/ngx-layout/issues/954)) ([0c9e9cb](https://github.com/ngbracket/ngx-layout/commit/0c9e9cbdb176720042603aed4ebc9f988ff6852d)), closes [#603](https://github.com/ngbracket/ngx-layout/issues/603)
+* **core:** add static scss mixin ([#940](https://github.com/ngbracket/ngx-layout/issues/940)) ([ffd8331](https://github.com/ngbracket/ngx-layout/commit/ffd83318615550cdf3702c2edf8f10c8f5e49f30)), closes [#783](https://github.com/ngbracket/ngx-layout/issues/783)
+* **core:** add support for default unit for unitless values ([#1384](https://github.com/ngbracket/ngx-layout/issues/1384)) ([80b4e5a](https://github.com/ngbracket/ngx-layout/commit/80b4e5af9291c02e9092de46407f2f79fe7170b1))
+* **core:** add validateBasis to core export ([#706](https://github.com/ngbracket/ngx-layout/issues/706)) ([c603a86](https://github.com/ngbracket/ngx-layout/commit/c603a8674a5ef3668fd47fc71cd385690362c32c))
+* **core:** add value multiplication suffix feature ([#1383](https://github.com/ngbracket/ngx-layout/issues/1383)) ([4d36b74](https://github.com/ngbracket/ngx-layout/commit/4d36b74db8f4855b5210a2f329166e3037ff74a2))
+* **core:** implement MediaTrigger to allow manual breakpoint activations ([#997](https://github.com/ngbracket/ngx-layout/issues/997)) ([66e7463](https://github.com/ngbracket/ngx-layout/commit/66e74634430843f1735644575ea47084da605d53))
+* **core:** MediaObserver can report 1..n activations ([#994](https://github.com/ngbracket/ngx-layout/issues/994)) ([8307655](https://github.com/ngbracket/ngx-layout/commit/8307655f9d677f16d5a03aa139d71ccfb3a96cf2))
+* **core:** move MatchMedia to internal scope ([#998](https://github.com/ngbracket/ngx-layout/issues/998)) ([53a6ebb](https://github.com/ngbracket/ngx-layout/commit/53a6ebba30a68f0f3dcf2a8c3e458260ae049d5f))
+* **core:** remove deprecated MediaObserver::media$ ([#1375](https://github.com/ngbracket/ngx-layout/issues/1375)) ([14b8038](https://github.com/ngbracket/ngx-layout/commit/14b803892b26e68b0ee88eeb21963cd326f5eb3c))
+* **core:** support beforeprint and afterprint hooks ([#1080](https://github.com/ngbracket/ngx-layout/issues/1080)) ([8302998](https://github.com/ngbracket/ngx-layout/commit/8302998d88aa93c557c4fefd5ebab4b48cc90e2a)), closes [#603](https://github.com/ngbracket/ngx-layout/issues/603)
+* **demo-app:** add version number to header ([c984937](https://github.com/ngbracket/ngx-layout/commit/c9849377fa2a13f6017caa126ed8f0c82efc3299))
+* **demo-app:** use Angular CLI to build demo and universal apps ([eda12c3](https://github.com/ngbracket/ngx-layout/commit/eda12c382c9ea2cc959ec27252b90c6f052a1fba))
+* **demo-app:** use/register custom breakpoints ([0d4144c](https://github.com/ngbracket/ngx-layout/commit/0d4144c724ef9c433177d6e23fbc177d320d3aed))
+* **demo:** add demo to show fxHide with used with custom breakpoint ([#969](https://github.com/ngbracket/ngx-layout/issues/969)) ([f4eb901](https://github.com/ngbracket/ngx-layout/commit/f4eb90131a4067206663bacd26e4ccbb5dffe7d5)), closes [#961](https://github.com/ngbracket/ngx-layout/issues/961)
+* **demo:** use ace editor for syntax highlighting ([c6e9023](https://github.com/ngbracket/ngx-layout/commit/c6e902324e3810339827e5eb87e851a45f36a31d))
+* **docs:** add ability to submit PRs for docs ([39c78be](https://github.com/ngbracket/ngx-layout/commit/39c78bea5f840484e2486773f285fc5e88b8b5d7)), closes [#550](https://github.com/ngbracket/ngx-layout/issues/550) [#520](https://github.com/ngbracket/ngx-layout/issues/520)
+* **flex:** add support for rem units ([#901](https://github.com/ngbracket/ngx-layout/issues/901)) ([5990ed0](https://github.com/ngbracket/ngx-layout/commit/5990ed07386e14e09cd54b5027d09b8a717bfb59)), closes [#898](https://github.com/ngbracket/ngx-layout/issues/898)
+* **flexbox:** use protected access to allow API directives to be easily extended ([#163](https://github.com/ngbracket/ngx-layout/issues/163)) ([e6bc451](https://github.com/ngbracket/ngx-layout/commit/e6bc4517446d2c0a0de3e591855d66c18753160c))
+* **flex:** detect display precedence in fxLayout directive ([#1385](https://github.com/ngbracket/ngx-layout/issues/1385)) ([f8b1607](https://github.com/ngbracket/ngx-layout/commit/f8b1607643e035e0187948b14237a79092d84e2b))
+* **fxFlex:** compute immediate parent flex-direction ([#220](https://github.com/ngbracket/ngx-layout/issues/220)) ([ba0d85d](https://github.com/ngbracket/ngx-layout/commit/ba0d85dee967d99444c50be722125ff9c5a047bd))
+* **fxLayoutGap:** add gutter functionality to layout-gap ([84ca5c3](https://github.com/ngbracket/ngx-layout/commit/84ca5c3139875d451d6380c17d60cd72f8a4b7bf))
+* **grid:** add CSS Grid directives and demo ([#712](https://github.com/ngbracket/ngx-layout/issues/712)) ([b8c86be](https://github.com/ngbracket/ngx-layout/commit/b8c86be1d167f6e4842cf82f6e3358087dcd0038))
+* **layout-gap:** add x/y options for grid mode ([#1234](https://github.com/ngbracket/ngx-layout/issues/1234)) ([990586b](https://github.com/ngbracket/ngx-layout/commit/990586b103edf826001a757a1f827959b72d320e))
+* **layout:** add wrap options support to fxLayout ([#207](https://github.com/ngbracket/ngx-layout/issues/207)) ([2340a19](https://github.com/ngbracket/ngx-layout/commit/2340a1921bc25c960faa29de5c697ac776fda18e))
+* **lib:** add config options for flex basis and other tokens ([f01e551](https://github.com/ngbracket/ngx-layout/commit/f01e55178859ad6c6a4cb18e8ad3ec88c5b87b56))
+* **media-observer:** migrate ObservableMedia ([#892](https://github.com/ngbracket/ngx-layout/issues/892)) ([1205588](https://github.com/ngbracket/ngx-layout/commit/12055881bc41434f13446dd5ca194b0818bbc99a)), closes [#885](https://github.com/ngbracket/ngx-layout/issues/885)
+* **ObservableMedia:** use ObservableMedia class as provider token ([#158](https://github.com/ngbracket/ngx-layout/issues/158)) ([dad69fe](https://github.com/ngbracket/ngx-layout/commit/dad69feee8b3efbf43bde007994b9f4425ed4cea))
+* **project:** change name to ngx-layout ([6a2985c](https://github.com/ngbracket/ngx-layout/commit/6a2985cca9334d9ba6d3d7dbd2127b4413f9d3ff))
+* **server:** add ability to specify breakpoints for MediaObserver ([#999](https://github.com/ngbracket/ngx-layout/issues/999)) ([1c136bc](https://github.com/ngbracket/ngx-layout/commit/1c136bce3b05ef55dde016f6f55ff0b3c7ff424a)), closes [#991](https://github.com/ngbracket/ngx-layout/issues/991)
+* **ssr:** enhance support for Universal and SSR with stylesheets ([cf5266a](https://github.com/ngbracket/ngx-layout/commit/cf5266adc71cb377a54020d64a500d5f789450ed)), closes [#373](https://github.com/ngbracket/ngx-layout/issues/373) [#567](https://github.com/ngbracket/ngx-layout/issues/567)
+* **tokens:** add configuration for breakpoints and flex styles ([605f4d1](https://github.com/ngbracket/ngx-layout/commit/605f4d16758e7921393760d0e1d0047f0ec0f3fa))
+* upgrade to TypeScript v3.1 ([#860](https://github.com/ngbracket/ngx-layout/issues/860)) ([058ca74](https://github.com/ngbracket/ngx-layout/commit/058ca7485d0effa41f7a49e0e1a0f7ce393bbd5c))
+
+
+### Performance Improvements
+
+* remove duplicate function calls ([#773](https://github.com/ngbracket/ngx-layout/issues/773)) ([bc7f77f](https://github.com/ngbracket/ngx-layout/commit/bc7f77fadd96669bb1c3b1daaba503b26b7df0cc)), closes [#761](https://github.com/ngbracket/ngx-layout/issues/761)
+
+
+### Reverts
+
+* Revert "feat(api): add responsive API for img elements (#382)" (#387) ([d171c33](https://github.com/ngbracket/ngx-layout/commit/d171c33ac836b3c95b68448f3f218e7f5da02e3c)), closes [#382](https://github.com/ngbracket/ngx-layout/issues/382) [#387](https://github.com/ngbracket/ngx-layout/issues/387)
+
+
+### BREAKING CHANGES
+
+* We no longer directly have a direct depedency on `tslib`. Instead it is now listed a `peerDependency`.
+
+Users not using the CLI will need to manually install `tslib` via;
+```
+yarn add tslib
+```
+or
+```
+npm install tslib --save
+```
+
+Reference: TOOL-836
+* **core:** `MediaObserver` is the only supported mechanism to watch breakpoint activations outside the library. Developers should not use `MatchMedia`.
+
+*  MatchMedia is no longer exported as a public utility. 
+*  ServerMatchMedia is no longer exported at all
+* **core:** The stream data type for `asObservable` is now **MediaChange[]** instead of *MediaChange* and `media$` is deprecated in favor of `asObservable()`. 
+
+* `filterOverlaps` now defaults to `false`
+* **media-observer:** `ObservableMedia` is now deprecated in anticipation of RxJS v7.
+The new API is called **`MediaObserver`**, and provides the exact same functionality as ObservableMedia, except you cannot directly subscribe to it,
+You can subscribe to MediaObserver's `media$` property; in place of subscribing directly to ObservableMedia.
+* **lib:** * Four configuration tokens have been removed:
+
+* * `ADD_FLEX_STYLES`
+* * `ADD_ORIENTATION_BREAKPOINTS`
+* * `DISABLE_DEFAULT_BREAKPOINTS`
+* * `DISABLE_VENDOR_PREFIXES`
+
+These tokens have been consolidated into a new configuration token:
+
+* * `LAYOUT_CONFIG`
+
+* The default column flex-basis has been reverted to `1e-9px`. To
+  have that value be `auto` instead, set the config in your top-level
+  module as follows:
+
+```
+FlexLayoutModule.withConfig({useColumnBasisZero: false})
+```
+* **tokens:** * `fxFlex` no longer adds `display: flex; flex-direction: row` by
+  default
+* **ngStyle, ngClass:** * `[style.<alias>]` selectors are deprecated in favor of `[ngStyle.<alias>]` selectors
+* `[class.<alias>]` selectors are deprecated in favor of `[ngClass.<alias>]` selectors
+* default styles are merged with activated styles
+
+```html
+<div  fxLayout
+  [class.xs]="['xs-1', 'xs-2']"
+  [style]="{'font-size': '10px', 'margin-left' : '13px'}"
+  [style.xs]="{'font-size': '16px'}"
+  [style.md]="{'font-size': '12px'}">
+</div>
+```
+
+```html
+<div  fxLayout
+  [ngClass.xs]="['xs-1', 'xs-2']"
+  [ngStyle]="{'font-size': '10px', 'margin-left' : '13px'}"
+  [ngStyle.xs]="{'font-size': '16px'}"
+  [ngStyle.md]="{'font-size': '12px'}">
+</div>
+```
+* **api:** Previously releases used FlexLayoutModule.forRoot(). This has been deprecated and removed.
+* **ObservableMedia:** Deprecated use of `ObservableMediaService` opaque token. Developers now simply use the ObservableMedia class to inject the service.
+
+*before*
+
+```js
+constructor( @Inject(ObserverableMediaService) private media:any ) { ... }
+```
+
+**after**
+```js
+constructor(private media:ObservableMedia) { ... }
+```
+* **matchMediaObservable:** * use opaque token `ObservableMediateService` to inject instance of `MediaService`
+* use `MediaService::asObservable()` to get instance of observable
+
+```js
+// RxJS
+import 'rxjs/add/operator/map';
+
+@Component({ ... })
+export class MyComponent {
+  constructor( @Inject(ObservableMediaService) media) {
+    media.asObservable()
+      .map( (change:MediaChange) => change.mqAlias == 'md' )
+      .subscribe((change:MediaChange) => {
+        let state = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : ""
+        console.log( state );
+      });
+  }
+}
+```
+
+
+
 # 16.0.0-beta.1 (2023-03-27)
 
 
