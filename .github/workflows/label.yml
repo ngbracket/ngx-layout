@@ -27,4 +27,4 @@ jobs:
               repo: context.repo.repo,
               labels: ["triage"]
             })
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+            repo-token: "${{ secrets.GITHUB_TOKEN }}"
