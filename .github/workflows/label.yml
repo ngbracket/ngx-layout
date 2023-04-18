@@ -18,13 +18,13 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-    - uses: actions/labeler@v4
-      with:
-        script: |
-          github.rest.issues.addlabels({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            labels: ["triage"]
-          })
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - uses: actions/labeler@v4
+        with:
+          script: |
+            github.rest.issues.addlabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["triage"]
+            })
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
