@@ -3,8 +3,8 @@
   - '.tools/*'
 
 🃏 Demos:
-  - ./apps/demos/*
-  - ./apps/demos/**/*
+  - ./apps/demo-app/*
+  - ./apps/universal-demo-app/**/*
 
 '🛠️ CDK':
   - libs/cdk/*
