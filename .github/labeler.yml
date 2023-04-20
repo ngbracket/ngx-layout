@@ -1,0 +1,36 @@
+⚙️ Chore:
+  - '.github/*'
+  - '.tools/*'
+
+🃏 Demos:
+  - ./apps/demos/*
+  - ./apps/demos/**/*
+
+'🛠️ CDK':
+  - libs/cdk/*
+  - libs/cdk/**/*
+
+'{ } State':
+  - libs/state/*
+  - libs/state/**/*
+
+'</> Template':
+  - libs/template/*
+  - libs/template/**/*
+
+📖 Docs API:
+  - libs/**/docs/**/*
+
+📚 Docs Web:
+  - apps/docs/*
+  - apps/docs/**/*
+
+🔬 Experimental:
+  - libs/**/experimental/*
+  - libs/**/experimental/**/*
+
+🛂 Test:
+  - libs/**/spec/*
+  - libs/**/spec/**/*
+  - libs/**/perf/*
+  - libs/**/perf/**/*
