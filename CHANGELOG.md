@@ -1,3 +1,7 @@
+## [16.0.3](https://github.com/ngbracket/ngx-layout/compare/v16.0.2...v16.0.3) (2023-05-08)
+
+
+
 ## 16.0.2 (2023-05-08)
 
 
