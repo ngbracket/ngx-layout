@@ -75,7 +75,28 @@ Check out [all of the available options](https://github.com/ngbracket/ngx-layout
 *  [Builds + Fast Start](https://github.com/ngbracket/ngx-layout/wiki/Fast-Starts)
 *  [Integration with Angular CLI](https://github.com/ngbracket/ngx-layout/wiki/Using-Angular-CLI)
 
+----
 
+# Sponsorship Data (USD)
+
+| Description          | Paid (One time)  |Paid (Per/Month) | Received (Per/Month) | Balance |
+|----------------------|------------------|-----------------|----------------------|---------|
+| Sponsorship Paid     |110               |                 |                      |110      |
+|                      |                  |                 |                      |         |
+| Total                |110               |                 |                      |110      |
+
+Sponsorship credits:
+As per our sponsorship details all sponsor get added to our readme page:
+
+So we would like to say a BIG thank you to the following:
+
+| Sponsor          | Paid  | Sponsorship type |
+|------------------|-------|------------------|
+|KLGuyton          |$100   |One time
+|Stefanomozart     |$10    |One time
+
+
+If you would like your name/logo here please click on the sponsor [link](https://github.com/sponsors/ngbracket)
 ----
 
 ### Browser Support
