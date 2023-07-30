@@ -81,9 +81,9 @@ Check out [all of the available options](https://github.com/ngbracket/ngx-layout
 
 | Description          | Paid (One time)  |Paid (Per/Month) | Received (Per/Month) | Balance |
 |----------------------|------------------|-----------------|----------------------|---------|
-| Sponsorship Paid     |100               |                 |                      |100      |
+| Sponsorship Paid     |110               |                 |                      |110      |
 |                      |                  |                 |                      |         |
-| Total                |100               |                 |                      |100      |
+| Total                |110               |                 |                      |110      |
 
 Sponsorship credits:
 As per our sponsorship details all sponsor get added to our readme page:
@@ -93,6 +93,8 @@ So we would like to say a BIG thank you to the following:
 | Sponsor          | Paid  | Sponsorship type |
 |------------------|-------|------------------|
 |KLGuyton          |$100   |One time
+|Stefanomozart     |$10    |One time
+
 
 If you would like your name/logo here please click on the sponsor [link](https://github.com/sponsors/ngbracket)
 ----
