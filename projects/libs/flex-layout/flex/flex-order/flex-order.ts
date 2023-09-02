@@ -64,6 +64,14 @@ export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
   }
 
   protected override styleCache = flexOrderCache;
+
+  override updateWithValue(input: string) {
+    super.updateWithValue(input);
+
+    if (this.parentElement) {
+      this.marshal.triggerUpdate(this.parentElement, 'layout-gap');
+    }
+  }
 }
 
 const flexOrderCache: Map<string, StyleDefinition> = new Map();
