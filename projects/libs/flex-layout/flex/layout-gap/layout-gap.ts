@@ -199,7 +199,7 @@ export class LayoutGapDirective
     }
 
     // Clear the previous style before we change the layout
-    if (this.layout && this.layout !== newDirection){
+    if (this.layout && this.layout !== newDirection) {
       this.clearStyles();
     }
 
