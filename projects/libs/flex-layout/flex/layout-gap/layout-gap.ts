@@ -15,18 +15,18 @@ import {
   NgZone,
   OnDestroy,
 } from '@angular/core';
+import { LAYOUT_VALUES } from '@ngbracket/ngx-layout/_private-utils';
 import {
   BaseDirective2,
   ElementMatcher,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
   ɵmultiply as multiply,
 } from '@ngbracket/ngx-layout/core';
-import { LAYOUT_VALUES } from '@ngbracket/ngx-layout/_private-utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
