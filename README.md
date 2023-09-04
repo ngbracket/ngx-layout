@@ -3,6 +3,7 @@
 [![npm version](https://badge.fury.io/js/%40ngbracket%2Fngx-layout.svg)](https://www.npmjs.com/package/@ngbracket/ngx-layout)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/ngbracket/ngx-layout/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ngbracket/ngx-layout/tree/main)
 [![Gitter](https://badges.gitter.im/angular/flex-layout.svg)](https://gitter.im/angular/flex-layout)
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=flat&logo=github)](https://wallabyjs.com/oss/)
 
 **NOTE: The Angular team no longer publishes new releases of this project. Please see [this article](https://medium.com/@caerus.karu/farewell-flex-layout-aaa567023769) for the explanation and next steps.**
 
@@ -21,6 +22,7 @@ The **real** power of Flex Layout, however, is its **responsive** engine. The
 different layouts, sizing, visibilities for different viewport sizes and display devices.
 
 ---
+
 ### Getting Started
 
 Start by installing the ngx-layout library from `npm`
@@ -44,9 +46,9 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 ```
 
 After that is configured, you can use the ngx-layout attributes in your HTML tags for flex layout:
+
 ```html
-<div fxLayout="row" fxLayoutAlign="space-between">
-</div>
+<div fxLayout="row" fxLayoutAlign="space-between"></div>
 ```
 
 Check out [all of the available options](https://github.com/ngbracket/ngx-layout/wiki/Declarative-API-Overview) for using ngx-layout in your application.
@@ -55,51 +57,30 @@ Check out [all of the available options](https://github.com/ngbracket/ngx-layout
 
 ### Quick Links
 
-*  [ChangeLog](https://github.com/ngbracket/ngx-layout/blob/main/CHANGELOG.md)
-*  [Wiki Documentation](https://github.com/ngbracket/ngx-layout/wiki)
+- [ChangeLog](https://github.com/ngbracket/ngx-layout/blob/main/CHANGELOG.md)
+- [Wiki Documentation](https://github.com/ngbracket/ngx-layout/wiki)
 
 ### Demos
 
-*  [Explore Examples Online](https://tburleson-layouts-demos.firebaseapp.com/)
-*  [Demo Source Code](https://github.com/ngbracket/ngx-layout/blob/main/src/apps/demo-app/src/app/app.module.ts)
+- [Explore Examples Online](https://tburleson-layouts-demos.firebaseapp.com/)
+- [Demo Source Code](https://github.com/ngbracket/ngx-layout/blob/main/src/apps/demo-app/src/app/app.module.ts)
 
 ### StackBlitz Templates
 
-  *  [Flex-Layout Template](https://stackblitz.com/edit/flex-layout-seed)
-  *  [Flex-Layout + Material](https://stackblitz.com/edit/flex-layout-material-seed)
+- [Flex-Layout Template](https://stackblitz.com/edit/flex-layout-seed)
+- [Flex-Layout + Material](https://stackblitz.com/edit/flex-layout-material-seed)
 
 ### Developers
 
-*  [API Documentation](https://github.com/ngbracket/ngx-layout/wiki/API-Documentation)
-*  [Developer Setup](https://github.com/ngbracket/ngx-layout/wiki/Developer-Setup)
-*  [Builds + Fast Start](https://github.com/ngbracket/ngx-layout/wiki/Fast-Starts)
-*  [Integration with Angular CLI](https://github.com/ngbracket/ngx-layout/wiki/Using-Angular-CLI)
+- [API Documentation](https://github.com/ngbracket/ngx-layout/wiki/API-Documentation)
+- [Developer Setup](https://github.com/ngbracket/ngx-layout/wiki/Developer-Setup)
+- [Builds + Fast Start](https://github.com/ngbracket/ngx-layout/wiki/Fast-Starts)
+- [Integration with Angular CLI](https://github.com/ngbracket/ngx-layout/wiki/Using-Angular-CLI)
 
-----
-
-# Sponsorship Data (USD)
-
-| Description          | Paid (One time)  |Paid (Per/Month) | Received (Per/Month) | Balance |
-|----------------------|------------------|-----------------|----------------------|---------|
-| Sponsorship Paid     |110               |                 |                      |110      |
-|                      |                  |                 |                      |         |
-| Total                |110               |                 |                      |110      |
-
-Sponsorship credits:
-As per our sponsorship details all sponsor get added to our readme page:
-
-So we would like to say a BIG thank you to the following:
-
-| Sponsor          | Paid  | Sponsorship type |
-|------------------|-------|------------------|
-|KLGuyton          |$100   |One time
-|Stefanomozart     |$10    |One time
-
-
-If you would like your name/logo here please click on the sponsor [link](https://github.com/sponsors/ngbracket)
-----
+---
 
 ### Browser Support
+
 &nbsp;
 <a href="http://caniuse.com/#feat=flexbox" target="_blank">
 ![caniuseflexbox](https://cloud.githubusercontent.com/assets/210413/21288118/917e3faa-c440-11e6-9b08-28aff590c7ae.png)
