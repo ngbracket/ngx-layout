@@ -481,6 +481,62 @@ describe('layout-gap directive', () => {
       expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
     });
 
+    it('should remove gaps with responsive layout change', () => {
+      let template = `
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="24px">
+          <div fxFlex></div>
+          <div fxFlex></div>
+          <div fxFlex></div>
+        </div>
+      `;
+      createTestComponent(template);
+      let nodes = queryFor(fixture, '[fxFlex]');
+
+      mediaController.activate('md');
+      fixture.detectChanges();
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+
+      mediaController.activate('xs');
+      fixture.detectChanges();
+      expect(nodes.length).toEqual(3);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-bottom': '24px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-bottom': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+
+      mediaController.activate('md');
+      fixture.detectChanges();
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+    });
+
+    it('should add gap styles in proper order when order style is applied on responsive layout change', () => {
+      let template = `
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayout.xs="column" fxLayoutGap.xs="20px">
+          <div fxFlex fxFlexOrder.xs="3"></div>
+          <div fxFlex fxFlexOrder.xs="2"></div>
+          <div fxFlex fxFlexOrder.xs="1"></div>
+        </div>
+      `;
+      createTestComponent(template);
+      let nodes = queryFor(fixture, '[fxFlex]');
+
+      mediaController.activate('md');
+      fixture.detectChanges();
+      expect(nodes.length).toEqual(3);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+
+      mediaController.activate('xs');
+      fixture.detectChanges();
+      expectEl(nodes[2]).toHaveStyle({ 'margin-bottom': '20px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-bottom': '20px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+    });
+
     it('should work with dynamic fxHide', () => {
       let template = `
         <div fxLayout="row" fxLayoutGap="10px">

@@ -190,12 +190,20 @@ export class LayoutGapDirective
    */
   protected onLayoutChange(matcher: ElementMatcher) {
     const layout: string = matcher.value;
+
     // Make sure to filter out 'wrap' option
-    const direction = layout.split(' ');
-    this.layout = direction[0];
-    if (!LAYOUT_VALUES.find((x) => x === this.layout)) {
-      this.layout = 'row';
+    let newDirection = layout.split(' ')[0];
+
+    if (!LAYOUT_VALUES.find((x) => x === newDirection)) {
+      newDirection = 'row';
     }
+
+    // Clear the previous style before we change the layout
+    if (this.layout && this.layout !== newDirection){
+      this.clearStyles();
+    }
+
+    this.layout = newDirection;
     this.triggerUpdate();
   }
 
