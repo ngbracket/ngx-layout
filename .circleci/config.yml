@@ -107,6 +107,7 @@ jobs:
       - *attach_release_output
       - browser-tools/install-browser-tools:
         chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed - https://github.com/CircleCI-Public/browser-tools-orb/issues/90
+        replace-existing: true # TODO: remove until: https://github.com/CircleCI-Public/browser-tools-orb/issues/75
       - run: ./scripts/circleci/run-local-browser-tests.sh
 
   # ----------------------------------------------------------------------------
