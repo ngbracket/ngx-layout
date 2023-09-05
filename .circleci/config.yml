@@ -106,10 +106,14 @@ jobs:
       - *checkout_code
       - *attach_release_output
       - browser-tools/install-browser-tools:
-        chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed - https://github.com/CircleCI-Public/browser-tools-orb/issues/90
-        replace-existing: true
-      - run: ./scripts/circleci/run-local-browser-tests.sh
-
+      - browser-tools/install-chrome:
+      - browser-tools/install-chromedriver:
+        #chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed - https://github.com/CircleCI-Public/browser-tools-orb/issues/90
+        #replace-existing: true
+      - run:
+          command: |
+            google-chrome --version
+            chromedriver --version ./scripts/circleci/run-local-browser-tests.sh
   # ----------------------------------------------------------------------------
   # Job that runs the unit tests on Browserstack. The browsers that will be used
   # to run the unit tests on Browserstack are set in: test/browser-providers.js
