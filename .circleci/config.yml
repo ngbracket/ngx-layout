@@ -105,7 +105,8 @@ jobs:
     steps:
       - *checkout_code
       - *attach_release_output
-      - browser-tools/install-browser-tools:
+      - browser-tools/install-browser-tools
+
       - run: ./scripts/circleci/run-local-browser-tests.sh
 
   # ----------------------------------------------------------------------------
@@ -139,7 +140,8 @@ jobs:
     steps:
       - *checkout_code
       - *attach_release_output
-      - browser-tools/install-browser-tools:
+      - browser-tools/install-browser-tools
+
       - run: ./scripts/circleci/run-saucelabs-tests.sh
 
   # --------------------------------------------------
