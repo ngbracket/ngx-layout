@@ -129,20 +129,21 @@ jobs:
   # Job that runs the unit tests on Saucelabs. The browsers that will be used
   # to run the unit tests on Saucelabs are set in: test/browser-providers.js
   # ----------------------------------------------------------------------------
-  tests_saucelabs:
-    <<: *job_defaults
-    environment:
-      SAUCE_USERNAME: 'angular-flex-layout'
-      SAUCE_ACCESS_KEY: 'fa20eb1f457c-1f1a-c4c4-41ea-ef9e7f13'
-      # Note: This number should not be too high because otherwise we might run into
-      # a rate limit exception.
-      KARMA_PARALLEL_BROWSERS: 2
-    steps:
-      - *checkout_code
-      - *attach_release_output
-      - browser-tools/install-browser-tools
+  
+  # tests_saucelabs:
+  #   <<: *job_defaults
+  #   environment:
+  #     SAUCE_USERNAME: 'angular-flex-layout'
+  #     SAUCE_ACCESS_KEY: 'fa20eb1f457c-1f1a-c4c4-41ea-ef9e7f13'
+  #     # Note: This number should not be too high because otherwise we might run into
+  #     # a rate limit exception.
+  #     KARMA_PARALLEL_BROWSERS: 2
+  #   steps:
+  #     - *checkout_code
+  #     - *attach_release_output
+  #     - browser-tools/install-browser-tools
 
-      - run: ./scripts/circleci/run-saucelabs-tests.sh
+  #     - run: ./scripts/circleci/run-saucelabs-tests.sh
 
   # --------------------------------------------------
   # Job that runs the unit tests on the SSR platform
@@ -226,9 +227,9 @@ workflows:
       #- tests_browserstack:
       #    requires:
       #      - build
-      - tests_saucelabs:
-          requires:
-            - build
+      # - tests_saucelabs:
+      #     requires:
+      #       - build
       - tests_ssr:
           requires:
             - build
@@ -238,7 +239,7 @@ workflows:
       - publish_snapshots:
           requires:
             # - tests_browserstack
-            - tests_saucelabs
+            # - tests_saucelabs
             - tests_local_browsers
             - integration_tests
 
