@@ -129,6 +129,7 @@ jobs:
   # Job that runs the unit tests on Saucelabs. The browsers that will be used
   # to run the unit tests on Saucelabs are set in: test/browser-providers.js
   # ----------------------------------------------------------------------------
+  
   # tests_saucelabs:
   #   <<: *job_defaults
   #   environment:
