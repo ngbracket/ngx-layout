@@ -66,7 +66,7 @@ var_9: &attach_release_output
 # -----------------------------
 version: 2.1
 orbs:
-  browser-tools: circleci/browser-tools@1.4.4
+  browser-tools: circleci/browser-tools@1.4.5
 
 # -----------------------------------------------------------------------------------------
 # Job definitions. Jobs which are defined just here, will not run automatically. Each job
@@ -106,7 +106,8 @@ jobs:
       - *checkout_code
       - *attach_release_output
       - browser-tools/install-browser-tools:
-        chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed - https://github.com/CircleCI-Public/browser-tools-orb/issues/90
+      #  chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed - https://github.com/CircleCI-Public/browser-tools-orb/issues/90
+      #  replace-existing-chrome: true
       - run: ./scripts/circleci/run-local-browser-tests.sh
 
   # ----------------------------------------------------------------------------
@@ -141,7 +142,7 @@ jobs:
       - *checkout_code
       - *attach_release_output
       - browser-tools/install-browser-tools:
-        chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed - https://github.com/CircleCI-Public/browser-tools-orb/issues/90
+      # chrome-version: 116.0.5845.96 # TODO: remove when chromedriver downloads are fixed - https://github.com/CircleCI-Public/browser-tools-orb/issues/90
 
       - run: ./scripts/circleci/run-saucelabs-tests.sh
 
