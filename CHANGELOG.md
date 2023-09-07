@@ -1,3 +1,5 @@
+# 16.1.0 (2023-09-07)
+
 ## [15.1.3](https://github.com/ngbracket/ngx-layout/compare/14.0.0-beta.41...15.1.3) (2023-03-05)
 
 ### Bug Fixes
