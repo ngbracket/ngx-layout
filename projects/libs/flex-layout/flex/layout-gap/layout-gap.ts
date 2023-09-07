@@ -15,18 +15,18 @@ import {
   NgZone,
   OnDestroy,
 } from '@angular/core';
+import { LAYOUT_VALUES } from '@ngbracket/ngx-layout/_private-utils';
 import {
   BaseDirective2,
   ElementMatcher,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
   ɵmultiply as multiply,
 } from '@ngbracket/ngx-layout/core';
-import { LAYOUT_VALUES } from '@ngbracket/ngx-layout/_private-utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -190,12 +190,20 @@ export class LayoutGapDirective
    */
   protected onLayoutChange(matcher: ElementMatcher) {
     const layout: string = matcher.value;
+
     // Make sure to filter out 'wrap' option
-    const direction = layout.split(' ');
-    this.layout = direction[0];
-    if (!LAYOUT_VALUES.find((x) => x === this.layout)) {
-      this.layout = 'row';
+    let newDirection = layout.split(' ')[0];
+
+    if (!LAYOUT_VALUES.find((x) => x === newDirection)) {
+      newDirection = 'row';
     }
+
+    // Clear the previous style before we change the layout
+    if (this.layout && this.layout !== newDirection) {
+      this.clearStyles();
+    }
+
+    this.layout = newDirection;
     this.triggerUpdate();
   }
 

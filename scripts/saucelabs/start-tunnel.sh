@@ -31,7 +31,7 @@ rm ${tunnelFileName}
 sauceArgs="--readyfile ${tunnelReadyFile} --pidfile ${tunnelPidFile}"
 
 if [ ! -z "${CIRCLE_BUILD_NUM}" ]; then
-  sauceArgs="${sauceArgs} --tunnel-identifier angular-layout-${CIRCLE_BUILD_NUM}-${CIRCLE_NODE_INDEX}"
+  sauceArgs="${sauceArgs} --tunnel-name angular-layout-${CIRCLE_BUILD_NUM}-${CIRCLE_NODE_INDEX}"
 fi
 
 echo "Starting Sauce Connect in the background, logging into: ${tunnelLogFile}"
