@@ -1,6 +1,6 @@
 # Flex Layout
 
-Angular Flex Layout provides a sophisticated layout API using FlexBox CSS + mediaQuery. This module provides Angular
+The @ngbracket/ngx-layout provides a sophisticated layout API using FlexBox CSS + mediaQuery. This module provides Angular
 developers with component layout features using a custom Layout API, mediaQuery observables, and injected DOM
 flexbox-2016 css stylings.
 
@@ -10,10 +10,10 @@ CSS-only application of Flexbox CSS.
 
 ![css3-flexbox-model](https://cloud.githubusercontent.com/assets/210413/20034148/49a4fb62-a382-11e6-9822-42b90dec69be.jpg)
 
-Angular Flex Layout is a pure-Typescript Layout engine; unlike the pure CSS-only implementations published in other
+@ngbracket/ngx-layout is a pure-Typescript Layout engine; unlike the pure CSS-only implementations published in other
 Flexbox libraries and the JS+CSS implementation of AngularJS Material Layouts.
 
-- This implementation of Angular Flex Layouts is independent of Angular Material (v1 or v2).
+- This implementation of @ngbracket/ngx-layout is independent of Angular Material (v1 or v2).
 - This implementation is currently only available for Angular (v4.1 and higher) applications.
 
 ### Featured Demo
