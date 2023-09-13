@@ -19,6 +19,7 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import { ServerMatchMedia } from './server-match-media';
+import { CSP_NONCE, Inject, Optional } from '@angular/core';
 
 /**
  * Activate all the registered breakpoints in sequence, and then
@@ -71,12 +72,16 @@ export function FLEX_SSR_SERIALIZER_FACTORY(
   mediaController: ServerMatchMedia,
   _document: Document,
   breakpoints: BreakPoint[],
-  mediaMarshaller: MediaMarshaller
+  mediaMarshaller: MediaMarshaller,
+  _nonce?: string
 ) {
   return () => {
     // This is the style tag that gets inserted into the head of the DOM,
     // populated with the manual media queries
     const styleTag = _document.createElement('style');
+    if (_nonce) {
+      styleTag.setAttribute('nonce', _nonce);
+    }
     const styleText = generateStaticFlexLayoutStyles(
       serverSheet,
       mediaController,
@@ -96,7 +101,14 @@ export const SERVER_PROVIDERS = [
   {
     provide: BEFORE_APP_SERIALIZED,
     useFactory: FLEX_SSR_SERIALIZER_FACTORY,
-    deps: [StylesheetMap, MatchMedia, DOCUMENT, BREAKPOINTS, MediaMarshaller],
+    deps: [
+      StylesheetMap,
+      MatchMedia,
+      DOCUMENT,
+      BREAKPOINTS,
+      MediaMarshaller,
+      [new Optional(), new Inject(CSP_NONCE)],
+    ],
     multi: true,
   },
   {

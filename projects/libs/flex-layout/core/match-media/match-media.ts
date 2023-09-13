@@ -7,10 +7,12 @@
  */
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
+  CSP_NONCE,
   Inject,
   Injectable,
   NgZone,
   OnDestroy,
+  Optional,
   PLATFORM_ID,
 } from '@angular/core';
 import { BehaviorSubject, merge, Observable, Observer } from 'rxjs';
@@ -35,7 +37,8 @@ export class MatchMedia implements OnDestroy {
   constructor(
     protected _zone: NgZone,
     @Inject(PLATFORM_ID) protected _platformId: Object,
-    @Inject(DOCUMENT) protected _document: any
+    @Inject(DOCUMENT) protected _document: any,
+    @Optional() @Inject(CSP_NONCE) protected _nonce?: string
   ) {}
 
   /**
@@ -118,7 +121,7 @@ export class MatchMedia implements OnDestroy {
     const list = Array.isArray(mediaQuery) ? mediaQuery : [mediaQuery];
     const matches: MediaChange[] = [];
 
-    buildQueryCss(list, this._document);
+    buildQueryCss(list, this._document, this._nonce);
 
     list.forEach((query: string) => {
       const onMQLEvent = (e: MediaQueryListEvent) => {
@@ -176,7 +179,11 @@ const ALL_STYLES: { [key: string]: any } = {};
  * @param mediaQueries
  * @param _document
  */
-function buildQueryCss(mediaQueries: string[], _document: Document) {
+function buildQueryCss(
+  mediaQueries: string[],
+  _document: Document,
+  _nonce?: string
+) {
   const list = mediaQueries.filter((it) => !ALL_STYLES[it]);
   if (list.length > 0) {
     const query = list.join(', ');
@@ -185,6 +192,9 @@ function buildQueryCss(mediaQueries: string[], _document: Document) {
       const styleEl = _document.createElement('style');
 
       styleEl.setAttribute('type', 'text/css');
+      if (_nonce) {
+        styleEl.setAttribute('nonce', _nonce);
+      }
       if (!(styleEl as any).styleSheet) {
         const cssText = `
 /*
