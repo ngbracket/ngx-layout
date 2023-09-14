@@ -38,7 +38,7 @@ export class MatchMedia implements OnDestroy {
     protected _zone: NgZone,
     @Inject(PLATFORM_ID) protected _platformId: Object,
     @Inject(DOCUMENT) protected _document: any,
-    @Optional() @Inject(CSP_NONCE) protected _nonce?: string
+    @Optional() @Inject(CSP_NONCE) protected _nonce?: string | null
   ) {}
 
   /**
@@ -182,7 +182,7 @@ const ALL_STYLES: { [key: string]: any } = {};
 function buildQueryCss(
   mediaQueries: string[],
   _document: Document,
-  _nonce?: string
+  _nonce?: string | null
 ) {
   const list = mediaQueries.filter((it) => !ALL_STYLES[it]);
   if (list.length > 0) {
