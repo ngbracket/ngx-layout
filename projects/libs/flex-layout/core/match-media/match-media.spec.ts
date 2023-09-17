@@ -114,23 +114,23 @@ describe('match-media', () => {
   });
 
   describe('honors nonce', () => {
-    let head: HTMLHeadElement;
+    let headElement: HTMLHeadElement;
     let styleTag: HTMLStyleElement;
     const anyQuery1 = 'screen and (min-width: 611px) and (max-width: 621px)';
     const anyQuery2 = '(min-width: 731px) and (max-width: 951px)';
 
-    function clearStyles(head: HTMLHeadElement) {
-      const styles = head.querySelectorAll('style');
+    function clearStyles(elm: HTMLHeadElement) {
+      const styles = elm.querySelectorAll('style');
       for (let i = 0; i < styles.length; i++) {
-        head.removeChild(styles[i]);
+        elm.removeChild(styles[i]);
       }
     }
     beforeEach(() => {
-      head = (mediaController._document as Document).head;
-      clearStyles(head);
+      headElement = (mediaController._document as Document).head;
+      clearStyles(headElement);
     });
     afterEach(() => {
-      clearStyles(head);
+      clearStyles(headElement);
     });
 
     it('should add nonce to style elements when nonce', () => {
@@ -138,14 +138,14 @@ describe('match-media', () => {
       mediaController.setNonce(nonce);
       mediaController.registerQuery(anyQuery1);
 
-      styleTag = head.querySelectorAll('style')[0];
+      styleTag = headElement.querySelectorAll('style')[0];
       expect(styleTag.getAttribute('nonce')).toBe(nonce);
     });
     it('should not have nonce attribute style elements when no nonce', () => {
       mediaController.setNonce(null);
       mediaController.registerQuery(anyQuery2);
 
-      styleTag = head.querySelectorAll('style')[0];
+      styleTag = headElement.querySelectorAll('style')[0];
       expect(styleTag.getAttribute('nonce')).toBeFalsy();
     });
   });
