@@ -1,3 +1,15 @@
+# 16.1.1 (2023-09-17)
+
+## What's Changed
+
+- fix(media-observer) honor nonce in style tag(#38) by @yogeshgadge in https://github.com/ngbracket/ngx-layout/pull/39
+
+## New Contributors
+
+- @yogeshgadge made their first contribution in https://github.com/ngbracket/ngx-layout/pull/39
+
+**Full Changelog**: https://github.com/ngbracket/ngx-layout/compare/9e02862...1e68e71
+
 # 16.1.0 (2023-09-07)
 
 ## What's Changed
