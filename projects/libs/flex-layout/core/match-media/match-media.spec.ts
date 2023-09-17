@@ -113,6 +113,43 @@ describe('match-media', () => {
     subscription.unsubscribe();
   });
 
+  describe('honors nonce', () => {
+    let headElement: HTMLHeadElement;
+    let styleTag: HTMLStyleElement;
+    const anyQuery1 = 'screen and (min-width: 611px) and (max-width: 621px)';
+    const anyQuery2 = '(min-width: 731px) and (max-width: 951px)';
+
+    function clearStyles(elm: HTMLHeadElement) {
+      const styles = elm.querySelectorAll('style');
+      for (let i = 0; i < styles.length; i++) {
+        elm.removeChild(styles[i]);
+      }
+    }
+    beforeEach(() => {
+      headElement = (mediaController._document as Document).head;
+      clearStyles(headElement);
+    });
+    afterEach(() => {
+      clearStyles(headElement);
+    });
+
+    it('should add nonce to style elements when nonce', () => {
+      const nonce = 'foo';
+      mediaController.setNonce(nonce);
+      mediaController.registerQuery(anyQuery1);
+
+      styleTag = headElement.querySelectorAll('style')[0];
+      expect(styleTag.getAttribute('nonce')).toBe(nonce);
+    });
+    it('should not have nonce attribute style elements when no nonce', () => {
+      mediaController.setNonce(null);
+      mediaController.registerQuery(anyQuery2);
+
+      styleTag = headElement.querySelectorAll('style')[0];
+      expect(styleTag.getAttribute('nonce')).toBeFalsy();
+    });
+  });
+
   describe('match-media-observable', () => {
     const watchMedia = (
       alias: string,

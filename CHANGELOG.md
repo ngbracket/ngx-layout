@@ -1,4 +1,34 @@
+# 16.1.1 (2023-09-17)
+
+## What's Changed
+
+- fix(media-observer) honor nonce in style tag(#38) by @yogeshgadge in https://github.com/ngbracket/ngx-layout/pull/39
+
+## New Contributors
+
+- @yogeshgadge made their first contribution in https://github.com/ngbracket/ngx-layout/pull/39
+
+**Full Changelog**: https://github.com/ngbracket/ngx-layout/compare/9e02862...1e68e71
+
 # 16.1.0 (2023-09-07)
+
+## What's Changed
+
+- fix(circleci): fix chrome driver by @DuncanFaulkner in https://github.com/ngbracket/ngx-layout/pull/30
+- Fix layout-gap/flex-order responsive issues by @alexmurari in https://github.com/ngbracket/ngx-layout/pull/29
+- Add missing whitespace by @alexmurari in https://github.com/ngbracket/ngx-layout/pull/31
+- Feature/upgrade packages by @DuncanFaulkner in https://github.com/ngbracket/ngx-layout/pull/32
+- Fix circleci chromedriver download by @alexmurari in https://github.com/ngbracket/ngx-layout/pull/33
+- fix(browser-tools): update config by @DuncanFaulkner in https://github.com/ngbracket/ngx-layout/pull/34
+- fix(circleci): config by @DuncanFaulkner in https://github.com/ngbracket/ngx-layout/pull/35
+- Feature/circleci config by @DuncanFaulkner in https://github.com/ngbracket/ngx-layout/pull/36
+- Merge main back into 16.x.x by @DuncanFaulkner in https://github.com/ngbracket/ngx-layout/pull/37
+
+## New Contributors
+
+- @alexmurari made their first contribution in https://github.com/ngbracket/ngx-layout/pull/29
+
+**Full Changelog**: https://github.com/ngbracket/ngx-layout/compare/92d418d...9e02862
 
 ## [15.1.3](https://github.com/ngbracket/ngx-layout/compare/14.0.0-beta.41...15.1.3) (2023-03-05)
 
