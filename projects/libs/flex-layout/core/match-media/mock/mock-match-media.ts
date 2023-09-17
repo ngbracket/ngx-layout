@@ -25,7 +25,7 @@ export class MockMatchMedia extends MatchMedia {
 
   constructor(_zone: NgZone,
               @Inject(PLATFORM_ID) _platformId: Object,
-              @Inject(DOCUMENT) _document: any,
+              @Inject(DOCUMENT) public override _document: any,
               private _breakpoints: BreakPointRegistry) {
     super(_zone, _platformId, _document);
   }
@@ -53,6 +53,9 @@ export class MockMatchMedia extends MatchMedia {
     return this.hasActivated;
   }
 
+  setNonce(nonce: string | null) {
+    super._nonce = nonce;
+  }
   /** Converts an optional mediaQuery alias to a specific, valid mediaQuery */
   _validateQuery(queryOrAlias: string): string {
     const bp = this._breakpoints.findByAlias(queryOrAlias);
