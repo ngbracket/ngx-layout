@@ -1,4 +1,4 @@
-## [16.1.2](https://github.com/ngbracket/ngx-layout/compare/16.1.1...16.1.2) (2023-09-18)
+## [16.1.3](https://github.com/ngbracket/ngx-layout/compare/16.1.1...16.1.2) (2023-09-18)
 
 ## What's changed
 
