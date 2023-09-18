@@ -1,3 +1,9 @@
+## [16.1.2](https://github.com/ngbracket/ngx-layout/compare/16.1.1...16.1.2) (2023-09-18)
+
+## What's changed
+
+- nothing just a new minior version to fix broke unit test
+
 # 16.1.1 (2023-09-17)
 
 ## What's Changed
