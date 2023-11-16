@@ -9,7 +9,7 @@
 # To validate changes, use an online parser, eg.
 # http://yaml-online-parser.appspot.com/
 
-var_1: &docker_image cimg/node:16.14.0
+var_1: &docker_image cimg/node:18.18.2
 var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "yarn.lock" }}-0.7.0
 
 # Settings common to each job
@@ -129,7 +129,7 @@ jobs:
   # Job that runs the unit tests on Saucelabs. The browsers that will be used
   # to run the unit tests on Saucelabs are set in: test/browser-providers.js
   # ----------------------------------------------------------------------------
-  
+
   # tests_saucelabs:
   #   <<: *job_defaults
   #   environment:
