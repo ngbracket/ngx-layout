@@ -1,3 +1,18 @@
+# [17.0.0](https://github.com/ngbracket/ngx-layout/compare/16.1.1...17.0.0) (2023-11-16)
+
+### Bug Fixes
+
+- **update:** fix yarn install to latest node ([856a4a7](https://github.com/ngbracket/ngx-layout/commit/856a4a7245394b44b4c573d0ecee3c44028c4a83))
+- **update:** issues with linting - still using tslint needs upgrading to eslint ([541e2ed](https://github.com/ngbracket/ngx-layout/commit/541e2ed107d80cc5bb223510306b01dea8a24859))
+
+### Features
+
+- **project:** upgrade to Angular 17 ([88fdb56](https://github.com/ngbracket/ngx-layout/commit/88fdb56f5e8047de1e2a313b5c925e8a9c0d3d9a))
+
+## [16.0.4](https://github.com/ngbracket/ngx-layout/compare/v16.0.2...v16.0.4) (2023-05-08)
+
+## 16.0.2 (2023-05-08)
+
 ## [16.1.3](https://github.com/ngbracket/ngx-layout/compare/16.1.1...16.1.2) (2023-09-18)
 
 ## What's changed
