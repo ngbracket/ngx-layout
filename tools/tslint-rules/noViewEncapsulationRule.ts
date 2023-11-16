@@ -1,7 +1,7 @@
+import { minimatch } from 'minimatch';
 import path from 'path';
+import { IOptions, Rules, RuleWalker } from 'tslint';
 import ts from 'typescript';
-import {IOptions, Rules, RuleWalker} from 'tslint';
-import minimatch from 'minimatch';
 
 const ERROR_MESSAGE = 'Components must turn off view encapsulation.';
 
@@ -18,7 +18,6 @@ export class Rule extends Rules.AbstractRule {
 }
 
 class Walker extends RuleWalker {
-
   /** Whether the walker should check the current source file. */
   private _enabled: boolean;
 
@@ -32,28 +31,39 @@ class Walker extends RuleWalker {
     const relativeFilePath = path.relative(process.cwd(), sourceFile.fileName);
 
     // Whether the file should be checked at all.
-    this._enabled = fileGlobs.some(p => minimatch(relativeFilePath, p));
+    this._enabled = fileGlobs.some((p) => minimatch(relativeFilePath, p));
   }
 
   visitClassDeclaration(node: ts.ClassDeclaration) {
-    if (!this._enabled || !node.decorators) {
+    if (!this._enabled || !ts.canHaveDecorators(node)) {
       return;
     }
+    // if (!this._enabled || !node.decorators) {
+    //   return;
+    // }
 
-    node.decorators
-      .map(decorator => decorator.expression as any)
-      .filter(expression => expression.expression.getText() === 'Component')
-      .filter(expression => expression.arguments.length && expression.arguments[0].properties)
-      .forEach(expression => {
-        const hasTurnedOffEncapsulation = expression.arguments[0].properties.some((prop: any) => {
-          const value = prop.initializer.getText();
-          return prop.name.getText() === 'encapsulation' && value.endsWith('.None');
-        });
+    // node.decorators
+    //   .map((decorator) => decorator.expression as any)
+    //   .filter((expression) => expression.expression.getText() === 'Component')
+    //   .filter(
+    //     (expression) =>
+    //       expression.arguments.length && expression.arguments[0].properties
+    //   )
+    ts.getDecorators(node)
+      ?.map((decorator) => decorator.expression as any)
+      .filter((expression) => expression.expression.getText() === 'Component')
+      .forEach((expression) => {
+        const hasTurnedOffEncapsulation =
+          expression.arguments[0].properties.some((prop: any) => {
+            const value = prop.initializer.getText();
+            return (
+              prop.name.getText() === 'encapsulation' && value.endsWith('.None')
+            );
+          });
 
         if (!hasTurnedOffEncapsulation) {
           this.addFailureAtNode(expression.parent, ERROR_MESSAGE);
         }
       });
   }
-
 }

@@ -16,7 +16,7 @@
     "no-internal-module": true,
     "no-trailing-whitespace": true,
     "no-bitwise": true,
-    "no-shadowed-variable": true,
+    "no-shadowed-variable": false,
     "no-unused-expression": [true],
     "no-var-keyword": true,
     "member-access": [true, "no-public"],
