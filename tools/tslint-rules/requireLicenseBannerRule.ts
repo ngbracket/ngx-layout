@@ -1,7 +1,7 @@
+import { minimatch } from 'minimatch';
 import path from 'path';
+import { IOptions, Replacement, Rules, RuleWalker } from 'tslint';
 import ts from 'typescript';
-import {IOptions, Replacement, Rules, RuleWalker} from 'tslint';
-import minimatch from 'minimatch';
 
 const buildConfig = require('../../build-config');
 
@@ -9,7 +9,8 @@ const buildConfig = require('../../build-config');
 const licenseBanner = buildConfig.licenseBanner;
 
 /** Failure message that will be shown if a license banner is missing. */
-const ERROR_MESSAGE = 'Missing license header in this TypeScript file. ' +
+const ERROR_MESSAGE =
+  'Missing license header in this TypeScript file. ' +
   'Every TypeScript file of the library needs to have the Google license banner at the top.';
 
 /** TSLint fix that can be used to add the license banner easily. */
@@ -20,14 +21,14 @@ const tslintFix = Replacement.appendText(0, licenseBanner + '\n\n');
  * file does not have the license banner at the top of the file.
  */
 export class Rule extends Rules.AbstractRule {
-
   apply(sourceFile: ts.SourceFile) {
-    return this.applyWithWalker(new RequireLicenseBannerWalker(sourceFile, this.getOptions()));
+    return this.applyWithWalker(
+      new RequireLicenseBannerWalker(sourceFile, this.getOptions())
+    );
   }
 }
 
 class RequireLicenseBannerWalker extends RuleWalker {
-
   /** Whether the walker should check the current source file. */
   private _enabled: boolean;
 
@@ -41,7 +42,10 @@ class RequireLicenseBannerWalker extends RuleWalker {
     const relativeFilePath = path.relative(process.cwd(), sourceFile.fileName);
 
     // Whether the file should be checked at all.
-    this._enabled = fileGlobs.some(p => minimatch(relativeFilePath, p));
+
+    this._enabled = fileGlobs.some((p) => {
+      minimatch(relativeFilePath, p);
+    });
   }
 
   visitSourceFile(sourceFile: ts.SourceFile) {

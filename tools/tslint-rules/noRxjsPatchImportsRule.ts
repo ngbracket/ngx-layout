@@ -1,7 +1,7 @@
+import { minimatch } from 'minimatch';
 import path from 'path';
+import { IOptions, Rules, RuleWalker } from 'tslint';
 import ts from 'typescript';
-import {IOptions, Rules, RuleWalker} from 'tslint';
-import minimatch from 'minimatch';
 
 const ERROR_MESSAGE = 'Uses of RxJS patch imports are forbidden.';
 
@@ -16,7 +16,6 @@ export class Rule extends Rules.AbstractRule {
 }
 
 class Walker extends RuleWalker {
-
   /** Whether the walker should check the current source file. */
   private _enabled: boolean;
 
@@ -30,12 +29,15 @@ class Walker extends RuleWalker {
     const relativeFilePath = path.relative(process.cwd(), sourceFile.fileName);
 
     // Whether the file should be checked at all.
-    this._enabled = fileGlobs.some(p => minimatch(relativeFilePath, p));
+    this._enabled = fileGlobs.some((p) => minimatch(relativeFilePath, p));
   }
 
   visitImportDeclaration(node: ts.ImportDeclaration) {
     // Walk through the imports and check if they start with `rxjs/add`.
-    if (this._enabled && node.moduleSpecifier.getText().startsWith('rxjs/add', 1)) {
+    if (
+      this._enabled &&
+      node.moduleSpecifier.getText().startsWith('rxjs/add', 1)
+    ) {
       this.addFailureAtNode(node, ERROR_MESSAGE);
     }
 
