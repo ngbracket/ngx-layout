@@ -7680,11 +7680,6 @@ minizlib@^2.1.1, minizlib@^2.1.2:
     minipass "^3.0.0"
     yallist "^4.0.0"
 
-mitt@^1.1.3:
-  version "1.2.0"
-  resolved "http://npm.nd.dev01.qaoneadr.local/mitt/-/mitt-1.2.0.tgz"
-  integrity sha512-r6lj77KlwqLhIUku9UWYes7KJtsczvolZkzp8hbaDPPaE24OmWl5s539Mytlj22siEQKosZ26qCBgda2PKwoJw==
-
 mitt@3.0.1:
   version "3.0.1"
   resolved "http://npm.nd.dev01.qaoneadr.local/mitt/-/mitt-3.0.1.tgz"
