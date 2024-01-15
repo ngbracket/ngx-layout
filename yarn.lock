@@ -5097,11 +5097,6 @@ esutils@^2.0.2:
   resolved "http://npm.nd.dev01.qaoneadr.local/esutils/-/esutils-2.0.3.tgz"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-etag@^1.8.1, etag@~1.8.1, etag@1.8.1:
-  version "1.8.1"
-  resolved "http://npm.nd.dev01.qaoneadr.local/etag/-/etag-1.8.1.tgz"
-  integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
-
 event-stream@=3.3.4:
   version "3.3.4"
   resolved "http://npm.nd.dev01.qaoneadr.local/event-stream/-/event-stream-3.3.4.tgz"
