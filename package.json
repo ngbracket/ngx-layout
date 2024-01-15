@@ -81,6 +81,6 @@
     "webpack-cli": "^5.1.4"
   },
   "resolutions": {
-    "browser-sync-client": "2.26.13"
+    "browser-sync-client": "2.29.3"
   }
 }
