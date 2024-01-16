@@ -1,3 +1,4 @@
+
 ## [17.0.1](https://github.com/ngbracket/ngx-layout/compare/16.1.1...17.0.1) (2024-01-15)
 
 
@@ -10,16 +11,6 @@
 * **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
 * **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
 * **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
-
-
-
-## [16.0.4](https://github.com/ngbracket/ngx-layout/compare/v16.0.2...v16.0.4) (2023-05-08)
-
-
-
-## 16.0.2 (2023-05-08)
-
-
 
 # [17.0.0](https://github.com/ngbracket/ngx-layout/compare/16.1.1...17.0.0) (2023-11-16)
 
