@@ -14,10 +14,10 @@ import { DefaultShowHideDirective } from './show-hide/show-hide';
 import { DefaultStyleDirective } from './style/style';
 
 const ALL_DIRECTIVES = [
-    DefaultShowHideDirective,
-    DefaultClassDirective,
-    DefaultStyleDirective,
-    DefaultImgSrcDirective,
+  DefaultShowHideDirective,
+  DefaultClassDirective,
+  DefaultStyleDirective,
+  DefaultImgSrcDirective,
 ];
 
 /**
@@ -27,7 +27,8 @@ const ALL_DIRECTIVES = [
  */
 
 @NgModule({
-    imports: [CoreModule, ...ALL_DIRECTIVES],
-    exports: [...ALL_DIRECTIVES],
+  imports: [CoreModule],
+  declarations: [...ALL_DIRECTIVES],
+  exports: [...ALL_DIRECTIVES],
 })
 export class ExtendedModule {}

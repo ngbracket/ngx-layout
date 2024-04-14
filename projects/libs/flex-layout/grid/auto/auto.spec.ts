@@ -10,321 +10,320 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-    SERVER_TOKEN,
-    StyleUtils,
-    ɵMatchMedia as MatchMedia,
-    ɵMockMatchMedia as MockMatchMedia,
-    ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
+  ɵMatchMedia as MatchMedia,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
 import { GridModule } from '@ngbracket/ngx-layout/grid';
 import {
-    customMatchers,
-    expectNativeEl,
-    makeCreateTestComponent,
+  customMatchers,
+  expectNativeEl,
+  makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 describe('grid auto parent directive', () => {
-    let fixture: ComponentFixture<any>;
-    let styler: StyleUtils;
-    let mediaController: MockMatchMedia;
-    let platform: Platform;
-    let createTestComponent = (template: string, styles?: any) => {
-        fixture = makeCreateTestComponent(() => TestGridAutoComponent)(
-            template,
-            styles
-        );
-        inject(
-            [StyleUtils, MatchMedia, Platform],
-            (
-                _styler: StyleUtils,
-                _matchMedia: MockMatchMedia,
-                _platform: Platform
-            ) => {
-                styler = _styler;
-                mediaController = _matchMedia;
-                platform = _platform;
-            }
-        )();
-    };
+  let fixture: ComponentFixture<any>;
+  let styler: StyleUtils;
+  let mediaController: MockMatchMedia;
+  let platform: Platform;
+  let createTestComponent = (template: string, styles?: any) => {
+    fixture = makeCreateTestComponent(() => TestGridAutoComponent)(
+      template,
+      styles
+    );
+    inject(
+      [StyleUtils, MatchMedia, Platform],
+      (
+        _styler: StyleUtils,
+        _matchMedia: MockMatchMedia,
+        _platform: Platform
+      ) => {
+        styler = _styler;
+        mediaController = _matchMedia;
+        platform = _platform;
+      }
+    )();
+  };
 
-    beforeEach(() => {
-        jasmine.addMatchers(customMatchers);
+  beforeEach(() => {
+    jasmine.addMatchers(customMatchers);
 
-        // Configure testbed to prepare services
-        TestBed.configureTestingModule({
-    imports: [CommonModule, GridModule, TestGridAutoComponent],
-    providers: [
+    // Configure testbed to prepare services
+    TestBed.configureTestingModule({
+      imports: [CommonModule, GridModule],
+      declarations: [TestGridAutoComponent],
+      providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
-    ],
-});
+      ],
     });
+  });
 
-    describe('with static features', () => {
-        it('should add auto styles for parent', () => {
-            let template = `
+  describe('with static features', () => {
+    it('should add auto styles for parent', () => {
+      let template = `
               <div gdAuto>
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'row',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
+    });
 
-        it('should work with inline grid', () => {
-            let template = `
+    it('should work with inline grid', () => {
+      let template = `
               <div gdAuto gdInline>
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'inline-grid',
-                    'grid-auto-flow': 'row',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'inline-grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
+    });
 
-        it('should work with row values', () => {
-            let template = `
+    it('should work with row values', () => {
+      let template = `
               <div gdAuto="row">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'row',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
+    });
 
-        it('should work with column values', () => {
-            let template = `
+    it('should work with column values', () => {
+      let template = `
               <div gdAuto="column">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'column',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
+    });
 
-        it('should work with dense values', () => {
-            let template = `
+    it('should work with dense values', () => {
+      let template = `
               <div gdAuto="dense">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'dense',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'dense',
+        },
+        styler
+      );
+    });
 
-        it('should filter double dense values', () => {
-            let template = `
+    it('should filter double dense values', () => {
+      let template = `
               <div gdAuto="dense dense">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'dense',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'dense',
+        },
+        styler
+      );
+    });
 
-        it('should work with column dense values', () => {
-            let template = `
+    it('should work with column dense values', () => {
+      let template = `
               <div gdAuto="column dense">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'column dense',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column dense',
+        },
+        styler
+      );
+    });
 
-        it('should work with row dense values', () => {
-            let template = `
+    it('should work with row dense values', () => {
+      let template = `
               <div gdAuto="row dense">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow':
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow':
             platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
-                },
-                styler
-            );
-        });
+        },
+        styler
+      );
+    });
 
-        it('should work with invalid direction values', () => {
-            let template = `
+    it('should work with invalid direction values', () => {
+      let template = `
               <div gdAuto="invalid dense">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow':
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow':
             platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
-                },
-                styler
-            );
-        });
+        },
+        styler
+      );
+    });
 
-        it('should work with invalid dense values', () => {
-            let template = `
+    it('should work with invalid dense values', () => {
+      let template = `
               <div gdAuto="column den5e">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
                   <div gdArea="footer"></div>
               </div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'column',
-                },
-                styler
-            );
-        });
-
-        it('should add dynamic area styles', () => {
-            let template = `
-            <div [gdAuto]='auto'></div>
-          `;
-            createTestComponent(template);
-
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'row',
-                },
-                styler
-            );
-
-            fixture.componentInstance.auto = 'column';
-
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'column',
-                },
-                styler
-            );
-        });
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
     });
 
-    describe('with responsive features', () => {
-        it('should add row styles for a child', () => {
-            let template = `
+    it('should add dynamic area styles', () => {
+      let template = `
+            <div [gdAuto]='auto'></div>
+          `;
+      createTestComponent(template);
+
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
+
+      fixture.componentInstance.auto = 'column';
+
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
+    });
+  });
+
+  describe('with responsive features', () => {
+    it('should add row styles for a child', () => {
+      let template = `
               <div gdAuto="row"
                    gdAuto.xs="column"></div>
           `;
-            createTestComponent(template);
+      createTestComponent(template);
 
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'row',
-                },
-                styler
-            );
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
 
-            mediaController.activate('xs');
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'column',
-                },
-                styler
-            );
+      mediaController.activate('xs');
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'column',
+        },
+        styler
+      );
 
-            mediaController.activate('md');
-            expectNativeEl(fixture).toHaveStyle(
-                {
-                    display: 'grid',
-                    'grid-auto-flow': 'row',
-                },
-                styler
-            );
-        });
+      mediaController.activate('md');
+      expectNativeEl(fixture).toHaveStyle(
+        {
+          display: 'grid',
+          'grid-auto-flow': 'row',
+        },
+        styler
+      );
     });
+  });
 });
 
 // *****************************************************************
 // Template Component
 // *****************************************************************
 @Component({
-    selector: 'test-layout',
-    template: '<span>PlaceHolder Template HTML</span>',
-    standalone: true,
-    imports: [CommonModule, GridModule],
+  selector: 'test-layout',
+  template: `<span>PlaceHolder Template HTML</span>`,
 })
 class TestGridAutoComponent {
-    auto = 'row';
+  auto = 'row';
 }
