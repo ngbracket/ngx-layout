@@ -1,0 +1,1706 @@
+{
+  "version": "6.0",
+  "nxVersion": "18.2.4",
+  "deps": {
+    "@angular/animations": "17.3.4",
+    "@angular/common": "17.3.4",
+    "@angular/compiler": "17.3.4",
+    "@angular/core": "17.3.4",
+    "@angular/forms": "17.3.4",
+    "@angular/material": "^17.3.4",
+    "@angular/platform-browser": "17.3.4",
+    "@angular/platform-browser-dynamic": "17.3.4",
+    "@angular/platform-server": "17.3.4",
+    "@angular/router": "17.3.4",
+    "@angular/ssr": "^17.3.4",
+    "express": "^4.19.2",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.6.2",
+    "zone.js": "^0.14.4",
+    "@angular-devkit/build-angular": "^17.3.4",
+    "@angular-eslint/builder": "17.3.0",
+    "@angular-eslint/eslint-plugin": "17.3.0",
+    "@angular-eslint/eslint-plugin-template": "17.3.0",
+    "@angular-eslint/schematics": "17.3.0",
+    "@angular-eslint/template-parser": "17.3.0",
+    "@angular/cdk": "^17.3.4",
+    "@angular/cli": "17.3.4",
+    "@angular/compiler-cli": "17.3.4",
+    "@ngtools/webpack": "^17.3.4",
+    "@types/express": "^4.17.21",
+    "@types/jasmine": "^5.1.4",
+    "@types/minimatch": "^5.1.2",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "7.2.0",
+    "@typescript-eslint/parser": "7.2.0",
+    "browser-sync": "^3.0.2",
+    "conventional-changelog-cli": "^4.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "jasmine-core": "^5.1.2",
+    "karma": "^6.4.3",
+    "karma-browserstack-launcher": "^1.6.0",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-firefox-launcher": "^2.1.3",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0",
+    "karma-parallel": "^0.3.1",
+    "karma-sauce-launcher": "^4.3.6",
+    "minimatch": "^9.0.4",
+    "ng-packagr": "^17.3.0",
+    "postcss": "^8.4.38",
+    "postcss-scss": "^4.0.9",
+    "protractor": "^7.0.0",
+    "stylelint": "^16.3.1",
+    "ts-node": "^10.9.2",
+    "tslint": "^6.1.3",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "pathMappings": {
+    "@ngbracket/ngx-layout": [
+      "dist/releases/ngx-layout/ngx-layout",
+      "dist/releases/ngx-layout"
+    ],
+    "@ngbracket/ngx-layout/*": [
+      "dist/releases/ngx-layout/ngx-layout-*",
+      "dist/releases/ngx-layout/*"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "projects/apps/universal-demo-app/src/main.server.ts",
+        "hash": "15865233851223538125"
+      },
+      {
+        "file": ".yarnrc.yml",
+        "hash": "9773565372686775399"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/watermark.component.scss",
+        "hash": "5149042607009698279"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/columns/columns.spec.ts",
+        "hash": "7566348580882400213"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/github-issues/github-issues.component.ts",
+        "hash": "12637613427579153669"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/polyfills.ts",
+        "hash": "14101677381272870051"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/data/orientation-break-points.spec.ts",
+        "hash": "16240493109708969204"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/public-api.ts",
+        "hash": "11018550890704189406"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/layout-gap/layout-gap.spec.ts",
+        "hash": "3162777865604016600"
+      },
+      {
+        "file": "projects/libs/flex-layout/ng-package.json",
+        "hash": "15891856813579444679"
+      },
+      {
+        "file": "build-config.js",
+        "hash": "17624981080732618716"
+      },
+      {
+        "file": "scripts/deploy/publish-build-artifacts.sh",
+        "hash": "14164732968435130242"
+      },
+      {
+        "file": "docs/documentation/Responsive-API.md",
+        "hash": "6411479630750446672"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/utils/array.ts",
+        "hash": "16879542397602365735"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-minmax/grid-minmax.component.spec.ts",
+        "hash": "6799114709930194086"
+      },
+      {
+        "file": "docs/documentation/fxHide-API.md",
+        "hash": "5634423750136299046"
+      },
+      {
+        "file": "docs/documentation/Webpack-Configuration.md",
+        "hash": "752485142355356088"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-layout-direction/responsive-layout-direction.component.spec.ts",
+        "hash": "10563756234651428064"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex/flex.spec.ts",
+        "hash": "9381558579132496482"
+      },
+      {
+        "file": "projects/libs/flex-layout/tsconfig.spec.ssr.json",
+        "hash": "12523427600035407807"
+      },
+      {
+        "file": "scripts/circleci/run-browserstack-tests.sh",
+        "hash": "15667458602600968673"
+      },
+      {
+        "file": "scripts/saucelabs/wait-tunnel.sh",
+        "hash": "8002359259858949681"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/app/app.config.ts",
+        "hash": "14984399534291071432"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-align-self/flex-align-self.component.ts",
+        "hash": "16077002517672202362"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/index.ts",
+        "hash": "10561960148744044560"
+      },
+      {
+        "file": "package.json",
+        "hash": "2399405338662094204"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-5345/issue-5345.component.html",
+        "hash": "5144640248818180183"
+      },
+      {
+        "file": "docs/documentation/Why-use-Flex-Layout.md",
+        "hash": "896613966125269145"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/area/area.spec.ts",
+        "hash": "3883215688883322066"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-position/grid-position.component.ts",
+        "hash": "5772544671401655506"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-9897/issue-9897.component.html",
+        "hash": "13683463670830281712"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/app.config.ts",
+        "hash": "6188821784327950082"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-row-fill-wrap/flex-row-fill-wrap.component.spec.ts",
+        "hash": "8863446653300471650"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/docs-layout/docs-layout.component.spec.ts",
+        "hash": "6436136716137535521"
+      },
+      {
+        "file": "CHANGELOG.md",
+        "hash": "16199674072685650801"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/server.ts",
+        "hash": "4495284970439360626"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex-offset/flex-offset.ts",
+        "hash": "2207349998234023947"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/test.ts",
+        "hash": "13508737087803821631"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-overlay/grid-overlay.component.spec.ts",
+        "hash": "2093317892804994225"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/align-rows/align-rows.ts",
+        "hash": "3884113641773810344"
+      },
+      {
+        "file": "projects/libs/flex-layout/README.md",
+        "hash": "18223112777462527203"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/match-media/match-media.ts",
+        "hash": "18262850344283032661"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-266/issue-266.component.html",
+        "hash": "4485178383941666151"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/github-issues/github-issues.component.spec.ts",
+        "hash": "15912890528941722204"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-row-fill-wrap/flex-row-fill-wrap.component.ts",
+        "hash": "6129745510877862370"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/style/style.spec.ts",
+        "hash": "13459348145320347871"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-row-column/responsive-row-column.component.spec.ts",
+        "hash": "180836757730911216"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/docs-layout/docs-layout.component.ts",
+        "hash": "6538641547354073849"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/moz-holy-grail/moz-holy-grail.component.html",
+        "hash": "12074611021096517208"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/docs-grid/docs-grid.component.spec.ts",
+        "hash": "15913070294196836717"
+      },
+      {
+        "file": "docs/documentation/Use-Cases.md",
+        "hash": "6439973536505286753"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/styles.scss",
+        "hash": "5195668842064076916"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex-fill/flex-fill.ts",
+        "hash": "2292779005244274663"
+      },
+      {
+        "file": "docs/documentation/fxFlexOrder-API.md",
+        "hash": "14039578092282859091"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/testing/index.ts",
+        "hash": "14631124044330152797"
+      },
+      {
+        "file": "docs/documentation/Live-Demos.md",
+        "hash": "17359165576302297174"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/app/app.component.html",
+        "hash": "11959077082941073226"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/server.ts.bak",
+        "hash": "2675489628441603362"
+      },
+      {
+        "file": "tools/tslint-rules/tsconfig.json",
+        "hash": "15391421606653049350"
+      },
+      {
+        "file": "projects/libs/flex-layout/server/README.md",
+        "hash": "8042519954375377024"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-attribute-values/flex-attribute-values.component.html",
+        "hash": "15806534342910245109"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/style/style-transforms.spec.ts",
+        "hash": "17159267816128383582"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/app/split/split.directive.ts",
+        "hash": "9900624620142537734"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/style-utils/style-utils.ts",
+        "hash": "6576209958746302062"
+      },
+      {
+        "file": "tools/tslint-rules/noViewEncapsulationRule.ts",
+        "hash": "13871237758766755954"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/style-builder/style-builder.ts",
+        "hash": "10050782127260973666"
+      },
+      {
+        "file": "tools/package-tools/build-bundles.ts",
+        "hash": "9833797668788362440"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-181/issue-181.component.spec.ts",
+        "hash": "15106439094986633799"
+      },
+      {
+        "file": "projects/libs/flex-layout/public-api.ts",
+        "hash": "16382968636276969414"
+      },
+      {
+        "file": "docs/documentation/fxShow-API.md",
+        "hash": "18357456519301231618"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-5345/issue-5345.component.scss",
+        "hash": "551327313048462601"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/Proposal.md",
+        "hash": "7484858942400060932"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-197/issue-197.component.spec.ts",
+        "hash": "13094553029009464518"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/gap/gap.ts",
+        "hash": "6541183135752091920"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/tokens/index.ts",
+        "hash": "17234081171967527035"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-266/issue-266.component.scss",
+        "hash": "15525507519948566147"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/complex-column-ordering/complex-column-ordering.component.spec.ts",
+        "hash": "926928900678423295"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/tokens/library-config.ts",
+        "hash": "16108101255210353456"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/module.ts",
+        "hash": "11352233775998876935"
+      },
+      {
+        "file": "docs/documentation/NPM-Installs.md",
+        "hash": "7035069501722048345"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/tsconfig.app.json",
+        "hash": "12024646809277882812"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex-align/flex-align.ts",
+        "hash": "13512959794562611908"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/Bug.md",
+        "hash": "17355844115439765980"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/gap/gap.spec.ts",
+        "hash": "43846447871190719"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-alignment/layout-alignment.component.scss",
+        "hash": "16254043226937298371"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/object-extend.ts",
+        "hash": "14432114276810024262"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/README.md",
+        "hash": "6253163237937249679"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/karma.conf.js",
+        "hash": "14555321511782489822"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-attribute-values/flex-attribute-values.component.spec.ts",
+        "hash": "11382278891927990030"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/complex-column-ordering/complex-column-ordering.component.html",
+        "hash": "13398692918437351522"
+      },
+      {
+        "file": "projects/libs/flex-layout/module.ts",
+        "hash": "9525819901348220623"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-5345/issue-5345.component.spec.ts",
+        "hash": "9801880895348937936"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/style-utils/style-utils.spec.ts",
+        "hash": "7051790497690287800"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/class/class.spec.ts",
+        "hash": "10052646155026116489"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-marshaller/print-hook.ts",
+        "hash": "15043599607011879232"
+      },
+      {
+        "file": "tools/tslint-rules/requireLicenseBannerRule.ts",
+        "hash": "3359911212260233846"
+      },
+      {
+        "file": "projects/apps/demo-app/src/index.html",
+        "hash": "3470658041308028428"
+      },
+      {
+        "file": "test/karma-browsers.json",
+        "hash": "13691748009364429910"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/app/app.component.ts",
+        "hash": "14117382210245056654"
+      },
+      {
+        "file": "projects/libs/flex-layout/server/module.ts",
+        "hash": "18251357684276525805"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/align-rows/align-rows.spec.ts",
+        "hash": "16206319881073482766"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/public-api.ts",
+        "hash": "5637077597451072592"
+      },
+      {
+        "file": ".circleci/config.yml",
+        "hash": "16857317981140352071"
+      },
+      {
+        "file": "tools/package-tools/build-notes.md",
+        "hash": "6045712434289767522"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-flex-directive/responsive-flex-directive.component.ts",
+        "hash": "8377155032293457104"
+      },
+      {
+        "file": "docs/documentation/ngClass-API.md",
+        "hash": "16965600344170791015"
+      },
+      {
+        "file": ".github/PULL_REQUEST_TEMPLATE/Improvement.md",
+        "hash": "1659074553251822245"
+      },
+      {
+        "file": "docs/documentation/Performance-Considerations.md",
+        "hash": "2616717855768921829"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/app.routes.ts",
+        "hash": "2276562532488753940"
+      },
+      {
+        "file": "test/karma.conf.js",
+        "hash": "17305490950717569459"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-row-column/responsive-row-column.component.ts",
+        "hash": "13263028359355568239"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/ng-package.json",
+        "hash": "13574401803732730276"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex-order/flex-order.ts",
+        "hash": "13915616038787066645"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/routes.ts",
+        "hash": "5042221417717424176"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-5345/issue-5345.component.ts",
+        "hash": "17785224561499303982"
+      },
+      {
+        "file": "projects/libs/flex-layout/server/ng-package.json",
+        "hash": "13574401803732730276"
+      },
+      {
+        "file": "docs/documentation/API-Documentation.md",
+        "hash": "5572584122136311603"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-gap/layout-gap.component.spec.ts",
+        "hash": "2994561964840434485"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-flex-order/responsive-flex-order.component.html",
+        "hash": "5874143896039671214"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/tsconfig.spec.json",
+        "hash": "7500417637760039406"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/stylesheet-map/stylesheet-map.ts",
+        "hash": "6709005110000348709"
+      },
+      {
+        "file": "guides/Grid.md",
+        "hash": "1150638678583771543"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-column-span/grid-column-span.component.html",
+        "hash": "14741586937852711660"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/index.ts",
+        "hash": "1589395835449687961"
+      },
+      {
+        "file": "angular.json",
+        "hash": "9195217792237514152"
+      },
+      {
+        "file": "projects/libs/flex-layout/version.ts",
+        "hash": "9881653836906080324"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-layout-direction/responsive-layout-direction.component.ts",
+        "hash": "13532996684680446282"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-trigger/media-trigger.ts",
+        "hash": "4349686964640164697"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/columns/columns.ts",
+        "hash": "863298264784502692"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/utils/index.ts",
+        "hash": "7770535262008062916"
+      },
+      {
+        "file": "projects/libs/flex-layout/tsconfig.lib.json",
+        "hash": "11722512288825858644"
+      },
+      {
+        "file": "CONTRIBUTING.md",
+        "hash": "17461651858248077310"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/hide-custom-bp/hide-with-custom-bp.component.ts",
+        "hash": "1706609637118211242"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/basis-validator/basis-validator.ts",
+        "hash": "3068481155134132483"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/basis-validator/basis-validator.spec.ts",
+        "hash": "9870858630928901474"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/app/split/split-handle.directive.ts",
+        "hash": "2968484605241658071"
+      },
+      {
+        "file": ".github/FUNDING.yml",
+        "hash": "2608672250867311226"
+      },
+      {
+        "file": "projects/libs/flex-layout/test.ssr.ts",
+        "hash": "16166186643228114784"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/layout-align/layout-align.spec.ts",
+        "hash": "5677893097713839890"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-gap/layout-gap.component.ts",
+        "hash": "4996221278589087783"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/hide-custom-bp/hide-custom-bp.component.scss",
+        "hash": "18027029441475905172"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-minmax/grid-minmax.component.ts",
+        "hash": "16514442603117994647"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-observer/media-observer.ts",
+        "hash": "6613579978282880169"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/areas/areas.spec.ts",
+        "hash": "310353270282329164"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex/flex.ts",
+        "hash": "9340504149213888670"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/breakpoint-tools.spec.ts",
+        "hash": "16233366815352716372"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/testing/custom-matchers.ts",
+        "hash": "615892509450136976"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/img-src/img-src.spec.ts",
+        "hash": "14373841280309490479"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "11436098123345353893"
+      },
+      {
+        "file": "tools/tslint-rules/noExposedTodoRule.ts",
+        "hash": "12098902152100383719"
+      },
+      {
+        "file": "docs/documentation/BreakPoints.md",
+        "hash": "3070958281632766194"
+      },
+      {
+        "file": ".yarn/install-state.gz",
+        "hash": "974704580572171039"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/module.ts",
+        "hash": "12746961862268050062"
+      },
+      {
+        "file": "test/webpack-spec-ssr-bundle.js",
+        "hash": "8302127189868291531"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/app/app.component.html",
+        "hash": "3945224020663097103"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/app/app.routes.ts",
+        "hash": "12397496131277534773"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-flex-order/responsive-flex-order.component.ts",
+        "hash": "16769799750826699583"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/break-point-registry.spec.ts",
+        "hash": "11959629422631133384"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/object-extend.spec.ts",
+        "hash": "7185829544579344830"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/show-hide/show.spec.ts",
+        "hash": "10641618261001463962"
+      },
+      {
+        "file": "docs/documentation/fxFlex-API.md",
+        "hash": "16441082023107144063"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/utils/sort.ts",
+        "hash": "16401084044962298139"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-266/issue-266.component.ts",
+        "hash": "12936923179838973162"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/Feature_Request.md",
+        "hash": "11181827398380300900"
+      },
+      {
+        "file": "firebase.json",
+        "hash": "1540646054942025744"
+      },
+      {
+        "file": "projects/apps/demo-app/src/polyfills.ts",
+        "hash": "18306242829219440011"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-row-column/responsive-row-column.component.html",
+        "hash": "13134781101603876570"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/testing/helpers.ts",
+        "hash": "18216006750667183593"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/align-columns/align-columns.ts",
+        "hash": "18137442434359140073"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-style/responsive-style.component.html",
+        "hash": "4646567519358683646"
+      },
+      {
+        "file": "docs/documentation/Developer-Setup.md",
+        "hash": "3045974082341686345"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/app/app.component.scss",
+        "hash": "14147200067368894039"
+      },
+      {
+        "file": "projects/apps/demo-app/src/environments/environment.prod.ts",
+        "hash": "5406836414239361753"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-show-hide/responsive-show-hide.component.ts",
+        "hash": "6430328581841437580"
+      },
+      {
+        "file": "tools/tslint-rules/validateDecoratorsRule.ts",
+        "hash": "16474327861576147173"
+      },
+      {
+        "file": "tools/package-tools/find-build-config.ts",
+        "hash": "8227428578441802416"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/browserslist",
+        "hash": "568824818244017255"
+      },
+      {
+        "file": "CODING_STANDARDS.md",
+        "hash": "7254551203085086399"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-row-fill/flex-row-fill.component.ts",
+        "hash": "12343864830088542122"
+      },
+      {
+        "file": "docs/documentation/Browser-Support.md",
+        "hash": "8694376934597774195"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-area-row-span/grid-area-row-span.component.scss",
+        "hash": "5950716067336705826"
+      },
+      {
+        "file": "guides/Configuration.md",
+        "hash": "13326963468493131620"
+      },
+      {
+        "file": ".github/PULL_REQUEST_TEMPLATE/New_Feature.md",
+        "hash": "5027447883428702902"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/area/area.ts",
+        "hash": "1490114467647813404"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/img-src/img-src.ts",
+        "hash": "15070367765410498417"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-layout/grid-layout.component.spec.ts",
+        "hash": "15412925939931788469"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/data/break-points.spec.ts",
+        "hash": "9689463679432107092"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/routes.ts",
+        "hash": "3347772702113310951"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-show-hide/responsive-show-hide.component.html",
+        "hash": "15939548722931366356"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/public-api.ts",
+        "hash": "4506300695026336175"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/ng-package.json",
+        "hash": "8131910942492503554"
+      },
+      {
+        "file": ".github/workflows/label.yml",
+        "hash": "11472003757924245784"
+      },
+      {
+        "file": "test/jasmine-ssr.json",
+        "hash": "6304682828950079557"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/app.component.ts",
+        "hash": "2750525463239031021"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-135/issue-135.component.spec.ts",
+        "hash": "16334823726337732261"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-area-row-span/grid-area-row-span.component.ts",
+        "hash": "1226297040158186494"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/routes.ts",
+        "hash": "6209911257726420392"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-area-row-span/grid-area-row-span.component.spec.ts",
+        "hash": "10586238024538484776"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-with-direction/layout-with-direction.component.ts",
+        "hash": "17400082577673169909"
+      },
+      {
+        "file": "scripts/circleci/publish-snapshots.sh",
+        "hash": "12218719410630062481"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/stack-overflow/stack-overflow.component.ts",
+        "hash": "2321905157522653452"
+      },
+      {
+        "file": "docs/documentation/ObservableMedia.md",
+        "hash": "3336125549248602720"
+      },
+      {
+        "file": "projects/apps/demo-app/src/favicon.ico",
+        "hash": "3464744996580215640"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-9897/issue-9897.component.spec.ts",
+        "hash": "7144226033178842714"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-135/issue-135.component.ts",
+        "hash": "5627300998043370387"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/multiply/multiplier.ts",
+        "hash": "1865108618815673463"
+      },
+      {
+        "file": "scripts/saucelabs/stop-tunnel.sh",
+        "hash": "11395689166244562500"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/break-points-token.ts",
+        "hash": "4413388474881148013"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/split/split-area.directive.spec.ts",
+        "hash": "12294203745573956542"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/app/app.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "docs/documentation/Adaptive-Layouts.md",
+        "hash": "12045787347237984799"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/module.ts",
+        "hash": "14445631707365374766"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/layout/layout.spec.ts",
+        "hash": "18094830405358812747"
+      },
+      {
+        "file": "projects/libs/flex-layout/server/public-api.ts",
+        "hash": "13708819992474304502"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/index.html",
+        "hash": "11016010648658915112"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/align-columns/align-columns.spec.ts",
+        "hash": "2791287754294870328"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/README.md",
+        "hash": "9245252488374392866"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/module.ts",
+        "hash": "12489680439990254605"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-trigger/index.ts",
+        "hash": "1244806914168276763"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-197/issue-197.component.html",
+        "hash": "9632458969100172103"
+      },
+      {
+        "file": "tools/package-tools/build-config.ts",
+        "hash": "9442053544946139775"
+      },
+      {
+        "file": "docs/documentation/fxLayoutAlign-API.md",
+        "hash": "3569295794449646620"
+      },
+      {
+        "file": "tools/tslint-rules/noRxjsPatchImportsRule.ts",
+        "hash": "7553998836168548265"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/match-media/index.ts",
+        "hash": "9270902200167480065"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/docs-responsive/docs-responsive.component.spec.ts",
+        "hash": "3473107879719259661"
+      },
+      {
+        "file": "docs/documentation/Fast-Starts.md",
+        "hash": "12827112150213798666"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-show-hide/responsive-show-hide.component.spec.ts",
+        "hash": "15159447539512049301"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/split/split-area.directive.ts",
+        "hash": "6490316550469161372"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/complex-column-ordering/complex-column-ordering.component.scss",
+        "hash": "12221429649171930125"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/README.md",
+        "hash": "5501098192497460349"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-overlay/grid-overlay.component.ts",
+        "hash": "14953675866088456015"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/show-hide/show-hide.ts",
+        "hash": "13114238506841154150"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-style/responsive-style.component.ts",
+        "hash": "15563972196886299142"
+      },
+      {
+        "file": "projects/apps/demo-app/src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/app/app.component.spec.ts",
+        "hash": "2831772888857283070"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-layout/grid-layout.component.ts",
+        "hash": "3740726706548414428"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/main.ts",
+        "hash": "4927504514031276065"
+      },
+      {
+        "file": "docs/documentation/Using-Angular-CLI.md",
+        "hash": "2702860996595710251"
+      },
+      {
+        "file": "projects/apps/demo-app/tsconfig.spec.json",
+        "hash": "15329482789628900371"
+      },
+      {
+        "file": "docs/documentation/fxFlexFill-API.md",
+        "hash": "8473749439486656533"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-column-span/grid-column-span.component.ts",
+        "hash": "10416522268384042309"
+      },
+      {
+        "file": "projects/libs/flex-layout/server/server-provider.ts",
+        "hash": "11150932927454251384"
+      },
+      {
+        "file": "docs/documentation/CI-Tools.md",
+        "hash": "17904194742680321251"
+      },
+      {
+        "file": "projects/apps/demo-app/src/environments/environment.ts",
+        "hash": "17458466784506237106"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/moz-holy-grail/moz-holy-grail.component.ts",
+        "hash": "8074372106446442155"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/app/split/split-area.directive.ts",
+        "hash": "6490316550469161372"
+      },
+      {
+        "file": "docs/documentation/_Sidebar.md",
+        "hash": "11740450097068597056"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/auto/auto.spec.ts",
+        "hash": "6229707029207798415"
+      },
+      {
+        "file": "README.md",
+        "hash": "8978494673860685805"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-observer/index.ts",
+        "hash": "16419129055118145746"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-fill/layout-fill.component.spec.ts",
+        "hash": "16578329293348627516"
+      },
+      {
+        "file": "docs/design/grid-layout.md",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/ng-package.json",
+        "hash": "13574401803732730276"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-align-self/flex-align-self.component.spec.ts",
+        "hash": "10830249090195399143"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/media-query-status/media-query-status.component.spec.ts",
+        "hash": "10731438987459279259"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/tsconfig.spec.json",
+        "hash": "15329482789628900371"
+      },
+      {
+        "file": "docs/documentation/Implementation.md",
+        "hash": "13969165656011188653"
+      },
+      {
+        "file": "docs/documentation/BaseFxDirectiveAdapter.md",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "docs/documentation/fxLayoutGap-API.md",
+        "hash": "3192811064671688725"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/data/break-points.ts",
+        "hash": "6657285328505580594"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/tokens/breakpoint-token.ts",
+        "hash": "11144642479623083919"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/layout/layout.ts",
+        "hash": "12389424631643035006"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/auto/auto.ts",
+        "hash": "17502576922140038774"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "355284654048162451"
+      },
+      {
+        "file": "docs/documentation/Configuration.md",
+        "hash": "7710664557949478014"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-marshaller/media-marshaller.spec.ts",
+        "hash": "1088110912915634550"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/split/split-handle.directive.spec.ts",
+        "hash": "7727628928386939695"
+      },
+      {
+        "file": "docs/documentation/Declarative-API-Overview.md",
+        "hash": "6221659264148211804"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-observer/media-observer.spec.ts",
+        "hash": "4041331305102666478"
+      },
+      {
+        "file": "projects/libs/flex-layout/package.json",
+        "hash": "6874160361353547283"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/main.ts",
+        "hash": "10083199215449637012"
+      },
+      {
+        "file": "scripts/circleci/run-saucelabs-tests.sh",
+        "hash": "9519758160696388070"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/favicon.ico",
+        "hash": "14356862334585494759"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "15226798083601406151"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/watermark.component.ts",
+        "hash": "13204935462276431250"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/break-point.ts",
+        "hash": "6453627581983550723"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/rows/rows.spec.ts",
+        "hash": "6273785800441100413"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/style/style-transforms.ts",
+        "hash": "355806217508279159"
+      },
+      {
+        "file": ".github/labeler.yml",
+        "hash": "14501942667217683502"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/docs-grid/docs-grid.component.ts",
+        "hash": "10689048833950967942"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "8122221163327444388"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/browser-provider.ts",
+        "hash": "6719161703008048379"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-column-span/grid-column-span.component.scss",
+        "hash": "9144039209999285352"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/moz-holy-grail/moz-holy-grail.component.spec.ts",
+        "hash": "5534480839714687400"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/testing/ng-package.json",
+        "hash": "11789261963001440186"
+      },
+      {
+        "file": "CODE_REVIEWS.md",
+        "hash": "11296366278772469585"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-fill/layout-fill.component.ts",
+        "hash": "18435851236981539632"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/data/orientation-break-points.ts",
+        "hash": "4641115878649510350"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-flex-order/responsive-flex-order.component.spec.ts",
+        "hash": "11617946659478223633"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/media-query-status/media-query-status.component.scss",
+        "hash": "4190795970679651811"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-with-direction/layout-with-direction.component.spec.ts",
+        "hash": "2493321054832120370"
+      },
+      {
+        "file": "projects/libs/flex-layout/tsconfig.spec.json",
+        "hash": "11881188146786536348"
+      },
+      {
+        "file": "tools/tslint-rules/tsLoaderRule.js",
+        "hash": "17431523347560945528"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/favicon.ico",
+        "hash": "3988961587069885523"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-266/issue-266.component.spec.ts",
+        "hash": "3377973355705827185"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-nested/grid-nested.component.ts",
+        "hash": "2871982840807303568"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/index.html",
+        "hash": "17121495048354507618"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/style/style.ts",
+        "hash": "6476068904350046113"
+      },
+      {
+        "file": "projects/apps/demo-app/karma.conf.js",
+        "hash": "14112418417295640799"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/match-media/mock/mock-match-media.spec.ts",
+        "hash": "8654142752950387173"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/README.md",
+        "hash": "2040145649336794316"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/breakpoint-tools.ts",
+        "hash": "18175337034923482550"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/split/split.directive.ts",
+        "hash": "12005258796313260137"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-9897/issue-9897.component.ts",
+        "hash": "10383694880339580202"
+      },
+      {
+        "file": "projects/apps/demo-app/src/main.ts",
+        "hash": "4698262345979757177"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/tokens/server-token.ts",
+        "hash": "17826926888898851470"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-nested/grid-nested.component.spec.ts",
+        "hash": "16379008975515310906"
+      },
+      {
+        "file": "docs/documentation/ngStyle-API.md",
+        "hash": "11957594956782281134"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/row/row.ts",
+        "hash": "17440945012014766102"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/complex-column-ordering/complex-column-ordering.component.ts",
+        "hash": "7367803354444544075"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/auto-prefixer.ts",
+        "hash": "11565088616748844332"
+      },
+      {
+        "file": "docs/documentation/imgSrc-API.md",
+        "hash": "16860706747530051783"
+      },
+      {
+        "file": "projects/apps/demo-app/src/styles.scss",
+        "hash": "574596397787372146"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-change.ts",
+        "hash": "1642159878913155850"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-attribute-values/flex-attribute-values.component.ts",
+        "hash": "3700054910571562651"
+      },
+      {
+        "file": "projects/libs/flex-layout/test.ts",
+        "hash": "1954353607491452067"
+      },
+      {
+        "file": "projects/apps/demo-app/src/test.ts",
+        "hash": "12412031923219697029"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/layout-align/layout-align.ts",
+        "hash": "17792818598558662018"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-alignment/layout-alignment.component.ts",
+        "hash": "11473761456088279795"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/show-hide/hide.spec.ts",
+        "hash": "157890964784878597"
+      },
+      {
+        "file": "tools/tslint-rules/requireBreakingChangeVersionRule.ts",
+        "hash": "17159876854908064111"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/auto-prefixer.spec.ts",
+        "hash": "5741427010648570903"
+      },
+      {
+        "file": "scripts/saucelabs/start-tunnel.sh",
+        "hash": "6185997805285785153"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex-order/flex-order.spec.ts",
+        "hash": "17084887383153174427"
+      },
+      {
+        "file": "docs/documentation/Home.md",
+        "hash": "17040935465114290573"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/split/split.directive.spec.ts",
+        "hash": "3059166185372441410"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/environments/environment.prod.ts",
+        "hash": "5406836414239361753"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/areas/areas.ts",
+        "hash": "6276293862732157236"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/moz-holy-grail/moz-holy-grail.component.scss",
+        "hash": "17612628630650757490"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "17917073671650818776"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-offset-values/flex-offset-values.component.spec.ts",
+        "hash": "4961879073390913045"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/tsconfig.app.json",
+        "hash": "7673316549121468411"
+      },
+      {
+        "file": "test/browser-providers.js",
+        "hash": "12488237176323208978"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/class/class.ts",
+        "hash": "7633508499095417395"
+      },
+      {
+        "file": "docs/documentation/Background.md",
+        "hash": "1402339827705663235"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/grid-align/grid-align.spec.ts",
+        "hash": "14409414171417742414"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/grid-align/grid-align.ts",
+        "hash": "302173352753489087"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/routes.ts",
+        "hash": "4327653901386810811"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-align-self/flex-align-self.component.html",
+        "hash": "17570135362368701846"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/app.component.html",
+        "hash": "13526010413926378476"
+      },
+      {
+        "file": "docs/documentation/mediaObserver.md",
+        "hash": "17893488341628783064"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-181/issue-181.component.ts",
+        "hash": "2611220834845692025"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/layout-validator.ts",
+        "hash": "3224341983935659210"
+      },
+      {
+        "file": ".gitattributes",
+        "hash": "13767993917398801788"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/flex-offset/flex-offset.spec.ts",
+        "hash": "381977446784214646"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-trigger/media-trigger.spec.ts",
+        "hash": "5807671775517219541"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-row-fill/flex-row-fill.component.spec.ts",
+        "hash": "18075271419078458348"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-flex-directive/responsive-flex-directive.component.spec.ts",
+        "hash": "1529212960163686291"
+      },
+      {
+        "file": ".eslintrc.js",
+        "hash": "10369256057903828863"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-alignment/layout-alignment.component.spec.ts",
+        "hash": "166096933528742394"
+      },
+      {
+        "file": "projects/libs/flex-layout/flex/layout-gap/layout-gap.ts",
+        "hash": "16358502674105398355"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "docs/documentation/fxFlexAlign-API.md",
+        "hash": "13637674027401743682"
+      },
+      {
+        "file": "projects/apps/demo-app/tsconfig.app.json",
+        "hash": "8732858522468986343"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "14348579384419009827"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-135/issue-135.component.html",
+        "hash": "2062827880248677928"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/stack-overflow/stack-overflow.component.spec.ts",
+        "hash": "13845739862974647222"
+      },
+      {
+        "file": "docs/design/ssr-gen.md",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/base/base2.ts",
+        "hash": "8400531318278775093"
+      },
+      {
+        "file": "scripts/circleci/run-local-browser-tests.sh",
+        "hash": "16414331639744151828"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-with-direction/layout-with-direction.component.html",
+        "hash": "2401874196711690475"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-row-fill-wrap/flex-row-fill-wrap.component.html",
+        "hash": "9014922870695068155"
+      },
+      {
+        "file": "tools/package-tools/tsconfig.json",
+        "hash": "15391421606653049350"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/row/row.spec.ts",
+        "hash": "6307225197683335052"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/grid-position/grid-position.component.spec.ts",
+        "hash": "123712144457694750"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-area-row-span/grid-area-row-span.component.html",
+        "hash": "17219765870214322346"
+      },
+      {
+        "file": "projects/apps/after-migration-to-standalone/src/app/app.component.spec.ts",
+        "hash": "954952021245664059"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/ng-package.json",
+        "hash": "13574401803732730276"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/tsconfig.server.json",
+        "hash": "914365022439919509"
+      },
+      {
+        "file": "guides/SSR.md",
+        "hash": "4473292351307359510"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/stylesheet-map/index.ts",
+        "hash": "14378847749272361476"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/flex-offset-values/flex-offset-values.component.ts",
+        "hash": "11938512601572644102"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/match-media/mock/mock-match-media.ts",
+        "hash": "2082616515559134849"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/public-api.ts",
+        "hash": "7162923025006556519"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/add-alias.ts",
+        "hash": "7341000723731119728"
+      },
+      {
+        "file": "projects/libs/flex-layout/_private-utils/testing/dom-tools.ts",
+        "hash": "1225142207568810040"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/base/index.ts",
+        "hash": "11757689209166742774"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/grid/routes.ts",
+        "hash": "15490165750120397469"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/media-marshaller/media-marshaller.ts",
+        "hash": "571927870541107581"
+      },
+      {
+        "file": "tools/package-tools/version-placeholders.ts",
+        "hash": "11681294103065141072"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/stack-overflow/grid-column-span/grid-column-span.component.spec.ts",
+        "hash": "5836960966887803492"
+      },
+      {
+        "file": "docs/documentation/_Footer.md",
+        "hash": "15929466141775898884"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/media-query-status/media-query-status.component.ts",
+        "hash": "4168809445722710638"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/column/column.spec.ts",
+        "hash": "15964184097974709263"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-197/issue-197.component.ts",
+        "hash": "16129798962379611326"
+      },
+      {
+        "file": "docs/documentation/fxFlexOffset-API.md",
+        "hash": "10465457375017668437"
+      },
+      {
+        "file": "docs/documentation/Using-SSR-with-Flex-Layout.md",
+        "hash": "15120977648905006810"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/split/split-handle.directive.ts",
+        "hash": "3182527204129855598"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/docs-responsive/docs-responsive.component.ts",
+        "hash": "14618197073478643254"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/app.component.spec.ts",
+        "hash": "9208071514624878239"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/match-media/match-media.spec.ts",
+        "hash": "6341618184934391780"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/breakpoints/break-point-registry.ts",
+        "hash": "4655857672742683787"
+      },
+      {
+        "file": "docs/documentation/fxLayout-API.md",
+        "hash": "267448364721894785"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/styles.scss",
+        "hash": "9013720555289320086"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/layout/layout-alignment/layout-alignment.component.html",
+        "hash": "11779781174186759316"
+      },
+      {
+        "file": "projects/libs/flex-layout/server/server-match-media.ts",
+        "hash": "3800638365658178011"
+      },
+      {
+        "file": ".clang-format",
+        "hash": "18213388460093395335"
+      },
+      {
+        "file": "projects/libs/flex-layout/core/sass/_layout-bp.scss",
+        "hash": "3748368755697417187"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/column/column.ts",
+        "hash": "8877180290695362786"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/karma.conf.js",
+        "hash": "2380980608673805700"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/responsive/responsive-style/responsive-style.component.spec.ts",
+        "hash": "2399162715411092766"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/app/app.component.ts",
+        "hash": "14685473644593919399"
+      },
+      {
+        "file": "projects/libs/flex-layout/grid/rows/rows.ts",
+        "hash": "7555798361623339750"
+      },
+      {
+        "file": "projects/libs/flex-layout/extended/ng-package.json",
+        "hash": "13574401803732730276"
+      },
+      {
+        "file": "projects/apps/demo-app/src/app/github-issues/issue-181/issue-181.component.html",
+        "hash": "14808503583268790980"
+      },
+      {
+        "file": "projects/apps/universal-demo-app/src/environments/environment.ts",
+        "hash": "15916301161890709639"
+      }
+    ],
+    "projectFileMap": {}
+  }
+}
