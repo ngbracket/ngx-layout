@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
+import { MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
 
 @Component({
-  selector: 'demo-layout-fill',
-  template: `
+    selector: 'demo-layout-fill',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title><a href="" target="_blank">Layout Fill</a></mat-card-title>
       <mat-card-subtitle>Using 'fxFill' to fill available width and height of parent container.
@@ -19,6 +21,8 @@ import {Component} from '@angular/core';
         <div class="hint"></div>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: true,
+    imports: [MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, FlexModule, MatCardFooter]
 })
 export class LayoutFillComponent {}

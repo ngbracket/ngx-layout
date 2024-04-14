@@ -1,5 +1,7 @@
 import { Component, Directive } from '@angular/core';
 import { BREAKPOINT, ShowHideDirective } from '@ngbracket/ngx-layout';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
+import { MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
 
 const YBA_BREAKPOINT = {
   alias: 'yba',
@@ -17,15 +19,18 @@ export const YBA_BREAKPOINT_PROVIDER = {
 const inputs = ['fxHide', 'fxHide.yba'];
 const selector = `[fxHide], [fxHide.yba]`;
 
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class CustomHideDirective extends ShowHideDirective {
   protected override inputs = inputs;
 }
 
 @Component({
-  selector: 'demo-hide-custom-bp',
-  styleUrls: ['hide-custom-bp.component.scss'],
-  template: `
+    selector: 'demo-hide-custom-bp',
+    styleUrls: ['hide-custom-bp.component.scss'],
+    template: `
     <mat-card class="card-demo">
       <mat-card-title
         ><a href="http://bit.ly/2D2dAxM" target="_blank"
@@ -60,5 +65,15 @@ export class CustomHideDirective extends ShowHideDirective {
       </mat-card-footer>
     </mat-card>
   `,
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardTitle,
+        MatCardSubtitle,
+        MatCardContent,
+        CustomHideDirective,
+        FlexModule,
+        MatCardFooter,
+    ],
 })
 export class HideWithCustomBPComponent {}

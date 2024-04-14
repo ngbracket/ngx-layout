@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
+import { MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
 
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
 
 @Component({
-  selector: 'demo-layout-gap',
-  template: `
+    selector: 'demo-layout-gap',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title><a href="" target="_blank">Layout Gap</a></mat-card-title>
       <mat-card-subtitle>Using 'fxLayoutGap' to create a grid-like layout
@@ -58,7 +60,9 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
         <div class="hint"></div>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: true,
+    imports: [MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, FlexModule, MatCardFooter]
 })
 export class LayoutGapComponent {
   direction = 'row';

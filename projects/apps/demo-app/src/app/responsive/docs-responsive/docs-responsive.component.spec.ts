@@ -8,8 +8,8 @@ describe('DocsResponsiveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DocsResponsiveComponent ]
-    })
+    imports: [DocsResponsiveComponent]
+})
     .compileComponents();
   }));
 

@@ -1,10 +1,14 @@
 import {Component} from '@angular/core';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { NgStyle } from '@angular/common';
+import { GridModule } from '@ngbracket/ngx-layout/grid';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
 
 // Example taken from https://gridbyexample.com/examples/example13/
 /* tslint:disable */
 @Component({
-  selector: 'demo-grid-layout',
-  template: `
+    selector: 'demo-grid-layout',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title>Basic Responsive Grid App</mat-card-title>
       <mat-card-content class="containerX">
@@ -26,6 +30,8 @@ import {Component} from '@angular/core';
         </div>
       </mat-card-content>
     </mat-card>
-  `
+  `,
+    standalone: true,
+    imports: [MatCard, MatCardTitle, MatCardContent, GridModule, NgStyle, ExtendedModule]
 })
 export class GridLayoutComponent {}

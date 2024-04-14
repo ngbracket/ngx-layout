@@ -8,8 +8,8 @@ describe('MozHolyGrailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MozHolyGrailComponent ]
-    })
+    imports: [MozHolyGrailComponent]
+})
     .compileComponents();
   }));
 

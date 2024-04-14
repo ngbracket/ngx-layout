@@ -8,8 +8,8 @@ describe('LayoutAlignmentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayoutAlignmentComponent ]
-    })
+    imports: [LayoutAlignmentComponent]
+})
     .compileComponents();
   }));
 

@@ -1,14 +1,13 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { APP_ID, importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { AppComponent } from './app/app.component';
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
-});
+// document.addEventListener('DOMContentLoaded', () => {
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: APP_ID, useValue: 'serverApp' },
+    importProvidersFrom(FlexLayoutModule),
+  ],
+}).catch((err) => console.error(err));
+// });

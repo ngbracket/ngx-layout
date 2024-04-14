@@ -8,8 +8,8 @@ describe('GridPositionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridPositionComponent ]
-    })
+    imports: [GridPositionComponent]
+})
     .compileComponents();
   }));
 

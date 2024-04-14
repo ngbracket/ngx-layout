@@ -7,19 +7,19 @@
  */
 import { isPlatformServer } from '@angular/common';
 import {
-  Inject,
-  ModuleWithProviders,
-  NgModule,
-  PLATFORM_ID,
+    Inject,
+    ModuleWithProviders,
+    NgModule,
+    PLATFORM_ID,
 } from '@angular/core';
 
 import {
-  BreakPoint,
-  BREAKPOINT,
-  DEFAULT_CONFIG,
-  LayoutConfigOptions,
-  LAYOUT_CONFIG,
-  SERVER_TOKEN,
+    BreakPoint,
+    BREAKPOINT,
+    DEFAULT_CONFIG,
+    LayoutConfigOptions,
+    LAYOUT_CONFIG,
+    SERVER_TOKEN,
 } from '@ngbracket/ngx-layout/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { FlexModule } from '@ngbracket/ngx-layout/flex';
@@ -32,48 +32,48 @@ import { GridModule } from '@ngbracket/ngx-layout/grid';
  *   Configuration page
  */
 @NgModule({
-  imports: [FlexModule, ExtendedModule, GridModule],
-  exports: [FlexModule, ExtendedModule, GridModule],
+    imports: [FlexModule, ExtendedModule, GridModule],
+    exports: [FlexModule, ExtendedModule, GridModule],
 })
 export class FlexLayoutModule {
-  /**
+    /**
    * Initialize the FlexLayoutModule with a set of config options,
    * which sets the corresponding tokens accordingly
    */
-  static withConfig(
-    configOptions: LayoutConfigOptions,
-    // tslint:disable-next-line:max-line-length
-    breakpoints: BreakPoint | BreakPoint[] = []
-  ): ModuleWithProviders<FlexLayoutModule> {
-    return {
-      ngModule: FlexLayoutModule,
-      providers: configOptions.serverLoaded
-        ? [
-            {
-              provide: LAYOUT_CONFIG,
-              useValue: { ...DEFAULT_CONFIG, ...configOptions },
-            },
-            { provide: BREAKPOINT, useValue: breakpoints, multi: true },
-            { provide: SERVER_TOKEN, useValue: true },
-          ]
-        : [
-            {
-              provide: LAYOUT_CONFIG,
-              useValue: { ...DEFAULT_CONFIG, ...configOptions },
-            },
-            { provide: BREAKPOINT, useValue: breakpoints, multi: true },
-          ],
-    };
-  }
-
-  constructor(
-    @Inject(SERVER_TOKEN) serverModuleLoaded: boolean,
-    @Inject(PLATFORM_ID) platformId: Object
-  ) {
-    if (isPlatformServer(platformId) && !serverModuleLoaded) {
-      console.warn(
-        'Warning: Flex Layout loaded on the server without FlexLayoutServerModule'
-      );
+    static withConfig(
+        configOptions: LayoutConfigOptions,
+        // tslint:disable-next-line:max-line-length
+        breakpoints: BreakPoint | BreakPoint[] = []
+    ): ModuleWithProviders<FlexLayoutModule> {
+        return {
+            ngModule: FlexLayoutModule,
+            providers: configOptions.serverLoaded
+                ? [
+                    {
+                        provide: LAYOUT_CONFIG,
+                        useValue: { ...DEFAULT_CONFIG, ...configOptions },
+                    },
+                    { provide: BREAKPOINT, useValue: breakpoints, multi: true },
+                    { provide: SERVER_TOKEN, useValue: true },
+                ]
+                : [
+                    {
+                        provide: LAYOUT_CONFIG,
+                        useValue: { ...DEFAULT_CONFIG, ...configOptions },
+                    },
+                    { provide: BREAKPOINT, useValue: breakpoints, multi: true },
+                ],
+        };
     }
-  }
+
+    constructor(
+    @Inject(SERVER_TOKEN) serverModuleLoaded: boolean,
+        @Inject(PLATFORM_ID) platformId: Object
+    ) {
+        if (isPlatformServer(platformId) && !serverModuleLoaded) {
+            console.warn(
+                'Warning: Flex Layout loaded on the server without FlexLayoutServerModule'
+            );
+        }
+    }
 }

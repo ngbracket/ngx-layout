@@ -8,8 +8,8 @@ describe('GridMinmaxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridMinmaxComponent ]
-    })
+    imports: [GridMinmaxComponent]
+})
     .compileComponents();
   }));
 

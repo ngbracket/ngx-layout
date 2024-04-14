@@ -7,56 +7,56 @@
  */
 import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
-  BaseDirective2,
-  MediaMarshaller,
-  StyleBuilder,
-  StyleDefinition,
-  StyleUtils,
+    BaseDirective2,
+    MediaMarshaller,
+    StyleBuilder,
+    StyleDefinition,
+    StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 const DEFAULT_VALUE = 'auto';
 
 @Injectable({ providedIn: 'root' })
 export class GridColumnStyleBuilder extends StyleBuilder {
-  buildStyles(input: string) {
-    return { 'grid-column': input || DEFAULT_VALUE };
-  }
+    buildStyles(input: string) {
+        return { 'grid-column': input || DEFAULT_VALUE };
+    }
 }
 
 @Directive()
 export class GridColumnDirective extends BaseDirective2 {
-  protected override DIRECTIVE_KEY = 'grid-column';
+    protected override DIRECTIVE_KEY = 'grid-column';
 
-  constructor(
-    elementRef: ElementRef,
-    styleBuilder: GridColumnStyleBuilder,
-    styler: StyleUtils,
-    marshal: MediaMarshaller
-  ) {
-    super(elementRef, styleBuilder, styler, marshal);
-    this.init();
-  }
+    constructor(
+        elementRef: ElementRef,
+        styleBuilder: GridColumnStyleBuilder,
+        styler: StyleUtils,
+        marshal: MediaMarshaller
+    ) {
+        super(elementRef, styleBuilder, styler, marshal);
+        this.init();
+    }
 
-  protected override styleCache = columnCache;
+    protected override styleCache = columnCache;
 }
 
 const columnCache: Map<string, StyleDefinition> = new Map();
 
 const inputs = [
-  'gdColumn',
-  'gdColumn.xs',
-  'gdColumn.sm',
-  'gdColumn.md',
-  'gdColumn.lg',
-  'gdColumn.xl',
-  'gdColumn.lt-sm',
-  'gdColumn.lt-md',
-  'gdColumn.lt-lg',
-  'gdColumn.lt-xl',
-  'gdColumn.gt-xs',
-  'gdColumn.gt-sm',
-  'gdColumn.gt-md',
-  'gdColumn.gt-lg',
+    'gdColumn',
+    'gdColumn.xs',
+    'gdColumn.sm',
+    'gdColumn.md',
+    'gdColumn.lg',
+    'gdColumn.xl',
+    'gdColumn.lt-sm',
+    'gdColumn.lt-md',
+    'gdColumn.lt-lg',
+    'gdColumn.lt-xl',
+    'gdColumn.gt-xs',
+    'gdColumn.gt-sm',
+    'gdColumn.gt-md',
+    'gdColumn.gt-lg',
 ];
 
 const selector = `
@@ -73,5 +73,5 @@ const selector = `
  */
 @Directive({ selector, inputs })
 export class DefaultGridColumnDirective extends GridColumnDirective {
-  protected override inputs = inputs;
+    protected override inputs = inputs;
 }

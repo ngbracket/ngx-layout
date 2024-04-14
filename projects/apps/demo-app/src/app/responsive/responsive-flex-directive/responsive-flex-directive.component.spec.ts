@@ -8,8 +8,8 @@ describe('ResponsiveFlexDirectiveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponsiveFlexDirectiveComponent ]
-    })
+    imports: [ResponsiveFlexDirectiveComponent]
+})
     .compileComponents();
   }));
 

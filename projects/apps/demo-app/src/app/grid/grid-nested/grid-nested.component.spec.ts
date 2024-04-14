@@ -8,8 +8,8 @@ describe('GridNestedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridNestedComponent ]
-    })
+    imports: [GridNestedComponent]
+})
     .compileComponents();
   }));
 

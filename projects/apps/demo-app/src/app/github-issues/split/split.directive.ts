@@ -14,10 +14,11 @@ import { SplitAreaDirective } from './split-area.directive';
 import { SplitHandleDirective } from './split-handle.directive';
 
 @Directive({
-  selector: '[ngxSplit]',
-  host: {
-    class: 'ngx-split',
-  },
+    selector: '[ngxSplit]',
+    host: {
+        class: 'ngx-split',
+    },
+    standalone: true,
 })
 export class SplitDirective implements AfterContentInit, OnDestroy {
   @Input('ngxSplit') direction = 'row';

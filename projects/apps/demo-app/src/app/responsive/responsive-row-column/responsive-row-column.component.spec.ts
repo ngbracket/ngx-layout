@@ -8,8 +8,8 @@ describe('ResponsiveRowColumnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponsiveRowColumnComponent ]
-    })
+    imports: [ResponsiveRowColumnComponent]
+})
     .compileComponents();
   }));
 

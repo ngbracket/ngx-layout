@@ -8,8 +8,8 @@ describe('StackOverflowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StackOverflowComponent ]
-    })
+    imports: [StackOverflowComponent]
+})
     .compileComponents();
   }));
 

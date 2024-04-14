@@ -1,10 +1,25 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { Subscription } from 'rxjs';
+import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
+import { NgIf } from '@angular/common';
+import { MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
 
 @Component({
-  selector: 'demo-responsive-row-column',
-  templateUrl: './responsive-row-column.component.html',
+    selector: 'demo-responsive-row-column',
+    templateUrl: './responsive-row-column.component.html',
+    standalone: true,
+    imports: [
+        MatCard,
+        MatCardTitle,
+        MatCardSubtitle,
+        MatCardContent,
+        NgIf,
+        FlexModule,
+        ExtendedModule,
+        MatCardFooter,
+    ],
 })
 export class ResponsiveRowColumnComponent implements OnDestroy {
   cols: { [key: string]: string } = {

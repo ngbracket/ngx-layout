@@ -19,14 +19,14 @@ import { DefaultLayoutGapDirective } from './layout-gap/layout-gap';
 import { DefaultLayoutDirective } from './layout/layout';
 
 const ALL_DIRECTIVES = [
-  DefaultLayoutDirective,
-  DefaultLayoutGapDirective,
-  DefaultLayoutAlignDirective,
-  DefaultFlexOrderDirective,
-  DefaultFlexOffsetDirective,
-  FlexFillDirective,
-  DefaultFlexAlignDirective,
-  DefaultFlexDirective,
+    DefaultLayoutDirective,
+    DefaultLayoutGapDirective,
+    DefaultLayoutAlignDirective,
+    DefaultFlexOrderDirective,
+    DefaultFlexOffsetDirective,
+    FlexFillDirective,
+    DefaultFlexAlignDirective,
+    DefaultFlexDirective,
 ];
 
 /**
@@ -36,8 +36,8 @@ const ALL_DIRECTIVES = [
  */
 
 @NgModule({
-  imports: [CoreModule, BidiModule],
-  declarations: [...ALL_DIRECTIVES],
-  exports: [...ALL_DIRECTIVES],
+    imports: [CoreModule, BidiModule],
+    declarations: [...ALL_DIRECTIVES],
+    exports: [...ALL_DIRECTIVES],
 })
 export class FlexModule {}

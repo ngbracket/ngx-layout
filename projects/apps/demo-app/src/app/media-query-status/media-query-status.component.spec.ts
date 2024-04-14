@@ -8,8 +8,8 @@ describe('MediaQueryStatusComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MediaQueryStatusComponent ]
-    })
+    imports: [MediaQueryStatusComponent]
+})
     .compileComponents();
   }));
 

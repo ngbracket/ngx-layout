@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { GridModule } from '@ngbracket/ngx-layout/grid';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
 
 @Component({
-  selector: 'demo-grid-overlay',
-  template: `
+    selector: 'demo-grid-overlay',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title>Grid with Overlay</mat-card-title>
       <mat-card-content class="containerX">
@@ -21,13 +23,15 @@ import { Component } from '@angular/core';
       </mat-card-content>
     </mat-card>
   `,
-  styles: [`.box {
+    styles: [`.box {
     border-radius: 5px;
     padding: 20px;
   }`, `.overlay {
     background-color: red;
     z-index: 10;
-  }`]
+  }`],
+    standalone: true,
+    imports: [MatCard, MatCardTitle, MatCardContent, GridModule]
 })
 export class GridOverlayComponent {
 }

@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
+import { MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
 
 @Component({
-  selector: 'demo-flex-offset-values',
-  template: `
+    selector: 'demo-flex-offset-values',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title>Flex Offset Values</mat-card-title>
       <mat-card-subtitle>Explore impact of values for the 'flex-offset' API:</mat-card-subtitle>
@@ -18,6 +20,8 @@ import {Component} from '@angular/core';
         <div class="hint">&lt;div fxLayout="row" &gt;</div>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: true,
+    imports: [MatCard, MatCardTitle, MatCardSubtitle, MatCardContent, FlexModule, MatCardFooter]
 })
 export class FlexOffsetValuesComponent {}

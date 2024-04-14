@@ -8,8 +8,8 @@ describe('FlexAlignSelfComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlexAlignSelfComponent ]
-    })
+    imports: [FlexAlignSelfComponent]
+})
     .compileComponents();
   }));
 
