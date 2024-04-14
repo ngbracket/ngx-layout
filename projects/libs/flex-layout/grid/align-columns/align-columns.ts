@@ -96,7 +96,10 @@ const selector = `
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-19
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-21
  */
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class DefaultGridAlignColumnsDirective extends GridAlignColumnsDirective {
     protected override inputs = inputs;
 }

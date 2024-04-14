@@ -60,20 +60,20 @@ describe('show directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [
-                CommonModule,
-                MatFormFieldModule,
-                FlexLayoutModule,
-                FormsModule,
-                MatSelectModule,
-                NoopAnimationsModule,
-            ],
-            declarations: [TestShowComponent],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        FlexLayoutModule,
+        FormsModule,
+        MatSelectModule,
+        NoopAnimationsModule,
+        TestShowComponent,
+    ],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     afterEach(() => {
@@ -347,33 +347,28 @@ describe('show directive', () => {
 
             // Configure testbed to prepare services
             TestBed.configureTestingModule({
-                imports: [
-                    CommonModule,
-                    FlexLayoutModule.withConfig(
-                        {
-                            serverLoaded: true,
-                        },
-                        [
-                            {
-                                alias: 'sm-md',
-                                suffix: 'SmMd',
-                                mediaQuery:
-                  'screen and (min-width: 720px) and (max-width: 839px)',
-                                overlapping: false,
-                            },
-                            {
-                                alias: 'sm.lg',
-                                suffix: 'SmLg',
-                                mediaQuery:
-                  'screen and (min-width: 840px) and (max-width: 1000px)',
-                                overlapping: false,
-                            },
-                        ]
-                    ),
-                ],
-                declarations: [FxShowHideDirective],
-                providers: [MockMatchMediaProvider],
-            });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            serverLoaded: true,
+        }, [
+            {
+                alias: 'sm-md',
+                suffix: 'SmMd',
+                mediaQuery: 'screen and (min-width: 720px) and (max-width: 839px)',
+                overlapping: false,
+            },
+            {
+                alias: 'sm.lg',
+                suffix: 'SmLg',
+                mediaQuery: 'screen and (min-width: 840px) and (max-width: 1000px)',
+                overlapping: false,
+            },
+        ]),
+        FxShowHideDirective,
+    ],
+    providers: [MockMatchMediaProvider],
+});
         });
         afterEach(() => {
             mediaController.clearAll();
@@ -402,7 +397,10 @@ const inputs = ['fxShow.sm-md', 'fxHide.sm-md', 'fxShow.sm.lg', 'fxHide.sm.lg'];
 const selector = '[fxShow.sm-md], [fxHide.sm-md], [fxShow.sm.lg], [fxHide.sm.lg]';
 
 // Used to test custom breakpoint functionality
-@Directive({ inputs, selector })
+@Directive({
+    inputs, selector,
+    standalone: true
+})
 class FxShowHideDirective extends ShowHideDirective {
     protected override inputs = inputs;
 }
@@ -414,6 +412,12 @@ class FxShowHideDirective extends ShowHideDirective {
 @Component({
     selector: 'test-show-api',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule,
+        MatFormFieldModule,
+        FlexLayoutModule,
+        FormsModule,
+        MatSelectModule,],
 })
 class TestShowComponent implements OnInit {
     isVisible = 0;

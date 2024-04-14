@@ -56,13 +56,12 @@ describe('layout-align directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [CommonModule, FlexLayoutModule],
-            declarations: [TestLayoutAlignComponent],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [CommonModule, FlexLayoutModule, TestLayoutAlignComponent],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     describe('with static features', () => {
@@ -654,6 +653,8 @@ export class MockLayoutAlignStyleBuilder extends StyleBuilder {
 @Component({
     selector: 'test-layout',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule, FlexLayoutModule],
 })
 class TestLayoutAlignComponent implements OnInit {
     direction = 'column';

@@ -75,7 +75,10 @@ const selector = `
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-justify-self
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-align-self
  */
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class DefaultGridAlignDirective extends GridAlignDirective {
     protected override inputs = inputs;
 }

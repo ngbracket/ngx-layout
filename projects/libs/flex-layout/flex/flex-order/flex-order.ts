@@ -76,7 +76,10 @@ export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
 
 const flexOrderCache: Map<string, StyleDefinition> = new Map();
 
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class DefaultFlexOrderDirective extends FlexOrderDirective {
     protected override inputs = inputs;
 }

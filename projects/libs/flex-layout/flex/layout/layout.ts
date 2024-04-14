@@ -99,7 +99,10 @@ export class LayoutDirective extends BaseDirective2 implements OnChanges {
     }
 }
 
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class DefaultLayoutDirective extends LayoutDirective {
     protected override inputs = inputs;
 }

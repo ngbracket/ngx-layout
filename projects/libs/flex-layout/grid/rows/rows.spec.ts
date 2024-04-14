@@ -61,13 +61,12 @@ describe('grid rows parent directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [CommonModule, GridModule],
-            declarations: [TestGridRowsComponent],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [CommonModule, GridModule, TestGridRowsComponent],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     describe('with static features', () => {
@@ -221,6 +220,8 @@ describe('grid rows parent directive', () => {
 @Component({
     selector: 'test-layout',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule, GridModule],
 })
 class TestGridRowsComponent {
     cols = '50px 1fr';

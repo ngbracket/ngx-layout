@@ -42,13 +42,12 @@ describe('flex-order', () => {
     beforeEach(() => {
         jasmine.addMatchers(customMatchers);
         TestBed.configureTestingModule({
-            declarations: [TestOrderComponent],
-            imports: [CommonModule, FlexLayoutModule],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [CommonModule, FlexLayoutModule, TestOrderComponent],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     describe('static API', () => {
@@ -97,6 +96,8 @@ describe('flex-order', () => {
 @Component({
     selector: 'test-layout',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule, FlexLayoutModule],
 })
 class TestOrderComponent {
     constructor() {}

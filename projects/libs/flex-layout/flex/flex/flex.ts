@@ -349,7 +349,10 @@ export class FlexDirective extends BaseDirective2 implements OnInit {
     }
 }
 
-@Directive({ inputs, selector })
+@Directive({
+    inputs, selector,
+    standalone: true
+})
 export class DefaultFlexDirective extends FlexDirective {
     protected override inputs = inputs;
 }

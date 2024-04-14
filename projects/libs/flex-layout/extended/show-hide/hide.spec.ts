@@ -69,13 +69,12 @@ describe('hide directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [CommonModule, FlexLayoutModule],
-            declarations: [TestHideComponent],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [CommonModule, FlexLayoutModule, TestHideComponent],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     afterEach(() => {
@@ -373,6 +372,8 @@ describe('hide directive', () => {
 @Component({
     selector: 'test-hide-api',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule, FlexLayoutModule],
 })
 class TestHideComponent implements OnInit {
     isVisible = 0;

@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { BREAKPOINT, FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { DEMO_APP_ROUTES } from './app.routes';
 import { YBA_BREAKPOINT_PROVIDER } from './stack-overflow/hide-custom-bp/hide-with-custom-bp.component';
+
 const EXTRA_BREAKPOINTS = [
   {
     alias: 'xs.landscape',

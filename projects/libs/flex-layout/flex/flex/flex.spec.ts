@@ -68,13 +68,13 @@ describe('flex directive', () => {
         jasmine.addMatchers(customMatchers);
 
         TestBed.configureTestingModule({
-            imports: [
-                CommonModule,
-                FlexLayoutModule.withConfig({ serverLoaded: true }),
-            ],
-            declarations: [TestFlexComponent, TestQueryWithFlexComponent],
-            providers: [MockMatchMediaProvider],
-        });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({ serverLoaded: true }),
+        TestFlexComponent, TestQueryWithFlexComponent,
+    ],
+    providers: [MockMatchMediaProvider],
+});
     });
 
     afterEach(() => {
@@ -1132,16 +1132,16 @@ describe('flex directive', () => {
         beforeEach(() => {
             // Configure testbed to prepare services
             TestBed.configureTestingModule({
-                imports: [
-                    CommonModule,
-                    FlexLayoutModule.withConfig({
-                        addFlexToParent: true,
-                        serverLoaded: true,
-                    }),
-                ],
-                declarations: [TestFlexComponent, TestQueryWithFlexComponent],
-                providers: [MockMatchMediaProvider],
-            });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            addFlexToParent: true,
+            serverLoaded: true,
+        }),
+        TestFlexComponent, TestQueryWithFlexComponent,
+    ],
+    providers: [MockMatchMediaProvider],
+});
         });
 
         afterEach(() => {
@@ -1173,16 +1173,16 @@ describe('flex directive', () => {
         beforeEach(() => {
             // Configure testbed to prepare services
             TestBed.configureTestingModule({
-                imports: [
-                    CommonModule,
-                    FlexLayoutModule.withConfig({
-                        disableVendorPrefixes: true,
-                        serverLoaded: true,
-                    }),
-                ],
-                declarations: [TestFlexComponent, TestQueryWithFlexComponent],
-                providers: [MockMatchMediaProvider],
-            });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            disableVendorPrefixes: true,
+            serverLoaded: true,
+        }),
+        TestFlexComponent, TestQueryWithFlexComponent,
+    ],
+    providers: [MockMatchMediaProvider],
+});
         });
 
         afterEach(() => {
@@ -1218,16 +1218,16 @@ describe('flex directive', () => {
         beforeEach(() => {
             // Configure testbed to prepare services
             TestBed.configureTestingModule({
-                imports: [
-                    CommonModule,
-                    FlexLayoutModule.withConfig({
-                        useColumnBasisZero: false,
-                        serverLoaded: true,
-                    }),
-                ],
-                declarations: [TestFlexComponent, TestQueryWithFlexComponent],
-                providers: [MockMatchMediaProvider],
-            });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            useColumnBasisZero: false,
+            serverLoaded: true,
+        }),
+        TestFlexComponent, TestQueryWithFlexComponent,
+    ],
+    providers: [MockMatchMediaProvider],
+});
         });
 
         afterEach(() => {
@@ -1254,22 +1254,22 @@ describe('flex directive', () => {
         beforeEach(() => {
             // Configure testbed to prepare services
             TestBed.configureTestingModule({
-                imports: [
-                    CommonModule,
-                    FlexLayoutModule.withConfig({
-                        useColumnBasisZero: false,
-                        serverLoaded: true,
-                    }),
-                ],
-                declarations: [TestFlexComponent, TestQueryWithFlexComponent],
-                providers: [
-                    MockMatchMediaProvider,
-                    {
-                        provide: FlexStyleBuilder,
-                        useClass: MockFlexStyleBuilder,
-                    },
-                ],
-            });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            useColumnBasisZero: false,
+            serverLoaded: true,
+        }),
+        TestFlexComponent, TestQueryWithFlexComponent,
+    ],
+    providers: [
+        MockMatchMediaProvider,
+        {
+            provide: FlexStyleBuilder,
+            useClass: MockFlexStyleBuilder,
+        },
+    ],
+});
         });
 
         afterEach(() => {
@@ -1305,6 +1305,8 @@ export class MockFlexStyleBuilder extends StyleBuilder {
 @Component({
     selector: 'test-layout',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule],
 })
 class TestFlexComponent {
     direction = 'column';
@@ -1318,6 +1320,8 @@ class TestFlexComponent {
       <div fxFlex="50%" fxFlex.sm="71%"></div>
     </div>
   `,
+    standalone: true,
+    imports: [CommonModule],
 })
 class TestQueryWithFlexComponent {
     @ViewChild(DefaultFlexDirective, { static: true })

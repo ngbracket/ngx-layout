@@ -97,7 +97,10 @@ const selector = `
  * This maintains the core functionality of 'ngClass' and adds responsive API
  * Note: this class is a no-op when rendered on the server
  */
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class DefaultClassDirective extends ClassDirective {
     protected override inputs = inputs;
 }

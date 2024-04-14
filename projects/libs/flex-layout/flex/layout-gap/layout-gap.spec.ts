@@ -67,22 +67,22 @@ describe('layout-gap directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [
-                CommonModule,
-                FlexLayoutModule.withConfig({
-                    multiplier: {
-                        value: 4,
-                        unit: 'px',
-                    },
-                }),
-            ],
-            declarations: [TestLayoutGapComponent],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: DIR_DOCUMENT, useValue: fakeDocument },
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            multiplier: {
+                value: 4,
+                unit: 'px',
+            },
+        }),
+        TestLayoutGapComponent,
+    ],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: DIR_DOCUMENT, useValue: fakeDocument },
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     function verifyCorrectMargin(layout: string, marginKey: string) {
@@ -773,6 +773,8 @@ export class MockLayoutGapStyleBuilder extends StyleBuilder {
 @Component({
     selector: 'test-layout',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule],
 })
 class TestLayoutGapComponent implements OnInit {
     direction = 'column';

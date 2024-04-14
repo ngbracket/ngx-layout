@@ -52,10 +52,9 @@ describe('class directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [MatButtonModule, CommonModule, CoreModule],
-            declarations: [TestClassComponent, DefaultClassDirective],
-            providers: [MockMatchMediaProvider],
-        });
+    imports: [MatButtonModule, CommonModule, CoreModule, TestClassComponent, DefaultClassDirective],
+    providers: [MockMatchMediaProvider],
+});
     });
 
     ['xs', 'sm', 'md', 'lg'].forEach((mq) => {
@@ -339,6 +338,8 @@ describe('class directive', () => {
 @Component({
     selector: 'test-class-api',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [MatButtonModule, CommonModule, CoreModule,],
 })
 class TestClassComponent {
     hasXs1: boolean = false;
@@ -375,8 +376,8 @@ describe('binding to CSS class list', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [TestComponent],
-        });
+    imports: [TestComponent],
+});
     });
 
     it('should clean up when the directive is destroyed', fakeAsync(() => {
@@ -704,7 +705,10 @@ describe('binding to CSS class list', () => {
     });
 });
 
-@Component({ selector: 'test-cmp', template: '' })
+@Component({
+    selector: 'test-cmp', template: '',
+    standalone: true
+})
 class TestComponent {
     condition = true;
     items: any[] = [];

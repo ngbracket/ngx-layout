@@ -106,7 +106,10 @@ const selector = `
  * Configures the auto placement algorithm for the grid
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-23
  */
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class DefaultGridAutoDirective extends GridAutoDirective {
     protected override inputs = inputs;
 }

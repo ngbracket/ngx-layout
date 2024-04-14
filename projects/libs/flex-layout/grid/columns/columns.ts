@@ -110,7 +110,10 @@ const selector = `
  * Syntax: <column value> [auto]
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-13
  */
-@Directive({ selector, inputs })
+@Directive({
+    selector, inputs,
+    standalone: true
+})
 export class DefaultGridColumnsDirective extends GridColumnsDirective {
     protected override inputs = inputs;
 }

@@ -57,10 +57,9 @@ describe('align columns directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [CommonModule, GridModule],
-            declarations: [TestAlignComponent],
-            providers: [MockMatchMediaProvider],
-        });
+    imports: [CommonModule, GridModule, TestAlignComponent],
+    providers: [MockMatchMediaProvider],
+});
     });
 
     describe('with static features', () => {
@@ -431,6 +430,8 @@ describe('align columns directive', () => {
 @Component({
     selector: 'test-layout',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule, GridModule],
 })
 class TestAlignComponent implements OnInit {
     mainAxis = 'start';

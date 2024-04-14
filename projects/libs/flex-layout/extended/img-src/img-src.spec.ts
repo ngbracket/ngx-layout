@@ -82,13 +82,12 @@ describe('img-src directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [CommonModule, FlexLayoutModule],
-            declarations: [TestSrcComponent],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [CommonModule, FlexLayoutModule, TestSrcComponent],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     describe('with static api', () => {
@@ -378,6 +377,8 @@ describe('img-src directive', () => {
 @Component({
     selector: 'test-src-api',
     template: '',
+    standalone: true,
+    imports: [CommonModule, FlexLayoutModule],
 })
 class TestSrcComponent {
     defaultSrc = '';

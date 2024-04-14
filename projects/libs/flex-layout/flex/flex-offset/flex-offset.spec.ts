@@ -51,21 +51,21 @@ describe('flex-offset directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [
-                CommonModule,
-                FlexLayoutModule.withConfig({
-                    multiplier: {
-                        value: 4,
-                        unit: 'px',
-                    },
-                }),
-            ],
-            declarations: [TestFlexComponent],
-            providers: [
-                { provide: DIR_DOCUMENT, useValue: fakeDocument },
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            multiplier: {
+                value: 4,
+                unit: 'px',
+            },
+        }),
+        TestFlexComponent,
+    ],
+    providers: [
+        { provide: DIR_DOCUMENT, useValue: fakeDocument },
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     describe('with static features', () => {
@@ -219,22 +219,22 @@ describe('flex-offset directive', () => {
 
             // Configure testbed to prepare services
             TestBed.configureTestingModule({
-                imports: [
-                    CommonModule,
-                    FlexLayoutModule.withConfig({
-                        useColumnBasisZero: false,
-                        serverLoaded: true,
-                    }),
-                ],
-                declarations: [TestFlexComponent],
-                providers: [
-                    MockMatchMediaProvider,
-                    {
-                        provide: FlexOffsetStyleBuilder,
-                        useClass: MockFlexOffsetStyleBuilder,
-                    },
-                ],
-            });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({
+            useColumnBasisZero: false,
+            serverLoaded: true,
+        }),
+        TestFlexComponent,
+    ],
+    providers: [
+        MockMatchMediaProvider,
+        {
+            provide: FlexOffsetStyleBuilder,
+            useClass: MockFlexOffsetStyleBuilder,
+        },
+    ],
+});
         });
 
         it('should set flex offset not to input', () => {
@@ -265,6 +265,8 @@ export class MockFlexOffsetStyleBuilder extends StyleBuilder {
 @Component({
     selector: 'test-component-shell',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule],
 })
 class TestFlexComponent {
     direction = 'column';

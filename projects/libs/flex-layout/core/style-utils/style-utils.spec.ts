@@ -41,9 +41,8 @@ describe('styler', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [CommonModule],
-            declarations: [TestLayoutComponent],
-        });
+    imports: [CommonModule, TestLayoutComponent],
+});
     });
 
     describe('testing display styles', () => {
@@ -95,5 +94,7 @@ describe('styler', () => {
 @Component({
     selector: 'test-style-utils',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule],
 })
 class TestLayoutComponent {}

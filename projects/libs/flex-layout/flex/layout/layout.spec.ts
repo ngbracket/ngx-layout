@@ -47,16 +47,16 @@ describe('layout directive', () => {
 
         // Configure testbed to prepare services
         TestBed.configureTestingModule({
-            imports: [
-                CommonModule,
-                FlexLayoutModule.withConfig({ detectLayoutDisplay: true }),
-            ],
-            declarations: [TestLayoutComponent],
-            providers: [
-                MockMatchMediaProvider,
-                { provide: SERVER_TOKEN, useValue: true },
-            ],
-        });
+    imports: [
+        CommonModule,
+        FlexLayoutModule.withConfig({ detectLayoutDisplay: true }),
+        TestLayoutComponent,
+    ],
+    providers: [
+        MockMatchMediaProvider,
+        { provide: SERVER_TOKEN, useValue: true },
+    ],
+});
     });
 
     describe('with static features', () => {
@@ -525,6 +525,8 @@ export class MockLayoutStyleBuilder extends StyleBuilder {
 @Component({
     selector: 'test-layout',
     template: '<span>PlaceHolder Template HTML</span>',
+    standalone: true,
+    imports: [CommonModule],
 })
 class TestLayoutComponent implements OnInit {
     direction = 'column';
