@@ -5,21 +5,21 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {TestBed, inject} from '@angular/core/testing';
-import {sortDescendingPriority} from '../../utils/sort';
+import { TestBed, inject } from '@angular/core/testing';
+import { sortDescendingPriority } from '../../utils/sort';
 
-import {BreakPoint} from '../break-point';
-import {BREAKPOINTS} from '../break-points-token';
-import {DEFAULT_BREAKPOINTS} from './break-points';
+import { BreakPoint } from '../break-point';
+import { BREAKPOINTS } from '../break-points-token';
+import { DEFAULT_BREAKPOINTS } from './break-points';
 
 describe('break-point-provider', () => {
-  let breakPoints: BreakPoint[ ];
+  let breakPoints: BreakPoint[];
 
   describe('with default configuration', () => {
     beforeEach(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
-        providers: [{provide: BREAKPOINTS, useValue: DEFAULT_BREAKPOINTS}]
+        providers: [{ provide: BREAKPOINTS, useValue: DEFAULT_BREAKPOINTS }],
       });
     });
     beforeEach(inject([BREAKPOINTS], (bps: BreakPoint[]) => {
@@ -41,23 +41,23 @@ describe('break-point-provider', () => {
         alias: 'ab',
         suffix: 'Ab',
         mediaQuery: '(max-width: 297px)',
-        overlapping: false
+        overlapping: false,
       },
       {
         alias: 'cd',
         suffix: 'Cd',
         mediaQuery: '(min-width: 298px) and (max-width:414px',
-        overlapping: false
-      }
+        overlapping: false,
+      },
     ];
 
     beforeEach(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
-        providers: [{provide: BREAKPOINTS, useValue: CUSTOM_BPS}]
+        providers: [{ provide: BREAKPOINTS, useValue: CUSTOM_BPS }],
       });
     });
-    // tslint:disable-next-line:no-shadowed-variable
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     beforeEach(inject([BREAKPOINTS], (breakPoints: BreakPoint[]) => {
       bpList = breakPoints;
     }));
@@ -68,6 +68,4 @@ describe('break-point-provider', () => {
       expect(bpList[bpList.length - 1].suffix).toEqual('Cd');
     });
   });
-
-
 });

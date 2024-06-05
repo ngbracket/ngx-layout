@@ -22,8 +22,7 @@ import {
  */
 export class ServerMediaQueryList
   extends EventTarget
-  implements MediaQueryList
-{
+  implements MediaQueryList {
   private _listeners: MediaQueryListListener[] = [];
 
   get matches(): boolean {

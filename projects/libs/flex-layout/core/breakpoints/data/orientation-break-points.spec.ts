@@ -6,11 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import { async, inject, TestBed } from '@angular/core/testing';
+import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  BreakPoint,
   BREAKPOINTS,
+  BreakPoint,
   DEFAULT_BREAKPOINTS,
   ORIENTATION_BREAKPOINTS,
 } from '@ngbracket/ngx-layout/core';
@@ -90,7 +90,7 @@ describe('break-point-provider', () => {
         return pos || (it.alias === alias ? it : null);
       }, accumulator);
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
@@ -104,7 +104,7 @@ describe('break-point-provider', () => {
         ],
       });
     }));
-    // tslint:disable-next-line:no-shadowed-variable
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     beforeEach(inject([BREAKPOINTS], (breakPoints: BreakPoint[]) => {
       bpList = breakPoints;
     }));

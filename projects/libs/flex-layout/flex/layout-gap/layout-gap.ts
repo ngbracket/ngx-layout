@@ -127,8 +127,7 @@ const selector = `
 @Directive()
 export class LayoutGapDirective
   extends BaseDirective2
-  implements AfterContentInit, OnDestroy
-{
+  implements AfterContentInit, OnDestroy {
   protected layout = 'row'; // default flex-direction
   protected override DIRECTIVE_KEY = 'layout-gap';
   protected observerSubject = new Subject<void>();

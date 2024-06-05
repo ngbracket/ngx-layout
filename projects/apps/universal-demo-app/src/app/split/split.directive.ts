@@ -17,11 +17,11 @@ import { SplitAreaDirective } from './split-area.directive';
 import { SplitHandleDirective } from './split-handle.directive';
 
 @Directive({
-    selector: '[ngxSplit]',
-    host: {
-        class: 'ngx-split',
-    },
-    standalone: true,
+  selector: '[ngxSplit]',
+  host: {
+    class: 'ngx-split',
+  },
+  standalone: true,
 })
 export class SplitDirective implements AfterContentInit, OnDestroy {
   watcher;
@@ -30,8 +30,8 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
   direction = 'row';
 
   @ContentChild(SplitHandleDirective, { static: true })
-  handle: SplitHandleDirective;
-  @ContentChildren(SplitAreaDirective) areas: QueryList<SplitAreaDirective>;
+  handle!: SplitHandleDirective;
+  @ContentChildren(SplitAreaDirective) areas!: QueryList<SplitAreaDirective>;
 
   constructor(
     private elementRef: ElementRef,

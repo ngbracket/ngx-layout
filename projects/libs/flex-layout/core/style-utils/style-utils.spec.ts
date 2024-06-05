@@ -7,7 +7,7 @@
  */
 import { CommonModule, isPlatformServer } from '@angular/common';
 import { Component, PLATFORM_ID } from '@angular/core';
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import {
   customMatchers,

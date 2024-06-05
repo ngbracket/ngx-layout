@@ -39,13 +39,14 @@ module.exports = {
       'error',
       {
         multiline: {
-          delimiter: 'none',
+          delimiter: 'semi',
           requireLast: true,
         },
         singleline: {
           delimiter: 'semi',
-          requireLast: true,
+          requireLast: false,
         },
+        multilineDetection: 'brackets',
         overrides: {
           interface: {
             multiline: {
@@ -60,7 +61,7 @@ module.exports = {
       'error',
       {
         selector: 'variable',
-        format: ['camelCase', 'UPPER_CASE'],
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
         leadingUnderscore: 'allow',
         trailingUnderscore: 'forbid',
       },
@@ -73,6 +74,7 @@ module.exports = {
         hoist: 'all',
       },
     ],
+    'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
     '@typescript-eslint/quotes': [

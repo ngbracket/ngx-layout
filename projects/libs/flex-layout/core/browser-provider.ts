@@ -5,8 +5,12 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {APP_BOOTSTRAP_LISTENER, PLATFORM_ID, InjectionToken} from '@angular/core';
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import {
+  APP_BOOTSTRAP_LISTENER,
+  InjectionToken,
+  PLATFORM_ID,
+} from '@angular/core';
 
 /**
  * Find all of the server-generated stylings, if any, and remove them
@@ -16,16 +20,20 @@ import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 export function removeStyles(_document: Document, platformId: Object) {
   return () => {
     if (isPlatformBrowser(platformId)) {
-      const elements = Array.from(_document.querySelectorAll(`[class*=${CLASS_NAME}]`));
+      const elements = Array.from(
+        _document.querySelectorAll(`[class*=${CLASS_NAME}]`)
+      );
 
       // RegExp constructor should only be used if passing a variable to the constructor.
       // When using static regular expression it is more performant to use reg exp literal.
       // This is also needed to provide Safari 9 compatibility, please see
       // https://stackoverflow.com/questions/37919802 for more discussion.
       const classRegex = /\bflex-layout-.+?\b/g;
-      elements.forEach(el => {
-        el.classList.contains(`${CLASS_NAME}ssr`) && el.parentNode ?
-          el.parentNode.removeChild(el) : el.className.replace(classRegex, '');
+      elements.forEach((el) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        el.classList.contains(`${CLASS_NAME}ssr`) && el.parentNode
+          ? el.parentNode.removeChild(el)
+          : el.className.replace(classRegex, '');
       });
     }
   };
@@ -38,7 +46,7 @@ export const BROWSER_PROVIDER = {
   provide: <InjectionToken<(() => void)[]>>APP_BOOTSTRAP_LISTENER,
   useFactory: removeStyles,
   deps: [DOCUMENT, PLATFORM_ID],
-  multi: true
+  multi: true,
 };
 
 export const CLASS_NAME = 'flex-layout-';

@@ -1,21 +1,17 @@
-import {Component, Input} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-    selector: 'watermark',
-    styleUrls: ['watermark.component.scss'],
-    template: `
-    <div [style.background]="backgroundImage">
-    </div>
-  `,
-    standalone: true,
+  selector: 'watermark',
+  styleUrls: ['watermark.component.scss'],
+  template: ` <div [style.background]="backgroundImage"></div> `,
+  standalone: true,
 })
 export class WatermarkComponent {
   @Input() title = '@angular/layout';
   @Input() message = 'Layout with FlexBox + CSS Grid';
 
-  constructor(private _sanitizer: DomSanitizer) {
-  }
+  constructor(private _sanitizer: DomSanitizer) {}
 
   /* tslint:disable:max-line-length */
   get backgroundImage() {
@@ -52,6 +48,8 @@ export class WatermarkComponent {
     `;
     const bkgrndImageUrl = `data:image/svg+xml;base64,${window.btoa(rawSVG)}`;
 
-    return this._sanitizer.bypassSecurityTrustStyle(`url('${bkgrndImageUrl}') repeat-y`);
+    return this._sanitizer.bypassSecurityTrustStyle(
+      `url('${bkgrndImageUrl}') repeat-y`
+    );
   }
 }

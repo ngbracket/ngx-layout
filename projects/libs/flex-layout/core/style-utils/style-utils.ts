@@ -10,7 +10,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { applyCssPrefixes } from '@ngbracket/ngx-layout/_private-utils';
 import { StylesheetMap } from '../stylesheet-map/stylesheet-map';
-import { LayoutConfigOptions, LAYOUT_CONFIG } from '../tokens/library-config';
+import { LAYOUT_CONFIG, LayoutConfigOptions } from '../tokens/library-config';
 import { SERVER_TOKEN } from '../tokens/server-token';
 
 @Injectable({ providedIn: 'root' })
@@ -147,6 +147,7 @@ export class StyleUtils {
             isPlatformBrowser(this._platformId) ||
             !this._serverModuleLoaded
           ) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             isPlatformBrowser(this._platformId)
               ? element.style.setProperty(key, value)
               : setServerStyle(element, key, value);
