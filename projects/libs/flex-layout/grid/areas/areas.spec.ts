@@ -10,11 +10,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  SERVER_TOKEN,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import {

@@ -44,7 +44,15 @@ module.exports = {
         },
         singleline: {
           delimiter: 'semi',
-          requireLast: false,
+          requireLast: true,
+        },
+        overrides: {
+          interface: {
+            multiline: {
+              delimiter: 'semi',
+              requireLast: true,
+            },
+          },
         },
       },
     ],
@@ -68,7 +76,7 @@ module.exports = {
     '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
     '@typescript-eslint/quotes': [
-      'error',
+      'off',
       'single',
       {
         avoidEscape: true,
