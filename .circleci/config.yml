@@ -9,7 +9,7 @@
 # To validate changes, use an online parser, eg.
 # http://yaml-online-parser.appspot.com/
 
-var_1: &docker_image cimg/node:18.18.2
+var_1: &docker_image cimg/node:20.15.1
 var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "yarn.lock" }}-0.7.0
 
 # Settings common to each job
