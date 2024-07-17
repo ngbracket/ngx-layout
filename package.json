@@ -20,7 +20,7 @@
     "build": "ng build @ngbracket/ngx-layout",
     "demo:serve": "ng serve demo-app",
     "stamp": "ts-node tools/package-tools/version-placeholders.ts --module=commonjs",
-    "build:universal-demo-app": "ng run universal-demo-app:build:production && ng run universal-demo-app:serve",
+    "build:universal-demo-app": "ng run universal-demo-app:build:production",
     "serve:universal-demo-app": "ng run universal-demo-app:serve-ssr",
     "test": "ng test @ngbracket/ngx-layout",
     "test:ssr": "webpack --config test/webpack-spec-ssr-bundle.js && jasmine --config=test/jasmine-ssr.json",
