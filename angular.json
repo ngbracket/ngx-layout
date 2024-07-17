@@ -45,9 +45,7 @@
               "base": "dist/apps/demo-app"
             },
             "index": "projects/apps/demo-app/src/index.html",
-            "polyfills": [
-              "projects/apps/demo-app/src/polyfills.ts"
-            ],
+            "polyfills": ["projects/apps/demo-app/src/polyfills.ts"],
             "tsConfig": "projects/apps/demo-app/tsconfig.app.json",
             "assets": [
               "projects/apps/demo-app/src/favicon.ico",
@@ -142,17 +140,13 @@
               "base": "dist/universal-demo-app"
             },
             "index": "projects/apps/universal-demo-app/src/index.html",
-            "polyfills": [
-              "projects/apps/universal-demo-app/src/polyfills.ts"
-            ],
+            "polyfills": ["projects/apps/universal-demo-app/src/polyfills.ts"],
             "tsConfig": "projects/apps/universal-demo-app/tsconfig.app.json",
             "assets": [
               "projects/apps/universal-demo-app/src/favicon.ico",
               "projects/apps/universal-demo-app/src/assets"
             ],
-            "styles": [
-              "projects/apps/universal-demo-app/src/styles.scss"
-            ],
+            "styles": ["projects/apps/universal-demo-app/src/styles.scss"],
             "scripts": [],
             "browser": "projects/apps/universal-demo-app/src/main.ts",
             "server": "projects/apps/universal-demo-app/src/main.server.ts",
