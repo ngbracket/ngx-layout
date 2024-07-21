@@ -30,11 +30,11 @@
     "tslib": "^2.5.0"
   },
   "peerDependencies": {
-    "@angular/cdk": ">=17.0.0",
+    "@angular/cdk": ">=18.0.0",
     "@angular/core": "0.0.0-NG",
     "@angular/common": "0.0.0-NG",
     "@angular/platform-browser": "0.0.0-NG",
-    "rxjs": "^6.5.3 || ^7.8.0"
+    "rxjs": "^6.5.3 || ^7.8.1"
   },
   "type": "module",
   "description": "ngbracket/ngx-layout =======",

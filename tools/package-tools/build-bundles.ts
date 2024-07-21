@@ -1,9 +1,9 @@
-import {join} from 'path';
-import {buildConfig} from './build-config';
-import {BuildPackage} from './build-package';
-import {rollupRemoveLicensesPlugin} from './rollup-remove-licenses';
-import {rollupGlobals, dashCaseToCamelCase} from './rollup-globals';
-import {remapSourcemap} from './sourcemap-remap';
+import { join } from 'path';
+import { buildConfig } from './build-config';
+import { BuildPackage } from './build-package';
+import { dashCaseToCamelCase, rollupGlobals } from './rollup-globals';
+import { rollupRemoveLicensesPlugin } from './rollup-remove-licenses';
+import { remapSourcemap } from './sourcemap-remap';
 
 // There are no type definitions available for these imports.
 const rollup = require('rollup');
@@ -12,10 +12,8 @@ const rollup = require('rollup');
 const fesm2015Dir = join(buildConfig.outputDir, 'fesm2015');
 const fesm2020Dir = join(buildConfig.outputDir, 'fesm2020');
 
-
 /** Utility for creating bundles from raw ngc output. */
 export class PackageBundler {
-
   /** Name of the AMD module for the primary entry point of the build package. */
   private readonly primaryAmdModuleName: string;
 
@@ -49,8 +47,16 @@ export class PackageBundler {
   /** Bundles a single secondary entry-point w/ given entry file, e.g. @angular/cdk/a11y */
   private async bundleSecondaryEntryPoint(entryPointName: string) {
     const packageName = this.buildPackage.name;
-    const entryFile = join(this.buildPackage.outputDir, entryPointName, 'index.js');
-    const esm2015EntryFile = join(this.buildPackage.esm2015OutputDir, entryPointName, 'index.js');
+    const entryFile = join(
+      this.buildPackage.outputDir,
+      entryPointName,
+      'index.js'
+    );
+    const esm2015EntryFile = join(
+      this.buildPackage.esm2015OutputDir,
+      entryPointName,
+      'index.js'
+    );
 
     return this.bundleEntryPoint({
       entryFile,
@@ -106,22 +112,22 @@ export class PackageBundler {
 
         console.warn(message);
       },
-      plugins: [
-        rollupRemoveLicensesPlugin,
-      ]
+      plugins: [rollupRemoveLicensesPlugin],
     };
 
     const writeOptions = {
       name: config.moduleName || 'ng.flexLayout',
-      amd: {id: config.importName},
+      amd: { id: config.importName },
       banner: buildConfig.licenseBanner,
       format: config.format,
       file: config.dest,
       globals: rollupGlobals,
-      sourcemap: true
+      sourcemap: true,
     };
 
-    return rollup.rollup(bundleOptions).then((bundle: any) => bundle.write(writeOptions));
+    return rollup
+      .rollup(bundleOptions)
+      .then((bundle: any) => bundle.write(writeOptions));
   }
 
   /** Gets the AMD module name for a package and an optional entry point. */

@@ -39,19 +39,21 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/apps/demo-app",
+            "outputPath": {
+              "base": "dist/apps/demo-app"
+            },
             "index": "projects/apps/demo-app/src/index.html",
-            "main": "projects/apps/demo-app/src/main.ts",
-            "polyfills": "projects/apps/demo-app/src/polyfills.ts",
+            "polyfills": ["projects/apps/demo-app/src/polyfills.ts"],
             "tsConfig": "projects/apps/demo-app/tsconfig.app.json",
             "assets": [
               "projects/apps/demo-app/src/favicon.ico",
               "projects/apps/demo-app/src/assets"
             ],
             "styles": ["projects/apps/demo-app/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/apps/demo-app/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -76,9 +78,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -134,19 +134,26 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/universal-demo-app/browser",
+            "outputPath": {
+              "base": "dist/universal-demo-app"
+            },
             "index": "projects/apps/universal-demo-app/src/index.html",
-            "main": "projects/apps/universal-demo-app/src/main.ts",
-            "polyfills": "projects/apps/universal-demo-app/src/polyfills.ts",
+            "polyfills": ["projects/apps/universal-demo-app/src/polyfills.ts"],
             "tsConfig": "projects/apps/universal-demo-app/tsconfig.app.json",
             "assets": [
               "projects/apps/universal-demo-app/src/favicon.ico",
               "projects/apps/universal-demo-app/src/assets"
             ],
             "styles": ["projects/apps/universal-demo-app/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/apps/universal-demo-app/src/main.ts",
+            "server": "projects/apps/universal-demo-app/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/apps/universal-demo-app/server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -171,50 +178,13 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/universal-demo-app/server",
-            "main": "projects/apps/universal-demo-app/server.ts",
-            "tsConfig": "projects/apps/universal-demo-app/tsconfig.server.json",
-            "preserveSymlinks": true,
-            "sourceMap": true,
-            "optimization": false,
-            "buildOptimizer": false
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "fileReplacements": [
-                {
-                  "replace": "projects/apps/universal-demo-app/src/environments/environment.ts",
-                  "with": "projects/apps/universal-demo-app/src/environments/environment.prod.ts"
-                }
-              ],
-              "buildOptimizer": true
-            }
-          }
-        },
-        "serve-ssr": {
-          "builder": "@angular-devkit/build-angular:ssr-dev-server",
-          "defaultConfiguration": "production",
-          "options": {},
-          "configurations": {
-            "production": {
-              "browserTarget": "universal-demo-app:build:production",
-              "serverTarget": "universal-demo-app:server:production"
-            }
-          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

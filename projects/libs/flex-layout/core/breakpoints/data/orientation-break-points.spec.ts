@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import { async, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
   BreakPoint,
@@ -84,13 +84,13 @@ describe('break-point-provider', () => {
       },
     ];
     let bpList: BreakPoint[];
-    let accumulator: BreakPoint | null = null;
-    let byAlias = (alias: string): BreakPoint | null =>
+    let accumulator: BreakPoint;
+    let byAlias = (alias: string): BreakPoint =>
       bpList.reduce((pos, it) => {
         return pos || (it.alias === alias ? it : null);
       }, accumulator);
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
