@@ -1,3 +1,8 @@
+[![npm version](https://badge.fury.io/js/%40ngbracket%2Fngx-layout.svg)](https://www.npmjs.com/package/@ngbracket/ngx-layout)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/ngbracket/ngx-layout/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ngbracket/ngx-layout/tree/main)
+[![Gitter](https://badges.gitter.im/angular/flex-layout.svg)](https://gitter.im/angular/flex-layout)
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=flat&logo=github)](https://wallabyjs.com/oss/)
+
 This project is a continuation of the original, open-source Angular project, @angular/flex-layout, which is no longer maintained. Please consider collaborating with us rather than creating your own, private flex libraries. Many hands make light work!
 
 If you would like to contribute to the project please get in touch with me on twitter. Alternatively, if you would like to sponsor the project details can be found on our GitHub page.
