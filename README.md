@@ -1,55 +1,25 @@
-# This is clone of angular/flex-layout project.
-
 [![npm version](https://badge.fury.io/js/%40ngbracket%2Fngx-layout.svg)](https://www.npmjs.com/package/@ngbracket/ngx-layout)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/ngbracket/ngx-layout/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ngbracket/ngx-layout/tree/main)
 [![Gitter](https://badges.gitter.im/angular/flex-layout.svg)](https://gitter.im/angular/flex-layout)
 [![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=flat&logo=github)](https://wallabyjs.com/oss/)
 
-**NOTE: The Angular team no longer publishes new releases of this project. Please see [this article](https://medium.com/@caerus.karu/farewell-flex-layout-aaa567023769) for the explanation and next steps.**
+This project is a continuation of the original, open-source Angular project, @angular/flex-layout, which is no longer maintained. Please consider collaborating with us rather than creating your own, private flex libraries. Many hands make light work!
 
-**I would like to take a moment and thank both Caerus and Thomas for all their hardwork in developing this library and to everyone else who has contributed to this project over the years.**
+If you would like to contribute to the project please get in touch with me on twitter. Alternatively, if you would like to sponsor the project details can be found on our GitHub page.
 
-ngx-layout provides a sophisticated layout API using Flexbox CSS + mediaQuery.
-This module provides Angular developers with component layout features using a
-custom Layout API, mediaQuery observables, and injected DOM flexbox-2016 CSS stylings.
+Thank you for your support.
 
-The Flex Layout engine intelligently automates the process of applying appropriate
-Flexbox CSS to browser view hierarchies. This automation also addresses many of the
-complexities and workarounds encountered with the traditional, manual, CSS-only application of box CSS.
+Getting Started Start by installing the ngx-layout library from npm
 
-The **real** power of Flex Layout, however, is its **responsive** engine. The
-[Responsive API](https://github.com/ngbracket/ngx-layout/wiki/Responsive-API) enables developers to easily specify
-different layouts, sizing, visibilities for different viewport sizes and display devices.
+npm i -s @ngbracket/ngx-layout @angular/cdk Next, you'll need to import the Layout module in your app's module.
 
----
+app.module.ts
 
-### Getting Started
+import { FlexLayoutModule } from '@ngbracket/ngx-layout'; ...
 
-Start by installing the ngx-layout library from `npm`
+@NgModule({ ... imports: [ FlexLayoutModule ], ... }); After that is configured, you can use the ngx-layout attributes in your HTML tags for flex layout:
 
-`npm i -s @ngbracket/ngx-layout @angular/cdk`
-
-Next, you'll need to import the Layout module in your app's module.
-
-**app.module.ts**
-
-```ts
-
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-...
-
-@NgModule({
-    ...
-    imports: [ FlexLayoutModule ],
-    ...
-});
-```
-
-After that is configured, you can use the ngx-layout attributes in your HTML tags for flex layout:
-
-```html
-<div fxLayout="row" fxLayoutAlign="space-between"></div>
-```
+Check out all of the available options for using ngx-layout in your application.
 
 Check out [all of the available options](https://github.com/ngbracket/ngx-layout/wiki/Declarative-API-Overview) for using ngx-layout in your application.
 
