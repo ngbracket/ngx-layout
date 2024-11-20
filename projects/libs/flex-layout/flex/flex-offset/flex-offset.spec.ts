@@ -263,8 +263,9 @@ export class MockFlexOffsetStyleBuilder extends StyleBuilder {
 // *****************************************************************
 
 @Component({
-  selector: 'test-component-shell',
-  template: `<span>PlaceHolder Template HTML</span>`,
+    selector: 'test-component-shell',
+    template: `<span>PlaceHolder Template HTML</span>`,
+    standalone: false
 })
 class TestFlexComponent {
   direction = 'column';

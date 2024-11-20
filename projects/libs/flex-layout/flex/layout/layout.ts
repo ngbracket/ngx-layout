@@ -14,8 +14,8 @@ import {
 } from '@angular/core';
 import {
   BaseDirective2,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
@@ -99,7 +99,7 @@ export class LayoutDirective extends BaseDirective2 implements OnChanges {
   }
 }
 
-@Directive({ selector, inputs })
+@Directive({ selector, inputs, standalone:false })
 export class DefaultLayoutDirective extends LayoutDirective {
   protected override inputs = inputs;
 }

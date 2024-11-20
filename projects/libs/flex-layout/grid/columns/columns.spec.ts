@@ -219,8 +219,9 @@ describe('grid columns parent directive', () => {
 // Template Component
 // *****************************************************************
 @Component({
-  selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`,
+    selector: 'test-layout',
+    template: `<span>PlaceHolder Template HTML</span>`,
+    standalone: false
 })
 class TestGridColumnsComponent {
   cols = '50px 1fr';

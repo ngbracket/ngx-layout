@@ -2,8 +2,9 @@ import {Component} from '@angular/core';
 import {Direction} from '@angular/cdk/bidi';
 
 @Component({
-  selector: 'demo-layout-with-direction',
-  templateUrl: './layout-with-direction.component.html'
+    selector: 'demo-layout-with-direction',
+    templateUrl: './layout-with-direction.component.html',
+    standalone: false
 })
 export class LayoutWithDirectionComponent {
   direction: Direction = 'ltr';

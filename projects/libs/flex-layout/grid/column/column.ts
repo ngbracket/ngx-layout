@@ -71,7 +71,7 @@ const selector = `
  * Configures the name or position of an element within the grid
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-26
  */
-@Directive({ selector, inputs })
+@Directive({ selector, inputs, standalone: false })
 export class DefaultGridColumnDirective extends GridColumnDirective {
   protected override inputs = inputs;
 }

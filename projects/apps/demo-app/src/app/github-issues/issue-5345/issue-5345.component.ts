@@ -3,9 +3,10 @@ import {Component} from '@angular/core';
 const DIRECTIONS = ['row', 'row-reverse'];
 
 @Component({
-  selector: 'demo-issue-5345',
-  templateUrl: './issue-5345.component.html',
-  styleUrls: ['./issue-5345.component.scss']
+    selector: 'demo-issue-5345',
+    templateUrl: './issue-5345.component.html',
+    styleUrls: ['./issue-5345.component.scss'],
+    standalone: false
 })
 export class Issue5345Component {
   direction = 'row';

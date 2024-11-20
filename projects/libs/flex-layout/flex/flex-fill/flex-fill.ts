@@ -35,7 +35,10 @@ export class FlexFillStyleBuilder extends StyleBuilder {
  *
  *  NOTE: fxFill is NOT responsive API!!
  */
-@Directive({ selector: `[fxFill], [fxFlexFill]` })
+@Directive({
+    selector: `[fxFill], [fxFlexFill]`,
+    standalone: false
+})
 export class FlexFillDirective extends BaseDirective2 {
   constructor(
     elRef: ElementRef,

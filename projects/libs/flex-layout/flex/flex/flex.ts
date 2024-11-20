@@ -16,8 +16,8 @@ import {
 import {
   BaseDirective2,
   ElementMatcher,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
@@ -349,7 +349,7 @@ export class FlexDirective extends BaseDirective2 implements OnInit {
   }
 }
 
-@Directive({ inputs, selector })
+@Directive({ inputs, selector, standalone:false })
 export class DefaultFlexDirective extends FlexDirective {
   protected override inputs = inputs;
 }

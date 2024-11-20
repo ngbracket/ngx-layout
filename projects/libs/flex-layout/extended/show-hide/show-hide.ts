@@ -19,8 +19,8 @@ import {
 } from '@angular/core';
 import {
   BaseDirective2,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   SERVER_TOKEN,
   StyleBuilder,
@@ -226,7 +226,7 @@ const selector = `
 /**
  * 'show' Layout API directive
  */
-@Directive({ selector, inputs })
+@Directive({ selector, inputs,standalone:false })
 export class DefaultShowHideDirective extends ShowHideDirective {
   protected override inputs = inputs;
 }

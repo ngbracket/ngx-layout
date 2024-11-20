@@ -101,7 +101,7 @@ const selector = `
  * Configures the names of elements within the grid
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-14
  */
-@Directive({ selector, inputs })
+@Directive({ selector, inputs, standalone: false})
 export class DefaultGridAreasDirective extends GridAreasDirective {
   protected override inputs = inputs;
 }

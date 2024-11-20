@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
 
 @Component({
-  selector: 'demo-flex-row-fill',
-  template: `
+    selector: 'demo-flex-row-fill',
+    template: `
     <mat-card class="card-demo" (click)="toggleDirection()">
       <mat-card-title>'Flex' to Fill Row</mat-card-title>
       <mat-card-subtitle>Simple row using "flex" on 3rd element to fill available main axis.
@@ -23,7 +23,8 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
         <div class="hint">&lt;div fxLayout="{{ direction }}" &gt;</div>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: false
 })
 export class FlexRowFillComponent {
   direction = 'row';

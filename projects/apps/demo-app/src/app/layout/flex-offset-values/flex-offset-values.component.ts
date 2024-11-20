@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'demo-flex-offset-values',
-  template: `
+    selector: 'demo-flex-offset-values',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title>Flex Offset Values</mat-card-title>
       <mat-card-subtitle>Explore impact of values for the 'flex-offset' API:</mat-card-subtitle>
@@ -18,6 +18,7 @@ import {Component} from '@angular/core';
         <div class="hint">&lt;div fxLayout="row" &gt;</div>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: false
 })
 export class FlexOffsetValuesComponent {}

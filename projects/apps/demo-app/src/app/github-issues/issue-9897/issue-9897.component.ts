@@ -3,8 +3,9 @@ import {Component} from '@angular/core';
 const DIRECTIONS = ['wrap', 'wrap-reverse'];
 
 @Component({
-  selector: 'demo-issue-9897',
-  templateUrl: './issue-9897.component.html'
+    selector: 'demo-issue-9897',
+    templateUrl: './issue-9897.component.html',
+    standalone: false
 })
 export class Issue9897Component {
   wrapDirection = 'wrap';

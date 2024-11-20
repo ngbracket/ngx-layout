@@ -84,7 +84,7 @@ export class FlexAlignDirective extends BaseDirective2 {
 
 const flexAlignCache: Map<string, StyleDefinition> = new Map();
 
-@Directive({ selector, inputs })
+@Directive({ selector, inputs , standalone:false})
 export class DefaultFlexAlignDirective extends FlexAlignDirective {
   protected override inputs = inputs;
 }

@@ -210,8 +210,9 @@ describe('style directive', () => {
 // *****************************************************************
 
 @Component({
-  selector: 'test-style-api',
-  template: `<span>PlaceHolder Template HTML</span>`,
+    selector: 'test-style-api',
+    template: `<span>PlaceHolder Template HTML</span>`,
+    standalone: false
 })
 class TestStyleComponent {
   fontSize: number = 0;

@@ -110,7 +110,7 @@ const selector = `
  *
  * @see https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-src/
  */
-@Directive({ selector, inputs })
+@Directive({ selector, inputs, standalone: false })
 export class DefaultImgSrcDirective extends ImgSrcDirective {
   protected override inputs = inputs;
 }

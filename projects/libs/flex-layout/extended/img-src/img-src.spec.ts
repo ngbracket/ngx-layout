@@ -376,8 +376,9 @@ describe('img-src directive', () => {
 // *****************************************************************
 
 @Component({
-  selector: 'test-src-api',
-  template: '',
+    selector: 'test-src-api',
+    template: '',
+    standalone: false
 })
 class TestSrcComponent {
   defaultSrc = '';

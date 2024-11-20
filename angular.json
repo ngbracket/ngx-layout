@@ -22,7 +22,7 @@
             "watch": false,
             "main": "projects/libs/flex-layout/test.ts",
             "tsConfig": "projects/libs/flex-layout/tsconfig.spec.json",
-            "karmaConfig": "test/karma.conf.js"
+            "karmaConfig": "test/karma.conf.cjs"
           }
         }
       }
@@ -111,7 +111,7 @@
             "main": "projects/apps/demo-app/src/test.ts",
             "polyfills": "projects/apps/demo-app/src/polyfills.ts",
             "tsConfig": "projects/apps/demo-app/tsconfig.spec.json",
-            "karmaConfig": "projects/apps/demo-app/karma.conf.js",
+            "karmaConfig": "projects/apps/demo-app/karma.conf.ts",
             "assets": [
               "projects/apps/demo-app/src/favicon.ico",
               "projects/apps/demo-app/src/assets"
@@ -210,7 +210,7 @@
             "main": "projects/apps/universal-demo-app/src/test.ts",
             "polyfills": "projects/apps/universal-demo-app/src/polyfills.ts",
             "tsConfig": "projects/apps/universal-demo-app/tsconfig.spec.json",
-            "karmaConfig": "projects/apps/universal-demo-app/karma.conf.js",
+            "karmaConfig": "projects/apps/universal-demo-app/karma.conf.ts",
             "assets": [
               "projects/apps/universal-demo-app/src/favicon.ico",
               "projects/apps/universal-demo-app/src/assets"

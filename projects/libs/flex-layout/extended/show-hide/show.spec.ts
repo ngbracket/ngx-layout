@@ -14,21 +14,21 @@ import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  MediaObserver,
-  SERVER_TOKEN,
-  StyleUtils,
-  ɵMatchMedia as MatchMedia,
-  ɵMockMatchMedia as MockMatchMedia,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
-import {
   customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMatchMedia as MatchMedia,
+  MediaObserver,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
 
 describe('show directive', () => {
   let fixture: ComponentFixture<any>;
@@ -402,7 +402,7 @@ const inputs = ['fxShow.sm-md', 'fxHide.sm-md', 'fxShow.sm.lg', 'fxHide.sm.lg'];
 const selector = `[fxShow.sm-md], [fxHide.sm-md], [fxShow.sm.lg], [fxHide.sm.lg]`;
 
 // Used to test custom breakpoint functionality
-@Directive({ inputs, selector })
+@Directive({ inputs, selector, standalone:false })
 class FxShowHideDirective extends ShowHideDirective {
   protected override inputs = inputs;
 }
@@ -412,8 +412,9 @@ class FxShowHideDirective extends ShowHideDirective {
 // *****************************************************************
 
 @Component({
-  selector: 'test-show-api',
-  template: `<span>PlaceHolder Template HTML</span>`,
+    selector: 'test-show-api',
+    template: `<span>PlaceHolder Template HTML</span>`,
+    standalone: false
 })
 class TestShowComponent implements OnInit {
   isVisible = 0;

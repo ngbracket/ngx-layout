@@ -95,8 +95,9 @@ describe('flex-order', () => {
 // *****************************************************************
 
 @Component({
-  selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`,
+    selector: 'test-layout',
+    template: `<span>PlaceHolder Template HTML</span>`,
+    standalone: false
 })
 class TestOrderComponent {
   constructor() {}

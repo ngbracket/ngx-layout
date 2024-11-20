@@ -2,12 +2,13 @@ import {Component, Input} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
-  selector: 'watermark',
-  styleUrls: ['watermark.component.scss'],
-  template: `
+    selector: 'watermark',
+    styleUrls: ['watermark.component.scss'],
+    template: `
     <div [style.background]="backgroundImage">
     </div>
   `,
+    standalone: false
 })
 export class WatermarkComponent {
   @Input() title = '@angular/layout';

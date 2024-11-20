@@ -1,6 +1,9 @@
 const { resolve } = require('path');
 const { AngularWebpackPlugin, AngularWebpackLoaderPath } = require('@ngtools/webpack');
 
+// import { AngularWebpackLoaderPath, AngularWebpackPlugin } from '@ngtools/webpack';
+// import { resolve } from 'path';
+
 module.exports = {
   mode: 'development',
   entry: './projects/libs/flex-layout/test.ssr.ts',

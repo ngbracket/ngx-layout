@@ -206,7 +206,7 @@ export class LayoutAlignDirective extends BaseDirective2 {
   }
 }
 
-@Directive({ selector, inputs })
+@Directive({ selector, inputs, standalone:false })
 export class DefaultLayoutAlignDirective extends LayoutAlignDirective {
   protected override inputs = inputs;
 }

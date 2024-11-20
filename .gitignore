@@ -26,7 +26,7 @@ node_modules
 npm-debug.log
 testem.log
 /.chrome
-!/test/karma.conf.js
+!/test/karma.conf.ts
 
 src/apps/universal-app/package-lock.json
 src/apps/universal-app/yarn.lock
