@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'demo-docs-layout',
-  template: `
+    selector: 'demo-docs-layout',
+    template: `
     <demo-layout-alignment class="small-demo"></demo-layout-alignment>
     <demo-layout-fill class="small-demo"></demo-layout-fill>
     <demo-layout-gap class="small-demo"></demo-layout-gap>
@@ -12,6 +12,7 @@ import {Component} from '@angular/core';
     <demo-flex-offset-values class="small-demo"></demo-flex-offset-values>
     <demo-flex-align-self class="small-demo"></demo-flex-align-self>
     <demo-layout-with-direction class="small-demo"></demo-layout-with-direction>
-  `
+  `,
+    standalone: false
 })
 export class DocsLayoutComponent {}

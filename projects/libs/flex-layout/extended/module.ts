@@ -27,8 +27,7 @@ const ALL_DIRECTIVES = [
  */
 
 @NgModule({
-  imports: [CoreModule],
-  declarations: [...ALL_DIRECTIVES],
+  imports: [CoreModule, ...ALL_DIRECTIVES],
   exports: [...ALL_DIRECTIVES],
 })
 export class ExtendedModule {}

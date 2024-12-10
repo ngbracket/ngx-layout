@@ -9,20 +9,20 @@ import { CommonModule, isPlatformServer } from '@angular/common';
 import { Component, PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  SERVER_TOKEN,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import {
+  _dom as _,
   customMatchers,
   expect,
   expectEl,
   makeCreateTestComponent,
   queryFor,
-  _dom as _,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
 
@@ -378,6 +378,7 @@ describe('img-src directive', () => {
 @Component({
   selector: 'test-src-api',
   template: '',
+  standalone: false,
 })
 class TestSrcComponent {
   defaultSrc = '';

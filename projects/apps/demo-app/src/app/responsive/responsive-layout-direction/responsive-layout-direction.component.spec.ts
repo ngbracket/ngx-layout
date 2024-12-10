@@ -8,8 +8,8 @@ describe('ResponsiveLayoutDirectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponsiveLayoutDirectionComponent ]
-    })
+    declarations: [ResponsiveLayoutDirectionComponent]
+})
     .compileComponents();
   }));
 

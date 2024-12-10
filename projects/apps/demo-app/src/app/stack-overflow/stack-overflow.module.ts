@@ -22,6 +22,7 @@ import { StackOverflowComponent } from './stack-overflow/stack-overflow.componen
     FormsModule,
     MatCardModule,
     RoutingModule,
+    CustomHideDirective,
   ],
   declarations: [
     StackOverflowComponent,
@@ -29,7 +30,6 @@ import { StackOverflowComponent } from './stack-overflow/stack-overflow.componen
     GridAreaRowSpanComponent,
     GridColumnSpanComponent,
     MozHolyGrailComponent,
-    CustomHideDirective,
     HideWithCustomBPComponent,
   ],
 })

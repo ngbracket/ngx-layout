@@ -192,8 +192,9 @@ describe('grid row child directive', () => {
 // Template Component
 // *****************************************************************
 @Component({
-  selector: 'test-layout',
-  template: `<span>PlaceHolder Template HTML</span>`,
+    selector: 'test-layout',
+    template: `<span>PlaceHolder Template HTML</span>`,
+    standalone: false
 })
 class TestGridRowComponent {
   row = 'apples';

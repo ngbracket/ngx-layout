@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'demo-layout-alignment',
-  templateUrl: './layout-alignment.component.html',
-  styleUrls: ['./layout-alignment.component.scss']
+    selector: 'demo-layout-alignment',
+    templateUrl: './layout-alignment.component.html',
+    styleUrls: ['./layout-alignment.component.scss'],
+    standalone: false
 })
 export class LayoutAlignmentComponent {
   options = {

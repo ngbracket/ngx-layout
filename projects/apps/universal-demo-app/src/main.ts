@@ -1,7 +1,8 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
+import { APP_ID, enableProdMode } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { AppComponent } from './app/app.component';
+import { SplitModule } from './app/split/split.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
@@ -9,6 +10,11 @@ if (environment.production) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  bootstrapApplication(AppComponent, {
+    providers: [
+      { provide: APP_ID, useValue: 'serverApp' },
+      FlexLayoutModule,
+      SplitModule,
+    ],
+  }).catch((err) => console.error(err));
 });

@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
 
 @Component({
-  selector: 'demo-layout-gap',
-  template: `
+    selector: 'demo-layout-gap',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title><a href="" target="_blank">Layout Gap</a></mat-card-title>
       <mat-card-subtitle>Using 'fxLayoutGap' to create a grid-like layout
@@ -58,7 +58,8 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
         <div class="hint"></div>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: false
 })
 export class LayoutGapComponent {
   direction = 'row';

@@ -3,8 +3,9 @@ import {Component} from '@angular/core';
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
 
 @Component({
-  selector: 'demo-flex-row-fill-wrap',
-  templateUrl: './flex-row-fill-wrap.component.html'
+    selector: 'demo-flex-row-fill-wrap',
+    templateUrl: './flex-row-fill-wrap.component.html',
+    standalone: false
 })
 export class FlexRowFillWrapComponent {
   direction = 'row';

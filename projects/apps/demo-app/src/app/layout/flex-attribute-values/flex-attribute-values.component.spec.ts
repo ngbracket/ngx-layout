@@ -8,8 +8,8 @@ describe('FlexAttributeValuesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlexAttributeValuesComponent ]
-    })
+    declarations: [FlexAttributeValuesComponent]
+})
     .compileComponents();
   }));
 

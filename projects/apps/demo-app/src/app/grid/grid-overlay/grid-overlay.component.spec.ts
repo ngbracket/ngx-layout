@@ -8,8 +8,8 @@ describe('GridOverlayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridOverlayComponent ]
-    })
+    declarations: [GridOverlayComponent]
+})
     .compileComponents();
   }));
 

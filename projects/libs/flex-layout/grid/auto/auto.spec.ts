@@ -10,18 +10,18 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  SERVER_TOKEN,
-  StyleUtils,
-  ɵMatchMedia as MatchMedia,
-  ɵMockMatchMedia as MockMatchMedia,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import { GridModule } from '@ngbracket/ngx-layout/grid';
-import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMatchMedia as MatchMedia,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import { GridModule } from '@ngbracket/ngx-layout/grid';
 
 describe('grid auto parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -323,6 +323,7 @@ describe('grid auto parent directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestGridAutoComponent {
   auto = 'row';
