@@ -11,8 +11,7 @@
   "license": "MIT",
   "engines": {
     "node": "^18.20.4 || >=20.15.1",
-    "yarn": ">=1.22.4 <2",
-    "npm": "Please use yarn instead of NPM to install dependencies"
+    "npm": "Please use pnpm to install dependencies"
   },
   "scripts": {
     "ng": "ng",
@@ -25,7 +24,7 @@
     "test": "ng test @ngbracket/ngx-layout",
     "test:ssr": "webpack --config test/webpack-spec-ssr-bundle.js && jasmine --config=test/jasmine-ssr.json",
     "lint": "stylelint projects/libs/**/*.scss --config=stylelint-config.json && tslint --project ./tsconfig.json --config tslint.json",
-    "release": "yarn build && yarn stamp",
+    "release": "pnpm build && pnpm stamp",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "serve:ssr:universal-demo-app": "node dist/universal-demo-app/server/server.mjs"
   },
