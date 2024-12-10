@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,15 +7,15 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Inject, Injectable, OnDestroy} from '@angular/core';
+import { Inject, Injectable, OnDestroy } from '@angular/core';
 
-import {mergeAlias} from '../add-alias';
-import {MediaChange} from '../media-change';
-import {BreakPoint} from '../breakpoints/break-point';
-import {LAYOUT_CONFIG, LayoutConfigOptions} from '../tokens/library-config';
-import {BreakPointRegistry, OptionalBreakPoint} from '../breakpoints/break-point-registry';
-import {sortDescendingPriority} from '../utils/sort';
-import {DOCUMENT} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { mergeAlias } from '../add-alias';
+import { BreakPoint } from '../breakpoints/break-point';
+import { BreakPointRegistry, OptionalBreakPoint } from '../breakpoints/break-point-registry';
+import { MediaChange } from '../media-change';
+import { LAYOUT_CONFIG, LayoutConfigOptions } from '../tokens/library-config';
+import { sortDescendingPriority } from '../utils/sort';
 
 /**
  * Interface to apply PrintHook to call anonymous `target.updateStyles()`
@@ -273,7 +275,7 @@ class PrintQueue {
 
   /** Add Print breakpoint to queue */
   addBreakpoint(bp: OptionalBreakPoint) {
-    if (!!bp) {
+    if (bp) {
       const bpInList = this.printBreakpoints.find(it => it.mediaQuery === bp.mediaQuery);
 
       if (bpInList === undefined) {

@@ -25,7 +25,7 @@ describe('ngStyleUtils', () => {
   });
 
   it('should parse a raw string of key:value pairs', () => {
-    let list: NgStyleRawList = buildRawList(`
+    const list: NgStyleRawList = buildRawList(`
       color:'red';
       font-size :16px;
       background-color:rgba(116, 37, 49, 0.72);
@@ -37,7 +37,7 @@ describe('ngStyleUtils', () => {
   });
 
   it('should build an iterable map from a raw string of key:value pairs', () => {
-    let map: NgStyleMap = buildMapFromList(
+    const map: NgStyleMap = buildMapFromList(
       buildRawList(`
       color:'red';
       font-size :16px;
@@ -53,7 +53,7 @@ describe('ngStyleUtils', () => {
   });
 
   it('should build an iterable map from an Array of key:value strings', () => {
-    let map: NgStyleMap = buildMapFromList(
+    const map: NgStyleMap = buildMapFromList(
       buildRawList(`
       color:'red';
       font-size :16px;
@@ -69,12 +69,12 @@ describe('ngStyleUtils', () => {
   });
 
   it('should build an iterable map from an Set of key:value pairs', () => {
-    let customSet = new Set<string>();
+    const customSet = new Set<string>();
     customSet.add('color:"red"');
     customSet.add('font-size :16px;');
     customSet.add('background-color:rgba(116, 37, 49, 0.72)');
 
-    let map: NgStyleMap = buildMapFromSet(customSet);
+    const map: NgStyleMap = buildMapFromSet(customSet);
 
     expect(map).toHaveMap({
       color: 'red',

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -9,12 +10,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  MediaObserver,
-  SERVER_TOKEN,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
+  MediaObserver,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import {
@@ -32,7 +33,7 @@ describe('hide directive', () => {
   let mediaController: MockMatchMedia;
   let styler: StyleUtils;
 
-  let createTestComponent = (template: string) => {
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestHideComponent)(template);
 
     // Can only Inject() AFTER TestBed.override(...)
@@ -47,7 +48,7 @@ describe('hide directive', () => {
     return fixture;
   };
 
-  let makeExpectWithActivation = (
+  const makeExpectWithActivation = (
     _fixture: ComponentFixture<any>,
     selector: string
   ) => {
@@ -58,7 +59,7 @@ describe('hide directive', () => {
       }
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, selector);
+      const nodes = queryFor(fixture, selector);
       expect(nodes.length).toEqual(1);
       return expect(nodes[0].nativeElement);
     };
@@ -191,7 +192,7 @@ describe('hide directive', () => {
     });
 
     it('should restore original display when the mediaQuery deactivates', () => {
-      let originalDisplay = { display: 'table' };
+      const originalDisplay = { display: 'table' };
       createTestComponent(
         `<div [fxHide.xs]="isHidden" style="display:table"></div>`
       );
@@ -231,7 +232,7 @@ describe('hide directive', () => {
     });
 
     it('should hide when used with fxLayout and the ".md" breakpoint activates', () => {
-      let template = `
+      const template = `
           <div fxLayout="row" >
             <div  fxLayout="row"
                   fxLayout.md="column"
@@ -246,7 +247,7 @@ describe('hide directive', () => {
             </div>
           </div>
         `;
-      let expectActivation: any = makeExpectWithActivation(
+      const expectActivation: any = makeExpectWithActivation(
         createTestComponent(template),
         '.hideOnMd'
       );
@@ -256,12 +257,12 @@ describe('hide directive', () => {
     });
 
     it('should restore proper display mode when not hiding', () => {
-      let template = `
+      const template = `
               <div>
                 <span fxHide.xs class="hideOnXs">Label</span>
               </div>
            `;
-      let expectActivation: any = makeExpectWithActivation(
+      const expectActivation: any = makeExpectWithActivation(
         createTestComponent(template),
         '.hideOnXs'
       );
@@ -272,13 +273,13 @@ describe('hide directive', () => {
     });
 
     it('should work with overlapping breakpoint', () => {
-      let template = `
+      const template = `
               <div>
                 <span fxHide></span>
                 <span fxHide.lt-md class="hideOnXs">Label</span>
               </div>
            `;
-      let expectActivation: any = makeExpectWithActivation(
+      const expectActivation: any = makeExpectWithActivation(
         createTestComponent(template),
         '.hideOnXs'
       );

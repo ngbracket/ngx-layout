@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -9,20 +10,20 @@ import { CommonModule, isPlatformServer } from '@angular/common';
 import { Component, PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  SERVER_TOKEN,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import {
+  _dom as _,
   customMatchers,
   expect,
   expectEl,
   makeCreateTestComponent,
   queryFor,
-  _dom as _,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
 
@@ -57,17 +58,17 @@ const DEFAULT_SRC = 'https://dummyimage.com/300x300/c72538/ffffff.png';
 describe('img-src directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
-  let platformId: Object;
+  let platformId: object;
   let styler: StyleUtils;
 
-  let componentWithTemplate = (template: string) => {
+  const componentWithTemplate = (template: string) => {
     fixture = makeCreateTestComponent(() => TestSrcComponent)(template);
 
     inject(
       [MatchMedia, PLATFORM_ID, StyleUtils],
       (
         _matchMedia: MockMatchMedia,
-        _platformId: Object,
+        _platformId: object,
         _styler: StyleUtils
       ) => {
         mediaController = _matchMedia;
@@ -93,7 +94,7 @@ describe('img-src directive', () => {
 
   describe('with static api', () => {
     it('should preserve the static src attribute', () => {
-      let url = 'https://dummyimage.com/300x300/c72538/ffffff.png';
+      const url = 'https://dummyimage.com/300x300/c72538/ffffff.png';
       componentWithTemplate(`
         <img src="${url}">
       `);
@@ -131,7 +132,7 @@ describe('img-src directive', () => {
           styler
         );
 
-        let url = 'https://dummyimage.com/700x400/258cc7/fff.png';
+        const url = 'https://dummyimage.com/700x400/258cc7/fff.png';
         fixture.componentInstance.defaultSrc = url;
         fixture.detectChanges();
         expectEl(img).toHaveStyle(
@@ -145,7 +146,7 @@ describe('img-src directive', () => {
           src: 'https://dummyimage.com/300x300/c72538/ffffff.png',
         });
 
-        let url = 'https://dummyimage.com/700x400/258cc7/fff.png';
+        const url = 'https://dummyimage.com/700x400/258cc7/fff.png';
         fixture.componentInstance.defaultSrc = url;
         fixture.detectChanges();
         expect(imgEl).toHaveAttributes({ src: url });
@@ -229,8 +230,8 @@ describe('img-src directive', () => {
       `);
       fixture.detectChanges();
 
-      let img = queryFor(fixture, 'img')[0];
-      let imgEl = img.nativeElement;
+      const img = queryFor(fixture, 'img')[0];
+      const imgEl = img.nativeElement;
 
       mediaController.activate('md');
       fixture.detectChanges();
@@ -274,8 +275,8 @@ describe('img-src directive', () => {
       `);
       fixture.detectChanges();
 
-      let img = queryFor(fixture, 'img')[0];
-      let imgEl = img.nativeElement;
+      const img = queryFor(fixture, 'img')[0];
+      const imgEl = img.nativeElement;
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
         expectEl(img).toHaveStyle(
@@ -329,8 +330,8 @@ describe('img-src directive', () => {
       mediaController.activate('md');
       fixture.detectChanges();
 
-      let img = queryFor(fixture, 'img')[0];
-      let imgEl = img.nativeElement;
+      const img = queryFor(fixture, 'img')[0];
+      const imgEl = img.nativeElement;
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
         expect(imgEl).toHaveAttributes({

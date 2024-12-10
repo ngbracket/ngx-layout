@@ -10,8 +10,8 @@ import { BreakPoint } from './break-point';
 
 const ALIAS_DELIMITERS = /(\.|-|_)/g;
 function firstUpperCase(part: string) {
-  let first = part.length > 0 ? part.charAt(0) : '';
-  let remainder = part.length > 1 ? part.slice(1) : '';
+  const first = part.length > 0 ? part.charAt(0) : '';
+  const remainder = part.length > 1 ? part.slice(1) : '';
   return first.toUpperCase() + remainder;
 }
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -10,31 +12,31 @@ import { CommonModule } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-import {
-  SERVER_TOKEN,
-  StyleBuilder,
-  StyleUtils,
-  ɵMatchMedia as MatchMedia,
-  ɵMockMatchMedia as MockMatchMedia,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import {
-  FlexModule,
-  LayoutAlignStyleBuilder,
-} from '@ngbracket/ngx-layout/flex';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMatchMedia as MatchMedia,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleBuilder,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import {
+  FlexModule,
+  LayoutAlignStyleBuilder,
+} from '@ngbracket/ngx-layout/flex';
 
 describe('layout-align directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
   let platform: Platform;
   let styler: StyleUtils;
-  let createTestComponent = (template: string) => {
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestLayoutAlignComponent)(template);
 
     inject(
@@ -662,7 +664,7 @@ class TestLayoutAlignComponent implements OnInit {
   crossAxis = 'end';
 
   set alignBy(style) {
-    let vals = style.split(' ');
+    const vals = style.split(' ');
     this.mainAxis = vals[0];
     this.crossAxis = vals.length > 1 ? vals[1] : '';
   }

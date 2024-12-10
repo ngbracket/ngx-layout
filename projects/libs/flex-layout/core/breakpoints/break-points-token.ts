@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prefer-spread */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-wrapper-object-types */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -17,8 +18,8 @@ import {
   BreakPoint,
   BREAKPOINT,
   DEFAULT_CONFIG,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   SERVER_TOKEN,
 } from '@ngbracket/ngx-layout/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';

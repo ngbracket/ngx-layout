@@ -5,11 +5,11 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Injectable, Inject} from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
-import {BreakPoint} from './break-point';
-import {BREAKPOINTS} from './break-points-token';
-import {sortAscendingPriority} from '../utils/sort';
+import { sortAscendingPriority } from '../utils/sort';
+import { BreakPoint } from './break-point';
+import { BREAKPOINTS } from './break-points-token';
 
 export type OptionalBreakPoint = BreakPoint | null;
 
@@ -78,6 +78,6 @@ export class BreakPointRegistry {
   /**
    * Memoized BreakPoint Lookups
    */
-  private readonly findByMap = new Map<String, OptionalBreakPoint>();
+  private readonly findByMap = new Map<string, OptionalBreakPoint>();
 }
 

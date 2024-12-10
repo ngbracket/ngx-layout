@@ -5,42 +5,42 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {extendObject} from './object-extend';
+import { extendObject } from './object-extend';
 
 
 describe('extendObject', () => {
   it('should extend an object', () => {
-    let extended = extendObject({}, {x: 123});
+    const extended = extendObject({}, {x: 123});
 
     expect(extended).toEqual({x: 123});
   });
 
   it('should overwrite existing properties', () => {
-    let extended = extendObject({x: 456}, {x: 123});
+    const extended = extendObject({x: 456}, {x: 123});
 
     expect(extended).toEqual({x: 123});
   });
 
   it('should add additional properties', () => {
-    let extended = extendObject({x: 456}, {y: 123});
+    const extended = extendObject({x: 456}, {y: 123});
 
     expect(extended).toEqual({x: 456, y: 123});
   });
 
   it('should extend from multiple sources', () => {
-    let extended = extendObject({}, {x: 123}, {y: 456});
+    const extended = extendObject({}, {x: 123}, {y: 456});
 
     expect(extended).toEqual({x: 123, y: 456});
   });
 
   it('should overwrite properties from the later source', () => {
-    let extended = extendObject({}, {x: 123}, {x: 456});
+    const extended = extendObject({}, {x: 123}, {x: 456});
 
     expect(extended).toEqual({x: 456});
   });
 
   it('should treat null and undefined sources as empty objects', () => {
-    let extended = extendObject({}, null, {x: 123}, undefined, {y: 456});
+    const extended = extendObject({}, null, {x: 123}, undefined, {y: 456});
 
     expect(extended).toEqual({x: 123, y: 456});
   });

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -34,13 +35,13 @@ import {
 describe('class directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
-  let platformId: Object;
-  let createTestComponent = (template: string) => {
+  let platformId: object;
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestClassComponent)(template);
 
     inject(
       [MatchMedia, PLATFORM_ID],
-      (_matchMedia: MockMatchMedia, _platformId: Object) => {
+      (_matchMedia: MockMatchMedia, _platformId: object) => {
         mediaController = _matchMedia;
         platformId = _platformId;
       }
@@ -353,7 +354,7 @@ class TestClassComponent {
 // *******************************************************************************
 
 describe('binding to CSS class list', () => {
-  let createTestComponent = makeCreateTestComponent(() => TestComponent);
+  const createTestComponent = makeCreateTestComponent(() => TestComponent);
   let fixture: ComponentFixture<any>;
 
   function normalizeClassNames(classes: string) {
@@ -363,7 +364,7 @@ describe('binding to CSS class list', () => {
   function detectChangesAndExpectClassName(classes: string): void {
     flush();
     fixture.detectChanges();
-    let nonNormalizedClassName =
+    const nonNormalizedClassName =
       fixture.debugElement.children[0].nativeElement.className;
     expect(normalizeClassNames(nonNormalizedClassName)).toEqual(
       normalizeClassNames(classes)

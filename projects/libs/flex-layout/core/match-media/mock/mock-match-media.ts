@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,11 +7,11 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Inject, Injectable, NgZone, PLATFORM_ID} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
 
-import {MatchMedia} from '../match-media';
-import {BreakPointRegistry} from '../../breakpoints/break-point-registry';
+import { BreakPointRegistry } from '../../breakpoints/break-point-registry';
+import { MatchMedia } from '../match-media';
 
 /**
  * MockMatchMedia mocks calls to the Window API matchMedia with a build of a simulated
@@ -24,7 +26,7 @@ export class MockMatchMedia extends MatchMedia {
   useOverlaps = false;          // Allow fallback to overlapping mediaQueries
 
   constructor(_zone: NgZone,
-              @Inject(PLATFORM_ID) _platformId: Object,
+              @Inject(PLATFORM_ID) _platformId: object,
               @Inject(DOCUMENT) public override _document: any,
               private _breakpoints: BreakPointRegistry) {
     super(_zone, _platformId, _document);

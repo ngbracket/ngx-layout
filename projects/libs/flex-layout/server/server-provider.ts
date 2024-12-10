@@ -11,15 +11,15 @@ import {
   BreakPoint,
   BREAKPOINTS,
   CLASS_NAME,
+  ɵMatchMedia as MatchMedia,
   MediaMarshaller,
   SERVER_TOKEN,
   sortAscendingPriority,
   StylesheetMap,
-  ɵMatchMedia as MatchMedia,
 } from '@ngbracket/ngx-layout/core';
 
-import { ServerMatchMedia } from './server-match-media';
 import { CSP_NONCE, Inject, Optional } from '@angular/core';
+import { ServerMatchMedia } from './server-match-media';
 
 /**
  * Activate all the registered breakpoints in sequence, and then
@@ -144,7 +144,7 @@ function generateCss(
   let css = '';
   stylesheet.forEach((styles, el) => {
     let keyVals = '';
-    let className = getClassName(el, classMap);
+    const className = getClassName(el, classMap);
 
     styles.forEach((v, k) => {
       keyVals += v ? format(`${k}:${v};`) : '';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -9,11 +10,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  SERVER_TOKEN,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import {
@@ -27,7 +28,7 @@ describe('flex-order', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
   let styler: StyleUtils;
-  let createTestComponent = (template: string) => {
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestOrderComponent)(template);
 
     inject(

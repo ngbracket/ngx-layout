@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,18 +6,18 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-import {fromEvent, Subscription} from 'rxjs';
-import {take} from 'rxjs/operators';
+import { fromEvent, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
-import {mergeAlias} from '../add-alias';
-import {MediaChange} from '../media-change';
-import {MatchMedia} from '../match-media/match-media';
-import {BreakPointRegistry, OptionalBreakPoint} from '../breakpoints/break-point-registry';
-import {sortDescendingPriority} from '../utils/sort';
-import {LAYOUT_CONFIG, LayoutConfigOptions} from '../tokens/library-config';
+import { mergeAlias } from '../add-alias';
+import { BreakPointRegistry, OptionalBreakPoint } from '../breakpoints/break-point-registry';
+import { MatchMedia } from '../match-media/match-media';
+import { MediaChange } from '../media-change';
+import { LAYOUT_CONFIG, LayoutConfigOptions } from '../tokens/library-config';
+import { sortDescendingPriority } from '../utils/sort';
 
 /**
  * Class
@@ -28,7 +29,7 @@ export class MediaTrigger {
       protected breakpoints: BreakPointRegistry,
       protected matchMedia: MatchMedia,
       @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
-      @Inject(PLATFORM_ID) protected _platformId: Object,
+      @Inject(PLATFORM_ID) protected _platformId: object,
       @Inject(DOCUMENT) protected _document: any) {
   }
 
@@ -122,7 +123,7 @@ export class MediaTrigger {
    * Force set manual activations for specified mediaQuery list
    */
   private setActivations(list: string[]) {
-    if (!!this.originalRegistry) {
+    if (this.originalRegistry) {
       this.forceRegistryMatches(list, true);
     }
     this.simulateMediaChanges(list);

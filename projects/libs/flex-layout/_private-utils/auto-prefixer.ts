@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -18,8 +19,8 @@
  *    }
  */
 export function applyCssPrefixes(target: {[key: string]: any | null}) {
-  for (let key in target) {
-    let value = target[key] ?? '';
+  for (const key in target) {
+    const value = target[key] ?? '';
 
     switch (key) {
       case 'display':

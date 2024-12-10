@@ -5,13 +5,13 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {TestBed, inject, fakeAsync, tick} from '@angular/core/testing';
+import { TestBed, fakeAsync, inject, tick } from '@angular/core/testing';
 
-import {MediaTrigger} from './media-trigger';
-import {MediaChange} from '../media-change';
-import {MatchMedia} from '../match-media/match-media';
-import {MockMatchMedia, MockMatchMediaProvider} from '../match-media/mock/mock-match-media';
-import {MediaObserver} from '../media-observer/media-observer';
+import { MatchMedia } from '../match-media/match-media';
+import { MockMatchMedia, MockMatchMediaProvider } from '../match-media/mock/mock-match-media';
+import { MediaChange } from '../media-change';
+import { MediaObserver } from '../media-observer/media-observer';
+import { MediaTrigger } from './media-trigger';
 
 describe('media-trigger', () => {
   let mediaObserver: MediaObserver;
@@ -44,7 +44,7 @@ describe('media-trigger', () => {
 
   it('can trigger activations with list of breakpoint aliases', fakeAsync(() => {
     let activations: MediaChange[] = [];
-    let subscription = mediaObserver.asObservable().subscribe(
+    const subscription = mediaObserver.asObservable().subscribe(
         (changes: MediaChange[]) => {
           activations = [...changes];
         });

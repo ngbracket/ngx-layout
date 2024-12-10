@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -10,7 +12,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { applyCssPrefixes } from '@ngbracket/ngx-layout/_private-utils';
 import { StylesheetMap } from '../stylesheet-map/stylesheet-map';
-import { LayoutConfigOptions, LAYOUT_CONFIG } from '../tokens/library-config';
+import { LAYOUT_CONFIG, LayoutConfigOptions } from '../tokens/library-config';
 import { SERVER_TOKEN } from '../tokens/server-token';
 
 @Injectable({ providedIn: 'root' })
@@ -18,7 +20,7 @@ export class StyleUtils {
   constructor(
     private _serverStylesheet: StylesheetMap,
     @Inject(SERVER_TOKEN) private _serverModuleLoaded: boolean,
-    @Inject(PLATFORM_ID) private _platformId: Object,
+    @Inject(PLATFORM_ID) private _platformId: object,
     @Inject(LAYOUT_CONFIG) private layoutConfig: LayoutConfigOptions
   ) {}
 
@@ -60,7 +62,7 @@ export class StyleUtils {
    */
   getFlowDirection(target: HTMLElement): [string, string] {
     const query = 'flex-direction';
-    let value = this.lookupStyle(target, query);
+    const value = this.lookupStyle(target, query);
     const hasInlineValue =
       this.lookupInlineStyle(target, query) ||
       (isPlatformServer(this._platformId) && this._serverModuleLoaded)
@@ -102,7 +104,7 @@ export class StyleUtils {
   ): string {
     let value = '';
     if (element) {
-      let immediateValue = (value = this.lookupInlineStyle(element, styleName));
+      const immediateValue = (value = this.lookupInlineStyle(element, styleName));
       if (!immediateValue) {
         if (isPlatformBrowser(this._platformId)) {
           if (!inlineOnly) {

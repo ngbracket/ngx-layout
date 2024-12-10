@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -41,8 +43,8 @@ describe('flex directive', () => {
   let mediaController: MockMatchMedia;
   let styler: StyleUtils;
   let platform: Platform;
-  let platformId: Object;
-  let componentWithTemplate = (template: string) => {
+  let platformId: object;
+  const componentWithTemplate = (template: string) => {
     fixture = makeCreateTestComponent(() => TestFlexComponent)(template);
 
     // Can only Inject() AFTER TestBed.override(...)
@@ -52,7 +54,7 @@ describe('flex directive', () => {
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
         _platform: Platform,
-        _platformId: Object
+        _platformId: object
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
@@ -90,7 +92,7 @@ describe('flex directive', () => {
       componentWithTemplate(`<div fxFlex></div>`);
       fixture.detectChanges();
 
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
       expectEl(dom).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(dom).toHaveStyle({ flex: '1 1 0%' }, styler);
     });
@@ -104,7 +106,7 @@ describe('flex directive', () => {
       `);
       fixture.detectChanges();
       mediaController.activate('sm', true);
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ width: '15px' }, styler);
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '10 1 auto' }, styler);
@@ -139,7 +141,7 @@ describe('flex directive', () => {
       `);
       fixture.detectChanges();
       mediaController.activate('sm', true);
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ width: '15px' }, styler);
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '10 1 auto' }, styler);
@@ -153,7 +155,7 @@ describe('flex directive', () => {
       `);
       fixture.debugElement.componentInstance.direction = 'column';
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectNativeEl(fixture).toHaveStyle(
         { 'flex-direction': 'column' },
         styler
@@ -192,7 +194,7 @@ describe('flex directive', () => {
       `);
       fixture.debugElement.componentInstance.direction = 'row';
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectNativeEl(fixture).toHaveStyle({ 'flex-direction': 'row' }, styler);
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '1 1 30%' }, styler);
@@ -242,7 +244,7 @@ describe('flex directive', () => {
       mediaController.activate('sm', true);
       fixture.detectChanges();
 
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ width: '15px' }, styler);
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '10 1 auto' }, styler);
@@ -259,7 +261,7 @@ describe('flex directive', () => {
       componentWithTemplate(`<div fxFlex fxGrow="10"></div>`);
       fixture.detectChanges();
 
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
 
       expectEl(dom).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(dom).toHaveStyle({ flex: '10 1 0%' }, styler);
@@ -269,7 +271,7 @@ describe('flex directive', () => {
       componentWithTemplate(`<div fxFlex fxShrink="10"></div>`);
       fixture.detectChanges();
 
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
 
       expectEl(dom).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(dom).toHaveStyle({ flex: '1 10 0%' }, styler);
@@ -279,7 +281,7 @@ describe('flex directive', () => {
       componentWithTemplate(`<div fxFlex fxGrow="4" fxShrink="5"></div>`);
       fixture.detectChanges();
 
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
       expectEl(dom).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(dom).toHaveStyle({ flex: '4 5 0%' }, styler);
     });
@@ -397,8 +399,8 @@ describe('flex directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let parent = queryFor(fixture, '.test')[0];
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
 
       // parent flex-direction found with 'column' with child height styles
       expectEl(parent).toHaveStyle(
@@ -416,8 +418,8 @@ describe('flex directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let parent = queryFor(fixture, '.test')[0];
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
 
       // parent flex-direction found with 'column' with child height styles
       expectEl(parent).toHaveStyle(
@@ -471,8 +473,8 @@ describe('flex directive', () => {
       `);
 
       fixture.detectChanges();
-      let parent = queryFor(fixture, '.test')[0];
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
 
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
@@ -496,8 +498,8 @@ describe('flex directive', () => {
       `);
 
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
-      let parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
 
       // The parent flex-direction not found;
       // A flex-direction should have been auto-injected to the parent...
@@ -516,8 +518,8 @@ describe('flex directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
-      let parent = queryFor(fixture, '.parent')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.parent')[0];
 
       // parent flex-direction found with 'column'; set child with height styles
       expectEl(element).toHaveStyle({ 'min-height': '60px' }, styler);
@@ -534,7 +536,7 @@ describe('flex directive', () => {
       `);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
 
       expect(nodes.length).toEqual(3);
       expectEl(nodes[1]).not.toHaveStyle(
@@ -696,7 +698,7 @@ describe('flex directive', () => {
     it('should not set a max-width when the shrink == 0', () => {
       componentWithTemplate(`<div fxFlex='1 0 303px'></div>`);
       fixture.detectChanges();
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
       expectEl(dom).not.toHaveStyle({ 'max-width': '*' }, styler);
     });
 
@@ -713,7 +715,7 @@ describe('flex directive', () => {
     it('should not set a min-width when the grow == 0', () => {
       componentWithTemplate(`<div fxFlex='0 1 313px'></div>`);
       fixture.detectChanges();
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
       expectEl(dom).not.toHaveStyle({ 'min-width': '*' }, styler);
     });
 
@@ -758,7 +760,7 @@ describe('flex directive', () => {
       });
 
       it('should set max-height for `fxFlex="<%val>"` with parent using fxLayout="column" ', () => {
-        let template = `
+        const template = `
           <div fxLayout='column'>
             <div fxFlex='37%'></div>
           </div>
@@ -1023,7 +1025,7 @@ describe('flex directive', () => {
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
         _platform: Platform,
-        _platformId: Object
+        _platformId: object
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
@@ -1157,8 +1159,8 @@ describe('flex directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
-      let parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
 
       // The parent flex-direction not found;
       // A flex-direction should have been auto-injected to the parent...
@@ -1198,8 +1200,8 @@ describe('flex directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
-      let parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
 
       // The parent flex-direction not found;
       // A flex-direction should have been auto-injected to the parent...
@@ -1245,7 +1247,7 @@ describe('flex directive', () => {
       // Reset the cache because the layout config is only set at startup
       styleBuilder.shouldCache = false;
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ flex: '1 1 auto' }, styler);
     });
   });
@@ -1283,7 +1285,7 @@ describe('flex directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ flex: '1 1 30%' }, styler);
     }));
   });

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -36,7 +37,7 @@ export class MatchMedia implements OnDestroy {
 
   constructor(
     protected _zone: NgZone,
-    @Inject(PLATFORM_ID) protected _platformId: Object,
+    @Inject(PLATFORM_ID) protected _platformId: object,
     @Inject(DOCUMENT) protected _document: any,
     @Optional() @Inject(CSP_NONCE) protected _nonce?: string | null
   ) {}

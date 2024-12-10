@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -90,7 +91,7 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
   }
 
   /** Add styles to the element using predefined style builder */
-  protected addStyles(input: string, parent?: Object) {
+  protected addStyles(input: string, parent?: object) {
     const builder = this.styleBuilder;
     const useCache = builder.shouldCache;
 

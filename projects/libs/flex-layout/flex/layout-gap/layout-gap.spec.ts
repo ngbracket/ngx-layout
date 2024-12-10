@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -16,15 +18,6 @@ import {
 } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  SERVER_TOKEN,
-  StyleBuilder,
-  StyleUtils,
-  ɵMatchMedia as MatchMedia,
-  ɵMockMatchMedia as MockMatchMedia,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import { FlexModule, LayoutGapStyleBuilder } from '@ngbracket/ngx-layout/flex';
-import {
   customMatchers,
   expect,
   expectEl,
@@ -32,6 +25,15 @@ import {
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMatchMedia as MatchMedia,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleBuilder,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import { FlexModule, LayoutGapStyleBuilder } from '@ngbracket/ngx-layout/flex';
 
 describe('layout-gap directive', () => {
   let fixture: ComponentFixture<any>;
@@ -40,9 +42,9 @@ describe('layout-gap directive', () => {
     documentElement: { dir?: string };
   };
   let styler: StyleUtils;
-  let platformId: Object;
+  let platformId: object;
   let mediaController: MockMatchMedia;
-  let createTestComponent = (template: string, styles?: any) => {
+  const createTestComponent = (template: string, styles?: any) => {
     fixture = makeCreateTestComponent(() => TestLayoutGapComponent)(
       template,
       styles
@@ -52,7 +54,7 @@ describe('layout-gap directive', () => {
       (
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
-        _platformId: Object
+        _platformId: object
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
@@ -106,7 +108,7 @@ describe('layout-gap directive', () => {
 
   describe('with static features', () => {
     it('should not add gap styles for a single child', () => {
-      let template = `
+      const template = `
               <div fxLayoutAlign='center center' fxLayoutGap='13px'>
                   <div fxFlex></div>
               </div>
@@ -119,7 +121,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles to all children except the 1st child', () => {
-      let template = `
+      const template = `
               <div fxLayoutAlign='center center' fxLayoutGap='13px'>
                   <div fxFlex></div>
                   <div fxFlex></div>
@@ -129,7 +131,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
@@ -138,7 +140,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles to all children except the 1st child w/ multiplier', () => {
-      let template = `
+      const template = `
               <div fxLayoutAlign='center center' fxLayoutGap='13x'>
                   <div fxFlex></div>
                   <div fxFlex></div>
@@ -148,7 +150,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-right': '52px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '52px' }, styler);
@@ -157,7 +159,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles to all children except the 1st child w/o unit', () => {
-      let template = `
+      const template = `
               <div fxLayoutAlign='center center' fxLayoutGap='13'>
                   <div fxFlex></div>
                   <div fxFlex></div>
@@ -167,7 +169,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
@@ -176,7 +178,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles in proper order when order style is applied', () => {
-      let template = `
+      const template = `
         <div fxLayoutAlign='center center' fxLayoutGap='13px'>
           <div fxFlex fxFlexOrder="3"></div>
           <div fxFlex fxFlexOrder="2"></div>
@@ -186,7 +188,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       expectEl(nodes[2]).toHaveStyle({ 'margin-right': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
@@ -195,7 +197,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles to dynamics rows EXCEPT first', () => {
-      let template = `
+      const template = `
               <div fxLayoutAlign='center center' fxLayoutGap='13px'>
                   <div fxFlex *ngFor='let row of rows'></div>
               </div>
@@ -204,7 +206,7 @@ describe('layout-gap directive', () => {
       fixture.componentInstance.direction = 'row';
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(4);
       expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
@@ -214,7 +216,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add update gap styles when row items are removed', waitForAsync(() => {
-      let template = `
+      const template = `
               <div fxLayoutAlign='center center' fxLayoutGap='13px'>
                   <div fxFlex *ngFor='let row of rows'></div>
               </div>
@@ -248,7 +250,7 @@ describe('layout-gap directive', () => {
     }));
 
     it('should add update gap styles when only 1 row is remaining', waitForAsync(() => {
-      let template = `
+      const template = `
               <div fxLayoutAlign='center center' fxLayoutGap='13px'>
                   <div fxFlex *ngFor='let row of rows'></div>
               </div>
@@ -301,7 +303,7 @@ describe('layout-gap directive', () => {
               <span></span>
           </div>
       `);
-      let instance = fixture.componentInstance;
+      const instance = fixture.componentInstance;
 
       // layout = column, use margin-top
       instance.direction = 'column';
@@ -330,8 +332,8 @@ describe('layout-gap directive', () => {
     });
 
     it('should recognize hidden elements when applying gaps', () => {
-      let styles = ['.col1 { display:none !important;'];
-      let template = `
+      const styles = ['.col1 { display:none !important;'];
+      const template = `
         <div class='container' fxLayout='row' fxLayoutGap='16px'>
           <div fxFlex class='col1'>Div 1</div>
           <div fxFlex class='col2'>Div 2</div>
@@ -342,7 +344,7 @@ describe('layout-gap directive', () => {
       fixture.componentInstance.direction = 'row';
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
 
       expect(nodes.length).toEqual(3);
       // TODO(CaerusKaru): Domino is unable to detect this style
@@ -355,8 +357,8 @@ describe('layout-gap directive', () => {
     });
 
     it('should adjust gaps based on layout-wrap presence', () => {
-      let styles = ['.col1 { display:none !important;'];
-      let template = `
+      const styles = ['.col1 { display:none !important;'];
+      const template = `
             <div class='container'
                  [fxLayout]='direction + " wrap"'
                  [fxLayoutGap]='gap'>
@@ -401,7 +403,7 @@ describe('layout-gap directive', () => {
 
   describe('with responsive features', () => {
     it('should set gap on breakpoint change', () => {
-      let template = `
+      const template = `
         <div fxLayoutAlign='center center' fxLayoutGap='13px' fxLayoutGap.md="24px">
           <div fxFlex></div>
           <div fxFlex></div>
@@ -411,7 +413,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
@@ -427,7 +429,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should set gap without fallback', () => {
-      let template = `
+      const template = `
         <div fxLayoutAlign='center center' fxLayoutGap.md="24px">
           <div fxFlex></div>
           <div fxFlex></div>
@@ -437,7 +439,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       mediaController.activate('sm');
       expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '*' }, styler);
@@ -458,7 +460,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should set gap with responsive layout change', () => {
-      let template = `
+      const template = `
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="24px">
           <div fxFlex></div>
           <div fxFlex></div>
@@ -468,7 +470,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-right': '24px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '24px' }, styler);
@@ -482,7 +484,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should remove gaps with responsive layout change', () => {
-      let template = `
+      const template = `
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="24px">
           <div fxFlex></div>
           <div fxFlex></div>
@@ -490,7 +492,7 @@ describe('layout-gap directive', () => {
         </div>
       `;
       createTestComponent(template);
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
 
       mediaController.activate('md');
       fixture.detectChanges();
@@ -513,7 +515,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles in proper order when order style is applied on responsive layout change', () => {
-      let template = `
+      const template = `
         <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayout.xs="column" fxLayoutGap.xs="20px">
           <div fxFlex fxFlexOrder.xs="3"></div>
           <div fxFlex fxFlexOrder.xs="2"></div>
@@ -521,7 +523,7 @@ describe('layout-gap directive', () => {
         </div>
       `;
       createTestComponent(template);
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
 
       mediaController.activate('md');
       fixture.detectChanges();
@@ -538,7 +540,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should work with dynamic fxHide', () => {
-      let template = `
+      const template = `
         <div fxLayout="row" fxLayoutGap="10px">
           <div fxFlex>A</div>
           <div fxFlex [fxHide]="shouldHide">B</div>
@@ -547,12 +549,12 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(2);
       expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '*' }, styler);
       expectEl(nodes[1]).not.toHaveStyle({ 'margin-right': '*' }, styler);
 
-      let instance = fixture.componentInstance;
+      const instance = fixture.componentInstance;
       instance.shouldHide = false;
       fixture.detectChanges();
 
@@ -561,7 +563,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should work with responsive fxHide', () => {
-      let template = `
+      const template = `
         <div fxLayoutAlign="center center" fxLayoutGap="13px">
           <div fxFlex="15" class="sec1" fxFlex.xs="55"></div>
           <div fxFlex="30" class="sec2" fxFlex.sm></div>
@@ -571,7 +573,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
@@ -610,7 +612,7 @@ describe('layout-gap directive', () => {
 
   describe('grid option', () => {
     it('should add gap styles correctly', () => {
-      let template = `
+      const template = `
         <div fxLayoutGap='13px grid'>
           <div fxFlex></div>
           <div fxFlex></div>
@@ -620,9 +622,9 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
-      let expectedMargin = { margin: '0px -13px -13px 0px' };
-      let expectedPadding = { padding: '0px 13px 13px 0px' };
+      const nodes = queryFor(fixture, '[fxFlex]');
+      const expectedMargin = { margin: '0px -13px -13px 0px' };
+      const expectedPadding = { padding: '0px 13px 13px 0px' };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
@@ -631,7 +633,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles correctly w/ multiplier', () => {
-      let template = `
+      const template = `
         <div fxLayoutGap='13x grid'>
           <div fxFlex></div>
           <div fxFlex></div>
@@ -641,9 +643,9 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
-      let expectedMargin = { margin: '0px -52px -52px 0px' };
-      let expectedPadding = { padding: '0px 52px 52px 0px' };
+      const nodes = queryFor(fixture, '[fxFlex]');
+      const expectedMargin = { margin: '0px -52px -52px 0px' };
+      const expectedPadding = { padding: '0px 52px 52px 0px' };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
@@ -652,7 +654,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should add gap styles correctly between option', () => {
-      let template = `
+      const template = `
         <div fxLayoutGap='13px 12px grid'>
           <div fxFlex></div>
           <div fxFlex></div>
@@ -662,9 +664,9 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
-      let expectedMargin = { margin: '0px -13px -12px 0px' };
-      let expectedPadding = { padding: '0px 13px 12px 0px' };
+      const nodes = queryFor(fixture, '[fxFlex]');
+      const expectedMargin = { margin: '0px -13px -12px 0px' };
+      const expectedPadding = { padding: '0px 13px 12px 0px' };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
@@ -673,7 +675,7 @@ describe('layout-gap directive', () => {
     });
 
     it('should set gap without fallback', () => {
-      let template = `
+      const template = `
         <div fxLayoutAlign='center center' fxLayoutGap.md="24px grid">
           <div fxFlex></div>
           <div fxFlex></div>
@@ -683,7 +685,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
+      const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       mediaController.activate('sm');
       expectEl(nodes[0]).not.toHaveStyle({ padding: '*' }, styler);
@@ -704,7 +706,7 @@ describe('layout-gap directive', () => {
 
     it('should add gap styles correctly for rtl', () => {
       fakeDocument.body.dir = 'rtl';
-      let template = `
+      const template = `
         <div fxLayoutGap='13px grid'>
           <div fxFlex></div>
           <div fxFlex></div>
@@ -714,9 +716,9 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[fxFlex]');
-      let expectedMargin = { margin: '0px 0px -13px -13px' };
-      let expectedPadding = { padding: '0px 0px 13px 13px' };
+      const nodes = queryFor(fixture, '[fxFlex]');
+      const expectedMargin = { margin: '0px 0px -13px -13px' };
+      const expectedPadding = { padding: '0px 0px 13px 13px' };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);

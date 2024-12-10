@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,19 +6,19 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {merge, Observable, Subject, Subscription} from 'rxjs';
-import {filter, tap} from 'rxjs/operators';
+import { merge, Observable, Subject, Subscription } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 
-import {BreakPoint} from '../breakpoints/break-point';
-import {sortDescendingPriority} from '../utils/sort';
-import {BreakPointRegistry} from '../breakpoints/break-point-registry';
-import {MatchMedia} from '../match-media/match-media';
-import {MediaChange} from '../media-change';
+import { BreakPoint } from '../breakpoints/break-point';
+import { BreakPointRegistry } from '../breakpoints/break-point-registry';
+import { MatchMedia } from '../match-media/match-media';
+import { MediaChange } from '../media-change';
+import { sortDescendingPriority } from '../utils/sort';
 
-import {PrintHook, HookTarget} from './print-hook';
-import {mergeAlias} from '../add-alias';
+import { mergeAlias } from '../add-alias';
+import { PrintHook } from './print-hook';
 
 type ClearCallback = () => void;
 type UpdateCallback = (val: any) => void;
@@ -221,7 +222,7 @@ export class MediaMarshaller {
 
     if (builders) {
       const clearFn: ClearCallback = builders.get(key) as ClearCallback;
-      if (!!clearFn) {
+      if (clearFn) {
         clearFn();
         this.subject.next({element, key, value: ''});
       }
@@ -238,7 +239,7 @@ export class MediaMarshaller {
     const builders = this.updateMap.get(element);
     if (builders) {
       const updateFn: UpdateCallback = builders.get(key) as UpdateCallback;
-      if (!!updateFn) {
+      if (updateFn) {
         updateFn(value);
         this.subject.next({element, key, value});
       }

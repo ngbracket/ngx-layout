@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -96,7 +97,7 @@ export class FlexStyleBuilder extends StyleBuilder {
     };
     switch (basis || '') {
       case '':
-        const useColumnBasisZero =
+        { const useColumnBasisZero =
           this.layoutConfig.useColumnBasisZero !== false;
         basis =
           direction === 'row'
@@ -104,7 +105,7 @@ export class FlexStyleBuilder extends StyleBuilder {
             : useColumnBasisZero
             ? '0.000000001px'
             : 'auto';
-        break;
+        break; }
       case 'initial': // default
       case 'nogrow':
         grow = 0;
@@ -126,7 +127,7 @@ export class FlexStyleBuilder extends StyleBuilder {
         break;
       default:
         // Defaults to percentage sizing unless `px` is explicitly set
-        if (!isValue && !isPercent && !isNaN(basis as any)) {
+        if (!isValue && !isPercent && !isNaN(basis as never)) {
           basis = basis + '%';
         }
 

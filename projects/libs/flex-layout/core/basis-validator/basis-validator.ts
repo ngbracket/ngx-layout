@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -14,10 +15,10 @@
 export function validateBasis(basis: string, grow = '1', shrink = '1'): string[] {
   let parts = [grow, shrink, basis];
 
-  let j = basis.indexOf('calc');
+  const j = basis.indexOf('calc');
   if (j > 0) {
     parts[2] = _validateCalcValue(basis.substring(j).trim());
-    let matches = basis.substr(0, j).trim().split(' ');
+    const matches = basis.substr(0, j).trim().split(' ');
     if (matches.length == 2) {
       parts[0] = matches[0];
       parts[1] = matches[1];
@@ -25,7 +26,7 @@ export function validateBasis(basis: string, grow = '1', shrink = '1'): string[]
   } else if (j == 0) {
     parts[2] = _validateCalcValue(basis.trim());
   } else {
-    let matches = basis.split(' ');
+    const matches = basis.split(' ');
     parts = (matches.length === 3) ? matches : [
           grow, shrink, basis
         ];

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -11,19 +13,19 @@ import { Component, Injectable, PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  SERVER_TOKEN,
-  StyleBuilder,
-  StyleUtils,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import { FlexModule, FlexOffsetStyleBuilder } from '@ngbracket/ngx-layout/flex';
-import {
   customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleBuilder,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import { FlexModule, FlexOffsetStyleBuilder } from '@ngbracket/ngx-layout/flex';
 
 describe('flex-offset directive', () => {
   let fixture: ComponentFixture<any>;
@@ -32,13 +34,13 @@ describe('flex-offset directive', () => {
     documentElement: { dir?: string };
   };
   let styler: StyleUtils;
-  let platformId: Object;
-  let componentWithTemplate = (template: string) => {
+  let platformId: object;
+  const componentWithTemplate = (template: string) => {
     fixture = makeCreateTestComponent(() => TestFlexComponent)(template);
 
     inject(
       [StyleUtils, PLATFORM_ID],
-      (_styler: StyleUtils, _platformId: Object) => {
+      (_styler: StyleUtils, _platformId: object) => {
         styler = _styler;
         platformId = _platformId;
       }
@@ -73,7 +75,7 @@ describe('flex-offset directive', () => {
       componentWithTemplate(`<div fxFlexOffset='32px' fxFlex></div>`);
       fixture.detectChanges();
 
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
       expectEl(dom).toHaveStyle({ 'margin-left': '32px' }, styler);
       expectEl(dom).toHaveStyle({ flex: '1 1 0%' }, styler);
     });
@@ -82,7 +84,7 @@ describe('flex-offset directive', () => {
       componentWithTemplate(`<div fxFlexOffset='8x' fxFlex></div>`);
       fixture.detectChanges();
 
-      let dom = fixture.debugElement.children[0];
+      const dom = fixture.debugElement.children[0];
       expectEl(dom).toHaveStyle({ 'margin-left': '32px' }, styler);
       expectEl(dom).toHaveStyle({ flex: '1 1 0%' }, styler);
     });
@@ -106,8 +108,8 @@ describe('flex-offset directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let parent = queryFor(fixture, '.test')[0];
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
 
       // parent flex-direction found with 'column' with child height styles
       expectEl(parent).toHaveStyle(
@@ -128,8 +130,8 @@ describe('flex-offset directive', () => {
       `);
 
       fixture.detectChanges();
-      let parent = queryFor(fixture, '.test')[0];
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.test')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
 
       // TODO(CaerusKaru): Domino is unable to detect these styles properly
       if (!isPlatformServer(platformId)) {
@@ -151,8 +153,8 @@ describe('flex-offset directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlex]')[0];
-      let parent = queryFor(fixture, '.parent')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
+      const parent = queryFor(fixture, '.parent')[0];
 
       // parent flex-direction found with 'column'; set child with height styles
       expectEl(element).toHaveStyle({ 'margin-top': '21%' }, styler);
@@ -183,7 +185,7 @@ describe('flex-offset directive', () => {
       `);
       fixture.detectChanges();
 
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ 'margin-right': '17px' }, styler);
     });
 
@@ -196,7 +198,7 @@ describe('flex-offset directive', () => {
       `);
       fixture.detectChanges();
 
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ 'margin-right': '17px' }, styler);
     });
 
@@ -208,7 +210,7 @@ describe('flex-offset directive', () => {
       `);
       fixture.detectChanges();
 
-      let element = queryFor(fixture, '[fxFlex]')[0];
+      const element = queryFor(fixture, '[fxFlex]')[0];
       expectEl(element).toHaveStyle({ 'margin-left': '17px' }, styler);
     });
   });
@@ -244,7 +246,7 @@ describe('flex-offset directive', () => {
         </div>
       `);
       fixture.detectChanges();
-      let element = queryFor(fixture, '[fxFlexOffset]')[0];
+      const element = queryFor(fixture, '[fxFlexOffset]')[0];
       expectEl(element).toHaveStyle({ 'margin-top': '10px' }, styler);
     });
   });

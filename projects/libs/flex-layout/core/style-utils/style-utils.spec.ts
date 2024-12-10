@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -19,9 +20,9 @@ import { StyleUtils } from './style-utils';
 describe('styler', () => {
   let styler: StyleUtils;
   let fixture: ComponentFixture<any>;
-  let platformId: Object;
+  let platformId: object;
 
-  let componentWithTemplate = (template: string, styles?: any) => {
+  const componentWithTemplate = (template: string, styles?: any) => {
     fixture = makeCreateTestComponent(() => TestLayoutComponent)(
       template,
       styles
@@ -29,7 +30,7 @@ describe('styler', () => {
 
     inject(
       [StyleUtils, PLATFORM_ID],
-      (_styler: StyleUtils, _platformId: Object) => {
+      (_styler: StyleUtils, _platformId: object) => {
         styler = _styler;
         platformId = _platformId;
       }

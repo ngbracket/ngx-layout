@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,16 +6,16 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-declare var global: any;
+declare let global: any;
 const _global = <any>(typeof window === 'undefined' ? global : window);
 
 import { _dom as _ } from './dom-tools';
 
-import { StyleUtils } from '@ngbracket/ngx-layout/core';
 import {
   applyCssPrefixes,
   extendObject,
 } from '@ngbracket/ngx-layout/_private-utils';
+import { StyleUtils } from '@ngbracket/ngx-layout/core';
 
 export const expect: (actual: any) => NgMatchers = <any>_global.expect;
 
@@ -151,7 +152,7 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
     return {
       compare: function (actual: any, map: { [k: string]: string }) {
         let allPassed: boolean;
-        let attributeNames = Object.keys(map);
+        const attributeNames = Object.keys(map);
         allPassed = attributeNames.length !== 0;
         attributeNames.forEach((name) => {
           allPassed =
@@ -214,7 +215,7 @@ function buildCompareStyleFunction(inlineOnly = true) {
 
     let allPassed = Object.keys(styleMap).length !== 0;
     Object.keys(styleMap).forEach((prop) => {
-      let { elHasStyle, current } = hasPrefixedStyles(
+      const { elHasStyle, current } = hasPrefixedStyles(
         actual,
         prop,
         styleMap[prop],
@@ -272,7 +273,7 @@ function hasPrefixedStyles(
   value = value.trim();
   let elHasStyle = styler.lookupStyle(actual, key, inlineOnly) === value;
   if (!elHasStyle) {
-    let prefixedStyles = applyCssPrefixes({ [key]: value });
+    const prefixedStyles = applyCssPrefixes({ [key]: value });
     Object.keys(prefixedStyles).forEach((prop) => {
       // Search for optional prefixed values
       elHasStyle =

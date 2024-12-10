@@ -1,5 +1,5 @@
-import {resolve, dirname, join} from 'path';
-import {existsSync} from 'fs';
+import { existsSync } from 'fs';
+import { dirname, join, resolve } from 'path';
 
 /** Name of the build config file. */
 const BUILD_CONFIG_FILENAME = 'build-config.js';
@@ -9,7 +9,7 @@ export function findBuildConfig(): string | null {
   let currentDir = process.cwd();
 
   while (!existsSync(resolve(currentDir, BUILD_CONFIG_FILENAME))) {
-    let parentDir = dirname(currentDir);
+    const parentDir = dirname(currentDir);
 
     if (parentDir === currentDir) {
       return null;

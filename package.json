@@ -14,7 +14,6 @@
     "yarn": ">=1.22.4 <2",
     "npm": "Please use yarn instead of NPM to install dependencies"
   },
-  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -25,7 +24,8 @@
     "serve:universal-demo-app": "ng run universal-demo-app:serve-ssr",
     "test": "ng test @ngbracket/ngx-layout",
     "test:ssr": "webpack --config test/webpack-spec-ssr-bundle.cjs && jasmine --config=test/jasmine-ssr.json",
-    "lint": "stylelint projects/libs/**/*.scss --config=stylelint-config.json && tslint --project ./tsconfig.json --config tslint.json",
+    "ts-lint": "stylelint projects/libs/**/*.scss --config=stylelint-config.json && tslint --project ./tsconfig.json --config tslint.json",
+    "lint": "eslint",
     "release": "yarn build && yarn stamp",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "serve:ssr:universal-demo-app": "node dist/universal-demo-app/server/server.mjs"
@@ -51,15 +51,26 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.0.0",
+    "@angular-eslint/builder": "^18.4.1",
+    "@angular-eslint/eslint-plugin": "^18.4.1",
+    "@angular-eslint/eslint-plugin-template": "^18.4.1",
+    "@angular-eslint/schematics": "^18.4.1",
+    "@angular-eslint/template-parser": "^18.4.1",
     "@angular/cdk": "^19.0.0",
     "@angular/cli": "19.0.0",
     "@angular/compiler-cli": "19.0.0",
+    "@eslint/js": "^9.15.0",
     "@ngtools/webpack": "^19.0.0",
     "@types/express": "^5.0.0",
     "@types/jasmine": "^5.1.4",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^22.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
     "conventional-changelog-cli": "^5.0.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.12.0",
     "jasmine-core": "^5.4.0",
     "karma": "^6.4.4",
     "karma-browserstack-launcher": "^1.6.0",
@@ -76,8 +87,8 @@
     "postcss-scss": "^4.0.9",
     "stylelint": "^16.10.0",
     "ts-node": "^10.9.2",
-    "tslint": "^6.1.3",
     "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
   },
@@ -85,6 +96,6 @@
     "browser-sync-client": "2.29.3"
   },
   "volta": {
-    "node": "22.11.0"
+    "node": "20.18.1"
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -27,7 +28,7 @@ export class NgStyleKeyValue {
 }
 
 export function getType(target: any): string {
-  let what = typeof target;
+  const what = typeof target;
   if (what === 'object') {
     return (target.constructor === Array) ? 'array' :
         (target.constructor === Set) ? 'set' : 'object';
@@ -65,7 +66,7 @@ export function buildMapFromList(styles: NgStyleRawList, sanitize?: NgStyleSanit
 
 /** Convert Set<string> or raw Object to an iterable NgStyleMap */
 export function buildMapFromSet(source: NgStyleType, sanitize?: NgStyleSanitizer): NgStyleMap {
-  let list: string[] = [];
+  const list: string[] = [];
   if (getType(source) === 'set') {
     (source as Set<string>).forEach(entry => list.push(entry));
   } else {
@@ -85,7 +86,7 @@ export function stringToKeyValue(it: string): NgStyleKeyValue {
 
 /** Convert [ [key,value] ] -> { key : value } */
 export function keyValuesToMap(map: NgStyleMap, entry: NgStyleKeyValue): NgStyleMap {
-  if (!!entry.key) {
+  if (entry.key) {
     map[entry.key] = entry.value;
   }
   return map;

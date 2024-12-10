@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.

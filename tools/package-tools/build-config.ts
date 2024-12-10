@@ -1,4 +1,4 @@
-import {findBuildConfig} from './find-build-config';
+import { findBuildConfig } from './find-build-config';
 
 export interface BuildConfig {
   /** Current version of the project. */
@@ -24,4 +24,5 @@ if (!buildConfigPath) {
 }
 
 // Load the config file using a basic CommonJS import.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 export const buildConfig = require(buildConfigPath) as BuildConfig;

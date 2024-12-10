@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -10,10 +11,10 @@ import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   CoreModule,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 import { DefaultLayoutDirective } from '@ngbracket/ngx-layout/flex';
 
@@ -28,7 +29,7 @@ describe('style directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
   let styler: StyleUtils;
-  let createTestComponent = (template: string) => {
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestStyleComponent)(template);
 
     inject(

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -10,11 +11,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  SERVER_TOKEN,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import {
@@ -31,7 +32,7 @@ describe('grid rows parent directive', () => {
   let mediaController: MockMatchMedia;
   let platform: Platform;
   let shouldRun = true;
-  let createTestComponent = (template: string, styles?: any) => {
+  const createTestComponent = (template: string, styles?: any) => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestGridRowsComponent)(
       template,
@@ -72,7 +73,7 @@ describe('grid rows parent directive', () => {
 
   describe('with static features', () => {
     it('should add row styles for parent', () => {
-      let template = `
+      const template = `
               <div gdRows="100px 1fr">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
@@ -95,7 +96,7 @@ describe('grid rows parent directive', () => {
     });
 
     it('should add auto row styles for parent', () => {
-      let template = `
+      const template = `
               <div gdRows="100px 1fr auto!">
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
@@ -122,7 +123,7 @@ describe('grid rows parent directive', () => {
     });
 
     it('should work with inline grid', () => {
-      let template = `
+      const template = `
               <div gdRows="100px 1fr" gdInline>
                   <div gdArea="header"></div>
                   <div gdArea="sidebar"></div>
@@ -145,7 +146,7 @@ describe('grid rows parent directive', () => {
     });
 
     it('should add dynamic rows styles', () => {
-      let template = `
+      const template = `
             <div [gdRows]='cols'></div>
           `;
       createTestComponent(template);
@@ -176,7 +177,7 @@ describe('grid rows parent directive', () => {
 
   describe('with responsive features', () => {
     it('should add col styles for a parent', () => {
-      let template = `
+      const template = `
               <div gdRows="100px 1fr"
                    gdRows.xs="50px 1fr"></div>
           `;

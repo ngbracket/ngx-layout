@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,13 +6,13 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {inject, TestBed} from '@angular/core/testing';
-import {Subject} from 'rxjs';
+import { inject, TestBed } from '@angular/core/testing';
+import { Subject } from 'rxjs';
 
-import {MediaMarshaller} from './media-marshaller';
-import {MatchMedia} from '../match-media/match-media';
-import {DEFAULT_CONFIG, LAYOUT_CONFIG} from '../tokens/library-config';
-import {MockMatchMedia, MockMatchMediaProvider} from '../match-media/mock/mock-match-media';
+import { MatchMedia } from '../match-media/match-media';
+import { MockMatchMedia, MockMatchMediaProvider } from '../match-media/mock/mock-match-media';
+import { DEFAULT_CONFIG, LAYOUT_CONFIG } from '../tokens/library-config';
+import { MediaMarshaller } from './media-marshaller';
 
 describe('media-marshaller', () => {
 

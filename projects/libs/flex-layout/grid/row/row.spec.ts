@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -10,11 +11,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  SERVER_TOKEN,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import {
@@ -32,7 +33,7 @@ describe('grid row child directive', () => {
   let mediaController: MockMatchMedia;
   let platform: Platform;
   let shouldRun = true;
-  let createTestComponent = (template: string, styles?: any) => {
+  const createTestComponent = (template: string, styles?: any) => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestGridRowComponent)(
       template,
@@ -73,7 +74,7 @@ describe('grid row child directive', () => {
 
   describe('with static features', () => {
     it('should add row styles for children', () => {
-      let template = `
+      const template = `
               <div gdAuto>
                   <div gdRow="span 3 / 6"></div>
                   <div gdRow="span 2 / 6"></div>
@@ -88,7 +89,7 @@ describe('grid row child directive', () => {
 
       fixture.detectChanges();
 
-      let nodes = queryFor(fixture, '[gdRow]');
+      const nodes = queryFor(fixture, '[gdRow]');
       expect(nodes.length).toBe(3);
       if (platform.WEBKIT) {
         expectEl(nodes[1]).toHaveStyle(
@@ -104,7 +105,7 @@ describe('grid row child directive', () => {
     });
 
     it('should add dynamic row styles', () => {
-      let template = `
+      const template = `
             <div [gdRow]='row'></div>
           `;
       createTestComponent(template);
@@ -143,7 +144,7 @@ describe('grid row child directive', () => {
 
   describe('with responsive features', () => {
     it('should add row styles for a child', () => {
-      let template = `
+      const template = `
               <div gdRow="sidebar" gdRow.xs="footer"></div>
           `;
       createTestComponent(template);

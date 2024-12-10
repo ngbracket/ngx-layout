@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -34,8 +35,8 @@ describe('show directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
   let styler: StyleUtils;
-  let platformId: Object;
-  let createTestComponent = (template: string) => {
+  let platformId: object;
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestShowComponent)(template);
 
     // Can only Inject() AFTER TestBed.override(...)
@@ -44,7 +45,7 @@ describe('show directive', () => {
       (
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
-        _platformId: Object
+        _platformId: object
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
@@ -167,7 +168,7 @@ describe('show directive', () => {
     });
 
     it('should restore display when not enabled', () => {
-      let visibleStyle = { display: 'inline-block' };
+      const visibleStyle = { display: 'inline-block' };
       createTestComponent(
         `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`
       );
@@ -184,7 +185,7 @@ describe('show directive', () => {
     });
 
     it('should restore display when the mediaQuery deactivates', () => {
-      let visibleStyle = { display: 'inline-block' };
+      const visibleStyle = { display: 'inline-block' };
       createTestComponent(
         `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`
       );

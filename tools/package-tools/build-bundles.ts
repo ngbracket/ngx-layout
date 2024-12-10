@@ -6,6 +6,7 @@ import { rollupRemoveLicensesPlugin } from './rollup-remove-licenses';
 import { remapSourcemap } from './sourcemap-remap';
 
 // There are no type definitions available for these imports.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const rollup = require('rollup');
 
 /** Directory where all bundles will be created in. */
@@ -127,6 +128,7 @@ export class PackageBundler {
 
     return rollup
       .rollup(bundleOptions)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((bundle: any) => bundle.write(writeOptions));
   }
 

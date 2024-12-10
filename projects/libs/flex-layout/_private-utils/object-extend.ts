@@ -1,3 +1,5 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -17,9 +19,9 @@ export function extendObject(dest: any, ...sources: any[]): any {
     throw TypeError('Cannot convert undefined or null to object');
   }
 
-  for (let source of sources) {
+  for (const source of sources) {
     if (source != null) {
-      for (let key in source) {
+      for (const key in source) {
         if (source.hasOwnProperty(key)) {
           dest[key] = source[key];
         }

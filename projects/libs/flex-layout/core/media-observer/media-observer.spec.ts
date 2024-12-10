@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,18 +6,18 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {TestBed, inject, fakeAsync, tick} from '@angular/core/testing';
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import { TestBed, fakeAsync, inject, tick } from '@angular/core/testing';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
-import {BreakPoint} from '../breakpoints/break-point';
-import {BREAKPOINTS} from '../breakpoints/break-points-token';
-import {MatchMedia} from '../match-media/match-media';
-import {MediaChange} from '../media-change';
-import {MediaObserver} from './media-observer';
-import {BREAKPOINT} from '../tokens/breakpoint-token';
-import {MockMatchMedia, MockMatchMediaProvider} from '../match-media/mock/mock-match-media';
-import {DEFAULT_CONFIG, LAYOUT_CONFIG} from '../tokens/library-config';
+import { BreakPoint } from '../breakpoints/break-point';
+import { BREAKPOINTS } from '../breakpoints/break-points-token';
+import { MatchMedia } from '../match-media/match-media';
+import { MockMatchMedia, MockMatchMediaProvider } from '../match-media/mock/mock-match-media';
+import { MediaChange } from '../media-change';
+import { BREAKPOINT } from '../tokens/breakpoint-token';
+import { DEFAULT_CONFIG, LAYOUT_CONFIG } from '../tokens/library-config';
+import { MediaObserver } from './media-observer';
 
 describe('media-observer', () => {
   let knownBreakPoints: BreakPoint[] = [];
@@ -50,7 +51,7 @@ describe('media-observer', () => {
       mediaController.useOverlaps = false;
     });
 
-    let findMediaQuery: (alias: string) => string = (alias) => {
+    const findMediaQuery: (alias: string) => string = (alias) => {
       const NOT_FOUND = `${alias} not found`;
       return knownBreakPoints.reduce((mediaQuery: string | null, bp) => {
         return mediaQuery ?? ((bp.alias === alias) ? bp.mediaQuery : null);
@@ -72,8 +73,8 @@ describe('media-observer', () => {
     });
 
     it('can supports RxJS operators', fakeAsync(() => {
-      let count = 0,
-          onlyMd = (change: MediaChange) => (change.mqAlias == 'md'),
+      let count = 0;
+          const onlyMd = (change: MediaChange) => (change.mqAlias == 'md'),
           subscription = media$
               .pipe(switchMap(changes => changes.filter(onlyMd)))
               .subscribe(_ => {
@@ -124,7 +125,7 @@ describe('media-observer', () => {
 
     it('can subscribe to built-in mediaQueries',  fakeAsync(() => {
       let current: MediaChange[] = [new MediaChange(true)];
-      let subscription = media$.subscribe((changes: MediaChange[]) => {
+      const subscription = media$.subscribe((changes: MediaChange[]) => {
         current = changes;
       });
 
@@ -156,7 +157,7 @@ describe('media-observer', () => {
 
     it('can `.unsubscribe()` properly', fakeAsync(() => {
       let current: MediaChange[] = [new MediaChange(true)];
-      let subscription = media$.subscribe((changes: MediaChange[]) => {
+      const subscription = media$.subscribe((changes: MediaChange[]) => {
         current = changes;
       });
 
@@ -178,7 +179,7 @@ describe('media-observer', () => {
 
     it('can observe a startup activation of XS', fakeAsync(() => {
       let current: MediaChange[] = [new MediaChange(true)];
-      let subscription = media$.subscribe((changes: MediaChange[]) => {
+      const subscription = media$.subscribe((changes: MediaChange[]) => {
         current = changes;
       });
 
@@ -231,7 +232,7 @@ describe('media-observer', () => {
 
     it('can activate custom alias with custom mediaQueries', fakeAsync(() => {
       let current: MediaChange = new MediaChange(true);
-      let subscription = mediaObserver.asObservable()
+      const subscription = mediaObserver.asObservable()
             .subscribe((changes: MediaChange[]) => {
               current = changes[0];
             });
@@ -283,7 +284,7 @@ describe('media-observer', () => {
 
     it('can activate when configured with "md" alias', fakeAsync(() => {
         let current: MediaChange[] = [new MediaChange(true)];
-        let subscription = media$.subscribe((changes: MediaChange[]) => {
+        const subscription = media$.subscribe((changes: MediaChange[]) => {
           current = changes;
         });
 
@@ -332,7 +333,7 @@ describe('media-observer', () => {
 
     it('will skip print activation without alias', fakeAsync(() => {
       let current: MediaChange[] = [new MediaChange(true)];
-      let subscription = media$.subscribe((changes: MediaChange[]) => {
+      const subscription = media$.subscribe((changes: MediaChange[]) => {
         current = changes;
       });
 

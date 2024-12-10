@@ -12,7 +12,7 @@ export const LAYOUT_VALUES = ['row', 'column', 'row-reverse', 'column-reverse'];
  * Validate the direction|'direction wrap' value and then update the host's inline flexbox styles
  */
 export function buildLayoutCSS(value: string) {
-  let [direction, wrap, isInline] = validateValue(value);
+  const [direction, wrap, isInline] = validateValue(value);
   return buildCSS(direction, wrap, isInline);
 }
 
@@ -42,7 +42,7 @@ export function validateValue(value: string): [string, string, boolean] {
  * a horizontal/row flow.
  */
 export function isFlowHorizontal(value: string): boolean {
-  let [flow, ] = validateValue(value);
+  const [flow, ] = validateValue(value);
   return flow.indexOf('row') > -1;
 }
 
@@ -50,7 +50,7 @@ export function isFlowHorizontal(value: string): boolean {
  * Convert layout-wrap='<value>' to expected flex-wrap style
  */
 export function validateWrapValue(value: string) {
-  if (!!value) {
+  if (value) {
     switch (value.toLowerCase()) {
       case 'reverse':
       case 'wrap-reverse':

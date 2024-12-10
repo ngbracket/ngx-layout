@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-wrapper-object-types */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -10,8 +13,8 @@ import { Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
 import {
   BreakPoint,
   BREAKPOINTS,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   ɵMatchMedia as MatchMedia,
 } from '@ngbracket/ngx-layout/core';
 

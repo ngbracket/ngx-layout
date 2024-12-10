@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -5,15 +6,15 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {APP_BOOTSTRAP_LISTENER, PLATFORM_ID, InjectionToken} from '@angular/core';
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { APP_BOOTSTRAP_LISTENER, InjectionToken, PLATFORM_ID } from '@angular/core';
 
 /**
  * Find all of the server-generated stylings, if any, and remove them
  * This will be in the form of inline classes and the style block in the
  * head of the DOM
  */
-export function removeStyles(_document: Document, platformId: Object) {
+export function removeStyles(_document: Document, platformId: object) {
   return () => {
     if (isPlatformBrowser(platformId)) {
       const elements = Array.from(_document.querySelectorAll(`[class*=${CLASS_NAME}]`));

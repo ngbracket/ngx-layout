@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -10,27 +12,27 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  SERVER_TOKEN,
-  StyleBuilder,
-  StyleUtils,
-  ɵMatchMedia as MatchMedia,
-  ɵMockMatchMedia as MockMatchMedia,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import { FlexModule, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
-import {
   customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMatchMedia as MatchMedia,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleBuilder,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import { FlexModule, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
 
 describe('layout directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
   let styler: StyleUtils;
-  let createTestComponent = (template: string) => {
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestLayoutComponent)(template);
 
     inject(
@@ -168,7 +170,7 @@ describe('layout directive', () => {
     });
 
     it('should set row-reverse direction for nested fxLayout containers', () => {
-      let template = `
+      const template = `
         <div [fxLayout]='direction' (click)='toggleDirection()' class='colored box' >
           <div fxFlex='20'>  fxFlex='20'  </div>
           <div fxFlex='60'>  outer fxFlex='60'
@@ -181,7 +183,7 @@ describe('layout directive', () => {
           <div fxFlex >      fxFlex       </div>
         </div>
       `;
-      let selector = '[fxLayout="row-reverse"]';
+      const selector = '[fxLayout="row-reverse"]';
 
       createTestComponent(template);
       fixture.detectChanges();

@@ -48,7 +48,7 @@ describe('match-media', () => {
 
   it('can observe the initial, default activation for mediaQuery == "all". ', () => {
     let current: MediaChange = new MediaChange();
-    let subscription = mediaController
+    const subscription = mediaController
       .observe()
       .subscribe((change: MediaChange) => {
         current = change;
@@ -60,11 +60,11 @@ describe('match-media', () => {
 
   it('can observe all mediaQuery activations', () => {
     let current: MediaChange = new MediaChange();
-    let query1 = 'screen and (min-width: 610px) and (max-width: 620px)';
-    let query2 = '(min-width: 730px) and (max-width: 950px)';
+    const query1 = 'screen and (min-width: 610px) and (max-width: 620px)';
+    const query2 = '(min-width: 730px) and (max-width: 950px)';
 
     const queries = [query1, query2];
-    let subscription = mediaController
+    const subscription = mediaController
       .observe(queries)
       .subscribe((change: MediaChange) => {
         current = change;
@@ -87,12 +87,12 @@ describe('match-media', () => {
   it('can observe an array of custom mediaQuery ranges', () => {
     let current: MediaChange = new MediaChange(),
       activated;
-    let query1 = 'screen and (min-width: 610px) and (max-width: 620px)';
-    let query2 = '(min-width: 730px) and (max-width: 950px)';
+    const query1 = 'screen and (min-width: 610px) and (max-width: 620px)';
+    const query2 = '(min-width: 730px) and (max-width: 950px)';
 
     mediaController.registerQuery([query1, query2]);
 
-    let subscription = mediaController
+    const subscription = mediaController
       .observe([query1], true)
       .subscribe((change: MediaChange) => {
         current = change;
@@ -160,7 +160,7 @@ describe('match-media', () => {
 
     it('can observe an existing activation', () => {
       let current: MediaChange = new MediaChange();
-      let bp = breakPoints.findByAlias('md')!;
+      const bp = breakPoints.findByAlias('md')!;
       const onChange = (change: MediaChange) => (current = change);
       const subscription = watchMedia('md', onChange);
 
@@ -199,8 +199,8 @@ describe('match-media', () => {
       const onChange = (change: MediaChange) => (current = change);
       const subscription = watchMedia('md', onChange);
 
-      let bp = breakPoints.findByAlias('md')!;
-      let activated = mediaController.activate(bp.mediaQuery);
+      const bp = breakPoints.findByAlias('md')!;
+      const activated = mediaController.activate(bp.mediaQuery);
 
       expect(activated).toEqual(true);
       expect(current.mediaQuery).toEqual(bp.mediaQuery);
@@ -219,7 +219,7 @@ describe('match-media', () => {
       };
       let activationCount = 0,
         deactivationCount = 0;
-      let subscription = watchMedia('', (change: MediaChange) => {
+      const subscription = watchMedia('', (change: MediaChange) => {
         if (change.matches) {
           activationCount += 1;
         } else {

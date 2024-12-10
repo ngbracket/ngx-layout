@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -54,7 +55,7 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
     renderer2: Renderer2,
     @Optional() @Self() private readonly ngStyleInstance: NgStyle,
     @Inject(SERVER_TOKEN) serverLoaded: boolean,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: object
   ) {
     super(elementRef, null!, styler, marshal);
     if (!this.ngStyleInstance) {

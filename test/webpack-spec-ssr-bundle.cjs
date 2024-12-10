@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable no-undef */
 const { resolve } = require('path');
 const { AngularWebpackPlugin, AngularWebpackLoaderPath } = require('@ngtools/webpack');
 
