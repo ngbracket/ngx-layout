@@ -42,13 +42,13 @@ dependencies:
     specifier: ^19.0.4
     version: 19.0.4(@angular/common@19.0.3)(@angular/core@19.0.3)(@angular/platform-server@19.0.3)(@angular/router@19.0.3)
   express:
-    specifier: ^4.18.2
+    specifier: ^4.21.2
     version: 4.21.2
   rxjs:
     specifier: ^7.8.1
     version: 7.8.1
   tslib:
-    specifier: ^2.6.2
+    specifier: ^2.8.1
     version: 2.8.1
   zone.js:
     specifier: ^0.15.0
@@ -57,7 +57,7 @@ dependencies:
 devDependencies:
   '@angular-devkit/build-angular':
     specifier: ^19.0.4
-    version: 19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(karma@6.4.4)(ng-packagr@19.0.1)(protractor@7.0.0)(typescript@5.7.2)(vite@5.4.11)(webpack-cli@5.1.4)
+    version: 19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(karma@6.4.4)(ng-packagr@19.0.1)(protractor@7.0.0)(typescript@5.5.3)(vite@5.4.11)(webpack-cli@5.1.4)
   '@angular/cdk':
     specifier: ^19.0.2
     version: 19.0.2(@angular/common@19.0.3)(@angular/core@19.0.3)(rxjs@7.8.1)
@@ -66,30 +66,30 @@ devDependencies:
     version: 19.0.4(@types/node@20.17.9)
   '@angular/compiler-cli':
     specifier: 19.0.3
-    version: 19.0.3(@angular/compiler@19.0.3)(typescript@5.7.2)
+    version: 19.0.3(@angular/compiler@19.0.3)(typescript@5.5.3)
   '@ngtools/webpack':
-    specifier: ^17.0.10
-    version: 17.3.11(@angular/compiler-cli@19.0.3)(typescript@5.7.2)(webpack@5.97.1)
+    specifier: ^17.3.11
+    version: 17.3.11(@angular/compiler-cli@19.0.3)(typescript@5.5.3)(webpack@5.97.1)
   '@types/express':
-    specifier: ^4.17.17
+    specifier: ^4.17.21
     version: 4.17.21
   '@types/jasmine':
-    specifier: ^5.1.2
+    specifier: ^5.1.5
     version: 5.1.5
   '@types/minimatch':
     specifier: ^5.1.2
     version: 5.1.2
   '@types/node':
-    specifier: ^20.9.0
+    specifier: ^20.17.9
     version: 20.17.9
   conventional-changelog-cli:
     specifier: ^4.1.0
     version: 4.1.0
   jasmine-core:
-    specifier: ^5.1.1
+    specifier: ^5.5.0
     version: 5.5.0
   karma:
-    specifier: ^6.4.2
+    specifier: ^6.4.4
     version: 6.4.4
   karma-browserstack-launcher:
     specifier: ^1.6.0
@@ -101,7 +101,7 @@ devDependencies:
     specifier: ^2.2.1
     version: 2.2.1
   karma-firefox-launcher:
-    specifier: ^2.1.2
+    specifier: ^2.1.3
     version: 2.1.3
   karma-jasmine:
     specifier: ^5.1.0
@@ -113,16 +113,16 @@ devDependencies:
     specifier: ^0.3.1
     version: 0.3.1(karma@6.4.4)
   karma-sauce-launcher:
-    specifier: ^4.1.4
-    version: 4.3.6(typescript@5.7.2)
+    specifier: ^4.3.6
+    version: 4.3.6(typescript@5.5.3)
   minimatch:
-    specifier: ^9.0.3
+    specifier: ^9.0.5
     version: 9.0.5
   ng-packagr:
     specifier: ^19.0.1
-    version: 19.0.1(@angular/compiler-cli@19.0.3)(tslib@2.8.1)(typescript@5.7.2)
+    version: 19.0.1(@angular/compiler-cli@19.0.3)(tslib@2.8.1)(typescript@5.5.3)
   postcss:
-    specifier: ^8.4.31
+    specifier: ^8.4.49
     version: 8.4.49
   postcss-scss:
     specifier: ^4.0.9
@@ -132,18 +132,18 @@ devDependencies:
     version: 7.0.0
   stylelint:
     specifier: ^15.11.0
-    version: 15.11.0(typescript@5.7.2)
+    version: 15.11.0(typescript@5.5.3)
   ts-node:
-    specifier: ^10.9.1
-    version: 10.9.2(@types/node@20.17.9)(typescript@5.7.2)
+    specifier: ^10.9.2
+    version: 10.9.2(@types/node@20.17.9)(typescript@5.5.3)
   tslint:
     specifier: ^6.1.3
-    version: 6.1.3(typescript@5.7.2)
+    version: 6.1.3(typescript@5.5.3)
   typescript:
     specifier: ^5.5.3
-    version: 5.7.2
+    version: 5.5.3
   webpack:
-    specifier: ^5.89.0
+    specifier: ^5.97.1
     version: 5.97.1(webpack-cli@5.1.4)
   webpack-cli:
     specifier: ^5.1.4
@@ -169,7 +169,7 @@ packages:
       - chokidar
     dev: true
 
-  /@angular-devkit/build-angular@19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(karma@6.4.4)(ng-packagr@19.0.1)(protractor@7.0.0)(typescript@5.7.2)(vite@5.4.11)(webpack-cli@5.1.4):
+  /@angular-devkit/build-angular@19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(karma@6.4.4)(ng-packagr@19.0.1)(protractor@7.0.0)(typescript@5.5.3)(vite@5.4.11)(webpack-cli@5.1.4):
     resolution: {integrity: sha512-n7fcRdNB7ed5j6aZI+qPI/1LylFv1OiRNgBIeJxX3HEmzQxsHHLcxWog2yZK2Fvw3390xFx/VjZaklITj6tBFA==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -217,8 +217,8 @@ packages:
       '@angular-devkit/architect': 0.1900.4
       '@angular-devkit/build-webpack': 0.1900.4(webpack-dev-server@5.1.0)(webpack@5.96.1)
       '@angular-devkit/core': 19.0.4
-      '@angular/build': 19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(less@4.2.0)(postcss@8.4.49)(terser@5.36.0)(typescript@5.7.2)
-      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.7.2)
+      '@angular/build': 19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(less@4.2.0)(postcss@8.4.49)(terser@5.36.0)(typescript@5.5.3)
+      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.5.3)
       '@angular/platform-server': 19.0.3(@angular/animations@19.0.3)(@angular/common@19.0.3)(@angular/compiler@19.0.3)(@angular/core@19.0.3)(@angular/platform-browser@19.0.3)
       '@angular/ssr': 19.0.4(@angular/common@19.0.3)(@angular/core@19.0.3)(@angular/platform-server@19.0.3)(@angular/router@19.0.3)
       '@babel/core': 7.26.0
@@ -231,7 +231,7 @@ packages:
       '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
       '@babel/runtime': 7.26.0
       '@discoveryjs/json-ext': 0.6.3
-      '@ngtools/webpack': 19.0.4(@angular/compiler-cli@19.0.3)(typescript@5.7.2)(webpack@5.96.1)
+      '@ngtools/webpack': 19.0.4(@angular/compiler-cli@19.0.3)(typescript@5.5.3)(webpack@5.96.1)
       '@vitejs/plugin-basic-ssl': 1.1.0(vite@5.4.11)
       ansi-colors: 4.1.3
       autoprefixer: 10.4.20(postcss@8.4.49)
@@ -251,13 +251,13 @@ packages:
       license-webpack-plugin: 4.0.2(webpack@5.96.1)
       loader-utils: 3.3.1
       mini-css-extract-plugin: 2.9.2(webpack@5.96.1)
-      ng-packagr: 19.0.1(@angular/compiler-cli@19.0.3)(tslib@2.8.1)(typescript@5.7.2)
+      ng-packagr: 19.0.1(@angular/compiler-cli@19.0.3)(tslib@2.8.1)(typescript@5.5.3)
       open: 10.1.0
       ora: 5.4.1
       picomatch: 4.0.2
       piscina: 4.7.0
       postcss: 8.4.49
-      postcss-loader: 8.1.1(postcss@8.4.49)(typescript@5.7.2)(webpack@5.96.1)
+      postcss-loader: 8.1.1(postcss@8.4.49)(typescript@5.5.3)(webpack@5.96.1)
       protractor: 7.0.0
       resolve-url-loader: 5.0.0
       rxjs: 7.8.1
@@ -269,7 +269,7 @@ packages:
       terser: 5.36.0
       tree-kill: 1.2.2
       tslib: 2.8.1
-      typescript: 5.7.2
+      typescript: 5.5.3
       webpack: 5.96.1(esbuild@0.24.0)(webpack-cli@5.1.4)
       webpack-dev-middleware: 7.4.2(webpack@5.96.1)
       webpack-dev-server: 5.1.0(webpack-cli@5.1.4)(webpack@5.97.1)
@@ -352,7 +352,7 @@ packages:
       '@angular/core': 19.0.3(rxjs@7.8.1)(zone.js@0.15.0)
       tslib: 2.8.1
 
-  /@angular/build@19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(less@4.2.0)(postcss@8.4.49)(terser@5.36.0)(typescript@5.7.2):
+  /@angular/build@19.0.4(@angular/compiler-cli@19.0.3)(@angular/compiler@19.0.3)(@angular/platform-server@19.0.3)(@angular/ssr@19.0.4)(@types/node@20.17.9)(less@4.2.0)(postcss@8.4.49)(terser@5.36.0)(typescript@5.5.3):
     resolution: {integrity: sha512-ubsNjLb54VkZwcPQ21Ke8aAHiIrRIcv7gG3R6/6XOoWeK1K2+tsv8bnO4mz5cHgzWOspLOT7FDC83NJjrKX3Nw==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -385,7 +385,7 @@ packages:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1900.4
       '@angular/compiler': 19.0.3(@angular/core@19.0.3)
-      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.7.2)
+      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.5.3)
       '@angular/platform-server': 19.0.3(@angular/animations@19.0.3)(@angular/common@19.0.3)(@angular/compiler@19.0.3)(@angular/core@19.0.3)(@angular/platform-browser@19.0.3)
       '@angular/ssr': 19.0.4(@angular/common@19.0.3)(@angular/core@19.0.3)(@angular/platform-server@19.0.3)(@angular/router@19.0.3)
       '@babel/core': 7.26.0
@@ -411,7 +411,7 @@ packages:
       rollup: 4.26.0
       sass: 1.80.7
       semver: 7.6.3
-      typescript: 5.7.2
+      typescript: 5.5.3
       vite: 5.4.11(@types/node@20.17.9)(less@4.2.0)(sass@1.80.7)(terser@5.36.0)
       watchpack: 2.4.2
     optionalDependencies:
@@ -481,7 +481,7 @@ packages:
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  /@angular/compiler-cli@19.0.3(@angular/compiler@19.0.3)(typescript@5.7.2):
+  /@angular/compiler-cli@19.0.3(@angular/compiler@19.0.3)(typescript@5.5.3):
     resolution: {integrity: sha512-nayLcC3hSHoGKXCZInMdFcIZJEHYkEGNsdAutgCMuSj+lXCGuRUysuGC0rGzJc2R6nhgfaLJnO8T/O5acqaqdA==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
     hasBin: true
@@ -497,7 +497,7 @@ packages:
       reflect-metadata: 0.2.2
       semver: 7.6.3
       tslib: 2.8.1
-      typescript: 5.7.2
+      typescript: 5.5.3
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
@@ -2764,7 +2764,7 @@ packages:
     dev: true
     optional: true
 
-  /@ngtools/webpack@17.3.11(@angular/compiler-cli@19.0.3)(typescript@5.7.2)(webpack@5.97.1):
+  /@ngtools/webpack@17.3.11(@angular/compiler-cli@19.0.3)(typescript@5.5.3)(webpack@5.97.1):
     resolution: {integrity: sha512-SfTCbplt4y6ak5cf2IfqdoVOsnoNdh/j6Vu+wb8WWABKwZ5yfr2S/Gk6ithSKcdIZhAF8DNBOoyk1EJuf8Xkfg==}
     engines: {node: ^18.13.0 || >=20.9.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -2772,12 +2772,12 @@ packages:
       typescript: '>=5.2 <5.5'
       webpack: ^5.54.0
     dependencies:
-      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.7.2)
-      typescript: 5.7.2
+      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.5.3)
+      typescript: 5.5.3
       webpack: 5.97.1(webpack-cli@5.1.4)
     dev: true
 
-  /@ngtools/webpack@19.0.4(@angular/compiler-cli@19.0.3)(typescript@5.7.2)(webpack@5.96.1):
+  /@ngtools/webpack@19.0.4(@angular/compiler-cli@19.0.3)(typescript@5.5.3)(webpack@5.96.1):
     resolution: {integrity: sha512-N3WCbQz5ipdAZoSWHNf81RLET6+isq35+GZu9u0StpFtJCpXAmRRAv4vdMUYL7DLOzRmvEgwww6Rd5AwGeLFSw==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -2785,8 +2785,8 @@ packages:
       typescript: '>=5.5 <5.7'
       webpack: ^5.54.0
     dependencies:
-      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.7.2)
-      typescript: 5.7.2
+      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.5.3)
+      typescript: 5.5.3
       webpack: 5.96.1(esbuild@0.24.0)(webpack-cli@5.1.4)
     dev: true
 
@@ -3671,10 +3671,10 @@ packages:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
     dev: true
 
-  /@types/puppeteer-core@5.4.0(typescript@5.7.2):
+  /@types/puppeteer-core@5.4.0(typescript@5.5.3):
     resolution: {integrity: sha512-yqRPuv4EFcSkTyin6Yy17pN6Qz2vwVwTCJIDYMXbE3j8vTPhv0nCQlZOl5xfi0WHUkqvQsjAR8hAfjeMCoetwg==}
     dependencies:
-      '@types/puppeteer': 7.0.4(typescript@5.7.2)
+      '@types/puppeteer': 7.0.4(typescript@5.5.3)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -3682,11 +3682,11 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@types/puppeteer@7.0.4(typescript@5.7.2):
+  /@types/puppeteer@7.0.4(typescript@5.5.3):
     resolution: {integrity: sha512-ja78vquZc8y+GM2al07GZqWDKQskQXygCDiu0e3uO0DMRKqE0MjrFBFmTulfPYzLB6WnL7Kl2tFPy0WXSpPomg==}
     deprecated: This is a stub types definition. puppeteer provides its own type definitions, so you do not need this installed.
     dependencies:
-      puppeteer: 23.10.3(typescript@5.7.2)
+      puppeteer: 23.10.3(typescript@5.5.3)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -5357,7 +5357,7 @@ packages:
       vary: 1.1.2
     dev: true
 
-  /cosmiconfig@8.3.6(typescript@5.7.2):
+  /cosmiconfig@8.3.6(typescript@5.5.3):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -5370,10 +5370,10 @@ packages:
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
-      typescript: 5.7.2
+      typescript: 5.5.3
     dev: true
 
-  /cosmiconfig@9.0.0(typescript@5.7.2):
+  /cosmiconfig@9.0.0(typescript@5.5.3):
     resolution: {integrity: sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -5386,7 +5386,7 @@ packages:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
-      typescript: 5.7.2
+      typescript: 5.5.3
     dev: true
 
   /crc-32@1.2.2:
@@ -8023,13 +8023,13 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /karma-sauce-launcher@4.3.6(typescript@5.7.2):
+  /karma-sauce-launcher@4.3.6(typescript@5.5.3):
     resolution: {integrity: sha512-Ej62q4mUPFktyAm8g0g8J5qhwEkXwdHrwtiV4pZjKNHNnSs+4qgDyzs3VkpOy3AmNTsTqQXUN/lpiy0tZpDJZQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       global-agent: 2.2.0
       saucelabs: 4.7.8
-      webdriverio: 6.12.1(typescript@5.7.2)
+      webdriverio: 6.12.1(typescript@5.5.3)
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -8870,7 +8870,7 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
-  /ng-packagr@19.0.1(@angular/compiler-cli@19.0.3)(tslib@2.8.1)(typescript@5.7.2):
+  /ng-packagr@19.0.1(@angular/compiler-cli@19.0.3)(tslib@2.8.1)(typescript@5.5.3):
     resolution: {integrity: sha512-PnXa/y3ce3v4bKJNtUBS7qcNoyv5g/tSthoMe23NyMV5kjNY4+hJT7h64zK+8tnJWTelCbIpoep7tmSPsOifBA==}
     engines: {node: ^18.19.1 || >=20.11.1}
     hasBin: true
@@ -8883,7 +8883,7 @@ packages:
       tailwindcss:
         optional: true
     dependencies:
-      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.7.2)
+      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3)(typescript@5.5.3)
       '@rollup/plugin-json': 6.1.0(rollup@4.28.1)
       '@rollup/wasm-node': 4.28.1
       ajv: 8.17.1
@@ -8905,7 +8905,7 @@ packages:
       rxjs: 7.8.1
       sass: 1.82.0
       tslib: 2.8.1
-      typescript: 5.7.2
+      typescript: 5.5.3
     optionalDependencies:
       rollup: 4.28.1
     dev: true
@@ -9457,6 +9457,7 @@ packages:
 
   /parse5@7.2.1:
     resolution: {integrity: sha512-BuBYQYlv1ckiPdQi/ohiivi9Sagc9JG+Ozs0r7b/0iK3sKmrb0b9FdWdBbOdx6hBCM/F9Ir82ofnBhtZOjCRPQ==}
+    requiresBuild: true
     dependencies:
       entities: 4.5.0
 
@@ -9613,7 +9614,7 @@ packages:
       find-up: 6.3.0
     dev: true
 
-  /postcss-loader@8.1.1(postcss@8.4.49)(typescript@5.7.2)(webpack@5.96.1):
+  /postcss-loader@8.1.1(postcss@8.4.49)(typescript@5.5.3)(webpack@5.96.1):
     resolution: {integrity: sha512-0IeqyAsG6tYiDRCYKQJLAmgQr47DX6N7sFSWvQxt6AcupX8DIdmykuk/o/tx0Lze3ErGHJEp5OSRxrelC6+NdQ==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
@@ -9626,7 +9627,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      cosmiconfig: 9.0.0(typescript@5.7.2)
+      cosmiconfig: 9.0.0(typescript@5.5.3)
       jiti: 1.21.6
       postcss: 8.4.49
       semver: 7.6.3
@@ -9907,7 +9908,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer@23.10.3(typescript@5.7.2):
+  /puppeteer@23.10.3(typescript@5.5.3):
     resolution: {integrity: sha512-ODG+L9vCSPkQ1j+yDtNDdkSsWt2NXNrQO5C8MlwkYgE2hYnXdqVRbBpsHnoP7+EULJJKbWyR2Q4BdfohjQor3A==}
     engines: {node: '>=18'}
     hasBin: true
@@ -9915,7 +9916,7 @@ packages:
     dependencies:
       '@puppeteer/browsers': 2.6.1
       chromium-bidi: 0.8.0(devtools-protocol@0.0.1367902)
-      cosmiconfig: 9.0.0(typescript@5.7.2)
+      cosmiconfig: 9.0.0(typescript@5.5.3)
       devtools-protocol: 0.0.1367902
       puppeteer-core: 23.10.3
       typed-query-selector: 2.12.0
@@ -11148,7 +11149,7 @@ packages:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
     dev: true
 
-  /stylelint@15.11.0(typescript@5.7.2):
+  /stylelint@15.11.0(typescript@5.5.3):
     resolution: {integrity: sha512-78O4c6IswZ9TzpcIiQJIN49K3qNoXTM8zEJzhaTE/xRTCZswaovSEVIa/uwbOltZrk16X4jAxjaOhzz/hTm1Kw==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
@@ -11159,7 +11160,7 @@ packages:
       '@csstools/selector-specificity': 3.1.1(postcss-selector-parser@6.1.2)
       balanced-match: 2.0.0
       colord: 2.9.3
-      cosmiconfig: 8.3.6(typescript@5.7.2)
+      cosmiconfig: 8.3.6(typescript@5.5.3)
       css-functions-list: 3.2.3
       css-tree: 2.3.1
       debug: 4.4.0
@@ -11539,7 +11540,7 @@ packages:
       escape-string-regexp: 1.0.5
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.17.9)(typescript@5.7.2):
+  /ts-node@10.9.2(@types/node@20.17.9)(typescript@5.5.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -11565,7 +11566,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.7.2
+      typescript: 5.5.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -11577,7 +11578,7 @@ packages:
   /tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  /tslint@6.1.3(typescript@5.7.2):
+  /tslint@6.1.3(typescript@5.5.3):
     resolution: {integrity: sha512-IbR4nkT96EQOvKE2PW/djGz8iGNeJ4rF2mBfiYaR/nvUWYKJhLwimoJKgjIFEIDibBtOevj7BqCRL4oHeWWUCg==}
     engines: {node: '>=4.8.0'}
     deprecated: TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information.
@@ -11597,17 +11598,17 @@ packages:
       resolve: 1.22.8
       semver: 5.7.2
       tslib: 1.14.1
-      tsutils: 2.29.0(typescript@5.7.2)
-      typescript: 5.7.2
+      tsutils: 2.29.0(typescript@5.5.3)
+      typescript: 5.5.3
     dev: true
 
-  /tsutils@2.29.0(typescript@5.7.2):
+  /tsutils@2.29.0(typescript@5.5.3):
     resolution: {integrity: sha512-g5JVHCIJwzfISaXpXE1qvNalca5Jwob6FjI4AoPlqMusJ6ftFE7IkkFoMhVLRgK+4Kx3gkzb8UZK5t5yTTvEmA==}
     peerDependencies:
       typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev'
     dependencies:
       tslib: 1.14.1
-      typescript: 5.7.2
+      typescript: 5.5.3
     dev: true
 
   /tuf-js@3.0.1:
@@ -11688,8 +11689,8 @@ packages:
     resolution: {integrity: sha512-SbklCd1F0EiZOyPiW192rrHZzZ5sBijB6xM+cpmrwDqObvdtunOHHIk9fCGsoK5JVIYXoyEp4iEdE3upFH3PAg==}
     dev: true
 
-  /typescript@5.7.2:
-    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
+  /typescript@5.5.3:
+    resolution: {integrity: sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
@@ -11978,11 +11979,11 @@ packages:
       lodash.merge: 4.6.2
     dev: true
 
-  /webdriverio@6.12.1(typescript@5.7.2):
+  /webdriverio@6.12.1(typescript@5.5.3):
     resolution: {integrity: sha512-Nx7ge0vTWHVIRUbZCT+IuMwB5Q0Q5nLlYdgnmmJviUKLuc3XtaEBkYPTbhHWHgSBXsPZMIc023vZKNkn+6iyeQ==}
     engines: {node: '>=10.0.0'}
     dependencies:
-      '@types/puppeteer-core': 5.4.0(typescript@5.7.2)
+      '@types/puppeteer-core': 5.4.0(typescript@5.5.3)
       '@wdio/config': 6.12.1
       '@wdio/logger': 6.10.10
       '@wdio/repl': 6.11.0
