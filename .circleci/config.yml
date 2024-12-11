@@ -10,7 +10,7 @@
 # http://yaml-online-parser.appspot.com/
 
 var_1: &docker_image cimg/node:20.15.1
-var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "pnpm-lock" }}-0.7.0
+var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "pnpm-lock.yaml" }}
 
 # Settings common to each job
 var_3: &job_defaults
