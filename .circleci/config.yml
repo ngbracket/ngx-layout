@@ -45,7 +45,7 @@ var_6: &save_cache
 # in sync. Unlike in Travis, we don't need to manually purge the node modules if stale because
 # CircleCI automatically discards the cache if the checksum of the lock file has changed.
 var_7: &pnpm_install
-  run: pnpm install --frozen-lockfile --non-interactive
+  run: pnpm install # --frozen-lockfile --non-interactive //when set up with yarn
 
 # Sets up a different Docker image that includes a moe recent Firefox version which
 # is needed for headless testing.
@@ -53,7 +53,7 @@ var_8: &docker-firefox-image
   # TODO(devversion): Temporarily use a image that includes Firefox 62 because the
   # ngcontainer image does include an old Firefox version that does not support headless.
   # See the PR that fixes this: https://github.com/angular/angular/pull/26435
-  - image: cimg/node:20.15.1-browsers
+  - image: cimg/node:20.18.1-browsers
 
 # Attaches the release output which has been stored in the workspace to the current job.
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
