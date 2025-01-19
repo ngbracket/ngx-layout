@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'demo-responsive-layout-direction',
-  template: `
+    selector: 'demo-responsive-layout-direction',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title>Responsive Layout Directions</mat-card-title>
       <mat-card-subtitle>Layout direction changes to 'column' for 'xs' or 'sm' viewport sizes:
@@ -20,6 +20,7 @@ import {Component} from '@angular/core';
         <media-query-status></media-query-status>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: false
 })
 export class ResponsiveLayoutDirectionComponent {}

@@ -8,8 +8,8 @@ describe('FlexRowFillWrapComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlexRowFillWrapComponent ]
-    })
+    declarations: [FlexRowFillWrapComponent]
+})
     .compileComponents();
   }));
 

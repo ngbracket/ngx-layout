@@ -10,10 +10,10 @@ import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   CoreModule,
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 import { DefaultLayoutDirective } from '@ngbracket/ngx-layout/flex';
 
@@ -45,12 +45,13 @@ describe('style directive', () => {
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, CoreModule],
-      declarations: [
-        TestStyleComponent,
-        DefaultLayoutDirective,
+      imports: [
+        CommonModule,
+        CoreModule,
         DefaultStyleDirective,
+        DefaultLayoutDirective,
       ],
+      declarations: [TestStyleComponent],
       providers: [MockMatchMediaProvider],
     });
   });
@@ -212,6 +213,7 @@ describe('style directive', () => {
 @Component({
   selector: 'test-style-api',
   template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestStyleComponent {
   fontSize: number = 0;

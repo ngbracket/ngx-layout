@@ -3,9 +3,10 @@ import {Component} from '@angular/core';
 const DIRECTIONS = ['', '-reverse'];
 
 @Component({
-  selector: 'demo-grid-area-row-span',
-  templateUrl: './grid-area-row-span.component.html',
-  styleUrls: ['./grid-area-row-span.component.scss']
+    selector: 'demo-grid-area-row-span',
+    templateUrl: './grid-area-row-span.component.html',
+    styleUrls: ['./grid-area-row-span.component.scss'],
+    standalone: false
 })
 export class GridAreaRowSpanComponent {
   direction = '';

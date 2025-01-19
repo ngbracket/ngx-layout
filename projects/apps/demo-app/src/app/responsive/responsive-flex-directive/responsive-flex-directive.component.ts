@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'demo-responsive-flex-directive',
-  template: `
+    selector: 'demo-responsive-flex-directive',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title>Responsive Flex Directives</mat-card-title>
       <mat-card-subtitle>Use the show hide APIs to responsively show or hide elements:
@@ -21,6 +21,7 @@ import {Component} from '@angular/core';
         <media-query-status></media-query-status>
       </mat-card-footer>
     </mat-card>
-  `
+  `,
+    standalone: false
 })
 export class ResponsiveFlexDirectiveComponent {}

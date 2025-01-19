@@ -8,8 +8,8 @@ describe('ResponsiveStyleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponsiveStyleComponent ]
-    })
+    declarations: [ResponsiveStyleComponent]
+})
     .compileComponents();
   }));
 

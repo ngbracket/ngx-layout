@@ -8,5 +8,4 @@ if (environment.production) {
   enableProdMode();
 }
 
-// export { AppServerModule } from './app/app.server.module';
 export default () => bootstrapApplication(AppComponent);

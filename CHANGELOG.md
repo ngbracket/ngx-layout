@@ -1,36 +1,50 @@
-# [18.0.0](https://github.com/ngbracket/ngx-layout/compare/17.0.0...18.0.0) (2024-07-17)
-
+# [19.0.0](https://github.com/ngbracket/ngx-layout/compare/18.0.0...19.0.0) (2024-12-15)
 
 ### Bug Fixes
 
-* **etag:** removed etag ([22ba2d9](https://github.com/ngbracket/ngx-layout/commit/22ba2d90b521cdd3ec62eefb7d31992acf1858a3))
-* **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
-* **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
-* **typescript:** version of typescript was too high ([8358bc4](https://github.com/ngbracket/ngx-layout/commit/8358bc49493730b636ef3c384dd7452f9625b9ca))
-* **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
-* **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
-* **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
-
+- **ci:** fix circle ci errors ([bbd0878](https://github.com/ngbracket/ngx-layout/commit/bbd08782d025f74001bdc0b15325eed15d196e78))
+- **circleci:** lockfile issues ([4149672](https://github.com/ngbracket/ngx-layout/commit/4149672e2fed352faccb13b721b64be12cd9aaf7))
+- **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
+- **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
+- **pnpm:** checksum ([4292cdb](https://github.com/ngbracket/ngx-layout/commit/4292cdb955faedea3c4b590f4415f2c03341f3af))
+- **pnpm:** fix pnpm issues ([1494b7c](https://github.com/ngbracket/ngx-layout/commit/1494b7c1030ea0941ad5def3e3fda264a5b1d635))
+- **typescript:** version of typescript was too high ([8358bc4](https://github.com/ngbracket/ngx-layout/commit/8358bc49493730b636ef3c384dd7452f9625b9ca))
+- **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
+- **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
+- **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
 
 ### Features
 
-* **upgrade:** upgrade to 18.1 ([36258f6](https://github.com/ngbracket/ngx-layout/commit/36258f62fc77bb0bac0fc9cdb673db9ea85d6527))
+- **pnpm:** convert to pnpm ([54bcfdb](https://github.com/ngbracket/ngx-layout/commit/54bcfdb88979facfac7553d0d2271cd03c385f0b))
+- **upgrade:** upgrade to version 19 of Angular ([4bbc86a](https://github.com/ngbracket/ngx-layout/commit/4bbc86a66beca7597af782741c968967ab2bf224))
 
-
-
-
-## [17.0.1](https://github.com/ngbracket/ngx-layout/compare/16.1.1...17.0.1) (2024-01-15)
-
+# [18.0.0](https://github.com/ngbracket/ngx-layout/compare/17.0.0...18.0.0) (2024-07-17)
 
 ### Bug Fixes
 
-* **etag:** removed etag ([22ba2d9](https://github.com/ngbracket/ngx-layout/commit/22ba2d90b521cdd3ec62eefb7d31992acf1858a3))
-* **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
-* **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
-* **typescript:** version of typescript was too high ([8358bc4](https://github.com/ngbracket/ngx-layout/commit/8358bc49493730b636ef3c384dd7452f9625b9ca))
-* **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
-* **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
-* **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
+- **etag:** removed etag ([22ba2d9](https://github.com/ngbracket/ngx-layout/commit/22ba2d90b521cdd3ec62eefb7d31992acf1858a3))
+- **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
+- **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
+- **typescript:** version of typescript was too high ([8358bc4](https://github.com/ngbracket/ngx-layout/commit/8358bc49493730b636ef3c384dd7452f9625b9ca))
+- **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
+- **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
+- **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
+
+### Features
+
+- **upgrade:** upgrade to 18.1 ([36258f6](https://github.com/ngbracket/ngx-layout/commit/36258f62fc77bb0bac0fc9cdb673db9ea85d6527))
+
+## [17.0.1](https://github.com/ngbracket/ngx-layout/compare/16.1.1...17.0.1) (2024-01-15)
+
+### Bug Fixes
+
+- **etag:** removed etag ([22ba2d9](https://github.com/ngbracket/ngx-layout/commit/22ba2d90b521cdd3ec62eefb7d31992acf1858a3))
+- **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
+- **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
+- **typescript:** version of typescript was too high ([8358bc4](https://github.com/ngbracket/ngx-layout/commit/8358bc49493730b636ef3c384dd7452f9625b9ca))
+- **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
+- **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
+- **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
 
 # [17.0.0](https://github.com/ngbracket/ngx-layout/compare/16.1.1...17.0.0) (2023-11-16)
 

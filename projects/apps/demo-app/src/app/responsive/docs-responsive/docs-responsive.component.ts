@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'demo-docs-responsive',
-  template: `
+    selector: 'demo-docs-responsive',
+    template: `
     <demo-responsive-layout-direction  class='small-demo' fxHide.print>
     </demo-responsive-layout-direction>
     <demo-responsive-row-column class='small-demo'>  </demo-responsive-row-column>
@@ -10,6 +10,7 @@ import {Component} from '@angular/core';
     <demo-responsive-flex-order  class='small-demo'>  </demo-responsive-flex-order>
     <demo-responsive-show-hide  class='small-demo'>  </demo-responsive-show-hide>
     <demo-responsive-style  class='small-demo'>  </demo-responsive-style>
-  `
+  `,
+    standalone: false
 })
 export class DocsResponsiveComponent {}

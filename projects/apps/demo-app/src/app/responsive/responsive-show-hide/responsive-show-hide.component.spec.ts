@@ -8,8 +8,8 @@ describe('ResponsiveShowHideComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponsiveShowHideComponent ]
-    })
+    declarations: [ResponsiveShowHideComponent]
+})
     .compileComponents();
   }));
 

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 // Example taken from https://gridbyexample.com/examples/example16/
 @Component({
-  selector: 'demo-grid-position',
-  template: `
+    selector: 'demo-grid-position',
+    template: `
     <mat-card class="card-demo">
       <mat-card-title>Grid with Positioning</mat-card-title>
       <mat-card-content class="containerX">
@@ -28,7 +28,7 @@ import { Component } from '@angular/core';
       </mat-card-content>
     </mat-card>
   `,
-  styles: [`.topleft {
+    styles: [`.topleft {
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +48,8 @@ import { Component } from '@angular/core';
     border-radius: 5px;
     padding: 50px;
     font-size: 150%;
-  }`]
+  }`],
+    standalone: false
 })
 export class GridPositionComponent {
 }

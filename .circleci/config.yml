@@ -10,7 +10,7 @@
 # http://yaml-online-parser.appspot.com/
 
 var_1: &docker_image cimg/node:20.15.1
-var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "yarn.lock" }}-0.7.0
+var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "pnpm-lock.yaml" }}
 
 # Settings common to each job
 var_3: &job_defaults
@@ -26,26 +26,26 @@ var_4: &checkout_code
     # which we want. See https://discuss.circleci.com/t/1662
     post: git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
 
-# Restores the cache that could be available for the current Yarn lock file. The cache usually
+# Restores the cache that could be available for the current pnpm lock file. The cache usually
 # includes the node modules and the build cache.
 var_5: &restore_cache
   restore_cache:
     key: *cache_key
 
-# Saves the cache for the current Yarn lock file. We store the node modules and the build
+# Saves the cache for the current pnpm lock file. We store the node modules and the build
 # cache in order to make subsequent builds faster.
 var_6: &save_cache
   save_cache:
     key: *cache_key
     paths:
-      - ~/.cache/yarn
+      - ~/.cache/pnpm
 
 # Job step that ensures that the node module dependencies are installed and up-to-date. We use
-# Yarn with the frozen lockfile option in order to make sure that lock file and package.json are
+# pnpm with the frozen lockfile option in order to make sure that lock file and package.json are
 # in sync. Unlike in Travis, we don't need to manually purge the node modules if stale because
 # CircleCI automatically discards the cache if the checksum of the lock file has changed.
-var_7: &yarn_install
-  run: yarn install --frozen-lockfile --non-interactive
+var_7: &pnpm_install
+  run: pnpm install # --frozen-lockfile --non-interactive //when set up with yarn
 
 # Sets up a different Docker image that includes a moe recent Firefox version which
 # is needed for headless testing.
@@ -53,7 +53,7 @@ var_8: &docker-firefox-image
   # TODO(devversion): Temporarily use a image that includes Firefox 62 because the
   # ngcontainer image does include an old Firefox version that does not support headless.
   # See the PR that fixes this: https://github.com/angular/angular/pull/26435
-  - image: cimg/node:20.15.1-browsers
+  - image: cimg/node:20.18.1-browsers
 
 # Attaches the release output which has been stored in the workspace to the current job.
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
@@ -81,9 +81,9 @@ jobs:
     steps:
       - *checkout_code
       - *restore_cache
-      - *yarn_install
+      - *pnpm_install
 
-      - run: yarn build
+      - run: pnpm build
 
       # Note: We want to save the cache in this job because the workspace cache also
       # includes the build cache that will be updated in this job.
@@ -155,7 +155,7 @@ jobs:
       - *restore_cache
       - *attach_release_output
 
-      - run: yarn test:ssr
+      - run: pnpm test:ssr
 
   # -------------------------------------------------------------------------
   # Job that pre-render's the universal app with `@angular/platform-server`.
@@ -167,8 +167,8 @@ jobs:
       - *checkout_code
       - *attach_release_output
 
-      - run: yarn ng build demo-app
-      - run: yarn build:universal-demo-app
+      - run: pnpm ng build demo-app
+      - run: pnpm build:universal-demo-app
 
   # ----------------------------------
   # Lint job. Runs the gulp lint task.
@@ -178,9 +178,9 @@ jobs:
     steps:
       - *checkout_code
       - *restore_cache
-      - *yarn_install
+      - *pnpm_install
 
-      - run: yarn lint
+      - run: pnpm lint
 
   # ----------------------------------------
   # Job that publishes the build snapshots
@@ -197,7 +197,7 @@ jobs:
 
       - *checkout_code
       - *attach_release_output
-      - run: yarn stamp
+      - run: pnpm stamp
 
       # CircleCI has a config setting to enforce SSH for all github connections.
       # This is not compatible with our mechanism of using a Personal Access Token

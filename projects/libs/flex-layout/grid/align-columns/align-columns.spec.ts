@@ -10,10 +10,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  StyleUtils,
   ɵMatchMedia as MatchMedia,
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
@@ -431,6 +431,7 @@ describe('align columns directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

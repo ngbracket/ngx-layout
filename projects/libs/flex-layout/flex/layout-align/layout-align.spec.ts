@@ -10,24 +10,24 @@ import { CommonModule } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-import {
-  SERVER_TOKEN,
-  StyleBuilder,
-  StyleUtils,
-  ɵMatchMedia as MatchMedia,
-  ɵMockMatchMedia as MockMatchMedia,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import {
-  FlexModule,
-  LayoutAlignStyleBuilder,
-} from '@ngbracket/ngx-layout/flex';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMatchMedia as MatchMedia,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleBuilder,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import {
+  FlexModule,
+  LayoutAlignStyleBuilder,
+} from '@ngbracket/ngx-layout/flex';
 
 describe('layout-align directive', () => {
   let fixture: ComponentFixture<any>;
@@ -654,6 +654,7 @@ export class MockLayoutAlignStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestLayoutAlignComponent implements OnInit {
   direction = 'column';

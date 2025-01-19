@@ -371,8 +371,9 @@ describe('hide directive', () => {
 // *****************************************************************
 
 @Component({
-  selector: 'test-hide-api',
-  template: `<span>PlaceHolder Template HTML</span>`,
+    selector: 'test-hide-api',
+    template: `<span>PlaceHolder Template HTML</span>`,
+    standalone: false
 })
 class TestHideComponent implements OnInit {
   isVisible = 0;

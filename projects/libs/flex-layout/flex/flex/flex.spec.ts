@@ -1305,6 +1305,7 @@ export class MockFlexStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestFlexComponent {
   direction = 'column';
@@ -1318,6 +1319,7 @@ class TestFlexComponent {
       <div fxFlex="50%" fxFlex.sm="71%"></div>
     </div>
   `,
+  standalone: false,
 })
 class TestQueryWithFlexComponent {
   @ViewChild(DefaultFlexDirective, { static: true })

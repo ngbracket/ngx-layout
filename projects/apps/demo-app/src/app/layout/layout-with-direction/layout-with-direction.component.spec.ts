@@ -8,8 +8,8 @@ describe('LayoutWithDirectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayoutWithDirectionComponent ]
-    })
+    declarations: [LayoutWithDirectionComponent]
+})
     .compileComponents();
   }));
 

@@ -4,11 +4,12 @@ import {fromEvent, Observable} from 'rxjs';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
 
 @Directive({
-  selector: '[ngxSplitHandle]',
-  host: {
-    class: 'ngx-split-handle',
-    title: 'Drag to resize'
-  }
+    selector: '[ngxSplitHandle]',
+    host: {
+        class: 'ngx-split-handle',
+        title: 'Drag to resize'
+    },
+    standalone: false
 })
 export class SplitHandleDirective {
   @Output() drag: Observable<{ x: number, y: number }>;

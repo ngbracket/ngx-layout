@@ -9,19 +9,10 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, Directive, OnInit, PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-import {
-  MediaObserver,
-  SERVER_TOKEN,
-  StyleUtils,
-  ɵMatchMedia as MatchMedia,
-  ɵMockMatchMedia as MockMatchMedia,
-  ɵMockMatchMediaProvider as MockMatchMediaProvider,
-} from '@ngbracket/ngx-layout/core';
-import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
 import {
   customMatchers,
   expectEl,
@@ -29,6 +20,15 @@ import {
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import {
+  ɵMatchMedia as MatchMedia,
+  MediaObserver,
+  ɵMockMatchMedia as MockMatchMedia,
+  ɵMockMatchMediaProvider as MockMatchMediaProvider,
+  SERVER_TOKEN,
+  StyleUtils,
+} from '@ngbracket/ngx-layout/core';
+import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
 
 describe('show directive', () => {
   let fixture: ComponentFixture<any>;
@@ -66,6 +66,7 @@ describe('show directive', () => {
         FlexLayoutModule,
         FormsModule,
         MatSelectModule,
+        MatLabel,
         NoopAnimationsModule,
       ],
       declarations: [TestShowComponent],
@@ -279,8 +280,8 @@ describe('show directive', () => {
     it('should work with unknown elements', () => {
       createTestComponent(`
         <mat-form-field>
-          <mat-placeholder>foo</mat-placeholder>
-          <mat-placeholder fxHide.xs el>bar</mat-placeholder>
+          <mat-label>foo</mat-label>
+          <mat-label fxHide.xs el>bar</mat-label>
           <mat-select>
             <mat-option *ngFor="let option of [1,2,3]" [value]=option>
               option {{option}}
@@ -349,6 +350,7 @@ describe('show directive', () => {
       TestBed.configureTestingModule({
         imports: [
           CommonModule,
+          FxShowHideDirective,
           FlexLayoutModule.withConfig(
             {
               serverLoaded: true,
@@ -371,7 +373,7 @@ describe('show directive', () => {
             ]
           ),
         ],
-        declarations: [FxShowHideDirective],
+        declarations: [],
         providers: [MockMatchMediaProvider],
       });
     });
@@ -414,6 +416,7 @@ class FxShowHideDirective extends ShowHideDirective {
 @Component({
   selector: 'test-show-api',
   template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestShowComponent implements OnInit {
   isVisible = 0;

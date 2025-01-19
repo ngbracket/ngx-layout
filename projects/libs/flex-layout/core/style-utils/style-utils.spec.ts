@@ -95,5 +95,6 @@ describe('styler', () => {
 @Component({
   selector: 'test-style-utils',
   template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestLayoutComponent {}
