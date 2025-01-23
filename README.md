@@ -12,11 +12,15 @@ Thank you for your support.
 Getting Started
 Start by installing the ngx-layout library from npm
 
+```bash
 npm i -s @ngbracket/ngx-layout @angular/cdk
+```
+
 Next, you'll need to import the Layout module in your app's module.
 
-app.module.ts
+**app.module.ts**
 
+```ts
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 ...
 
@@ -25,9 +29,15 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
     imports: [ FlexLayoutModule ],
     ...
 });
-After that is configured, you can use the ngx-layout attributes in your HTML tags for flex layout:
+```
 
+After that is configured, you can use the ngx-layout attributes in your
+
+HTML tags for flex layout:
+
+```html
 <div fxLayout="row" fxLayoutAlign="space-between"></div>
+```
 
 Check out [all of the available options](https://github.com/ngbracket/ngx-layout/wiki/Declarative-API-Overview) for using ngx-layout in your application.
 
