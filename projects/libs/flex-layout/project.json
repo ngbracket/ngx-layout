@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "@ngbracket/ngx-layout",
+  "projectType": "library",
+  "sourceRoot": "projects/libs/flex-layout",
+  "prefix": "lib",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/releases/ngx-layout"],
+      "options": {
+        "project": "projects/libs/flex-layout/ng-package.json",
+        "tsConfig": "projects/libs/flex-layout/tsconfig.lib.json"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "watch": false,
+        "main": "projects/libs/flex-layout/test.ts",
+        "tsConfig": "projects/libs/flex-layout/tsconfig.spec.json",
+        "karmaConfig": "test/karma.conf.js"
+      }
+    }
+  }
+}
