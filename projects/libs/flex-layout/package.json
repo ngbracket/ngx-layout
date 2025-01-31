@@ -33,8 +33,7 @@
     "@angular/cdk": ">=19.0.0",
     "@angular/core": "0.0.0-NG",
     "@angular/common": "0.0.0-NG",
-    "@angular/platform-browser": "0.0.0-NG",
-    "rxjs": "^6.5.3 || ^7.8.1"
+    "@angular/platform-browser": "0.0.0-NG"
   },
   "type": "module",
   "description": "ngbracket/ngx-layout =======",

@@ -37,3 +37,8 @@ src/apps/hello-world/pnpm-lock.yaml
 pnpm-error.log
 .angular/cache
 out-tsc
+
+
+
+.nx/cache
+.nx/workspace-data
