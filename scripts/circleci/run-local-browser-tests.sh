@@ -12,4 +12,4 @@ cd $(dirname ${0})/../..
 export TEST_PLATFORM="local"
 
 # Run the unit tests on the local browsers with Karma.
-yarn ng test @ngbracket/ngx-layout
+nx ng test @ngbracket/ngx-layout
