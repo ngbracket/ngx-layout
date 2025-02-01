@@ -84,7 +84,7 @@ describe('break-point-provider', () => {
       },
     ];
     let bpList: BreakPoint[];
-    let accumulator: BreakPoint;
+    let accumulator!: BreakPoint;
     let byAlias = (alias: string): BreakPoint =>
       bpList.reduce((pos, it) => {
         return pos || (it.alias === alias ? it : null);

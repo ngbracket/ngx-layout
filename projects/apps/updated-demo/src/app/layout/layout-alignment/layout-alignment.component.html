@@ -1,49 +1,48 @@
 <mat-card class="card-demo">
-  <mat-card-title>Layout Children with 'layout-align'</mat-card-title>
-  <mat-card-subtitle></mat-card-subtitle>
+  <mat-card-title>Layout Align</mat-card-title>
   <mat-card-content>
     <div class="containerX">
-      <div class="colorNested box" [class.taller]="options.direction != 'row'">
+      <div class="colorNested box" [class.taller]="options.direction !== 'row'">
         <div
+          style="height: 100%"
           [fxLayout]="options.direction"
           [fxLayoutAlign]="layoutAlign()"
-          style="height: 100%"
         >
           <div class="blocks one">1</div>
           <div
             class="blocks"
-            [class.two_h]="options.direction == 'row'"
-            [class.two_w]="options.direction != 'row'"
+            [class.two_h]="options.direction === 'row'"
+            [class.two_w]="options.direction !== 'row'"
           >
             2
           </div>
           <div class="blocks three">3</div>
           <div
             class="blocks"
-            [class.four_h]="options.direction == 'row'"
-            [class.four_w]="options.direction != 'row'"
+            [class.four_h]="options.direction === 'row'"
+            [class.four_w]="options.direction !== 'row'"
           >
             4
           </div>
-          <div class="blocks fives">5</div>
+          <div class="blocks five">5</div>
         </div>
       </div>
     </div>
   </mat-card-content>
   <mat-card-actions
-    fxLayout="row"
+    fxlayout="row"
     fxLayoutAlign="center"
-    fxHide
+    fxhide
     fxHide.gt-sm="false"
   >
     <form
-      fxLayout="row"
+      fxlayout="row"
       fxLayout.xs="column"
       fxLayoutAlign="space-around stretch"
       class="demo_controls"
     >
       <div>
-        <div>Layout Direction</div>
+        <div>Layout directions</div>
         <mat-radio-group
           [(ngModel)]="options.direction"
           name="direction"
@@ -55,8 +54,8 @@
       </div>
       <div>
         <div>
-          Alignment in Layout Direction ({{
-            options.direction == 'row' ? 'horizontal' : 'vertical'
+          Alignment in layout direction ({{
+            options.direction === 'row' ? 'horizontal' : 'vertical'
           }})
         </div>
         <mat-radio-group
@@ -64,7 +63,7 @@
           name="mainAxis"
           fxLayout="column"
         >
-          <mat-radio-button value="none"><em>none</em></mat-radio-button>
+          <mat-radio-button value="">none</mat-radio-button>
           <mat-radio-button value="start">start (default)</mat-radio-button>
           <mat-radio-button value="center">center</mat-radio-button>
           <mat-radio-button value="end">end</mat-radio-button>
@@ -95,12 +94,10 @@
       </div>
     </form>
   </mat-card-actions>
-  <mat-card-footer style="width: 95%">
-    <div class="hint forceAbove" style="padding-left: 50px">
+  <mat-card-footer>
+    <div class="hint forceAbove">
       &lt;div fxLayout="{{ options.direction }}"
-      <span style="padding-left: 30px"
-        >fxLayoutAlign="{{ layoutAlign() }}"</span
-      >
+      <span>fxLayoutAlign="{{ layoutAlign() }}"</span>
       &gt;
     </div>
   </mat-card-footer>

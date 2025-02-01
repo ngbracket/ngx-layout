@@ -1,9 +1,9 @@
 import { APP_ID, enableProdMode, importProvidersFrom } from '@angular/core';
-
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BREAKPOINT, FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { AppComponent } from './app/app.component';
+import { AppServerModule } from './app/app.server.module';
 import { RoutingModule } from './app/routing.module';
 import { YBA_BREAKPOINT_PROVIDER } from './app/stack-overflow/hide-custom-bp/hide-with-custom-bp.component';
 import { environment } from './environments/environment';
@@ -24,6 +24,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    { provide: AppServerModule },
     { provide: APP_ID, useValue: 'serverApp' },
     importProvidersFrom(
       RoutingModule,
