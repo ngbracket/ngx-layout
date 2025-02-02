@@ -167,7 +167,7 @@ jobs:
       - *checkout_code
       - *attach_release_output
 
-      - run: pnpm ng build demo-app
+      - run: pnpm run build
       - run: pnpm build:universal-demo-app
 
   # ----------------------------------
