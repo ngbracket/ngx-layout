@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { LayoutGapComponent } from './layout-gap.component';
 
 describe('LayoutGapComponent', () => {
   let component: LayoutGapComponent;
   let fixture: ComponentFixture<LayoutGapComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [LayoutGapComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

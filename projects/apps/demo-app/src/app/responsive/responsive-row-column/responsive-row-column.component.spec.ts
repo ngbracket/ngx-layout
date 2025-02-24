@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveRowColumnComponent } from './responsive-row-column.component';
 
 describe('ResponsiveRowColumnComponent', () => {
   let component: ResponsiveRowColumnComponent;
   let fixture: ComponentFixture<ResponsiveRowColumnComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveRowColumnComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

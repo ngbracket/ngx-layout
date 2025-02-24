@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { DocsLayoutComponent } from './docs-layout.component';
 
 describe('DocsLayoutComponent', () => {
   let component: DocsLayoutComponent;
   let fixture: ComponentFixture<DocsLayoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [DocsLayoutComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

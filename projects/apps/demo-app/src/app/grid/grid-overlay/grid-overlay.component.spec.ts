@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsGridModule } from '../grid.module';
 import { GridOverlayComponent } from './grid-overlay.component';
 
 describe('GridOverlayComponent', () => {
   let component: GridOverlayComponent;
   let fixture: ComponentFixture<GridOverlayComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [GridOverlayComponent]
+    imports: [DocsGridModule]
 })
     .compileComponents();
   }));

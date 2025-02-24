@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { LayoutWithDirectionComponent } from './layout-with-direction.component';
 
 describe('LayoutWithDirectionComponent', () => {
   let component: LayoutWithDirectionComponent;
   let fixture: ComponentFixture<LayoutWithDirectionComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [LayoutWithDirectionComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

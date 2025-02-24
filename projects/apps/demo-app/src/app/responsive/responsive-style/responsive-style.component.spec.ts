@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveStyleComponent } from './responsive-style.component';
 
 describe('ResponsiveStyleComponent', () => {
   let component: ResponsiveStyleComponent;
   let fixture: ComponentFixture<ResponsiveStyleComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveStyleComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

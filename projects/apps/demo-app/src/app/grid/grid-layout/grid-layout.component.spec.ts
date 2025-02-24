@@ -1,20 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { FlexOffsetValuesComponent } from './grid-layout.component';
+import { DocsGridModule } from '../grid.module';
+import { GridLayoutComponent } from './grid-layout.component';
 
-describe('FlexOffsetValuesComponent', () => {
-  let component: FlexOffsetValuesComponent;
-  let fixture: ComponentFixture<FlexOffsetValuesComponent>;
+describe('GridLayoutComponent', () => {
+  let component: GridLayoutComponent;
+  let fixture: ComponentFixture<GridLayoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [FlexOffsetValuesComponent]
+    imports: [DocsGridModule],
 })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlexOffsetValuesComponent);
+    fixture = TestBed.createComponent(GridLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

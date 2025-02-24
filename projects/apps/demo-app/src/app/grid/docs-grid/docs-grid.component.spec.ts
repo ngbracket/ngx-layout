@@ -1,20 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { DocsLayoutComponent } from './docs-grid.component';
+import { DocsGridModule } from '../grid.module';
+import { DocsGridComponent } from './docs-grid.component';
 
-describe('DocsLayoutComponent', () => {
-  let component: DocsLayoutComponent;
-  let fixture: ComponentFixture<DocsLayoutComponent>;
+describe('DocsGridComponent', () => {
+  let component: DocsGridComponent;
+  let fixture: ComponentFixture<DocsGridComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [DocsLayoutComponent]
+    imports: [DocsGridModule]
 })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocsLayoutComponent);
+    fixture = TestBed.createComponent(DocsGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

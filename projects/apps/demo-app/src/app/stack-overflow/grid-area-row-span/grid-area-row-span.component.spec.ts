@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsStackOverflowModule } from '../stack-overflow.module';
 import { GridAreaRowSpanComponent } from './grid-area-row-span.component';
 
 describe('GridAreaRowSpanComponent', () => {
   let component: GridAreaRowSpanComponent;
   let fixture: ComponentFixture<GridAreaRowSpanComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [GridAreaRowSpanComponent]
+    imports: [DocsStackOverflowModule]
 })
     .compileComponents();
   }));

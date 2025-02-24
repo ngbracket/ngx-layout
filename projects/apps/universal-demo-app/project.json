@@ -82,6 +82,7 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
+        "watch": false,
         "main": "projects/apps/universal-demo-app/src/test.ts",
         "polyfills": "projects/apps/universal-demo-app/src/polyfills.ts",
         "tsConfig": "projects/apps/universal-demo-app/tsconfig.spec.json",

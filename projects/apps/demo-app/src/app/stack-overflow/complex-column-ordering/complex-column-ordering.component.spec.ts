@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsStackOverflowModule } from '../stack-overflow.module';
 import { ComplexColumnOrderingComponent } from './complex-column-ordering.component';
 
 describe('ComplexColumnOrderingComponent', () => {
   let component: ComplexColumnOrderingComponent;
   let fixture: ComponentFixture<ComplexColumnOrderingComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ComplexColumnOrderingComponent]
+    imports: [DocsStackOverflowModule],
 })
     .compileComponents();
   }));
