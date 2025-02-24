@@ -1,4 +1,5 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
+import { VERSION } from '@ngbracket/ngx-layout';
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
 describe('AppComponent', () => {
@@ -12,10 +13,10 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'demo'`, waitForAsync(() => {
+  it(`should have as version the library version`, waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('demo');
+    expect(app.version).toBe(VERSION.full);
   }));
   it('should render title in a h2 tag', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
