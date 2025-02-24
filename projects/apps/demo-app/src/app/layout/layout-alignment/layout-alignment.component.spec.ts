@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { LayoutAlignmentComponent } from './layout-alignment.component';
 
 describe('LayoutAlignmentComponent', () => {
@@ -8,7 +9,7 @@ describe('LayoutAlignmentComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [LayoutAlignmentComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

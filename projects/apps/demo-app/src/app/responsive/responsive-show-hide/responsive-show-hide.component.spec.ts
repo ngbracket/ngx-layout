@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveShowHideComponent } from './responsive-show-hide.component';
 
 describe('ResponsiveShowHideComponent', () => {
@@ -8,7 +9,7 @@ describe('ResponsiveShowHideComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveShowHideComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

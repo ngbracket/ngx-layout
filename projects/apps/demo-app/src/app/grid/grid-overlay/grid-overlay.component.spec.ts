@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsGridModule } from '../grid.module';
 import { GridOverlayComponent } from './grid-overlay.component';
 
 describe('GridOverlayComponent', () => {
@@ -8,7 +9,7 @@ describe('GridOverlayComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [GridOverlayComponent]
+    imports: [DocsGridModule]
 })
     .compileComponents();
   }));

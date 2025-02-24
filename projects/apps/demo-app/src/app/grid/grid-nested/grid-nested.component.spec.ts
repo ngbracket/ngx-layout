@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsGridModule } from '../grid.module';
 import { GridNestedComponent } from './grid-nested.component';
 
 describe('GridNestedComponent', () => {
@@ -8,7 +9,7 @@ describe('GridNestedComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [GridNestedComponent]
+    imports: [DocsGridModule]
 })
     .compileComponents();
   }));

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveRowColumnComponent } from './responsive-row-column.component';
 
 describe('ResponsiveRowColumnComponent', () => {
@@ -8,7 +9,7 @@ describe('ResponsiveRowColumnComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveRowColumnComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

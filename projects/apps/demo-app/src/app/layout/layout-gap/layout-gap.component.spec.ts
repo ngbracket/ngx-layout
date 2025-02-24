@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { LayoutGapComponent } from './layout-gap.component';
 
 describe('LayoutGapComponent', () => {
@@ -8,7 +9,7 @@ describe('LayoutGapComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [LayoutGapComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

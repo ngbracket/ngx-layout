@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsGridModule } from '../grid.module';
 import { GridMinmaxComponent } from './grid-minmax.component';
 
 describe('GridMinmaxComponent', () => {
@@ -8,7 +9,7 @@ describe('GridMinmaxComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [GridMinmaxComponent]
+    imports: [DocsGridModule]
 })
     .compileComponents();
   }));

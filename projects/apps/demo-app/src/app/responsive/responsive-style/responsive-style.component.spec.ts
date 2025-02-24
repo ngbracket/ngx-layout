@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveStyleComponent } from './responsive-style.component';
 
 describe('ResponsiveStyleComponent', () => {
@@ -8,7 +9,7 @@ describe('ResponsiveStyleComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveStyleComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

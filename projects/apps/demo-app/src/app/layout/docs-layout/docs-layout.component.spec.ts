@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { DocsLayoutComponent } from './docs-layout.component';
 
 describe('DocsLayoutComponent', () => {
@@ -8,7 +9,7 @@ describe('DocsLayoutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [DocsLayoutComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

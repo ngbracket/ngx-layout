@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsStackOverflowModule } from '../stack-overflow.module';
 import { MozHolyGrailComponent } from './moz-holy-grail.component';
 
 describe('MozHolyGrailComponent', () => {
@@ -8,7 +9,7 @@ describe('MozHolyGrailComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [MozHolyGrailComponent]
+    imports: [DocsStackOverflowModule]
 })
     .compileComponents();
   }));

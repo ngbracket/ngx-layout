@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveLayoutDirectionComponent } from './responsive-layout-direction.component';
 
 describe('ResponsiveLayoutDirectionComponent', () => {
@@ -8,7 +9,7 @@ describe('ResponsiveLayoutDirectionComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveLayoutDirectionComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

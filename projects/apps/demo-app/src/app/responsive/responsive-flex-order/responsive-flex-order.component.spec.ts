@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveFlexOrderComponent } from './responsive-flex-order.component';
 
 describe('ResponsiveFlexOrderComponent', () => {
@@ -8,7 +9,7 @@ describe('ResponsiveFlexOrderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveFlexOrderComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

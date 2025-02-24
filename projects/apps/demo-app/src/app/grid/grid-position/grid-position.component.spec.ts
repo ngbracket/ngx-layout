@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsGridModule } from '../grid.module';
 import { GridPositionComponent } from './grid-position.component';
 
 describe('GridPositionComponent', () => {
@@ -8,7 +9,7 @@ describe('GridPositionComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [GridPositionComponent]
+    imports: [DocsGridModule]
 })
     .compileComponents();
   }));

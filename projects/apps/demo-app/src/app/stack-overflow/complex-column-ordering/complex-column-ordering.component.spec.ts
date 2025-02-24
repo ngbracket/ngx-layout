@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsStackOverflowModule } from '../stack-overflow.module';
 import { ComplexColumnOrderingComponent } from './complex-column-ordering.component';
 
 describe('ComplexColumnOrderingComponent', () => {
@@ -8,7 +9,7 @@ describe('ComplexColumnOrderingComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ComplexColumnOrderingComponent]
+    imports: [DocsStackOverflowModule],
 })
     .compileComponents();
   }));

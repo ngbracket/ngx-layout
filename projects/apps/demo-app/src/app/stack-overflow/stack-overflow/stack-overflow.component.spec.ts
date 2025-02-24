@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsStackOverflowModule } from '../stack-overflow.module';
 import { StackOverflowComponent } from './stack-overflow.component';
 
 describe('StackOverflowComponent', () => {
@@ -8,7 +9,7 @@ describe('StackOverflowComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [StackOverflowComponent]
+    imports: [DocsStackOverflowModule],
 })
     .compileComponents();
   }));

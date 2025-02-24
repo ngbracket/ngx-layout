@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { FlexOffsetValuesComponent } from './flex-offset-values.component';
 
 describe('FlexOffsetValuesComponent', () => {
@@ -8,7 +9,7 @@ describe('FlexOffsetValuesComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [FlexOffsetValuesComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { FlexRowFillWrapComponent } from './flex-row-fill-wrap.component';
 
 describe('FlexRowFillWrapComponent', () => {
@@ -8,7 +9,7 @@ describe('FlexRowFillWrapComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [FlexRowFillWrapComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

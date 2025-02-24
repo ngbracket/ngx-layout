@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsStackOverflowModule } from '../stack-overflow.module';
 import { GridColumnSpanComponent } from './grid-column-span.component';
 
 describe('GridColumnSpanComponent', () => {
@@ -8,7 +9,7 @@ describe('GridColumnSpanComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [GridColumnSpanComponent]
+    imports: [DocsStackOverflowModule],
 })
     .compileComponents();
   }));

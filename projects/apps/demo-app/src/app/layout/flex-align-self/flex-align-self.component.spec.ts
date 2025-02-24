@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { FlexAlignSelfComponent } from './flex-align-self.component';
 
 describe('FlexAlignSelfComponent', () => {
@@ -8,7 +9,7 @@ describe('FlexAlignSelfComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [FlexAlignSelfComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));

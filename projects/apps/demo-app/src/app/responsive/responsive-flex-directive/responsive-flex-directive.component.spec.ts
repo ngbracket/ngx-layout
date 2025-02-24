@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsResponsiveModule } from '../responsive.module';
 import { ResponsiveFlexDirectiveComponent } from './responsive-flex-directive.component';
 
 describe('ResponsiveFlexDirectiveComponent', () => {
@@ -8,7 +9,7 @@ describe('ResponsiveFlexDirectiveComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [ResponsiveFlexDirectiveComponent]
+    imports: [DocsResponsiveModule]
 })
     .compileComponents();
   }));

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { DocsLayoutModule } from '../layout.module';
 import { FlexAttributeValuesComponent } from './flex-attribute-values.component';
 
 describe('FlexAttributeValuesComponent', () => {
@@ -8,7 +9,7 @@ describe('FlexAttributeValuesComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [FlexAttributeValuesComponent]
+    imports: [DocsLayoutModule]
 })
     .compileComponents();
   }));
