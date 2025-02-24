@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MozHolyGrailComponent } from './moz-holy-grail.component';
 
@@ -6,7 +6,7 @@ describe('MozHolyGrailComponent', () => {
   let component: MozHolyGrailComponent;
   let fixture: ComponentFixture<MozHolyGrailComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
     declarations: [MozHolyGrailComponent]
 })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FlexRowFillComponent } from './flex-row-fill.component';
 
@@ -6,7 +6,7 @@ describe('FlexRowFillComponent', () => {
   let component: FlexRowFillComponent;
   let fixture: ComponentFixture<FlexRowFillComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
     declarations: [FlexRowFillComponent]
 })

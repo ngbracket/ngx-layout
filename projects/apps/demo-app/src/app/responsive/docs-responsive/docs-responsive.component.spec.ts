@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DocsResponsiveComponent } from './docs-responsive.component';
 
@@ -6,7 +6,7 @@ describe('DocsResponsiveComponent', () => {
   let component: DocsResponsiveComponent;
   let fixture: ComponentFixture<DocsResponsiveComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
     declarations: [DocsResponsiveComponent]
 })

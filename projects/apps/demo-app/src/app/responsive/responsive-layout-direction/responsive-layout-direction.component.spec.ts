@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ResponsiveLayoutDirectionComponent } from './responsive-layout-direction.component';
 
@@ -6,7 +6,7 @@ describe('ResponsiveLayoutDirectionComponent', () => {
   let component: ResponsiveLayoutDirectionComponent;
   let fixture: ComponentFixture<ResponsiveLayoutDirectionComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
     declarations: [ResponsiveLayoutDirectionComponent]
 })
