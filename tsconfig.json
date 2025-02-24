@@ -4,13 +4,37 @@
   "compilerOptions": {
     "paths": {
       "@ngbracket/ngx-layout": [
-        "dist/releases/ngx-layout/ngx-layout",
-        "dist/releases/ngx-layout"
+        "dist/releases/ngx-layout",
+        "projects/libs/flex-layout/public-api.ts"
       ],
-      "@ngbracket/ngx-layout/*": [
-        "dist/releases/ngx-layout/ngx-layout-*",
-        "dist/releases/ngx-layout/*"
-      ]
+      "@ngbracket/ngx-layout/_private-utils": [
+        "dist/releases/ngx-layout/_private-utils",
+        "projects/libs/flex-layout/_private-utils/index.ts"
+      ],
+      "@ngbracket/ngx-layout/_private-utils/testing": [
+        "dist/releases/ngx-layout/_private-utils/testing",
+        "projects/libs/flex-layout/_private-utils/testing/index.ts"
+      ],
+      "@ngbracket/ngx-layout/core": [
+        "dist/releases/ngx-layout/core",
+        "projects/libs/flex-layout/core/public-api.ts"
+      ],
+      "@ngbracket/ngx-layout/extended": [
+        "dist/releases/ngx-layout/extended",
+        "projects/libs/flex-layout/extended/public-api.ts"
+      ],
+      "@ngbracket/ngx-layout/flex": [
+        "dist/releases/ngx-layout/flex",
+        "projects/libs/flex-layout/flex/public-api.ts"
+      ],
+      "@ngbracket/ngx-layout/grid": [
+        "dist/releases/ngx-layout/grid",
+        "projects/libs/flex-layout/grid/public-api.ts"
+      ],
+      "@ngbracket/ngx-layout/server": [
+        "dist/releases/ngx-layout/server",
+        "projects/libs/flex-layout/server/public-api.ts"
+      ],
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
