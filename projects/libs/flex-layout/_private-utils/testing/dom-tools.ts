@@ -1,12 +1,4 @@
 /**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-/**
  * Exported DOM accessor utility functions
  */
 export const _dom = {
@@ -26,7 +18,7 @@ export const _dom = {
   isPresent,
   isShadowRoot,
   tagName,
-  lastElementChild
+  lastElementChild,
 };
 
 // ******************************************************************************************
@@ -39,15 +31,19 @@ function getStyle(element: any, stylename: string): string {
   return element.style[stylename];
 }
 
-function hasStyle(element: any,
-                  styleName: string,
-                  styleValue: string = '',
-                  inlineOnly = true): boolean {
+function hasStyle(
+  element: any,
+  styleName: string,
+  styleValue: string = '',
+  inlineOnly = true
+): boolean {
   let value = getStyle(element, styleName) || '';
   if (!value && !inlineOnly) {
     // Search stylesheets
-    value = typeof getComputedStyle === 'function' &&
-      getComputedStyle(element).getPropertyValue(styleName) || '';
+    value =
+      (typeof getComputedStyle === 'function' &&
+        getComputedStyle(element).getPropertyValue(styleName)) ||
+      '';
   }
   return styleValue ? value == styleValue : value.length > 0;
 }
@@ -118,7 +114,6 @@ function tagName(element: any): string {
 // and are to be used ONLY internally in custom-matchers.ts and Unit Tests
 // ******************************************************************************************
 
-function lastElementChild(element: any): Node|null {
+function lastElementChild(element: any): Node | null {
   return element.lastElementChild;
 }
-

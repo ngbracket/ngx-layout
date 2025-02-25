@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { isPlatformServer } from '@angular/common';
 import {
@@ -19,8 +12,8 @@ import {
 } from '@angular/core';
 import {
   BaseDirective2,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   SERVER_TOKEN,
   StyleBuilder,

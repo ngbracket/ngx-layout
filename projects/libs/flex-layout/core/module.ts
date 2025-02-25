@@ -1,14 +1,6 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {BROWSER_PROVIDER} from './browser-provider';
-
+import { BROWSER_PROVIDER } from './browser-provider';
 
 /**
  * *****************************************************************
@@ -16,7 +8,6 @@ import {BROWSER_PROVIDER} from './browser-provider';
  * *****************************************************************
  */
 @NgModule({
-  providers: [BROWSER_PROVIDER]
+  providers: [BROWSER_PROVIDER],
 })
-export class CoreModule {
-}
+export class CoreModule {}

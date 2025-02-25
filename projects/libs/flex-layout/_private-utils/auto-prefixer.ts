@@ -1,11 +1,4 @@
 /**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
  * Applies CSS prefixes to appropriate style keys.
  *
  * Note: `-ms-`, `-moz` and `-webkit-box` are no longer supported. e.g.
@@ -17,22 +10,16 @@
  *      // display: -moz-flexbox;  OLD - Firefox
  *    }
  */
-export function applyCssPrefixes(target: {[key: string]: any | null}) {
+export function applyCssPrefixes(target: { [key: string]: any | null }) {
   for (let key in target) {
     let value = target[key] ?? '';
 
     switch (key) {
       case 'display':
         if (value === 'flex') {
-          target['display'] = [
-            '-webkit-flex',
-            'flex'
-          ];
+          target['display'] = ['-webkit-flex', 'flex'];
         } else if (value === 'inline-flex') {
-          target['display'] = [
-            '-webkit-inline-flex',
-            'inline-flex'
-          ];
+          target['display'] = ['-webkit-inline-flex', 'inline-flex'];
         } else {
           target['display'] = value;
         }
@@ -57,7 +44,9 @@ export function applyCssPrefixes(target: {[key: string]: any | null}) {
         break;
 
       case 'order':
-        target['order'] = target['-webkit-' + key] = isNaN(+value) ? '0' : value;
+        target['order'] = target['-webkit-' + key] = isNaN(+value)
+          ? '0'
+          : value;
         break;
     }
   }

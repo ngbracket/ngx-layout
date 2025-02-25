@@ -1,15 +1,8 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import {Inject, Injectable, NgZone, PLATFORM_ID} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
 
-import {MatchMedia} from '../match-media';
-import {BreakPointRegistry} from '../../breakpoints/break-point-registry';
+import { BreakPointRegistry } from '../../breakpoints/break-point-registry';
+import { MatchMedia } from '../match-media';
 
 /**
  * MockMatchMedia mocks calls to the Window API matchMedia with a build of a simulated
@@ -18,15 +11,15 @@ import {BreakPointRegistry} from '../../breakpoints/break-point-registry';
  */
 @Injectable()
 export class MockMatchMedia extends MatchMedia {
+  autoRegisterQueries = true; // Used for testing BreakPoint registrations
+  useOverlaps = false; // Allow fallback to overlapping mediaQueries
 
-
-  autoRegisterQueries = true;   // Used for testing BreakPoint registrations
-  useOverlaps = false;          // Allow fallback to overlapping mediaQueries
-
-  constructor(_zone: NgZone,
-              @Inject(PLATFORM_ID) _platformId: Object,
-              @Inject(DOCUMENT) public override _document: any,
-              private _breakpoints: BreakPointRegistry) {
+  constructor(
+    _zone: NgZone,
+    @Inject(PLATFORM_ID) _platformId: Object,
+    @Inject(DOCUMENT) public override _document: any,
+    private _breakpoints: BreakPointRegistry
+  ) {
     super(_zone, _platformId, _document);
   }
 
@@ -66,7 +59,10 @@ export class MockMatchMedia extends MatchMedia {
    * Manually onMediaChange any overlapping mediaQueries to simulate
    * similar functionality in the window.matchMedia()
    */
-  private _activateWithOverlaps(mediaQuery: string, useOverlaps: boolean): boolean {
+  private _activateWithOverlaps(
+    mediaQuery: string,
+    useOverlaps: boolean
+  ): boolean {
     if (useOverlaps) {
       const bp = this._breakpoints.findByQuery(mediaQuery);
       const alias = bp?.alias ?? 'unknown';
@@ -126,7 +122,9 @@ export class MockMatchMedia extends MatchMedia {
     if (!this.registry.has(mediaQuery) && this.autoRegisterQueries) {
       this._registerMediaQuery(mediaQuery);
     }
-    const mql: MockMediaQueryList = this.registry.get(mediaQuery) as MockMediaQueryList;
+    const mql: MockMediaQueryList = this.registry.get(
+      mediaQuery
+    ) as MockMediaQueryList;
 
     if (mql && !this.isActive(mediaQuery)) {
       this.registry.set(mediaQuery, mql.activate());
@@ -160,7 +158,6 @@ export class MockMatchMedia extends MatchMedia {
   protected get hasActivated() {
     return this.activations.length > 0;
   }
-
 }
 
 /**
@@ -198,8 +195,12 @@ export class MockMediaQueryList extends EventTarget implements MediaQueryList {
     if (!this._isActive) {
       this._isActive = true;
       this._listeners.forEach((callback) => {
-        const cb: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) = callback!;
-        cb.call(this, {matches: this.matches, media: this.media} as MediaQueryListEvent);
+        const cb: (this: MediaQueryList, ev: MediaQueryListEvent) => any =
+          callback!;
+        cb.call(this, {
+          matches: this.matches,
+          media: this.media,
+        } as MediaQueryListEvent);
       });
     }
     return this;
@@ -210,8 +211,12 @@ export class MockMediaQueryList extends EventTarget implements MediaQueryList {
     if (this._isActive) {
       this._isActive = false;
       this._listeners.forEach((callback) => {
-        const cb: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) = callback!;
-        cb.call(this, {matches: this.matches, media: this.media} as MediaQueryListEvent);
+        const cb: (this: MediaQueryList, ev: MediaQueryListEvent) => any =
+          callback!;
+        cb.call(this, {
+          matches: this.matches,
+          media: this.media,
+        } as MediaQueryListEvent);
       });
     }
     return this;
@@ -223,14 +228,17 @@ export class MockMediaQueryList extends EventTarget implements MediaQueryList {
       this._listeners.push(listener);
     }
     if (this._isActive) {
-      const cb: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) = listener!;
-      cb.call(this, {matches: this.matches, media: this.media} as MediaQueryListEvent);
+      const cb: (this: MediaQueryList, ev: MediaQueryListEvent) => any =
+        listener!;
+      cb.call(this, {
+        matches: this.matches,
+        media: this.media,
+      } as MediaQueryListEvent);
     }
   }
 
   /** Don't need to remove listeners in the testing environment */
-  removeListener(_: MediaQueryListListener | null) {
-  }
+  removeListener(_: MediaQueryListListener | null) {}
 
   override dispatchEvent(_: Event): boolean {
     return false;
@@ -242,9 +250,12 @@ export class MockMediaQueryList extends EventTarget implements MediaQueryList {
 /**
  * Pre-configured provider for MockMatchMedia
  */
-export const MockMatchMediaProvider = {  // tslint:disable-line:variable-name
+export const MockMatchMediaProvider = {
+  // tslint:disable-line:variable-name
   provide: MatchMedia,
-  useClass: MockMatchMedia
+  useClass: MockMatchMedia,
 };
 
-type MediaQueryListListener = ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null;
+type MediaQueryListListener =
+  | ((this: MediaQueryList, ev: MediaQueryListEvent) => any)
+  | null;

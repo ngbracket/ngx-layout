@@ -1,25 +1,18 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { DOCUMENT } from '@angular/common';
 import { BEFORE_APP_SERIALIZED } from '@angular/platform-server';
 import {
   BreakPoint,
   BREAKPOINTS,
   CLASS_NAME,
+  ɵMatchMedia as MatchMedia,
   MediaMarshaller,
   SERVER_TOKEN,
   sortAscendingPriority,
   StylesheetMap,
-  ɵMatchMedia as MatchMedia,
 } from '@ngbracket/ngx-layout/core';
 
-import { ServerMatchMedia } from './server-match-media';
 import { CSP_NONCE, Inject, Optional } from '@angular/core';
+import { ServerMatchMedia } from './server-match-media';
 
 /**
  * Activate all the registered breakpoints in sequence, and then

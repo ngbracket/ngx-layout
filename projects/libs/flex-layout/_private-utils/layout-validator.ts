@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 export const INLINE = 'inline';
 export const LAYOUT_VALUES = ['row', 'column', 'row-reverse', 'column-reverse'];
 
@@ -17,20 +10,20 @@ export function buildLayoutCSS(value: string) {
 }
 
 /**
-  * Validate the value to be one of the acceptable value options
-  * Use default fallback of 'row'
-  */
+ * Validate the value to be one of the acceptable value options
+ * Use default fallback of 'row'
+ */
 export function validateValue(value: string): [string, string, boolean] {
   value = value?.toLowerCase() ?? '';
   let [direction, wrap, inline] = value.split(' ');
 
   // First value must be the `flex-direction`
-  if (!LAYOUT_VALUES.find(x => x === direction)) {
+  if (!LAYOUT_VALUES.find((x) => x === direction)) {
     direction = LAYOUT_VALUES[0];
   }
 
   if (wrap === INLINE) {
-    wrap = (inline !== INLINE) ? inline : '';
+    wrap = inline !== INLINE ? inline : '';
     inline = INLINE;
   }
 
@@ -42,7 +35,7 @@ export function validateValue(value: string): [string, string, boolean] {
  * a horizontal/row flow.
  */
 export function isFlowHorizontal(value: string): boolean {
-  let [flow, ] = validateValue(value);
+  let [flow] = validateValue(value);
   return flow.indexOf('row') > -1;
 }
 
@@ -82,7 +75,11 @@ export function validateWrapValue(value: string) {
  *  This way any padding or border specified on the child elements are
  *  laid out and drawn inside that element's specified width and height.
  */
-function buildCSS(direction: string, wrap: string | null = null, inline = false) {
+function buildCSS(
+  direction: string,
+  wrap: string | null = null,
+  inline = false
+) {
   return {
     display: inline ? 'inline-flex' : 'flex',
     'box-sizing': 'border-box',
