@@ -1,8 +1,6 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "noImplicitAny": false,
-    "strict": false,
     "outDir": "../../../out-tsc/app",
     "types": [
       "node"
