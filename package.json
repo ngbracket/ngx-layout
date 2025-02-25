@@ -63,6 +63,7 @@
     "@types/jasmine": "^5.1.5",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^20.17.9",
+    "autoprefixer": "^10.4.0",
     "conventional-changelog-cli": "^4.1.0",
     "jasmine": "^5.5.0",
     "jasmine-core": "^5.5.0",
