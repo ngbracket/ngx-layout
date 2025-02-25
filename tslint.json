@@ -86,7 +86,6 @@
       },
       "src/lib/**/!(*.spec).ts"
     ],
-    "require-license-banner": [true, "src/lib/**/!(*.spec).ts"],
     "no-rxjs-patch-imports": [true, "src/lib/**/*.ts"]
   }
 }

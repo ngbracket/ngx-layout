@@ -118,7 +118,6 @@ export class PackageBundler {
     const writeOptions = {
       name: config.moduleName || 'ng.flexLayout',
       amd: { id: config.importName },
-      banner: buildConfig.licenseBanner,
       format: config.format,
       file: config.dest,
       globals: rollupGlobals,
