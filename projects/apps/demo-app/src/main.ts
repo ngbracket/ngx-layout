@@ -1,4 +1,4 @@
-import { APP_ID, importProvidersFrom } from '@angular/core';
+import { APP_ID, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -19,6 +19,7 @@ const EXTRA_BREAKPOINTS = [
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
     { provide: APP_ID, useValue: 'serverApp' },
     importProvidersFrom(
       RoutingModule,
