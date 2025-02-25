@@ -2,11 +2,6 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "universal-demo-app",
   "projectType": "application",
-  "generators": {
-    "@schematics/angular:application": {
-      "strict": true
-    }
-  },
   "sourceRoot": "projects/apps/universal-demo-app/src",
   "prefix": "app",
   "targets": {
