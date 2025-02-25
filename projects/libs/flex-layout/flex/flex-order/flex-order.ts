@@ -75,7 +75,10 @@ export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
 }
 
 const flexOrderCache: Map<string, StyleDefinition> = new Map();
-
+/**
+ * @deprecated The DefaultFlexOrderDirective will be removed in version 21.
+ * Use FlexOrderDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultFlexOrderDirective extends FlexOrderDirective {
   protected override inputs = inputs;

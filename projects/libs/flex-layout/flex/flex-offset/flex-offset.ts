@@ -13,17 +13,17 @@ import {
   Injectable,
   OnChanges,
 } from '@angular/core';
+import { isFlowHorizontal } from '@ngbracket/ngx-layout/_private-utils';
 import {
   BaseDirective2,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
   StyleUtils,
   ɵmultiply as multiply,
 } from '@ngbracket/ngx-layout/core';
-import { isFlowHorizontal } from '@ngbracket/ngx-layout/_private-utils';
 import { takeUntil } from 'rxjs/operators';
 
 export interface FlexOffsetParent {
@@ -129,6 +129,10 @@ export class FlexOffsetDirective extends BaseDirective2 implements OnChanges {
   }
 }
 
+/**
+ * @deprecated The DefaultFlexOffsetDirective will be removed in version 21.
+ * Use FlexOffsetDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultFlexOffsetDirective extends FlexOffsetDirective {
   protected override inputs = inputs;

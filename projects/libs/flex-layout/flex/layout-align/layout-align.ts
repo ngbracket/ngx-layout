@@ -206,6 +206,10 @@ export class LayoutAlignDirective extends BaseDirective2 {
   }
 }
 
+/**
+ * @deprecated The DefaultLayoutAlignDirective will be removed in version 21.
+ * Use LayoutAlignDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultLayoutAlignDirective extends LayoutAlignDirective {
   protected override inputs = inputs;
