@@ -42,3 +42,4 @@ out-tsc
 
 .nx/cache
 .nx/workspace-data
+.angular
