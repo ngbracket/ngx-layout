@@ -9,9 +9,18 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/releases/ngx-layout"],
       "options": {
-        "project": "projects/libs/flex-layout/ng-package.json",
-        "tsConfig": "projects/libs/flex-layout/tsconfig.lib.json"
-      }
+        "project": "projects/libs/flex-layout/ng-package.json"
+
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "projects/libs/flex-layout/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "projects/libs/flex-layout/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
     },
     "test": {
       "executor": "@angular-devkit/build-angular:karma",

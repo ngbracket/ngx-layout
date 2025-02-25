@@ -7,9 +7,6 @@
     "inlineSources": true,
     "types": ["jasmine"]
   },
-  "angularCompilerOptions": {
-    "compilationMode": "partial"
-  },
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
