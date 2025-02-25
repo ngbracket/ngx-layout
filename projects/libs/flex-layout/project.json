@@ -18,6 +18,7 @@
       "options": {
         "watch": false,
         "main": "projects/libs/flex-layout/test.ts",
+        "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "projects/libs/flex-layout/tsconfig.spec.json",
         "karmaConfig": "test/karma.conf.js"
       }

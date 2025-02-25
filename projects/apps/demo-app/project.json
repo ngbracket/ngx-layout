@@ -10,7 +10,7 @@
       "options": {
         "outputPath": "dist/apps/demo-app",
         "index": "projects/apps/demo-app/src/index.html",
-        "polyfills": ["projects/apps/demo-app/src/polyfills.ts"],
+        "polyfills": ["zone.js"],
         "tsConfig": "projects/apps/demo-app/tsconfig.app.json",
         "assets": [
           "projects/apps/demo-app/src/favicon.ico",
@@ -74,7 +74,7 @@
       "options": {
         "watch": false,
         "main": "projects/apps/demo-app/src/test.ts",
-        "polyfills": "projects/apps/demo-app/src/polyfills.ts",
+        "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "projects/apps/demo-app/tsconfig.spec.json",
         "karmaConfig": "projects/apps/demo-app/karma.conf.js",
         "assets": [
