@@ -10,8 +10,9 @@ import {
   BREAKPOINT,
   FlexLayoutModule,
 } from '@ngbracket/ngx-layout';
-import { RoutingModule } from './routing.module';
 import { YBA_BREAKPOINT_PROVIDER } from './stack-overflow/hide-custom-bp/hide-with-custom-bp.component';
+import { provideRouter, withHashLocation } from '@angular/router';
+import { DEMO_APP_ROUTES } from './app.routes';
 
 const EXTRA_BREAKPOINTS: BreakPoint[] = [
   {
@@ -27,8 +28,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     { provide: APP_ID, useValue: 'serverApp' },
+    provideRouter(DEMO_APP_ROUTES, withHashLocation()),
     importProvidersFrom(
-      RoutingModule,
       FlexLayoutModule.withConfig({
         useColumnBasisZero: false,
         printWithBreakpoints: ['md', 'lt-lg', 'lt-xl', 'gt-sm', 'gt-xs'],
