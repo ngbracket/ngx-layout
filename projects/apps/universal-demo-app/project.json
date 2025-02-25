@@ -13,8 +13,10 @@
         "polyfills": ["zone.js"],
         "tsConfig": "projects/apps/universal-demo-app/tsconfig.app.json",
         "assets": [
-          "projects/apps/universal-demo-app/src/favicon.ico",
-          "projects/apps/universal-demo-app/src/assets"
+          {
+            "glob": "**/*",
+            "input": "projects/apps/universal-demo-app/public"
+          }
         ],
         "styles": ["projects/apps/universal-demo-app/src/styles.scss"],
         "scripts": [],
@@ -83,8 +85,10 @@
         "tsConfig": "projects/apps/universal-demo-app/tsconfig.spec.json",
         "karmaConfig": "projects/apps/universal-demo-app/karma.conf.js",
         "assets": [
-          "projects/apps/universal-demo-app/src/favicon.ico",
-          "projects/apps/universal-demo-app/src/assets"
+          {
+            "glob": "**/*",
+            "input": "projects/apps/universal-demo-app/public"
+          }
         ],
         "styles": ["projects/apps/universal-demo-app/src/styles.scss"],
         "scripts": []
