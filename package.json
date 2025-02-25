@@ -89,6 +89,17 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "core-js",
+      "esbuild",
+      "lmdb",
+      "msgpackr-extract",
+      "nx",
+      "puppeteer"
+    ]
+  },
   "resolutions": {
     "browser-sync-client": "2.29.3"
   },
