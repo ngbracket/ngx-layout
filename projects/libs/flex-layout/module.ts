@@ -8,15 +8,13 @@ import {
 
 import {
   BreakPoint,
-  BREAKPOINT,
-  DEFAULT_CONFIG,
-  LAYOUT_CONFIG,
   LayoutConfigOptions,
   SERVER_TOKEN,
 } from '@ngbracket/ngx-layout/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';
 import { FlexModule } from '@ngbracket/ngx-layout/flex';
 import { GridModule } from '@ngbracket/ngx-layout/grid';
+import { provideFlexLayout } from './provider';
 
 /**
  * FlexLayoutModule -- the main import for all utilities in the Angular Layout library
@@ -35,27 +33,11 @@ export class FlexLayoutModule {
    */
   static withConfig(
     configOptions: LayoutConfigOptions,
-    // tslint:disable-next-line:max-line-length
     breakpoints: BreakPoint | BreakPoint[] = []
   ): ModuleWithProviders<FlexLayoutModule> {
     return {
       ngModule: FlexLayoutModule,
-      providers: configOptions.serverLoaded
-        ? [
-            {
-              provide: LAYOUT_CONFIG,
-              useValue: { ...DEFAULT_CONFIG, ...configOptions },
-            },
-            { provide: BREAKPOINT, useValue: breakpoints, multi: true },
-            { provide: SERVER_TOKEN, useValue: true },
-          ]
-        : [
-            {
-              provide: LAYOUT_CONFIG,
-              useValue: { ...DEFAULT_CONFIG, ...configOptions },
-            },
-            { provide: BREAKPOINT, useValue: breakpoints, multi: true },
-          ],
+      providers: provideFlexLayout(configOptions, breakpoints),
     };
   }
 
