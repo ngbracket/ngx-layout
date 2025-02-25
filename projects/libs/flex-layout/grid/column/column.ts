@@ -71,6 +71,10 @@ const selector = `
  * Configures the name or position of an element within the grid
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-26
  */
+/**
+ * @deprecated The DefaultGridColumnDirective will be removed in version 21.
+ * Use GridColumnDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultGridColumnDirective extends GridColumnDirective {
   protected override inputs = inputs;

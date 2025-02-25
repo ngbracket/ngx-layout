@@ -97,6 +97,10 @@ const selector = `
  * Syntax: <row gap> [<column-gap>]
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-17
  */
+/**
+ * @deprecated The DefaultGridGapDirective will be removed in version 21.
+ * Use GridGapDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultGridGapDirective extends GridGapDirective {
   protected override inputs = inputs;

@@ -106,6 +106,10 @@ const selector = `
  * Configures the auto placement algorithm for the grid
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-23
  */
+/**
+ * @deprecated The DefaultGridAutoDirective will be removed in version 21.
+ * Use GridAutoDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultGridAutoDirective extends GridAutoDirective {
   protected override inputs = inputs;
