@@ -55,6 +55,7 @@
     "@angular/cdk": "^19.0.2",
     "@angular/cli": "19.0.4",
     "@angular/compiler-cli": "19.0.3",
+    "@angular/language-service": "19.0.3",
     "@ngtools/webpack": "^17.3.11",
     "@nx/angular": "20.3.2",
     "@nx/workspace": "20.3.2",
