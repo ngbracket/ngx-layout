@@ -1,4 +1,4 @@
-import { APP_ID, enableProdMode, importProvidersFrom } from '@angular/core';
+import { APP_ID, importProvidersFrom } from '@angular/core';
 
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -6,7 +6,6 @@ import { BREAKPOINT, FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { AppComponent } from './app/app.component';
 import { RoutingModule } from './app/routing.module';
 import { YBA_BREAKPOINT_PROVIDER } from './app/stack-overflow/hide-custom-bp/hide-with-custom-bp.component';
-import { environment } from './environments/environment';
 
 const EXTRA_BREAKPOINTS = [
   {
@@ -17,10 +16,6 @@ const EXTRA_BREAKPOINTS = [
     overlapping: false,
   },
 ];
-
-if (environment.production) {
-  enableProdMode();
-}
 
 bootstrapApplication(AppComponent, {
   providers: [
