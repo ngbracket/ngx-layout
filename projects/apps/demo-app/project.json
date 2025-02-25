@@ -13,6 +13,7 @@
         "index": "projects/apps/demo-app/src/index.html",
         "polyfills": ["zone.js"],
         "tsConfig": "projects/apps/demo-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
