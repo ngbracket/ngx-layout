@@ -33,5 +33,20 @@
       "!{projectRoot}/src/test.[jt]s",
       "!{projectRoot}/test.[jt]s"
     ]
+  },
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "none",
+      "linter": "none",
+      "style": "scss",
+      "unitTestRunner": "none"
+    },
+    "@nx/angular:library": {
+      "linter": "none",
+      "unitTestRunner": "none"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
+    }
   }
 }
