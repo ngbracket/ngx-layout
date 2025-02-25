@@ -19,7 +19,6 @@
       ]
     }
   },
-  "defaultBase": "main",
   "namedInputs": {
     "sharedGlobals": [],
     "default": [
