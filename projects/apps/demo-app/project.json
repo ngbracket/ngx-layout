@@ -3,7 +3,7 @@
   "name": "demo-app",
   "projectType": "application",
   "sourceRoot": "projects/apps/demo-app/src",
-  "prefix": "app",
+  "prefix": "demo",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",

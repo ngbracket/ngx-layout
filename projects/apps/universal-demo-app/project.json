@@ -3,7 +3,7 @@
   "name": "universal-demo-app",
   "projectType": "application",
   "sourceRoot": "projects/apps/universal-demo-app/src",
-  "prefix": "app",
+  "prefix": "responsive",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",

@@ -3,7 +3,7 @@
   "name": "@ngbracket/ngx-layout",
   "projectType": "library",
   "sourceRoot": "projects/libs/flex-layout",
-  "prefix": "lib",
+  "prefix": "fx",
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
