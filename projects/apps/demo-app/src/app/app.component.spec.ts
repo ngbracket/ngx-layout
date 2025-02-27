@@ -1,15 +1,12 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { VERSION } from '@ngbracket/ngx-layout';
 import { AppComponent } from './app.component';
-import { provideRouter, withHashLocation } from '@angular/router';
-import { DEMO_APP_ROUTES } from './app.routes';
-
+import { RoutingModule } from './routing.module';
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [AppComponent],
-      providers: [provideRouter(DEMO_APP_ROUTES, withHashLocation())],
-    }).compileComponents();
+    imports: [AppComponent, RoutingModule],
+}).compileComponents();
   }));
   it('should create the app', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);

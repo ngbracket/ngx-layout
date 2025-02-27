@@ -75,12 +75,9 @@ importers:
       '@angular/compiler-cli':
         specifier: 19.0.3
         version: 19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3)
-      '@angular/language-service':
-        specifier: 19.0.3
-        version: 19.0.3
       '@ngtools/webpack':
-        specifier: 19.0.4
-        version: 19.0.4(@angular/compiler-cli@19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3))(typescript@5.5.3)(webpack@5.97.1)
+        specifier: ^17.3.11
+        version: 17.3.11(@angular/compiler-cli@19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3))(typescript@5.5.3)(webpack@5.97.1)
       '@nx/angular':
         specifier: 20.3.2
         version: 20.3.2(@angular-devkit/build-angular@19.0.4(954e4393016250fc2526b89365af42b7))(@angular-devkit/core@19.0.4(chokidar@4.0.1))(@angular-devkit/schematics@19.0.4(chokidar@4.0.1))(@babel/traverse@7.26.4)(@rspack/core@1.2.1)(@schematics/angular@19.0.4(chokidar@4.0.1))(@types/node@20.17.9)(@zkochan/js-yaml@0.0.7)(eslint@9.18.0(jiti@1.21.6))(nx@20.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rxjs@7.8.1)(typescript@5.5.3)(webpack-cli@5.1.4)
@@ -102,9 +99,6 @@ importers:
       '@types/node':
         specifier: ^20.17.9
         version: 20.17.9
-      autoprefixer:
-        specifier: ^10.4.0
-        version: 10.4.20(postcss@8.4.49)
       conventional-changelog-cli:
         specifier: ^4.1.0
         version: 4.1.0
@@ -156,9 +150,6 @@ importers:
       postcss-scss:
         specifier: ^4.0.9
         version: 4.0.9(postcss@8.4.49)
-      postcss-url:
-        specifier: ~10.1.3
-        version: 10.1.3(postcss@8.4.49)
       protractor:
         specifier: ^7.0.0
         version: 7.0.0
@@ -348,10 +339,6 @@ packages:
       '@angular/core': 19.0.3
       '@angular/platform-browser': 19.0.3
       rxjs: ^6.5.3 || ^7.4.0
-
-  '@angular/language-service@19.0.3':
-    resolution: {integrity: sha512-SkUFggQayulgMWW4rwslLVCD7woZ1m7dCB87NCQdlZv9NIrHbNkaPfxHzaX3YrdKhw+u65XcttzD7cworcMcVQ==}
-    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
 
   '@angular/material@19.0.2':
     resolution: {integrity: sha512-IKU6znBKgD0xHEGo5WD3JWNK+WjamMCzAvSa72w4Evo2N6PWN+dAkbCMYxugW7dOfwoT8DvUnjIWclC+RRCl0A==}
@@ -1782,6 +1769,14 @@ packages:
 
   '@napi-rs/wasm-runtime@0.2.4':
     resolution: {integrity: sha512-9zESzOO5aDByvhIAsOy9TbpZ0Ur2AJbUI7UT73kcUTS2mxAMHOBaa1st/jAymNoCtvrit99kkzT1FZuXVcgfIQ==}
+
+  '@ngtools/webpack@17.3.11':
+    resolution: {integrity: sha512-SfTCbplt4y6ak5cf2IfqdoVOsnoNdh/j6Vu+wb8WWABKwZ5yfr2S/Gk6ithSKcdIZhAF8DNBOoyk1EJuf8Xkfg==}
+    engines: {node: ^18.13.0 || >=20.9.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+    peerDependencies:
+      '@angular/compiler-cli': ^17.0.0
+      typescript: '>=5.2 <5.5'
+      webpack: ^5.54.0
 
   '@ngtools/webpack@19.0.4':
     resolution: {integrity: sha512-N3WCbQz5ipdAZoSWHNf81RLET6+isq35+GZu9u0StpFtJCpXAmRRAv4vdMUYL7DLOzRmvEgwww6Rd5AwGeLFSw==}
@@ -3678,9 +3673,6 @@ packages:
   csso@5.0.5:
     resolution: {integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
-
-  cuint@0.2.2:
-    resolution: {integrity: sha512-d4ZVpCW31eWwCMe1YT3ur7mUDnTXbgwyzaL320DrcRT45rfjYxkt5QWLrmOJ+/UEAI2+fQgKe/fCjR8l4TpRgw==}
 
   custom-event@1.0.1:
     resolution: {integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==}
@@ -5683,11 +5675,6 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  mime@2.5.2:
-    resolution: {integrity: sha512-tqkh47FzKeCPD2PUiPB6pkbMzsCasjxAfC62/Wap5qrUWcb+sFasXUC5I3gYM5iBM8v/Qpn4UK0x+j0iHyFPDg==}
-    engines: {node: '>=4.0.0'}
-    hasBin: true
-
   mime@2.6.0:
     resolution: {integrity: sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==}
     engines: {node: '>=4.0.0'}
@@ -5727,9 +5714,6 @@ packages:
 
   minimalistic-assert@1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
-
-  minimatch@3.0.8:
-    resolution: {integrity: sha512-6FsRAQsxQ61mw+qP1ZzbL9Bc78x2p5OqNgNpnoAFLTrX8n5Kxph0CsnhmKKNXTWjXqU5L0pGPR7hYk+XWZr60Q==}
 
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -6573,12 +6557,6 @@ packages:
     engines: {node: ^14 || ^16 || >=18.0}
     peerDependencies:
       postcss: ^8.4.31
-
-  postcss-url@10.1.3:
-    resolution: {integrity: sha512-FUzyxfI5l2tKmXdYc6VTu3TWZsInayEKPbiyW+P6vmmIrrb4I6CGX0BFoewgYHLK+oIL5FECEK02REYRpBvUCw==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      postcss: ^8.0.0
 
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
@@ -8164,9 +8142,6 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  xxhashjs@0.2.2:
-    resolution: {integrity: sha512-AkTuIuVTET12tpsVIQo+ZU6f/qDmKuRUcjaqR+OIvm+aCBsZ95i7UVY5WJ9TMsSaZ0DA2WxoZ4acu0sPH+OKAw==}
-
   y18n@4.0.3:
     resolution: {integrity: sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==}
 
@@ -8510,8 +8485,6 @@ snapshots:
       '@angular/platform-browser': 19.0.3(@angular/animations@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0))
       rxjs: 7.8.1
       tslib: 2.8.1
-
-  '@angular/language-service@19.0.3': {}
 
   '@angular/material@19.0.2(784358505edce53f106863cfd3597389)':
     dependencies:
@@ -10009,17 +9982,17 @@ snapshots:
       '@emnapi/runtime': 1.3.1
       '@tybys/wasm-util': 0.9.0
 
+  '@ngtools/webpack@17.3.11(@angular/compiler-cli@19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3))(typescript@5.5.3)(webpack@5.97.1)':
+    dependencies:
+      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3)
+      typescript: 5.5.3
+      webpack: 5.97.1(webpack-cli@5.1.4)
+
   '@ngtools/webpack@19.0.4(@angular/compiler-cli@19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3))(typescript@5.5.3)(webpack@5.96.1(esbuild@0.24.0)(webpack-cli@5.1.4))':
     dependencies:
       '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3)
       typescript: 5.5.3
       webpack: 5.96.1(esbuild@0.24.0)(webpack-cli@5.1.4)
-
-  '@ngtools/webpack@19.0.4(@angular/compiler-cli@19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3))(typescript@5.5.3)(webpack@5.97.1)':
-    dependencies:
-      '@angular/compiler-cli': 19.0.3(@angular/compiler@19.0.3(@angular/core@19.0.3(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3)
-      typescript: 5.5.3
-      webpack: 5.97.1(webpack-cli@5.1.4)
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -12290,8 +12263,6 @@ snapshots:
   csso@5.0.5:
     dependencies:
       css-tree: 2.2.1
-
-  cuint@0.2.2: {}
 
   custom-event@1.0.1: {}
 
@@ -14587,8 +14558,6 @@ snapshots:
 
   mime@1.6.0: {}
 
-  mime@2.5.2: {}
-
   mime@2.6.0: {}
 
   mimic-fn@2.1.0: {}
@@ -14613,10 +14582,6 @@ snapshots:
       webpack: 5.96.1(esbuild@0.24.0)(webpack-cli@5.1.4)
 
   minimalistic-assert@1.0.1: {}
-
-  minimatch@3.0.8:
-    dependencies:
-      brace-expansion: 1.1.11
 
   minimatch@3.1.2:
     dependencies:
@@ -15524,14 +15489,6 @@ snapshots:
     dependencies:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
-
-  postcss-url@10.1.3(postcss@8.4.49):
-    dependencies:
-      make-dir: 3.1.0
-      mime: 2.5.2
-      minimatch: 3.0.8
-      postcss: 8.4.49
-      xxhashjs: 0.2.2
 
   postcss-value-parser@4.2.0: {}
 
@@ -17474,10 +17431,6 @@ snapshots:
   xmlbuilder@11.0.1: {}
 
   xtend@4.0.2: {}
-
-  xxhashjs@0.2.2:
-    dependencies:
-      cuint: 0.2.2
 
   y18n@4.0.3: {}
 

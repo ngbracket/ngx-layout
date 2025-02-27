@@ -15,7 +15,6 @@ import { FlexDirective } from '@ngbracket/ngx-layout';
 
 import { SplitAreaDirective } from './split-area.directive';
 import { SplitHandleDirective } from './split-handle.directive';
-import { Subscription } from 'rxjs';
 
 @Directive({
     selector: '[ngxSplit]',
@@ -25,14 +24,14 @@ import { Subscription } from 'rxjs';
     standalone: false
 })
 export class SplitDirective implements AfterContentInit, OnDestroy {
-  watcher?: Subscription;
+  watcher;
 
   @Input('ngxSplit')
   direction = 'row';
 
   @ContentChild(SplitHandleDirective, { static: true })
-  handle?: SplitHandleDirective;
-  @ContentChildren(SplitAreaDirective) areas?: QueryList<SplitAreaDirective>;
+  handle: SplitHandleDirective;
+  @ContentChildren(SplitAreaDirective) areas: QueryList<SplitAreaDirective>;
 
   constructor(
     private elementRef: ElementRef,
@@ -41,7 +40,7 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
 
   ngAfterContentInit(): void {
     if (isPlatformBrowser(this._platformId)) {
-      this.watcher = this.handle?.drag.subscribe((pos) => this.onDrag(pos));
+      this.watcher = this.handle.drag.subscribe((pos) => this.onDrag(pos));
     }
   }
 
@@ -55,10 +54,10 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
    * While dragging, continually update the `flex.activatedValue` for each area
    * managed by the splitter.
    */
-  onDrag({ x, y }: { x: number, y: number }): void {
+  onDrag({ x, y }): void {
     const dragAmount = this.direction === 'row' ? x : y;
 
-    this.areas?.forEach((area, i) => {
+    this.areas.forEach((area, i) => {
       // get the cur flex and the % in px
       const flex = area.flex as FlexDirective;
       const delta = i === 0 ? dragAmount : -dragAmount;
@@ -73,7 +72,7 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
    * Use the pixel delta change to recalculate the area size (%)
    * Note: flex value may be '', %, px, or '<grow> <shrink> <basis>'
    */
-  calculateSize(value: string, delta: number) {
+  calculateSize(value, delta) {
     const containerSizePx = this.elementRef.nativeElement.clientWidth;
     const elementSizePx = Math.round(this.valueToPixel(value, containerSizePx));
 
