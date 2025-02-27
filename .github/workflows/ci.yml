@@ -1,0 +1,183 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      # 5.2.x, 6.0.x, etc
+      - /\d+\.\d+\.x/
+      # 5.x, 6.x, etc
+      - /\d+\.x/
+  pull_request:
+    branches:
+      - main
+      # 5.2.x, 6.0.x, etc
+      - /\d+\.\d+\.x/
+      # 5.x, 6.x, etc
+      - /\d+\.x/
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm build
+      - name: Persist package
+        uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: dist/releases
+          if-no-files-found: error
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
+      - name: Lint
+        run: pnpm lint
+
+  tests_local_browsers:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: dist/releases
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+      - name: Install Firefox
+        uses: browser-actions/setup-firefox@v1
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run local browser tests
+        env:
+          TEST_PLATFORM: local
+          CIRCLECI: true
+          CIRCLE_NODE_INDEX: 0
+          CIRCLE_NODE_TOTAL: 1
+          KARMA_PARALLEL_BROWSERS: 1
+        run: pnpm run test
+
+  tests_ssr:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: dist/releases
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run SSR tests
+        run: pnpm test:ssr
+
+  integration_tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: dist/releases
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build universal demo app
+        run: |
+          pnpm run build
+          pnpm build:universal-demo-app
+
+  publish_snapshots:
+    runs-on: ubuntu-latest
+    needs: [tests_local_browsers, integration_tests]
+    if: github.event_name == 'push' && github.event.pull_request == null
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: dist/releases
+      - name: Install dependencies
+        run: pnpm install
+      - name: Stamp
+        run: pnpm stamp
+      - name: Publish snapshots
+        run: ./scripts/deploy/publish-build-artifacts.sh --no-build
