@@ -19,7 +19,6 @@
       ]
     }
   },
-  "defaultBase": "main",
   "namedInputs": {
     "sharedGlobals": [],
     "default": [
@@ -30,7 +29,24 @@
       "default",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/**/*.spec.[jt]s",
-      "!{projectRoot}/karma.conf.js"
+      "!{projectRoot}/karma.conf.js",
+      "!{projectRoot}/src/test.[jt]s",
+      "!{projectRoot}/test.[jt]s"
     ]
+  },
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "none",
+      "linter": "none",
+      "style": "scss",
+      "unitTestRunner": "none"
+    },
+    "@nx/angular:library": {
+      "linter": "none",
+      "unitTestRunner": "none"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
+    }
   }
 }

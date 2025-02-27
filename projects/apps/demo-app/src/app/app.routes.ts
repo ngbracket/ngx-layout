@@ -1,8 +1,6 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
-const DEMO_APP_ROUTES: Routes = [
+export const DEMO_APP_ROUTES: Routes = [
   { path: '', redirectTo: 'docs', pathMatch: 'full' },
   {
     path: 'grid',
@@ -29,10 +27,3 @@ const DEMO_APP_ROUTES: Routes = [
       ),
   },
 ];
-
-@NgModule({
-  exports: [RouterModule],
-  imports: [RouterModule.forRoot(DEMO_APP_ROUTES)],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-})
-export class RoutingModule {}

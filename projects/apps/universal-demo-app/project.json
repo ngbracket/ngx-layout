@@ -2,24 +2,23 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "universal-demo-app",
   "projectType": "application",
-  "generators": {
-    "@schematics/angular:application": {
-      "strict": true
-    }
-  },
   "sourceRoot": "projects/apps/universal-demo-app/src",
-  "prefix": "app",
+  "prefix": "responsive",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/universal-demo-app",
         "index": "projects/apps/universal-demo-app/src/index.html",
-        "polyfills": ["projects/apps/universal-demo-app/src/polyfills.ts"],
+        "polyfills": ["zone.js"],
         "tsConfig": "projects/apps/universal-demo-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
         "assets": [
-          "projects/apps/universal-demo-app/src/favicon.ico",
-          "projects/apps/universal-demo-app/src/assets"
+          {
+            "glob": "**/*",
+            "input": "projects/apps/universal-demo-app/public"
+          }
         ],
         "styles": ["projects/apps/universal-demo-app/src/styles.scss"],
         "scripts": [],
@@ -42,12 +41,6 @@
               "type": "anyComponentStyle",
               "maximumWarning": "2kb",
               "maximumError": "4kb"
-            }
-          ],
-          "fileReplacements": [
-            {
-              "replace": "projects/apps/universal-demo-app/src/environments/environment.ts",
-              "with": "projects/apps/universal-demo-app/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -84,12 +77,14 @@
       "options": {
         "watch": false,
         "main": "projects/apps/universal-demo-app/src/test.ts",
-        "polyfills": "projects/apps/universal-demo-app/src/polyfills.ts",
+        "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "projects/apps/universal-demo-app/tsconfig.spec.json",
         "karmaConfig": "projects/apps/universal-demo-app/karma.conf.js",
         "assets": [
-          "projects/apps/universal-demo-app/src/favicon.ico",
-          "projects/apps/universal-demo-app/src/assets"
+          {
+            "glob": "**/*",
+            "input": "projects/apps/universal-demo-app/public"
+          }
         ],
         "styles": ["projects/apps/universal-demo-app/src/styles.scss"],
         "scripts": []
