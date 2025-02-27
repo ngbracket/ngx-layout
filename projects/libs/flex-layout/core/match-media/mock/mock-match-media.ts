@@ -250,8 +250,8 @@ export class MockMediaQueryList extends EventTarget implements MediaQueryList {
 /**
  * Pre-configured provider for MockMatchMedia
  */
+// tslint:disable-line:variable-name
 export const MockMatchMediaProvider = {
-  // tslint:disable-line:variable-name
   provide: MatchMedia,
   useClass: MockMatchMedia,
 };
