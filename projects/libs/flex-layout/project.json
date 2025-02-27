@@ -23,13 +23,10 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@angular-devkit/build-angular:karma",
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "watch": false,
-        "main": "projects/libs/flex-layout/test.ts",
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "projects/libs/flex-layout/tsconfig.spec.json",
-        "karmaConfig": "test/karma.conf.js"
+        "reportsDirectory": "../../../coverage/projects/libs/flex-layout"
       }
     }
   }
