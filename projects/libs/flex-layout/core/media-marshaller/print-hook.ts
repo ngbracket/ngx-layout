@@ -1,19 +1,15 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import {Inject, Injectable, OnDestroy} from '@angular/core';
+import { Inject, Injectable, OnDestroy } from '@angular/core';
 
-import {mergeAlias} from '../add-alias';
-import {MediaChange} from '../media-change';
-import {BreakPoint} from '../breakpoints/break-point';
-import {LAYOUT_CONFIG, LayoutConfigOptions} from '../tokens/library-config';
-import {BreakPointRegistry, OptionalBreakPoint} from '../breakpoints/break-point-registry';
-import {sortDescendingPriority} from '../utils/sort';
-import {DOCUMENT} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { mergeAlias } from '../add-alias';
+import { BreakPoint } from '../breakpoints/break-point';
+import {
+  BreakPointRegistry,
+  OptionalBreakPoint,
+} from '../breakpoints/break-point-registry';
+import { MediaChange } from '../media-change';
+import { LAYOUT_CONFIG, LayoutConfigOptions } from '../tokens/library-config';
+import { sortDescendingPriority } from '../utils/sort';
 
 /**
  * Interface to apply PrintHook to call anonymous `target.updateStyles()`
@@ -27,7 +23,7 @@ const PRINT = 'print';
 export const BREAKPOINT_PRINT = {
   alias: PRINT,
   mediaQuery: PRINT,
-  priority: 1000
+  priority: 1000,
 };
 
 /**
@@ -36,13 +32,13 @@ export const BREAKPOINT_PRINT = {
  *
  * Used in MediaMarshaller and MediaObserver
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class PrintHook implements OnDestroy {
   constructor(
-      protected breakpoints: BreakPointRegistry,
-      @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
-      @Inject(DOCUMENT) protected _document: any) {
-  }
+    protected breakpoints: BreakPointRegistry,
+    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
+    @Inject(DOCUMENT) protected _document: any
+  ) {}
 
   /** Add 'print' mediaQuery: to listen for matchMedia activations */
   withPrintQuery(queries: string[]): string[] {
@@ -62,12 +58,12 @@ export class PrintHook implements OnDestroy {
   /** Lookup breakpoints associated with print aliases. */
   get printBreakPoints(): BreakPoint[] {
     return this.printAlias
-        .map(alias => this.breakpoints.findByAlias(alias))
-        .filter(bp => bp !== null) as BreakPoint[];
+      .map((alias) => this.breakpoints.findByAlias(alias))
+      .filter((bp) => bp !== null) as BreakPoint[];
   }
 
   /** Lookup breakpoint associated with mediaQuery */
-  getEventBreakpoints({mediaQuery}: MediaChange): BreakPoint[] {
+  getEventBreakpoints({ mediaQuery }: MediaChange): BreakPoint[] {
     const bp = this.breakpoints.findByQuery(mediaQuery);
     const list = bp ? [...this.printBreakPoints, bp] : this.printBreakPoints;
 
@@ -86,7 +82,6 @@ export class PrintHook implements OnDestroy {
 
     return mergeAlias(event, bp);
   }
-
 
   // registeredBeforeAfterPrintHooks tracks if we registered the `beforeprint`
   //  and `afterprint` event listeners.
@@ -121,7 +116,10 @@ export class PrintHook implements OnDestroy {
       // if there was a regular print `MediaChange`(from matchMedia).
       if (!this.isPrinting) {
         this.isPrintingBeforeAfterEvent = true;
-        this.startPrinting(target, this.getEventBreakpoints(new MediaChange(true, PRINT)));
+        this.startPrinting(
+          target,
+          this.getEventBreakpoints(new MediaChange(true, PRINT))
+        );
         target.updateStyles();
       }
     };
@@ -137,8 +135,14 @@ export class PrintHook implements OnDestroy {
     };
 
     // Could we have teardown logic to remove if there are no print listeners being used?
-    this._document.defaultView.addEventListener('beforeprint', beforePrintListener);
-    this._document.defaultView.addEventListener('afterprint', afterPrintListener);
+    this._document.defaultView.addEventListener(
+      'beforeprint',
+      beforePrintListener
+    );
+    this._document.defaultView.addEventListener(
+      'afterprint',
+      afterPrintListener
+    );
 
     this.beforePrintEventListeners.push(beforePrintListener);
     this.afterPrintEventListeners.push(afterPrintListener);
@@ -154,7 +158,11 @@ export class PrintHook implements OnDestroy {
         if (event.matches && !this.isPrinting) {
           this.startPrinting(target, this.getEventBreakpoints(event));
           target.updateStyles();
-        } else if (!event.matches && this.isPrinting && !this.isPrintingBeforeAfterEvent) {
+        } else if (
+          !event.matches &&
+          this.isPrinting &&
+          !this.isPrintingBeforeAfterEvent
+        ) {
           this.stopPrinting(target);
           target.updateStyles();
         }
@@ -225,8 +233,10 @@ export class PrintHook implements OnDestroy {
         const bp = this.breakpoints.findByQuery(event.mediaQuery);
         // Deactivating a breakpoint
         if (bp) {
-          const hasFormerBp = this.formerActivations && this.formerActivations.includes(bp);
-          const wasActivated = !this.formerActivations && target.activatedBreakpoints.includes(bp);
+          const hasFormerBp =
+            this.formerActivations && this.formerActivations.includes(bp);
+          const wasActivated =
+            !this.formerActivations && target.activatedBreakpoints.includes(bp);
           const shouldDeactivate = hasFormerBp || wasActivated;
           if (shouldDeactivate) {
             this.deactivations.push(bp);
@@ -240,8 +250,12 @@ export class PrintHook implements OnDestroy {
   /** Teardown logic for the service. */
   ngOnDestroy() {
     if (this._document.defaultView) {
-      this.beforePrintEventListeners.forEach(l => this._document.defaultView.removeEventListener('beforeprint', l));
-      this.afterPrintEventListeners.forEach(l => this._document.defaultView.removeEventListener('afterprint', l));
+      this.beforePrintEventListeners.forEach((l) =>
+        this._document.defaultView.removeEventListener('beforeprint', l)
+      );
+      this.afterPrintEventListeners.forEach((l) =>
+        this._document.defaultView.removeEventListener('afterprint', l)
+      );
     }
   }
 
@@ -266,7 +280,7 @@ class PrintQueue {
   addPrintBreakpoints(bpList: OptionalBreakPoint[]): BreakPoint[] {
     bpList.push(BREAKPOINT_PRINT);
     bpList.sort(sortDescendingPriority);
-    bpList.forEach(bp => this.addBreakpoint(bp));
+    bpList.forEach((bp) => this.addBreakpoint(bp));
 
     return this.printBreakpoints;
   }
@@ -274,13 +288,16 @@ class PrintQueue {
   /** Add Print breakpoint to queue */
   addBreakpoint(bp: OptionalBreakPoint) {
     if (!!bp) {
-      const bpInList = this.printBreakpoints.find(it => it.mediaQuery === bp.mediaQuery);
+      const bpInList = this.printBreakpoints.find(
+        (it) => it.mediaQuery === bp.mediaQuery
+      );
 
       if (bpInList === undefined) {
         // If this is a `printAlias` breakpoint, then append. If a true 'print' breakpoint,
         // register as highest priority in the queue
-        this.printBreakpoints = isPrintBreakPoint(bp) ? [bp, ...this.printBreakpoints]
-            : [...this.printBreakpoints, bp];
+        this.printBreakpoints = isPrintBreakPoint(bp)
+          ? [bp, ...this.printBreakpoints]
+          : [...this.printBreakpoints, bp];
       }
     }
   }

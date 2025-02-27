@@ -1,17 +1,13 @@
 /**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
- /**
  * The flex API permits 3 or 1 parts of the value:
  *    - `flex-grow flex-shrink flex-basis`, or
  *    - `flex-basis`
  */
-export function validateBasis(basis: string, grow = '1', shrink = '1'): string[] {
+export function validateBasis(
+  basis: string,
+  grow = '1',
+  shrink = '1'
+): string[] {
   let parts = [grow, shrink, basis];
 
   let j = basis.indexOf('calc');
@@ -26,14 +22,11 @@ export function validateBasis(basis: string, grow = '1', shrink = '1'): string[]
     parts[2] = _validateCalcValue(basis.trim());
   } else {
     let matches = basis.split(' ');
-    parts = (matches.length === 3) ? matches : [
-          grow, shrink, basis
-        ];
+    parts = matches.length === 3 ? matches : [grow, shrink, basis];
   }
 
   return parts;
 }
-
 
 /**
  * Calc expressions require whitespace before & after any expression operators

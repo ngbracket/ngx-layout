@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Directive, ElementRef, Injectable, Input } from '@angular/core';
 import {
@@ -109,6 +102,10 @@ const selector = `
  * Configures the sizing for the columns in the grid
  * Syntax: <column value> [auto]
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-13
+ */
+/**
+ * @deprecated The DefaultGridColumnsDirective will be removed in version 21.
+ * Use GridColumnsDirective directly instead.
  */
 @Directive({ selector, inputs })
 export class DefaultGridColumnsDirective extends GridColumnsDirective {

@@ -1,23 +1,16 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {merge, Observable, Subject, Subscription} from 'rxjs';
-import {filter, tap} from 'rxjs/operators';
+import { merge, Observable, Subject, Subscription } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 
-import {BreakPoint} from '../breakpoints/break-point';
-import {sortDescendingPriority} from '../utils/sort';
-import {BreakPointRegistry} from '../breakpoints/break-point-registry';
-import {MatchMedia} from '../match-media/match-media';
-import {MediaChange} from '../media-change';
+import { BreakPoint } from '../breakpoints/break-point';
+import { BreakPointRegistry } from '../breakpoints/break-point-registry';
+import { MatchMedia } from '../match-media/match-media';
+import { MediaChange } from '../media-change';
+import { sortDescendingPriority } from '../utils/sort';
 
-import {PrintHook, HookTarget} from './print-hook';
-import {mergeAlias} from '../add-alias';
+import { mergeAlias } from '../add-alias';
+import { PrintHook } from './print-hook';
 
 type ClearCallback = () => void;
 type UpdateCallback = (val: any) => void;
@@ -41,15 +34,15 @@ export interface ElementMatcher {
  * MediaMarshaller - register responsive values from directives and
  *                   trigger them based on media query events
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class MediaMarshaller {
   private _useFallbacks = true;
   private _activatedBreakpoints: BreakPoint[] = [];
   private elementMap: ElementMap = new Map();
   private elementKeyMap: ElementKeyMap = new WeakMap();
-  private watcherMap: WatcherMap = new WeakMap();     // special triggers to update elements
-  private updateMap: BuilderMap = new WeakMap();      // callback functions to update styles
-  private clearMap: BuilderMap = new WeakMap();       // callback functions to clear styles
+  private watcherMap: WatcherMap = new WeakMap(); // special triggers to update elements
+  private updateMap: BuilderMap = new WeakMap(); // callback functions to update styles
+  private clearMap: BuilderMap = new WeakMap(); // callback functions to clear styles
 
   private subject: Subject<ElementMatcher> = new Subject();
 
@@ -69,9 +62,11 @@ export class MediaMarshaller {
     this._useFallbacks = value;
   }
 
-  constructor(protected matchMedia: MatchMedia,
-              protected breakpoints: BreakPointRegistry,
-              protected hook: PrintHook) {
+  constructor(
+    protected matchMedia: MatchMedia,
+    protected breakpoints: BreakPointRegistry,
+    protected hook: PrintHook
+  ) {
     this.observeActivations();
   }
 
@@ -110,12 +105,13 @@ export class MediaMarshaller {
    * @param clearFn optional callback so that custom bp directives don't have to re-provide this
    * @param extraTriggers other triggers to force style updates (e.g. layout, directionality, etc)
    */
-  init(element: HTMLElement,
-       key: string,
-       updateFn?: UpdateCallback,
-       clearFn?: ClearCallback,
-       extraTriggers: Observable<any>[] = []): void {
-
+  init(
+    element: HTMLElement,
+    key: string,
+    updateFn?: UpdateCallback,
+    clearFn?: ClearCallback,
+    extraTriggers: Observable<any>[] = []
+  ): void {
     initBuilderMap(this.updateMap, element, key, updateFn);
     initBuilderMap(this.clearMap, element, key, clearFn);
 
@@ -132,7 +128,8 @@ export class MediaMarshaller {
   getValue(element: HTMLElement, key: string, bp?: string): any {
     const bpMap = this.elementMap.get(element);
     if (bpMap) {
-      const values = bp !== undefined ? bpMap.get(bp) : this.getActivatedValues(bpMap, key);
+      const values =
+        bp !== undefined ? bpMap.get(bp) : this.getActivatedValues(bpMap, key);
       if (values) {
         return values.get(key);
       }
@@ -182,8 +179,8 @@ export class MediaMarshaller {
   /** Track element value changes for a specific key */
   trackValue(element: HTMLElement, key: string): Observable<ElementMatcher> {
     return this.subject
-        .asObservable()
-        .pipe(filter(v => v.element === element && v.key === key));
+      .asObservable()
+      .pipe(filter((v) => v.element === element && v.key === key));
   }
 
   /** update all styles for all elements on the current breakpoint */
@@ -199,7 +196,7 @@ export class MediaMarshaller {
         });
       }
 
-      keyMap.forEach(k => {
+      keyMap.forEach((k) => {
         valueMap = this.getActivatedValues(bpMap, k);
         if (valueMap) {
           const value = valueMap.get(k);
@@ -223,7 +220,7 @@ export class MediaMarshaller {
       const clearFn: ClearCallback = builders.get(key) as ClearCallback;
       if (!!clearFn) {
         clearFn();
-        this.subject.next({element, key, value: ''});
+        this.subject.next({ element, key, value: '' });
       }
     }
   }
@@ -240,7 +237,7 @@ export class MediaMarshaller {
       const updateFn: UpdateCallback = builders.get(key) as UpdateCallback;
       if (!!updateFn) {
         updateFn(value);
-        this.subject.next({element, key, value});
+        this.subject.next({ element, key, value });
       }
     }
   }
@@ -252,7 +249,7 @@ export class MediaMarshaller {
   releaseElement(element: HTMLElement): void {
     const watcherMap = this.watcherMap.get(element);
     if (watcherMap) {
-      watcherMap.forEach(s => s.unsubscribe());
+      watcherMap.forEach((s) => s.unsubscribe());
       this.watcherMap.delete(element);
     }
     const elementMap = this.elementMap.get(element);
@@ -297,9 +294,11 @@ export class MediaMarshaller {
    * - layout changes
    * - mutationobserver updates
    */
-  private watchExtraTriggers(element: HTMLElement,
-                             key: string,
-                             triggers: Observable<any>[]) {
+  private watchExtraTriggers(
+    element: HTMLElement,
+    key: string,
+    triggers: Observable<any>[]
+  ) {
     if (triggers && triggers.length) {
       let watchers = this.watcherMap.get(element);
       if (!watchers) {
@@ -327,13 +326,19 @@ export class MediaMarshaller {
    * @param bpMap
    * @param key
    */
-  private getActivatedValues(bpMap: BreakpointMap, key?: string): ValueMap | undefined {
+  private getActivatedValues(
+    bpMap: BreakpointMap,
+    key?: string
+  ): ValueMap | undefined {
     for (let i = 0; i < this.activatedBreakpoints.length; i++) {
       const activatedBp = this.activatedBreakpoints[i];
       const valueMap = bpMap.get(activatedBp.alias);
 
       if (valueMap) {
-        if (key === undefined || (valueMap.has(key) && valueMap.get(key) != null)) {
+        if (
+          key === undefined ||
+          (valueMap.has(key) && valueMap.get(key) != null)
+        ) {
           return valueMap;
         }
       }
@@ -346,35 +351,37 @@ export class MediaMarshaller {
     }
 
     const lastHope = bpMap.get('');
-    return (key === undefined || lastHope && lastHope.has(key)) ? lastHope : undefined;
+    return key === undefined || (lastHope && lastHope.has(key))
+      ? lastHope
+      : undefined;
   }
 
   /**
    * Watch for mediaQuery breakpoint activations
    */
   private observeActivations() {
-    const queries = this.breakpoints.items.map(bp => bp.mediaQuery);
+    const queries = this.breakpoints.items.map((bp) => bp.mediaQuery);
 
     this.hook.registerBeforeAfterPrintHooks(this);
     this.matchMedia
-        .observe(this.hook.withPrintQuery(queries))
-        .pipe(
-            tap(this.hook.interceptEvents(this)),
-            filter(this.hook.blockPropagation())
-        )
-        .subscribe(this.onMediaChange.bind(this));
+      .observe(this.hook.withPrintQuery(queries))
+      .pipe(
+        tap(this.hook.interceptEvents(this)),
+        filter(this.hook.blockPropagation())
+      )
+      .subscribe(this.onMediaChange.bind(this));
   }
-
 }
 
-function initBuilderMap(map: BuilderMap,
-                        element: HTMLElement,
-                        key: string,
-                        input?: Builder): void {
+function initBuilderMap(
+  map: BuilderMap,
+  element: HTMLElement,
+  key: string,
+  input?: Builder
+): void {
   if (input !== undefined) {
     const oldMap = map.get(element) ?? new Map();
     oldMap.set(key, input);
     map.set(element, oldMap);
   }
 }
-

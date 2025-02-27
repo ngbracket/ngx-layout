@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { isPlatformServer } from '@angular/common';
 import {
   Inject,
@@ -17,8 +10,8 @@ import {
   BreakPoint,
   BREAKPOINT,
   DEFAULT_CONFIG,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   SERVER_TOKEN,
 } from '@ngbracket/ngx-layout/core';
 import { ExtendedModule } from '@ngbracket/ngx-layout/extended';

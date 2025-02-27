@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Directive, ElementRef, Injectable, OnChanges } from '@angular/core';
 import {
   BaseDirective2,
@@ -75,7 +68,10 @@ export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
 }
 
 const flexOrderCache: Map<string, StyleDefinition> = new Map();
-
+/**
+ * @deprecated The DefaultFlexOrderDirective will be removed in version 21.
+ * Use FlexOrderDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultFlexOrderDirective extends FlexOrderDirective {
   protected override inputs = inputs;

@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 export type MediaQuerySubscriber = (changes: MediaChange) => void;
 
 /**
@@ -21,17 +14,21 @@ export class MediaChange {
    * @param suffix e.g. GtSM, Md, GtLg
    * @param priority the priority of activation for the given breakpoint
    */
-  constructor(public matches = false,
-              public mediaQuery = 'all',
-              public mqAlias = '',
-              public suffix = '',
-              public priority = 0) {
-  }
+  constructor(
+    public matches = false,
+    public mediaQuery = 'all',
+    public mqAlias = '',
+    public suffix = '',
+    public priority = 0
+  ) {}
 
   /** Create an exact copy of the MediaChange */
   clone(): MediaChange {
-    return new MediaChange(this.matches, this.mediaQuery, this.mqAlias, this.suffix);
+    return new MediaChange(
+      this.matches,
+      this.mediaQuery,
+      this.mqAlias,
+      this.suffix
+    );
   }
 }
-
-

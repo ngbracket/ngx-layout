@@ -1,16 +1,9 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { applyCssPrefixes } from '@ngbracket/ngx-layout/_private-utils';
 import { StylesheetMap } from '../stylesheet-map/stylesheet-map';
-import { LayoutConfigOptions, LAYOUT_CONFIG } from '../tokens/library-config';
+import { LAYOUT_CONFIG, LayoutConfigOptions } from '../tokens/library-config';
 import { SERVER_TOKEN } from '../tokens/server-token';
 
 @Injectable({ providedIn: 'root' })

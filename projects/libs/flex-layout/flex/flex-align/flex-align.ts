@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
   BaseDirective2,
@@ -84,6 +77,10 @@ export class FlexAlignDirective extends BaseDirective2 {
 
 const flexAlignCache: Map<string, StyleDefinition> = new Map();
 
+/**
+ * @deprecated The DefaultFlexAlignDirective will be removed in version 21.
+ * Use FlexAlignDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultFlexAlignDirective extends FlexAlignDirective {
   protected override inputs = inputs;

@@ -1,15 +1,8 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import {Injectable, Inject} from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
-import {BreakPoint} from './break-point';
-import {BREAKPOINTS} from './break-points-token';
-import {sortAscendingPriority} from '../utils/sort';
+import { sortAscendingPriority } from '../utils/sort';
+import { BreakPoint } from './break-point';
+import { BREAKPOINTS } from './break-points-token';
 
 export type OptionalBreakPoint = BreakPoint | null;
 
@@ -18,7 +11,7 @@ export type OptionalBreakPoint = BreakPoint | null;
  * This is published as a provider and may be overridden from custom, application-specific ranges
  *
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class BreakPointRegistry {
   readonly items: BreakPoint[];
 
@@ -30,7 +23,9 @@ export class BreakPointRegistry {
    * Search breakpoints by alias (e.g. gt-xs)
    */
   findByAlias(alias: string): OptionalBreakPoint {
-    return !alias ? null : this.findWithPredicate(alias, (bp) => bp.alias === alias);
+    return !alias
+      ? null
+      : this.findWithPredicate(alias, (bp) => bp.alias === alias);
   }
 
   findByQuery(query: string): OptionalBreakPoint {
@@ -42,14 +37,14 @@ export class BreakPointRegistry {
    * e.g. gt-sm overlaps md, lg, and xl
    */
   get overlappings(): BreakPoint[] {
-    return this.items.filter(it => it.overlapping);
+    return this.items.filter((it) => it.overlapping);
   }
 
   /**
    * Get list of all registered (non-empty) breakpoint aliases
    */
   get aliases(): string[] {
-    return this.items.map(it => it.alias);
+    return this.items.map((it) => it.alias);
   }
 
   /**
@@ -58,21 +53,22 @@ export class BreakPointRegistry {
    * for property layoutGtSM.
    */
   get suffixes(): string[] {
-    return this.items.map(it => it?.suffix ?? '');
+    return this.items.map((it) => it?.suffix ?? '');
   }
 
   /**
    * Memoized lookup using custom predicate function
    */
-  private findWithPredicate(key: string,
-      searchFn: (bp: BreakPoint) => boolean): OptionalBreakPoint {
+  private findWithPredicate(
+    key: string,
+    searchFn: (bp: BreakPoint) => boolean
+  ): OptionalBreakPoint {
     let response = this.findByMap.get(key);
     if (!response) {
       response = this.items.find(searchFn) ?? null;
       this.findByMap.set(key, response);
     }
     return response ?? null;
-
   }
 
   /**
@@ -80,4 +76,3 @@ export class BreakPointRegistry {
    */
   private readonly findByMap = new Map<String, OptionalBreakPoint>();
 }
-

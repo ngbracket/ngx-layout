@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Directive, ElementRef, Injectable, Input } from '@angular/core';
 import {
@@ -105,6 +98,10 @@ const selector = `
  * 'grid-auto-flow' CSS Grid styling directive
  * Configures the auto placement algorithm for the grid
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-23
+ */
+/**
+ * @deprecated The DefaultGridAutoDirective will be removed in version 21.
+ * Use GridAutoDirective directly instead.
  */
 @Directive({ selector, inputs })
 export class DefaultGridAutoDirective extends GridAutoDirective {

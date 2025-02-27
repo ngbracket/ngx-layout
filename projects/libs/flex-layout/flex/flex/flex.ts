@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import {
   Directive,
   ElementRef,
@@ -16,8 +9,8 @@ import {
 import {
   BaseDirective2,
   ElementMatcher,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   MediaMarshaller,
   StyleBuilder,
   StyleDefinition,
@@ -349,6 +342,10 @@ export class FlexDirective extends BaseDirective2 implements OnInit {
   }
 }
 
+/**
+ * @deprecated The DefaultFlexDirective will be removed in version 21.
+ * Use FlexDirective directly instead.
+ */
 @Directive({ inputs, selector })
 export class DefaultFlexDirective extends FlexDirective {
   protected override inputs = inputs;

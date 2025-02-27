@@ -1,17 +1,10 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
 import {
   BreakPoint,
   BREAKPOINTS,
-  LayoutConfigOptions,
   LAYOUT_CONFIG,
+  LayoutConfigOptions,
   ɵMatchMedia as MatchMedia,
 } from '@ngbracket/ngx-layout/core';
 

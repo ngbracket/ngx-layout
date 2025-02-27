@@ -1,43 +1,38 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-import {fromEvent, Subscription} from 'rxjs';
-import {take} from 'rxjs/operators';
+import { fromEvent, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
-import {mergeAlias} from '../add-alias';
-import {MediaChange} from '../media-change';
-import {MatchMedia} from '../match-media/match-media';
-import {BreakPointRegistry, OptionalBreakPoint} from '../breakpoints/break-point-registry';
-import {sortDescendingPriority} from '../utils/sort';
-import {LAYOUT_CONFIG, LayoutConfigOptions} from '../tokens/library-config';
+import { mergeAlias } from '../add-alias';
+import {
+  BreakPointRegistry,
+  OptionalBreakPoint,
+} from '../breakpoints/break-point-registry';
+import { MatchMedia } from '../match-media/match-media';
+import { MediaChange } from '../media-change';
+import { LAYOUT_CONFIG, LayoutConfigOptions } from '../tokens/library-config';
+import { sortDescendingPriority } from '../utils/sort';
 
 /**
  * Class
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class MediaTrigger {
-
   constructor(
-      protected breakpoints: BreakPointRegistry,
-      protected matchMedia: MatchMedia,
-      @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
-      @Inject(PLATFORM_ID) protected _platformId: Object,
-      @Inject(DOCUMENT) protected _document: any) {
-  }
+    protected breakpoints: BreakPointRegistry,
+    protected matchMedia: MatchMedia,
+    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
+    @Inject(PLATFORM_ID) protected _platformId: Object,
+    @Inject(DOCUMENT) protected _document: any
+  ) {}
 
   /**
    * Manually activate range of breakpoints
    * @param list array of mediaQuery or alias strings
    */
   activate(list: string[]) {
-    list = list.map(it => it.trim()); // trim queries
+    list = list.map((it) => it.trim()); // trim queries
 
     this.saveActivations();
     this.deactivateAll();
@@ -77,7 +72,8 @@ export class MediaTrigger {
    */
   private prepareAutoRestore() {
     const isBrowser = isPlatformBrowser(this._platformId) && this._document;
-    const enableAutoRestore = isBrowser && this.layoutConfig.mediaTriggerAutoRestore;
+    const enableAutoRestore =
+      isBrowser && this.layoutConfig.mediaTriggerAutoRestore;
 
     if (enableAutoRestore) {
       const resize$ = fromEvent(window, 'resize').pipe(take(1));
@@ -105,14 +101,16 @@ export class MediaTrigger {
     if (!this.hasCachedRegistryMatches) {
       const toMediaChange = (query: string) => new MediaChange(true, query);
       const mergeMQAlias = (change: MediaChange) => {
-        const bp: OptionalBreakPoint = this.breakpoints.findByQuery(change.mediaQuery);
+        const bp: OptionalBreakPoint = this.breakpoints.findByQuery(
+          change.mediaQuery
+        );
         return mergeAlias(change, bp);
       };
 
       this.originalActivations = this.currentActivations
-          .map(toMediaChange)
-          .map(mergeMQAlias)
-          .sort(sortDescendingPriority);
+        .map(toMediaChange)
+        .map(mergeMQAlias)
+        .sort(sortDescendingPriority);
 
       this.cacheRegistryMatches();
     }
@@ -137,7 +135,8 @@ export class MediaTrigger {
       const bp = locator.findByAlias(query) || locator.findByQuery(query);
       return bp ? bp.mediaQuery : query;
     };
-    const emitChangeEvent = (query: string) => this.emitChangeEvent(matches, query);
+    const emitChangeEvent = (query: string) =>
+      this.emitChangeEvent(matches, query);
 
     queries.map(toMediaQuery).forEach(emitChangeEvent);
   }
@@ -148,8 +147,8 @@ export class MediaTrigger {
    */
   private forceRegistryMatches(queries: string[], matches: boolean) {
     const registry = new Map<string, MediaQueryList>();
-    queries.forEach(query => {
-      registry.set(query, {matches} as MediaQueryList);
+    queries.forEach((query) => {
+      registry.set(query, { matches } as MediaQueryList);
     });
 
     this.matchMedia.registry = registry;
@@ -196,8 +195,10 @@ export class MediaTrigger {
 
   private hasCachedRegistryMatches = false;
   private originalActivations: MediaChange[] = [];
-  private originalRegistry: Map<string, MediaQueryList> = new Map<string, MediaQueryList>();
+  private originalRegistry: Map<string, MediaQueryList> = new Map<
+    string,
+    MediaQueryList
+  >();
 
   private resizeSubscription!: Subscription;
 }
-

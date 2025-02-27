@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
   BaseDirective2,
@@ -206,6 +199,10 @@ export class LayoutAlignDirective extends BaseDirective2 {
   }
 }
 
+/**
+ * @deprecated The DefaultLayoutAlignDirective will be removed in version 21.
+ * Use LayoutAlignDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultLayoutAlignDirective extends LayoutAlignDirective {
   protected override inputs = inputs;

@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
   BaseDirective2,
@@ -74,6 +67,10 @@ const selector = `
  *
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-justify-self
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-align-self
+ */
+/**
+ * @deprecated The DefaultGridAlignDirective will be removed in version 21.
+ * Use GridAlignDirective directly instead.
  */
 @Directive({ selector, inputs })
 export class DefaultGridAlignDirective extends GridAlignDirective {

@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Directionality } from '@angular/cdk/bidi';
 import {
   AfterContentInit,
@@ -293,6 +286,10 @@ export class LayoutGapDirective
   protected observer?: MutationObserver;
 }
 
+/**
+ * @deprecated The DefaultLayoutGapDirective will be removed in version 21.
+ * Use LayoutGapDirective directly instead.
+ */
 @Directive({ selector, inputs })
 export class DefaultLayoutGapDirective extends LayoutGapDirective {
   protected override inputs = inputs;

@@ -1,20 +1,13 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 declare var global: any;
 const _global = <any>(typeof window === 'undefined' ? global : window);
 
 import { _dom as _ } from './dom-tools';
 
-import { StyleUtils } from '@ngbracket/ngx-layout/core';
 import {
   applyCssPrefixes,
   extendObject,
 } from '@ngbracket/ngx-layout/_private-utils';
+import { StyleUtils } from '@ngbracket/ngx-layout/core';
 
 export const expect: (actual: any) => NgMatchers = <any>_global.expect;
 

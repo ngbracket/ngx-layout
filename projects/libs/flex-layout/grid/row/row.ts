@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Directive, ElementRef, Injectable } from '@angular/core';
 import {
   BaseDirective2,
@@ -70,6 +63,10 @@ const selector = `
  * 'grid-row' CSS Grid styling directive
  * Configures the name or position of an element within the grid
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-26
+ */
+/**
+ * @deprecated The DefaultGridRowDirective will be removed in version 21.
+ * Use GridRowDirective directly instead.
  */
 @Directive({ selector, inputs })
 export class DefaultGridRowDirective extends GridRowDirective {
