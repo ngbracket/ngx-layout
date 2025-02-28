@@ -17,7 +17,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -40,7 +39,7 @@ describe('flex-order', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
     TestBed.configureTestingModule({
       declarations: [TestOrderComponent],
       imports: [CommonModule, FlexLayoutModule],
