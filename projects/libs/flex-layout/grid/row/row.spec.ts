@@ -18,7 +18,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expectEl,
   makeCreateTestComponent,
   queryFor,
@@ -58,7 +57,7 @@ describe('grid row child directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({

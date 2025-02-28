@@ -18,7 +18,6 @@ import {
 import { LayoutDirective } from '@ngbracket/ngx-layout/flex';
 
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -41,7 +40,7 @@ describe('style directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({

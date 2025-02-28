@@ -18,7 +18,6 @@ import {
 
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -53,7 +52,7 @@ describe('align columns directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
