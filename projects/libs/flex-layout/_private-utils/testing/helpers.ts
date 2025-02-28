@@ -2,6 +2,7 @@ import { DebugElement, Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
+import { Assertion, expect } from 'vitest';
 
 export type ComponentClazzFn = () => Type<any>;
 
@@ -36,17 +37,17 @@ export function makeCreateTestComponent(getClass: ComponentClazzFn) {
 export function expectNativeEl(
   fixture: ComponentFixture<any>,
   instanceOptions?: any,
-): any {
+): Assertion<HTMLElement> {
   extendObject(fixture.componentInstance, instanceOptions || {});
   fixture.detectChanges();
-  return expect(fixture.debugElement.children[0].nativeElement);
+  return expect(fixture.debugElement.children[0].nativeElement as HTMLElement);
 }
 
 /**
  *
  */
-export function expectEl(debugEl: DebugElement): any {
-  return expect(debugEl.nativeElement);
+export function expectEl(debugEl: DebugElement): Assertion<HTMLElement> {
+  return expect(debugEl.nativeElement as HTMLElement);
 }
 
 export function queryFor(
