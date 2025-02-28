@@ -3,6 +3,8 @@
   "compilerOptions": {
     "outDir": "../../../out-tsc/spec",
     "types": [
+      "@vitest/browser/matchers",
+      "@vitest/browser/providers/playwright",
       "vitest/globals",
       "vitest/importMeta",
       "vite/client",
