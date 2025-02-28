@@ -80,6 +80,7 @@
     "@swc-node/register": "~1.9.2",
     "@swc/core": "~1.5.29",
     "@swc/helpers": "~0.5.15",
+    "@testing-library/jest-dom": "6.6.3",
     "@types/express": "^4.17.21",
     "@types/jasmine": "^5.1.6",
     "@types/minimatch": "^5.1.2",
