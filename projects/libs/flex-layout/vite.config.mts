@@ -13,15 +13,19 @@ export default defineConfig({
   //  plugins: [ nxViteTsPaths() ],
   // },
   test: {
-    watch: false,
     globals: true,
-    environment: 'jsdom',
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     setupFiles: ['test-setup.ts'],
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../../coverage/projects/libs/flex-layout',
       provider: 'v8',
+    },
+    browser: {
+      enabled: true,
+      provider: 'playwright',
+      // https://vitest.dev/guide/browser/playwright
+      name: 'chromium',
     },
   },
 });
