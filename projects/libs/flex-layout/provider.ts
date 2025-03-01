@@ -1,12 +1,12 @@
 import { Provider } from '@angular/core';
-import { BreakPoint } from './core/breakpoints';
 import {
+  BreakPoint,
   BREAKPOINT,
   DEFAULT_CONFIG,
   LAYOUT_CONFIG,
   LayoutConfigOptions,
   SERVER_TOKEN,
-} from './core/tokens';
+} from '@ngbracket/ngx-layout/core';
 
 export function provideFlexLayout(
   configOptions: LayoutConfigOptions,
