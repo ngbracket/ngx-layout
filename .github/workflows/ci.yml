@@ -182,5 +182,6 @@ jobs:
         run: pnpm stamp
       - name: Publish snapshots
         env:
+          Username: ${{ secrets.__TOKEN__ }}
           FLEX_LAYOUT_BUILDS_TOKEN: ${{ secrets.FLEX_LAYOUT_BUILDS_TOKEN }}
         run: ./scripts/deploy/publish-build-artifacts.sh --no-build
