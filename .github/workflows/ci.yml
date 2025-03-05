@@ -67,6 +67,13 @@ jobs:
   tests_local_browsers:
     runs-on: ubuntu-latest
     needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        browser:
+          - chromium
+          - firefox
+          - webkit
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -87,10 +94,10 @@ jobs:
           path: dist/releases
       - name: Install dependencies
         run: pnpm install
-      - name: Install Playwright browsers
-        run: |
-          pnpm exec playwright install-deps
-          pnpm exec playwright install
+      - name: Install Playwright system dependencies
+        run: pnpm exec playwright install-deps ${{ matrix.browser }}
+      - name: Install Playwright browser
+        run: pnpm exec playwright install ${{ matrix.browser }}
       - name: Run local browser tests
         env:
           TEST_PLATFORM: local
@@ -98,7 +105,7 @@ jobs:
           CIRCLE_NODE_INDEX: 0
           CIRCLE_NODE_TOTAL: 1
           KARMA_PARALLEL_BROWSERS: 1
-        run: pnpm run test
+        run: pnpm run test --browser ${{ matrix.browser }}
 
   tests_ssr:
     runs-on: ubuntu-latest
