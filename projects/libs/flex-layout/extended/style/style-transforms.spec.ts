@@ -41,7 +41,7 @@ describe('ngStyleUtils', () => {
     `)
     );
 
-    expect(map).toHaveMap({
+    expect(map).toStrictEqual({
       color: 'red',
       'font-size': '16px',
       'background-color': 'rgba(116, 37, 49, 0.72)',
@@ -57,7 +57,7 @@ describe('ngStyleUtils', () => {
     `)
     );
 
-    expect(map).toHaveMap({
+    expect(map).toStrictEqual({
       color: 'red',
       'font-size': '16px',
       'background-color': 'rgba(116, 37, 49, 0.72)',
@@ -72,7 +72,7 @@ describe('ngStyleUtils', () => {
 
     let map: NgStyleMap = buildMapFromSet(customSet);
 
-    expect(map).toHaveMap({
+    expect(map).toStrictEqual({
       color: 'red',
       'font-size': '16px',
       'background-color': 'rgba(116, 37, 49, 0.72)',
