@@ -155,6 +155,7 @@ jobs:
           pnpm build:universal-demo-app
 
   publish_snapshots:
+    environment: CI
     runs-on: ubuntu-latest
     needs: [tests_local_browsers, integration_tests]
     if: github.event_name == 'push' && github.event.pull_request == null
