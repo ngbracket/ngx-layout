@@ -16,34 +16,6 @@ export const expect: (actual: any) => NgMatchers = <any>_global.expect;
  */
 export interface NgMatchers extends jasmine.Matchers<any> {
   /**
-   * Expect the element to have exactly the given text.
-   *
-   * ## Example
-   *
-   * {@example testing/ts/matchers.ts region='toHaveText'}
-   */
-  toHaveText(expected: string): boolean;
-
-  /**
-   * Compare key:value pairs as matching EXACTLY
-   */
-  toHaveMap(expected: { [k: string]: string }): boolean;
-
-  /**
-   * Expect the element to have the given CSS class.
-   *
-   * ## Example
-   *
-   * {@example testing/ts/matchers.ts region='toHaveCssClass'}
-   */
-  toHaveCssClass(expected: string): boolean;
-
-  /**
-   * Expect the element to have the given pairs of attribute name and attribute value
-   */
-  toHaveAttributes(expected: { [k: string]: string }): boolean;
-
-  /**
    * Expect the element to have the given CSS styles injected INLINE
    *
    * ## Example
@@ -59,7 +31,7 @@ export interface NgMatchers extends jasmine.Matchers<any> {
    *
    * {@example testing/ts/matchers.ts region='toHaveStyle'}
    */
-  toHaveStyle(expected: { [k: string]: string } | string): boolean;
+  toHaveCSS(expected: { [k: string]: string } | string): boolean;
 
   /**
    * Invert the matchers.
@@ -73,100 +45,6 @@ export interface NgMatchers extends jasmine.Matchers<any> {
  *       in `src/lib/flex/api`
  */
 export const customMatchers: jasmine.CustomMatcherFactories = {
-  toEqual: function (util) {
-    return {
-      compare: function (actual: any, expected: any) {
-        return { pass: util.equals(actual, expected) };
-      },
-    };
-  },
-
-  toHaveText: function () {
-    return {
-      compare: function (actual: any, expectedText: string) {
-        const actualText = elementText(actual);
-        return {
-          pass: actualText == expectedText,
-          get message() {
-            return 'Expected ' + actualText + ' to be equal to ' + expectedText;
-          },
-        };
-      },
-    };
-  },
-
-  toHaveCssClass: function () {
-    return { compare: buildError(false), negativeCompare: buildError(true) };
-
-    function buildError(isNot: boolean) {
-      return function (actual: any, className: string) {
-        return {
-          pass: _.hasClass(actual, className) == !isNot,
-          get message() {
-            return `
-              Expected ${actual.outerHTML} ${isNot ? 'not ' : ''}
-              to contain the CSS class '${className}'
-            `;
-          },
-        };
-      };
-    }
-  },
-
-  toHaveMap: function () {
-    return {
-      compare: function (
-        actual: { [k: string]: string },
-        map: { [k: string]: string },
-      ) {
-        let allPassed: boolean;
-        allPassed = Object.keys(map).length !== 0;
-        Object.keys(map).forEach((key) => {
-          allPassed = allPassed && actual[key] === map[key];
-        });
-
-        return {
-          pass: allPassed,
-          get message() {
-            return `
-              Expected ${JSON.stringify(actual)} ${
-                !allPassed ? ' ' : 'not '
-              } to contain the
-              '${JSON.stringify(map)}'
-            `;
-          },
-        };
-      },
-    };
-  },
-
-  toHaveAttributes: function () {
-    return {
-      compare: function (actual: any, map: { [k: string]: string }) {
-        let allPassed: boolean;
-        let attributeNames = Object.keys(map);
-        allPassed = attributeNames.length !== 0;
-        attributeNames.forEach((name) => {
-          allPassed =
-            allPassed &&
-            _.hasAttribute(actual, name) &&
-            _.getAttribute(actual, name) === map[name];
-        });
-        return {
-          pass: allPassed,
-          get message() {
-            return `
-              Expected ${actual.outerHTML} ${
-                allPassed ? 'not ' : ''
-              } attributes to contain
-              '${JSON.stringify(map)}'
-            `;
-          },
-        };
-      },
-    };
-  },
-
   /**
    * Check element's inline styles only
    */
@@ -275,33 +153,4 @@ function hasPrefixedStyles(
   }
   // Return BOTH confirmation and current computed key values (if confirmation == false)
   return { elHasStyle, current };
-}
-
-function elementText(n: any): string {
-  const hasNodes = (m: any) => {
-    const children = _.childNodes(m);
-    return children && children['length'];
-  };
-
-  if (n instanceof Array) {
-    return n.map(elementText).join('');
-  }
-
-  if (_.isCommentNode(n)) {
-    return '';
-  }
-
-  if (_.isElementNode(n) && _.tagName(n) == 'CONTENT') {
-    return elementText(Array.prototype.slice.apply(_.getDistributedNodes(n)));
-  }
-
-  if (_.hasShadowRoot(n)) {
-    return elementText(_.childNodesAsList(_.getShadowRoot(n)));
-  }
-
-  if (hasNodes(n)) {
-    return elementText(_.childNodesAsList(n));
-  }
-
-  return _.getText(n);
 }
