@@ -1,26 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@use '@angular/material' as mat;
+@import './app/styles/theme.css';
+
+mat-toolbar {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-primary-container),
+      container-text-color: var(--mat-sys-on-primary),
+    )
+  );
+}
+
+html {
+  // overflow: scroll;
+  // overflow-x: hidden;
+}
+// ::-webkit-scrollbar {
+//   width: 15px; /* Remove scrollbar space */
+// }
 
 body {
-  margin: 50px;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-surface);
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background: #eee;
+  margin: 0;
   font-size: 16px;
   line-height: 1.4;
+  height: 100vh;
   -webkit-font-smoothing: antialiased;
   -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
 }
 
-@page {
-  size: auto; /* auto is the initial value */
-  margin: 2cm;
+body.dark-mode {
+  color-scheme: dark;
 }
 
-@media print {
-  body {
-    background: white;
-  }
-}
+// @page {
+//   size: auto; /* auto is the initial value */
+//   margin: 2cm;
+// }
+
+// @media print {
+//   body {
+//     background: white;
+//   }
+// }
 
 h3 {
   background-color: #cdb295;
@@ -202,12 +227,18 @@ div.colored.box.nopad > div {
 }
 
 .blocks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 75px;
   min-height: 50px;
   border-radius: 3px;
 }
 
 .black {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
   min-width: 75px;
   min-height: 50px;
@@ -329,10 +360,6 @@ mat-card-content pre {
 .card-demo mat-card,
 .card-demo mat-card-content {
   margin-bottom: 24px;
-}
-
-mat-card-title {
-  margin-left: 10px;
 }
 
 .card-demo mat-card-footer {

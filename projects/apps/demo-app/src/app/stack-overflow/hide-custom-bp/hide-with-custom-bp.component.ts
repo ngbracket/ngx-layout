@@ -23,9 +23,9 @@ export class CustomHideDirective extends ShowHideDirective {
 }
 
 @Component({
-    selector: 'demo-hide-custom-bp',
-    styleUrls: ['hide-custom-bp.component.scss'],
-    template: `
+  selector: 'demo-hide-custom-bp',
+  styleUrls: ['hide-custom-bp.component.scss'],
+  template: `
     <mat-card class="card-demo">
       <mat-card-title
         ><a href="http://bit.ly/2D2dAxM" target="_blank"
@@ -60,6 +60,6 @@ export class CustomHideDirective extends ShowHideDirective {
       </mat-card-footer>
     </mat-card>
   `,
-    standalone: false
+  standalone: false,
 })
 export class HideWithCustomBPComponent {}
