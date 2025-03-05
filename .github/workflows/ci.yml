@@ -85,12 +85,12 @@ jobs:
         with:
           name: package
           path: dist/releases
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-      - name: Install Firefox
-        uses: browser-actions/setup-firefox@v1
       - name: Install dependencies
         run: pnpm install
+      - name: Install Playwright browsers
+        run: |
+          pnpm exec playwright install-deps
+          pnpm exec playwright install
       - name: Run local browser tests
         env:
           TEST_PLATFORM: local
