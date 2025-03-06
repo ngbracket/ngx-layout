@@ -155,9 +155,10 @@ jobs:
           pnpm build:universal-demo-app
 
   publish_snapshots:
+    environment: FLEX_LAYOUT_BUILDS_TOKEN
     runs-on: ubuntu-latest
     needs: [tests_local_browsers, integration_tests]
-    if: github.event_name == 'push' && github.event.pull_request == null
+    # if: github.event_name == 'push' && github.event.pull_request == null
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

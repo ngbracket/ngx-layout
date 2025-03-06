@@ -1,0 +1,85 @@
+{
+  "name": "updated-demo",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "projects/apps/updated-demo/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/projects/apps/updated-demo",
+        "index": "projects/apps/updated-demo/src/index.html",
+        "browser": "projects/apps/updated-demo/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "projects/apps/updated-demo/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "projects/apps/updated-demo/public"
+          }
+        ],
+        "styles": [
+          "projects/apps/updated-demo/src/styles.scss",
+          "projects/apps/updated-demo/src/app/styles/theme.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "updated-demo:build:production"
+        },
+        "development": {
+          "buildTarget": "updated-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "updated-demo:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "updated-demo:build",
+        "staticFilePath": "dist/projects/apps/updated-demo/browser",
+        "spa": true
+      }
+    }
+  }
+}

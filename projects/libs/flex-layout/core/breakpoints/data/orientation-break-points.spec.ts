@@ -13,7 +13,7 @@ import {
   BREAKPOINTS,
   DEFAULT_BREAKPOINTS,
   ORIENTATION_BREAKPOINTS,
-} from '@ngbracket/ngx-layout/core';
+} from '../../public-api';
 
 describe('break-point-provider', () => {
   let breakPoints: BreakPoint[];
@@ -84,8 +84,8 @@ describe('break-point-provider', () => {
       },
     ];
     let bpList: BreakPoint[];
-    let accumulator: BreakPoint;
-    let byAlias = (alias: string): BreakPoint =>
+    let accumulator!: BreakPoint;
+    const byAlias = (alias: string): BreakPoint =>
       bpList.reduce((pos, it) => {
         return pos || (it.alias === alias ? it : null);
       }, accumulator);
