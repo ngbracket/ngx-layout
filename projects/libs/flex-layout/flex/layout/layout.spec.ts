@@ -61,7 +61,7 @@ describe('layout directive', () => {
   describe('with static features', () => {
     it('should add correct styles for default `fxLayout` usage', () => {
       createTestComponent(`<div fxLayout></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'row',
@@ -72,7 +72,7 @@ describe('layout directive', () => {
     });
     it('should add correct styles for `fxLayout="row"` usage', () => {
       createTestComponent(`<div fxLayout='row'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'row',
@@ -83,7 +83,7 @@ describe('layout directive', () => {
     });
     it('should not override pre-existing styles', () => {
       createTestComponent(`<div fxLayout style="display: none;"></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'none',
           'flex-direction': 'row',
@@ -94,7 +94,7 @@ describe('layout directive', () => {
     });
     it('should add correct styles for `fxLayout="row wrap"` usage', () => {
       createTestComponent(`<div fxLayout='row wrap'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'row',
@@ -106,7 +106,7 @@ describe('layout directive', () => {
     });
     it('should add correct styles for `fxLayout="column"` usage', () => {
       createTestComponent(`<div fxLayout='column'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'column',
@@ -117,7 +117,7 @@ describe('layout directive', () => {
     });
     it('should add correct styles for binding `[fxLayout]="direction"` usage', () => {
       createTestComponent(`<div [fxLayout]='direction'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'column',
@@ -128,7 +128,7 @@ describe('layout directive', () => {
     });
     it('should use default flex-direction for invalid value `fxLayout="invalid"` usage', () => {
       createTestComponent(`<div fxLayout='invalid'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -139,7 +139,7 @@ describe('layout directive', () => {
       // tslint:disable-line:max-line-length
       createTestComponent(`<div [fxLayout]='direction'></div>`);
       fixture.componentInstance.direction = 'invalid';
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -150,7 +150,7 @@ describe('layout directive', () => {
       createTestComponent(`<div [fxLayout]='direction'></div>`);
 
       fixture.componentInstance.direction = 'invalid';
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -158,7 +158,7 @@ describe('layout directive', () => {
       );
 
       fixture.componentInstance.direction = 'column';
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
@@ -184,7 +184,7 @@ describe('layout directive', () => {
 
       createTestComponent(template);
       fixture.detectChanges();
-      expectEl(queryFor(fixture, selector)[0]).toHaveStyle(
+      expectEl(queryFor(fixture, selector)[0]).toHaveInlineStyle(
         {
           'flex-direction': 'row-reverse',
         },
@@ -196,7 +196,7 @@ describe('layout directive', () => {
   describe('with wrap options', () => {
     it('should recognize valid `wrap` option', () => {
       createTestComponent(`<div fxLayout='row wrap'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'row',
@@ -209,7 +209,7 @@ describe('layout directive', () => {
 
     it('should fallback to `wrap` for invalid options', () => {
       createTestComponent(`<div fxLayout='row warpped'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-wrap': 'wrap',
         },
@@ -219,7 +219,7 @@ describe('layout directive', () => {
 
     it('should fallback to `wrap` for invalid options', () => {
       createTestComponent(`<div fxLayout='row wrap-rev'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-wrap': 'wrap',
         },
@@ -229,7 +229,7 @@ describe('layout directive', () => {
 
     it('should have valid wrap with flex children', () => {
       createTestComponent(`<div fxLayout='row wrap'><div fxFlex></div></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-wrap': 'wrap',
         },
@@ -241,7 +241,7 @@ describe('layout directive', () => {
   describe('with inline options', () => {
     it('should recognize valid `inline` option', () => {
       createTestComponent(`<div fxLayout='row inline'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-flex',
           'flex-direction': 'row',
@@ -252,7 +252,7 @@ describe('layout directive', () => {
 
     it('should recognize `line` used with `wrap`', () => {
       createTestComponent(`<div fxLayout='row inline wrap'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-flex',
           'flex-wrap': 'wrap',
@@ -263,7 +263,7 @@ describe('layout directive', () => {
 
     it('should recognize `inline` used with `wrap`', () => {
       createTestComponent(`<div fxLayout='row wrap inline'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-flex',
           'flex-wrap': 'wrap',
@@ -274,7 +274,7 @@ describe('layout directive', () => {
 
     it('should fallback to `wrap` for invalid options', () => {
       createTestComponent(`<div fxLayout='row inline wrap-rev'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-flex',
           'flex-wrap': 'wrap',
@@ -288,7 +288,7 @@ describe('layout directive', () => {
     it('should ignore responsive changes when not configured', () => {
       createTestComponent(`<div fxLayout='column'></div>`);
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'column',
@@ -302,7 +302,7 @@ describe('layout directive', () => {
         `<div fxLayout fxLayout.md='column reverse-wrap'></div>`
       );
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'row',
@@ -312,7 +312,7 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'column',
@@ -323,7 +323,7 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('lg');
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'flex-wrap': 'reverse-wrap',
         },
@@ -333,7 +333,7 @@ describe('layout directive', () => {
     it('should update responsive styles when the active mediaQuery changes', () => {
       createTestComponent(`<div fxLayout fxLayout.md='column'></div>`);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -341,14 +341,14 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
         styler
       );
       mediaController.activate('all');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -362,22 +362,22 @@ describe('layout directive', () => {
                [fxLayout.md]='direction'>
           </div>
        `);
-      expectNativeEl(fixture).toHaveStyle({ 'flex-direction': 'row' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ 'flex-direction': 'row' }, styler);
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         { 'flex-direction': 'column' },
         styler
       );
 
       fixture.componentInstance.direction = 'row';
-      expectNativeEl(fixture).toHaveStyle({ 'flex-direction': 'row' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ 'flex-direction': 'row' }, styler);
     });
     it('should fallback to default styles when the active mediaQuery change is not configured', () => {
       // tslint:disable-line:max-line-length
       createTestComponent(`<div fxLayout fxLayout.md='column'></div>`);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -385,14 +385,14 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
         styler
       );
       mediaController.activate('lg');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -404,7 +404,7 @@ describe('layout directive', () => {
       // tslint:disable-line:max-line-length
       createTestComponent(`<div fxLayout.md='column'></div>`);
 
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
@@ -412,7 +412,7 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
@@ -420,7 +420,7 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('lg');
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
@@ -428,7 +428,7 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
@@ -442,7 +442,7 @@ describe('layout directive', () => {
         `<div fxLayout fxLayout.gt-sm='column' fxLayout.md='row'></div>`
       );
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -450,14 +450,14 @@ describe('layout directive', () => {
       );
 
       mediaController.activate('gt-sm');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
         styler
       );
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
         },
@@ -466,7 +466,7 @@ describe('layout directive', () => {
 
       // Should fallback to value for 'gt-sm'
       mediaController.activate('lg', true);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
         },
@@ -504,7 +504,7 @@ describe('layout directive', () => {
           <div fxFlexOffset="25"></div>
         </div>
       `);
-      expectNativeEl(fixture).toHaveStyle({ display: 'inline-flex' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-flex' }, styler);
     });
   });
 });

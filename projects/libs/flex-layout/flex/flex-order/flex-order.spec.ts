@@ -53,7 +53,7 @@ describe('flex-order', () => {
   describe('static API', () => {
     it('should add correct static values', () => {
       createTestComponent(`<div fxFlexOrder="1"></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           order: '1',
         },
@@ -65,21 +65,21 @@ describe('flex-order', () => {
   describe('responsive API', () => {
     it('should add correct responsive values', () => {
       createTestComponent(`<div fxFlexOrder.xs="1"></div>`);
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           order: '1',
         },
         styler
       );
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           order: '1',
         },
         styler
       );
       mediaController.activate('sm');
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           order: '1',
         },

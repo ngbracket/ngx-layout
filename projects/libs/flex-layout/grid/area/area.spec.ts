@@ -91,7 +91,7 @@ describe('grid area child directive', () => {
       let nodes = queryFor(fixture, '[gdArea]');
       expect(nodes.length).toBe(3);
       if (platform.WEBKIT) {
-        expectEl(nodes[1]).toHaveStyle(
+        expectEl(nodes[1]).toHaveInlineStyle(
           {
             'grid-row-start': 'grace',
             'grid-row-end': 'grace',
@@ -123,7 +123,7 @@ describe('grid area child directive', () => {
       }
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'grid-row-start': 'sidebar',
             'grid-row-end': 'sidebar',
@@ -147,7 +147,7 @@ describe('grid area child directive', () => {
       fixture.componentInstance.area = 'header';
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'grid-row-start': 'header',
             'grid-row-end': 'header',
@@ -182,7 +182,7 @@ describe('grid area child directive', () => {
       }
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'grid-row-start': 'sidebar',
             'grid-row-end': 'sidebar',
@@ -205,7 +205,7 @@ describe('grid area child directive', () => {
 
       mediaController.activate('xs');
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'grid-row-start': 'footer',
             'grid-row-end': 'footer',
@@ -227,7 +227,7 @@ describe('grid area child directive', () => {
 
       mediaController.activate('md');
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'grid-row-start': 'sidebar',
             'grid-row-end': 'sidebar',

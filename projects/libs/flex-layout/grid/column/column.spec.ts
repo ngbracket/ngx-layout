@@ -91,7 +91,7 @@ describe('grid column child directive', () => {
       expect(nodes.length).toBe(3);
 
       if (platform.WEBKIT) {
-        expectEl(nodes[1]).toHaveStyle(
+        expectEl(nodes[1]).toHaveInlineStyle(
           {
             'grid-column-start': 'span 2',
             'grid-column-end': '6',
@@ -99,7 +99,7 @@ describe('grid column child directive', () => {
           styler
         );
       } else {
-        expectEl(nodes[1]).toHaveStyle({ 'grid-column': 'span 2 / 6' }, styler);
+        expectEl(nodes[1]).toHaveInlineStyle({ 'grid-column': 'span 2 / 6' }, styler);
       }
     });
 

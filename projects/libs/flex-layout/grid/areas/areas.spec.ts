@@ -90,7 +90,7 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-areas': '"header" "header" "sidebar" "footer"',
@@ -119,7 +119,7 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-grid',
           'grid-template-areas': '"header" "header" "sidebar" "footer"',
@@ -148,7 +148,7 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-areas': '"header" "header" "sidebar" "footer"',
@@ -173,7 +173,7 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'grid-template-areas': '"sidebar" "sidebar"',
         },
@@ -182,7 +182,7 @@ describe('grid area parent directive', () => {
 
       fixture.componentInstance.areas = 'header | header | sidebar';
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-areas': '"header" "header" "sidebar"',
@@ -210,7 +210,7 @@ describe('grid area parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-areas':
@@ -220,7 +220,7 @@ describe('grid area parent directive', () => {
       );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-areas':
@@ -230,7 +230,7 @@ describe('grid area parent directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-areas':

@@ -83,17 +83,17 @@ describe('hide directive', () => {
   describe('without `responsive` features', () => {
     it('should initial with component not visible as default', () => {
       createTestComponent(`<div fxHide></div>`);
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should initial with component visible when set to `false`', () => {
       createTestComponent(`<div fxHide="false"></div>`);
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should initial with component visible when set to `0`', () => {
       createTestComponent(`<div [fxHide]="isVisible"></div>`);
-      expectNativeEl(fixture, { isVisible: 0 }).not.toHaveStyle(
+      expectNativeEl(fixture, { isVisible: 0 }).not.toHaveInlineStyle(
         { display: 'none' },
         styler
       );
@@ -101,23 +101,23 @@ describe('hide directive', () => {
 
     it('should update styles with binding changes', () => {
       createTestComponent(`<div [fxHide]="menuHidden"></div>`);
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
       fixture.componentInstance.toggleMenu();
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
       fixture.componentInstance.toggleMenu();
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should use "block" display style when not explicitly defined', () => {
       createTestComponent(`<button [fxHide]="isHidden"></button>`);
-      expectNativeEl(fixture, { isHidden: true }).toHaveStyle(
+      expectNativeEl(fixture, { isHidden: true }).toHaveInlineStyle(
         {
           display: 'none',
         },
         styler
       );
 
-      expectNativeEl(fixture, { isHidden: false }).not.toHaveStyle(
+      expectNativeEl(fixture, { isHidden: false }).not.toHaveInlineStyle(
         {
           display: 'none',
         },
@@ -127,11 +127,11 @@ describe('hide directive', () => {
 
     it('should use "flex" display style when the element also has an fxLayout', () => {
       createTestComponent(`<div fxLayout [fxHide]="isHidden"></div>`);
-      expectNativeEl(fixture, { isHidden: true }).toHaveStyle(
+      expectNativeEl(fixture, { isHidden: true }).toHaveInlineStyle(
         { display: 'none' },
         styler
       );
-      expectNativeEl(fixture, { isHidden: false }).not.toHaveStyle(
+      expectNativeEl(fixture, { isHidden: false }).not.toHaveInlineStyle(
         { display: 'none' },
         styler
       );
@@ -141,9 +141,9 @@ describe('hide directive', () => {
       createTestComponent(
         `<div fxLayout fxLayoutAlign="start center" fxHide.xs></div>`
       );
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
     });
   });
 
@@ -151,41 +151,41 @@ describe('hide directive', () => {
     it('should show on `xs` viewports only when the default is included', () => {
       createTestComponent(`<div fxHide="" fxHide.xs="false"></div>`);
 
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
       mediaController.activate('xs');
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should preserve display and update only on activated mediaQuery', () => {
       createTestComponent(
         `<div [fxHide.xs]="isHidden" style="display:inline-block"></div>`
       );
-      expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
 
       // should hide with this activation
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
       // should reset to original display style
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
     });
 
     it('should restore original display when disabled', () => {
       createTestComponent(
         `<div [fxHide.xs]="isHidden" style="display:inline-block"></div>`
       );
-      expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
 
       // should hide with this activation
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
       // should reset to original display style
       fixture.componentInstance.isHidden = false;
-      expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
     });
 
     it('should restore original display when the mediaQuery deactivates', () => {
@@ -193,39 +193,39 @@ describe('hide directive', () => {
       createTestComponent(
         `<div [fxHide.xs]="isHidden" style="display:table"></div>`
       );
-      expectNativeEl(fixture).toHaveStyle(originalDisplay, styler);
+      expectNativeEl(fixture).toHaveInlineStyle(originalDisplay, styler);
 
       // should hide with this activation
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
       // should reset to original display style
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(originalDisplay, styler);
+      expectNativeEl(fixture).toHaveInlineStyle(originalDisplay, styler);
     });
 
     it('should support use of the `media` observable in templates ', () => {
       createTestComponent(`<div [fxHide]="media.isActive('xs')"></div>`);
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
       mediaController.activate('lg');
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should support use of the `media` observable in adaptive templates ', () => {
       createTestComponent(
         `<div fxHide="false" [fxHide.md]="media.isActive('xs')"></div>`
       );
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
 
       mediaController.activate('md');
-      expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should hide when used with fxLayout and the ".md" breakpoint activates', () => {
@@ -249,8 +249,8 @@ describe('hide directive', () => {
         '.hideOnMd'
       );
 
-      expectActivation().not.toHaveStyle({ display: 'none' }, styler);
-      expectActivation('md').toHaveStyle({ display: 'none' }, styler);
+      expectActivation().not.toHaveInlineStyle({ display: 'none' }, styler);
+      expectActivation('md').toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should restore proper display mode when not hiding', () => {
@@ -264,9 +264,9 @@ describe('hide directive', () => {
         '.hideOnXs'
       );
 
-      expectActivation().not.toHaveStyle({ display: 'none' }, styler);
-      expectActivation('xs').toHaveStyle({ display: 'none' }, styler);
-      expectActivation('md').not.toHaveStyle({ display: 'none' }, styler);
+      expectActivation().not.toHaveInlineStyle({ display: 'none' }, styler);
+      expectActivation('xs').toHaveInlineStyle({ display: 'none' }, styler);
+      expectActivation('md').not.toHaveInlineStyle({ display: 'none' }, styler);
     });
 
     it('should work with overlapping breakpoint', () => {
@@ -282,9 +282,9 @@ describe('hide directive', () => {
       );
 
       mediaController.useOverlaps = true;
-      expectActivation().not.toHaveStyle({ display: 'none' }, styler);
-      expectActivation('xs').toHaveStyle({ display: 'none' }, styler);
-      expectActivation('md').not.toHaveStyle({ display: 'none' }, styler);
+      expectActivation().not.toHaveInlineStyle({ display: 'none' }, styler);
+      expectActivation('xs').toHaveInlineStyle({ display: 'none' }, styler);
+      expectActivation('md').not.toHaveInlineStyle({ display: 'none' }, styler);
     });
   });
 
@@ -297,13 +297,13 @@ describe('hide directive', () => {
         `);
 
       mediaController.useOverlaps = true;
-      expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
 
       mediaController.activate('print');
-      expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
       mediaController.activate('sm');
-      expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+      expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
     });
   });
 
@@ -313,19 +313,19 @@ describe('hide directive', () => {
         This content to be shown ONLY when gt-sm
       </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
 
     mediaController.activate('md', true);
-    expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
     mediaController.activate('sm', true);
-    expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
 
     mediaController.activate('xs', true);
-    expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-block' }, styler);
 
     mediaController.activate('print', false);
-    expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
   });
 
   it('should support hide and show with fxLayoutAlign', () => {
@@ -335,16 +335,16 @@ describe('hide directive', () => {
            fxHide.print>
       </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({ display: 'flex' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'flex' }, styler);
 
     mediaController.activate('md', true);
-    expectNativeEl(fixture).toHaveStyle({ display: 'flex' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'flex' }, styler);
 
     mediaController.activate('print', false);
-    expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
     mediaController.activate('xs', true);
-    expectNativeEl(fixture).toHaveStyle({ display: 'flex' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'flex' }, styler);
   });
 
   it('should support fxHide and fxLayout', () => {
@@ -354,13 +354,13 @@ describe('hide directive', () => {
       </div>
     `);
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
 
     mediaController.activate('sm');
-    expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
+    expectNativeEl(fixture).not.toHaveInlineStyle({ display: 'none' }, styler);
 
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle({ display: 'none' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'none' }, styler);
   });
 });
 
