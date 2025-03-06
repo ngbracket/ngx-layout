@@ -83,7 +83,7 @@ describe('grid gap directive', () => {
       }
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-row-gap': '10px',
@@ -92,7 +92,7 @@ describe('grid gap directive', () => {
           styler,
         );
       } else {
-        expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
+        expectNativeEl(fixture).toHaveInlineStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
           'grid-gap',
@@ -115,7 +115,7 @@ describe('grid gap directive', () => {
       }
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-row-gap': '10px',
@@ -124,7 +124,7 @@ describe('grid gap directive', () => {
           styler,
         );
       } else if (platform.BLINK) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             gap: '10px 15px',
@@ -132,7 +132,7 @@ describe('grid gap directive', () => {
           styler,
         );
       } else {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-gap': '10px 15px',
@@ -157,7 +157,7 @@ describe('grid gap directive', () => {
       }
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-row-gap': '8px',
@@ -178,7 +178,7 @@ describe('grid gap directive', () => {
       fixture.componentInstance.gap = '16px';
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-row-gap': '16px',
@@ -210,7 +210,7 @@ describe('grid gap directive', () => {
       }
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'inline-grid',
             'grid-row-gap': '10px',
@@ -219,7 +219,7 @@ describe('grid gap directive', () => {
           styler,
         );
       } else {
-        expectNativeEl(fixture).toHaveStyle({ display: 'inline-grid' }, styler);
+        expectNativeEl(fixture).toHaveInlineStyle({ display: 'inline-grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
           'grid-gap',
@@ -244,7 +244,7 @@ describe('grid gap directive', () => {
       }
 
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-row-gap': '10px',
@@ -253,7 +253,7 @@ describe('grid gap directive', () => {
           styler,
         );
       } else {
-        expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
+        expectNativeEl(fixture).toHaveInlineStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
           'grid-gap',
@@ -264,7 +264,7 @@ describe('grid gap directive', () => {
 
       mediaController.activate('xs');
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-row-gap': '16px',
@@ -273,7 +273,7 @@ describe('grid gap directive', () => {
           styler,
         );
       } else {
-        expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
+        expectNativeEl(fixture).toHaveInlineStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
           'grid-gap',
@@ -284,7 +284,7 @@ describe('grid gap directive', () => {
 
       mediaController.activate('md');
       if (platform.WEBKIT) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-row-gap': '10px',
@@ -293,7 +293,7 @@ describe('grid gap directive', () => {
           styler,
         );
       } else {
-        expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
+        expectNativeEl(fixture).toHaveInlineStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
           'grid-gap',

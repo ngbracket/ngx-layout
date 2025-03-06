@@ -78,7 +78,7 @@ describe('style directive', () => {
         </div>
     `);
       mediaController.activate(testData.mq);
-      expectNativeEl(fixture).toHaveStyle(testData.styleObj, styler);
+      expectNativeEl(fixture).toHaveInlineStyle(testData.styleObj, styler);
     });
   });
 
@@ -87,9 +87,9 @@ describe('style directive', () => {
         <div style="color: blue" [ngStyle.xs]="{'font-size.px': '15'}">
         </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({ color: 'blue' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ color: 'blue' }, styler);
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle(
+    expectNativeEl(fixture).toHaveInlineStyle(
       { color: 'blue', 'font-size': '15px' },
       styler,
     );
@@ -102,10 +102,10 @@ describe('style directive', () => {
             ngStyle.xs="font-size: 15px; background-color: #fc2929;" >
         </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({ color: 'blue' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ color: 'blue' }, styler);
     mediaController.activate('xs');
 
-    expectNativeEl(fixture).toHaveStyle(
+    expectNativeEl(fixture).toHaveInlineStyle(
       {
         color: 'blue',
         'font-size': '15px',
@@ -137,19 +137,19 @@ describe('style directive', () => {
     fixture.detectChanges();
 
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle({ display: 'flex' }, styler);
-    expectNativeEl(fixture).toHaveStyle({ 'font-size': '16px' }, styler);
-    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '12px' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ display: 'flex' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ 'font-size': '16px' }, styler);
+    expectNativeEl(fixture).not.toHaveInlineStyle({ 'font-size': '12px' }, styler);
 
     mediaController.activate('md');
-    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '16px' }, styler);
-    expectNativeEl(fixture).toHaveStyle({ 'font-size': '12px' }, styler);
+    expectNativeEl(fixture).not.toHaveInlineStyle({ 'font-size': '16px' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ 'font-size': '12px' }, styler);
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '12px' }, styler);
-    expectNativeEl(fixture).not.toHaveStyle({ 'font-size': '16px' }, styler);
-    expectNativeEl(fixture).toHaveStyle({ 'font-size': '10px' }, styler); // original is gone
-    expectNativeEl(fixture).toHaveStyle({ 'margin-left': '13px' }, styler); // portion remains
+    expectNativeEl(fixture).not.toHaveInlineStyle({ 'font-size': '12px' }, styler);
+    expectNativeEl(fixture).not.toHaveInlineStyle({ 'font-size': '16px' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ 'font-size': '10px' }, styler); // original is gone
+    expectNativeEl(fixture).toHaveInlineStyle({ 'margin-left': '13px' }, styler); // portion remains
   });
 
   it('should work with special ngStyle px notation', () => {
@@ -158,7 +158,7 @@ describe('style directive', () => {
         </div>
     `);
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveStyle({ 'font-size': '15px' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ 'font-size': '15px' }, styler);
   });
 
   it('should work with bound values', () => {
@@ -167,7 +167,7 @@ describe('style directive', () => {
         </div>
     `);
     mediaController.activate('xs');
-    expectNativeEl(fixture, { fontSize: 19 }).toHaveStyle(
+    expectNativeEl(fixture, { fontSize: 19 }).toHaveInlineStyle(
       { 'font-size': '19px' },
       styler,
     );
@@ -193,10 +193,10 @@ describe('style directive', () => {
         First div
       </div>
     `);
-    expectNativeEl(fixture).toHaveStyle({ 'background-color': 'red' }, styler);
-    expectNativeEl(fixture).toHaveStyle({ height: '100px' }, styler);
-    expectNativeEl(fixture).toHaveStyle({ width: '100px' }, styler);
-    expectNativeEl(fixture).toHaveStyle({ border: '2px solid green' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ 'background-color': 'red' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ height: '100px' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ width: '100px' }, styler);
+    expectNativeEl(fixture).toHaveInlineStyle({ border: '2px solid green' }, styler);
   });
 });
 

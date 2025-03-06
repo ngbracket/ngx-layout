@@ -1,20 +1,31 @@
-declare var global: any;
-const _global = <any>(typeof window === 'undefined' ? global : window);
-
-import { _dom as _ } from './dom-tools';
-
 import {
   applyCssPrefixes,
   extendObject,
 } from '@ngbracket/ngx-layout/_private-utils';
 import { StyleUtils } from '@ngbracket/ngx-layout/core';
+ // This line is important even if imported values are not used! See https://stackoverflow.com/a/78524129/1071200
+import type { Assertion, AsymmetricMatchersContaining } from 'vitest';
+import { expect } from 'vitest';
 
-export const expect: (actual: any) => NgMatchers = <any>_global.expect;
+declare module 'vitest' {
+  interface Assertion<T = any> extends NgMatchers<T> {}
+  interface AsymmetricMatchersContaining extends NgMatchers {}
+}
+
+interface ExpectationResult {
+  pass: boolean;
+  message: () => string;
+  // If you pass these, they will automatically appear inside a diff when
+  // the matcher does not pass, so you don't need to print the diff yourself
+  actual?: unknown;
+  expected?: unknown;
+}
 
 /**
  * Jasmine matchers that check Angular specific conditions.
  */
-export interface NgMatchers extends jasmine.Matchers<any> {
+// export interface NgMatchers extends jasmine.Matchers<any> {
+export interface NgMatchers<R = unknown> {
   /**
    * Expect the element to have the given CSS styles injected INLINE
    *
@@ -22,7 +33,10 @@ export interface NgMatchers extends jasmine.Matchers<any> {
    *
    * {@example testing/ts/matchers.ts region='toHaveStyle'}
    */
-  toHaveStyle(expected: { [k: string]: string } | string): boolean;
+  toHaveInlineStyle(
+    expected: { [k: string]: string } | string,
+    styler: StyleUtils
+  ): R;
 
   /**
    * Expect the element to have the given CSS inline OR computed styles.
@@ -31,12 +45,12 @@ export interface NgMatchers extends jasmine.Matchers<any> {
    *
    * {@example testing/ts/matchers.ts region='toHaveStyle'}
    */
-  toHaveCSS(expected: { [k: string]: string } | string): boolean;
+  toHaveCSS(expected: { [k: string]: string } | string, styler: StyleUtils): R;
 
-  /**
-   * Invert the matchers.
-   */
-  not: NgMatchers;
+  // /**
+  //  * Invert the matchers.
+  //  */
+  // not: NgMatchers;
 }
 
 /**
@@ -44,25 +58,22 @@ export interface NgMatchers extends jasmine.Matchers<any> {
  *       in the Karma/Jasmine testing for the Layout Directives
  *       in `src/lib/flex/api`
  */
-export const customMatchers: jasmine.CustomMatcherFactories = {
+export const customMatchers: Record<
+  string,
+  (received: any, ...expected: any[]) => ExpectationResult
+> = {
   /**
    * Check element's inline styles only
    */
-  toHaveStyle: function () {
-    return {
-      compare: buildCompareStyleFunction(true),
-    };
-  },
+  toHaveInlineStyle: buildCompareStyleFunction(true),
 
   /**
    * Check element's css stylesheet only (if not present inline)
    */
-  toHaveCSS: function () {
-    return {
-      compare: buildCompareStyleFunction(false),
-    };
-  },
+  toHaveCSS: buildCompareStyleFunction(false),
 };
+
+expect.extend(customMatchers);
 
 /**
  * Curried value to function to check styles that are inline or in a stylesheet for the
@@ -73,7 +84,7 @@ function buildCompareStyleFunction(inlineOnly = true) {
     actual: any,
     styles: { [k: string]: string } | string,
     styler: StyleUtils,
-  ) {
+  ): ExpectationResult {
     const found = {};
     const styleMap: { [k: string]: string } = {};
 
@@ -100,7 +111,7 @@ function buildCompareStyleFunction(inlineOnly = true) {
 
     return {
       pass: allPassed,
-      get message() {
+      message() {
         const expectedValueStr =
           typeof styles === 'string'
             ? styleMap

@@ -120,7 +120,7 @@ describe('img-src directive', () => {
 
       fixture.detectChanges();
       if (isPlatformServer(platformId)) {
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: 'url(https://dummyimage.com/300x300/c72538/ffffff.png)',
           },
@@ -130,7 +130,7 @@ describe('img-src directive', () => {
         let url = 'https://dummyimage.com/700x400/258cc7/fff.png';
         fixture.componentInstance.defaultSrc = url;
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${url})`,
           },
@@ -174,7 +174,7 @@ describe('img-src directive', () => {
 
         const img = queryFor(fixture, 'img')[0];
         fixture.detectChanges();
-        expectEl(img).not.toHaveStyle(
+        expectEl(img).not.toHaveInlineStyle(
           {
             content: 'url(https://dummyimage.com/300x300/c72538/ffffff.png)',
           },
@@ -194,7 +194,7 @@ describe('img-src directive', () => {
 
         const img = queryFor(fixture, 'img')[0];
 
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(https://dummyimage.com/300x300/c72538/ffffff.png)`,
           },
@@ -203,7 +203,7 @@ describe('img-src directive', () => {
 
         mediaController.activate('md');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
@@ -226,7 +226,7 @@ describe('img-src directive', () => {
       fixture.detectChanges();
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
@@ -236,7 +236,7 @@ describe('img-src directive', () => {
         // When activating an unused breakpoint, fallback to default [src] value
         mediaController.activate('xl');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['xs'][0]})`,
           },
@@ -264,7 +264,7 @@ describe('img-src directive', () => {
       let imgEl = img.nativeElement;
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${defaultSrc})`,
           },
@@ -273,7 +273,7 @@ describe('img-src directive', () => {
 
         mediaController.activate('xs');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${xsSrc})`,
           },
@@ -282,7 +282,7 @@ describe('img-src directive', () => {
 
         mediaController.activate('lg');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${defaultSrc})`,
           },
@@ -314,7 +314,7 @@ describe('img-src directive', () => {
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
         expect(imgEl).toHaveAttribute('src', '');
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
@@ -324,7 +324,7 @@ describe('img-src directive', () => {
         // When activating an unused breakpoint, fallback to default [src] value
         mediaController.activate('xl');
         fixture.detectChanges();
-        expectEl(img).not.toHaveStyle(
+        expectEl(img).not.toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
