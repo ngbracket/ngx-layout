@@ -16,25 +16,6 @@ export class GridRowStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
-export class GridRowDirective extends BaseDirective2 {
-  protected override DIRECTIVE_KEY = 'grid-row';
-
-  constructor(
-    elementRef: ElementRef,
-    styleBuilder: GridRowStyleBuilder,
-    styler: StyleUtils,
-    marshal: MediaMarshaller
-  ) {
-    super(elementRef, styleBuilder, styler, marshal);
-    this.init();
-  }
-
-  protected override styleCache = rowCache;
-}
-
-const rowCache: Map<string, StyleDefinition> = new Map();
-
 const inputs = [
   'gdRow',
   'gdRow.xs',
@@ -58,6 +39,25 @@ const selector = `
   [gdRow.lt-sm], [gdRow.lt-md], [gdRow.lt-lg], [gdRow.lt-xl],
   [gdRow.gt-xs], [gdRow.gt-sm], [gdRow.gt-md], [gdRow.gt-lg]
 `;
+
+@Directive({ selector, inputs })
+export class GridRowDirective extends BaseDirective2 {
+  protected override DIRECTIVE_KEY = 'grid-row';
+
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: GridRowStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller
+  ) {
+    super(elementRef, styleBuilder, styler, marshal);
+    this.init();
+  }
+
+  protected override styleCache = rowCache;
+}
+
+const rowCache: Map<string, StyleDefinition> = new Map();
 
 /**
  * 'grid-row' CSS Grid styling directive

@@ -29,7 +29,31 @@ export class GridAreasStyleBuiler extends StyleBuilder {
   }
 }
 
-@Directive()
+const inputs = [
+  'gdAreas',
+  'gdAreas.xs',
+  'gdAreas.sm',
+  'gdAreas.md',
+  'gdAreas.lg',
+  'gdAreas.xl',
+  'gdAreas.lt-sm',
+  'gdAreas.lt-md',
+  'gdAreas.lt-lg',
+  'gdAreas.lt-xl',
+  'gdAreas.gt-xs',
+  'gdAreas.gt-sm',
+  'gdAreas.gt-md',
+  'gdAreas.gt-lg',
+];
+
+const selector = `
+  [gdAreas],
+  [gdAreas.xs], [gdAreas.sm], [gdAreas.md], [gdAreas.lg], [gdAreas.xl],
+  [gdAreas.lt-sm], [gdAreas.lt-md], [gdAreas.lt-lg], [gdAreas.lt-xl],
+  [gdAreas.gt-xs], [gdAreas.gt-sm], [gdAreas.gt-md], [gdAreas.gt-lg]
+`;
+
+@Directive({ selector, inputs })
 export class GridAreasDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-areas';
 
@@ -64,30 +88,6 @@ export class GridAreasDirective extends BaseDirective2 {
 
 const areasCache: Map<string, StyleDefinition> = new Map();
 const areasInlineCache: Map<string, StyleDefinition> = new Map();
-
-const inputs = [
-  'gdAreas',
-  'gdAreas.xs',
-  'gdAreas.sm',
-  'gdAreas.md',
-  'gdAreas.lg',
-  'gdAreas.xl',
-  'gdAreas.lt-sm',
-  'gdAreas.lt-md',
-  'gdAreas.lt-lg',
-  'gdAreas.lt-xl',
-  'gdAreas.gt-xs',
-  'gdAreas.gt-sm',
-  'gdAreas.gt-md',
-  'gdAreas.gt-lg',
-];
-
-const selector = `
-  [gdAreas],
-  [gdAreas.xs], [gdAreas.sm], [gdAreas.md], [gdAreas.lg], [gdAreas.xl],
-  [gdAreas.lt-sm], [gdAreas.lt-md], [gdAreas.lt-lg], [gdAreas.lt-xl],
-  [gdAreas.gt-xs], [gdAreas.gt-sm], [gdAreas.gt-md], [gdAreas.gt-lg]
-`;
 
 /**
  * 'grid-template-areas' CSS Grid styling directive

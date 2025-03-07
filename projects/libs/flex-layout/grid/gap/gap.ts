@@ -24,6 +24,30 @@ export class GridGapStyleBuilder extends StyleBuilder {
   }
 }
 
+const inputs = [
+  'gdGap',
+  'gdGap.xs',
+  'gdGap.sm',
+  'gdGap.md',
+  'gdGap.lg',
+  'gdGap.xl',
+  'gdGap.lt-sm',
+  'gdGap.lt-md',
+  'gdGap.lt-lg',
+  'gdGap.lt-xl',
+  'gdGap.gt-xs',
+  'gdGap.gt-sm',
+  'gdGap.gt-md',
+  'gdGap.gt-lg',
+];
+
+const selector = `
+  [gdGap],
+  [gdGap.xs], [gdGap.sm], [gdGap.md], [gdGap.lg], [gdGap.xl],
+  [gdGap.lt-sm], [gdGap.lt-md], [gdGap.lt-lg], [gdGap.lt-xl],
+  [gdGap.gt-xs], [gdGap.gt-sm], [gdGap.gt-md], [gdGap.gt-lg]
+`;
+
 @Directive()
 export class GridGapDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-gap';
@@ -59,30 +83,6 @@ export class GridGapDirective extends BaseDirective2 {
 
 const gapCache: Map<string, StyleDefinition> = new Map();
 const gapInlineCache: Map<string, StyleDefinition> = new Map();
-
-const inputs = [
-  'gdGap',
-  'gdGap.xs',
-  'gdGap.sm',
-  'gdGap.md',
-  'gdGap.lg',
-  'gdGap.xl',
-  'gdGap.lt-sm',
-  'gdGap.lt-md',
-  'gdGap.lt-lg',
-  'gdGap.lt-xl',
-  'gdGap.gt-xs',
-  'gdGap.gt-sm',
-  'gdGap.gt-md',
-  'gdGap.gt-lg',
-];
-
-const selector = `
-  [gdGap],
-  [gdGap.xs], [gdGap.sm], [gdGap.md], [gdGap.lg], [gdGap.xl],
-  [gdGap.lt-sm], [gdGap.lt-md], [gdGap.lt-lg], [gdGap.lt-xl],
-  [gdGap.gt-xs], [gdGap.gt-sm], [gdGap.gt-md], [gdGap.gt-lg]
-`;
 
 /**
  * 'grid-gap' CSS Grid styling directive

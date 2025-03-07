@@ -37,7 +37,31 @@ export class GridColumnsStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
+const inputs = [
+  'gdColumns',
+  'gdColumns.xs',
+  'gdColumns.sm',
+  'gdColumns.md',
+  'gdColumns.lg',
+  'gdColumns.xl',
+  'gdColumns.lt-sm',
+  'gdColumns.lt-md',
+  'gdColumns.lt-lg',
+  'gdColumns.lt-xl',
+  'gdColumns.gt-xs',
+  'gdColumns.gt-sm',
+  'gdColumns.gt-md',
+  'gdColumns.gt-lg',
+];
+
+const selector = `
+  [gdColumns],
+  [gdColumns.xs], [gdColumns.sm], [gdColumns.md], [gdColumns.lg], [gdColumns.xl],
+  [gdColumns.lt-sm], [gdColumns.lt-md], [gdColumns.lt-lg], [gdColumns.lt-xl],
+  [gdColumns.gt-xs], [gdColumns.gt-sm], [gdColumns.gt-md], [gdColumns.gt-lg]
+`;
+
+@Directive({ selector, inputs })
 export class GridColumnsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-columns';
 
@@ -72,30 +96,6 @@ export class GridColumnsDirective extends BaseDirective2 {
 
 const columnsCache: Map<string, StyleDefinition> = new Map();
 const columnsInlineCache: Map<string, StyleDefinition> = new Map();
-
-const inputs = [
-  'gdColumns',
-  'gdColumns.xs',
-  'gdColumns.sm',
-  'gdColumns.md',
-  'gdColumns.lg',
-  'gdColumns.xl',
-  'gdColumns.lt-sm',
-  'gdColumns.lt-md',
-  'gdColumns.lt-lg',
-  'gdColumns.lt-xl',
-  'gdColumns.gt-xs',
-  'gdColumns.gt-sm',
-  'gdColumns.gt-md',
-  'gdColumns.gt-lg',
-];
-
-const selector = `
-  [gdColumns],
-  [gdColumns.xs], [gdColumns.sm], [gdColumns.md], [gdColumns.lg], [gdColumns.xl],
-  [gdColumns.lt-sm], [gdColumns.lt-md], [gdColumns.lt-lg], [gdColumns.lt-xl],
-  [gdColumns.gt-xs], [gdColumns.gt-sm], [gdColumns.gt-md], [gdColumns.gt-lg]
-`;
 
 /**
  * 'grid-template-columns' CSS Grid styling directive

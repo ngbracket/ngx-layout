@@ -17,25 +17,6 @@ export class GridAlignStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
-export class GridAlignDirective extends BaseDirective2 {
-  protected override DIRECTIVE_KEY = 'grid-align';
-
-  constructor(
-    elementRef: ElementRef,
-    styleBuilder: GridAlignStyleBuilder,
-    styler: StyleUtils,
-    marshal: MediaMarshaller
-  ) {
-    super(elementRef, styleBuilder, styler, marshal);
-    this.init();
-  }
-
-  protected override styleCache = alignCache;
-}
-
-const alignCache: Map<string, StyleDefinition> = new Map();
-
 const inputs = [
   'gdGridAlign',
   'gdGridAlign.xs',
@@ -59,6 +40,25 @@ const selector = `
   [gdGridAlign.lt-sm], [gdGridAlign.lt-md], [gdGridAlign.lt-lg], [gdGridAlign.lt-xl],
   [gdGridAlign.gt-xs], [gdGridAlign.gt-sm], [gdGridAlign.gt-md], [gdGridAlign.gt-lg]
 `;
+
+@Directive({ selector, inputs })
+export class GridAlignDirective extends BaseDirective2 {
+  protected override DIRECTIVE_KEY = 'grid-align';
+
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: GridAlignStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller
+  ) {
+    super(elementRef, styleBuilder, styler, marshal);
+    this.init();
+  }
+
+  protected override styleCache = alignCache;
+}
+
+const alignCache: Map<string, StyleDefinition> = new Map();
 
 /**
  * 'align' CSS Grid styling directive for grid children
