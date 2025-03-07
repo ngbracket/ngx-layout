@@ -62,7 +62,7 @@ const selector = `
  * @see https://css-tricks.com/almanac/properties/f/flex-direction/
  *
  */
-@Directive()
+@Directive({ selector, inputs })
 export class LayoutDirective extends BaseDirective2 implements OnChanges {
   protected override DIRECTIVE_KEY = 'layout';
 

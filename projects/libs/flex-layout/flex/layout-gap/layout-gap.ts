@@ -117,7 +117,7 @@ const selector = `
  * 'layout-padding' styling directive
  *  Defines padding of child elements in a layout container
  */
-@Directive()
+@Directive({ inputs, selector })
 export class LayoutGapDirective
   extends BaseDirective2
   implements AfterContentInit, OnDestroy
