@@ -35,7 +35,30 @@ export class GridAutoStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
+const inputs = [
+  'gdAuto',
+  'gdAuto.xs',
+  'gdAuto.sm',
+  'gdAuto.md',
+  'gdAuto.lg',
+  'gdAuto.xl',
+  'gdAuto.lt-sm',
+  'gdAuto.lt-md',
+  'gdAuto.lt-lg',
+  'gdAuto.lt-xl',
+  'gdAuto.gt-xs',
+  'gdAuto.gt-sm',
+  'gdAuto.gt-md',
+  'gdAuto.gt-lg',
+];
+const selector = `
+  [gdAuto],
+  [gdAuto.xs], [gdAuto.sm], [gdAuto.md], [gdAuto.lg], [gdAuto.xl],
+  [gdAuto.lt-sm], [gdAuto.lt-md], [gdAuto.lt-lg], [gdAuto.lt-xl],
+  [gdAuto.gt-xs], [gdAuto.gt-sm], [gdAuto.gt-md], [gdAuto.gt-lg]
+`;
+
+@Directive({ selector, inputs })
 export class GridAutoDirective extends BaseDirective2 {
   @Input('gdInline')
   get inline(): boolean {
@@ -70,29 +93,6 @@ export class GridAutoDirective extends BaseDirective2 {
 
 const autoCache: Map<string, StyleDefinition> = new Map();
 const autoInlineCache: Map<string, StyleDefinition> = new Map();
-
-const inputs = [
-  'gdAuto',
-  'gdAuto.xs',
-  'gdAuto.sm',
-  'gdAuto.md',
-  'gdAuto.lg',
-  'gdAuto.xl',
-  'gdAuto.lt-sm',
-  'gdAuto.lt-md',
-  'gdAuto.lt-lg',
-  'gdAuto.lt-xl',
-  'gdAuto.gt-xs',
-  'gdAuto.gt-sm',
-  'gdAuto.gt-md',
-  'gdAuto.gt-lg',
-];
-const selector = `
-  [gdAuto],
-  [gdAuto.xs], [gdAuto.sm], [gdAuto.md], [gdAuto.lg], [gdAuto.xl],
-  [gdAuto.lt-sm], [gdAuto.lt-md], [gdAuto.lt-lg], [gdAuto.lt-xl],
-  [gdAuto.gt-xs], [gdAuto.gt-sm], [gdAuto.gt-md], [gdAuto.gt-lg]
-`;
 
 /**
  * 'grid-auto-flow' CSS Grid styling directive

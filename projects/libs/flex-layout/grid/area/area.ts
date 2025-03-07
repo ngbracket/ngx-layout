@@ -16,24 +16,6 @@ export class GridAreaStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
-export class GridAreaDirective extends BaseDirective2 {
-  protected override DIRECTIVE_KEY = 'grid-area';
-
-  constructor(
-    elRef: ElementRef,
-    styleUtils: StyleUtils,
-    styleBuilder: GridAreaStyleBuilder,
-    marshal: MediaMarshaller
-  ) {
-    super(elRef, styleBuilder, styleUtils, marshal);
-    this.init();
-  }
-
-  protected override styleCache = gridAreaCache;
-}
-
-const gridAreaCache: Map<string, StyleDefinition> = new Map();
 
 const inputs = [
   'gdArea',
@@ -57,6 +39,25 @@ const selector = `
   [gdArea.lt-sm], [gdArea.lt-md], [gdArea.lt-lg], [gdArea.lt-xl],
   [gdArea.gt-xs], [gdArea.gt-sm], [gdArea.gt-md], [gdArea.gt-lg]
 `;
+
+@Directive({ inputs, selector })
+export class GridAreaDirective extends BaseDirective2 {
+  protected override DIRECTIVE_KEY = 'grid-area';
+
+  constructor(
+    elRef: ElementRef,
+    styleUtils: StyleUtils,
+    styleBuilder: GridAreaStyleBuilder,
+    marshal: MediaMarshaller
+  ) {
+    super(elRef, styleBuilder, styleUtils, marshal);
+    this.init();
+  }
+
+  protected override styleCache = gridAreaCache;
+}
+
+const gridAreaCache: Map<string, StyleDefinition> = new Map();
 
 /**
  * 'grid-area' CSS Grid styling directive

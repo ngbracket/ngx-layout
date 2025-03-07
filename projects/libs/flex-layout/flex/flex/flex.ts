@@ -232,7 +232,7 @@ const selector = `
  *
  * @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
  */
-@Directive()
+@Directive({ inputs, selector })
 export class FlexDirective extends BaseDirective2 implements OnInit {
   protected override DIRECTIVE_KEY = 'flex';
   protected direction?: string = undefined;

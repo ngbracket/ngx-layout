@@ -16,24 +16,6 @@ export class GridColumnStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
-export class GridColumnDirective extends BaseDirective2 {
-  protected override DIRECTIVE_KEY = 'grid-column';
-
-  constructor(
-    elementRef: ElementRef,
-    styleBuilder: GridColumnStyleBuilder,
-    styler: StyleUtils,
-    marshal: MediaMarshaller
-  ) {
-    super(elementRef, styleBuilder, styler, marshal);
-    this.init();
-  }
-
-  protected override styleCache = columnCache;
-}
-
-const columnCache: Map<string, StyleDefinition> = new Map();
 
 const inputs = [
   'gdColumn',
@@ -58,6 +40,26 @@ const selector = `
   [gdColumn.lt-sm], [gdColumn.lt-md], [gdColumn.lt-lg], [gdColumn.lt-xl],
   [gdColumn.gt-xs], [gdColumn.gt-sm], [gdColumn.gt-md], [gdColumn.gt-lg]
 `;
+
+
+@Directive({ selector, inputs })
+export class GridColumnDirective extends BaseDirective2 {
+  protected override DIRECTIVE_KEY = 'grid-column';
+
+  constructor(
+    elementRef: ElementRef,
+    styleBuilder: GridColumnStyleBuilder,
+    styler: StyleUtils,
+    marshal: MediaMarshaller
+  ) {
+    super(elementRef, styleBuilder, styler, marshal);
+    this.init();
+  }
+
+  protected override styleCache = columnCache;
+}
+
+const columnCache: Map<string, StyleDefinition> = new Map();
 
 /**
  * 'grid-column' CSS Grid styling directive

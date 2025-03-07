@@ -22,7 +22,32 @@ export class GridAlignRowsStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
+const inputs = [
+  'gdAlignRows',
+  'gdAlignRows.xs',
+  'gdAlignRows.sm',
+  'gdAlignRows.md',
+  'gdAlignRows.lg',
+  'gdAlignRows.xl',
+  'gdAlignRows.lt-sm',
+  'gdAlignRows.lt-md',
+  'gdAlignRows.lt-lg',
+  'gdAlignRows.lt-xl',
+  'gdAlignRows.gt-xs',
+  'gdAlignRows.gt-sm',
+  'gdAlignRows.gt-md',
+  'gdAlignRows.gt-lg',
+];
+const selector = `
+  [gdAlignRows],
+  [gdAlignRows.xs], [gdAlignRows.sm], [gdAlignRows.md],
+  [gdAlignRows.lg], [gdAlignRows.xl], [gdAlignRows.lt-sm],
+  [gdAlignRows.lt-md], [gdAlignRows.lt-lg], [gdAlignRows.lt-xl],
+  [gdAlignRows.gt-xs], [gdAlignRows.gt-sm], [gdAlignRows.gt-md],
+  [gdAlignRows.gt-lg]
+`;
+
+@Directive({ selector, inputs })
 export class GridAlignRowsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-align-rows';
 
@@ -57,31 +82,6 @@ export class GridAlignRowsDirective extends BaseDirective2 {
 
 const alignRowsCache: Map<string, StyleDefinition> = new Map();
 const alignRowsInlineCache: Map<string, StyleDefinition> = new Map();
-
-const inputs = [
-  'gdAlignRows',
-  'gdAlignRows.xs',
-  'gdAlignRows.sm',
-  'gdAlignRows.md',
-  'gdAlignRows.lg',
-  'gdAlignRows.xl',
-  'gdAlignRows.lt-sm',
-  'gdAlignRows.lt-md',
-  'gdAlignRows.lt-lg',
-  'gdAlignRows.lt-xl',
-  'gdAlignRows.gt-xs',
-  'gdAlignRows.gt-sm',
-  'gdAlignRows.gt-md',
-  'gdAlignRows.gt-lg',
-];
-const selector = `
-  [gdAlignRows],
-  [gdAlignRows.xs], [gdAlignRows.sm], [gdAlignRows.md],
-  [gdAlignRows.lg], [gdAlignRows.xl], [gdAlignRows.lt-sm],
-  [gdAlignRows.lt-md], [gdAlignRows.lt-lg], [gdAlignRows.lt-xl],
-  [gdAlignRows.gt-xs], [gdAlignRows.gt-sm], [gdAlignRows.gt-md],
-  [gdAlignRows.gt-lg]
-`;
 
 /**
  * 'row alignment' CSS Grid styling directive

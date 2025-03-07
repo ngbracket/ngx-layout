@@ -22,7 +22,32 @@ export class GridAlignColumnsStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
+const inputs = [
+  'gdAlignColumns',
+  'gdAlignColumns.xs',
+  'gdAlignColumns.sm',
+  'gdAlignColumns.md',
+  'gdAlignColumns.lg',
+  'gdAlignColumns.xl',
+  'gdAlignColumns.lt-sm',
+  'gdAlignColumns.lt-md',
+  'gdAlignColumns.lt-lg',
+  'gdAlignColumns.lt-xl',
+  'gdAlignColumns.gt-xs',
+  'gdAlignColumns.gt-sm',
+  'gdAlignColumns.gt-md',
+  'gdAlignColumns.gt-lg',
+];
+const selector = `
+  [gdAlignColumns],
+  [gdAlignColumns.xs], [gdAlignColumns.sm], [gdAlignColumns.md],
+  [gdAlignColumns.lg], [gdAlignColumns.xl], [gdAlignColumns.lt-sm],
+  [gdAlignColumns.lt-md], [gdAlignColumns.lt-lg], [gdAlignColumns.lt-xl],
+  [gdAlignColumns.gt-xs], [gdAlignColumns.gt-sm], [gdAlignColumns.gt-md],
+  [gdAlignColumns.gt-lg]
+`;
+
+@Directive({ inputs, selector })
 export class GridAlignColumnsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-align-columns';
 
@@ -58,30 +83,6 @@ export class GridAlignColumnsDirective extends BaseDirective2 {
 const alignColumnsCache: Map<string, StyleDefinition> = new Map();
 const alignColumnsInlineCache: Map<string, StyleDefinition> = new Map();
 
-const inputs = [
-  'gdAlignColumns',
-  'gdAlignColumns.xs',
-  'gdAlignColumns.sm',
-  'gdAlignColumns.md',
-  'gdAlignColumns.lg',
-  'gdAlignColumns.xl',
-  'gdAlignColumns.lt-sm',
-  'gdAlignColumns.lt-md',
-  'gdAlignColumns.lt-lg',
-  'gdAlignColumns.lt-xl',
-  'gdAlignColumns.gt-xs',
-  'gdAlignColumns.gt-sm',
-  'gdAlignColumns.gt-md',
-  'gdAlignColumns.gt-lg',
-];
-const selector = `
-  [gdAlignColumns],
-  [gdAlignColumns.xs], [gdAlignColumns.sm], [gdAlignColumns.md],
-  [gdAlignColumns.lg], [gdAlignColumns.xl], [gdAlignColumns.lt-sm],
-  [gdAlignColumns.lt-md], [gdAlignColumns.lt-lg], [gdAlignColumns.lt-xl],
-  [gdAlignColumns.gt-xs], [gdAlignColumns.gt-sm], [gdAlignColumns.gt-md],
-  [gdAlignColumns.gt-lg]
-`;
 
 /**
  * 'column alignment' CSS Grid styling directive

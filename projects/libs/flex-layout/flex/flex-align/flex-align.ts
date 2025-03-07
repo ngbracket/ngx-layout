@@ -58,7 +58,7 @@ const selector = `
  * Allows element-specific overrides for cross-axis alignments in a layout container
  * @see https://css-tricks.com/almanac/properties/a/align-self/
  */
-@Directive()
+@Directive({ inputs, selector })
 export class FlexAlignDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'flex-align';
 
