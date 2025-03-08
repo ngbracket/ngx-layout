@@ -13,7 +13,8 @@
     ]
   },
   "files": [
-    "test-setup.ts"
+    "test-setup.ts",
+    "test-setup.ssr.ts"
   ],
   "include": [
     "vite.config.ts",

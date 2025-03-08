@@ -254,7 +254,7 @@ importers:
         version: 5.4.11(@types/node@20.17.19)(less@4.1.3)(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
       vitest:
         specifier: ^2.1.9
-        version: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
+        version: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(happy-dom@17.3.1)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
       webpack:
         specifier: ^5.98.0
         version: 5.98.0(@swc/core@1.5.29(@swc/helpers@0.5.15))(webpack-cli@5.1.4)
@@ -5234,6 +5234,10 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
+  happy-dom@17.3.1:
+    resolution: {integrity: sha512-l+/yp/sX5jI4Qv7oqUlaD907Y1CJwGZMbz7nna0zINHUEBZe0svn6NbyOdSY5Ac5qDcnKxcUbSb0YGohc4L2Gg==}
+    engines: {node: '>=18.0.0'}
+
   har-schema@2.0.0:
     resolution: {integrity: sha512-Oqluz6zhGX8cyRaTQlFMPw80bSJVG2x/cFb8ZPhUILGgHka9SsokCCOQgpveePerqidZOrT14ipqfJb7ILcW5Q==}
     engines: {node: '>=4'}
@@ -9156,7 +9160,7 @@ snapshots:
     dependencies:
       '@analogjs/vite-plugin-angular': 1.10.3(@angular-devkit/build-angular@19.1.7(zc6ixmh3kj3yymhqjv5dgkbwbq))(@angular/build@19.1.7(jn7s3charcbe7z6huwphl42bee))
       '@angular-devkit/architect': 0.1900.4(chokidar@4.0.3)
-      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
+      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(happy-dom@17.3.1)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
 
   '@angular-devkit/architect@0.1900.4(chokidar@4.0.3)':
     dependencies:
@@ -11970,7 +11974,7 @@ snapshots:
       minimatch: 9.0.3
       tsconfig-paths: 4.2.0
       vite: 5.4.11(@types/node@20.17.19)(less@4.1.3)(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
-      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
+      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(happy-dom@17.3.1)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -12840,7 +12844,7 @@ snapshots:
       msw: 2.7.3(@types/node@20.17.19)(typescript@5.7.3)
       sirv: 3.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
+      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(happy-dom@17.3.1)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
       ws: 8.18.0
     optionalDependencies:
       playwright: 1.51.0
@@ -12866,7 +12870,7 @@ snapshots:
       std-env: 3.8.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
+      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(happy-dom@17.3.1)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
     optionalDependencies:
       '@vitest/browser': 2.1.9(@types/node@20.17.19)(playwright@1.51.0)(typescript@5.7.3)(vite@5.4.11(@types/node@20.17.19)(less@4.1.3)(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0))(vitest@2.1.9)(webdriverio@6.12.1(encoding@0.1.13)(typescript@5.7.3))
     transitivePeerDependencies:
@@ -12916,7 +12920,7 @@ snapshots:
       sirv: 3.0.1
       tinyglobby: 0.2.10
       tinyrainbow: 1.2.0
-      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
+      vitest: 2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(happy-dom@17.3.1)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0)
 
   '@vitest/utils@2.1.9':
     dependencies:
@@ -15484,6 +15488,12 @@ snapshots:
       wordwrap: 1.0.0
     optionalDependencies:
       uglify-js: 3.19.3
+
+  happy-dom@17.3.1:
+    dependencies:
+      webidl-conversions: 7.0.0
+      whatwg-mimetype: 3.0.0
+    optional: true
 
   har-schema@2.0.0: {}
 
@@ -19378,7 +19388,7 @@ snapshots:
       terser: 5.37.0
       yaml: 2.7.0
 
-  vitest@2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0):
+  vitest@2.1.9(@types/node@20.17.19)(@vitest/browser@2.1.9)(@vitest/ui@2.1.9)(happy-dom@17.3.1)(jsdom@22.1.0)(less@4.1.3)(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0):
     dependencies:
       '@vitest/expect': 2.1.9
       '@vitest/mocker': 2.1.9(msw@2.7.3(@types/node@20.17.19)(typescript@5.7.3))(vite@5.4.11(@types/node@20.17.19)(less@4.1.3)(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0))
@@ -19404,6 +19414,7 @@ snapshots:
       '@types/node': 20.17.19
       '@vitest/browser': 2.1.9(@types/node@20.17.19)(playwright@1.51.0)(typescript@5.7.3)(vite@5.4.11(@types/node@20.17.19)(less@4.1.3)(sass@1.85.0)(stylus@0.64.0)(terser@5.37.0))(vitest@2.1.9)(webdriverio@6.12.1(encoding@0.1.13)(typescript@5.7.3))
       '@vitest/ui': 2.1.9(vitest@2.1.9)
+      happy-dom: 17.3.1
       jsdom: 22.1.0
     transitivePeerDependencies:
       - less
