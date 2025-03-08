@@ -24,7 +24,7 @@
     "build:universal-demo-app": "nx run universal-demo-app:build:production",
     "serve:universal-demo-app": "nx run universal-demo-app:serve-ssr",
     "test": "nx test @ngbracket/ngx-layout",
-    "test:ssr": "webpack --config test/webpack-spec-ssr-bundle.js && jasmine --config=test/jasmine-ssr.json",
+    "test:ssr": "nx test @ngbracket/ngx-layout --configuration=ssr",
     "test:watch": "vitest --watch --ui --project \"@ngbracket/ngx-layout\"",
     "lint": "stylelint projects/libs/**/*.scss --config=stylelint-config.json && tslint --project ./tsconfig.json --config tslint.json",
     "release": "pnpm build && pnpm stamp",

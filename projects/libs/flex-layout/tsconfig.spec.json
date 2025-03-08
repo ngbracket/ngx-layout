@@ -13,13 +13,18 @@
     ]
   },
   "files": [
-    "test-setup.ts"
+    "test-setup.ts",
+    "test-setup.ssr.ts"
   ],
   "include": [
     "vite.config.ts",
     "vite.config.mts",
     "vitest.config.ts",
     "vitest.config.mts",
+    "vite.config.ssr.ts",
+    "vite.config.ssr.mts",
+    "vitest.config.ssr.ts",
+    "vitest.config.ssr.mts",
     "**/*.test.ts",
     "**/*.spec.ts",
     "**/*.test.tsx",

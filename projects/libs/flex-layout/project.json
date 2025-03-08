@@ -27,6 +27,12 @@
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "reportsDirectory": "../../../coverage/projects/libs/flex-layout"
+      },
+      "configurations": {
+        "ssr": {
+          "config": "projects/libs/flex-layout/vite.config.ssr.mts",
+          "reportsDirectory": "../../../coverage/ssr/projects/libs/flex-layout"
+        }
       }
     }
   }
