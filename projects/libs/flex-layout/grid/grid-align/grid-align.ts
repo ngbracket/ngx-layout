@@ -44,6 +44,7 @@ const selector = `
 @Directive({ selector, inputs })
 export class GridAlignDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-align';
+  protected override inputs = inputs;
 
   constructor(
     elementRef: ElementRef,

@@ -32,9 +32,34 @@ import {
   stringToKeyValue,
 } from './style-transforms';
 
-@Directive()
+const inputs = [
+  'ngStyle',
+  'ngStyle.xs',
+  'ngStyle.sm',
+  'ngStyle.md',
+  'ngStyle.lg',
+  'ngStyle.xl',
+  'ngStyle.lt-sm',
+  'ngStyle.lt-md',
+  'ngStyle.lt-lg',
+  'ngStyle.lt-xl',
+  'ngStyle.gt-xs',
+  'ngStyle.gt-sm',
+  'ngStyle.gt-md',
+  'ngStyle.gt-lg',
+];
+
+const selector = `
+  [ngStyle],
+  [ngStyle.xs], [ngStyle.sm], [ngStyle.md], [ngStyle.lg], [ngStyle.xl],
+  [ngStyle.lt-sm], [ngStyle.lt-md], [ngStyle.lt-lg], [ngStyle.lt-xl],
+  [ngStyle.gt-xs], [ngStyle.gt-sm], [ngStyle.gt-md], [ngStyle.gt-lg]
+`;
+
+@Directive({ selector, inputs })
 export class StyleDirective extends BaseDirective2 implements DoCheck {
   protected override DIRECTIVE_KEY = 'ngStyle';
+  protected override inputs = inputs;
   protected fallbackStyles: NgStyleMap;
   protected isServer: boolean;
 
@@ -113,33 +138,14 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
   }
 }
 
-const inputs = [
-  'ngStyle',
-  'ngStyle.xs',
-  'ngStyle.sm',
-  'ngStyle.md',
-  'ngStyle.lg',
-  'ngStyle.xl',
-  'ngStyle.lt-sm',
-  'ngStyle.lt-md',
-  'ngStyle.lt-lg',
-  'ngStyle.lt-xl',
-  'ngStyle.gt-xs',
-  'ngStyle.gt-sm',
-  'ngStyle.gt-md',
-  'ngStyle.gt-lg',
-];
 
-const selector = `
-  [ngStyle],
-  [ngStyle.xs], [ngStyle.sm], [ngStyle.md], [ngStyle.lg], [ngStyle.xl],
-  [ngStyle.lt-sm], [ngStyle.lt-md], [ngStyle.lt-lg], [ngStyle.lt-xl],
-  [ngStyle.gt-xs], [ngStyle.gt-sm], [ngStyle.gt-md], [ngStyle.gt-lg]
-`;
 
 /**
  * Directive to add responsive support for ngStyle.
  *
+ */
+/* @deprecated The DefaultStyleDirective will be removed in version 21.
+ * Use StyleDirective directly instead.
  */
 @Directive({ selector, inputs })
 export class DefaultStyleDirective extends StyleDirective implements DoCheck {

@@ -40,9 +40,10 @@ const selector = `
   [gdArea.gt-xs], [gdArea.gt-sm], [gdArea.gt-md], [gdArea.gt-lg]
 `;
 
-@Directive({ inputs, selector })
+@Directive({ selector, inputs })
 export class GridAreaDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-area';
+  protected override inputs = inputs;
 
   constructor(
     elRef: ElementRef,

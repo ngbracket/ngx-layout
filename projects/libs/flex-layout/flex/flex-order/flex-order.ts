@@ -45,6 +45,7 @@ const selector = `
 @Directive({ inputs, selector })
 export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
   protected override DIRECTIVE_KEY = 'flex-order';
+  protected override inputs = inputs;
 
   constructor(
     elRef: ElementRef,

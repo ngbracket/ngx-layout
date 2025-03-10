@@ -70,6 +70,7 @@ export class GridAutoDirective extends BaseDirective2 {
   protected _inline = false;
 
   protected override DIRECTIVE_KEY = 'grid-auto';
+  protected override inputs = inputs;
 
   constructor(
     elementRef: ElementRef,

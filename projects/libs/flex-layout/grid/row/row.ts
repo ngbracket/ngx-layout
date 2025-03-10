@@ -43,6 +43,7 @@ const selector = `
 @Directive({ selector, inputs })
 export class GridRowDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-row';
+  protected override inputs = inputs;
 
   constructor(
     elementRef: ElementRef,

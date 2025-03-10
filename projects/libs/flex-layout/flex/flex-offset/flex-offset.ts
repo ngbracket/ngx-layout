@@ -77,6 +77,7 @@ const selector = `
 @Directive({ inputs, selector })
 export class FlexOffsetDirective extends BaseDirective2 implements OnChanges {
   protected override DIRECTIVE_KEY = 'flex-offset';
+  protected override inputs = inputs;
 
   constructor(
     elRef: ElementRef,

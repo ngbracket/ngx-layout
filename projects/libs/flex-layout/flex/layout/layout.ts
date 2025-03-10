@@ -65,6 +65,7 @@ const selector = `
 @Directive({ selector, inputs })
 export class LayoutDirective extends BaseDirective2 implements OnChanges {
   protected override DIRECTIVE_KEY = 'layout';
+  protected override inputs = inputs;
 
   constructor(
     elRef: ElementRef,
