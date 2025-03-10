@@ -1,4 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterContentInit,
   Directive,
@@ -7,6 +8,7 @@ import {
   Injectable,
   NgZone,
   OnDestroy,
+  PLATFORM_ID,
 } from '@angular/core';
 import { LAYOUT_VALUES } from '@ngbracket/ngx-layout/_private-utils';
 import {
@@ -145,7 +147,8 @@ export class LayoutGapDirective
     protected directionality: Directionality,
     protected styleUtils: StyleUtils,
     styleBuilder: LayoutGapStyleBuilder,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
+    @Inject(PLATFORM_ID) protected platformId: Object
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     const extraTriggers = [
@@ -265,7 +268,7 @@ export class LayoutGapDirective
 
   protected buildChildObservable(): void {
     this.zone.runOutsideAngular(() => {
-      if (typeof MutationObserver !== 'undefined') {
+      if (isPlatformBrowser(this.platformId) && typeof MutationObserver !== 'undefined') {
         this.observer = new MutationObserver((mutations: MutationRecord[]) => {
           const validatedChanges = (it: MutationRecord): boolean => {
             return (
