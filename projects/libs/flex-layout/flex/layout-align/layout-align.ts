@@ -138,6 +138,7 @@ const selector = `
 @Directive({ inputs, selector })
 export class LayoutAlignDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'layout-align';
+  protected override inputs = inputs;
   protected layout = 'row'; // default flex-direction
   protected inline = false; // default inline value
 

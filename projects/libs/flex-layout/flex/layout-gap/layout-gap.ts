@@ -124,6 +124,7 @@ export class LayoutGapDirective
 {
   protected layout = 'row'; // default flex-direction
   protected override DIRECTIVE_KEY = 'layout-gap';
+  protected override inputs = inputs;
   protected observerSubject = new Subject<void>();
 
   /** Special accessor to query for all child 'element' nodes regardless of type, class, etc */

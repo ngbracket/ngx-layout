@@ -61,6 +61,7 @@ const selector = `
 @Directive({ inputs, selector })
 export class FlexAlignDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'flex-align';
+  protected override inputs = inputs;
 
   constructor(
     elRef: ElementRef,

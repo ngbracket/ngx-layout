@@ -235,6 +235,7 @@ const selector = `
 @Directive({ inputs, selector })
 export class FlexDirective extends BaseDirective2 implements OnInit {
   protected override DIRECTIVE_KEY = 'flex';
+  protected override inputs = inputs;
   protected direction?: string = undefined;
   protected wrap?: boolean = undefined;
 
