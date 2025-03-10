@@ -56,6 +56,7 @@ const selector = `
 @Directive({ selector, inputs })
 export class GridAreasDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-areas';
+  protected override inputs = inputs;
 
   @Input('gdInline')
   get inline(): boolean {

@@ -50,6 +50,7 @@ const selector = `
 @Directive({ selector, inputs })
 export class GridAlignRowsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-align-rows';
+  protected override inputs = inputs;
 
   @Input('gdInline')
   get inline(): boolean {

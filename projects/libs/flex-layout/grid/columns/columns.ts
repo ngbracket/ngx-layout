@@ -64,7 +64,8 @@ const selector = `
 @Directive({ selector, inputs })
 export class GridColumnsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-columns';
-
+  protected override inputs = inputs;
+  
   @Input('gdInline')
   get inline(): boolean {
     return this._inline;
