@@ -48,9 +48,10 @@ const selector = `
   [gdGap.gt-xs], [gdGap.gt-sm], [gdGap.gt-md], [gdGap.gt-lg]
 `;
 
-@Directive()
+@Directive({ selector, inputs })
 export class GridGapDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-gap';
+  protected override inputs = inputs;
 
   @Input('gdInline')
   get inline(): boolean {
