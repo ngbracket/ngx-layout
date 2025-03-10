@@ -37,9 +37,35 @@ export class GridRowsStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
+
+const inputs = [
+  'gdRows',
+  'gdRows.xs',
+  'gdRows.sm',
+  'gdRows.md',
+  'gdRows.lg',
+  'gdRows.xl',
+  'gdRows.lt-sm',
+  'gdRows.lt-md',
+  'gdRows.lt-lg',
+  'gdRows.lt-xl',
+  'gdRows.gt-xs',
+  'gdRows.gt-sm',
+  'gdRows.gt-md',
+  'gdRows.gt-lg',
+];
+
+const selector = `
+  [gdRows],
+  [gdRows.xs], [gdRows.sm], [gdRows.md], [gdRows.lg], [gdRows.xl],
+  [gdRows.lt-sm], [gdRows.lt-md], [gdRows.lt-lg], [gdRows.lt-xl],
+  [gdRows.gt-xs], [gdRows.gt-sm], [gdRows.gt-md], [gdRows.gt-lg]
+`;
+
+@Directive({ selector, inputs })
 export class GridRowsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-rows';
+  protected override inputs = inputs;
 
   @Input('gdInline')
   get inline(): boolean {
@@ -72,30 +98,6 @@ export class GridRowsDirective extends BaseDirective2 {
 
 const rowsCache: Map<string, StyleDefinition> = new Map();
 const rowsInlineCache: Map<string, StyleDefinition> = new Map();
-
-const inputs = [
-  'gdRows',
-  'gdRows.xs',
-  'gdRows.sm',
-  'gdRows.md',
-  'gdRows.lg',
-  'gdRows.xl',
-  'gdRows.lt-sm',
-  'gdRows.lt-md',
-  'gdRows.lt-lg',
-  'gdRows.lt-xl',
-  'gdRows.gt-xs',
-  'gdRows.gt-sm',
-  'gdRows.gt-md',
-  'gdRows.gt-lg',
-];
-
-const selector = `
-  [gdRows],
-  [gdRows.xs], [gdRows.sm], [gdRows.md], [gdRows.lg], [gdRows.xl],
-  [gdRows.lt-sm], [gdRows.lt-md], [gdRows.lt-lg], [gdRows.lt-xl],
-  [gdRows.gt-xs], [gdRows.gt-sm], [gdRows.gt-md], [gdRows.gt-lg]
-`;
 
 /**
  * 'grid-template-rows' CSS Grid styling directive
