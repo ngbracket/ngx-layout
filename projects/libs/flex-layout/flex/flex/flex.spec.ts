@@ -424,7 +424,7 @@ describe('flex directive', () => {
           },
           styler,
         );
-      } else if (platform.FIREFOX || platform.WEBKIT || platform.IOS) {
+      } else if (platform.FIREFOX) {
         expectEl(element).toHaveInlineStyle(
           {
             flex: '1 1 1e-9px',
@@ -432,7 +432,7 @@ describe('flex directive', () => {
           },
           styler,
         );
-      } else if (platform.EDGE) {
+      } else if (platform.EDGE || platform.WEBKIT || platform.IOS) {
         expectEl(element).toHaveInlineStyle(
           {
             flex: '1 1 0px',
