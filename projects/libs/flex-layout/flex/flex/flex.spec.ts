@@ -27,6 +27,12 @@ import {
   FlexStyleBuilder,
 } from '@ngbracket/ngx-layout/flex';
 
+function getSafariMajorVersion(): number {
+  const ua = navigator.userAgent;
+  const match = /Version\/(\d+)/.exec(ua);
+  return match ? Number.parseInt(match[1], 10) : 0;
+}
+
 describe('flex directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
@@ -424,7 +430,7 @@ describe('flex directive', () => {
           },
           styler
         );
-      } else if (platform.FIREFOX || platform.WEBKIT || platform.IOS) {
+      } else if (platform.FIREFOX) {
         expectEl(element).toHaveInlineStyle(
           {
             flex: '1 1 1e-9px',
@@ -432,7 +438,7 @@ describe('flex directive', () => {
           },
           styler
         );
-      } else if (platform.EDGE) {
+      } else if (platform.EDGE || platform.WEBKIT || platform.IOS) {
         expectEl(element).toHaveInlineStyle(
           {
             flex: '1 1 0px',
