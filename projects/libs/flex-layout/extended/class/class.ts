@@ -13,8 +13,29 @@ import {
   MediaMarshaller,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
+const inputs = [
+  'ngClass',
+  'ngClass.xs',
+  'ngClass.sm',
+  'ngClass.md',
+  'ngClass.lg',
+  'ngClass.xl',
+  'ngClass.lt-sm',
+  'ngClass.lt-md',
+  'ngClass.lt-lg',
+  'ngClass.lt-xl',
+  'ngClass.gt-xs',
+  'ngClass.gt-sm',
+  'ngClass.gt-md',
+  'ngClass.gt-lg',
+];
 
-@Directive()
+const selector = `
+  [ngClass], [ngClass.xs], [ngClass.sm], [ngClass.md], [ngClass.lg], [ngClass.xl],
+  [ngClass.lt-sm], [ngClass.lt-md], [ngClass.lt-lg], [ngClass.lt-xl],
+  [ngClass.gt-xs], [ngClass.gt-sm], [ngClass.gt-md], [ngClass.gt-lg]
+`;
+@Directive({ selector, inputs })
 export class ClassDirective extends BaseDirective2 implements DoCheck {
   protected override DIRECTIVE_KEY = 'ngClass';
 
@@ -62,33 +83,12 @@ export class ClassDirective extends BaseDirective2 implements DoCheck {
   }
 }
 
-const inputs = [
-  'ngClass',
-  'ngClass.xs',
-  'ngClass.sm',
-  'ngClass.md',
-  'ngClass.lg',
-  'ngClass.xl',
-  'ngClass.lt-sm',
-  'ngClass.lt-md',
-  'ngClass.lt-lg',
-  'ngClass.lt-xl',
-  'ngClass.gt-xs',
-  'ngClass.gt-sm',
-  'ngClass.gt-md',
-  'ngClass.gt-lg',
-];
-
-const selector = `
-  [ngClass], [ngClass.xs], [ngClass.sm], [ngClass.md], [ngClass.lg], [ngClass.xl],
-  [ngClass.lt-sm], [ngClass.lt-md], [ngClass.lt-lg], [ngClass.lt-xl],
-  [ngClass.gt-xs], [ngClass.gt-sm], [ngClass.gt-md], [ngClass.gt-lg]
-`;
-
 /**
  * Directive to add responsive support for ngClass.
  * This maintains the core functionality of 'ngClass' and adds responsive API
  * Note: this class is a no-op when rendered on the server
+ * *  @deprecated The DefaultClassDirective will be removed in version 21.
+ * Use ClassDirective directly instead.
  */
 @Directive({ selector, inputs })
 export class DefaultClassDirective extends ClassDirective {

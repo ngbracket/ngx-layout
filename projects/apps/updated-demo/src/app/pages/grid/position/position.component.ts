@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  GridAreaDirective,
+  GridAreasDirective,
+  GridColumnsDirective,
+  GridGapDirective,
+} from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-position',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    GridGapDirective,
+    GridColumnsDirective,
+    GridAreasDirective,
+    GridAreaDirective,
+  ],
   template: `<mat-card class="card-demo">
     <mat-card-title>Grid with Positioning</mat-card-title>
     <mat-card-content class="containerX">

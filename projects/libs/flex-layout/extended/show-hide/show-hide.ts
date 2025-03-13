@@ -38,7 +38,50 @@ export class ShowHideStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
+const inputs = [
+  'fxShow',
+  'fxShow.print',
+  'fxShow.xs',
+  'fxShow.sm',
+  'fxShow.md',
+  'fxShow.lg',
+  'fxShow.xl',
+  'fxShow.lt-sm',
+  'fxShow.lt-md',
+  'fxShow.lt-lg',
+  'fxShow.lt-xl',
+  'fxShow.gt-xs',
+  'fxShow.gt-sm',
+  'fxShow.gt-md',
+  'fxShow.gt-lg',
+  'fxHide',
+  'fxHide.print',
+  'fxHide.xs',
+  'fxHide.sm',
+  'fxHide.md',
+  'fxHide.lg',
+  'fxHide.xl',
+  'fxHide.lt-sm',
+  'fxHide.lt-md',
+  'fxHide.lt-lg',
+  'fxHide.lt-xl',
+  'fxHide.gt-xs',
+  'fxHide.gt-sm',
+  'fxHide.gt-md',
+  'fxHide.gt-lg',
+];
+
+const selector = `
+  [fxShow], [fxShow.print],
+  [fxShow.xs], [fxShow.sm], [fxShow.md], [fxShow.lg], [fxShow.xl],
+  [fxShow.lt-sm], [fxShow.lt-md], [fxShow.lt-lg], [fxShow.lt-xl],
+  [fxShow.gt-xs], [fxShow.gt-sm], [fxShow.gt-md], [fxShow.gt-lg],
+  [fxHide], [fxHide.print],
+  [fxHide.xs], [fxHide.sm], [fxHide.md], [fxHide.lg], [fxHide.xl],
+  [fxHide.lt-sm], [fxHide.lt-md], [fxHide.lt-lg], [fxHide.lt-xl],
+  [fxHide.gt-xs], [fxHide.gt-sm], [fxHide.gt-md], [fxHide.gt-lg]
+`;
+@Directive({ selector, inputs })
 export class ShowHideDirective
   extends BaseDirective2
   implements AfterViewInit, OnChanges
@@ -46,7 +89,7 @@ export class ShowHideDirective
   protected override DIRECTIVE_KEY = 'show-hide';
 
   /** Original DOM Element CSS display style */
-  protected display: string = '';
+  protected display = '';
   protected hasLayout = false;
   protected hasFlexChild = false;
 
@@ -56,7 +99,7 @@ export class ShowHideDirective
     styler: StyleUtils,
     marshal: MediaMarshaller,
     @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
-    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(PLATFORM_ID) protected platformId: object,
     @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean
   ) {
     super(elementRef, styleBuilder, styler, marshal);
@@ -172,52 +215,10 @@ export class ShowHideDirective
 
 const DISPLAY_MAP: WeakMap<HTMLElement, string> = new WeakMap();
 
-const inputs = [
-  'fxShow',
-  'fxShow.print',
-  'fxShow.xs',
-  'fxShow.sm',
-  'fxShow.md',
-  'fxShow.lg',
-  'fxShow.xl',
-  'fxShow.lt-sm',
-  'fxShow.lt-md',
-  'fxShow.lt-lg',
-  'fxShow.lt-xl',
-  'fxShow.gt-xs',
-  'fxShow.gt-sm',
-  'fxShow.gt-md',
-  'fxShow.gt-lg',
-  'fxHide',
-  'fxHide.print',
-  'fxHide.xs',
-  'fxHide.sm',
-  'fxHide.md',
-  'fxHide.lg',
-  'fxHide.xl',
-  'fxHide.lt-sm',
-  'fxHide.lt-md',
-  'fxHide.lt-lg',
-  'fxHide.lt-xl',
-  'fxHide.gt-xs',
-  'fxHide.gt-sm',
-  'fxHide.gt-md',
-  'fxHide.gt-lg',
-];
-
-const selector = `
-  [fxShow], [fxShow.print],
-  [fxShow.xs], [fxShow.sm], [fxShow.md], [fxShow.lg], [fxShow.xl],
-  [fxShow.lt-sm], [fxShow.lt-md], [fxShow.lt-lg], [fxShow.lt-xl],
-  [fxShow.gt-xs], [fxShow.gt-sm], [fxShow.gt-md], [fxShow.gt-lg],
-  [fxHide], [fxHide.print],
-  [fxHide.xs], [fxHide.sm], [fxHide.md], [fxHide.lg], [fxHide.xl],
-  [fxHide.lt-sm], [fxHide.lt-md], [fxHide.lt-lg], [fxHide.lt-xl],
-  [fxHide.gt-xs], [fxHide.gt-sm], [fxHide.gt-md], [fxHide.gt-lg]
-`;
-
 /**
  * 'show' Layout API directive
+ *  @deprecated The DefaultShowHideDirective will be removed in version 21.
+ * Use ShowHideDirective directly instead.
  */
 @Directive({ selector, inputs })
 export class DefaultShowHideDirective extends ShowHideDirective {

@@ -2,7 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  ClassDirective,
+  FlexDirective,
+  LayoutDirective,
+  ShowHideDirective,
+  StyleDirective,
+} from '@ngbracket/ngx-layout';
 import { MediaQueryStatusComponent } from '../../media-query-status/media-query-status.component';
 @Component({
   selector: 'app-style',
@@ -10,7 +16,11 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
     MatCardModule,
     MatCheckboxModule,
     MediaQueryStatusComponent,
-    FlexLayoutModule,
+    LayoutDirective,
+    FlexDirective,
+    ClassDirective,
+    ShowHideDirective,
+    StyleDirective,
     FormsModule,
   ],
   template: `

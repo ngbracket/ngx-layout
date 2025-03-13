@@ -1,12 +1,25 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  FlexAlignDirective,
+  FlexDirective,
+  LayoutAlignDirective,
+  LayoutDirective,
+  LayoutGapDirective,
+} from '@ngbracket/ngx-layout';
 
 const ALIGN_OPTIONS = ['auto', 'start', 'center', 'baseline', 'end', 'stretch'];
 
 @Component({
   selector: 'app-align-self',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    FlexAlignDirective,
+    FlexDirective,
+    LayoutDirective,
+    LayoutGapDirective,
+    LayoutAlignDirective,
+  ],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Flex with Align-Self</mat-card-title>
     <mat-card-subtitle

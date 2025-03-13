@@ -1,10 +1,23 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  GridColumnDirective,
+  GridColumnsDirective,
+  GridGapDirective,
+  GridRowDirective,
+  GridRowsDirective,
+} from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-nested',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    GridGapDirective,
+    GridColumnsDirective,
+    GridRowsDirective,
+    GridColumnDirective,
+    GridRowDirective,
+  ],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Nested Grid</mat-card-title>
     <mat-card-content class="containerX">

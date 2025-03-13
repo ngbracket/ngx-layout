@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { FlexDirective } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-grid-column-span',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [MatCardModule, FlexDirective],
   template: `<mat-card class="card-demo">
     <mat-card-title
       ><a href="http://jsfiddle.net/tndgvkfq/" target="_blank">JsFiddle</a>

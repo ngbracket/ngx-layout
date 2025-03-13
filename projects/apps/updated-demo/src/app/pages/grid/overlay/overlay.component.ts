@@ -1,10 +1,24 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  GridAreasDirective,
+  GridColumnDirective,
+  GridColumnsDirective,
+  GridGapDirective,
+  GridRowDirective,
+} from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-overlay',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    GridGapDirective,
+    GridColumnsDirective,
+    GridAreasDirective,
+    GridAreasDirective,
+    GridColumnDirective,
+    GridRowDirective,
+  ],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Grid with Overlay</mat-card-title>
     <mat-card-content class="containerX">

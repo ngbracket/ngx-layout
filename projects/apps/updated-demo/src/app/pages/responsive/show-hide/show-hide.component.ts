@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  FlexDirective,
+  LayoutDirective,
+  ShowHideDirective,
+} from '@ngbracket/ngx-layout';
 import { MediaQueryStatusComponent } from '../../media-query-status/media-query-status.component';
 
 @Component({
   selector: 'app-show-hide',
-  imports: [MatCardModule, FlexLayoutModule, MediaQueryStatusComponent],
+  imports: [
+    MatCardModule,
+    FlexDirective,
+    LayoutDirective,
+    ShowHideDirective,
+    MediaQueryStatusComponent,
+  ],
   template: `<mat-card class="card-demo">
     <mat-card-title>Show & Hide Directives</mat-card-title>
     <mat-card-subtitle

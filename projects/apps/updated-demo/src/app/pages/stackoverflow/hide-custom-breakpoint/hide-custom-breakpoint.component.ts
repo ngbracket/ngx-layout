@@ -2,7 +2,9 @@ import { Component, Directive } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   BREAKPOINT,
-  FlexLayoutModule,
+  FlexDirective,
+  FlexFillDirective,
+  LayoutDirective,
   ShowHideDirective,
 } from '@ngbracket/ngx-layout';
 
@@ -29,7 +31,7 @@ export class CustomHideDirective extends ShowHideDirective {
 
 @Component({
   selector: 'app-hide-custom-breakpoint',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [MatCardModule, FlexDirective, LayoutDirective, FlexFillDirective],
   template: ` <mat-card class="card-demo">
     <mat-card-title
       ><a href="http://bit.ly/2D2dAxM" target="_blank"
