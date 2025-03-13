@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { LayoutDirective } from '@ngbracket/ngx-layout';
 const DIRECTIONS = ['column', 'column-reverse'];
 
 @Component({
   selector: 'app-column-ordering',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [MatCardModule, LayoutDirective],
   template: `<mat-card class="card-demo">
     <mat-card-title
       ><a

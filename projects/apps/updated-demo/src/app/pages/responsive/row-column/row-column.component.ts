@@ -1,14 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
-  FlexLayoutModule,
+  FlexDirective,
+  LayoutDirective,
   MediaChange,
   MediaObserver,
 } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-row-column',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [MatCardModule, FlexDirective, LayoutDirective],
   template: `<mat-card class="card-demo">
     <mat-card-title>Multiple Responsive Columns</mat-card-title>
     <mat-card-subtitle>

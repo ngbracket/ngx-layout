@@ -1,10 +1,25 @@
+import { NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  GridAreaDirective,
+  GridAreasDirective,
+  GridColumnsDirective,
+  GridGapDirective,
+} from '@ngbracket/ngx-layout';
+import { StyleDirective } from 'projects/libs/flex-layout/extended/style/style';
 
 @Component({
   selector: 'app-grid-layout',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    NgStyle,
+    StyleDirective,
+    GridAreaDirective,
+    GridGapDirective,
+    GridAreasDirective,
+    GridColumnsDirective,
+  ],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Basic Responsive Grid App</mat-card-title>
     <mat-card-content class="containerX">

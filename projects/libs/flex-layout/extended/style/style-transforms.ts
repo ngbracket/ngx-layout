@@ -19,7 +19,7 @@ export class NgStyleKeyValue {
 }
 
 export function getType(target: any): string {
-  let what = typeof target;
+  const what = typeof target;
   if (what === 'object') {
     return target.constructor === Array
       ? 'array'
@@ -66,7 +66,7 @@ export function buildMapFromSet(
   source: NgStyleType,
   sanitize?: NgStyleSanitizer
 ): NgStyleMap {
-  let list: string[] = [];
+  const list: string[] = [];
   if (getType(source) === 'set') {
     (source as Set<string>).forEach((entry) => list.push(entry));
   } else {
@@ -88,7 +88,7 @@ export function keyValuesToMap(
   map: NgStyleMap,
   entry: NgStyleKeyValue
 ): NgStyleMap {
-  if (!!entry.key) {
+  if (entry.key) {
     map[entry.key] = entry.value;
   }
   return map;

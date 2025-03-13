@@ -23,7 +23,29 @@ export class ImgSrcStyleBuilder extends StyleBuilder {
   }
 }
 
-@Directive()
+const inputs = [
+  'src.xs',
+  'src.sm',
+  'src.md',
+  'src.lg',
+  'src.xl',
+  'src.lt-sm',
+  'src.lt-md',
+  'src.lt-lg',
+  'src.lt-xl',
+  'src.gt-xs',
+  'src.gt-sm',
+  'src.gt-md',
+  'src.gt-lg',
+];
+
+const selector = `
+  img[src.xs],    img[src.sm],    img[src.md],    img[src.lg],   img[src.xl],
+  img[src.lt-sm], img[src.lt-md], img[src.lt-lg], img[src.lt-xl],
+  img[src.gt-xs], img[src.gt-sm], img[src.gt-md], img[src.gt-lg]
+`;
+
+@Directive({ selector, inputs })
 export class ImgSrcDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'img-src';
   protected defaultSrc = '';
@@ -39,7 +61,7 @@ export class ImgSrcDirective extends BaseDirective2 {
     styleBuilder: ImgSrcStyleBuilder,
     styler: StyleUtils,
     marshal: MediaMarshaller,
-    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(PLATFORM_ID) protected platformId: object,
     @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean
   ) {
     super(elementRef, styleBuilder, styler, marshal);
@@ -72,29 +94,10 @@ export class ImgSrcDirective extends BaseDirective2 {
 
 const imgSrcCache: Map<string, StyleDefinition> = new Map();
 
-const inputs = [
-  'src.xs',
-  'src.sm',
-  'src.md',
-  'src.lg',
-  'src.xl',
-  'src.lt-sm',
-  'src.lt-md',
-  'src.lt-lg',
-  'src.lt-xl',
-  'src.gt-xs',
-  'src.gt-sm',
-  'src.gt-md',
-  'src.gt-lg',
-];
-
-const selector = `
-  img[src.xs],    img[src.sm],    img[src.md],    img[src.lg],   img[src.xl],
-  img[src.lt-sm], img[src.lt-md], img[src.lt-lg], img[src.lt-xl],
-  img[src.gt-xs], img[src.gt-sm], img[src.gt-md], img[src.gt-lg]
-`;
-
 /**
+ *  *  @deprecated The DefaultImgSrcDirective will be removed in version 21.
+ * Use ImgSrcDirective directly instead.
+ *
  * This directive provides a responsive API for the HTML <img> 'src' attribute
  * and will update the img.src property upon each responsive activation.
  *

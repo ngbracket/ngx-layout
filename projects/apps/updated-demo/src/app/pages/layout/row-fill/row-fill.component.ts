@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
 
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
 @Component({
   selector: 'app-row-fill',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [MatCardModule, LayoutDirective, FlexDirective],
   template: `<mat-card class="card-demo" (click)="toggleDirection()">
     <mat-card-title>'Flex' to Fill Row</mat-card-title>
     <mat-card-subtitle

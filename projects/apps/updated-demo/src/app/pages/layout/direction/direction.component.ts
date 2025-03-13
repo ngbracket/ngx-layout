@@ -2,11 +2,21 @@ import { Direction } from '@angular/cdk/bidi';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  FlexOffsetDirective,
+  LayoutDirective,
+  LayoutGapDirective,
+} from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-direction',
-  imports: [MatCardModule, MatButtonModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    LayoutDirective,
+    LayoutGapDirective,
+    FlexOffsetDirective,
+  ],
   template: `
     <mat-card class="card-demo">
       <mat-card-title>Direction support for RTL</mat-card-title>
