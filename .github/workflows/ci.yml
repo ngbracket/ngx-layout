@@ -22,20 +22,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Build
-        run: pnpm build
+        run: npm run build
       - name: Persist package
         uses: actions/upload-artifact@v4
         with:
@@ -49,20 +44,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Lint
-        run: pnpm lint
+        run: npm run lint
 
   tests_local_browsers:
     runs-on: ${{ matrix.playwright-version == '1.37.1' && 'ubuntu-22.04' || 'ubuntu-latest' }} # Ubuntu 24.04 fails when trying to install the libasound2 package, a Playwright system dependency
@@ -98,29 +88,24 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Download package
         uses: actions/download-artifact@v4
         with:
           name: package
           path: dist/releases
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Install Playwright (${{ matrix.playwright-version }})
-        run: pnpm install playwright@${{ matrix.playwright-version }}
+        run: npm install playwright@${{ matrix.playwright-version }}
       - name: Install Playwright system dependencies
-        run: pnpm exec playwright install-deps ${{ matrix.browser }}
+        run: npx playwright install-deps ${{ matrix.browser }}
       - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
-        run: pnpm exec playwright install ${{ matrix.browser }}
+        run: npx playwright install ${{ matrix.browser }}
       - name: Run local browser tests
         env:
           TEST_PLATFORM: local
@@ -132,7 +117,7 @@ jobs:
         with:
           timeout_minutes: 2
           max_attempts: 5
-          command: pnpm run test --browser ${{ matrix.browser }}
+          command: npm run test -- --browser ${{ matrix.browser }}
 
   tests_ssr:
     runs-on: ubuntu-latest
@@ -140,25 +125,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Download package
         uses: actions/download-artifact@v4
         with:
           name: package
           path: dist/releases
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Run SSR tests
-        run: pnpm test:ssr
+        run: npm run test:ssr
 
   integration_tests:
     runs-on: ubuntu-latest
@@ -166,27 +146,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Download package
         uses: actions/download-artifact@v4
         with:
           name: package
           path: dist/releases
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Build universal demo app
         run: |
-          pnpm run build
-          pnpm build:universal-demo-app
+          npm run build
+          npm run build:universal-demo-app
 
   publish_snapshots:
     environment: FLEX_LAYOUT_BUILDS_TOKEN
@@ -196,11 +171,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -211,9 +181,9 @@ jobs:
           name: package
           path: dist/releases
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Stamp
-        run: pnpm stamp
+        run: npm run stamp
       - name: Publish snapshots
         env:
           FLEX_LAYOUT_BUILDS_TOKEN: ${{ secrets.FLEX_LAYOUT_BUILDS_TOKEN }}

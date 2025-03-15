@@ -18,7 +18,7 @@ export BROWSER_STACK_ACCESS_KEY=`echo ${BROWSER_STACK_ACCESS_KEY} | rev`
 export TEST_PLATFORM="browserstack"
 
 # Run Karma
-pnpm run test
+npm run test
 
 echo "Finished ng test"
 exit 0
