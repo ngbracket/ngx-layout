@@ -77,7 +77,7 @@ jobs:
         browser-version:
           - latest
         playwright-version:
-          - latest
+          - 1.51.0 # Latest/same as in `package.json`
         include:
           # Match Angular browser support when Angular 19 was released
           - browser: chromium
@@ -95,6 +95,9 @@ jobs:
           - browser: webkit
             browser-version: 16 # Previous major Safari version when Angular 19 was released
             playwright-version: 1.45.3
+    container:
+      image: mcr.microsoft.com/playwright:v${{ matrix.playwright-version }}
+      options: --user 1001
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -113,14 +116,14 @@ jobs:
         with:
           name: package
           path: dist/releases
-      - name: Install dependencies
-        run: pnpm install
+      # - name: Install dependencies
+      #   run: pnpm install
       - name: Install Playwright (${{ matrix.playwright-version }})
         run: pnpm install playwright@${{ matrix.playwright-version }}
-      - name: Install Playwright system dependencies
-        run: pnpm exec playwright install-deps ${{ matrix.browser }}
-      - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
-        run: pnpm exec playwright install ${{ matrix.browser }}
+      # - name: Install Playwright system dependencies
+      #   run: pnpm exec playwright install-deps ${{ matrix.browser }}
+      # - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
+      #   run: pnpm exec playwright install ${{ matrix.browser }}
       - name: Run local browser tests
         env:
           TEST_PLATFORM: local
