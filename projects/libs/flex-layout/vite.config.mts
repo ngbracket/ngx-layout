@@ -17,7 +17,8 @@ export const config = {
   test: {
     pool: isCi ? 'forks' : undefined,
     sequence: {
-      shuffle: isCi,
+      // shuffle: isCi,
+      seed: 1742080941790,
     },
     globals: true,
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
