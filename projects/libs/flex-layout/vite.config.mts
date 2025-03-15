@@ -15,7 +15,7 @@ export const config = {
   //  plugins: [ nxViteTsPaths() ],
   // },
   test: {
-    isolate: !isCi,
+    pool: isCi ? 'forks' : undefined,
     sequence: {
       shuffle: isCi,
     },
