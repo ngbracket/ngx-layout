@@ -15,6 +15,7 @@ export const config = {
   //  plugins: [ nxViteTsPaths() ],
   // },
   test: {
+    isolate: !isCi,
     sequence: {
       shuffle: isCi,
     },
