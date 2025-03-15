@@ -119,7 +119,7 @@ jobs:
       # - name: Install dependencies
       #   run: pnpm install
       - name: Install Playwright (${{ matrix.playwright-version }})
-        run: pnpm install playwright@${{ matrix.playwright-version }}
+        run: pnpm add --save-dev playwright@${{ matrix.playwright-version }}
       # - name: Install Playwright system dependencies
       #   run: pnpm exec playwright install-deps ${{ matrix.browser }}
       # - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
