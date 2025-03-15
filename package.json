@@ -128,19 +128,9 @@
     "webpack": "^5.98.0",
     "webpack-cli": "^5.1.4"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "core-js",
-      "esbuild",
-      "lmdb",
-      "msgpackr-extract",
-      "nx",
-      "puppeteer"
-    ]
-  },
   "resolutions": {
-    "browser-sync-client": "2.29.3"
+    "browser-sync-client": "2.29.3",
+    "less": "^4.2.0"
   },
   "volta": {
     "node": "20.18.1"
