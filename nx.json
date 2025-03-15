@@ -31,10 +31,11 @@
     "production": [
       "default",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/**/*.spec.[jt]s",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/karma.conf.js",
       "!{projectRoot}/src/test.[jt]s",
-      "!{projectRoot}/test.[jt]s"
+      "!{projectRoot}/test.[jt]s",
+      "!{projectRoot}/(src/)?test-setup.[jt]s"
     ]
   },
   "generators": {

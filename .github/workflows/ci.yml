@@ -22,20 +22,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Build
-        run: pnpm build
+        run: npm run build
       - name: Persist package
         uses: actions/upload-artifact@v4
         with:
@@ -49,48 +44,68 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Lint
-        run: pnpm lint
+        run: npm run lint
 
   tests_local_browsers:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.playwright-version == '1.37.1' && 'ubuntu-22.04' || 'ubuntu-latest' }} # Ubuntu 24.04 fails when trying to install the libasound2 package, a Playwright system dependency
     needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        browser:
+          - chromium
+          - firefox
+          - webkit
+        browser-version:
+          - latest
+        playwright-version:
+          - latest
+        include:
+          # Match Angular browser support when Angular 19 was released
+          - browser: chromium
+            browser-version: 130 # Previous major Chrome version when Angular 19 was released
+            playwright-version: 1.48.2
+          - browser: firefox
+            browser-version: 130 # Firefox 131 was the previous major version when Angular 19 was released but this is not supported by any Playwright version
+            playwright-version: 1.48.2
+          - browser: firefox
+            browser-version: esr-115 # Old ESR when Firefox 131 was released
+            playwright-version: 1.37.1
+          - browser: firefox
+            browser-version: esr-128 # New ESR when Firefox 131 was released
+            playwright-version: 1.46.1
+          - browser: webkit
+            browser-version: 16 # Previous major Safari version when Angular 19 was released
+            playwright-version: 1.45.3
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Download package
         uses: actions/download-artifact@v4
         with:
           name: package
           path: dist/releases
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-      - name: Install Firefox
-        uses: browser-actions/setup-firefox@v1
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
+      - name: Install Playwright (${{ matrix.playwright-version }})
+        run: npm install playwright@${{ matrix.playwright-version }}
+      - name: Install Playwright system dependencies
+        run: npx playwright install-deps ${{ matrix.browser }}
+      - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
+        run: npx playwright install ${{ matrix.browser }}
       - name: Run local browser tests
         env:
           TEST_PLATFORM: local
@@ -98,7 +113,11 @@ jobs:
           CIRCLE_NODE_INDEX: 0
           CIRCLE_NODE_TOTAL: 1
           KARMA_PARALLEL_BROWSERS: 1
-        run: pnpm run test
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 2
+          max_attempts: 5
+          command: npm run test -- --browser ${{ matrix.browser }}
 
   tests_ssr:
     runs-on: ubuntu-latest
@@ -106,25 +125,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Download package
         uses: actions/download-artifact@v4
         with:
           name: package
           path: dist/releases
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Run SSR tests
-        run: pnpm test:ssr
+        run: npm run test:ssr
 
   integration_tests:
     runs-on: ubuntu-latest
@@ -132,27 +146,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          cache: npm
       - name: Download package
         uses: actions/download-artifact@v4
         with:
           name: package
           path: dist/releases
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Build universal demo app
         run: |
-          pnpm run build
-          pnpm build:universal-demo-app
+          npm run build
+          npm run build:universal-demo-app
 
   publish_snapshots:
     environment: FLEX_LAYOUT_BUILDS_TOKEN
@@ -162,11 +171,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -177,9 +181,9 @@ jobs:
           name: package
           path: dist/releases
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci --legacy-peer-deps
       - name: Stamp
-        run: pnpm stamp
+        run: npm run stamp
       - name: Publish snapshots
         env:
           FLEX_LAYOUT_BUILDS_TOKEN: ${{ secrets.FLEX_LAYOUT_BUILDS_TOKEN }}

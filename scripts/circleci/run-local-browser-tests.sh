@@ -12,4 +12,4 @@ cd $(dirname ${0})/../..
 export TEST_PLATFORM="local"
 
 # Run the unit tests on the local browsers with Karma.
-pnpm run test
+npm run test
