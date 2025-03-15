@@ -2,7 +2,10 @@ import { DebugElement, Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
-import { Assertion, expect } from 'vitest';
+import type { Assertion, ExpectStatic } from 'vitest';
+// import { expect } from 'vitest';
+
+const expect = ((globalThis as any).expect as ExpectStatic);
 
 export type ComponentClazzFn = () => Type<any>;
 

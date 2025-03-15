@@ -4,8 +4,8 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils';
 import { StyleUtils } from '@ngbracket/ngx-layout/core';
  // This line is important even if imported values are not used! See https://stackoverflow.com/a/78524129/1071200
-import type { Assertion, AsymmetricMatchersContaining } from 'vitest';
-import { expect } from 'vitest';
+import type { Assertion, AsymmetricMatchersContaining, ExpectStatic } from 'vitest';
+// import { expect } from 'vitest';
 
 declare module 'vitest' {
   interface Assertion<T = any> extends NgMatchers<T> {}
@@ -73,7 +73,7 @@ export const customMatchers: Record<
   toHaveCSS: buildCompareStyleFunction(false),
 };
 
-expect.extend(customMatchers);
+((globalThis as any).expect as ExpectStatic).extend(customMatchers);
 
 /**
  * Curried value to function to check styles that are inline or in a stylesheet for the
