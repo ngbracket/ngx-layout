@@ -29,7 +29,8 @@
     "lint": "stylelint projects/libs/**/*.scss --config=stylelint-config.json && tslint --project ./tsconfig.json --config tslint.json",
     "release": "pnpm build && pnpm stamp",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "serve:ssr:universal-demo-app": "node dist/universal-demo-app/server/server.mjs"
+    "serve:ssr:universal-demo-app": "node dist/universal-demo-app/server/server.mjs",
+    "playwright:install": "playwright install --with-deps"
   },
   "private": true,
   "requiredAngularVersion": ">=19.0.0",
