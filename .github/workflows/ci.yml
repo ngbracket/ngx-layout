@@ -67,7 +67,6 @@ jobs:
   tests_local_browsers:
     runs-on: ${{ matrix.playwright-version == '1.37.1' && 'ubuntu-22.04' || 'ubuntu-latest' }} # Ubuntu 24.04 fails when trying to install the libasound2 package, a Playwright system dependency
     needs: build
-    timeout-minutes: 10 # Firefox jobs sometimes hang
     strategy:
       fail-fast: false
       matrix:
@@ -129,7 +128,12 @@ jobs:
           CIRCLE_NODE_INDEX: 0
           CIRCLE_NODE_TOTAL: 1
           KARMA_PARALLEL_BROWSERS: 1
-        run: pnpm run test --browser ${{ matrix.browser }}
+        uses: nick-fields/retry@v3
+        with:
+          timeout_seconds: 45
+          max_attempts: 5
+          retry_on: timeout
+          command: pnpm run test --browser=${{ matrix.browser }}
 
   tests_ssr:
     runs-on: ubuntu-latest
