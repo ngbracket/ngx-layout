@@ -116,8 +116,8 @@ jobs:
         with:
           name: package
           path: dist/releases
-      # - name: Install dependencies
-      #   run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
       - name: Install Playwright (${{ matrix.playwright-version }})
         run: pnpm add --save-dev playwright@${{ matrix.playwright-version }}
       # - name: Install Playwright system dependencies
