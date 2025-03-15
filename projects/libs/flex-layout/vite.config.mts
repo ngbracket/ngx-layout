@@ -4,6 +4,8 @@ import angular from '@analogjs/vite-plugin-angular';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
+const isCi = !!process.env['CI'];
+
 export const config = {
   root: __dirname,
   cacheDir: '../../../node_modules/.vite/projects/libs/flex-layout',
@@ -13,6 +15,9 @@ export const config = {
   //  plugins: [ nxViteTsPaths() ],
   // },
   test: {
+    sequence: {
+      shuffle: isCi,
+    },
     globals: true,
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     setupFiles: ['test-setup.ts'],
