@@ -65,7 +65,7 @@ jobs:
         run: pnpm lint
 
   tests_local_browsers:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.playwright-version == '1.37.1' && 'ubuntu-22.04' || 'ubuntu-latest' }} # Ubuntu 24.04 fails when trying to install the libasound2 package, a Playwright system dependency
     needs: build
     strategy:
       fail-fast: false
@@ -74,6 +74,34 @@ jobs:
           - chromium
           - firefox
           - webkit
+        browser-version:
+          - latest
+        playwright-version:
+          - latest
+        exclude:
+          - browser: firefox
+            browser-version: latest
+            playwright-version: latest
+        include:
+          # Match Angular browser support when Angular 19 was released
+          - browser: chromium
+            browser-version: 130 # Previous major Chrome version when Angular 19 was released
+            playwright-version: 1.48.2
+          - browser: firefox
+            browser-version: 130 # Firefox 131 was the previous major version when Angular 19 was released but this is not supported by any Playwright version
+            playwright-version: 1.48.2
+          - browser: firefox
+            browser-version: esr-115 # Old ESR when Firefox 131 was released
+            playwright-version: 1.37.1
+          - browser: firefox
+            browser-version: esr-128 # New ESR when Firefox 131 was released
+            playwright-version: 1.46.1
+          - browser: firefox
+            browser-version: 134 # Firefox 135 and Playwright 1.51.0 (latest) times out in GitHub Actions
+            playwright-version: 1.50.1
+          - browser: webkit
+            browser-version: 16 # Previous major Safari version when Angular 19 was released
+            playwright-version: 1.45.3
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -94,9 +122,11 @@ jobs:
           path: dist/releases
       - name: Install dependencies
         run: pnpm install
+      - name: Install Playwright (${{ matrix.playwright-version }})
+        run: pnpm install playwright@${{ matrix.playwright-version }}
       - name: Install Playwright system dependencies
         run: pnpm exec playwright install-deps ${{ matrix.browser }}
-      - name: Install Playwright browser
+      - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
         run: pnpm exec playwright install ${{ matrix.browser }}
       - name: Run local browser tests
         env:
