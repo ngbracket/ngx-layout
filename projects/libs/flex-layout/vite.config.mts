@@ -33,6 +33,9 @@ export const config = {
       // https://vitest.dev/guide/browser/playwright
       name: 'chromium',
     },
+    testTimeout: isCi ? 2_000 : undefined,
+    hookTimeout: isCi ? 2_000 : undefined,
+    teardownTimeout: isCi ? 2_000 : undefined,
   },
 } as const satisfies UserConfig;
 
