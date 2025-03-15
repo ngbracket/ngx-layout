@@ -79,10 +79,6 @@ jobs:
           - latest
         playwright-version:
           - latest
-        exclude:
-          - browser: firefox
-            browser-version: latest
-            playwright-version: latest
         include:
           # Match Angular browser support when Angular 19 was released
           - browser: chromium
@@ -97,9 +93,6 @@ jobs:
           - browser: firefox
             browser-version: esr-128 # New ESR when Firefox 131 was released
             playwright-version: 1.46.1
-          - browser: firefox
-            browser-version: 134 # Firefox 135 and Playwright 1.51.0 (latest) times out in GitHub Actions
-            playwright-version: 1.50.1
           - browser: webkit
             browser-version: 16 # Previous major Safari version when Angular 19 was released
             playwright-version: 1.45.3
