@@ -18,7 +18,6 @@ import {
   SERVER_TOKEN,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-
 import {
   buildMapFromSet,
   buildRawList,
@@ -72,7 +71,7 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
     renderer2: Renderer2,
     @Optional() @Self() private readonly ngStyleInstance: NgStyle,
     @Inject(SERVER_TOKEN) serverLoaded: boolean,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: object
   ) {
     super(elementRef, null!, styler, marshal);
     if (!this.ngStyleInstance) {
@@ -138,10 +137,10 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
   }
 }
 
-
-
 /**
  * Directive to add responsive support for ngStyle.
+ * * @deprecated The DefaultStyleDirective will be removed in version 21.
+ * Use StyleDirective directly instead.
  *
  */
 /* @deprecated The DefaultStyleDirective will be removed in version 21.

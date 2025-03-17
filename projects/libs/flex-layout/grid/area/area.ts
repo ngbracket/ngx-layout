@@ -16,7 +16,6 @@ export class GridAreaStyleBuilder extends StyleBuilder {
   }
 }
 
-
 const inputs = [
   'gdArea',
   'gdArea.xs',

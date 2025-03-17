@@ -15,20 +15,20 @@ import {
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import { DefaultLayoutDirective } from '@ngbracket/ngx-layout/flex';
+import { LayoutDirective } from '@ngbracket/ngx-layout/flex';
 
 import {
   customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
-import { DefaultStyleDirective } from './style';
+import { StyleDirective } from './style';
 
 describe('style directive', () => {
   let fixture: ComponentFixture<any>;
   let mediaController: MockMatchMedia;
   let styler: StyleUtils;
-  let createTestComponent = (template: string) => {
+  const createTestComponent = (template: string) => {
     fixture = makeCreateTestComponent(() => TestStyleComponent)(template);
 
     inject(
@@ -45,12 +45,7 @@ describe('style directive', () => {
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        CoreModule,
-        DefaultStyleDirective,
-        DefaultLayoutDirective,
-      ],
+      imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective],
       declarations: [TestStyleComponent],
       providers: [MockMatchMediaProvider],
     });
@@ -216,7 +211,7 @@ describe('style directive', () => {
   standalone: false,
 })
 class TestStyleComponent {
-  fontSize: number = 0;
+  fontSize = 0;
   testUrl = URL;
   divStyle = { border: '2px solid green' };
 }

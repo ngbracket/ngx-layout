@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-attribute-values',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    FlexDirective,
+    LayoutDirective,
+    FlexDirective,
+    LayoutDirective,
+  ],
   template: `<mat-card class="card-demo">
     <mat-card-title>Flex Attribute Values</mat-card-title>
     <mat-card-subtitle

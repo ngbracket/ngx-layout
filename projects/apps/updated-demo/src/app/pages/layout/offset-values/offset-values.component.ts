@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  FlexDirective,
+  FlexOffsetDirective,
+  LayoutDirective,
+} from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-offset-values',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [MatCardModule, LayoutDirective, FlexDirective, FlexOffsetDirective],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Flex Offset Values</mat-card-title>
     <mat-card-subtitle

@@ -3,15 +3,23 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { FlexDirective, ShowHideDirective } from '@ngbracket/ngx-layout';
+import { LayoutAlignDirective } from 'projects/libs/flex-layout/flex/layout-align/layout-align';
+import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
 
 @Component({
   selector: 'app-alignment',
   imports: [
     FormsModule,
+    FlexDirective,
+    LayoutAlignDirective,
+    LayoutDirective,
+    FlexDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
+    ShowHideDirective,
     MatRadioModule,
     MatCardModule,
-    FlexLayoutModule,
     MatButtonModule,
   ],
   template: ` <mat-card class="card-demo">

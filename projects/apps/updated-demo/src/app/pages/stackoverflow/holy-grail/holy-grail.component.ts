@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  FlexDirective,
+  FlexOrderDirective,
+  LayoutDirective,
+} from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-holy-grail',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [MatCardModule, LayoutDirective, FlexDirective, FlexOrderDirective],
   template: `
     <mat-card class="card-demo">
       <mat-card-title>

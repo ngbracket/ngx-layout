@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
 import { MediaQueryStatusComponent } from '../../media-query-status/media-query-status.component';
 
 @Component({
   selector: 'app-direction',
-  imports: [MatCardModule, FlexLayoutModule, MediaQueryStatusComponent],
+  imports: [
+    MatCardModule,
+    LayoutDirective,
+    FlexDirective,
+    MediaQueryStatusComponent,
+  ],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Responsive Layout Directions</mat-card-title>
     <mat-card-subtitle
