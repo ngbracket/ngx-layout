@@ -31,6 +31,7 @@ export const config = {
       provider: 'playwright',
       // https://vitest.dev/guide/browser/playwright
       name: 'chromium',
+      fileParallelism: isCi ? false : undefined, // Prevent hanging tests timing out in Firefox
     },
     testTimeout: isCi ? 2_000 : undefined,
     hookTimeout: isCi ? 2_000 : undefined,
