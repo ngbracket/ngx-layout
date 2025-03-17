@@ -510,7 +510,7 @@ describe('layout directive', () => {
   });
 });
 
-@Injectable({ providedIn: FlexModule })
+@Injectable()
 export class MockLayoutStyleBuilder extends StyleBuilder {
   override shouldCache = false;
   buildStyles(_input: string) {

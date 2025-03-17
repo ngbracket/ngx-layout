@@ -250,7 +250,7 @@ describe('flex-offset directive', () => {
   });
 });
 
-@Injectable({ providedIn: FlexModule })
+@Injectable()
 export class MockFlexOffsetStyleBuilder extends StyleBuilder {
   override shouldCache = false;
   buildStyles(_input: string) {

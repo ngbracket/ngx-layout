@@ -635,7 +635,7 @@ describe('layout-align directive', () => {
   });
 });
 
-@Injectable({ providedIn: FlexModule })
+@Injectable()
 export class MockLayoutAlignStyleBuilder extends StyleBuilder {
   override shouldCache = false;
 
