@@ -23,10 +23,8 @@ import {
   StyleBuilder,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import {
-  FlexModule,
-  LayoutAlignStyleBuilder,
-} from '@ngbracket/ngx-layout/flex';
+import { FlexModule } from '../module';
+import { LayoutAlignStyleBuilder } from './layout-align';
 
 describe('layout-align directive', () => {
   let fixture: ComponentFixture<any>;

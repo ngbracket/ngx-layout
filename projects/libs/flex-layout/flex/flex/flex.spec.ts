@@ -21,11 +21,8 @@ import {
   StyleBuilder,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import {
-  DefaultFlexDirective,
-  DefaultLayoutDirective,
-  FlexStyleBuilder,
-} from '@ngbracket/ngx-layout/flex';
+import { DefaultLayoutDirective } from '../layout/layout';
+import { DefaultFlexDirective, FlexStyleBuilder } from './flex';
 
 describe('flex directive', () => {
   let fixture: ComponentFixture<any>;

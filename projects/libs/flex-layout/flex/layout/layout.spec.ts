@@ -17,13 +17,14 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { FlexModule, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import { FlexModule } from '../module';
+import { LayoutStyleBuilder } from './layout';
 
 describe('layout directive', () => {
   let fixture: ComponentFixture<any>;

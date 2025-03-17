@@ -24,13 +24,14 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { FlexModule, LayoutGapStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import { FlexModule } from '../module';
+import { LayoutGapStyleBuilder } from './layout-gap';
 
 describe('layout-gap directive', () => {
   let fixture: ComponentFixture<any>;

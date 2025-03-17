@@ -1,10 +1,10 @@
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
+*
+* Use of this source code is governed by an MIT-style license that can be
+* found in the LICENSE file at https://angular.io/license
+*/
 import { DIR_DOCUMENT } from '@angular/cdk/bidi';
 import { CommonModule, isPlatformServer } from '@angular/common';
 import { Component, Injectable, PLATFORM_ID } from '@angular/core';
@@ -16,13 +16,14 @@ import {
   StyleUtils,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { FlexModule, FlexOffsetStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import { FlexModule } from '../module';
+import { FlexOffsetStyleBuilder } from './flex-offset';
 
 describe('flex-offset directive', () => {
   let fixture: ComponentFixture<any>;
