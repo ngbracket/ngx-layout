@@ -8,7 +8,7 @@ const isCi = !!process.env['CI'];
 
 export const config = {
   root: __dirname,
-  cacheDir: '../../../node_modules/.vite/projects/libs/flex-layout',
+  cacheDir: '../../../node_modules/.vite/projects/libs/flex-layout'.replace('/node_modules/', isCi ? '' : '/node_modules/'),
   plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   // Uncomment this if you are using workers.
   // worker: {
