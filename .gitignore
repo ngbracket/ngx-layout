@@ -46,3 +46,4 @@ out-tsc
 
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
+.vite
