@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { inject, TestBed } from '@angular/core/testing';
-import { BreakPoint } from '@ngbracket/ngx-layout/core';
+import { BreakPoint } from '../breakpoints/break-point';
 import { Subscription } from 'rxjs';
 
 import { BreakPointRegistry } from '../breakpoints/break-point-registry';
