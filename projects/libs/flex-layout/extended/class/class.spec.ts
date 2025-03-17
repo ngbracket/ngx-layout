@@ -21,7 +21,7 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { DefaultClassDirective } from '@ngbracket/ngx-layout/extended';
+import { DefaultClassDirective } from './class';
 
 import {
   expectNativeEl,

@@ -27,7 +27,7 @@ import {
   SERVER_TOKEN,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
+import { ShowHideDirective } from './show-hide';
 
 describe('show directive', () => {
   let fixture: ComponentFixture<any>;
