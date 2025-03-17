@@ -20,7 +20,7 @@ import {
   SERVER_TOKEN,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import { GridModule } from '@ngbracket/ngx-layout/grid';
+import { GridModule } from '../module';
 
 describe('grid auto parent directive', () => {
   let fixture: ComponentFixture<any>;
