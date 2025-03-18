@@ -8,11 +8,11 @@
 
 import {TestBed, inject} from '@angular/core/testing';
 
-import {MatchMedia} from '../../match-media/match-media';
 import {MediaChange} from '../../media-change';
 import {BreakPoint} from '../../breakpoints/break-point';
-import {MockMatchMedia, MockMatchMediaProvider} from './mock-match-media';
 import {BreakPointRegistry} from '../../breakpoints/break-point-registry';
+import {MatchMedia} from '../match-media';
+import {MockMatchMedia, MockMatchMediaProvider} from './mock-match-media';
 
 describe('mock-match-media', () => {
   let breakPoints: BreakPointRegistry;
