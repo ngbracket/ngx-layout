@@ -11,7 +11,7 @@ import {
   imports: [MatCardModule, LayoutDirective, FlexDirective, FlexOffsetDirective],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Flex Offset Values</mat-card-title>
-    <mat-card-subtitle
+    <mat-card-subtitle class="sub-title"
       >Explore impact of values for the 'flex-offset' API:</mat-card-subtitle
     >
     <mat-card-content>
@@ -45,6 +45,11 @@ import {
 
       mat-card-title {
         margin: 10px 0 10px 20px;
+      }
+      .sub-title {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-weight: normal;
       }
 
       .hint {

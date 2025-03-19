@@ -18,15 +18,15 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
     MediaQueryStatusComponent,
     LayoutDirective,
     FlexDirective,
+    StyleDirective,
     ClassDirective,
     ShowHideDirective,
-    StyleDirective,
     FormsModule,
   ],
   template: `
     <mat-card class="card-demo">
       <mat-card-title>Responsive Style</mat-card-title>
-      <mat-card-subtitle>
+      <mat-card-subtitle class="sub-title">
         Use the fxClass and fxStyle APIs to responsively apply styles to
         elements:
       </mat-card-subtitle>
@@ -116,7 +116,36 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
       </mat-card-footer>
     </mat-card>
   `,
-  styles: [],
+  styles: [
+    `
+      @use '@angular/material' as mat;
+
+      mat-card {
+        top: 20px;
+        @include mat.card-overrides(
+          (
+            elevated-container-color: #fff,
+            elevated-container-shape: 6px,
+          )
+        );
+      }
+
+      mat-card-title {
+        margin: 10px 0 10px 20px;
+      }
+
+      .sub-title {
+        margin-left: 20px;
+        font-weight: normal;
+      }
+
+      .hint {
+        margin: 5px;
+        font-size: 0.9em;
+        color: #a3a3a3;
+      }
+    `,
+  ],
 })
 export class StyleComponent {
   hasStyle = false;

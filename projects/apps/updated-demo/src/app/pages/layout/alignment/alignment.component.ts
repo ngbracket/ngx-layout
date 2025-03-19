@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { FlexDirective, ShowHideDirective } from '@ngbracket/ngx-layout';
+import { FlexDirective } from '@ngbracket/ngx-layout';
 import { LayoutAlignDirective } from 'projects/libs/flex-layout/flex/layout-align/layout-align';
 import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
 
@@ -17,7 +17,6 @@ import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
     FlexDirective,
     LayoutDirective,
     LayoutAlignDirective,
-    ShowHideDirective,
     MatRadioModule,
     MatCardModule,
     MatButtonModule,
@@ -146,7 +145,6 @@ import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
           (
             elevated-container-color: #fff,
             elevated-container-shape: 6px,
-            title-text-size: 1.5rem,
           )
         );
       }
@@ -154,7 +152,11 @@ import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
       mat-card-title {
         margin: 10px 0 10px 20px;
       }
-
+      .sub-title {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-weight: normal;
+      }
       .hint {
         margin: 5px;
         font-size: 0.9em;

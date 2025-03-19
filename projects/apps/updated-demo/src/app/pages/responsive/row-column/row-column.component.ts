@@ -12,7 +12,7 @@ import {
   imports: [MatCardModule, FlexDirective, LayoutDirective],
   template: `<mat-card class="card-demo">
     <mat-card-title>Multiple Responsive Columns</mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle class="sub-title">
       Simple row with nested layout containers. Note: the 1st column is
       responsive.
     </mat-card-subtitle>
@@ -61,6 +61,33 @@ import {
   </mat-card> `,
   styles: [
     `
+      @use '@angular/material' as mat;
+
+      mat-card {
+        top: 20px;
+        @include mat.card-overrides(
+          (
+            elevated-container-color: #fff,
+            elevated-container-shape: 6px,
+          )
+        );
+      }
+
+      mat-card-title {
+        margin: 10px 0 10px 20px;
+      }
+
+      .sub-title {
+        margin-left: 20px;
+        font-weight: normal;
+      }
+
+      .hint {
+        margin: 5px;
+        font-size: 0.9em;
+        color: #a3a3a3;
+      }
+
       .footer {
         width: 95%;
         font-size: 0.9em;

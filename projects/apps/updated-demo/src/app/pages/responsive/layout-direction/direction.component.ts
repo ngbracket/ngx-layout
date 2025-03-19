@@ -13,7 +13,7 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
   ],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Responsive Layout Directions</mat-card-title>
-    <mat-card-subtitle
+    <mat-card-subtitle class="sub-title"
       >Layout direction changes to 'column' for 'xs' or 'sm' viewport sizes:
     </mat-card-subtitle>
     <mat-card-content>
@@ -38,6 +38,35 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
       <app-media-query-status></app-media-query-status>
     </mat-card-footer>
   </mat-card>`,
-  styles: [],
+  styles: [
+    `
+      @use '@angular/material' as mat;
+
+      mat-card {
+        top: 20px;
+        @include mat.card-overrides(
+          (
+            elevated-container-color: #fff,
+            elevated-container-shape: 6px,
+          )
+        );
+      }
+
+      mat-card-title {
+        margin: 10px 0 10px 20px;
+      }
+
+      .sub-title {
+        margin-left: 20px;
+        font-weight: normal;
+      }
+
+      .hint {
+        margin: 5px;
+        font-size: 0.9em;
+        color: #a3a3a3;
+      }
+    `,
+  ],
 })
 export class ResponsiveDirectionComponent {}

@@ -22,9 +22,9 @@ const ALIGN_OPTIONS = ['auto', 'start', 'center', 'baseline', 'end', 'stretch'];
   ],
   template: ` <mat-card class="card-demo">
     <mat-card-title>Flex with Align-Self</mat-card-title>
-    <mat-card-subtitle
-      >Click on 'target' to explore how 'flex-align' can change the alignment
-      for a single element only.
+    <mat-card-subtitle class="sub-title">
+      Click on 'target' to explore how 'flex-align' can change the alignment for
+      a single element only.
     </mat-card-subtitle>
     <mat-card-content>
       <div class="containerX">
@@ -65,13 +65,17 @@ const ALIGN_OPTIONS = ['auto', 'start', 'center', 'baseline', 'end', 'stretch'];
           (
             elevated-container-color: #fff,
             elevated-container-shape: 6px,
-            title-text-size: 1.5rem,
           )
         );
       }
 
       mat-card-title {
         margin: 10px 0 10px 20px;
+      }
+
+      .sub-title {
+        margin-left: 20px;
+        font-weight: normal;
       }
 
       .hint {

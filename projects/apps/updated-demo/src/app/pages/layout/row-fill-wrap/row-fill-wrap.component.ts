@@ -10,7 +10,7 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
   template: `
     <mat-card class="card-demo" (click)="toggleDirection()">
       <mat-card-title>'Flex' with Layout-Wrap</mat-card-title>
-      <mat-card-subtitle
+      <mat-card-subtitle class="sub-title"
         >Using "layout-wrap" to wrap positioned items within a layout container
       </mat-card-subtitle>
       <mat-card-content>
@@ -36,7 +36,35 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
       </mat-card-footer>
     </mat-card>
   `,
-  styles: [],
+  styles: [
+    `
+      @use '@angular/material' as mat;
+
+      mat-card {
+        top: 20px;
+        @include mat.card-overrides(
+          (
+            elevated-container-color: #fff,
+            elevated-container-shape: 6px,
+          )
+        );
+      }
+
+      mat-card-title {
+        margin: 10px 0 10px 20px;
+      }
+      .sub-title {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-weight: normal;
+      }
+      .hint {
+        margin: 5px;
+        font-size: 0.9em;
+        color: #a3a3a3;
+      }
+    `,
+  ],
 })
 export class RowFillWrapComponent {
   direction = 'row';

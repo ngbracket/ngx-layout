@@ -8,7 +8,7 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
   imports: [MatCardModule, LayoutDirective, FlexDirective],
   template: `<mat-card class="card-demo" (click)="toggleDirection()">
     <mat-card-title>'Flex' to Fill Row</mat-card-title>
-    <mat-card-subtitle
+    <mat-card-subtitle class="sub-title"
       >Simple row using "flex" on 3rd element to fill available main axis.
     </mat-card-subtitle>
     <mat-card-content>
@@ -29,7 +29,35 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
       <div class="hint">&lt;div fxLayout="{{ direction }}" &gt;</div>
     </mat-card-footer>
   </mat-card>`,
-  styles: [],
+  styles: [
+    `
+      @use '@angular/material' as mat;
+
+      mat-card {
+        top: 20px;
+        @include mat.card-overrides(
+          (
+            elevated-container-color: #fff,
+            elevated-container-shape: 6px,
+          )
+        );
+      }
+
+      mat-card-title {
+        margin: 10px 0 10px 20px;
+      }
+      .sub-title {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-weight: normal;
+      }
+      .hint {
+        margin: 5px;
+        font-size: 0.9em;
+        color: #a3a3a3;
+      }
+    `,
+  ],
 })
 export class RowFillComponent {
   direction = 'row';

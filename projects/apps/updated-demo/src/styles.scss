@@ -11,10 +11,10 @@ mat-toolbar {
   );
 }
 
-html {
-  // overflow: scroll;
-  // overflow-x: hidden;
-}
+// html {
+// overflow: scroll;
+// overflow-x: hidden;
+// }
 // ::-webkit-scrollbar {
 //   width: 15px; /* Remove scrollbar space */
 // }
@@ -200,9 +200,9 @@ div.colored > div:nth-child(10n + 7),
   color: #5c5c5c;
 }
 
-.box {
-  border: solid 1px gray;
-}
+// .box {
+//   border: solid 1px gray;
+// }
 
 button.mat-primary {
   margin-left: 25px;
@@ -360,6 +360,11 @@ mat-card-content pre {
 .card-demo mat-card,
 .card-demo mat-card-content {
   margin-bottom: 24px;
+  &-title {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+  }
 }
 
 .card-demo mat-card-footer {
@@ -368,7 +373,7 @@ mat-card-content pre {
 }
 
 .containerX {
-  border: solid 1px #b6b6b6;
+  // border: solid 1px #b6b6b6;
   box-sizing: content-box !important;
 }
 
