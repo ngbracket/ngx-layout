@@ -65,7 +65,7 @@ export class GridAlignColumnsDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridAlignColumnsStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();
@@ -83,7 +83,6 @@ export class GridAlignColumnsDirective extends BaseDirective2 {
 
 const alignColumnsCache: Map<string, StyleDefinition> = new Map();
 const alignColumnsInlineCache: Map<string, StyleDefinition> = new Map();
-
 
 /**
  * 'column alignment' CSS Grid styling directive

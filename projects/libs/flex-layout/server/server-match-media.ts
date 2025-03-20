@@ -27,7 +27,10 @@ export class ServerMediaQueryList
     return this._mediaQuery;
   }
 
-  constructor(private _mediaQuery: string, private _isActive = false) {
+  constructor(
+    private _mediaQuery: string,
+    private _isActive = false,
+  ) {
     super();
   }
 
@@ -116,7 +119,7 @@ export class ServerMatchMedia extends MatchMedia {
     @Inject(PLATFORM_ID) protected override _platformId: Object,
     @Inject(DOCUMENT) protected override _document: any,
     @Inject(BREAKPOINTS) protected breakpoints: BreakPoint[],
-    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions
+    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
   ) {
     super(_zone, _platformId, _document);
 
@@ -127,14 +130,14 @@ export class ServerMatchMedia extends MatchMedia {
           const foundBp = breakpoints.find((bp) => serverBp === bp.alias);
           if (!foundBp) {
             console.warn(
-              `FlexLayoutServerModule: unknown breakpoint alias "${serverBp}"`
+              `FlexLayoutServerModule: unknown breakpoint alias "${serverBp}"`,
             );
           } else {
             acc.push(foundBp);
           }
           return acc;
         },
-        []
+        [],
       );
     }
   }
@@ -142,7 +145,7 @@ export class ServerMatchMedia extends MatchMedia {
   /** Activate the specified breakpoint if we're on the server, no-op otherwise */
   activateBreakpoint(bp: BreakPoint) {
     const lookupBreakpoint = this.registry.get(
-      bp.mediaQuery
+      bp.mediaQuery,
     ) as ServerMediaQueryList;
     if (lookupBreakpoint) {
       lookupBreakpoint.activate();
@@ -152,7 +155,7 @@ export class ServerMatchMedia extends MatchMedia {
   /** Deactivate the specified breakpoint if we're on the server, no-op otherwise */
   deactivateBreakpoint(bp: BreakPoint) {
     const lookupBreakpoint = this.registry.get(
-      bp.mediaQuery
+      bp.mediaQuery,
     ) as ServerMediaQueryList;
     if (lookupBreakpoint) {
       lookupBreakpoint.deactivate();
@@ -165,7 +168,7 @@ export class ServerMatchMedia extends MatchMedia {
    */
   protected override buildMQL(query: string): ServerMediaQueryList {
     const isActive = this._activeBreakpoints.some(
-      (ab) => ab.mediaQuery === query
+      (ab) => ab.mediaQuery === query,
     );
 
     return new ServerMediaQueryList(query, isActive);

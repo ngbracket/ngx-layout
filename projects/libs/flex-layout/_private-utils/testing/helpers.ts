@@ -15,7 +15,7 @@ export function makeCreateTestComponent(getClass: ComponentClazzFn) {
   // Return actual `createTestComponent()` function
   return function createTestComponent(
     template: string,
-    styles?: any
+    styles?: any,
   ): ComponentFixture<Type<any>> {
     if (!componentAny) {
       // Defer access to Component class to enable metadata to be configured properly...
@@ -35,7 +35,7 @@ export function makeCreateTestComponent(getClass: ComponentClazzFn) {
  */
 export function expectNativeEl(
   fixture: ComponentFixture<any>,
-  instanceOptions?: any
+  instanceOptions?: any,
 ): any {
   extendObject(fixture.componentInstance, instanceOptions || {});
   fixture.detectChanges();
@@ -51,7 +51,7 @@ export function expectEl(debugEl: DebugElement): any {
 
 export function queryFor(
   fixture: ComponentFixture<any>,
-  selector: string
+  selector: string,
 ): DebugElement[] {
   return fixture.debugElement.queryAll(By.css(selector));
 }

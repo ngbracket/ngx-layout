@@ -49,7 +49,8 @@ class Walker extends RuleWalker {
     //     (expression) =>
     //       expression.arguments.length && expression.arguments[0].properties
     //   )
-    ts.getDecorators(node)
+    ts
+      .getDecorators(node)
       ?.map((decorator) => decorator.expression as any)
       .filter((expression) => expression.expression.getText() === 'Component')
       .forEach((expression) => {

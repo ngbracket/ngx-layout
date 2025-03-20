@@ -6,5 +6,5 @@ export const BREAKPOINT = new InjectionToken<BreakPoint | BreakPoint[] | null>(
   {
     providedIn: 'root',
     factory: () => null,
-  }
+  },
 );

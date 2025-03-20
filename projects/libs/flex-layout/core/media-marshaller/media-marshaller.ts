@@ -65,7 +65,7 @@ export class MediaMarshaller {
   constructor(
     protected matchMedia: MatchMedia,
     protected breakpoints: BreakPointRegistry,
-    protected hook: PrintHook
+    protected hook: PrintHook,
   ) {
     this.observeActivations();
   }
@@ -110,7 +110,7 @@ export class MediaMarshaller {
     key: string,
     updateFn?: UpdateCallback,
     clearFn?: ClearCallback,
-    extraTriggers: Observable<any>[] = []
+    extraTriggers: Observable<any>[] = [],
   ): void {
     initBuilderMap(this.updateMap, element, key, updateFn);
     initBuilderMap(this.clearMap, element, key, clearFn);
@@ -297,7 +297,7 @@ export class MediaMarshaller {
   private watchExtraTriggers(
     element: HTMLElement,
     key: string,
-    triggers: Observable<any>[]
+    triggers: Observable<any>[],
   ) {
     if (triggers && triggers.length) {
       let watchers = this.watcherMap.get(element);
@@ -328,7 +328,7 @@ export class MediaMarshaller {
    */
   private getActivatedValues(
     bpMap: BreakpointMap,
-    key?: string
+    key?: string,
   ): ValueMap | undefined {
     for (let i = 0; i < this.activatedBreakpoints.length; i++) {
       const activatedBp = this.activatedBreakpoints[i];
@@ -367,7 +367,7 @@ export class MediaMarshaller {
       .observe(this.hook.withPrintQuery(queries))
       .pipe(
         tap(this.hook.interceptEvents(this)),
-        filter(this.hook.blockPropagation())
+        filter(this.hook.blockPropagation()),
       )
       .subscribe(this.onMediaChange.bind(this));
   }
@@ -377,7 +377,7 @@ function initBuilderMap(
   map: BuilderMap,
   element: HTMLElement,
   key: string,
-  input?: Builder
+  input?: Builder,
 ): void {
   if (input !== undefined) {
     const oldMap = map.get(element) ?? new Map();

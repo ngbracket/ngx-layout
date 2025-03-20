@@ -33,7 +33,7 @@ export class FlexLayoutModule {
    */
   static withConfig(
     configOptions: LayoutConfigOptions,
-    breakpoints: BreakPoint | BreakPoint[] = []
+    breakpoints: BreakPoint | BreakPoint[] = [],
   ): ModuleWithProviders<FlexLayoutModule> {
     return {
       ngModule: FlexLayoutModule,
@@ -43,11 +43,11 @@ export class FlexLayoutModule {
 
   constructor(
     @Inject(SERVER_TOKEN) serverModuleLoaded: boolean,
-    @Inject(PLATFORM_ID) platformId: object
+    @Inject(PLATFORM_ID) platformId: Object,
   ) {
     if (isPlatformServer(platformId) && !serverModuleLoaded) {
       console.warn(
-        'Warning: Flex Layout loaded on the server without FlexLayoutServerModule'
+        'Warning: Flex Layout loaded on the server without FlexLayoutServerModule',
       );
     }
   }

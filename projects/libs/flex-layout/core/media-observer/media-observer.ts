@@ -70,7 +70,7 @@ export class MediaObserver implements OnDestroy {
   constructor(
     protected breakpoints: BreakPointRegistry,
     protected matchMedia: MatchMedia,
-    protected hook: PrintHook
+    protected hook: PrintHook,
   ) {
     this._media$ = this.watchActivations();
   }
@@ -153,7 +153,7 @@ export class MediaObserver implements OnDestroy {
     };
     const ignoreDuplicates = (
       previous: MediaChange[],
-      current: MediaChange[]
+      current: MediaChange[],
     ): boolean => {
       if (previous.length !== current.length) {
         return false;
@@ -162,7 +162,7 @@ export class MediaObserver implements OnDestroy {
       const previousMqs = previous.map((mc) => mc.mediaQuery);
       const currentMqs = new Set(current.map((mc) => mc.mediaQuery));
       const difference = new Set(
-        previousMqs.filter((mq) => !currentMqs.has(mq))
+        previousMqs.filter((mq) => !currentMqs.has(mq)),
       );
 
       return difference.size === 0;
@@ -177,7 +177,7 @@ export class MediaObserver implements OnDestroy {
       map(excludeOverlaps),
       filter(hasChanges),
       distinctUntilChanged(ignoreDuplicates),
-      takeUntil(this.destroyed$)
+      takeUntil(this.destroyed$),
     );
   }
 
@@ -188,7 +188,7 @@ export class MediaObserver implements OnDestroy {
   private findAllActivations(): MediaChange[] {
     const mergeMQAlias = (change: MediaChange) => {
       const bp: OptionalBreakPoint = this.breakpoints.findByQuery(
-        change.mediaQuery
+        change.mediaQuery,
       );
       return mergeAlias(change, bp);
     };
@@ -211,7 +211,7 @@ export class MediaObserver implements OnDestroy {
  */
 function toMediaQuery(
   query: string,
-  locator: BreakPointRegistry
+  locator: BreakPointRegistry,
 ): string | null {
   const bp = locator.findByAlias(query) ?? locator.findByQuery(query);
   return bp?.mediaQuery ?? null;

@@ -65,7 +65,7 @@ export class GridAlignRowsDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridAlignRowsStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

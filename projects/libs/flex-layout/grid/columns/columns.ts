@@ -65,7 +65,7 @@ const selector = `
 export class GridColumnsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-columns';
   protected override inputs = inputs;
-  
+
   @Input('gdInline')
   get inline(): boolean {
     return this._inline;
@@ -79,7 +79,7 @@ export class GridColumnsDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridColumnsStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

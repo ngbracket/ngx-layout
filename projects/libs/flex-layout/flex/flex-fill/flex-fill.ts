@@ -36,7 +36,7 @@ export class FlexFillDirective extends BaseDirective2 {
     elRef: ElementRef,
     styleUtils: StyleUtils,
     styleBuilder: FlexFillStyleBuilder,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.addStyles('');

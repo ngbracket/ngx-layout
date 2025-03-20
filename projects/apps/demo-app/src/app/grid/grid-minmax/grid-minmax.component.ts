@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 // Example taken from https://gridbyexample.com/examples/example29/
 @Component({
-    selector: 'demo-grid-minmax',
-    template: `
+  selector: 'demo-grid-minmax',
+  template: `
     <mat-card class="card-demo">
       <mat-card-title>Grid with Minmax</mat-card-title>
       <mat-card-content class="containerX">
@@ -15,7 +15,9 @@ import { Component } from '@angular/core';
             <div class="box">D</div>
             <div class="box">E</div>
             <div class="box">F</div>
-            <div class="box" gdColumn="auto / span 2" gdRow="auto / span 2">G</div>
+            <div class="box" gdColumn="auto / span 2" gdRow="auto / span 2">
+              G
+            </div>
             <div class="box">H</div>
             <div class="box">I</div>
             <div class="box">J</div>
@@ -27,15 +29,17 @@ import { Component } from '@angular/core';
       </mat-card-content>
     </mat-card>
   `,
-    styles: [`.box {
-    /*background-color: #444;*/
-    /*color: #fff;*/
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
-
-  }`],
-    standalone: false
+  styles: [
+    `
+      .box {
+        /*background-color: #444;*/
+        /*color: #fff;*/
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 150%;
+      }
+    `,
+  ],
+  standalone: false,
 })
-export class GridMinmaxComponent {
-}
+export class GridMinmaxComponent {}

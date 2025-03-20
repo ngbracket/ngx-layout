@@ -54,7 +54,7 @@ export class ClassDirective extends BaseDirective2 implements DoCheck {
     styler: StyleUtils,
     marshal: MediaMarshaller,
     renderer2: Renderer2,
-    @Optional() @Self() protected readonly ngClassInstance: NgClass
+    @Optional() @Self() protected readonly ngClassInstance: NgClass,
   ) {
     super(elementRef, null!, styler, marshal);
     if (!this.ngClassInstance) {

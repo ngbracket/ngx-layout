@@ -42,7 +42,7 @@ describe('ngStyleUtils', () => {
       color:'red';
       font-size :16px;
       background-color:rgba(116, 37, 49, 0.72);
-    `)
+    `),
     );
 
     expect(map).toHaveMap({
@@ -58,7 +58,7 @@ describe('ngStyleUtils', () => {
       color:'red';
       font-size :16px;
       background-color:rgba(116, 37, 49, 0.72);
-    `)
+    `),
     );
 
     expect(map).toHaveMap({

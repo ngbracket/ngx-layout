@@ -3,9 +3,9 @@ import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'demo-responsive-row-column',
-    templateUrl: './responsive-row-column.component.html',
-    standalone: false
+  selector: 'demo-responsive-row-column',
+  templateUrl: './responsive-row-column.component.html',
+  standalone: false,
 })
 export class ResponsiveRowColumnComponent implements OnDestroy {
   cols: { [key: string]: string } = {

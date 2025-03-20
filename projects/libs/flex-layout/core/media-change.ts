@@ -19,7 +19,7 @@ export class MediaChange {
     public mediaQuery = 'all',
     public mqAlias = '',
     public suffix = '',
-    public priority = 0
+    public priority = 0,
   ) {}
 
   /** Create an exact copy of the MediaChange */
@@ -28,7 +28,7 @@ export class MediaChange {
       this.matches,
       this.mediaQuery,
       this.mqAlias,
-      this.suffix
+      this.suffix,
     );
   }
 }

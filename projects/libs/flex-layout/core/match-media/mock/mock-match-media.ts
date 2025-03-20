@@ -18,7 +18,7 @@ export class MockMatchMedia extends MatchMedia {
     _zone: NgZone,
     @Inject(PLATFORM_ID) _platformId: Object,
     @Inject(DOCUMENT) public override _document: any,
-    private _breakpoints: BreakPointRegistry
+    private _breakpoints: BreakPointRegistry,
   ) {
     super(_zone, _platformId, _document);
   }
@@ -61,7 +61,7 @@ export class MockMatchMedia extends MatchMedia {
    */
   private _activateWithOverlaps(
     mediaQuery: string,
-    useOverlaps: boolean
+    useOverlaps: boolean,
   ): boolean {
     if (useOverlaps) {
       const bp = this._breakpoints.findByQuery(mediaQuery);
@@ -123,7 +123,7 @@ export class MockMatchMedia extends MatchMedia {
       this._registerMediaQuery(mediaQuery);
     }
     const mql: MockMediaQueryList = this.registry.get(
-      mediaQuery
+      mediaQuery,
     ) as MockMediaQueryList;
 
     if (mql && !this.isActive(mediaQuery)) {
@@ -250,7 +250,8 @@ export class MockMediaQueryList extends EventTarget implements MediaQueryList {
 /**
  * Pre-configured provider for MockMatchMedia
  */
-export const MockMatchMediaProvider = { // tslint:disable-line:variable-name
+// tslint:disable-next-line:variable-name
+export const MockMatchMediaProvider = {
   provide: MatchMedia,
   useClass: MockMatchMedia,
 };

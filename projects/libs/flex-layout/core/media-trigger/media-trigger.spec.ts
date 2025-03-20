@@ -5,13 +5,16 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {TestBed, inject, fakeAsync, tick} from '@angular/core/testing';
+import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 
-import {MediaTrigger} from './media-trigger';
-import {MediaChange} from '../media-change';
-import {MatchMedia} from '../match-media/match-media';
-import {MockMatchMedia, MockMatchMediaProvider} from '../match-media/mock/mock-match-media';
-import {MediaObserver} from '../media-observer/media-observer';
+import { MediaTrigger } from './media-trigger';
+import { MediaChange } from '../media-change';
+import { MatchMedia } from '../match-media/match-media';
+import {
+  MockMatchMedia,
+  MockMatchMediaProvider,
+} from '../match-media/mock/mock-match-media';
+import { MediaObserver } from '../media-observer/media-observer';
 
 describe('media-trigger', () => {
   let mediaObserver: MediaObserver;
@@ -20,34 +23,39 @@ describe('media-trigger', () => {
 
   const activateQuery = (aliases: string[]) => {
     mediaTrigger.activate(aliases);
-    tick(100);  // Since MediaObserver has 50ms debounceTime
+    tick(100); // Since MediaObserver has 50ms debounceTime
   };
 
   beforeEach(() => {
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      providers: [
-        MockMatchMediaProvider,
-        MediaTrigger
-      ]
+      providers: [MockMatchMediaProvider, MediaTrigger],
     });
   });
 
-  beforeEach(inject([MediaObserver, MediaTrigger, MatchMedia],
-      (_mediaObserver: MediaObserver, _mediaTrigger: MediaTrigger, _matchMedia: MockMatchMedia) => { // tslint:disable-line:max-line-length
-        mediaObserver = _mediaObserver;
-        mediaTrigger = _mediaTrigger;
-        matchMedia = _matchMedia;
+  beforeEach(inject(
+    [MediaObserver, MediaTrigger, MatchMedia],
+    (
+      _mediaObserver: MediaObserver,
+      _mediaTrigger: MediaTrigger,
+      _matchMedia: MockMatchMedia,
+    ) => {
+      // tslint:disable-line:max-line-length
+      mediaObserver = _mediaObserver;
+      mediaTrigger = _mediaTrigger;
+      matchMedia = _matchMedia;
 
-        _matchMedia.useOverlaps = true;
-      }));
+      _matchMedia.useOverlaps = true;
+    },
+  ));
 
   it('can trigger activations with list of breakpoint aliases', fakeAsync(() => {
     let activations: MediaChange[] = [];
-    let subscription = mediaObserver.asObservable().subscribe(
-        (changes: MediaChange[]) => {
-          activations = [...changes];
-        });
+    let subscription = mediaObserver
+      .asObservable()
+      .subscribe((changes: MediaChange[]) => {
+        activations = [...changes];
+      });
 
     // assign default activation(s) with overlaps allowed
     matchMedia.activate('xl');

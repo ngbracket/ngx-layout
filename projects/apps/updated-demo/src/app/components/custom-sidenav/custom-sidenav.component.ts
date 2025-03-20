@@ -24,7 +24,7 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
     </div>
     <mat-nav-list>
       @for (item of menuItems; track item.label) {
-      <app-menu-item [item]="item" [collapsed]="collapsed()" />
+        <app-menu-item [item]="item" [collapsed]="collapsed()" />
       }
     </mat-nav-list>
   `,

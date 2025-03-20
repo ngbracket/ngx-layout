@@ -35,14 +35,14 @@ describe('grid gap directive', () => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestLayoutGapComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [StyleUtils, MatchMedia, Platform],
       (
         _styler: StyleUtils,
         _matchMedia: MockMatchMedia,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         styler = _styler;
         mediaController = _matchMedia;
@@ -52,7 +52,7 @@ describe('grid gap directive', () => {
         if (_platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -90,13 +90,13 @@ describe('grid gap directive', () => {
             'grid-row-gap': '10px',
             'grid-column-gap': '10px',
           },
-          styler
+          styler,
         );
       } else {
         expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-gap'
+          'grid-gap',
         );
         let correctGap = gapStyle === '10px' || gapStyle == '10px 10px';
         expect(correctGap).toBe(true);
@@ -122,7 +122,7 @@ describe('grid gap directive', () => {
             'grid-row-gap': '10px',
             'grid-column-gap': '15px',
           },
-          styler
+          styler,
         );
       } else if (platform.BLINK) {
         expectNativeEl(fixture).toHaveStyle(
@@ -130,7 +130,7 @@ describe('grid gap directive', () => {
             display: 'grid',
             gap: '10px 15px',
           },
-          styler
+          styler,
         );
       } else {
         expectNativeEl(fixture).toHaveStyle(
@@ -138,7 +138,7 @@ describe('grid gap directive', () => {
             display: 'grid',
             'grid-gap': '10px 15px',
           },
-          styler
+          styler,
         );
       }
     });
@@ -164,13 +164,13 @@ describe('grid gap directive', () => {
             'grid-row-gap': '8px',
             'grid-column-gap': '8px',
           },
-          styler
+          styler,
         );
       } else {
         fixture.detectChanges();
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-gap'
+          'grid-gap',
         );
         let correctGap = gapStyle === '8px' || gapStyle == '8px 8px';
         expect(correctGap).toBe(true);
@@ -185,13 +185,13 @@ describe('grid gap directive', () => {
             'grid-row-gap': '16px',
             'grid-column-gap': '16px',
           },
-          styler
+          styler,
         );
       } else {
         fixture.detectChanges();
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-gap'
+          'grid-gap',
         );
         let correctGap = gapStyle === '16px' || gapStyle == '16px 16px';
         expect(correctGap).toBe(true);
@@ -217,13 +217,13 @@ describe('grid gap directive', () => {
             'grid-row-gap': '10px',
             'grid-column-gap': '10px',
           },
-          styler
+          styler,
         );
       } else {
         expectNativeEl(fixture).toHaveStyle({ display: 'inline-grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-gap'
+          'grid-gap',
         );
         let correctGap = gapStyle === '10px' || gapStyle == '10px 10px';
         expect(correctGap).toBe(true);
@@ -251,13 +251,13 @@ describe('grid gap directive', () => {
             'grid-row-gap': '10px',
             'grid-column-gap': '10px',
           },
-          styler
+          styler,
         );
       } else {
         expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-gap'
+          'grid-gap',
         );
         let correctGap = gapStyle === '10px' || gapStyle == '10px 10px';
         expect(correctGap).toBe(true);
@@ -271,13 +271,13 @@ describe('grid gap directive', () => {
             'grid-row-gap': '16px',
             'grid-column-gap': '16px',
           },
-          styler
+          styler,
         );
       } else {
         expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-gap'
+          'grid-gap',
         );
         let correctGap = gapStyle === '16px' || gapStyle == '16px 16px';
         expect(correctGap).toBe(true);
@@ -291,13 +291,13 @@ describe('grid gap directive', () => {
             'grid-row-gap': '10px',
             'grid-column-gap': '10px',
           },
-          styler
+          styler,
         );
       } else {
         expectNativeEl(fixture).toHaveStyle({ display: 'grid' }, styler);
         let gapStyle = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-gap'
+          'grid-gap',
         );
         let correctGap = gapStyle === '10px' || gapStyle == '10px 10px';
         expect(correctGap).toBe(true);
@@ -310,9 +310,9 @@ describe('grid gap directive', () => {
 // Template Component
 // *****************************************************************
 @Component({
-    selector: 'test-layout',
-    template: `<span>PlaceHolder Template HTML</span>`,
-    standalone: false
+  selector: 'test-layout',
+  template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestLayoutGapComponent {
   gap = '8px';

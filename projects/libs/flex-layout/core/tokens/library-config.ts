@@ -40,5 +40,5 @@ export const LAYOUT_CONFIG = new InjectionToken<LayoutConfigOptions>(
   {
     providedIn: 'root',
     factory: () => DEFAULT_CONFIG,
-  }
+  },
 );

@@ -10,7 +10,7 @@ import {
 
 export function provideFlexLayout(
   configOptions: LayoutConfigOptions,
-  breakpoints: BreakPoint | BreakPoint[] = []
+  breakpoints: BreakPoint | BreakPoint[] = [],
 ): Provider[] {
   const providers: Provider[] = [
     {

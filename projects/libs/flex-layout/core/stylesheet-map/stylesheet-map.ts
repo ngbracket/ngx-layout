@@ -16,7 +16,7 @@ export class StylesheetMap {
   addStyleToElement(
     element: HTMLElement,
     style: string,
-    value: string | number
+    value: string | number,
   ) {
     const stylesheet = this.stylesheet.get(element);
     if (stylesheet) {

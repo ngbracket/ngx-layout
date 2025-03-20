@@ -39,7 +39,7 @@ describe('align directive', () => {
       (
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
@@ -48,7 +48,7 @@ describe('align directive', () => {
         if (_platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -76,7 +76,7 @@ describe('align directive', () => {
 
       expectNativeEl(fixture).toHaveStyle(
         { 'justify-self': 'stretch' },
-        styler
+        styler,
       );
     });
 
@@ -90,7 +90,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-self': 'start' }, COLUMN_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdGridAlign="center"` usage', () => {
@@ -102,7 +102,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-self': 'center' }, COLUMN_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdGridAlign="end"` usage', () => {
@@ -114,7 +114,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-self': 'end' }, COLUMN_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdGridAlign="stretch"` usage', () => {
@@ -126,7 +126,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-self': 'stretch' }, COLUMN_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add ignore invalid row-axis values', () => {
@@ -138,7 +138,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-self': 'stretch' }, COLUMN_DEFAULT),
-          styler
+          styler,
         );
       });
     });
@@ -153,7 +153,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(ROW_DEFAULT, { 'align-self': 'start' }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdGridAlign="start center"` usage', () => {
@@ -165,7 +165,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(ROW_DEFAULT, { 'align-self': 'center' }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdGridAlign="start end"` usage', () => {
@@ -177,7 +177,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(ROW_DEFAULT, { 'align-self': 'end' }),
-          styler
+          styler,
         );
       });
       it('should add ignore invalid column-axis values', () => {
@@ -189,7 +189,7 @@ describe('align directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(ROW_DEFAULT, { 'align-self': 'stretch' }),
-          styler
+          styler,
         );
       });
     });
@@ -208,7 +208,7 @@ describe('align directive', () => {
             'justify-self': 'center',
             'align-self': 'end',
           },
-          styler
+          styler,
         );
 
         fixture.componentInstance.alignBy = 'invalid invalid';
@@ -235,7 +235,7 @@ describe('align directive', () => {
           'justify-self': 'center',
           'align-self': 'center',
         },
-        styler
+        styler,
       );
     });
 
@@ -253,7 +253,7 @@ describe('align directive', () => {
           'justify-self': 'center',
           'align-self': 'center',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -263,7 +263,7 @@ describe('align directive', () => {
           'justify-self': 'end',
           'align-self': 'stretch',
         },
-        styler
+        styler,
       );
     });
 
@@ -284,7 +284,7 @@ describe('align directive', () => {
           'justify-self': 'center',
           'align-self': 'stretch',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -294,7 +294,7 @@ describe('align directive', () => {
           'justify-self': 'end',
           'align-self': 'stretch',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -304,7 +304,7 @@ describe('align directive', () => {
           'justify-self': 'center',
           'align-self': 'stretch',
         },
-        styler
+        styler,
       );
     });
 
@@ -327,7 +327,7 @@ describe('align directive', () => {
         {
           'justify-self': 'start',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -335,7 +335,7 @@ describe('align directive', () => {
         {
           'justify-self': 'start',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -343,7 +343,7 @@ describe('align directive', () => {
         {
           'justify-self': 'center',
         },
-        styler
+        styler,
       );
 
       // Should fallback to value for 'gt-xs' or default
@@ -352,7 +352,7 @@ describe('align directive', () => {
         {
           'justify-self': 'end',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -360,7 +360,7 @@ describe('align directive', () => {
         {
           'justify-self': 'start',
         },
-        styler
+        styler,
       );
 
       // Should fallback to value for 'gt-xs' or default
@@ -369,7 +369,7 @@ describe('align directive', () => {
         {
           'justify-self': 'end',
         },
-        styler
+        styler,
       );
     });
   });

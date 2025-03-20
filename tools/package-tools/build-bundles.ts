@@ -50,12 +50,12 @@ export class PackageBundler {
     const entryFile = join(
       this.buildPackage.outputDir,
       entryPointName,
-      'index.js'
+      'index.js',
     );
     const esm2015EntryFile = join(
       this.buildPackage.esm2015OutputDir,
       entryPointName,
-      'index.js'
+      'index.js',
     );
 
     return this.bundleEntryPoint({

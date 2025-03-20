@@ -36,7 +36,7 @@ describe('style directive', () => {
       (_matchMedia: MockMatchMedia, _styler: StyleUtils) => {
         mediaController = _matchMedia;
         styler = _styler;
-      }
+      },
     )();
   };
 
@@ -92,7 +92,7 @@ describe('style directive', () => {
     mediaController.activate('xs');
     expectNativeEl(fixture).toHaveStyle(
       { color: 'blue', 'font-size': '15px' },
-      styler
+      styler,
     );
   });
 
@@ -111,13 +111,13 @@ describe('style directive', () => {
         color: 'blue',
         'font-size': '15px',
       },
-      styler
+      styler,
     );
 
     // TODO(CaerusKaru): the Domino server impl. does not process colors correctly
     const backgroundColor = styler.lookupStyle(
       fixture.debugElement.children[0].nativeElement,
-      'background-color'
+      'background-color',
     );
     const hasBackgroundRaw = backgroundColor === '#fc2929';
     const hasBackgroundFormat = backgroundColor === 'rgb(252, 41, 41)';
@@ -170,7 +170,7 @@ describe('style directive', () => {
     mediaController.activate('xs');
     expectNativeEl(fixture, { fontSize: 19 }).toHaveStyle(
       { 'font-size': '19px' },
-      styler
+      styler,
     );
   });
 
@@ -182,7 +182,7 @@ describe('style directive', () => {
     fixture.detectChanges();
     const url = styler.lookupStyle(
       fixture.debugElement.children[0].nativeElement,
-      'background-image'
+      'background-image',
     );
     const isUrl = url === `url("${URL}")` || url === `url(${URL})`;
     expect(isUrl).toBeTruthy();

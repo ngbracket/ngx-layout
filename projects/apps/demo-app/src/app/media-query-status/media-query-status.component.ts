@@ -3,8 +3,8 @@ import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'media-query-status',
-    template: `
+  selector: 'media-query-status',
+  template: `
     <div class="mqInfo">
       Active MediaQuery(s):
       <ul>
@@ -14,8 +14,8 @@ import { Observable } from 'rxjs';
       </ul>
     </div>
   `,
-    styleUrls: ['./media-query-status.component.scss'],
-    standalone: false
+  styleUrls: ['./media-query-status.component.scss'],
+  standalone: false,
 })
 export class MediaQueryStatusComponent {
   media$: Observable<MediaChange[]>;

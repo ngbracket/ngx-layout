@@ -40,7 +40,7 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
       this.nativeElement,
       this.DIRECTIVE_KEY,
       value,
-      this.marshal.activatedAlias
+      this.marshal.activatedAlias,
     );
   }
 
@@ -51,7 +51,7 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
     protected elementRef: ElementRef,
     protected styleBuilder: StyleBuilder,
     protected styler: StyleUtils,
-    protected marshal: MediaMarshaller
+    protected marshal: MediaMarshaller,
   ) {}
 
   /** For @Input changes */
@@ -78,7 +78,7 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
       this.DIRECTIVE_KEY,
       this.updateWithValue.bind(this),
       this.clearStyles.bind(this),
-      extraTriggers
+      extraTriggers,
     );
   }
 
@@ -124,7 +124,7 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
    */
   protected getFlexFlowDirection(
     target: HTMLElement,
-    addIfMissing = false
+    addIfMissing = false,
   ): string {
     if (target) {
       const [value, hasInlineValue] = this.styler.getFlowDirection(target);
@@ -149,7 +149,7 @@ export abstract class BaseDirective2 implements OnChanges, OnDestroy {
   protected applyStyleToElement(
     style: StyleDefinition,
     value?: string | number,
-    element: HTMLElement = this.nativeElement
+    element: HTMLElement = this.nativeElement,
   ) {
     this.styler.applyStyleToElement(element, style, value);
   }

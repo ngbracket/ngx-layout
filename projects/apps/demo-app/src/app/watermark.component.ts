@@ -48,7 +48,7 @@ export class WatermarkComponent {
     const bkgrndImageUrl = `data:image/svg+xml;base64,${window.btoa(rawSVG)}`;
 
     return this._sanitizer.bypassSecurityTrustStyle(
-      `url('${bkgrndImageUrl}') repeat-y`
+      `url('${bkgrndImageUrl}') repeat-y`,
     );
   }
 }

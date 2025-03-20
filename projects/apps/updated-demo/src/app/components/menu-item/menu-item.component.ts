@@ -25,61 +25,64 @@ import { MenuItem } from '../../menu-items';
         matListItemIcon
         >{{ item().icon }}</mat-icon
       >
-      @if(!collapsed()) {
-      <span matListItemTitle>{{ item().label }}</span>
-      } @if(item().subItems) {
-      <span matListItemMeta>
-        @if(nestedItemOpen()) {
-        <mat-icon>expand_less</mat-icon>
-        } @else {
-        <mat-icon>expand_more</mat-icon>
-        }
-      </span>
+      @if (!collapsed()) {
+        <span matListItemTitle>{{ item().label }}</span>
+      }
+      @if (item().subItems) {
+        <span matListItemMeta>
+          @if (nestedItemOpen()) {
+            <mat-icon>expand_less</mat-icon>
+          } @else {
+            <mat-icon>expand_more</mat-icon>
+          }
+        </span>
       }
     </a>
-    @if (nestedItemOpen() ) {
-    <div @expandContractMenu>
-      @for(subItem of item().subItems; track subItem.route) {
-      <app-menu-item
-        [item]="subItem"
-        [routeHistory]="routeHistory() + '/' + item().route"
-        [collapsed]="collapsed()"
-      />
-      }
-    </div>
+    @if (nestedItemOpen()) {
+      <div @expandContractMenu>
+        @for (subItem of item().subItems; track subItem.route) {
+          <app-menu-item
+            [item]="subItem"
+            [routeHistory]="routeHistory() + '/' + item().route"
+            [collapsed]="collapsed()"
+          />
+        }
+      </div>
     }
   `,
   styles: `
+    @use '@angular/material' as mat;
 
-  @use '@angular/material' as mat;
+    :host * {
+      transition: all 500ms ease-in-out;
+    }
 
-  :host * {
-        transition: all 500ms ease-in-out;
-      }
+    .menu-item {
+      border-left: 5px solid;
+      border-left-color: rgba(0, 0, 0, 0);
 
-  .menu-item {
-        border-left: 5px solid;
-        border-left-color: rgba(0, 0, 0, 0);
-
-        @include mat.list-overrides((
+      @include mat.list-overrides(
+        (
           active-indicator-shape: 0px,
-          active-indicator-color: rgba(0,0,0,0.05),
-          list-item-one-line-container-height: 56px
-        ));
+          active-indicator-color: rgba(0, 0, 0, 0.05),
+          list-item-one-line-container-height: 56px,
+        )
+      );
     }
 
     .selected-menu-item {
       border-left-color: var(--mat-sys-primary);
 
-      @include mat.list-overrides((
-        list-item-leading-icon-color: var(--mat-sys-primary),
-        list-item-hover-leading-icon-color: var(--mat-sys-primary),
-        list-item-label-text-color: var(--mat-sys-primary),
-        list-item-focus-label-text-color: var(--mat-sys-primary),
-        list-item-hover-label-text-color: var(--mat-sys-primary),
-      ));
+      @include mat.list-overrides(
+        (
+          list-item-leading-icon-color: var(--mat-sys-primary),
+          list-item-hover-leading-icon-color: var(--mat-sys-primary),
+          list-item-label-text-color: var(--mat-sys-primary),
+          list-item-focus-label-text-color: var(--mat-sys-primary),
+          list-item-hover-label-text-color: var(--mat-sys-primary),
+        )
+      );
     }
-
   `,
   animations: [
     trigger('expandContractMenu', [
@@ -100,7 +103,7 @@ export class MenuItemComponent {
 
   level = computed(() => this.routeHistory().split('/').length - 1);
   indentation = computed(() =>
-    this.collapsed() ? '16px' : `${16 + this.level() * 16}px`
+    this.collapsed() ? '16px' : `${16 + this.level() * 16}px`,
   );
 
   nestedItemOpen = signal(false);

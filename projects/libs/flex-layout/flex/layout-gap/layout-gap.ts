@@ -40,7 +40,7 @@ const CLEAR_MARGIN_CSS = {
 export class LayoutGapStyleBuilder extends StyleBuilder {
   constructor(
     private _styler: StyleUtils,
-    @Inject(LAYOUT_CONFIG) private _config: LayoutConfigOptions
+    @Inject(LAYOUT_CONFIG) private _config: LayoutConfigOptions,
   ) {
     super();
   }
@@ -60,7 +60,7 @@ export class LayoutGapStyleBuilder extends StyleBuilder {
   override sideEffect(
     gapValue: string,
     _styles: StyleDefinition,
-    parent: LayoutGapParent
+    parent: LayoutGapParent,
   ) {
     const items = parent.items;
     if (gapValue.endsWith(GRID_SPECIFIER)) {
@@ -145,7 +145,7 @@ export class LayoutGapDirective
     protected directionality: Directionality,
     protected styleUtils: StyleUtils,
     styleBuilder: LayoutGapStyleBuilder,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     const extraTriggers = [
@@ -249,7 +249,7 @@ export class LayoutGapDirective
     // Then remove the children styles too
     this.styleUtils.applyStyleToElements(
       { [childrenStyle]: '' },
-      this.childrenNodes
+      this.childrenNodes,
     );
   }
 
@@ -305,7 +305,7 @@ const GRID_SPECIFIER = ' grid';
 
 function buildGridPadding(
   value: string,
-  directionality: string
+  directionality: string,
 ): StyleDefinition {
   const [between, below] = value.split(' ');
   const bottom = below ?? between;
@@ -324,7 +324,7 @@ function buildGridPadding(
 
 function buildGridMargin(
   value: string,
-  directionality: string
+  directionality: string,
 ): StyleDefinition {
   const [between, below] = value.split(' ');
   const bottom = below ?? between;
@@ -359,7 +359,7 @@ function getMarginType(directionality: string, layout: string) {
 
 function buildGapCSS(
   gapValue: string,
-  parent: { directionality: string; layout: string }
+  parent: { directionality: string; layout: string },
 ): StyleDefinition {
   const key = getMarginType(parent.directionality, parent.layout);
   const margins: { [key: string]: string | null } = { ...CLEAR_MARGIN_CSS };

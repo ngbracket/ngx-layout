@@ -16,14 +16,14 @@ export const DEMO_APP_ROUTES: Routes = [
     path: 'responsive',
     loadChildren: () =>
       import('./responsive/responsive.module').then(
-        (m) => m.DocsResponsiveModule
+        (m) => m.DocsResponsiveModule,
       ),
   },
   {
     path: 'stackoverflow',
     loadChildren: () =>
       import('./stack-overflow/stack-overflow.module').then(
-        (m) => m.DocsStackOverflowModule
+        (m) => m.DocsStackOverflowModule,
       ),
   },
 ];

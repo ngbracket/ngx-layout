@@ -9,9 +9,8 @@ describe('DocsResponsiveComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [DocsResponsiveModule]
-})
-    .compileComponents();
+      imports: [DocsResponsiveModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

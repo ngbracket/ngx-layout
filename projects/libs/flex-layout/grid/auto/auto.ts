@@ -76,7 +76,7 @@ export class GridAutoDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridAutoStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

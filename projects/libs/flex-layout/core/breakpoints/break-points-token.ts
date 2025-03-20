@@ -20,8 +20,8 @@ export const BREAKPOINTS = new InjectionToken<BreakPoint[]>(
       const bpFlattenArray: BreakPoint[] = [].concat.apply(
         [],
         (breakpoints || []).map((v: BreakPoint | BreakPoint[]) =>
-          Array.isArray(v) ? v : [v]
-        )
+          Array.isArray(v) ? v : [v],
+        ),
       );
       const builtIns = (
         layoutConfig.disableDefaultBps ? [] : DEFAULT_BREAKPOINTS
@@ -29,5 +29,5 @@ export const BREAKPOINTS = new InjectionToken<BreakPoint[]>(
 
       return mergeByAlias(builtIns, bpFlattenArray);
     },
-  }
+  },
 );

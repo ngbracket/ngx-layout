@@ -117,7 +117,7 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
     return {
       compare: function (
         actual: { [k: string]: string },
-        map: { [k: string]: string }
+        map: { [k: string]: string },
       ) {
         let allPassed: boolean;
         allPassed = Object.keys(map).length !== 0;
@@ -130,8 +130,8 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
           get message() {
             return `
               Expected ${JSON.stringify(actual)} ${
-              !allPassed ? ' ' : 'not '
-            } to contain the
+                !allPassed ? ' ' : 'not '
+              } to contain the
               '${JSON.stringify(map)}'
             `;
           },
@@ -157,8 +157,8 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
           get message() {
             return `
               Expected ${actual.outerHTML} ${
-              allPassed ? 'not ' : ''
-            } attributes to contain
+                allPassed ? 'not ' : ''
+              } attributes to contain
               '${JSON.stringify(map)}'
             `;
           },
@@ -194,7 +194,7 @@ function buildCompareStyleFunction(inlineOnly = true) {
   return function (
     actual: any,
     styles: { [k: string]: string } | string,
-    styler: StyleUtils
+    styler: StyleUtils,
   ) {
     const found = {};
     const styleMap: { [k: string]: string } = {};
@@ -212,7 +212,7 @@ function buildCompareStyleFunction(inlineOnly = true) {
         prop,
         styleMap[prop],
         inlineOnly,
-        styler
+        styler,
       );
       allPassed = allPassed && elHasStyle;
       if (!elHasStyle) {
@@ -251,7 +251,7 @@ function hasPrefixedStyles(
   key: string,
   value: string,
   inlineOnly: boolean,
-  styler: StyleUtils
+  styler: StyleUtils,
 ) {
   const current = {};
 

@@ -80,7 +80,7 @@ export class GridRowsDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridRowsStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

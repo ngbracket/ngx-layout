@@ -78,7 +78,7 @@ export function validateWrapValue(value: string) {
 function buildCSS(
   direction: string,
   wrap: string | null = null,
-  inline = false
+  inline = false,
 ) {
   return {
     display: inline ? 'inline-flex' : 'flex',

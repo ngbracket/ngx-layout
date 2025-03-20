@@ -34,11 +34,11 @@ describe('match-media', () => {
     (
       _mediaObserver: MediaObserver,
       _matchMedia: MockMatchMedia,
-      _breakPoints: BreakPointRegistry
+      _breakPoints: BreakPointRegistry,
     ) => {
       breakPoints = _breakPoints;
       mediaController = _matchMedia; // inject only to manually activate mediaQuery ranges
-    }
+    },
   ));
 
   afterEach(() => {
@@ -153,7 +153,7 @@ describe('match-media', () => {
   describe('match-media-observable', () => {
     const watchMedia = (
       alias: string,
-      observer: (value: MediaChange) => void
+      observer: (value: MediaChange) => void,
     ): Subscription => {
       return mediaController.observe(alias ? [alias] : []).subscribe(observer);
     };

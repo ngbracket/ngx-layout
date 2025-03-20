@@ -45,13 +45,13 @@ describe('flex directive', () => {
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
         _platform: Platform,
-        _platformId: Object
+        _platformId: Object,
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
         platform = _platform;
         platformId = _platformId;
-      }
+      },
     )();
 
     return fixture;
@@ -149,7 +149,7 @@ describe('flex directive', () => {
       let element = queryFor(fixture, '[fxFlex]')[0];
       expectNativeEl(fixture).toHaveStyle(
         { 'flex-direction': 'column' },
-        styler
+        styler,
       );
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '1 1 30%' }, styler);
@@ -168,7 +168,7 @@ describe('flex directive', () => {
 
       expectNativeEl(fixture).toHaveStyle(
         { 'flex-direction': 'column' },
-        styler
+        styler,
       );
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '1 1 30%' }, styler);
@@ -196,7 +196,7 @@ describe('flex directive', () => {
 
       expectNativeEl(fixture).toHaveStyle(
         { 'flex-direction': 'row-reverse' },
-        styler
+        styler,
       );
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '1 1 30%' }, styler);
@@ -207,7 +207,7 @@ describe('flex directive', () => {
 
       expectNativeEl(fixture).toHaveStyle(
         { 'flex-direction': 'column' },
-        styler
+        styler,
       );
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '1 1 30%' }, styler);
@@ -218,7 +218,7 @@ describe('flex directive', () => {
 
       expectNativeEl(fixture).toHaveStyle(
         { 'flex-direction': 'column-reverse' },
-        styler
+        styler,
       );
       expectEl(element).toHaveStyle({ 'box-sizing': 'border-box' }, styler);
       expectEl(element).toHaveStyle({ flex: '1 1 30%' }, styler);
@@ -286,14 +286,14 @@ describe('flex directive', () => {
           flex: '1 1 0%',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
 
       expectNativeEl(fixture).not.toHaveStyle(
         {
           'max-width': '*',
         },
-        styler
+        styler,
       );
     });
 
@@ -306,14 +306,14 @@ describe('flex directive', () => {
           flex: '1 1 0%',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
 
       expectNativeEl(fixture).not.toHaveStyle(
         {
           'max-width': '*',
         },
-        styler
+        styler,
       );
     });
 
@@ -326,14 +326,14 @@ describe('flex directive', () => {
           flex: '1 0 50%',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
 
       expectNativeEl(fixture).not.toHaveStyle(
         {
           'max-width': '*',
         },
-        styler
+        styler,
       );
     });
 
@@ -347,7 +347,7 @@ describe('flex directive', () => {
           flex: '1 1 100%',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
 
@@ -359,7 +359,7 @@ describe('flex directive', () => {
           'max-width': '37%',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
     it('should work with pixel values', () => {
@@ -369,7 +369,7 @@ describe('flex directive', () => {
           flex: '1 1 37px',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
     it('should work with "1 0 auto" values', () => {
@@ -379,7 +379,7 @@ describe('flex directive', () => {
           flex: '1 0 auto',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
 
@@ -396,7 +396,7 @@ describe('flex directive', () => {
       // parent flex-direction found with 'column' with child height styles
       expectEl(parent).toHaveStyle(
         { 'flex-direction': 'column', display: 'flex' },
-        styler
+        styler,
       );
       expectEl(element).toHaveStyle({ 'min-height': '30px' }, styler);
       expectEl(element).not.toHaveStyle({ 'min-width': '30px' }, styler);
@@ -415,7 +415,7 @@ describe('flex directive', () => {
       // parent flex-direction found with 'column' with child height styles
       expectEl(parent).toHaveStyle(
         { 'flex-direction': 'column', display: 'flex' },
-        styler
+        styler,
       );
 
       if (platform.BLINK) {
@@ -424,7 +424,7 @@ describe('flex directive', () => {
             flex: '1 1 1e-09px',
             'box-sizing': 'border-box',
           },
-          styler
+          styler,
         );
       } else if (platform.FIREFOX || platform.WEBKIT || platform.IOS) {
         expectEl(element).toHaveStyle(
@@ -432,7 +432,7 @@ describe('flex directive', () => {
             flex: '1 1 1e-9px',
             'box-sizing': 'border-box',
           },
-          styler
+          styler,
         );
       } else if (platform.EDGE) {
         expectEl(element).toHaveStyle(
@@ -440,7 +440,7 @@ describe('flex directive', () => {
             flex: '1 1 0px',
             'box-sizing': 'border-box',
           },
-          styler
+          styler,
         );
       } else {
         expectEl(element).toHaveStyle(
@@ -448,7 +448,7 @@ describe('flex directive', () => {
             flex: '1 1 0.000000001px',
             'box-sizing': 'border-box',
           },
-          styler
+          styler,
         );
       }
     });
@@ -472,7 +472,7 @@ describe('flex directive', () => {
         // parent flex-direction found with 'column' with child height styles
         expectEl(parent).toHaveCSS(
           { 'flex-direction': 'column', display: 'flex' },
-          styler
+          styler,
         );
         expectEl(element).toHaveStyle({ 'min-height': '30px' }, styler);
         expectEl(element).not.toHaveStyle({ 'min-width': '30px' }, styler);
@@ -532,14 +532,14 @@ describe('flex directive', () => {
       expect(nodes.length).toEqual(3);
       expectEl(nodes[1]).not.toHaveStyle(
         { 'max-height': '*', 'min-height': '*' },
-        styler
+        styler,
       );
       expectEl(nodes[1]).toHaveStyle(
         {
           flex: '1 1 auto',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
 
@@ -555,7 +555,7 @@ describe('flex directive', () => {
             'flex-shrink': '1',
             'flex-basis': 'calc(-10px + 30vw)',
           },
-          styler
+          styler,
         );
       } else if (!(platform.FIREFOX || platform.EDGE)) {
         // needs fixing
@@ -583,7 +583,7 @@ describe('flex directive', () => {
             'flex-shrink': '1',
             'flex-basis': 'calc(75% - 10px)', // correct version has whitespace
           },
-          styler
+          styler,
         );
       }
     }));
@@ -594,7 +594,7 @@ describe('flex directive', () => {
         {
           flex: '1 1 auto',
         },
-        styler
+        styler,
       );
     });
     it('should work with "nogrow" values', () => {
@@ -603,7 +603,7 @@ describe('flex directive', () => {
         {
           flex: '0 1 auto',
         },
-        styler
+        styler,
       );
     });
     it('should work with "grow" values', () => {
@@ -612,7 +612,7 @@ describe('flex directive', () => {
         {
           flex: '1 1 100%',
         },
-        styler
+        styler,
       );
     });
     it('should work with "initial" values', () => {
@@ -621,7 +621,7 @@ describe('flex directive', () => {
         {
           flex: '0 1 auto',
         },
-        styler
+        styler,
       );
     });
     it('should work with "noshrink" values', () => {
@@ -630,7 +630,7 @@ describe('flex directive', () => {
         {
           flex: '1 0 auto',
         },
-        styler
+        styler,
       );
     });
     it('should work with "none" values', () => {
@@ -639,7 +639,7 @@ describe('flex directive', () => {
         {
           flex: '0 0 auto',
         },
-        styler
+        styler,
       );
     });
 
@@ -649,7 +649,7 @@ describe('flex directive', () => {
         {
           flex: '1 2 0.9em',
         },
-        styler
+        styler,
       );
     });
     it('should set a min-width when the shrink == 0', () => {
@@ -660,7 +660,7 @@ describe('flex directive', () => {
           'min-width': '37px',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
     it('should set a min-width and max-width when the grow == 0 and shrink == 0', () => {
@@ -672,7 +672,7 @@ describe('flex directive', () => {
           'min-width': '375px',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
 
@@ -682,7 +682,7 @@ describe('flex directive', () => {
         {
           'max-width': '69px',
         },
-        styler
+        styler,
       );
     });
 
@@ -699,7 +699,7 @@ describe('flex directive', () => {
         {
           'min-width': '96px',
         },
-        styler
+        styler,
       );
     });
 
@@ -718,7 +718,7 @@ describe('flex directive', () => {
           'max-width': '312px',
           'min-width': '312px',
         },
-        styler
+        styler,
       );
     });
 
@@ -730,7 +730,7 @@ describe('flex directive', () => {
           'max-width': '12rem',
           'min-width': '12rem',
         },
-        styler
+        styler,
       );
     });
 
@@ -746,7 +746,7 @@ describe('flex directive', () => {
             flex: '1 1 37%',
             'max-height': '37%',
           },
-          styler
+          styler,
         );
       });
 
@@ -764,7 +764,7 @@ describe('flex directive', () => {
             flex: '1 1 100%',
             'max-height': '37%',
           },
-          styler
+          styler,
         );
       });
 
@@ -775,7 +775,7 @@ describe('flex directive', () => {
             flex: '1 1 100%',
             'max-width': '37%',
           },
-          styler
+          styler,
         );
       });
 
@@ -786,7 +786,7 @@ describe('flex directive', () => {
             flex: '1 1 100%',
             'max-width': '2%',
           },
-          styler
+          styler,
         );
       });
     });
@@ -810,7 +810,7 @@ describe('flex directive', () => {
           flex: '1 1 25px',
           'max-width': '25px',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xl', true);
@@ -821,7 +821,7 @@ describe('flex directive', () => {
           flex: '1 1 25px',
           'max-width': '25px',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md', true);
@@ -832,7 +832,7 @@ describe('flex directive', () => {
           flex: '1 1 100%',
           'max-width': '50%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs', true);
@@ -843,7 +843,7 @@ describe('flex directive', () => {
           flex: '1 1 100%',
           'max-width': '33%',
         },
-        styler
+        styler,
       );
     });
 
@@ -863,7 +863,7 @@ describe('flex directive', () => {
           flex: '1 1 100%',
           'max-width': '50%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('sm', true);
@@ -874,7 +874,7 @@ describe('flex directive', () => {
           flex: '1 1 100%',
           'max-width': '33%',
         },
-        styler
+        styler,
       );
     });
 
@@ -903,15 +903,15 @@ describe('flex directive', () => {
       nodes = queryFor(fixture, '[fxFlex]');
       expectEl(nodes[0]).toHaveStyle(
         { flex: '1 1 100%', 'max-height': '50%' },
-        styler
+        styler,
       );
       expectEl(nodes[1]).toHaveStyle(
         { flex: '1 1 100%', 'max-height': '24.4%' },
-        styler
+        styler,
       );
       expectEl(nodes[2]).toHaveStyle(
         { flex: '1 1 100%', 'max-height': '25.6%' },
-        styler
+        styler,
       );
 
       mediaController.activate('sm');
@@ -963,15 +963,15 @@ describe('flex directive', () => {
 
       expectEl(nodes[0]).toHaveStyle(
         { flex: '1 1 100%', 'max-height': '50%' },
-        styler
+        styler,
       );
       expectEl(nodes[1]).toHaveStyle(
         { flex: '1 1 100%', 'max-height': '24.4%' },
-        styler
+        styler,
       );
       expectEl(nodes[2]).toHaveStyle(
         { flex: '1 1 100%', 'max-height': '25.6%' },
-        styler
+        styler,
       );
     });
 
@@ -998,7 +998,7 @@ describe('flex directive', () => {
           flex: '1 1 100%',
           'max-height': '50%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('lg', true);
@@ -1016,13 +1016,13 @@ describe('flex directive', () => {
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
         _platform: Platform,
-        _platformId: Object
+        _platformId: Object,
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
         platform = _platform;
         platformId = _platformId;
-      }
+      },
     ));
 
     afterEach(() => {
@@ -1042,7 +1042,7 @@ describe('flex directive', () => {
         {
           'flex-direction': 'row',
         },
-        styler
+        styler,
       );
 
       layout.activatedValue = 'column';
@@ -1051,7 +1051,7 @@ describe('flex directive', () => {
         {
           'flex-direction': 'column',
         },
-        styler
+        styler,
       );
     });
 
@@ -1198,7 +1198,7 @@ describe('flex directive', () => {
       // A flex-direction should have been auto-injected to the parent...
       // fallback to 'row' and set child width styles accordingly
       expect(parent.nativeElement.getAttribute('style')).not.toContain(
-        '-webkit-flex-direction'
+        '-webkit-flex-direction',
       );
       expectEl(element).toHaveStyle({ 'min-width': '40px' }, styler);
       expectEl(element).not.toHaveStyle({ 'min-height': '40px' }, styler);

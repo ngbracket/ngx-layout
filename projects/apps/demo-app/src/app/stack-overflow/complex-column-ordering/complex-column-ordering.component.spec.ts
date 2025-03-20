@@ -9,9 +9,8 @@ describe('ComplexColumnOrderingComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [DocsStackOverflowModule],
-})
-    .compileComponents();
+      imports: [DocsStackOverflowModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

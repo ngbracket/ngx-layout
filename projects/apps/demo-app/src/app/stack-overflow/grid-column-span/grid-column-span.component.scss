@@ -20,7 +20,7 @@ div.container {
   color: white;
 }
 
-.container div[ng-reflect-flex*=calc] {
+.container div[ng-reflect-flex*='calc'] {
   color: #343434;
   background-color: #8bc34a;
 }

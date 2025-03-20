@@ -12,7 +12,7 @@ export class StyleUtils {
     private _serverStylesheet: StylesheetMap,
     @Inject(SERVER_TOKEN) private _serverModuleLoaded: boolean,
     @Inject(PLATFORM_ID) private _platformId: Object,
-    @Inject(LAYOUT_CONFIG) private layoutConfig: LayoutConfigOptions
+    @Inject(LAYOUT_CONFIG) private layoutConfig: LayoutConfigOptions,
   ) {}
 
   /**
@@ -21,7 +21,7 @@ export class StyleUtils {
   applyStyleToElement(
     element: HTMLElement,
     style: StyleDefinition | string,
-    value: string | number | null = null
+    value: string | number | null = null,
   ) {
     let styles: StyleDefinition = {};
     if (typeof style === 'string') {
@@ -91,7 +91,7 @@ export class StyleUtils {
   lookupStyle(
     element: HTMLElement,
     styleName: string,
-    inlineOnly = false
+    inlineOnly = false,
   ): string {
     let value = '';
     if (element) {
@@ -105,7 +105,7 @@ export class StyleUtils {
           if (this._serverModuleLoaded) {
             value = this._serverStylesheet.getStyleForElement(
               element,
-              styleName
+              styleName,
             );
           }
         }
@@ -124,7 +124,7 @@ export class StyleUtils {
    */
   private _applyMultiValueStyleToElement(
     styles: StyleDefinition,
-    element: HTMLElement
+    element: HTMLElement,
   ) {
     Object.keys(styles)
       .sort()
@@ -159,7 +159,7 @@ function getServerStyle(element: any, styleName: string): string {
 function setServerStyle(
   element: any,
   styleName: string,
-  styleValue?: string | null
+  styleValue?: string | null,
 ) {
   styleName = styleName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
   const styleMap = readStyleAttribute(element);
@@ -169,7 +169,7 @@ function setServerStyle(
 
 function writeStyleAttribute(
   element: any,
-  styleMap: { [name: string]: string }
+  styleMap: { [name: string]: string },
 ) {
   let styleAttrValue = '';
   for (const key in styleMap) {

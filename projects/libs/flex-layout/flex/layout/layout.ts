@@ -72,7 +72,7 @@ export class LayoutDirective extends BaseDirective2 implements OnChanges {
     styleUtils: StyleUtils,
     styleBuilder: LayoutStyleBuilder,
     marshal: MediaMarshaller,
-    @Inject(LAYOUT_CONFIG) private _config: LayoutConfigOptions
+    @Inject(LAYOUT_CONFIG) private _config: LayoutConfigOptions,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();

@@ -99,7 +99,7 @@ describe('break-point-provider', () => {
               addOrientationBps: true,
               serverLoaded: true,
             },
-            EXTRAS
+            EXTRAS,
           ),
         ],
       });
@@ -154,7 +154,7 @@ describe('break-point-provider', () => {
               disableDefaultBps: true,
               serverLoaded: true,
             },
-            EXTRAS
+            EXTRAS,
           ),
         ],
       });

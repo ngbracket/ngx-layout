@@ -52,7 +52,7 @@ class Walker extends RuleWalker {
         .map((decorator) => decorator.expression as any)
         .filter(
           (expression) =>
-            expression.arguments.length && expression.arguments[0].properties
+            expression.arguments.length && expression.arguments[0].properties,
         )
         .forEach((expression) => this._validatedDecorator(expression));
     }
@@ -79,19 +79,19 @@ class Walker extends RuleWalker {
         name: node.name.getText(),
         value: node.initializer.getText(),
         node,
-      })
+      }),
     );
 
     // Find all of the rule properties that are missing from the decorator.
     const missing = Object.keys(rules).filter(
-      (key) => !props.find((prop: any) => prop.name === key)
+      (key) => !props.find((prop: any) => prop.name === key),
     );
 
     if (missing.length) {
       // Exit early if any of the properties are missing.
       this.addFailureAtNode(
         decorator.parent,
-        'Missing required properties: ' + missing.join(', ')
+        'Missing required properties: ' + missing.join(', '),
       );
     } else {
       // If all the necessary properties are defined, ensure that they match the pattern.
@@ -103,7 +103,7 @@ class Walker extends RuleWalker {
             prop.node,
             `Invalid value for property. Expected value to match "${
               rules[prop.name]
-            }".`
+            }".`,
           );
         });
     }
@@ -123,7 +123,7 @@ class Walker extends RuleWalker {
     if (config) {
       Object.keys(config)
         .filter(
-          (decoratorName) => Object.keys(config[decoratorName]).length > 0
+          (decoratorName) => Object.keys(config[decoratorName]).length > 0,
         )
         .forEach((decoratorName) => {
           output[decoratorName] = Object.keys(config[decoratorName]).reduce(
@@ -131,7 +131,7 @@ class Walker extends RuleWalker {
               accumulator[prop] = new RegExp(config[decoratorName][prop]);
               return accumulator;
             },
-            {} as { [key: string]: RegExp }
+            {} as { [key: string]: RegExp },
           );
         });
     }

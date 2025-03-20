@@ -9,9 +9,8 @@ describe('FlexAttributeValuesComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [DocsLayoutModule]
-})
-    .compileComponents();
+      imports: [DocsLayoutModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
