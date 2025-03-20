@@ -52,7 +52,10 @@ html {
   --mat-sys-inverse-on-surface: light-dark(#faedf9, #352e37);
   --mat-sys-outline: light-dark(#807383, #9a8c9d);
   --mat-sys-outline-variant: light-dark(#d1c2d3, #4e4352);
-  --mat-sys-neutral10: light-dark(#201922, #201922); /* Variable used for the form field native select option text color */
+  --mat-sys-neutral10: light-dark(
+    #201922,
+    #201922
+  ); /* Variable used for the form field native select option text color */
 
   /* Error palette variables */
   --mat-sys-error: light-dark(#ba1a1a, #ffb4ab);
@@ -63,7 +66,10 @@ html {
   /* Neutral variant palette variables */
   --mat-sys-surface-variant: light-dark(#eeddf0, #4e4352);
   --mat-sys-on-surface-variant: light-dark(#4e4352, #d1c2d3);
-  --mat-sys-neutral-variant20: light-dark(#372d3b, #372d3b); /* Variable used for the sidenav scrim (container background shadow when opened) */
+  --mat-sys-neutral-variant20: light-dark(
+    #372d3b,
+    #372d3b
+  ); /* Variable used for the sidenav scrim (container background shadow when opened) */
 
   /* TYPOGRAPHY SYSTEM VARIABLES */
 
@@ -77,7 +83,9 @@ html {
   /* Typescale variables. */
   /* Warning: Risk of reduced fidelity from using the composite typography tokens (ex. --mat-sys-body-large) since
      tracking cannot be represented in the "font" property shorthand. Consider using the discrete properties instead. */
-  --mat-sys-body-large: var(--mat-sys-body-large-weight) var(--mat-sys-body-large-size) / var(--mat-sys-body-large-line-height) var(--mat-sys-body-large-font);
+  --mat-sys-body-large: var(--mat-sys-body-large-weight)
+    var(--mat-sys-body-large-size) / var(--mat-sys-body-large-line-height)
+    var(--mat-sys-body-large-font);
   --mat-sys-body-large-font: var(--mat-sys-plain-font-family);
   --mat-sys-body-large-line-height: 1.5rem;
   --mat-sys-body-large-size: 1rem;
@@ -85,7 +93,9 @@ html {
   --mat-sys-body-large-weight: var(--mat-sys-regular-font-weight);
 
   /* Body medium typescale */
-  --mat-sys-body-medium: var(--mat-sys-body-medium-weight) var(--mat-sys-body-medium-size) / var(--mat-sys-body-medium-line-height) var(--mat-sys-body-medium-font);
+  --mat-sys-body-medium: var(--mat-sys-body-medium-weight)
+    var(--mat-sys-body-medium-size) / var(--mat-sys-body-medium-line-height)
+    var(--mat-sys-body-medium-font);
   --mat-sys-body-medium-font: var(--mat-sys-plain-font-family);
   --mat-sys-body-medium-line-height: 1.25rem;
   --mat-sys-body-medium-size: 0.875rem;
@@ -93,7 +103,9 @@ html {
   --mat-sys-body-medium-weight: var(--mat-sys-regular-font-weight);
 
   /* Body small typescale */
-  --mat-sys-body-small: var(--mat-sys-body-small-weight) var(--mat-sys-body-small-size) / var(--mat-sys-body-small-line-height) var(--mat-sys-body-small-font);
+  --mat-sys-body-small: var(--mat-sys-body-small-weight)
+    var(--mat-sys-body-small-size) / var(--mat-sys-body-small-line-height)
+    var(--mat-sys-body-small-font);
   --mat-sys-body-small-font: var(--mat-sys-plain-font-family);
   --mat-sys-body-small-line-height: 1rem;
   --mat-sys-body-small-size: 0.75rem;
@@ -101,7 +113,9 @@ html {
   --mat-sys-body-small-weight: var(--mat-sys-regular-font-weight);
 
   /* Display large typescale */
-  --mat-sys-display-large: var(--mat-sys-display-large-weight) var(--mat-sys-display-large-size) / var(--mat-sys-display-large-line-height) var(--mat-sys-display-large-font);
+  --mat-sys-display-large: var(--mat-sys-display-large-weight)
+    var(--mat-sys-display-large-size) / var(--mat-sys-display-large-line-height)
+    var(--mat-sys-display-large-font);
   --mat-sys-display-large-font: var(--mat-sys-brand-font-family);
   --mat-sys-display-large-line-height: 4rem;
   --mat-sys-display-large-size: 3.562rem;
@@ -109,7 +123,9 @@ html {
   --mat-sys-display-large-weight: var(--mat-sys-regular-font-weight);
 
   /* Display medium typescale */
-  --mat-sys-display-medium: var(--mat-sys-display-medium-weight) var(--mat-sys-display-medium-size) / var(--mat-sys-display-medium-line-height) var(--mat-sys-display-medium-font);
+  --mat-sys-display-medium: var(--mat-sys-display-medium-weight)
+    var(--mat-sys-display-medium-size) /
+    var(--mat-sys-display-medium-line-height) var(--mat-sys-display-medium-font);
   --mat-sys-display-medium-font: var(--mat-sys-brand-font-family);
   --mat-sys-display-medium-line-height: 3.25rem;
   --mat-sys-display-medium-size: 2.812rem;
@@ -117,7 +133,9 @@ html {
   --mat-sys-display-medium-weight: var(--mat-sys-regular-font-weight);
 
   /* Display small typescale */
-  --mat-sys-display-small: var(--mat-sys-display-small-weight) var(--mat-sys-display-small-size) / var(--mat-sys-display-small-line-height) var(--mat-sys-display-small-font);
+  --mat-sys-display-small: var(--mat-sys-display-small-weight)
+    var(--mat-sys-display-small-size) / var(--mat-sys-display-small-line-height)
+    var(--mat-sys-display-small-font);
   --mat-sys-display-small-font: var(--mat-sys-brand-font-family);
   --mat-sys-display-small-line-height: 2.75rem;
   --mat-sys-display-small-size: 2.25rem;
@@ -125,7 +143,9 @@ html {
   --mat-sys-display-small-weight: var(--mat-sys-regular-font-weight);
 
   /* Headline large typescale */
-  --mat-sys-headline-large: var(--mat-sys-headline-large-weight) var(--mat-sys-headline-large-size) / var(--mat-sys-headline-large-line-height) var(--mat-sys-headline-large-font);
+  --mat-sys-headline-large: var(--mat-sys-headline-large-weight)
+    var(--mat-sys-headline-large-size) /
+    var(--mat-sys-headline-large-line-height) var(--mat-sys-headline-large-font);
   --mat-sys-headline-large-font: var(--mat-sys-brand-font-family);
   --mat-sys-headline-large-line-height: 2.5rem;
   --mat-sys-headline-large-size: 2rem;
@@ -133,7 +153,10 @@ html {
   --mat-sys-headline-large-weight: var(--mat-sys-regular-font-weight);
 
   /* Headline medium typescale */
-  --mat-sys-headline-medium: var(--mat-sys-headline-medium-weight) var(--mat-sys-headline-medium-size) / var(--mat-sys-headline-medium-line-height) var(--mat-sys-headline-medium-font);
+  --mat-sys-headline-medium: var(--mat-sys-headline-medium-weight)
+    var(--mat-sys-headline-medium-size) /
+    var(--mat-sys-headline-medium-line-height)
+    var(--mat-sys-headline-medium-font);
   --mat-sys-headline-medium-font: var(--mat-sys-brand-font-family);
   --mat-sys-headline-medium-line-height: 2.25rem;
   --mat-sys-headline-medium-size: 1.75rem;
@@ -141,7 +164,9 @@ html {
   --mat-sys-headline-medium-weight: var(--mat-sys-regular-font-weight);
 
   /* Headline small typescale */
-  --mat-sys-headline-small: var(--mat-sys-headline-small-weight) var(--mat-sys-headline-small-size) / var(--mat-sys-headline-small-line-height) var(--mat-sys-headline-small-font);
+  --mat-sys-headline-small: var(--mat-sys-headline-small-weight)
+    var(--mat-sys-headline-small-size) /
+    var(--mat-sys-headline-small-line-height) var(--mat-sys-headline-small-font);
   --mat-sys-headline-small-font: var(--mat-sys-brand-font-family);
   --mat-sys-headline-small-line-height: 2rem;
   --mat-sys-headline-small-size: 1.5rem;
@@ -149,7 +174,9 @@ html {
   --mat-sys-headline-small-weight: var(--mat-sys-regular-font-weight);
 
   /* Label large typescale */
-  --mat-sys-label-large: var(--mat-sys-label-large-weight) var(--mat-sys-label-large-size) / var(--mat-sys-label-large-line-height) var(--mat-sys-label-large-font);
+  --mat-sys-label-large: var(--mat-sys-label-large-weight)
+    var(--mat-sys-label-large-size) / var(--mat-sys-label-large-line-height)
+    var(--mat-sys-label-large-font);
   --mat-sys-label-large-font: var(--mat-sys-plain-font-family);
   --mat-sys-label-large-line-height: 1.25rem;
   --mat-sys-label-large-size: 0.875rem;
@@ -158,7 +185,9 @@ html {
   --mat-sys-label-large-weight-prominent: var(--mat-sys-bold-font-weight);
 
   /* Label medium typescale */
-  --mat-sys-label-medium: var(--mat-sys-label-medium-weight) var(--mat-sys-label-medium-size) / var(--mat-sys-label-medium-line-height) var(--mat-sys-label-medium-font);
+  --mat-sys-label-medium: var(--mat-sys-label-medium-weight)
+    var(--mat-sys-label-medium-size) / var(--mat-sys-label-medium-line-height)
+    var(--mat-sys-label-medium-font);
   --mat-sys-label-medium-font: var(--mat-sys-plain-font-family);
   --mat-sys-label-medium-line-height: 1rem;
   --mat-sys-label-medium-size: 0.75rem;
@@ -167,7 +196,9 @@ html {
   --mat-sys-label-medium-weight-prominent: var(--mat-sys-bold-font-weight);
 
   /* Label small typescale */
-  --mat-sys-label-small: var(--mat-sys-label-small-weight) var(--mat-sys-label-small-size) / var(--mat-sys-label-small-line-height) var(--mat-sys-label-small-font);
+  --mat-sys-label-small: var(--mat-sys-label-small-weight)
+    var(--mat-sys-label-small-size) / var(--mat-sys-label-small-line-height)
+    var(--mat-sys-label-small-font);
   --mat-sys-label-small-font: var(--mat-sys-plain-font-family);
   --mat-sys-label-small-line-height: 1rem;
   --mat-sys-label-small-size: 0.688rem;
@@ -175,7 +206,9 @@ html {
   --mat-sys-label-small-weight: var(--mat-sys-medium-font-weight);
 
   /* Title large typescale */
-  --mat-sys-title-large: var(--mat-sys-title-large-weight) var(--mat-sys-title-large-size) / var(--mat-sys-title-large-line-height) var(--mat-sys-title-large-font);
+  --mat-sys-title-large: var(--mat-sys-title-large-weight)
+    var(--mat-sys-title-large-size) / var(--mat-sys-title-large-line-height)
+    var(--mat-sys-title-large-font);
   --mat-sys-title-large-font: var(--mat-sys-brand-font-family);
   --mat-sys-title-large-line-height: 1.75rem;
   --mat-sys-title-large-size: 1.375rem;
@@ -183,7 +216,9 @@ html {
   --mat-sys-title-large-weight: var(--mat-sys-regular-font-weight);
 
   /* Title medium typescale */
-  --mat-sys-title-medium: var(--mat-sys-title-medium-weight) var(--mat-sys-title-medium-size) / var(--mat-sys-title-medium-line-height) var(--mat-sys-title-medium-font);
+  --mat-sys-title-medium: var(--mat-sys-title-medium-weight)
+    var(--mat-sys-title-medium-size) / var(--mat-sys-title-medium-line-height)
+    var(--mat-sys-title-medium-font);
   --mat-sys-title-medium-font: var(--mat-sys-plain-font-family);
   --mat-sys-title-medium-line-height: 1.5rem;
   --mat-sys-title-medium-size: 1rem;
@@ -191,7 +226,9 @@ html {
   --mat-sys-title-medium-weight: var(--mat-sys-medium-font-weight);
 
   /* Title small typescale */
-  --mat-sys-title-small: var(--mat-sys-title-small-weight) var(--mat-sys-title-small-size) / var(--mat-sys-title-small-line-height) var(--mat-sys-title-small-font);
+  --mat-sys-title-small: var(--mat-sys-title-small-weight)
+    var(--mat-sys-title-small-size) / var(--mat-sys-title-small-line-height)
+    var(--mat-sys-title-small-font);
   --mat-sys-title-small-font: var(--mat-sys-plain-font-family);
   --mat-sys-title-small-line-height: 1.25rem;
   --mat-sys-title-small-size: 0.875rem;
@@ -201,17 +238,47 @@ html {
   /* ELEVATION SYSTEM VARIABLES */
 
   /* Box shadow colors. Only used in the elevation level system variables. */
-  --mat-sys-umbra-color: color-mix(in srgb, var(--mat-sys-shadow), transparent 80%);
-  --mat-sys-penumbra-color: color-mix(in srgb, var(--mat-sys-shadow), transparent 86%);
-  --mat-sys-ambient-color: color-mix(in srgb, var(--mat-sys-shadow), transparent 88%);
+  --mat-sys-umbra-color: color-mix(
+    in srgb,
+    var(--mat-sys-shadow),
+    transparent 80%
+  );
+  --mat-sys-penumbra-color: color-mix(
+    in srgb,
+    var(--mat-sys-shadow),
+    transparent 86%
+  );
+  --mat-sys-ambient-color: color-mix(
+    in srgb,
+    var(--mat-sys-shadow),
+    transparent 88%
+  );
 
   /* Elevation level system variables. These are used as the value for box-shadow CSS property. */
-  --mat-sys-level0: 0px 0px 0px 0px var(--mat-sys-umbra-color), 0px 0px 0px 0px var(--mat-sys-penumbra-color), 0px 0px 0px 0px var(--mat-sys-ambient-color);
-  --mat-sys-level1: 0px 2px 1px -1px var(--mat-sys-umbra-color), 0px 1px 1px 0px var(--mat-sys-penumbra-color), 0px 1px 3px 0px var(--mat-sys-ambient-color);
-  --mat-sys-level2: 0px 3px 3px -2px var(--mat-sys-umbra-color), 0px 3px 4px 0px var(--mat-sys-penumbra-color), 0px 1px 8px 0px var(--mat-sys-ambient-color);
-  --mat-sys-level3: 0px 3px 5px -1px var(--mat-sys-umbra-color), 0px 6px 10px 0px var(--mat-sys-penumbra-color), 0px 1px 18px 0px var(--mat-sys-ambient-color);
-  --mat-sys-level4: 0px 5px 5px -3px var(--mat-sys-umbra-color), 0px 8px 10px 1px var(--mat-sys-penumbra-color), 0px 3px 14px 2px var(--mat-sys-ambient-color);
-  --mat-sys-level5: 0px 7px 8px -4px var(--mat-sys-umbra-color), 0px 12px 17px 2px var(--mat-sys-penumbra-color), 0px 5px 22px 4px var(--mat-sys-ambient-color);
+  --mat-sys-level0:
+    0px 0px 0px 0px var(--mat-sys-umbra-color),
+    0px 0px 0px 0px var(--mat-sys-penumbra-color),
+    0px 0px 0px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level1:
+    0px 2px 1px -1px var(--mat-sys-umbra-color),
+    0px 1px 1px 0px var(--mat-sys-penumbra-color),
+    0px 1px 3px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level2:
+    0px 3px 3px -2px var(--mat-sys-umbra-color),
+    0px 3px 4px 0px var(--mat-sys-penumbra-color),
+    0px 1px 8px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level3:
+    0px 3px 5px -1px var(--mat-sys-umbra-color),
+    0px 6px 10px 0px var(--mat-sys-penumbra-color),
+    0px 1px 18px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level4:
+    0px 5px 5px -3px var(--mat-sys-umbra-color),
+    0px 8px 10px 1px var(--mat-sys-penumbra-color),
+    0px 3px 14px 2px var(--mat-sys-ambient-color);
+  --mat-sys-level5:
+    0px 7px 8px -4px var(--mat-sys-umbra-color),
+    0px 12px 17px 2px var(--mat-sys-penumbra-color),
+    0px 5px 22px 4px var(--mat-sys-ambient-color);
 
   /* SHAPE SYSTEM VARIABLES */
   --mat-sys-corner-extra-large: 28px;

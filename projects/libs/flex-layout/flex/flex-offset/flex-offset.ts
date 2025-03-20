@@ -84,7 +84,7 @@ export class FlexOffsetDirective extends BaseDirective2 implements OnChanges {
     protected directionality: Directionality,
     styleBuilder: FlexOffsetStyleBuilder,
     marshal: MediaMarshaller,
-    styler: StyleUtils
+    styler: StyleUtils,
   ) {
     super(elRef, styleBuilder, styler, marshal);
     this.init([this.directionality.change]);

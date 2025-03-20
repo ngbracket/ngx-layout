@@ -31,7 +31,9 @@
   cursor: row-resize;
 }
 
-.c2r1_header, .c2r2_header, .c1r1_header {
+.c2r1_header,
+.c2r2_header,
+.c1r1_header {
   background: #13141b;
   padding: 10px;
   height: 50px;
@@ -76,7 +78,10 @@
   background: #5f1b6d;
 }
 
-.c1r1 > *, .c2r1_header, .c2r1_body > *, .c2r2 > * {
+.c1r1 > *,
+.c2r1_header,
+.c2r1_body > *,
+.c2r2 > * {
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

@@ -79,17 +79,17 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
               [ngStyle.xs]="{
                 'font-size.px': 10,
                 'background-color': '#ddd',
-                color: 'blue'
+                color: 'blue',
               }"
               [ngStyle.sm]="{
                 'font-size.px': 20,
                 'background-color': 'grey',
-                color: '#482b00'
+                color: '#482b00',
               }"
               [ngStyle.md]="{
                 'font-size.px': 30,
                 'background-color': 'black',
-                color: 'orange'
+                color: 'orange',
               }"
               [ngStyle.lg]="styleLgExp"
             >

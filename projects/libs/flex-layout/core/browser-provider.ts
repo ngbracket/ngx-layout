@@ -14,7 +14,7 @@ export function removeStyles(_document: Document, platformId: Object) {
   return () => {
     if (isPlatformBrowser(platformId)) {
       const elements = Array.from(
-        _document.querySelectorAll(`[class*=${CLASS_NAME}]`)
+        _document.querySelectorAll(`[class*=${CLASS_NAME}]`),
       );
 
       // RegExp constructor should only be used if passing a variable to the constructor.

@@ -43,7 +43,7 @@ describe('class directive', () => {
       (_matchMedia: MockMatchMedia, _platformId: Object) => {
         mediaController = _matchMedia;
         platformId = _platformId;
-      }
+      },
     )();
   };
 
@@ -203,7 +203,7 @@ describe('class directive', () => {
 
   it('should support more than one responsive breakpoint on one element', () => {
     createTestComponent(
-      `<div ngClass.xs="xs-class" ngClass.md="mat-class"></div>`
+      `<div ngClass.xs="xs-class" ngClass.md="mat-class"></div>`,
     );
     mediaController.activate('xs');
     expectNativeEl(fixture).toHaveCssClass('xs-class');
@@ -215,7 +215,7 @@ describe('class directive', () => {
 
   it('should support more than one responsive breakpoint on one element with undefined', () => {
     createTestComponent(
-      `<div ngClass.lt-lg="mat-class" [ngClass.md]="undefined"></div>`
+      `<div ngClass.lt-lg="mat-class" [ngClass.md]="undefined"></div>`,
     );
     mediaController.activate('md', true);
     expectNativeEl(fixture).toHaveCssClass('mat-class');
@@ -287,7 +287,7 @@ describe('class directive', () => {
 
   it('should work with changing overlapping breakpoint activations', () => {
     createTestComponent(
-      '<div class="white" ngClass.lt-sm="green" ngClass.lt-md="blue"></div>'
+      '<div class="white" ngClass.lt-sm="green" ngClass.lt-md="blue"></div>',
     );
 
     expectNativeEl(fixture).toHaveCssClass('white');
@@ -371,7 +371,7 @@ describe('binding to CSS class list', () => {
     let nonNormalizedClassName =
       fixture.debugElement.children[0].nativeElement.className;
     expect(normalizeClassNames(nonNormalizedClassName)).toEqual(
-      normalizeClassNames(classes)
+      normalizeClassNames(classes),
     );
   }
 
@@ -387,7 +387,7 @@ describe('binding to CSS class list', () => {
 
   it('should clean up when the directive is destroyed', fakeAsync(() => {
     fixture = createTestComponent(
-      '<div *ngFor="let item of items" [ngClass]="item"></div>'
+      '<div *ngFor="let item of items" [ngClass]="item"></div>',
     );
 
     getComponent().items = [['0']];
@@ -402,7 +402,7 @@ describe('binding to CSS class list', () => {
   describe('expressions evaluating to objects', () => {
     it('should add classes specified in an object literal', fakeAsync(() => {
       fixture = createTestComponent(
-        '<div [ngClass]="{foo: true, bar: false}"></div>'
+        '<div [ngClass]="{foo: true, bar: false}"></div>',
       );
 
       detectChangesAndExpectClassName('foo');
@@ -410,7 +410,7 @@ describe('binding to CSS class list', () => {
 
     it('should add classes specified in an object literal without change in class names', fakeAsync(() => {
       fixture = createTestComponent(
-        `<div [ngClass]="{'foo-bar': true, 'fooBar': true}"></div>`
+        `<div [ngClass]="{'foo-bar': true, 'fooBar': true}"></div>`,
       );
 
       detectChangesAndExpectClassName('foo-bar fooBar');
@@ -418,7 +418,7 @@ describe('binding to CSS class list', () => {
 
     it('should add and remove classes based on changes in object literal values', fakeAsync(() => {
       fixture = createTestComponent(
-        '<div [ngClass]="{foo: condition, bar: !condition}"></div>'
+        '<div [ngClass]="{foo: condition, bar: !condition}"></div>',
       );
 
       detectChangesAndExpectClassName('foo');
@@ -488,7 +488,7 @@ describe('binding to CSS class list', () => {
   describe('expressions evaluating to lists', () => {
     it('should add classes specified in a list literal', fakeAsync(() => {
       fixture = createTestComponent(
-        `<div [ngClass]="['foo', 'bar', 'foo-bar', 'fooBar']"></div>`
+        `<div [ngClass]="['foo', 'bar', 'foo-bar', 'fooBar']"></div>`,
       );
 
       detectChangesAndExpectClassName('foo bar foo-bar fooBar');
@@ -519,7 +519,7 @@ describe('binding to CSS class list', () => {
 
     it('should take initial classes into account when a reference changes', fakeAsync(() => {
       fixture = createTestComponent(
-        '<div class="foo" [ngClass]="arrExpr"></div>'
+        '<div class="foo" [ngClass]="arrExpr"></div>',
       );
       detectChangesAndExpectClassName('foo');
 
@@ -529,7 +529,7 @@ describe('binding to CSS class list', () => {
 
     it('should ignore empty or blank class names', fakeAsync(() => {
       fixture = createTestComponent(
-        '<div class="foo" [ngClass]="arrExpr"></div>'
+        '<div class="foo" [ngClass]="arrExpr"></div>',
       );
       getComponent().arrExpr = ['', '  '];
       detectChangesAndExpectClassName('foo');
@@ -537,7 +537,7 @@ describe('binding to CSS class list', () => {
 
     it('should trim blanks from class names', fakeAsync(() => {
       fixture = createTestComponent(
-        '<div class="foo" [ngClass]="arrExpr"></div>'
+        '<div class="foo" [ngClass]="arrExpr"></div>',
       );
 
       getComponent().arrExpr = [' bar  '];
@@ -557,7 +557,7 @@ describe('binding to CSS class list', () => {
     it('should throw with descriptive error message when CSS class is not a string', () => {
       fixture = createTestComponent(`<div [ngClass]="['foo', {}]"></div>`);
       expect(() => fixture.detectChanges()).toThrowError(
-        /NgClass can only toggle CSS classes expressed as strings, got \[object Object\]/
+        /NgClass can only toggle CSS classes expressed as strings, got \[object Object\]/,
       );
     });
   });
@@ -580,7 +580,7 @@ describe('binding to CSS class list', () => {
   describe('expressions evaluating to string', () => {
     it('should add classes specified in a string literal', fakeAsync(() => {
       fixture = createTestComponent(
-        `<div [ngClass]="'foo bar foo-bar fooBar'"></div>`
+        `<div [ngClass]="'foo bar foo-bar fooBar'"></div>`,
       );
       detectChangesAndExpectClassName('foo bar foo-bar fooBar');
     }));
@@ -606,7 +606,7 @@ describe('binding to CSS class list', () => {
 
     it('should take initial classes into account when switching from string to empty', fakeAsync(() => {
       fixture = createTestComponent(
-        `<div class="foo" [ngClass]="strExpr"></div>`
+        `<div class="foo" [ngClass]="strExpr"></div>`,
       );
       detectChangesAndExpectClassName('foo');
 
@@ -616,7 +616,7 @@ describe('binding to CSS class list', () => {
 
     it('should ignore empty and blank strings', fakeAsync(() => {
       fixture = createTestComponent(
-        `<div class="foo" [ngClass]="strExpr"></div>`
+        `<div class="foo" [ngClass]="strExpr"></div>`,
       );
       getComponent().strExpr = '';
       detectChangesAndExpectClassName('foo');
@@ -626,7 +626,7 @@ describe('binding to CSS class list', () => {
   describe('cooperation with other class-changing constructs', () => {
     it('should co-operate with the class attribute', fakeAsync(() => {
       fixture = createTestComponent(
-        '<div [ngClass]="objExpr" class="init foo"></div>'
+        '<div [ngClass]="objExpr" class="init foo"></div>',
       );
       const objExpr = getComponent().objExpr;
 
@@ -642,7 +642,7 @@ describe('binding to CSS class list', () => {
 
     it('should co-operate with the interpolated class attribute', fakeAsync(() => {
       fixture = createTestComponent(
-        `<div [ngClass]="objExpr" class="{{'init foo'}}"></div>`
+        `<div [ngClass]="objExpr" class="{{'init foo'}}"></div>`,
       );
       const objExpr = getComponent().objExpr;
 
@@ -658,7 +658,7 @@ describe('binding to CSS class list', () => {
 
     it('should co-operate with the class attribute and binding to it', fakeAsync(() => {
       fixture = createTestComponent(
-        `<div [ngClass]="objExpr" class="init" [class]="'foo'"></div>`
+        `<div [ngClass]="objExpr" class="init" [class]="'foo'"></div>`,
       );
       const objExpr = getComponent().objExpr;
 

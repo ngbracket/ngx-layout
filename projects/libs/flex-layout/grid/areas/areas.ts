@@ -71,7 +71,7 @@ export class GridAreasDirective extends BaseDirective2 {
     elRef: ElementRef,
     styleUtils: StyleUtils,
     styleBuilder: GridAreasStyleBuiler,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();

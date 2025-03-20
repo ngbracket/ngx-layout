@@ -9,9 +9,8 @@ describe('GridLayoutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [DocsGridModule],
-})
-    .compileComponents();
+      imports: [DocsGridModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

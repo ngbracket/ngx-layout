@@ -41,7 +41,7 @@ describe('flex-offset directive', () => {
       (_styler: StyleUtils, _platformId: Object) => {
         styler = _styler;
         platformId = _platformId;
-      }
+      },
     )();
   };
 
@@ -95,7 +95,7 @@ describe('flex-offset directive', () => {
           'box-sizing': 'border-box',
           'margin-left': '17%',
         },
-        styler
+        styler,
       );
     });
 
@@ -112,7 +112,7 @@ describe('flex-offset directive', () => {
       // parent flex-direction found with 'column' with child height styles
       expectEl(parent).toHaveStyle(
         { 'flex-direction': 'column', display: 'flex' },
-        styler
+        styler,
       );
       expectEl(element).toHaveStyle({ 'margin-top': '17px' }, styler);
     });
@@ -136,7 +136,7 @@ describe('flex-offset directive', () => {
         // parent flex-direction found with 'column' with child height styles
         expectEl(parent).toHaveStyle(
           { 'flex-direction': 'column', display: 'flex' },
-          styler
+          styler,
         );
         expectEl(element).toHaveStyle({ 'margin-top': '41px' }, styler);
       }
@@ -170,7 +170,7 @@ describe('flex-offset directive', () => {
           flex: '1 1 100%',
           'margin-left': '52px',
         },
-        styler
+        styler,
       );
     });
 
@@ -263,9 +263,9 @@ export class MockFlexOffsetStyleBuilder extends StyleBuilder {
 // *****************************************************************
 
 @Component({
-    selector: 'test-component-shell',
-    template: `<span>PlaceHolder Template HTML</span>`,
-    standalone: false
+  selector: 'test-component-shell',
+  template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestFlexComponent {
   direction = 'column';

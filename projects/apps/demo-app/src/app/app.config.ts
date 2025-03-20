@@ -33,7 +33,7 @@ export const appConfig: ApplicationConfig = {
       FlexLayoutModule.withConfig({
         useColumnBasisZero: false,
         printWithBreakpoints: ['md', 'lt-lg', 'lt-xl', 'gt-sm', 'gt-xs'],
-      })
+      }),
     ),
     YBA_BREAKPOINT_PROVIDER,
     {

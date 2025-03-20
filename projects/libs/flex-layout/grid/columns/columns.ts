@@ -79,7 +79,7 @@ export class GridColumnsDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridColumnsStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

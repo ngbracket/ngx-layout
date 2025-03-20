@@ -35,14 +35,14 @@ describe('grid area parent directive', () => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestGridAreaComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [StyleUtils, MatchMedia, Platform],
       (
         _styler: StyleUtils,
         _matchMedia: MockMatchMedia,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         styler = _styler;
         mediaController = _matchMedia;
@@ -52,7 +52,7 @@ describe('grid area parent directive', () => {
         if (_platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -96,7 +96,7 @@ describe('grid area parent directive', () => {
           display: 'grid',
           'grid-template-areas': '"header" "header" "sidebar" "footer"',
         },
-        styler
+        styler,
       );
     });
 
@@ -125,7 +125,7 @@ describe('grid area parent directive', () => {
           display: 'inline-grid',
           'grid-template-areas': '"header" "header" "sidebar" "footer"',
         },
-        styler
+        styler,
       );
     });
 
@@ -154,7 +154,7 @@ describe('grid area parent directive', () => {
           display: 'grid',
           'grid-template-areas': '"header" "header" "sidebar" "footer"',
         },
-        styler
+        styler,
       );
     });
 
@@ -178,7 +178,7 @@ describe('grid area parent directive', () => {
         {
           'grid-template-areas': '"sidebar" "sidebar"',
         },
-        styler
+        styler,
       );
 
       fixture.componentInstance.areas = 'header | header | sidebar';
@@ -188,7 +188,7 @@ describe('grid area parent directive', () => {
           display: 'grid',
           'grid-template-areas': '"header" "header" "sidebar"',
         },
-        styler
+        styler,
       );
     });
   });
@@ -217,7 +217,7 @@ describe('grid area parent directive', () => {
           'grid-template-areas':
             '"header header header" "sidebar content content" "footer footer footer"',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -227,7 +227,7 @@ describe('grid area parent directive', () => {
           'grid-template-areas':
             '"header header" "sidebar content" "footer footer"',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -237,7 +237,7 @@ describe('grid area parent directive', () => {
           'grid-template-areas':
             '"header header header" "sidebar content content" "footer footer footer"',
         },
-        styler
+        styler,
       );
     });
   });
@@ -247,9 +247,9 @@ describe('grid area parent directive', () => {
 // Template Component
 // *****************************************************************
 @Component({
-    selector: 'test-layout',
-    template: `<span>PlaceHolder Template HTML</span>`,
-    standalone: false
+  selector: 'test-layout',
+  template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestGridAreaComponent {
   areas = 'sidebar | sidebar';

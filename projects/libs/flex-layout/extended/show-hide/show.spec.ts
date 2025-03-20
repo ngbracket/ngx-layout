@@ -44,12 +44,12 @@ describe('show directive', () => {
       (
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
-        _platformId: Object
+        _platformId: Object,
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
         platformId = _platformId;
-      }
+      },
     )();
 
     return fixture;
@@ -155,7 +155,7 @@ describe('show directive', () => {
 
     it('should preserve display and update only on activated mediaQuery', () => {
       createTestComponent(
-        `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`
+        `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`,
       );
       fixture.componentInstance.isHidden = false;
 
@@ -170,7 +170,7 @@ describe('show directive', () => {
     it('should restore display when not enabled', () => {
       let visibleStyle = { display: 'inline-block' };
       createTestComponent(
-        `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`
+        `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`,
       );
       fixture.componentInstance.isHidden = false;
       expectNativeEl(fixture).toHaveStyle(visibleStyle, styler);
@@ -187,7 +187,7 @@ describe('show directive', () => {
     it('should restore display when the mediaQuery deactivates', () => {
       let visibleStyle = { display: 'inline-block' };
       createTestComponent(
-        `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`
+        `<div [fxShow.xs]="!isHidden" style="display:inline-block"></div>`,
       );
       fixture.componentInstance.isHidden = true;
       expectNativeEl(fixture).toHaveStyle(visibleStyle, styler);
@@ -301,14 +301,14 @@ describe('show directive', () => {
           {
             display: 'inline',
           },
-          styler
+          styler,
         );
       } else {
         expectEl(queryFor(fixture, elSelector)[0]).toHaveStyle(
           {
             display: 'initial',
           },
-          styler
+          styler,
         );
       }
 
@@ -318,7 +318,7 @@ describe('show directive', () => {
         {
           display: 'none',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('lg');
@@ -329,14 +329,14 @@ describe('show directive', () => {
           {
             display: 'inline',
           },
-          styler
+          styler,
         );
       } else {
         expectEl(queryFor(fixture, elSelector)[0]).toHaveStyle(
           {
             display: 'initial',
           },
-          styler
+          styler,
         );
       }
     });
@@ -370,7 +370,7 @@ describe('show directive', () => {
                   'screen and (min-width: 840px) and (max-width: 1000px)',
                 overlapping: false,
               },
-            ]
+            ],
           ),
         ],
         declarations: [],

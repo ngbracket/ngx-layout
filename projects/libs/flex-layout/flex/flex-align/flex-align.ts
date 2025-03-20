@@ -67,7 +67,7 @@ export class FlexAlignDirective extends BaseDirective2 {
     elRef: ElementRef,
     styleUtils: StyleUtils,
     styleBuilder: FlexAlignStyleBuilder,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();

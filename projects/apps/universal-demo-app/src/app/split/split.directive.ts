@@ -18,11 +18,11 @@ import { SplitHandleDirective } from './split-handle.directive';
 import { Subscription } from 'rxjs';
 
 @Directive({
-    selector: '[ngxSplit]',
-    host: {
-        class: 'ngx-split',
-    },
-    standalone: false
+  selector: '[ngxSplit]',
+  host: {
+    class: 'ngx-split',
+  },
+  standalone: false,
 })
 export class SplitDirective implements AfterContentInit, OnDestroy {
   watcher?: Subscription;
@@ -36,7 +36,7 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
-    @Inject(PLATFORM_ID) private _platformId: Object
+    @Inject(PLATFORM_ID) private _platformId: Object,
   ) {}
 
   ngAfterContentInit(): void {
@@ -55,7 +55,7 @@ export class SplitDirective implements AfterContentInit, OnDestroy {
    * While dragging, continually update the `flex.activatedValue` for each area
    * managed by the splitter.
    */
-  onDrag({ x, y }: { x: number, y: number }): void {
+  onDrag({ x, y }: { x: number; y: number }): void {
     const dragAmount = this.direction === 'row' ? x : y;
 
     this.areas?.forEach((area, i) => {

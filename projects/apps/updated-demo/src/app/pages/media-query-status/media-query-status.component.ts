@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
   template: ` <div class="mqInfo">
     Active MediaQuery(s):
     <ul>
-      @for(change of media$ | async ; track change){
-      <li>{{ change.mqAlias }} = {{ change.mediaQuery }}</li>
+      @for (change of media$ | async; track change) {
+        <li>{{ change.mqAlias }} = {{ change.mediaQuery }}</li>
       }
     </ul>
   </div>`,

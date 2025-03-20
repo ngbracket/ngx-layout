@@ -4,6 +4,6 @@ import { appConfig } from './app/app.config';
 
 document.addEventListener('DOMContentLoaded', () => {
   bootstrapApplication(AppComponent, appConfig).catch((err) =>
-    console.error(err)
+    console.error(err),
   );
 });

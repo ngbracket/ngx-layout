@@ -42,12 +42,12 @@ describe('layout-align directive', () => {
       (
         _matchMedia: MockMatchMedia,
         _platform: Platform,
-        _styler: StyleUtils
+        _styler: StyleUtils,
       ) => {
         mediaController = _matchMedia;
         platform = _platform;
         styler = _styler;
-      }
+      },
     )();
   };
 
@@ -74,7 +74,7 @@ describe('layout-align directive', () => {
           'flex-direction': 'row',
           'box-sizing': 'border-box',
         },
-        styler
+        styler,
       );
     });
     it('should add correct styles for default `fxLayoutAlign` usage', () => {
@@ -85,7 +85,7 @@ describe('layout-align directive', () => {
           'align-items': 'stretch',
           'align-content': 'stretch',
         },
-        styler
+        styler,
       );
     });
     it('should add preserve fxLayout', () => {
@@ -99,7 +99,7 @@ describe('layout-align directive', () => {
           'align-items': 'stretch',
           'align-content': 'stretch',
         },
-        styler
+        styler,
       );
     });
     it('should add preserve fxLayout in inline mode', () => {
@@ -113,7 +113,7 @@ describe('layout-align directive', () => {
           'align-items': 'stretch',
           'align-content': 'stretch',
         },
-        styler
+        styler,
       );
     });
 
@@ -122,21 +122,21 @@ describe('layout-align directive', () => {
         createTestComponent(`<div fxLayoutAlign='start'></div>`);
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-content': 'flex-start' }, CROSSAXIS_DEFAULTS),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="flex-start"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='flex-start'></div>`);
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-content': 'flex-start' }, CROSSAXIS_DEFAULTS),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="center"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='center'></div>`);
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-content': 'center' }, CROSSAXIS_DEFAULTS),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="space-around"` usage', () => {
@@ -144,9 +144,9 @@ describe('layout-align directive', () => {
         expectNativeEl(fixture).toHaveStyle(
           extendObject(
             { 'justify-content': 'space-around' },
-            CROSSAXIS_DEFAULTS
+            CROSSAXIS_DEFAULTS,
           ),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="space-evenly"` usage', () => {
@@ -157,9 +157,9 @@ describe('layout-align directive', () => {
           expectNativeEl(fixture).toHaveStyle(
             extendObject(
               { 'justify-content': 'space-evenly' },
-              CROSSAXIS_DEFAULTS
+              CROSSAXIS_DEFAULTS,
             ),
-            styler
+            styler,
           );
         }
       });
@@ -168,30 +168,30 @@ describe('layout-align directive', () => {
         expectNativeEl(fixture).toHaveStyle(
           extendObject(
             { 'justify-content': 'space-between' },
-            CROSSAXIS_DEFAULTS
+            CROSSAXIS_DEFAULTS,
           ),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="end"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='end'></div>`);
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-content': 'flex-end' }, CROSSAXIS_DEFAULTS),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="flex-end"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='flex-end'></div>`);
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-content': 'flex-end' }, CROSSAXIS_DEFAULTS),
-          styler
+          styler,
         );
       });
       it('should add ignore invalid main-axis values', () => {
         createTestComponent(`<div fxLayoutAlign='invalid'></div>`);
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'justify-content': 'flex-start' }, CROSSAXIS_DEFAULTS),
-          styler
+          styler,
         );
       });
     });
@@ -204,7 +204,7 @@ describe('layout-align directive', () => {
             'align-items': 'flex-start',
             'align-content': 'flex-start',
           }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="start center"` usage', () => {
@@ -214,7 +214,7 @@ describe('layout-align directive', () => {
             'align-items': 'center',
             'align-content': 'center',
           }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="start end"` usage', () => {
@@ -224,7 +224,7 @@ describe('layout-align directive', () => {
             'align-items': 'flex-end',
             'align-content': 'flex-end',
           }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="start space-between"` usage', () => {
@@ -234,7 +234,7 @@ describe('layout-align directive', () => {
             'align-items': 'stretch',
             'align-content': 'space-between',
           }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="start space-around"` usage', () => {
@@ -244,7 +244,7 @@ describe('layout-align directive', () => {
             'align-items': 'stretch',
             'align-content': 'space-around',
           }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="start baseline"` usage', () => {
@@ -255,7 +255,7 @@ describe('layout-align directive', () => {
             'align-items': 'baseline',
             'align-content': 'stretch',
           },
-          styler
+          styler,
         );
       });
       it('should add ignore invalid cross-axis values', () => {
@@ -265,7 +265,7 @@ describe('layout-align directive', () => {
             'align-items': 'stretch',
             'align-content': 'stretch',
           }),
-          styler
+          styler,
         );
       });
       it('should add special styles for cross-axis `stretch`', () => {
@@ -274,7 +274,7 @@ describe('layout-align directive', () => {
           {
             'max-height': '100%',
           },
-          styler
+          styler,
         );
       });
       it('should not add special styles when the cross-axis is not `stretch`', () => {
@@ -288,18 +288,18 @@ describe('layout-align directive', () => {
           {
             'max-height': '100%',
           },
-          styler
+          styler,
         );
       });
       it('should add special styles for cross-axis `stretch` when layout is `column`', () => {
         createTestComponent(
-          `<div fxLayout="column" fxLayoutAlign='end stretch'></div>`
+          `<div fxLayout="column" fxLayoutAlign='end stretch'></div>`,
         );
         expectNativeEl(fixture).toHaveStyle(
           {
             'max-width': '100%',
           },
-          styler
+          styler,
         );
       });
     });
@@ -315,7 +315,7 @@ describe('layout-align directive', () => {
             'align-items': 'flex-end',
             'align-content': 'flex-end',
           },
-          styler
+          styler,
         );
 
         fixture.componentInstance.alignBy = 'invalid invalid';
@@ -339,7 +339,7 @@ describe('layout-align directive', () => {
           'align-items': 'center',
           'align-content': 'center',
         },
-        styler
+        styler,
       );
     });
 
@@ -354,7 +354,7 @@ describe('layout-align directive', () => {
           'align-items': 'center',
           'align-content': 'center',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -365,7 +365,7 @@ describe('layout-align directive', () => {
           'align-items': 'stretch',
           'align-content': 'stretch',
         },
-        styler
+        styler,
       );
     });
 
@@ -378,7 +378,7 @@ describe('layout-align directive', () => {
         {
           'max-width': '25%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md', true);
@@ -387,7 +387,7 @@ describe('layout-align directive', () => {
         {
           'max-width': '25%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('sm', true);
@@ -396,7 +396,7 @@ describe('layout-align directive', () => {
         {
           'max-width': '25%',
         },
-        styler
+        styler,
       );
     });
 
@@ -414,7 +414,7 @@ describe('layout-align directive', () => {
           'justify-content': 'center',
           'max-height': '100%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -424,7 +424,7 @@ describe('layout-align directive', () => {
           'justify-content': 'flex-end',
           'max-width': '100%',
         },
-        styler
+        styler,
       );
     });
 
@@ -440,7 +440,7 @@ describe('layout-align directive', () => {
         {
           'max-height': '100%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -449,7 +449,7 @@ describe('layout-align directive', () => {
         {
           'max-height': '100%',
         },
-        styler
+        styler,
       );
     });
 
@@ -468,7 +468,7 @@ describe('layout-align directive', () => {
           'justify-content': 'center',
           'max-height': '100%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -478,7 +478,7 @@ describe('layout-align directive', () => {
           'justify-content': 'flex-end',
           'max-width': '100%',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -488,7 +488,7 @@ describe('layout-align directive', () => {
           'justify-content': 'center',
           'max-height': '100%',
         },
-        styler
+        styler,
       );
     });
 
@@ -506,7 +506,7 @@ describe('layout-align directive', () => {
           'align-items': 'center',
           'align-content': 'center',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -516,7 +516,7 @@ describe('layout-align directive', () => {
           'align-items': 'center',
           'align-content': 'center',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('lt-md');
@@ -526,7 +526,7 @@ describe('layout-align directive', () => {
           'align-items': 'center',
           'align-content': 'center',
         },
-        styler
+        styler,
       );
     });
 
@@ -548,7 +548,7 @@ describe('layout-align directive', () => {
           'flex-direction': 'row',
           'justify-content': 'flex-start',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -557,7 +557,7 @@ describe('layout-align directive', () => {
           'flex-direction': 'column',
           'justify-content': 'center',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -566,7 +566,7 @@ describe('layout-align directive', () => {
           'flex-direction': 'row',
           'justify-content': 'flex-start',
         },
-        styler
+        styler,
       );
 
       // Should fallback to value for 'gt-xs' or default
@@ -576,7 +576,7 @@ describe('layout-align directive', () => {
           'flex-direction': 'row',
           'justify-content': 'flex-end',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -585,7 +585,7 @@ describe('layout-align directive', () => {
           'flex-direction': 'row',
           'justify-content': 'flex-start',
         },
-        styler
+        styler,
       );
 
       // Should fallback to value for 'gt-xs' or default
@@ -595,7 +595,7 @@ describe('layout-align directive', () => {
           'flex-direction': 'row',
           'justify-content': 'flex-end',
         },
-        styler
+        styler,
       );
     });
   });
@@ -632,7 +632,7 @@ describe('layout-align directive', () => {
       `);
       expectNativeEl(fixture).toHaveStyle(
         { 'justify-content': 'flex-end' },
-        styler
+        styler,
       );
     });
   });

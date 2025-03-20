@@ -61,8 +61,8 @@ export class ImgSrcDirective extends BaseDirective2 {
     styleBuilder: ImgSrcStyleBuilder,
     styler: StyleUtils,
     marshal: MediaMarshaller,
-    @Inject(PLATFORM_ID) protected platformId: object,
-    @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean
+    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

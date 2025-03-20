@@ -51,7 +51,7 @@ export class FlexOrderDirective extends BaseDirective2 implements OnChanges {
     elRef: ElementRef,
     styleUtils: StyleUtils,
     styleBuilder: FlexOrderStyleBuilder,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();

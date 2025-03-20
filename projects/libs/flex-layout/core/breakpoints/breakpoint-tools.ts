@@ -41,7 +41,7 @@ export function validateSuffixes(list: BreakPoint[]): BreakPoint[] {
  */
 export function mergeByAlias(
   defaults: BreakPoint[],
-  custom: BreakPoint[] = []
+  custom: BreakPoint[] = [],
 ): BreakPoint[] {
   const dict: { [key: string]: BreakPoint } = {};
   defaults.forEach((bp) => {

@@ -6,7 +6,7 @@
 export function validateBasis(
   basis: string,
   grow = '1',
-  shrink = '1'
+  shrink = '1',
 ): string[] {
   let parts = [grow, shrink, basis];
 

@@ -7,7 +7,7 @@ import { MediaChange } from './media-change';
  */
 export function mergeAlias(
   dest: MediaChange,
-  source: OptionalBreakPoint
+  source: OptionalBreakPoint,
 ): MediaChange {
   dest = dest?.clone() ?? new MediaChange();
   if (source) {

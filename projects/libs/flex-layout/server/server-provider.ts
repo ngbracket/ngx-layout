@@ -27,7 +27,7 @@ export function generateStaticFlexLayoutStyles(
   serverSheet: StylesheetMap,
   mediaController: ServerMatchMedia,
   breakpoints: BreakPoint[],
-  mediaMarshaller: MediaMarshaller
+  mediaMarshaller: MediaMarshaller,
 ) {
   // Store the custom classes in the following map, that way only
   // one class gets allocated per HTMLElement, and each class can
@@ -66,7 +66,7 @@ export function FLEX_SSR_SERIALIZER_FACTORY(
   _document: Document,
   breakpoints: BreakPoint[],
   mediaMarshaller: MediaMarshaller,
-  _nonce?: string
+  _nonce?: string,
 ) {
   return () => {
     // This is the style tag that gets inserted into the head of the DOM,
@@ -79,7 +79,7 @@ export function FLEX_SSR_SERIALIZER_FACTORY(
       serverSheet,
       mediaController,
       breakpoints,
-      mediaMarshaller
+      mediaMarshaller,
     );
     styleTag.classList.add(`${CLASS_NAME}ssr`);
     styleTag.textContent = styleText;
@@ -132,7 +132,7 @@ export type ClassMap = Map<HTMLElement, string>;
 function generateCss(
   stylesheet: StyleSheet,
   mediaQuery: string,
-  classMap: ClassMap
+  classMap: ClassMap,
 ) {
   let css = '';
   stylesheet.forEach((styles, el) => {
@@ -176,7 +176,7 @@ function formatSegment(css: string, asPrefix: boolean = true): string {
  */
 function getClassName(
   element: HTMLElement,
-  classMap: Map<HTMLElement, string>
+  classMap: Map<HTMLElement, string>,
 ) {
   let className = classMap.get(element);
   if (!className) {

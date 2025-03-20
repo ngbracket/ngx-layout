@@ -35,7 +35,7 @@ function hasStyle(
   element: any,
   styleName: string,
   styleValue: string = '',
-  inlineOnly = true
+  inlineOnly = true,
 ): boolean {
   let value = getStyle(element, styleName) || '';
   if (!value && !inlineOnly) {

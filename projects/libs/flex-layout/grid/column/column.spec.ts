@@ -36,14 +36,14 @@ describe('grid column child directive', () => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestGridColumnComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [StyleUtils, MatchMedia, Platform],
       (
         _styler: StyleUtils,
         _matchMedia: MockMatchMedia,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         styler = _styler;
         mediaController = _matchMedia;
@@ -53,7 +53,7 @@ describe('grid column child directive', () => {
         if (_platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -97,7 +97,7 @@ describe('grid column child directive', () => {
             'grid-column-start': 'span 2',
             'grid-column-end': '6',
           },
-          styler
+          styler,
         );
       } else {
         expectEl(nodes[1]).toHaveStyle({ 'grid-column': 'span 2 / 6' }, styler);
@@ -118,7 +118,7 @@ describe('grid column child directive', () => {
 
       let colStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-column'
+        'grid-column',
       );
       let correctCol =
         colStyles === 'apples' ||
@@ -132,7 +132,7 @@ describe('grid column child directive', () => {
 
       colStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-column'
+        'grid-column',
       );
       correctCol =
         colStyles === 'oranges' ||
@@ -156,7 +156,7 @@ describe('grid column child directive', () => {
       fixture.detectChanges();
       let colStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-column'
+        'grid-column',
       );
       let correctCol =
         colStyles === 'sidebar' ||
@@ -167,7 +167,7 @@ describe('grid column child directive', () => {
       mediaController.activate('xs');
       colStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-column'
+        'grid-column',
       );
       correctCol =
         colStyles === 'footer' ||
@@ -178,7 +178,7 @@ describe('grid column child directive', () => {
       mediaController.activate('md');
       colStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-column'
+        'grid-column',
       );
       correctCol =
         colStyles === 'sidebar' ||
@@ -193,9 +193,9 @@ describe('grid column child directive', () => {
 // Template Component
 // *****************************************************************
 @Component({
-    selector: 'test-layout',
-    template: `<span>PlaceHolder Template HTML</span>`,
-    standalone: false
+  selector: 'test-layout',
+  template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestGridColumnComponent {
   col = 'apples';

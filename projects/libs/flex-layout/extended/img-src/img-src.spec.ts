@@ -68,12 +68,12 @@ describe('img-src directive', () => {
       (
         _matchMedia: MockMatchMedia,
         _platformId: Object,
-        _styler: StyleUtils
+        _styler: StyleUtils,
       ) => {
         mediaController = _matchMedia;
         platformId = _platformId;
         styler = _styler;
-      }
+      },
     )();
   };
 
@@ -128,7 +128,7 @@ describe('img-src directive', () => {
           {
             content: 'url(https://dummyimage.com/300x300/c72538/ffffff.png)',
           },
-          styler
+          styler,
         );
 
         let url = 'https://dummyimage.com/700x400/258cc7/fff.png';
@@ -138,7 +138,7 @@ describe('img-src directive', () => {
           {
             content: `url(${url})`,
           },
-          styler
+          styler,
         );
       } else {
         expect(imgEl).toHaveAttributes({
@@ -188,7 +188,7 @@ describe('img-src directive', () => {
           {
             content: 'url(https://dummyimage.com/300x300/c72538/ffffff.png)',
           },
-          styler
+          styler,
         );
       }
     });
@@ -208,7 +208,7 @@ describe('img-src directive', () => {
           {
             content: `url(https://dummyimage.com/300x300/c72538/ffffff.png)`,
           },
-          styler
+          styler,
         );
 
         mediaController.activate('md');
@@ -217,7 +217,7 @@ describe('img-src directive', () => {
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
-          styler
+          styler,
         );
       }
     });
@@ -240,7 +240,7 @@ describe('img-src directive', () => {
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
-          styler
+          styler,
         );
 
         // When activating an unused breakpoint, fallback to default [src] value
@@ -250,7 +250,7 @@ describe('img-src directive', () => {
           {
             content: `url(${SRC_URLS['xs'][0]})`,
           },
-          styler
+          styler,
         );
       } else {
         expect(imgEl).toHaveAttributes({
@@ -282,7 +282,7 @@ describe('img-src directive', () => {
           {
             content: `url(${defaultSrc})`,
           },
-          styler
+          styler,
         );
 
         mediaController.activate('xs');
@@ -291,7 +291,7 @@ describe('img-src directive', () => {
           {
             content: `url(${xsSrc})`,
           },
-          styler
+          styler,
         );
 
         mediaController.activate('lg');
@@ -300,7 +300,7 @@ describe('img-src directive', () => {
           {
             content: `url(${defaultSrc})`,
           },
-          styler
+          styler,
         );
       } else {
         expect(imgEl).toHaveAttributes({
@@ -340,7 +340,7 @@ describe('img-src directive', () => {
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
-          styler
+          styler,
         );
 
         // When activating an unused breakpoint, fallback to default [src] value
@@ -350,7 +350,7 @@ describe('img-src directive', () => {
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
-          styler
+          styler,
         );
         expect(imgEl).toHaveAttributes({
           src: '',

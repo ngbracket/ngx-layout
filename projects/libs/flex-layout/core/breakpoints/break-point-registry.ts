@@ -61,7 +61,7 @@ export class BreakPointRegistry {
    */
   private findWithPredicate(
     key: string,
-    searchFn: (bp: BreakPoint) => boolean
+    searchFn: (bp: BreakPoint) => boolean,
   ): OptionalBreakPoint {
     let response = this.findByMap.get(key);
     if (!response) {

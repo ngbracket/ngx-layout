@@ -37,7 +37,7 @@ export class PrintHook implements OnDestroy {
   constructor(
     protected breakpoints: BreakPointRegistry,
     @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
-    @Inject(DOCUMENT) protected _document: any
+    @Inject(DOCUMENT) protected _document: any,
   ) {}
 
   /** Add 'print' mediaQuery: to listen for matchMedia activations */
@@ -118,7 +118,7 @@ export class PrintHook implements OnDestroy {
         this.isPrintingBeforeAfterEvent = true;
         this.startPrinting(
           target,
-          this.getEventBreakpoints(new MediaChange(true, PRINT))
+          this.getEventBreakpoints(new MediaChange(true, PRINT)),
         );
         target.updateStyles();
       }
@@ -137,11 +137,11 @@ export class PrintHook implements OnDestroy {
     // Could we have teardown logic to remove if there are no print listeners being used?
     this._document.defaultView.addEventListener(
       'beforeprint',
-      beforePrintListener
+      beforePrintListener,
     );
     this._document.defaultView.addEventListener(
       'afterprint',
-      afterPrintListener
+      afterPrintListener,
     );
 
     this.beforePrintEventListeners.push(beforePrintListener);
@@ -251,10 +251,10 @@ export class PrintHook implements OnDestroy {
   ngOnDestroy() {
     if (this._document.defaultView) {
       this.beforePrintEventListeners.forEach((l) =>
-        this._document.defaultView.removeEventListener('beforeprint', l)
+        this._document.defaultView.removeEventListener('beforeprint', l),
       );
       this.afterPrintEventListeners.forEach((l) =>
-        this._document.defaultView.removeEventListener('afterprint', l)
+        this._document.defaultView.removeEventListener('afterprint', l),
       );
     }
   }
@@ -289,7 +289,7 @@ class PrintQueue {
   addBreakpoint(bp: OptionalBreakPoint) {
     if (!!bp) {
       const bpInList = this.printBreakpoints.find(
-        (it) => it.mediaQuery === bp.mediaQuery
+        (it) => it.mediaQuery === bp.mediaQuery,
       );
 
       if (bpInList === undefined) {

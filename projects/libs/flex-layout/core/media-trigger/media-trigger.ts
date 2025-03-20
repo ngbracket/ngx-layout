@@ -24,7 +24,7 @@ export class MediaTrigger {
     protected matchMedia: MatchMedia,
     @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
     @Inject(PLATFORM_ID) protected _platformId: Object,
-    @Inject(DOCUMENT) protected _document: any
+    @Inject(DOCUMENT) protected _document: any,
   ) {}
 
   /**
@@ -102,7 +102,7 @@ export class MediaTrigger {
       const toMediaChange = (query: string) => new MediaChange(true, query);
       const mergeMQAlias = (change: MediaChange) => {
         const bp: OptionalBreakPoint = this.breakpoints.findByQuery(
-          change.mediaQuery
+          change.mediaQuery,
         );
         return mergeAlias(change, bp);
       };

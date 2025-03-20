@@ -14,7 +14,7 @@ const ERROR_MESSAGE =
 export class Rule extends Rules.AbstractRule {
   apply(sourceFile: ts.SourceFile) {
     return this.applyWithWalker(
-      new NoExposedTodoWalker(sourceFile, this.getOptions())
+      new NoExposedTodoWalker(sourceFile, this.getOptions()),
     );
   }
 }
@@ -33,7 +33,7 @@ class NoExposedTodoWalker extends RuleWalker {
         this.addFailureAt(
           commentRange.pos,
           commentRange.end - commentRange.pos,
-          ERROR_MESSAGE
+          ERROR_MESSAGE,
         );
       }
     });

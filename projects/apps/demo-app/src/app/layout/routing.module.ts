@@ -1,17 +1,17 @@
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import {DocsLayoutComponent} from './docs-layout/docs-layout.component';
+import { DocsLayoutComponent } from './docs-layout/docs-layout.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: DocsLayoutComponent
-      }
-    ])
+        component: DocsLayoutComponent,
+      },
+    ]),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class RoutingModule {}

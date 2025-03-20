@@ -71,7 +71,7 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
     renderer2: Renderer2,
     @Optional() @Self() private readonly ngStyleInstance: NgStyle,
     @Inject(SERVER_TOKEN) serverLoaded: boolean,
-    @Inject(PLATFORM_ID) platformId: object
+    @Inject(PLATFORM_ID) platformId: Object,
   ) {
     super(elementRef, null!, styler, marshal);
     if (!this.ngStyleInstance) {
@@ -154,7 +154,7 @@ export class DefaultStyleDirective extends StyleDirective implements DoCheck {
 /** Build a styles map from a list of styles, while sanitizing bad values first */
 function buildMapFromList(
   styles: NgStyleRawList,
-  sanitize?: NgStyleSanitizer
+  sanitize?: NgStyleSanitizer,
 ): NgStyleMap {
   const sanitizeValue = (it: NgStyleKeyValue) => {
     if (sanitize) {

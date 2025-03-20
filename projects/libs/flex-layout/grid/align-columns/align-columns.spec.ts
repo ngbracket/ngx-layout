@@ -39,7 +39,7 @@ describe('align columns directive', () => {
       (
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
@@ -48,7 +48,7 @@ describe('align columns directive', () => {
         if (_platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -86,9 +86,9 @@ describe('align columns directive', () => {
           {
             display: 'inline-grid',
           },
-          DEFAULT_ALIGNS
+          DEFAULT_ALIGNS,
         ),
-        styler
+        styler,
       );
     });
 
@@ -102,7 +102,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'align-content': 'start' }, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="end"` usage', () => {
@@ -114,7 +114,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'align-content': 'end' }, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="stretch"` usage', () => {
@@ -126,7 +126,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'align-content': 'stretch' }, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="center"` usage', () => {
@@ -138,7 +138,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'align-content': 'center' }, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="space-around"` usage', () => {
@@ -150,7 +150,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'align-content': 'space-around' }, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="space-between"` usage', () => {
@@ -162,7 +162,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'align-content': 'space-between' }, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="space-evenly"` usage', () => {
@@ -174,7 +174,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject({ 'align-content': 'space-evenly' }, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
 
@@ -187,7 +187,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(MAIN_DEFAULT, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
     });
@@ -202,7 +202,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(MAIN_DEFAULT, { 'align-items': 'start' }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="start center"` usage', () => {
@@ -214,7 +214,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(MAIN_DEFAULT, { 'align-items': 'center' }),
-          styler
+          styler,
         );
       });
       it('should add correct styles for `gdAlignColumns="start end"` usage', () => {
@@ -226,7 +226,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(MAIN_DEFAULT, { 'align-items': 'end' }),
-          styler
+          styler,
         );
       });
       it('should add ignore invalid column-axis values', () => {
@@ -238,7 +238,7 @@ describe('align columns directive', () => {
 
         expectNativeEl(fixture).toHaveStyle(
           extendObject(MAIN_DEFAULT, CROSS_DEFAULT),
-          styler
+          styler,
         );
       });
     });
@@ -257,7 +257,7 @@ describe('align columns directive', () => {
             'align-content': 'center',
             'align-items': 'end',
           },
-          styler
+          styler,
         );
 
         fixture.componentInstance.alignBy = 'invalid invalid';
@@ -284,7 +284,7 @@ describe('align columns directive', () => {
           'align-content': 'center',
           'align-items': 'center',
         },
-        styler
+        styler,
       );
     });
 
@@ -302,7 +302,7 @@ describe('align columns directive', () => {
           'align-content': 'center',
           'align-items': 'center',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -312,7 +312,7 @@ describe('align columns directive', () => {
           'align-content': 'end',
           'align-items': 'stretch',
         },
-        styler
+        styler,
       );
     });
 
@@ -333,7 +333,7 @@ describe('align columns directive', () => {
           'align-content': 'center',
           'align-items': 'stretch',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -343,7 +343,7 @@ describe('align columns directive', () => {
           'align-content': 'end',
           'align-items': 'stretch',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -353,7 +353,7 @@ describe('align columns directive', () => {
           'align-content': 'center',
           'align-items': 'stretch',
         },
-        styler
+        styler,
       );
     });
 
@@ -376,7 +376,7 @@ describe('align columns directive', () => {
         {
           'align-content': 'start',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -384,7 +384,7 @@ describe('align columns directive', () => {
         {
           'align-content': 'center',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -392,7 +392,7 @@ describe('align columns directive', () => {
         {
           'align-content': 'start',
         },
-        styler
+        styler,
       );
 
       // Should fallback to value for 'gt-xs' or default
@@ -401,7 +401,7 @@ describe('align columns directive', () => {
         {
           'align-content': 'end',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -409,7 +409,7 @@ describe('align columns directive', () => {
         {
           'align-content': 'start',
         },
-        styler
+        styler,
       );
 
       // Should fallback to value for 'gt-xs' or default
@@ -418,7 +418,7 @@ describe('align columns directive', () => {
         {
           'align-content': 'end',
         },
-        styler
+        styler,
       );
     });
   });

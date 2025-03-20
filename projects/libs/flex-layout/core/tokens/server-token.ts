@@ -11,5 +11,5 @@ export const SERVER_TOKEN = new InjectionToken<boolean>(
   {
     providedIn: 'root',
     factory: () => false,
-  }
+  },
 );

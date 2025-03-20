@@ -31,7 +31,7 @@ export class MatchMedia implements OnDestroy {
     protected _zone: NgZone,
     @Inject(PLATFORM_ID) protected _platformId: Object,
     @Inject(DOCUMENT) protected _document: any,
-    @Optional() @Inject(CSP_NONCE) protected _nonce?: string | null
+    @Optional() @Inject(CSP_NONCE) protected _nonce?: string | null,
   ) {}
 
   /**
@@ -67,7 +67,7 @@ export class MatchMedia implements OnDestroy {
   observe(mediaQueries: string[]): Observable<MediaChange>;
   observe(
     mediaQueries: string[],
-    filterOthers: boolean
+    filterOthers: boolean,
   ): Observable<MediaChange>;
 
   /**
@@ -83,8 +83,8 @@ export class MatchMedia implements OnDestroy {
     if (mqList && mqList.length) {
       const matchMedia$: Observable<MediaChange> = this._observable$.pipe(
         filter((change: MediaChange) =>
-          !filterOthers ? true : mqList.indexOf(change.mediaQuery) > -1
-        )
+          !filterOthers ? true : mqList.indexOf(change.mediaQuery) > -1,
+        ),
       );
       const registration$: Observable<MediaChange> = new Observable(
         (observer: Observer<MediaChange>) => {
@@ -98,7 +98,7 @@ export class MatchMedia implements OnDestroy {
             this.source.next(lastChange); // last match is cached
           }
           observer.complete();
-        }
+        },
       );
       return merge(registration$, matchMedia$);
     }
@@ -119,7 +119,7 @@ export class MatchMedia implements OnDestroy {
     list.forEach((query: string) => {
       const onMQLEvent = (e: MediaQueryListEvent) => {
         this._zone.run(() =>
-          this.source.next(new MediaChange(e.matches, query))
+          this.source.next(new MediaChange(e.matches, query)),
         );
       };
 
@@ -128,7 +128,7 @@ export class MatchMedia implements OnDestroy {
         mql = this.buildMQL(query);
         mql.addListener(onMQLEvent);
         this.pendingRemoveListenerFns.push(() =>
-          mql!.removeListener(onMQLEvent)
+          mql!.removeListener(onMQLEvent),
         );
         this.registry.set(query, mql);
       }
@@ -175,7 +175,7 @@ const ALL_STYLES: { [key: string]: any } = {};
 function buildQueryCss(
   mediaQueries: string[],
   _document: Document,
-  _nonce?: string | null
+  _nonce?: string | null,
 ) {
   const list = mediaQueries.filter((it) => !ALL_STYLES[it]);
   if (list.length > 0) {

@@ -24,7 +24,7 @@ describe('styler', () => {
   let componentWithTemplate = (template: string, styles?: any) => {
     fixture = makeCreateTestComponent(() => TestLayoutComponent)(
       template,
-      styles
+      styles,
     );
 
     inject(
@@ -32,7 +32,7 @@ describe('styler', () => {
       (_styler: StyleUtils, _platformId: Object) => {
         styler = _styler;
         platformId = _platformId;
-      }
+      },
     )();
   };
 

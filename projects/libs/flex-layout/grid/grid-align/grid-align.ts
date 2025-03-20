@@ -50,7 +50,7 @@ export class GridAlignDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridAlignStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

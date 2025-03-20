@@ -45,19 +45,19 @@ describe('layout-gap directive', () => {
   let createTestComponent = (template: string, styles?: any) => {
     fixture = makeCreateTestComponent(() => TestLayoutGapComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [MatchMedia, StyleUtils, PLATFORM_ID],
       (
         _matchMedia: MockMatchMedia,
         _styler: StyleUtils,
-        _platformId: Object
+        _platformId: Object,
       ) => {
         mediaController = _matchMedia;
         styler = _styler;
         platformId = _platformId;
-      }
+      },
     )();
   };
 
@@ -114,7 +114,7 @@ describe('layout-gap directive', () => {
       createTestComponent(template);
       expectEl(queryFor(fixture, '[fxFlex]')[0]).not.toHaveStyle(
         { 'margin-right': '13px;' },
-        styler
+        styler,
       );
     });
 
@@ -241,7 +241,7 @@ describe('layout-gap directive', () => {
           expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
           expectEl(nodes[2]).not.toHaveStyle(
             { 'margin-right': '13px' },
-            styler
+            styler,
           );
         }
       });
@@ -276,7 +276,7 @@ describe('layout-gap directive', () => {
         if (typeof MutationObserver !== 'undefined') {
           expectEl(nodes[0]).not.toHaveStyle(
             { 'margin-right': '13px' },
-            styler
+            styler,
           );
         }
       });
@@ -771,9 +771,9 @@ export class MockLayoutGapStyleBuilder extends StyleBuilder {
 // Template Component
 // *****************************************************************
 @Component({
-    selector: 'test-layout',
-    template: `<span>PlaceHolder Template HTML</span>`,
-    standalone: false
+  selector: 'test-layout',
+  template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestLayoutGapComponent implements OnInit {
   direction = 'column';

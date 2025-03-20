@@ -35,7 +35,7 @@ describe('flex-order', () => {
       (_matchMedia: MockMatchMedia, _styler: StyleUtils) => {
         mediaController = _matchMedia;
         styler = _styler;
-      }
+      },
     )();
   };
 
@@ -58,7 +58,7 @@ describe('flex-order', () => {
         {
           order: '1',
         },
-        styler
+        styler,
       );
     });
   });
@@ -70,21 +70,21 @@ describe('flex-order', () => {
         {
           order: '1',
         },
-        styler
+        styler,
       );
       mediaController.activate('xs');
       expectNativeEl(fixture).toHaveStyle(
         {
           order: '1',
         },
-        styler
+        styler,
       );
       mediaController.activate('sm');
       expectNativeEl(fixture).not.toHaveStyle(
         {
           order: '1',
         },
-        styler
+        styler,
       );
     });
   });

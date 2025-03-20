@@ -32,7 +32,7 @@ interface FlexBuilderParent {
 @Injectable({ providedIn: 'root' })
 export class FlexStyleBuilder extends StyleBuilder {
   constructor(
-    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions
+    @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
   ) {
     super();
   }
@@ -95,8 +95,8 @@ export class FlexStyleBuilder extends StyleBuilder {
           direction === 'row'
             ? '0%'
             : useColumnBasisZero
-            ? '0.000000001px'
-            : 'auto';
+              ? '0.000000001px'
+              : 'auto';
         break;
       case 'initial': // default
       case 'nogrow':
@@ -194,8 +194,8 @@ export class FlexStyleBuilder extends StyleBuilder {
             ? css[max]
             : `${grow} ${shrink} ${css[max]}`
           : hasCalc
-          ? css[min]
-          : `${grow} ${shrink} ${css[min]}`;
+            ? css[min]
+            : `${grow} ${shrink} ${css[min]}`;
       }
     }
 
@@ -265,7 +265,7 @@ export class FlexDirective extends BaseDirective2 implements OnInit {
     styleUtils: StyleUtils,
     @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
     styleBuilder: FlexStyleBuilder,
-    protected override marshal: MediaMarshaller
+    protected override marshal: MediaMarshaller,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
     this.init();
@@ -302,7 +302,7 @@ export class FlexDirective extends BaseDirective2 implements OnInit {
     if (this.direction === undefined) {
       this.direction = this.getFlexFlowDirection(
         this.parentElement!,
-        addFlexToParent
+        addFlexToParent,
       );
     }
     if (this.wrap === undefined) {
@@ -332,12 +332,12 @@ export class FlexDirective extends BaseDirective2 implements OnInit {
       const parts = validateBasis(
         activatedValue + '',
         this.flexGrow,
-        this.flexShrink
+        this.flexShrink,
       );
       this.marshal.updateElement(
         this.nativeElement,
         this.DIRECTIVE_KEY,
-        parts.join(' ')
+        parts.join(' '),
       );
     }
   }

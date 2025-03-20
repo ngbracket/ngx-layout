@@ -31,19 +31,19 @@ describe('grid auto parent directive', () => {
   let createTestComponent = (template: string, styles?: any) => {
     fixture = makeCreateTestComponent(() => TestGridAutoComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [StyleUtils, MatchMedia, Platform],
       (
         _styler: StyleUtils,
         _matchMedia: MockMatchMedia,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         styler = _styler;
         mediaController = _matchMedia;
         platform = _platform;
-      }
+      },
     )();
   };
 
@@ -77,7 +77,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'row',
         },
-        styler
+        styler,
       );
     });
 
@@ -96,7 +96,7 @@ describe('grid auto parent directive', () => {
           display: 'inline-grid',
           'grid-auto-flow': 'row',
         },
-        styler
+        styler,
       );
     });
 
@@ -115,7 +115,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'row',
         },
-        styler
+        styler,
       );
     });
 
@@ -134,7 +134,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'column',
         },
-        styler
+        styler,
       );
     });
 
@@ -153,7 +153,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'dense',
         },
-        styler
+        styler,
       );
     });
 
@@ -172,7 +172,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'dense',
         },
-        styler
+        styler,
       );
     });
 
@@ -191,7 +191,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'column dense',
         },
-        styler
+        styler,
       );
     });
 
@@ -211,7 +211,7 @@ describe('grid auto parent directive', () => {
           'grid-auto-flow':
             platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
         },
-        styler
+        styler,
       );
     });
 
@@ -231,7 +231,7 @@ describe('grid auto parent directive', () => {
           'grid-auto-flow':
             platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
         },
-        styler
+        styler,
       );
     });
 
@@ -250,7 +250,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'column',
         },
-        styler
+        styler,
       );
     });
 
@@ -265,7 +265,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'row',
         },
-        styler
+        styler,
       );
 
       fixture.componentInstance.auto = 'column';
@@ -275,7 +275,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'column',
         },
-        styler
+        styler,
       );
     });
   });
@@ -293,7 +293,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'row',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -302,7 +302,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'column',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -311,7 +311,7 @@ describe('grid auto parent directive', () => {
           display: 'grid',
           'grid-auto-flow': 'row',
         },
-        styler
+        styler,
       );
     });
   });

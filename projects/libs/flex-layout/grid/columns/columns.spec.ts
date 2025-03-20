@@ -35,14 +35,14 @@ describe('grid columns parent directive', () => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestGridColumnsComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [StyleUtils, MatchMedia, Platform],
       (
         _styler: StyleUtils,
         _matchMedia: MockMatchMedia,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         styler = _styler;
         mediaController = _matchMedia;
@@ -52,7 +52,7 @@ describe('grid columns parent directive', () => {
         if (_platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -90,7 +90,7 @@ describe('grid columns parent directive', () => {
           display: 'grid',
           'grid-template-columns': '100px 1fr',
         },
-        styler
+        styler,
       );
     });
 
@@ -116,7 +116,7 @@ describe('grid columns parent directive', () => {
             display: 'grid',
             'grid-auto-columns': '100px 1fr auto',
           },
-          styler
+          styler,
         );
       }
     });
@@ -140,7 +140,7 @@ describe('grid columns parent directive', () => {
           display: 'inline-grid',
           'grid-template-columns': '100px 1fr',
         },
-        styler
+        styler,
       );
     });
 
@@ -159,7 +159,7 @@ describe('grid columns parent directive', () => {
           display: 'grid',
           'grid-template-columns': '50px 1fr',
         },
-        styler
+        styler,
       );
 
       fixture.componentInstance.cols = '100px 1fr';
@@ -169,7 +169,7 @@ describe('grid columns parent directive', () => {
           display: 'grid',
           'grid-template-columns': '100px 1fr',
         },
-        styler
+        styler,
       );
     });
   });
@@ -191,7 +191,7 @@ describe('grid columns parent directive', () => {
           display: 'grid',
           'grid-template-columns': '100px 1fr',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('xs');
@@ -200,7 +200,7 @@ describe('grid columns parent directive', () => {
           display: 'grid',
           'grid-template-columns': '50px 1fr',
         },
-        styler
+        styler,
       );
 
       mediaController.activate('md');
@@ -209,7 +209,7 @@ describe('grid columns parent directive', () => {
           display: 'grid',
           'grid-template-columns': '100px 1fr',
         },
-        styler
+        styler,
       );
     });
   });

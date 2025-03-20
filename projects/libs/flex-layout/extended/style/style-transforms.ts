@@ -10,7 +10,11 @@ export type NgStyleSanitizer = (val: any) => string;
 
 /** NgStyle allowed inputs */
 export class NgStyleKeyValue {
-  constructor(public key: string, public value: string, noQuotes = true) {
+  constructor(
+    public key: string,
+    public value: string,
+    noQuotes = true,
+  ) {
     this.key = noQuotes ? key.replace(/['"]/g, '').trim() : key.trim();
 
     this.value = noQuotes ? value.replace(/['"]/g, '').trim() : value.trim();
@@ -24,8 +28,8 @@ export function getType(target: any): string {
     return target.constructor === Array
       ? 'array'
       : target.constructor === Set
-      ? 'set'
-      : 'object';
+        ? 'set'
+        : 'object';
   }
   return what;
 }
@@ -45,7 +49,7 @@ export function buildRawList(source: any, delimiter = ';'): NgStyleRawList {
 /** Convert array of key:value strings to a iterable map object */
 export function buildMapFromList(
   styles: NgStyleRawList,
-  sanitize?: NgStyleSanitizer
+  sanitize?: NgStyleSanitizer,
 ): NgStyleMap {
   const sanitizeValue = (it: NgStyleKeyValue) => {
     if (sanitize) {
@@ -64,7 +68,7 @@ export function buildMapFromList(
 /** Convert Set<string> or raw Object to an iterable NgStyleMap */
 export function buildMapFromSet(
   source: NgStyleType,
-  sanitize?: NgStyleSanitizer
+  sanitize?: NgStyleSanitizer,
 ): NgStyleMap {
   const list: string[] = [];
   if (getType(source) === 'set') {
@@ -86,7 +90,7 @@ export function stringToKeyValue(it: string): NgStyleKeyValue {
 /** Convert [ [key,value] ] -> { key : value } */
 export function keyValuesToMap(
   map: NgStyleMap,
-  entry: NgStyleKeyValue
+  entry: NgStyleKeyValue,
 ): NgStyleMap {
   if (entry.key) {
     map[entry.key] = entry.value;

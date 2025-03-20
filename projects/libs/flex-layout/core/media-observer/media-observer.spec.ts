@@ -5,18 +5,21 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {TestBed, inject, fakeAsync, tick} from '@angular/core/testing';
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
-import {BreakPoint} from '../breakpoints/break-point';
-import {BREAKPOINTS} from '../breakpoints/break-points-token';
-import {MatchMedia} from '../match-media/match-media';
-import {MediaChange} from '../media-change';
-import {MediaObserver} from './media-observer';
-import {BREAKPOINT} from '../tokens/breakpoint-token';
-import {MockMatchMedia, MockMatchMediaProvider} from '../match-media/mock/mock-match-media';
-import {DEFAULT_CONFIG, LAYOUT_CONFIG} from '../tokens/library-config';
+import { BreakPoint } from '../breakpoints/break-point';
+import { BREAKPOINTS } from '../breakpoints/break-points-token';
+import { MatchMedia } from '../match-media/match-media';
+import { MediaChange } from '../media-change';
+import { MediaObserver } from './media-observer';
+import { BREAKPOINT } from '../tokens/breakpoint-token';
+import {
+  MockMatchMedia,
+  MockMatchMediaProvider,
+} from '../match-media/mock/mock-match-media';
+import { DEFAULT_CONFIG, LAYOUT_CONFIG } from '../tokens/library-config';
 
 describe('media-observer', () => {
   let knownBreakPoints: BreakPoint[] = [];
@@ -24,26 +27,33 @@ describe('media-observer', () => {
   let mediaObserver: MediaObserver;
   let mediaController: MockMatchMedia;
   const activateQuery = (alias: string, useOverlaps?: boolean) => {
-      mediaController.activate(alias, useOverlaps);
-      tick(100);  // Since MediaObserver has 50ms debounceTime
+    mediaController.activate(alias, useOverlaps);
+    tick(100); // Since MediaObserver has 50ms debounceTime
   };
 
   describe('with default BreakPoints', () => {
     beforeEach(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
-        providers: [MockMatchMediaProvider]
+        providers: [MockMatchMediaProvider],
       });
     });
 
-    beforeEach(inject([MediaObserver, MatchMedia, BREAKPOINTS],
-        (_mediaObserver: MediaObserver, _mediaController: MockMatchMedia, breakpoints: BreakPoint[]) => { // tslint:disable-line:max-line-length
-      knownBreakPoints = breakpoints;
-      mediaObserver = _mediaObserver;
-      mediaController = _mediaController;
+    beforeEach(inject(
+      [MediaObserver, MatchMedia, BREAKPOINTS],
+      (
+        _mediaObserver: MediaObserver,
+        _mediaController: MockMatchMedia,
+        breakpoints: BreakPoint[],
+      ) => {
+        // tslint:disable-line:max-line-length
+        knownBreakPoints = breakpoints;
+        mediaObserver = _mediaObserver;
+        mediaController = _mediaController;
 
-      media$ = _mediaObserver.asObservable();
-    }));
+        media$ = _mediaObserver.asObservable();
+      },
+    ));
 
     afterEach(() => {
       mediaController.clearAll();
@@ -52,9 +62,11 @@ describe('media-observer', () => {
 
     let findMediaQuery: (alias: string) => string = (alias) => {
       const NOT_FOUND = `${alias} not found`;
-      return knownBreakPoints.reduce((mediaQuery: string | null, bp) => {
-        return mediaQuery ?? ((bp.alias === alias) ? bp.mediaQuery : null);
-      }, null) as string ?? NOT_FOUND;
+      return (
+        (knownBreakPoints.reduce((mediaQuery: string | null, bp) => {
+          return mediaQuery ?? (bp.alias === alias ? bp.mediaQuery : null);
+        }, null) as string) ?? NOT_FOUND
+      );
     };
     it('can supports the `.isActive()` API', () => {
       expect(media$).toBeDefined();
@@ -73,10 +85,10 @@ describe('media-observer', () => {
 
     it('can supports RxJS operators', fakeAsync(() => {
       let count = 0,
-          onlyMd = (change: MediaChange) => (change.mqAlias == 'md'),
-          subscription = media$
-              .pipe(switchMap(changes => changes.filter(onlyMd)))
-              .subscribe(_ => {
+        onlyMd = (change: MediaChange) => change.mqAlias == 'md',
+        subscription = media$
+          .pipe(switchMap((changes) => changes.filter(onlyMd)))
+          .subscribe((_) => {
             count += 1;
           });
 
@@ -103,8 +115,9 @@ describe('media-observer', () => {
 
     it('only gets one substantive update per media change set', fakeAsync(() => {
       let count = 0;
-      const subscription = mediaObserver.asObservable()
-        .subscribe(_changes => {
+      const subscription = mediaObserver
+        .asObservable()
+        .subscribe((_changes) => {
           count += 1;
         });
 
@@ -122,7 +135,7 @@ describe('media-observer', () => {
       subscription.unsubscribe();
     }));
 
-    it('can subscribe to built-in mediaQueries',  fakeAsync(() => {
+    it('can subscribe to built-in mediaQueries', fakeAsync(() => {
       let current: MediaChange[] = [new MediaChange(true)];
       let subscription = media$.subscribe((changes: MediaChange[]) => {
         current = changes;
@@ -173,7 +186,7 @@ describe('media-observer', () => {
       activateQuery('xs');
       expect(current[0].mqAlias).toBe('md');
 
-       mediaController.clearAll();
+      mediaController.clearAll();
     }));
 
     it('can observe a startup activation of XS', fakeAsync(() => {
@@ -192,18 +205,20 @@ describe('media-observer', () => {
       activateQuery('lg');
       expect(current[0].mqAlias).toBe('xs');
 
-       mediaController.clearAll();
+      mediaController.clearAll();
     }));
   });
 
   describe('with custom BreakPoints', () => {
-    const gtXsMediaQuery = 'screen and (min-width:120px) and (orientation:landscape)';
+    const gtXsMediaQuery =
+      'screen and (min-width:120px) and (orientation:landscape)';
     const superXLQuery = 'screen and (min-width:10000px)';
-    const smMediaQuery = 'screen and (min-width: 600px) and (max-width: 959.98px)';
+    const smMediaQuery =
+      'screen and (min-width: 600px) and (max-width: 959.98px)';
 
     const CUSTOM_BREAKPOINTS = [
-      {alias: 'slate.xl', priority: 11000, mediaQuery: superXLQuery},
-      {alias: 'tablet-gt-xs', priority: 110, mediaQuery: gtXsMediaQuery},
+      { alias: 'slate.xl', priority: 11000, mediaQuery: superXLQuery },
+      { alias: 'tablet-gt-xs', priority: 110, mediaQuery: gtXsMediaQuery },
     ];
 
     beforeEach(() => {
@@ -211,19 +226,26 @@ describe('media-observer', () => {
       TestBed.configureTestingModule({
         providers: [
           MockMatchMediaProvider,
-          {provide: BREAKPOINT, useValue: CUSTOM_BREAKPOINTS, multi: true},
-        ]
+          { provide: BREAKPOINT, useValue: CUSTOM_BREAKPOINTS, multi: true },
+        ],
       });
     });
 
-    beforeEach(inject([MediaObserver, MatchMedia, BREAKPOINTS],
-        (_mediaObserver: MediaObserver, _mediaController: MockMatchMedia, breakpoints: BreakPoint[]) => { // tslint:disable-line:max-line-length
-          knownBreakPoints = breakpoints;
-          mediaObserver = _mediaObserver;
-          mediaController = _mediaController;
+    beforeEach(inject(
+      [MediaObserver, MatchMedia, BREAKPOINTS],
+      (
+        _mediaObserver: MediaObserver,
+        _mediaController: MockMatchMedia,
+        breakpoints: BreakPoint[],
+      ) => {
+        // tslint:disable-line:max-line-length
+        knownBreakPoints = breakpoints;
+        mediaObserver = _mediaObserver;
+        mediaController = _mediaController;
 
-          media$ = _mediaObserver.asObservable();
-        }));
+        media$ = _mediaObserver.asObservable();
+      },
+    ));
 
     afterEach(() => {
       mediaController.clearAll();
@@ -231,10 +253,11 @@ describe('media-observer', () => {
 
     it('can activate custom alias with custom mediaQueries', fakeAsync(() => {
       let current: MediaChange = new MediaChange(true);
-      let subscription = mediaObserver.asObservable()
-            .subscribe((changes: MediaChange[]) => {
-              current = changes[0];
-            });
+      let subscription = mediaObserver
+        .asObservable()
+        .subscribe((changes: MediaChange[]) => {
+          current = changes[0];
+        });
 
       // Activate mediaQuery associated with 'md' alias
       activateQuery('sm');
@@ -254,7 +277,8 @@ describe('media-observer', () => {
   });
 
   describe('with layout "print" configured', () => {
-    const mdMediaQuery = 'screen and (min-width: 960px) and (max-width: 1279.98px)';
+    const mdMediaQuery =
+      'screen and (min-width: 960px) and (max-width: 1279.98px)';
 
     beforeEach(() => {
       // Configure testbed to prepare services
@@ -265,66 +289,77 @@ describe('media-observer', () => {
             provide: LAYOUT_CONFIG,
             useValue: {
               ...DEFAULT_CONFIG,
-              ...{printWithBreakpoints: ['md']}
-            }
-          }
-        ]
+              ...{ printWithBreakpoints: ['md'] },
+            },
+          },
+        ],
       });
     });
 
-    beforeEach(inject([MediaObserver, MatchMedia, BREAKPOINTS],
-    (_mediaObserver: MediaObserver, _mediaController: MockMatchMedia, breakpoints: BreakPoint[]) => { // tslint:disable-line:max-line-length
-      knownBreakPoints = breakpoints;
-      mediaObserver = _mediaObserver;
-      mediaController = _mediaController;
+    beforeEach(inject(
+      [MediaObserver, MatchMedia, BREAKPOINTS],
+      (
+        _mediaObserver: MediaObserver,
+        _mediaController: MockMatchMedia,
+        breakpoints: BreakPoint[],
+      ) => {
+        // tslint:disable-line:max-line-length
+        knownBreakPoints = breakpoints;
+        mediaObserver = _mediaObserver;
+        mediaController = _mediaController;
 
-      media$ = _mediaObserver.asObservable();
-    }));
+        media$ = _mediaObserver.asObservable();
+      },
+    ));
 
     it('can activate when configured with "md" alias', fakeAsync(() => {
-        let current: MediaChange[] = [new MediaChange(true)];
-        let subscription = media$.subscribe((changes: MediaChange[]) => {
-          current = changes;
-        });
+      let current: MediaChange[] = [new MediaChange(true)];
+      let subscription = media$.subscribe((changes: MediaChange[]) => {
+        current = changes;
+      });
 
-        try {
-          activateQuery('lg');
+      try {
+        activateQuery('lg');
 
-          // Activate mediaQuery associated with 'md' alias
-          activateQuery('print');
-          expect(current[0].mqAlias).toBe('md');
-          expect(current[0].mediaQuery).toEqual(mdMediaQuery);
+        // Activate mediaQuery associated with 'md' alias
+        activateQuery('print');
+        expect(current[0].mqAlias).toBe('md');
+        expect(current[0].mediaQuery).toEqual(mdMediaQuery);
 
-          activateQuery('sm');
-          expect(current[0].mqAlias).toBe('sm');
-
-        } finally {
-          subscription.unsubscribe();
-        }
-
-      }));
+        activateQuery('sm');
+        expect(current[0].mqAlias).toBe('sm');
+      } finally {
+        subscription.unsubscribe();
+      }
+    }));
   });
 
   describe('with layout print NOT configured', () => {
-    const smMediaQuery = 'screen and (min-width: 600px) and (max-width: 959.98px)';
+    const smMediaQuery =
+      'screen and (min-width: 600px) and (max-width: 959.98px)';
 
     beforeEach(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
-        providers: [
-          MockMatchMediaProvider
-        ]
+        providers: [MockMatchMediaProvider],
       });
     });
 
-    beforeEach(inject([MediaObserver, MatchMedia, BREAKPOINTS],
-        (_mediaObserver: MediaObserver, _mediaController: MockMatchMedia, breakpoints: BreakPoint[]) => { // tslint:disable-line:max-line-length
-          knownBreakPoints = breakpoints;
-          mediaObserver = _mediaObserver;
-          mediaController = _mediaController;
+    beforeEach(inject(
+      [MediaObserver, MatchMedia, BREAKPOINTS],
+      (
+        _mediaObserver: MediaObserver,
+        _mediaController: MockMatchMedia,
+        breakpoints: BreakPoint[],
+      ) => {
+        // tslint:disable-line:max-line-length
+        knownBreakPoints = breakpoints;
+        mediaObserver = _mediaObserver;
+        mediaController = _mediaController;
 
-          media$ = _mediaObserver.asObservable();
-        }));
+        media$ = _mediaObserver.asObservable();
+      },
+    ));
 
     afterEach(() => {
       mediaController.clearAll();
@@ -347,12 +382,10 @@ describe('media-observer', () => {
 
         activateQuery('xl');
         expect(current[0].mqAlias).toBe('xl');
-
       } finally {
         subscription.unsubscribe();
-         mediaController.clearAll();
+        mediaController.clearAll();
       }
-
     }));
   });
 });

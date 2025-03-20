@@ -1,16 +1,16 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'demo-layout-alignment',
-    templateUrl: './layout-alignment.component.html',
-    styleUrls: ['./layout-alignment.component.scss'],
-    standalone: false
+  selector: 'demo-layout-alignment',
+  templateUrl: './layout-alignment.component.html',
+  styleUrls: ['./layout-alignment.component.scss'],
+  standalone: false,
 })
 export class LayoutAlignmentComponent {
   options = {
-    direction :  'row',
-    mainAxis  : 'space-around',
-    crossAxis :  'center'
+    direction: 'row',
+    mainAxis: 'space-around',
+    crossAxis: 'center',
   };
 
   layoutAlign() {

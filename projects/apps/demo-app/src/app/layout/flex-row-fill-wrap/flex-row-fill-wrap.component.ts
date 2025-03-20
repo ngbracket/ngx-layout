@@ -1,17 +1,17 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
 
 @Component({
-    selector: 'demo-flex-row-fill-wrap',
-    templateUrl: './flex-row-fill-wrap.component.html',
-    standalone: false
+  selector: 'demo-flex-row-fill-wrap',
+  templateUrl: './flex-row-fill-wrap.component.html',
+  standalone: false,
 })
 export class FlexRowFillWrapComponent {
   direction = 'row';
 
   toggleDirection() {
-    const next = (DIRECTIONS.indexOf(this.direction) + 1 ) % DIRECTIONS.length;
+    const next = (DIRECTIONS.indexOf(this.direction) + 1) % DIRECTIONS.length;
     this.direction = DIRECTIONS[next];
   }
 }

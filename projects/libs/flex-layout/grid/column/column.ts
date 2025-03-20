@@ -16,7 +16,6 @@ export class GridColumnStyleBuilder extends StyleBuilder {
   }
 }
 
-
 const inputs = [
   'gdColumn',
   'gdColumn.xs',
@@ -41,7 +40,6 @@ const selector = `
   [gdColumn.gt-xs], [gdColumn.gt-sm], [gdColumn.gt-md], [gdColumn.gt-lg]
 `;
 
-
 @Directive({ selector, inputs })
 export class GridColumnDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-column';
@@ -51,7 +49,7 @@ export class GridColumnDirective extends BaseDirective2 {
     elementRef: ElementRef,
     styleBuilder: GridColumnStyleBuilder,
     styler: StyleUtils,
-    marshal: MediaMarshaller
+    marshal: MediaMarshaller,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
     this.init();

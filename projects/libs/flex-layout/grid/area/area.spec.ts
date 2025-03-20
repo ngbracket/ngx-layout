@@ -37,14 +37,14 @@ describe('grid area child directive', () => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestGridAreaComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [StyleUtils, MatchMedia, Platform],
       (
         _styler: StyleUtils,
         _matchMedia: MockMatchMedia,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         styler = _styler;
         mediaController = _matchMedia;
@@ -54,7 +54,7 @@ describe('grid area child directive', () => {
         if (platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -99,12 +99,12 @@ describe('grid area child directive', () => {
             'grid-column-start': 'sarah',
             'grid-column-end': 'sarah',
           },
-          styler
+          styler,
         );
       } else {
         let areaStyles = styler.lookupStyle(
           nodes[1].nativeElement,
-          'grid-area'
+          'grid-area',
         );
         let correctArea =
           areaStyles === 'grace / sarah' ||
@@ -131,13 +131,13 @@ describe('grid area child directive', () => {
             'grid-column-start': 'sidebar',
             'grid-column-end': 'sidebar',
           },
-          styler
+          styler,
         );
       } else {
         fixture.detectChanges();
         let areaStyles = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-area'
+          'grid-area',
         );
         let correctArea =
           areaStyles === 'sidebar' ||
@@ -155,13 +155,13 @@ describe('grid area child directive', () => {
             'grid-column-start': 'header',
             'grid-column-end': 'header',
           },
-          styler
+          styler,
         );
       } else {
         fixture.detectChanges();
         let areaStyles = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-area'
+          'grid-area',
         );
         let correctArea =
           areaStyles === 'header' ||
@@ -190,13 +190,13 @@ describe('grid area child directive', () => {
             'grid-column-start': 'sidebar',
             'grid-column-end': 'sidebar',
           },
-          styler
+          styler,
         );
       } else {
         fixture.detectChanges();
         let areaStyles = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-area'
+          'grid-area',
         );
         let correctArea =
           areaStyles === 'sidebar' ||
@@ -213,12 +213,12 @@ describe('grid area child directive', () => {
             'grid-column-start': 'footer',
             'grid-column-end': 'footer',
           },
-          styler
+          styler,
         );
       } else {
         let areaStyles = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-area'
+          'grid-area',
         );
         let correctArea =
           areaStyles === 'footer' ||
@@ -235,12 +235,12 @@ describe('grid area child directive', () => {
             'grid-column-start': 'sidebar',
             'grid-column-end': 'sidebar',
           },
-          styler
+          styler,
         );
       } else {
         let areaStyles = styler.lookupStyle(
           fixture.debugElement.children[0].nativeElement,
-          'grid-area'
+          'grid-area',
         );
         let correctArea =
           areaStyles === 'sidebar' ||

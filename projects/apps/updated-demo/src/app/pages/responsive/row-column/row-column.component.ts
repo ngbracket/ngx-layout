@@ -18,33 +18,33 @@ import {
     </mat-card-subtitle>
     <mat-card-content>
       <div class="containerX">
-        @if(isVisible){
-        <div class="colorNested box" fxLayout="row">
-          <div
-            [fxLayout]="cols['firstCol']"
-            [fxLayout.xs]="cols['firstColXs']"
-            [fxLayout.md]="cols['firstColMd']"
-            [fxLayout.lg]="cols['firstColLg']"
-            [fxLayout.gt-lg]="cols['firstColGtLg']"
-            fxFlex="50%"
-            fxFlex.gt-sm="25"
-            fxHide.md
-            (click)="toggleLayoutFor(1)"
-            [style.cursor]="'pointer'"
-          >
-            <div fxFlex>Col #1: First item in row</div>
-            <div fxFlex>Col #1: Second item in row</div>
+        @if (isVisible) {
+          <div class="colorNested box" fxLayout="row">
+            <div
+              [fxLayout]="cols['firstCol']"
+              [fxLayout.xs]="cols['firstColXs']"
+              [fxLayout.md]="cols['firstColMd']"
+              [fxLayout.lg]="cols['firstColLg']"
+              [fxLayout.gt-lg]="cols['firstColGtLg']"
+              fxFlex="50%"
+              fxFlex.gt-sm="25"
+              fxHide.md
+              (click)="toggleLayoutFor(1)"
+              [style.cursor]="'pointer'"
+            >
+              <div fxFlex>Col #1: First item in row</div>
+              <div fxFlex>Col #1: Second item in row</div>
+            </div>
+            <div
+              [fxLayout]="cols['secondCol']"
+              fxFlex
+              (click)="toggleLayoutFor(2)"
+              [style.cursor]="'pointer'"
+            >
+              <div fxFlex>Col #2: First item in column</div>
+              <div fxFlex>Col #2: Second item in column</div>
+            </div>
           </div>
-          <div
-            [fxLayout]="cols['secondCol']"
-            fxFlex
-            (click)="toggleLayoutFor(2)"
-            [style.cursor]="'pointer'"
-          >
-            <div fxFlex>Col #2: First item in column</div>
-            <div fxFlex>Col #2: Second item in column</div>
-          </div>
-        </div>
         }
       </div>
     </mat-card-content>

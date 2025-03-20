@@ -5,16 +5,18 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {inject, TestBed} from '@angular/core/testing';
-import {Subject} from 'rxjs';
+import { inject, TestBed } from '@angular/core/testing';
+import { Subject } from 'rxjs';
 
-import {MediaMarshaller} from './media-marshaller';
-import {MatchMedia} from '../match-media/match-media';
-import {DEFAULT_CONFIG, LAYOUT_CONFIG} from '../tokens/library-config';
-import {MockMatchMedia, MockMatchMediaProvider} from '../match-media/mock/mock-match-media';
+import { MediaMarshaller } from './media-marshaller';
+import { MatchMedia } from '../match-media/match-media';
+import { DEFAULT_CONFIG, LAYOUT_CONFIG } from '../tokens/library-config';
+import {
+  MockMatchMedia,
+  MockMatchMediaProvider,
+} from '../match-media/mock/mock-match-media';
 
 describe('media-marshaller', () => {
-
   describe('with layout printing NOT configured', () => {
     let mediaController: MockMatchMedia;
     let mediaMarshaller: MediaMarshaller;
@@ -22,17 +24,19 @@ describe('media-marshaller', () => {
     beforeEach(() => {
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
-        providers: [MockMatchMediaProvider]
+        providers: [MockMatchMediaProvider],
       });
       spyOn(MediaMarshaller.prototype, 'onMediaChange').and.callThrough();
       spyOn(MediaMarshaller.prototype, 'updateStyles').and.callThrough();
     });
 
-    beforeEach(inject([MatchMedia, MediaMarshaller],
-    (service: MockMatchMedia, marshal: MediaMarshaller) => {
-      mediaController = service;      // inject only to manually activate mediaQuery ranges
-      mediaMarshaller = marshal;
-    }));
+    beforeEach(inject(
+      [MatchMedia, MediaMarshaller],
+      (service: MockMatchMedia, marshal: MediaMarshaller) => {
+        mediaController = service; // inject only to manually activate mediaQuery ranges
+        mediaMarshaller = marshal;
+      },
+    ));
 
     afterEach(() => {
       mediaController.clearAll();
@@ -43,7 +47,7 @@ describe('media-marshaller', () => {
       expect(mediaMarshaller.onMediaChange).toHaveBeenCalled();
     });
 
-    it('doesn\'t trigger onMediaChange for same breakpoint activations', () => {
+    it("doesn't trigger onMediaChange for same breakpoint activations", () => {
       mediaController.activate('xs');
       mediaController.activate('xs');
       expect(mediaMarshaller.updateStyles).toHaveBeenCalledTimes(1);
@@ -76,8 +80,7 @@ describe('media-marshaller', () => {
       const builder = () => {
         triggered = true;
       };
-      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {
-      }, [obs]);
+      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {}, [obs]);
       subject.next();
       expect(triggered).toBeTruthy();
     });
@@ -116,8 +119,7 @@ describe('media-marshaller', () => {
     });
 
     it('should get the right value', () => {
-      const builder = () => {
-      };
+      const builder = () => {};
       mediaMarshaller.init(fakeElement, fakeKey, builder);
       mediaMarshaller.setValue(fakeElement, fakeKey, 0, '');
       const value = mediaMarshaller.getValue(fakeElement, fakeKey);
@@ -125,8 +127,7 @@ describe('media-marshaller', () => {
     });
 
     it('should track changes', () => {
-      const builder = () => {
-      };
+      const builder = () => {};
       let triggered = false;
       mediaMarshaller.init(fakeElement, fakeKey, builder);
       mediaMarshaller.trackValue(fakeElement, fakeKey).subscribe(() => {
@@ -143,8 +144,7 @@ describe('media-marshaller', () => {
       const builder = () => {
         triggered = true;
       };
-      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {
-      }, [obs]);
+      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {}, [obs]);
       mediaMarshaller.releaseElement(fakeElement);
       subject.next();
       expect(triggered).toBeFalsy();
@@ -164,20 +164,22 @@ describe('media-marshaller', () => {
             provide: LAYOUT_CONFIG,
             useValue: {
               ...DEFAULT_CONFIG,
-              ...{printWithBreakpoint: 'sm'}
-            }
-          }
-        ]
+              ...{ printWithBreakpoint: 'sm' },
+            },
+          },
+        ],
       });
       spyOn(MediaMarshaller.prototype, 'onMediaChange').and.callThrough();
       spyOn(MediaMarshaller.prototype, 'updateStyles').and.callThrough();
     });
 
-    beforeEach(inject([MatchMedia, MediaMarshaller],
-    (service: MockMatchMedia, marshal: MediaMarshaller) => {
-      mediaController = service;      // inject only to manually onMediaChange mediaQuery ranges
-      mediaMarshaller = marshal;
-    }));
+    beforeEach(inject(
+      [MatchMedia, MediaMarshaller],
+      (service: MockMatchMedia, marshal: MediaMarshaller) => {
+        mediaController = service; // inject only to manually onMediaChange mediaQuery ranges
+        mediaMarshaller = marshal;
+      },
+    ));
 
     afterEach(() => {
       mediaController.clearAll();
@@ -188,7 +190,7 @@ describe('media-marshaller', () => {
       expect(mediaMarshaller.onMediaChange).toHaveBeenCalled();
     });
 
-    it('doesn\'t call updateStyles() when match-media activates the same breakpoint twice', () => {
+    it("doesn't call updateStyles() when match-media activates the same breakpoint twice", () => {
       mediaController.activate('xs');
       mediaController.activate('xs');
       expect(mediaMarshaller.updateStyles).toHaveBeenCalledTimes(1);
@@ -221,8 +223,7 @@ describe('media-marshaller', () => {
       const builder = () => {
         triggered = true;
       };
-      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {
-      }, [obs]);
+      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {}, [obs]);
       subject.next();
       expect(triggered).toBeTruthy();
     });
@@ -261,8 +262,7 @@ describe('media-marshaller', () => {
     });
 
     it('should get the right value', () => {
-      const builder = () => {
-      };
+      const builder = () => {};
       mediaMarshaller.init(fakeElement, fakeKey, builder);
       mediaMarshaller.setValue(fakeElement, fakeKey, 0, '');
       const value = mediaMarshaller.getValue(fakeElement, fakeKey);
@@ -270,8 +270,7 @@ describe('media-marshaller', () => {
     });
 
     it('should track changes', () => {
-      const builder = () => {
-      };
+      const builder = () => {};
       let triggered = false;
       mediaMarshaller.init(fakeElement, fakeKey, builder);
       mediaMarshaller.trackValue(fakeElement, fakeKey).subscribe(() => {
@@ -288,8 +287,7 @@ describe('media-marshaller', () => {
       const builder = () => {
         triggered = true;
       };
-      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {
-      }, [obs]);
+      mediaMarshaller.init(fakeElement, fakeKey, builder, () => {}, [obs]);
       mediaMarshaller.releaseElement(fakeElement);
       subject.next();
       expect(triggered).toBeFalsy();
@@ -298,7 +296,9 @@ describe('media-marshaller', () => {
     it('will not propagate "print" events to activate', () => {
       // const smMediaQuery = 'screen and (min-width: 600px) and (max-width: 959px)';
       mediaController.activate('print');
-      expect(mediaMarshaller.onMediaChange).not.toHaveBeenCalledWith({mediaQuery: 'print'} as any);
+      expect(mediaMarshaller.onMediaChange).not.toHaveBeenCalledWith({
+        mediaQuery: 'print',
+      } as any);
     });
 
     it('"print" events restore breakpoints correctly', () => {

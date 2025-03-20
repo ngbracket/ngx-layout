@@ -36,14 +36,14 @@ describe('grid row child directive', () => {
     shouldRun = true;
     fixture = makeCreateTestComponent(() => TestGridRowComponent)(
       template,
-      styles
+      styles,
     );
     inject(
       [StyleUtils, MatchMedia, Platform],
       (
         _styler: StyleUtils,
         _matchMedia: MockMatchMedia,
-        _platform: Platform
+        _platform: Platform,
       ) => {
         styler = _styler;
         mediaController = _matchMedia;
@@ -53,7 +53,7 @@ describe('grid row child directive', () => {
         if (_platform.EDGE) {
           shouldRun = false;
         }
-      }
+      },
     )();
   };
 
@@ -96,7 +96,7 @@ describe('grid row child directive', () => {
             'grid-row-start': 'span 2',
             'grid-row-end': '6',
           },
-          styler
+          styler,
         );
       } else {
         expectEl(nodes[1]).toHaveStyle({ 'grid-row': 'span 2 / 6' }, styler);
@@ -117,7 +117,7 @@ describe('grid row child directive', () => {
 
       let rowStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-row'
+        'grid-row',
       );
       let correctRow =
         rowStyles === 'apples' ||
@@ -131,7 +131,7 @@ describe('grid row child directive', () => {
 
       rowStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-row'
+        'grid-row',
       );
       correctRow =
         rowStyles === 'oranges' ||
@@ -155,7 +155,7 @@ describe('grid row child directive', () => {
       fixture.detectChanges();
       let rowStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-row'
+        'grid-row',
       );
       let correctRow =
         rowStyles === 'sidebar' ||
@@ -166,7 +166,7 @@ describe('grid row child directive', () => {
       mediaController.activate('xs');
       rowStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-row'
+        'grid-row',
       );
       correctRow =
         rowStyles === 'footer' ||
@@ -177,7 +177,7 @@ describe('grid row child directive', () => {
       mediaController.activate('md');
       rowStyles = styler.lookupStyle(
         fixture.debugElement.children[0].nativeElement,
-        'grid-row'
+        'grid-row',
       );
       correctRow =
         rowStyles === 'sidebar' ||
@@ -192,9 +192,9 @@ describe('grid row child directive', () => {
 // Template Component
 // *****************************************************************
 @Component({
-    selector: 'test-layout',
-    template: `<span>PlaceHolder Template HTML</span>`,
-    standalone: false
+  selector: 'test-layout',
+  template: `<span>PlaceHolder Template HTML</span>`,
+  standalone: false,
 })
 class TestGridRowComponent {
   row = 'apples';

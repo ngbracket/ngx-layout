@@ -41,7 +41,7 @@ describe('hide directive', () => {
       (_matchMedia: MockMatchMedia, _styler: StyleUtils) => {
         mediaController = _matchMedia;
         styler = _styler;
-      }
+      },
     )();
 
     return fixture;
@@ -49,7 +49,7 @@ describe('hide directive', () => {
 
   const makeExpectWithActivation = (
     _fixture: ComponentFixture<any>,
-    selector: string
+    selector: string,
   ) => {
     fixture = _fixture;
     return (alias?: string): NgMatchers => {
@@ -97,7 +97,7 @@ describe('hide directive', () => {
       createTestComponent(`<div [fxHide]="isVisible"></div>`);
       expectNativeEl(fixture, { isVisible: 0 }).not.toHaveStyle(
         { display: 'none' },
-        styler
+        styler,
       );
     });
 
@@ -116,14 +116,14 @@ describe('hide directive', () => {
         {
           display: 'none',
         },
-        styler
+        styler,
       );
 
       expectNativeEl(fixture, { isHidden: false }).not.toHaveStyle(
         {
           display: 'none',
         },
-        styler
+        styler,
       );
     });
 
@@ -131,17 +131,17 @@ describe('hide directive', () => {
       createTestComponent(`<div fxLayout [fxHide]="isHidden"></div>`);
       expectNativeEl(fixture, { isHidden: true }).toHaveStyle(
         { display: 'none' },
-        styler
+        styler,
       );
       expectNativeEl(fixture, { isHidden: false }).not.toHaveStyle(
         { display: 'none' },
-        styler
+        styler,
       );
     });
 
     it('should use "flex" display style when the element also has an fxLayoutAlign', () => {
       createTestComponent(
-        `<div fxLayout fxLayoutAlign="start center" fxHide.xs></div>`
+        `<div fxLayout fxLayoutAlign="start center" fxHide.xs></div>`,
       );
       expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
       mediaController.activate('xs');
@@ -162,7 +162,7 @@ describe('hide directive', () => {
 
     it('should preserve display and update only on activated mediaQuery', () => {
       createTestComponent(
-        `<div [fxHide.xs]="isHidden" style="display:inline-block"></div>`
+        `<div [fxHide.xs]="isHidden" style="display:inline-block"></div>`,
       );
       expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
 
@@ -177,7 +177,7 @@ describe('hide directive', () => {
 
     it('should restore original display when disabled', () => {
       createTestComponent(
-        `<div [fxHide.xs]="isHidden" style="display:inline-block"></div>`
+        `<div [fxHide.xs]="isHidden" style="display:inline-block"></div>`,
       );
       expectNativeEl(fixture).toHaveStyle({ display: 'inline-block' }, styler);
 
@@ -193,7 +193,7 @@ describe('hide directive', () => {
     it('should restore original display when the mediaQuery deactivates', () => {
       const originalDisplay = { display: 'table' };
       createTestComponent(
-        `<div [fxHide.xs]="isHidden" style="display:table"></div>`
+        `<div [fxHide.xs]="isHidden" style="display:table"></div>`,
       );
       expectNativeEl(fixture).toHaveStyle(originalDisplay, styler);
 
@@ -219,7 +219,7 @@ describe('hide directive', () => {
 
     it('should support use of the `media` observable in adaptive templates ', () => {
       createTestComponent(
-        `<div fxHide="false" [fxHide.md]="media.isActive('xs')"></div>`
+        `<div fxHide="false" [fxHide.md]="media.isActive('xs')"></div>`,
       );
       expectNativeEl(fixture).not.toHaveStyle({ display: 'none' }, styler);
 
@@ -248,7 +248,7 @@ describe('hide directive', () => {
         `;
       const expectActivation: any = makeExpectWithActivation(
         createTestComponent(template),
-        '.hideOnMd'
+        '.hideOnMd',
       );
 
       expectActivation().not.toHaveStyle({ display: 'none' }, styler);
@@ -263,7 +263,7 @@ describe('hide directive', () => {
            `;
       const expectActivation: any = makeExpectWithActivation(
         createTestComponent(template),
-        '.hideOnXs'
+        '.hideOnXs',
       );
 
       expectActivation().not.toHaveStyle({ display: 'none' }, styler);
@@ -280,7 +280,7 @@ describe('hide directive', () => {
            `;
       const expectActivation: any = makeExpectWithActivation(
         createTestComponent(template),
-        '.hideOnXs'
+        '.hideOnXs',
       );
 
       mediaController.useOverlaps = true;
