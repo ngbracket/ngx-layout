@@ -1,0 +1,12 @@
+{
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.component.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  }
+  
