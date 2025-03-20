@@ -13,7 +13,7 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
   ],
   template: `<mat-card class="card-demo">
     <mat-card-title>Responsive Flex Ordering</mat-card-title>
-    <mat-card-subtitle
+    <mat-card-subtitle class="sub-title"
       >Add the flex-order directive to a layout child to set its order position
       within the layout container:
     </mat-card-subtitle>
@@ -41,6 +41,35 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
       <app-media-query-status></app-media-query-status>
     </mat-card-footer>
   </mat-card> `,
-  styles: [],
+  styles: [
+    `
+      @use '@angular/material' as mat;
+
+      mat-card {
+        top: 20px;
+        @include mat.card-overrides(
+          (
+            elevated-container-color: #fff,
+            elevated-container-shape: 6px,
+          )
+        );
+      }
+
+      mat-card-title {
+        margin: 10px 0 10px 20px;
+      }
+
+      .sub-title {
+        margin-left: 20px;
+        font-weight: normal;
+      }
+
+      .hint {
+        margin: 5px;
+        font-size: 0.9em;
+        color: #a3a3a3;
+      }
+    `,
+  ],
 })
 export class OrderComponent {}

@@ -13,7 +13,7 @@ import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
   ],
   template: `<mat-card class="card-demo">
     <mat-card-title>Flex Attribute Values</mat-card-title>
-    <mat-card-subtitle
+    <mat-card-subtitle class="sub-title"
       >Explore impact of non-numerical values for the 'fxFlex' API:
     </mat-card-subtitle>
     <mat-card-content>
@@ -44,7 +44,6 @@ import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
           (
             elevated-container-color: #fff,
             elevated-container-shape: 6px,
-            title-text-size: 1.5rem,
           )
         );
       }
@@ -52,7 +51,11 @@ import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
       mat-card-title {
         margin: 10px 0 10px 20px;
       }
-
+      .sub-title {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-weight: normal;
+      }
       .hint {
         margin: 5px;
         font-size: 0.9em;

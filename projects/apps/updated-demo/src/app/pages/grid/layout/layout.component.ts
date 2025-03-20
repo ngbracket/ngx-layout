@@ -21,7 +21,9 @@ import { StyleDirective } from 'projects/libs/flex-layout/extended/style/style';
     GridColumnsDirective,
   ],
   template: ` <mat-card class="card-demo">
-    <mat-card-title>Basic Responsive Grid App</mat-card-title>
+    <mat-card-title class="card-demo-title"
+      >Basic Responsive Grid App</mat-card-title
+    >
     <mat-card-content class="containerX">
       <div class="colorNested box" style="height: auto;">
         <div

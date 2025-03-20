@@ -20,13 +20,13 @@ import {
   template: `
     <mat-card class="card-demo">
       <mat-card-title>Direction support for RTL</mat-card-title>
-      <mat-card-subtitle>
+      <mat-card-subtitle class="sub-title">
         Simple row using layout gap and flex offset to demonstrate changes in
         layout direction between rtl and ltr.
       </mat-card-subtitle>
       <mat-card-content fxLayout="column" fxLayoutGap="8px">
         <div>
-          <button (click)="toggleDirection()" mat-raised-button>
+          <button (click)="toggleDirection()" mat-flat-button>
             Toggle direction
           </button>
         </div>
@@ -51,7 +51,36 @@ import {
       </mat-card-footer>
     </mat-card>
   `,
-  styles: [],
+  styles: [
+    `
+      @use '@angular/material' as mat;
+
+      mat-card {
+        top: 20px;
+        @include mat.card-overrides(
+          (
+            elevated-container-color: #fff,
+            elevated-container-shape: 6px,
+          )
+        );
+      }
+
+      mat-card-title {
+        margin: 10px 0 10px 20px;
+      }
+
+      .sub-title {
+        margin-left: 20px;
+        font-weight: normal;
+      }
+
+      .hint {
+        margin: 5px;
+        font-size: 0.9em;
+        color: #a3a3a3;
+      }
+    `,
+  ],
 })
 export class DirectionComponent {
   direction: Direction = 'ltr';
