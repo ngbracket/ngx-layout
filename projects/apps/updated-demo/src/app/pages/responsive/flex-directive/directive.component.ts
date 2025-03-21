@@ -54,12 +54,6 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
         margin-left: 20px;
         font-weight: normal;
       }
-
-      .hint {
-        margin: 5px;
-        font-size: 0.9em;
-        color: #a3a3a3;
-      }
     `,
   ],
 })

@@ -51,11 +51,6 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
         margin-bottom: 10px;
         font-weight: normal;
       }
-      .hint {
-        margin: 5px;
-        font-size: 0.9em;
-        color: #a3a3a3;
-      }
     `,
   ],
 })

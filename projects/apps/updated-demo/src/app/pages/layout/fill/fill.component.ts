@@ -39,12 +39,6 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
       mat-card-title {
         margin: 10px 0 10px 20px;
       }
-
-      .hint {
-        margin: 5px;
-        font-size: 0.9em;
-        color: #a3a3a3;
-      }
     `,
   ],
 })

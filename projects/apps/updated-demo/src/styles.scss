@@ -191,7 +191,11 @@ div.colored > div:nth-child(10n + 7),
 .hint {
   margin: 5px 5px 0 20px;
   font-size: 0.9em;
-  color: #a3a3a3;
+  color: white;
+  background-color: #292929;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
 }
 
 .title {
@@ -375,12 +379,6 @@ mat-card-content pre {
 .containerX {
   // border: solid 1px #b6b6b6;
   box-sizing: content-box !important;
-}
-
-.hint {
-  color: #a3a3a3;
-  font-size: 0.9em;
-  margin: 5px 5px 0 20px;
 }
 
 .forceAbove {

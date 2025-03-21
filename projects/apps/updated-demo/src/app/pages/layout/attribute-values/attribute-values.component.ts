@@ -56,11 +56,6 @@ import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
         margin-bottom: 10px;
         font-weight: normal;
       }
-      .hint {
-        margin: 5px;
-        font-size: 0.9em;
-        color: #a3a3a3;
-      }
     `,
   ],
 })
