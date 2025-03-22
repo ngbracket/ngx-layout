@@ -20,16 +20,9 @@ import {
   styles: [
     `
       mat-card {
-        background-color: wheat;
         margin-bottom: 40px;
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
-      }
-
-      mat-card:hover {
-        background-color: peru;
-        transform: scale(1.02);
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
       }
 
       .card-title {
