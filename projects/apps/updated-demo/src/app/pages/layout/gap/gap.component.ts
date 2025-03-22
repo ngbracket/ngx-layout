@@ -1,11 +1,24 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  FlexDirective,
+  FlexFillDirective,
+  LayoutAlignDirective,
+  LayoutDirective,
+  LayoutGapDirective,
+} from '@ngbracket/ngx-layout';
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
 
 @Component({
   selector: 'app-gap',
-  imports: [MatCardModule, FlexLayoutModule],
+  imports: [
+    MatCardModule,
+    FlexDirective,
+    FlexFillDirective,
+    LayoutGapDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
+  ],
   template: ` <mat-card class="card-demo">
     <mat-card-title><a href="" target="_blank">Layout Gap</a></mat-card-title>
     <mat-card-subtitle class="sub-title"
