@@ -82,12 +82,6 @@ import {
         font-weight: normal;
       }
 
-      .hint {
-        margin: 5px;
-        font-size: 0.9em;
-        color: #a3a3a3;
-      }
-
       .footer {
         width: 95%;
         font-size: 0.9em;

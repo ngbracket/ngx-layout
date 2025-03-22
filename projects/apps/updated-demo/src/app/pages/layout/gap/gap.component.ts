@@ -45,7 +45,6 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
       </div>
     </mat-card-content>
     <mat-card-footer class="bottomPad">
-      <div class="hint"></div>
     </mat-card-footer>
   </mat-card>`,
   styles: [
@@ -69,12 +68,6 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
       .sub-title {
         margin-left: 20px;
         font-weight: normal;
-      }
-
-      .hint {
-        margin: 5px;
-        font-size: 0.9em;
-        color: #a3a3a3;
       }
     `,
   ],

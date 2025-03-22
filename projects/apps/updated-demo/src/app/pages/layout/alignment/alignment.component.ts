@@ -128,7 +128,7 @@ import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
       </form>
     </mat-card-actions>
     <mat-card-footer>
-      <div class="hint forceAbove">
+      <div class="hint">
         &lt;div fxLayout="{{ options.direction }}"
         <span>fxLayoutAlign="{{ layoutAlign() }}"</span>
         &gt;
@@ -156,11 +156,6 @@ import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
         margin-left: 20px;
         margin-bottom: 10px;
         font-weight: normal;
-      }
-      .hint {
-        margin: 5px;
-        font-size: 0.9em;
-        color: #a3a3a3;
       }
     `,
   ],
