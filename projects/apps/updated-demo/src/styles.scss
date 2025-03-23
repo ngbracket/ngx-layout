@@ -11,14 +11,6 @@ mat-toolbar {
   );
 }
 
-// html {
-// overflow: scroll;
-// overflow-x: hidden;
-// }
-// ::-webkit-scrollbar {
-//   width: 15px; /* Remove scrollbar space */
-// }
-
 body {
   background: var(--mat-sys-primary);
   color: var(--mat-sys-on-surface);
@@ -34,18 +26,14 @@ body {
 
 body.dark-mode {
   color-scheme: dark;
+  mat-card {
+    --mdc-elevated-card-container-color: none;
+  }
+  .mat-mdc-card {
+    border-color: #fff;
+    border-width: 1px;
+  }
 }
-
-// @page {
-//   size: auto; /* auto is the initial value */
-//   margin: 2cm;
-// }
-
-// @media print {
-//   body {
-//     background: white;
-//   }
-// }
 
 h3 {
   background-color: #cdb295;
@@ -203,10 +191,6 @@ div.colored > div:nth-child(10n + 7),
   font-size: 0.9em;
   color: #5c5c5c;
 }
-
-// .box {
-//   border: solid 1px gray;
-// }
 
 button.mat-primary {
   margin-left: 25px;
@@ -377,7 +361,6 @@ mat-card-content pre {
 }
 
 .containerX {
-  // border: solid 1px #b6b6b6;
   box-sizing: content-box !important;
 }
 
