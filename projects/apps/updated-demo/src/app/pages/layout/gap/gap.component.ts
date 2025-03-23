@@ -20,7 +20,7 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
     LayoutAlignDirective,
   ],
   template: ` <mat-card class="card-demo">
-    <mat-card-title><a href="" target="_blank">Layout Gap</a></mat-card-title>
+    <mat-card-title>Layout Gap</mat-card-title>
     <mat-card-subtitle class="sub-title"
       >Using 'fxLayoutGap' to create a grid-like layout
     </mat-card-subtitle>
@@ -57,8 +57,7 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
         </div>
       </div>
     </mat-card-content>
-    <mat-card-footer class="bottomPad">
-    </mat-card-footer>
+    <mat-card-footer class="bottomPad"> </mat-card-footer>
   </mat-card>`,
   styles: [
     `
