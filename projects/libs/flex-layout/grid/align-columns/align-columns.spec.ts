@@ -18,7 +18,6 @@ import {
 
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -53,8 +52,6 @@ describe('align columns directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule],
@@ -71,7 +68,7 @@ describe('align columns directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(DEFAULT_ALIGNS, styler);
+      expectNativeEl(fixture).toHaveInlineStyle(DEFAULT_ALIGNS, styler);
     });
 
     it('should work with inline grid', () => {
@@ -81,7 +78,7 @@ describe('align columns directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         extendObject(
           {
             display: 'inline-grid',
@@ -100,7 +97,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'align-content': 'start' }, CROSS_DEFAULT),
           styler,
         );
@@ -112,7 +109,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'align-content': 'end' }, CROSS_DEFAULT),
           styler,
         );
@@ -124,7 +121,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'align-content': 'stretch' }, CROSS_DEFAULT),
           styler,
         );
@@ -136,7 +133,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'align-content': 'center' }, CROSS_DEFAULT),
           styler,
         );
@@ -148,7 +145,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'align-content': 'space-around' }, CROSS_DEFAULT),
           styler,
         );
@@ -160,7 +157,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'align-content': 'space-between' }, CROSS_DEFAULT),
           styler,
         );
@@ -172,7 +169,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'align-content': 'space-evenly' }, CROSS_DEFAULT),
           styler,
         );
@@ -185,7 +182,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAIN_DEFAULT, CROSS_DEFAULT),
           styler,
         );
@@ -200,7 +197,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAIN_DEFAULT, { 'align-items': 'start' }),
           styler,
         );
@@ -212,7 +209,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAIN_DEFAULT, { 'align-items': 'center' }),
           styler,
         );
@@ -224,7 +221,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAIN_DEFAULT, { 'align-items': 'end' }),
           styler,
         );
@@ -236,7 +233,7 @@ describe('align columns directive', () => {
           return;
         }
 
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAIN_DEFAULT, CROSS_DEFAULT),
           styler,
         );
@@ -252,7 +249,7 @@ describe('align columns directive', () => {
         }
 
         fixture.componentInstance.alignBy = 'center end';
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'align-content': 'center',
             'align-items': 'end',
@@ -261,10 +258,10 @@ describe('align columns directive', () => {
         );
 
         fixture.componentInstance.alignBy = 'invalid invalid';
-        expectNativeEl(fixture).toHaveStyle(DEFAULT_ALIGNS, styler);
+        expectNativeEl(fixture).toHaveInlineStyle(DEFAULT_ALIGNS, styler);
 
         fixture.componentInstance.alignBy = '';
-        expectNativeEl(fixture).toHaveStyle(DEFAULT_ALIGNS, styler);
+        expectNativeEl(fixture).toHaveInlineStyle(DEFAULT_ALIGNS, styler);
       });
     });
   });
@@ -279,7 +276,7 @@ describe('align columns directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'center',
           'align-items': 'center',
@@ -297,7 +294,7 @@ describe('align columns directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'center',
           'align-items': 'center',
@@ -307,7 +304,7 @@ describe('align columns directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'end',
           'align-items': 'stretch',
@@ -328,7 +325,7 @@ describe('align columns directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'center',
           'align-items': 'stretch',
@@ -338,7 +335,7 @@ describe('align columns directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'end',
           'align-items': 'stretch',
@@ -348,7 +345,7 @@ describe('align columns directive', () => {
 
       mediaController.activate('xs');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'center',
           'align-items': 'stretch',
@@ -372,7 +369,7 @@ describe('align columns directive', () => {
 
       mediaController.useOverlaps = true;
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'start',
         },
@@ -380,7 +377,7 @@ describe('align columns directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'center',
         },
@@ -388,7 +385,7 @@ describe('align columns directive', () => {
       );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'start',
         },
@@ -397,7 +394,7 @@ describe('align columns directive', () => {
 
       // Should fallback to value for 'gt-xs' or default
       mediaController.activate('lg', true);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'end',
         },
@@ -405,7 +402,7 @@ describe('align columns directive', () => {
       );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'start',
         },
@@ -414,7 +411,7 @@ describe('align columns directive', () => {
 
       // Should fallback to value for 'gt-xs' or default
       mediaController.activate('xl', true);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'align-content': 'end',
         },

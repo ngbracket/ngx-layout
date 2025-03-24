@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -21,7 +20,7 @@ import {
   SERVER_TOKEN,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import { GridModule } from '@ngbracket/ngx-layout/grid';
+import { GridModule } from '../module';
 
 describe('grid auto parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -48,8 +47,6 @@ describe('grid auto parent directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule],
@@ -72,7 +69,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'row',
@@ -91,7 +88,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-grid',
           'grid-auto-flow': 'row',
@@ -110,7 +107,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'row',
@@ -129,7 +126,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'column',
@@ -148,7 +145,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'dense',
@@ -167,7 +164,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'dense',
@@ -186,7 +183,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'column dense',
@@ -205,7 +202,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow':
@@ -225,7 +222,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow':
@@ -245,7 +242,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'column',
@@ -260,7 +257,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'row',
@@ -270,7 +267,7 @@ describe('grid auto parent directive', () => {
 
       fixture.componentInstance.auto = 'column';
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'column',
@@ -288,7 +285,7 @@ describe('grid auto parent directive', () => {
           `;
       createTestComponent(template);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'row',
@@ -297,7 +294,7 @@ describe('grid auto parent directive', () => {
       );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'column',
@@ -306,7 +303,7 @@ describe('grid auto parent directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-auto-flow': 'row',

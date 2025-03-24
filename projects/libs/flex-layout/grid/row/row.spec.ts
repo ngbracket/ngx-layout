@@ -18,7 +18,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expectEl,
   makeCreateTestComponent,
   queryFor,
@@ -58,8 +57,6 @@ describe('grid row child directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule],
@@ -91,7 +88,7 @@ describe('grid row child directive', () => {
       let nodes = queryFor(fixture, '[gdRow]');
       expect(nodes.length).toBe(3);
       if (platform.WEBKIT) {
-        expectEl(nodes[1]).toHaveStyle(
+        expectEl(nodes[1]).toHaveInlineStyle(
           {
             'grid-row-start': 'span 2',
             'grid-row-end': '6',
@@ -99,7 +96,10 @@ describe('grid row child directive', () => {
           styler,
         );
       } else {
-        expectEl(nodes[1]).toHaveStyle({ 'grid-row': 'span 2 / 6' }, styler);
+        expectEl(nodes[1]).toHaveInlineStyle(
+          { 'grid-row': 'span 2 / 6' },
+          styler,
+        );
       }
     });
 

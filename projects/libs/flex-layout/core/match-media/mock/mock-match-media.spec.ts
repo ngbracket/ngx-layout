@@ -8,7 +8,7 @@
 
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MatchMedia } from '../../match-media/match-media';
+import { MatchMedia } from '../match-media';
 import { MediaChange } from '../../media-change';
 import { BreakPoint } from '../../breakpoints/break-point';
 import { MockMatchMedia, MockMatchMediaProvider } from './mock-match-media';

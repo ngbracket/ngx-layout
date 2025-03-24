@@ -12,7 +12,6 @@ import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -24,10 +23,8 @@ import {
   StyleBuilder,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import {
-  FlexModule,
-  LayoutAlignStyleBuilder,
-} from '@ngbracket/ngx-layout/flex';
+import { FlexModule } from '../module';
+import { LayoutAlignStyleBuilder } from './layout-align';
 
 describe('layout-align directive', () => {
   let fixture: ComponentFixture<any>;
@@ -52,8 +49,6 @@ describe('layout-align directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, FlexLayoutModule],
@@ -68,7 +63,7 @@ describe('layout-align directive', () => {
   describe('with static features', () => {
     it('should add work without a peer `fxLayout` directive', () => {
       createTestComponent(`<div fxLayoutAlign></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'row',
@@ -79,7 +74,7 @@ describe('layout-align directive', () => {
     });
     it('should add correct styles for default `fxLayoutAlign` usage', () => {
       createTestComponent(`<div fxLayoutAlign></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'flex-start',
           'align-items': 'stretch',
@@ -90,7 +85,7 @@ describe('layout-align directive', () => {
     });
     it('should add preserve fxLayout', () => {
       createTestComponent(`<div fxLayout='column' fxLayoutAlign></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'flex',
           'flex-direction': 'column',
@@ -104,7 +99,7 @@ describe('layout-align directive', () => {
     });
     it('should add preserve fxLayout in inline mode', () => {
       createTestComponent(`<div fxLayout='column inline' fxLayoutAlign></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-flex',
           'flex-direction': 'column',
@@ -120,28 +115,28 @@ describe('layout-align directive', () => {
     describe('for "main-axis" testing', () => {
       it('should add correct styles for `fxLayoutAlign="start"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='start'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'justify-content': 'flex-start' }, CROSSAXIS_DEFAULTS),
           styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="flex-start"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='flex-start'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'justify-content': 'flex-start' }, CROSSAXIS_DEFAULTS),
           styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="center"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='center'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'justify-content': 'center' }, CROSSAXIS_DEFAULTS),
           styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="space-around"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='space-around'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(
             { 'justify-content': 'space-around' },
             CROSSAXIS_DEFAULTS,
@@ -154,7 +149,7 @@ describe('layout-align directive', () => {
 
         // Safari does not appear to support this property
         if (platform.SAFARI) {
-          expectNativeEl(fixture).toHaveStyle(
+          expectNativeEl(fixture).toHaveInlineStyle(
             extendObject(
               { 'justify-content': 'space-evenly' },
               CROSSAXIS_DEFAULTS,
@@ -165,7 +160,7 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="space-between"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='space-between'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(
             { 'justify-content': 'space-between' },
             CROSSAXIS_DEFAULTS,
@@ -175,21 +170,21 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="end"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='end'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'justify-content': 'flex-end' }, CROSSAXIS_DEFAULTS),
           styler,
         );
       });
       it('should add correct styles for `fxLayoutAlign="flex-end"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='flex-end'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'justify-content': 'flex-end' }, CROSSAXIS_DEFAULTS),
           styler,
         );
       });
       it('should add ignore invalid main-axis values', () => {
         createTestComponent(`<div fxLayoutAlign='invalid'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject({ 'justify-content': 'flex-start' }, CROSSAXIS_DEFAULTS),
           styler,
         );
@@ -199,7 +194,7 @@ describe('layout-align directive', () => {
     describe('for "cross-axis" testing', () => {
       it('should add correct styles for `fxLayoutAlign="start start"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='start start'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAINAXIS_DEFAULTS, {
             'align-items': 'flex-start',
             'align-content': 'flex-start',
@@ -209,7 +204,7 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="start center"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='start center'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAINAXIS_DEFAULTS, {
             'align-items': 'center',
             'align-content': 'center',
@@ -219,7 +214,7 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="start end"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='start end'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAINAXIS_DEFAULTS, {
             'align-items': 'flex-end',
             'align-content': 'flex-end',
@@ -229,7 +224,7 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="start space-between"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='start space-between'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAINAXIS_DEFAULTS, {
             'align-items': 'stretch',
             'align-content': 'space-between',
@@ -239,7 +234,7 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="start space-around"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='start space-around'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAINAXIS_DEFAULTS, {
             'align-items': 'stretch',
             'align-content': 'space-around',
@@ -249,7 +244,7 @@ describe('layout-align directive', () => {
       });
       it('should add correct styles for `fxLayoutAlign="start baseline"` usage', () => {
         createTestComponent(`<div fxLayoutAlign='start baseline'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'justify-content': 'flex-start',
             'align-items': 'baseline',
@@ -260,7 +255,7 @@ describe('layout-align directive', () => {
       });
       it('should add ignore invalid cross-axis values', () => {
         createTestComponent(`<div fxLayoutAlign='start invalid'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           extendObject(MAINAXIS_DEFAULTS, {
             'align-items': 'stretch',
             'align-content': 'stretch',
@@ -270,7 +265,7 @@ describe('layout-align directive', () => {
       });
       it('should add special styles for cross-axis `stretch`', () => {
         createTestComponent(`<div fxLayoutAlign='start stretch'></div>`);
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'max-height': '100%',
           },
@@ -284,7 +279,7 @@ describe('layout-align directive', () => {
           </div>
         `);
 
-        expectNativeEl(fixture).not.toHaveStyle(
+        expectNativeEl(fixture).not.toHaveInlineStyle(
           {
             'max-height': '100%',
           },
@@ -295,7 +290,7 @@ describe('layout-align directive', () => {
         createTestComponent(
           `<div fxLayout="column" fxLayoutAlign='end stretch'></div>`,
         );
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'max-width': '100%',
           },
@@ -309,7 +304,7 @@ describe('layout-align directive', () => {
         createTestComponent(`<div [fxLayoutAlign]='alignBy'></div>`);
 
         fixture.componentInstance.alignBy = 'center end';
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             'justify-content': 'center',
             'align-items': 'flex-end',
@@ -319,10 +314,10 @@ describe('layout-align directive', () => {
         );
 
         fixture.componentInstance.alignBy = 'invalid invalid';
-        expectNativeEl(fixture).toHaveStyle(DEFAULT_ALIGNS, styler);
+        expectNativeEl(fixture).toHaveInlineStyle(DEFAULT_ALIGNS, styler);
 
         fixture.componentInstance.alignBy = '';
-        expectNativeEl(fixture).toHaveStyle(DEFAULT_ALIGNS, styler);
+        expectNativeEl(fixture).toHaveInlineStyle(DEFAULT_ALIGNS, styler);
       });
     });
   });
@@ -333,7 +328,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'center',
           'align-items': 'center',
@@ -348,7 +343,7 @@ describe('layout-align directive', () => {
         <div fxLayoutAlign='center center' fxLayoutAlign.md='end'></div>
       `);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'center',
           'align-items': 'center',
@@ -359,7 +354,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'flex-end',
           'align-items': 'stretch',
@@ -374,7 +369,7 @@ describe('layout-align directive', () => {
         <div fxFlex.gt-sm="25%" fxFlex.lt-md="100%" fxLayoutAlign="center end"></div>
       `);
 
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'max-width': '25%',
         },
@@ -383,7 +378,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('md', true);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'max-width': '25%',
         },
@@ -392,7 +387,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('sm', true);
 
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'max-width': '25%',
         },
@@ -409,7 +404,7 @@ describe('layout-align directive', () => {
         </div>
       `);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'center',
           'max-height': '100%',
@@ -419,7 +414,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'flex-end',
           'max-width': '100%',
@@ -436,7 +431,7 @@ describe('layout-align directive', () => {
         </div>
       `);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'max-height': '100%',
         },
@@ -445,7 +440,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'max-height': '100%',
         },
@@ -463,7 +458,7 @@ describe('layout-align directive', () => {
          </div>
        `);
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'center',
           'max-height': '100%',
@@ -473,7 +468,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('md');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'flex-end',
           'max-width': '100%',
@@ -483,7 +478,7 @@ describe('layout-align directive', () => {
 
       mediaController.activate('xs');
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'center',
           'max-height': '100%',
@@ -500,7 +495,7 @@ describe('layout-align directive', () => {
       `);
 
       mediaController.activate('lt-md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'center',
           'align-items': 'center',
@@ -510,7 +505,7 @@ describe('layout-align directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'justify-content': 'center',
           'align-items': 'center',
@@ -520,7 +515,7 @@ describe('layout-align directive', () => {
       );
 
       mediaController.activate('lt-md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'justify-content': 'center',
           'align-items': 'center',
@@ -543,7 +538,7 @@ describe('layout-align directive', () => {
 
       mediaController.useOverlaps = true;
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
           'justify-content': 'flex-start',
@@ -552,7 +547,7 @@ describe('layout-align directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'column',
           'justify-content': 'center',
@@ -561,7 +556,7 @@ describe('layout-align directive', () => {
       );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
           'justify-content': 'flex-start',
@@ -571,7 +566,7 @@ describe('layout-align directive', () => {
 
       // Should fallback to value for 'gt-xs' or default
       mediaController.activate('lg', true);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
           'justify-content': 'flex-end',
@@ -580,7 +575,7 @@ describe('layout-align directive', () => {
       );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
           'justify-content': 'flex-start',
@@ -590,7 +585,7 @@ describe('layout-align directive', () => {
 
       // Should fallback to value for 'gt-xs' or default
       mediaController.activate('xl', true);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           'flex-direction': 'row',
           'justify-content': 'flex-end',
@@ -602,8 +597,6 @@ describe('layout-align directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
-
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
@@ -630,7 +623,7 @@ describe('layout-align directive', () => {
           <div fxFlexOffset="25"></div>
         </div>
       `);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         { 'justify-content': 'flex-end' },
         styler,
       );
@@ -638,7 +631,7 @@ describe('layout-align directive', () => {
   });
 });
 
-@Injectable({ providedIn: FlexModule })
+@Injectable()
 export class MockLayoutAlignStyleBuilder extends StyleBuilder {
   override shouldCache = false;
 

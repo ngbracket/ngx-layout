@@ -2,7 +2,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@ngbracket/ngx-layout": ["projects/libs/flex-layout/public-api.ts"],
+      "@ngbracket/ngx-layout": [
+        "projects/libs/flex-layout/public-api.ts"
+      ],
       "@ngbracket/ngx-layout/_private-utils": [
         "projects/libs/flex-layout/_private-utils/index.ts"
       ],
@@ -41,7 +43,10 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "useDefineForClassFields": false,
     "rootDir": ".",
     "emitDecoratorMetadata": true,
@@ -54,5 +59,8 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
