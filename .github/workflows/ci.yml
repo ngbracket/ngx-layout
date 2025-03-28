@@ -115,11 +115,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .vite
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
-            ${{ runner.os }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
-            ${{ runner.os }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
+            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
+            ${{ runner.os }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
+            ${{ runner.os }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
+            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-browser-${{ matrix.browser }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
+            ${{ runner.os }}-browser-${{ matrix.browser }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
+            ${{ runner.os }}-browser-${{ matrix.browser }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
       - name: Download package
         uses: actions/download-artifact@v4
         with:
@@ -167,11 +170,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .vite
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
-            ${{ runner.os }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
-            ${{ runner.os }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
+            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
+            ${{ runner.os }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
+            ${{ runner.os }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
       - name: Download package
         uses: actions/download-artifact@v4
         with:
