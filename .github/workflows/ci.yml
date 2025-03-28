@@ -115,8 +115,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .vite
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}-${{ github.run_id }}
           restore-keys: |
+            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
             ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
             ${{ runner.os }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
             ${{ runner.os }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
@@ -170,8 +171,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .vite
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}-${{ github.run_id }}
           restore-keys: |
+            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
             ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
             ${{ runner.os }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
             ${{ runner.os }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
