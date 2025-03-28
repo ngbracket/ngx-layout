@@ -115,15 +115,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .vite
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}-${{ github.run_id }}
+          key: vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}-${{ github.run_id }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
-            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
-            ${{ runner.os }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
-            ${{ runner.os }}-browser-${{ matrix.browser }}-${{ matrix.browser-version }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
-            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-browser-${{ matrix.browser }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
-            ${{ runner.os }}-browser-${{ matrix.browser }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts', '**/**.spec.ts') }}
-            ${{ runner.os }}-browser-${{ matrix.browser }}-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}
       - name: Download package
         uses: actions/download-artifact@v4
         with:
@@ -171,12 +168,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .vite
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}-${{ github.run_id }}
+          key: vitest-ssr-${{ runner.os }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}-${{ github.run_id }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
-            ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
-            ${{ runner.os }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts', '**/**.spec.ts') }}
-            ${{ runner.os }}-ssr-vitest-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
+            vitest-ssr-${{ runner.os }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}
+            vitest-ssr-${{ runner.os }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
+            vitest-ssr-${{ runner.os }}
       - name: Download package
         uses: actions/download-artifact@v4
         with:
