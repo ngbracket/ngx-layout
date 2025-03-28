@@ -143,7 +143,7 @@ jobs:
           KARMA_PARALLEL_BROWSERS: 1
         uses: nick-fields/retry@v3
         with:
-          timeout_seconds: 45
+          timeout_seconds: 60
           max_attempts: 10
           retry_on: timeout
           command: pnpm run test --browser=${{ matrix.browser }}
