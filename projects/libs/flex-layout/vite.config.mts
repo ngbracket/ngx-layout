@@ -15,9 +15,6 @@ export const config = {
   //  plugins: [ nxViteTsPaths() ],
   // },
   test: {
-    sequence: {
-      shuffle: isCi,
-    },
     globals: true,
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     setupFiles: ['test-setup.ts'],
