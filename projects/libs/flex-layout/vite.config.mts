@@ -30,9 +30,6 @@ export const config = {
       name: 'chromium',
       fileParallelism: isCi ? false : undefined, // Prevent hanging tests timing out in Firefox
     },
-    testTimeout: isCi ? 2_000 : undefined,
-    hookTimeout: isCi ? 2_000 : undefined,
-    teardownTimeout: isCi ? 2_000 : undefined,
   },
 } as const satisfies UserConfig;
 
