@@ -2,46 +2,68 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's discover **ngx-Layout in less than 5 minutes**.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Get started by **adding ngx-layout to your project**.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+Or **try ngx-Layout immediately** with **[ngx-layout](https://ngx-layout.ngbracket.com)**.
 
-### What you'll need
+## Layout
+The @ngbracket/ngx-layout provides a sophisticated layout API using FlexBox CSS + mediaQuery. This module provides Angular developers with component layout features using a custom Layout API, mediaQuery observables, and injected DOM flexbox-2016 css stylings.
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+The Layout engine intelligently automates the process of applying appropriate FlexBox CSS to browser view hierarchies. This automation also addresses many of the complexities and workarounds encountered with the traditional, manual, CSS-only application of Flexbox CSS.
 
-## Generate a new site
+![flex-layout](../static/img/flexlayout.jpg)
 
-Generate a new Docusaurus site using the **classic template**.
+@ngbracket/ngx-layout is a pure-Typescript Layout engine; unlike the pure CSS-only implementations published in other Flexbox libraries and the JS+CSS implementation of AngularJS Material Layouts.
 
-The classic template will automatically be added to your project after you run the command:
+This implementation of @ngbracket/ngx-layout is independent of Angular Material.
+This implementation is currently only available for Angular (v15 and higher) applications.
 
-```bash
-npm init docusaurus@latest my-website classic
+## Featured Demo
+One of the hardest features to implement is a grid layout with specific column spans. Our online demo shows how easy this is!
+
+Live Demo:
+[Grid with column spans](https://ngx-layout.ngbracket.com/stackoverflow/grid-column-span)
+
 ```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+<div class="containerX">
+  <div class="container">
+    <div>flex: 1 1 5em;</div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="container">
+    <div></div>
+    <div [fxFlex]="calc2Cols">flex: 2 2 calc(10em + 10px);</div>
+    <div></div>
+  </div>
+  <div class="container">
+    <div [fxFlex]="calc2Cols">flex: 2 2 calc(10em + 10px);</div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="container">
+    <div></div>
+    <div></div>
+    <div [fxFlex]="calc2Cols">flex: 2 2 calc(10em + 10px);</div>
+  </div>
+  <div class="container">
+    <div [fxFlex]="calc3Cols" class="col3">
+      flex: 3 3 calc(15em + 20px);
+    </div>
+    <div></div>
+  </div>
+  <div class="container">
+    <div></div>
+    <div [fxFlex]="calc3Cols" class="col3">
+      flex: 3 3 calc(15em + 20px);
+    </div>
+  </div>
+</div>
 ```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
