@@ -68,21 +68,10 @@
       }
     },
     "test": {
-      "executor": "@angular-devkit/build-angular:karma",
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "watch": false,
-        "main": "projects/apps/demo-app/src/test.ts",
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "projects/apps/demo-app/tsconfig.spec.json",
-        "karmaConfig": "projects/apps/demo-app/karma.conf.js",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "projects/apps/demo-app/public"
-          }
-        ],
-        "styles": ["projects/apps/demo-app/src/styles.scss"],
-        "scripts": []
+        "reportsDirectory": "../../../coverage/projects/apps/demo-app"
       }
     }
   }
