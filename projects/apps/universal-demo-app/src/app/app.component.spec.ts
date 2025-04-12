@@ -1,9 +1,21 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { importProvidersFrom } from '@angular/core';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+
+function isServerEnvironment(): boolean {
+  return typeof process !== 'undefined';
+}
+
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [
+        importProvidersFrom(
+          FlexLayoutModule.withConfig({ serverLoaded: isServerEnvironment() })
+        ),
+      ],
     }).compileComponents();
   }));
   it('should create the app', waitForAsync(() => {
