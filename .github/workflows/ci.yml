@@ -135,12 +135,6 @@ jobs:
       # - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
       #   run: pnpm exec playwright install ${{ matrix.browser }}
       - name: Run local browser tests
-        env:
-          TEST_PLATFORM: local
-          CIRCLECI: true
-          CIRCLE_NODE_INDEX: 0
-          CIRCLE_NODE_TOTAL: 1
-          KARMA_PARALLEL_BROWSERS: 1
         run: pnpm run test --browser=${{ matrix.browser }}
 
   tests_ssr:
