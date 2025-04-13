@@ -1,10 +1,10 @@
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
+*
+* Use of this source code is governed by an MIT-style license that can be
+* found in the LICENSE file at https://angular.io/license
+*/
 import { DIR_DOCUMENT } from '@angular/cdk/bidi';
 import { CommonModule, isPlatformServer } from '@angular/common';
 import { Component, Injectable, PLATFORM_ID } from '@angular/core';
@@ -16,14 +16,14 @@ import {
   StyleUtils,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { FlexModule, FlexOffsetStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
-  customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
+import { FlexModule } from '../module';
+import { FlexOffsetStyleBuilder } from './flex-offset';
 
 describe('flex-offset directive', () => {
   let fixture: ComponentFixture<any>;
@@ -46,7 +46,7 @@ describe('flex-offset directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
     fakeDocument = { body: {}, documentElement: {} };
 
     // Configure testbed to prepare services
@@ -74,8 +74,8 @@ describe('flex-offset directive', () => {
       fixture.detectChanges();
 
       let dom = fixture.debugElement.children[0];
-      expectEl(dom).toHaveStyle({ 'margin-left': '32px' }, styler);
-      expectEl(dom).toHaveStyle({ flex: '1 1 0%' }, styler);
+      expectEl(dom).toHaveInlineStyle({ 'margin-left': '32px' }, styler);
+      expectEl(dom).toHaveInlineStyle({ flex: '1 1 0%' }, styler);
     });
 
     it('should add correct styles for default `fxFlexOffset` usage w/ mulitplier', () => {
@@ -83,13 +83,13 @@ describe('flex-offset directive', () => {
       fixture.detectChanges();
 
       let dom = fixture.debugElement.children[0];
-      expectEl(dom).toHaveStyle({ 'margin-left': '32px' }, styler);
-      expectEl(dom).toHaveStyle({ flex: '1 1 0%' }, styler);
+      expectEl(dom).toHaveInlineStyle({ 'margin-left': '32px' }, styler);
+      expectEl(dom).toHaveInlineStyle({ flex: '1 1 0%' }, styler);
     });
 
     it('should work with percentage values', () => {
       componentWithTemplate(`<div fxFlexOffset='17' fxFlex='37'></div>`);
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           flex: '1 1 100%',
           'box-sizing': 'border-box',
@@ -110,11 +110,11 @@ describe('flex-offset directive', () => {
       let element = queryFor(fixture, '[fxFlex]')[0];
 
       // parent flex-direction found with 'column' with child height styles
-      expectEl(parent).toHaveStyle(
+      expectEl(parent).toHaveInlineStyle(
         { 'flex-direction': 'column', display: 'flex' },
         styler,
       );
-      expectEl(element).toHaveStyle({ 'margin-top': '17px' }, styler);
+      expectEl(element).toHaveInlineStyle({ 'margin-top': '17px' }, styler);
     });
 
     it('should CSS stylesheet and not inject flex-direction on parent', () => {
@@ -134,11 +134,11 @@ describe('flex-offset directive', () => {
       // TODO(CaerusKaru): Domino is unable to detect these styles properly
       if (!isPlatformServer(platformId)) {
         // parent flex-direction found with 'column' with child height styles
-        expectEl(parent).toHaveStyle(
+        expectEl(parent).toHaveInlineStyle(
           { 'flex-direction': 'column', display: 'flex' },
           styler,
         );
-        expectEl(element).toHaveStyle({ 'margin-top': '41px' }, styler);
+        expectEl(element).toHaveInlineStyle({ 'margin-top': '41px' }, styler);
       }
     });
 
@@ -155,8 +155,8 @@ describe('flex-offset directive', () => {
       let parent = queryFor(fixture, '.parent')[0];
 
       // parent flex-direction found with 'column'; set child with height styles
-      expectEl(element).toHaveStyle({ 'margin-top': '21%' }, styler);
-      expectEl(parent).toHaveStyle({ 'flex-direction': 'column' }, styler);
+      expectEl(element).toHaveInlineStyle({ 'margin-top': '21%' }, styler);
+      expectEl(parent).toHaveInlineStyle({ 'flex-direction': 'column' }, styler);
     });
 
     it('should ignore fxLayout settings on same element', () => {
@@ -164,7 +164,7 @@ describe('flex-offset directive', () => {
           <div fxLayout='column' fxFlex='37%' fxFlexOffset='52px' >
           </div>
         `);
-      expectNativeEl(fixture).not.toHaveStyle(
+      expectNativeEl(fixture).not.toHaveInlineStyle(
         {
           'flex-direction': 'row',
           flex: '1 1 100%',
@@ -184,7 +184,7 @@ describe('flex-offset directive', () => {
       fixture.detectChanges();
 
       let element = queryFor(fixture, '[fxFlex]')[0];
-      expectEl(element).toHaveStyle({ 'margin-right': '17px' }, styler);
+      expectEl(element).toHaveInlineStyle({ 'margin-right': '17px' }, styler);
     });
 
     it('should set margin-right for rtl layouts on documentElement', () => {
@@ -197,7 +197,7 @@ describe('flex-offset directive', () => {
       fixture.detectChanges();
 
       let element = queryFor(fixture, '[fxFlex]')[0];
-      expectEl(element).toHaveStyle({ 'margin-right': '17px' }, styler);
+      expectEl(element).toHaveInlineStyle({ 'margin-right': '17px' }, styler);
     });
 
     it('should set margin-left for ltr layouts', () => {
@@ -209,13 +209,13 @@ describe('flex-offset directive', () => {
       fixture.detectChanges();
 
       let element = queryFor(fixture, '[fxFlex]')[0];
-      expectEl(element).toHaveStyle({ 'margin-left': '17px' }, styler);
+      expectEl(element).toHaveInlineStyle({ 'margin-left': '17px' }, styler);
     });
   });
 
   describe('with custom builder', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
+
 
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
@@ -245,12 +245,12 @@ describe('flex-offset directive', () => {
       `);
       fixture.detectChanges();
       let element = queryFor(fixture, '[fxFlexOffset]')[0];
-      expectEl(element).toHaveStyle({ 'margin-top': '10px' }, styler);
+      expectEl(element).toHaveInlineStyle({ 'margin-top': '10px' }, styler);
     });
   });
 });
 
-@Injectable({ providedIn: FlexModule })
+@Injectable()
 export class MockFlexOffsetStyleBuilder extends StyleBuilder {
   override shouldCache = false;
   buildStyles(_input: string) {

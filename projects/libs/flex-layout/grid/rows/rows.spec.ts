@@ -18,7 +18,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -57,7 +56,7 @@ describe('grid rows parent directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
@@ -85,7 +84,7 @@ describe('grid rows parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-rows': '100px 1fr',
@@ -111,7 +110,7 @@ describe('grid rows parent directive', () => {
       // TODO(CaerusKaru): Firefox has an issue with auto tracks,
       // caused by rachelandrew/gridbugs#1
       if (!platform.FIREFOX) {
-        expectNativeEl(fixture).toHaveStyle(
+        expectNativeEl(fixture).toHaveInlineStyle(
           {
             display: 'grid',
             'grid-auto-rows': '100px 1fr auto',
@@ -135,7 +134,7 @@ describe('grid rows parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'inline-grid',
           'grid-template-rows': '100px 1fr',
@@ -154,7 +153,7 @@ describe('grid rows parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-rows': '50px 1fr',
@@ -164,7 +163,7 @@ describe('grid rows parent directive', () => {
 
       fixture.componentInstance.cols = '100px 1fr';
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-rows': '100px 1fr',
@@ -186,7 +185,7 @@ describe('grid rows parent directive', () => {
         return;
       }
 
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-rows': '100px 1fr',
@@ -195,7 +194,7 @@ describe('grid rows parent directive', () => {
       );
 
       mediaController.activate('xs');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-rows': '50px 1fr',
@@ -204,7 +203,7 @@ describe('grid rows parent directive', () => {
       );
 
       mediaController.activate('md');
-      expectNativeEl(fixture).toHaveStyle(
+      expectNativeEl(fixture).toHaveInlineStyle(
         {
           display: 'grid',
           'grid-template-rows': '100px 1fr',

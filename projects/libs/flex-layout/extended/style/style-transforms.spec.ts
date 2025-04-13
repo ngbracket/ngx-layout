@@ -6,10 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import {
-  customMatchers,
-  expect,
-} from '@ngbracket/ngx-layout/_private-utils/testing';
-import {
   buildMapFromList,
   buildMapFromSet,
   buildRawList,
@@ -21,7 +17,7 @@ import {
 
 describe('ngStyleUtils', () => {
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
   });
 
   it('should parse a raw string of key:value pairs', () => {
@@ -45,7 +41,7 @@ describe('ngStyleUtils', () => {
     `),
     );
 
-    expect(map).toHaveMap({
+    expect(map).toStrictEqual({
       color: 'red',
       'font-size': '16px',
       'background-color': 'rgba(116, 37, 49, 0.72)',
@@ -61,7 +57,7 @@ describe('ngStyleUtils', () => {
     `),
     );
 
-    expect(map).toHaveMap({
+    expect(map).toStrictEqual({
       color: 'red',
       'font-size': '16px',
       'background-color': 'rgba(116, 37, 49, 0.72)',
@@ -76,7 +72,7 @@ describe('ngStyleUtils', () => {
 
     let map: NgStyleMap = buildMapFromSet(customSet);
 
-    expect(map).toHaveMap({
+    expect(map).toStrictEqual({
       color: 'red',
       'font-size': '16px',
       'background-color': 'rgba(116, 37, 49, 0.72)',

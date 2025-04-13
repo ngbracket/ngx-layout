@@ -80,6 +80,13 @@
         "staticFilePath": "dist/projects/apps/updated-demo/browser",
         "spa": true
       }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/projects/apps/updated-demo"
+      }
     }
   }
 }

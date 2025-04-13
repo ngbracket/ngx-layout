@@ -8,7 +8,7 @@
 
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MatchMedia } from '../../match-media/match-media';
+import { MatchMedia } from '../match-media';
 import { MediaChange } from '../../media-change';
 import { BreakPoint } from '../../breakpoints/break-point';
 import { MockMatchMedia, MockMatchMediaProvider } from './mock-match-media';
@@ -229,7 +229,7 @@ describe('mock-match-media', () => {
       bpMd = breakPoints.findByAlias('md'),
       bpGtMd = breakPoints.findByAlias('gt-md'),
       bpLg = breakPoints.findByAlias('lg');
-    let subscription = mediaController.observe().subscribe(() => {});
+    let subscription = mediaController.observe().subscribe(() => { });
 
     mediaController.activate(bpGtSm!.mediaQuery);
     expect(mediaController.isActive(bpGtSm!.mediaQuery)).toBeTruthy();

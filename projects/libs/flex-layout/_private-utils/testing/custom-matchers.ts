@@ -1,48 +1,31 @@
-declare var global: any;
-const _global = <any>(typeof window === 'undefined' ? global : window);
-
-import { _dom as _ } from './dom-tools';
-
 import {
   applyCssPrefixes,
   extendObject,
 } from '@ngbracket/ngx-layout/_private-utils';
 import { StyleUtils } from '@ngbracket/ngx-layout/core';
+ // This line is important even if imported values are not used! See https://stackoverflow.com/a/78524129/1071200
+import type { Assertion, AsymmetricMatchersContaining, ExpectStatic } from 'vitest';
+// import { expect } from 'vitest';
 
-export const expect: (actual: any) => NgMatchers = <any>_global.expect;
+declare module 'vitest' {
+  interface Assertion<T = any> extends NgMatchers<T> {}
+  interface AsymmetricMatchersContaining extends NgMatchers {}
+}
+
+interface ExpectationResult {
+  pass: boolean;
+  message: () => string;
+  // If you pass these, they will automatically appear inside a diff when
+  // the matcher does not pass, so you don't need to print the diff yourself
+  actual?: unknown;
+  expected?: unknown;
+}
 
 /**
  * Jasmine matchers that check Angular specific conditions.
  */
-export interface NgMatchers extends jasmine.Matchers<any> {
-  /**
-   * Expect the element to have exactly the given text.
-   *
-   * ## Example
-   *
-   * {@example testing/ts/matchers.ts region='toHaveText'}
-   */
-  toHaveText(expected: string): boolean;
-
-  /**
-   * Compare key:value pairs as matching EXACTLY
-   */
-  toHaveMap(expected: { [k: string]: string }): boolean;
-
-  /**
-   * Expect the element to have the given CSS class.
-   *
-   * ## Example
-   *
-   * {@example testing/ts/matchers.ts region='toHaveCssClass'}
-   */
-  toHaveCssClass(expected: string): boolean;
-
-  /**
-   * Expect the element to have the given pairs of attribute name and attribute value
-   */
-  toHaveAttributes(expected: { [k: string]: string }): boolean;
-
+// export interface NgMatchers extends jasmine.Matchers<any> {
+export interface NgMatchers<R = unknown> {
   /**
    * Expect the element to have the given CSS styles injected INLINE
    *
@@ -50,7 +33,10 @@ export interface NgMatchers extends jasmine.Matchers<any> {
    *
    * {@example testing/ts/matchers.ts region='toHaveStyle'}
    */
-  toHaveStyle(expected: { [k: string]: string } | string): boolean;
+  toHaveInlineStyle(
+    expected: { [k: string]: string } | string,
+    styler: StyleUtils
+  ): R;
 
   /**
    * Expect the element to have the given CSS inline OR computed styles.
@@ -59,12 +45,12 @@ export interface NgMatchers extends jasmine.Matchers<any> {
    *
    * {@example testing/ts/matchers.ts region='toHaveStyle'}
    */
-  toHaveStyle(expected: { [k: string]: string } | string): boolean;
+  toHaveCSS(expected: { [k: string]: string } | string, styler: StyleUtils): R;
 
-  /**
-   * Invert the matchers.
-   */
-  not: NgMatchers;
+  // /**
+  //  * Invert the matchers.
+  //  */
+  // not: NgMatchers;
 }
 
 /**
@@ -72,119 +58,22 @@ export interface NgMatchers extends jasmine.Matchers<any> {
  *       in the Karma/Jasmine testing for the Layout Directives
  *       in `src/lib/flex/api`
  */
-export const customMatchers: jasmine.CustomMatcherFactories = {
-  toEqual: function (util) {
-    return {
-      compare: function (actual: any, expected: any) {
-        return { pass: util.equals(actual, expected) };
-      },
-    };
-  },
-
-  toHaveText: function () {
-    return {
-      compare: function (actual: any, expectedText: string) {
-        const actualText = elementText(actual);
-        return {
-          pass: actualText == expectedText,
-          get message() {
-            return 'Expected ' + actualText + ' to be equal to ' + expectedText;
-          },
-        };
-      },
-    };
-  },
-
-  toHaveCssClass: function () {
-    return { compare: buildError(false), negativeCompare: buildError(true) };
-
-    function buildError(isNot: boolean) {
-      return function (actual: any, className: string) {
-        return {
-          pass: _.hasClass(actual, className) == !isNot,
-          get message() {
-            return `
-              Expected ${actual.outerHTML} ${isNot ? 'not ' : ''}
-              to contain the CSS class '${className}'
-            `;
-          },
-        };
-      };
-    }
-  },
-
-  toHaveMap: function () {
-    return {
-      compare: function (
-        actual: { [k: string]: string },
-        map: { [k: string]: string },
-      ) {
-        let allPassed: boolean;
-        allPassed = Object.keys(map).length !== 0;
-        Object.keys(map).forEach((key) => {
-          allPassed = allPassed && actual[key] === map[key];
-        });
-
-        return {
-          pass: allPassed,
-          get message() {
-            return `
-              Expected ${JSON.stringify(actual)} ${
-                !allPassed ? ' ' : 'not '
-              } to contain the
-              '${JSON.stringify(map)}'
-            `;
-          },
-        };
-      },
-    };
-  },
-
-  toHaveAttributes: function () {
-    return {
-      compare: function (actual: any, map: { [k: string]: string }) {
-        let allPassed: boolean;
-        let attributeNames = Object.keys(map);
-        allPassed = attributeNames.length !== 0;
-        attributeNames.forEach((name) => {
-          allPassed =
-            allPassed &&
-            _.hasAttribute(actual, name) &&
-            _.getAttribute(actual, name) === map[name];
-        });
-        return {
-          pass: allPassed,
-          get message() {
-            return `
-              Expected ${actual.outerHTML} ${
-                allPassed ? 'not ' : ''
-              } attributes to contain
-              '${JSON.stringify(map)}'
-            `;
-          },
-        };
-      },
-    };
-  },
-
+export const customMatchers: Record<
+  string,
+  (received: any, ...expected: any[]) => ExpectationResult
+> = {
   /**
    * Check element's inline styles only
    */
-  toHaveStyle: function () {
-    return {
-      compare: buildCompareStyleFunction(true),
-    };
-  },
+  toHaveInlineStyle: buildCompareStyleFunction(true),
 
   /**
    * Check element's css stylesheet only (if not present inline)
    */
-  toHaveCSS: function () {
-    return {
-      compare: buildCompareStyleFunction(false),
-    };
-  },
+  toHaveCSS: buildCompareStyleFunction(false),
 };
+
+((globalThis as any).expect as ExpectStatic).extend(customMatchers);
 
 /**
  * Curried value to function to check styles that are inline or in a stylesheet for the
@@ -195,7 +84,7 @@ function buildCompareStyleFunction(inlineOnly = true) {
     actual: any,
     styles: { [k: string]: string } | string,
     styler: StyleUtils,
-  ) {
+  ): ExpectationResult {
     const found = {};
     const styleMap: { [k: string]: string } = {};
 
@@ -222,7 +111,7 @@ function buildCompareStyleFunction(inlineOnly = true) {
 
     return {
       pass: allPassed,
-      get message() {
+      message() {
         const expectedValueStr =
           typeof styles === 'string'
             ? styleMap
@@ -275,33 +164,4 @@ function hasPrefixedStyles(
   }
   // Return BOTH confirmation and current computed key values (if confirmation == false)
   return { elHasStyle, current };
-}
-
-function elementText(n: any): string {
-  const hasNodes = (m: any) => {
-    const children = _.childNodes(m);
-    return children && children['length'];
-  };
-
-  if (n instanceof Array) {
-    return n.map(elementText).join('');
-  }
-
-  if (_.isCommentNode(n)) {
-    return '';
-  }
-
-  if (_.isElementNode(n) && _.tagName(n) == 'CONTENT') {
-    return elementText(Array.prototype.slice.apply(_.getDistributedNodes(n)));
-  }
-
-  if (_.hasShadowRoot(n)) {
-    return elementText(_.childNodesAsList(_.getShadowRoot(n)));
-  }
-
-  if (hasNodes(n)) {
-    return elementText(_.childNodesAsList(n));
-  }
-
-  return _.getText(n);
 }

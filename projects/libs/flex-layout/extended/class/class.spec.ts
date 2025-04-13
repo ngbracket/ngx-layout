@@ -21,11 +21,9 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { DefaultClassDirective } from '@ngbracket/ngx-layout/extended';
+import { DefaultClassDirective } from './class';
 
 import {
-  customMatchers,
-  expect,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,
@@ -48,7 +46,7 @@ describe('class directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
@@ -69,53 +67,53 @@ describe('class directive', () => {
     it(`should apply '${selector}' with '${mq}' media query`, () => {
       createTestComponent(`<div ngClass.${mq}="${selector}"></div>`);
       mediaController.activate(mq);
-      expectNativeEl(fixture).toHaveCssClass(selector);
+      expectNativeEl(fixture).toHaveClass(selector);
     });
   });
 
   it('should merge `ngClass` values with any `class` values', () => {
     createTestComponent(`<div class="class0" ngClass="class1 class2"></div>`);
 
-    expectNativeEl(fixture).toHaveCssClass('class0');
-    expectNativeEl(fixture).toHaveCssClass('class1');
-    expectNativeEl(fixture).toHaveCssClass('class2');
+    expectNativeEl(fixture).toHaveClass('class0');
+    expectNativeEl(fixture).toHaveClass('class1');
+    expectNativeEl(fixture).toHaveClass('class2');
   });
 
   it('should override base `class` values with responsive ngClass string', () => {
     createTestComponent(`<div class="class0" ngClass.xs="what class2"></div>`);
 
-    expectNativeEl(fixture).toHaveCssClass('class0');
-    expectNativeEl(fixture).not.toHaveCssClass('what');
-    expectNativeEl(fixture).not.toHaveCssClass('class2');
+    expectNativeEl(fixture).toHaveClass('class0');
+    expectNativeEl(fixture).not.toHaveClass('what');
+    expectNativeEl(fixture).not.toHaveClass('class2');
 
     // the CSS classes listed in the string (space delimited) are added,
     // See https://angular.io/api/common/NgClass
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveCssClass('class0');
-    expectNativeEl(fixture).toHaveCssClass('what');
-    expectNativeEl(fixture).toHaveCssClass('class2');
+    expectNativeEl(fixture).toHaveClass('class0');
+    expectNativeEl(fixture).toHaveClass('what');
+    expectNativeEl(fixture).toHaveClass('class2');
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).toHaveCssClass('class0');
-    expectNativeEl(fixture).not.toHaveCssClass('what');
-    expectNativeEl(fixture).not.toHaveCssClass('class2');
+    expectNativeEl(fixture).toHaveClass('class0');
+    expectNativeEl(fixture).not.toHaveClass('what');
+    expectNativeEl(fixture).not.toHaveClass('class2');
   });
 
   it('should use responsive ngClass string and remove without fallback', () => {
     createTestComponent(`<div [ngClass.xs]="'what class2'"></div>`);
 
-    expectNativeEl(fixture).not.toHaveCssClass('what');
-    expectNativeEl(fixture).not.toHaveCssClass('class2');
+    expectNativeEl(fixture).not.toHaveClass('what');
+    expectNativeEl(fixture).not.toHaveClass('class2');
 
     // the CSS classes listed in the string (space delimited) are added,
     // See https://angular.io/api/common/NgClass
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveCssClass('what');
-    expectNativeEl(fixture).toHaveCssClass('class2');
+    expectNativeEl(fixture).toHaveClass('what');
+    expectNativeEl(fixture).toHaveClass('class2');
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).not.toHaveCssClass('what');
-    expectNativeEl(fixture).not.toHaveCssClass('class2');
+    expectNativeEl(fixture).not.toHaveClass('what');
+    expectNativeEl(fixture).not.toHaveClass('class2');
   });
 
   it('should override base `class` values with responsive ngClass map', () => {
@@ -123,21 +121,21 @@ describe('class directive', () => {
         <div class="class0" [ngClass.xs]="{'what':true, 'class2':true, 'class0':false}"></div>
       `);
 
-    expectNativeEl(fixture).toHaveCssClass('class0');
-    expectNativeEl(fixture).not.toHaveCssClass('what');
-    expectNativeEl(fixture).not.toHaveCssClass('class2');
+    expectNativeEl(fixture).toHaveClass('class0');
+    expectNativeEl(fixture).not.toHaveClass('what');
+    expectNativeEl(fixture).not.toHaveClass('class2');
 
     // Object keys are CSS classes that get added when the expression given in
     // the value evaluates to a truthy value, otherwise they are removed.
     mediaController.activate('xs');
-    expectNativeEl(fixture).not.toHaveCssClass('class0');
-    expectNativeEl(fixture).toHaveCssClass('what');
-    expectNativeEl(fixture).toHaveCssClass('class2');
+    expectNativeEl(fixture).not.toHaveClass('class0');
+    expectNativeEl(fixture).toHaveClass('what');
+    expectNativeEl(fixture).toHaveClass('class2');
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).toHaveCssClass('class0');
-    expectNativeEl(fixture).not.toHaveCssClass('what');
-    expectNativeEl(fixture).not.toHaveCssClass('class2');
+    expectNativeEl(fixture).toHaveClass('class0');
+    expectNativeEl(fixture).not.toHaveClass('what');
+    expectNativeEl(fixture).not.toHaveClass('class2');
   });
 
   it('should keep the raw existing `class` with responsive updates', () => {
@@ -146,18 +144,18 @@ describe('class directive', () => {
         </div>
     `);
 
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
-    expectNativeEl(fixture).toHaveCssClass('class1');
+    expectNativeEl(fixture).toHaveClass('existing-class');
+    expectNativeEl(fixture).toHaveClass('class1');
 
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveCssClass('xs-class');
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
-    expectNativeEl(fixture).not.toHaveCssClass('class1');
+    expectNativeEl(fixture).toHaveClass('xs-class');
+    expectNativeEl(fixture).toHaveClass('existing-class');
+    expectNativeEl(fixture).not.toHaveClass('class1');
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).not.toHaveCssClass('xs-class');
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
-    expectNativeEl(fixture).toHaveCssClass('class1');
+    expectNativeEl(fixture).not.toHaveClass('xs-class');
+    expectNativeEl(fixture).toHaveClass('existing-class');
+    expectNativeEl(fixture).toHaveClass('class1');
   });
 
   it('should keep allow removal of class selector', () => {
@@ -168,14 +166,14 @@ describe('class directive', () => {
       </div>
     `);
 
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
+    expectNativeEl(fixture).toHaveClass('existing-class');
     mediaController.activate('xs');
-    expectNativeEl(fixture).not.toHaveCssClass('existing-class');
-    expectNativeEl(fixture).toHaveCssClass('xs-class');
+    expectNativeEl(fixture).not.toHaveClass('existing-class');
+    expectNativeEl(fixture).toHaveClass('xs-class');
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).not.toHaveCssClass('xs-class');
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
+    expectNativeEl(fixture).not.toHaveClass('xs-class');
+    expectNativeEl(fixture).toHaveClass('existing-class');
   });
 
   it('should keep existing ngClass selector', () => {
@@ -187,18 +185,18 @@ describe('class directive', () => {
         </div>
       `);
 
-    expectNativeEl(fixture).toHaveCssClass('always');
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
+    expectNativeEl(fixture).toHaveClass('always');
+    expectNativeEl(fixture).toHaveClass('existing-class');
 
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveCssClass('always');
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
-    expectNativeEl(fixture).toHaveCssClass('xs-class');
+    expectNativeEl(fixture).toHaveClass('always');
+    expectNativeEl(fixture).toHaveClass('existing-class');
+    expectNativeEl(fixture).toHaveClass('xs-class');
 
     mediaController.activate('lg');
-    expectNativeEl(fixture).toHaveCssClass('always');
-    expectNativeEl(fixture).toHaveCssClass('existing-class');
-    expectNativeEl(fixture).not.toHaveCssClass('xs-class');
+    expectNativeEl(fixture).toHaveClass('always');
+    expectNativeEl(fixture).toHaveClass('existing-class');
+    expectNativeEl(fixture).not.toHaveClass('xs-class');
   });
 
   it('should support more than one responsive breakpoint on one element', () => {
@@ -206,11 +204,11 @@ describe('class directive', () => {
       `<div ngClass.xs="xs-class" ngClass.md="mat-class"></div>`,
     );
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveCssClass('xs-class');
-    expectNativeEl(fixture).not.toHaveCssClass('mat-class');
+    expectNativeEl(fixture).toHaveClass('xs-class');
+    expectNativeEl(fixture).not.toHaveClass('mat-class');
     mediaController.activate('md');
-    expectNativeEl(fixture).not.toHaveCssClass('xs-class');
-    expectNativeEl(fixture).toHaveCssClass('mat-class');
+    expectNativeEl(fixture).not.toHaveClass('xs-class');
+    expectNativeEl(fixture).toHaveClass('mat-class');
   });
 
   it('should support more than one responsive breakpoint on one element with undefined', () => {
@@ -218,7 +216,7 @@ describe('class directive', () => {
       `<div ngClass.lt-lg="mat-class" [ngClass.md]="undefined"></div>`,
     );
     mediaController.activate('md', true);
-    expectNativeEl(fixture).toHaveCssClass('mat-class');
+    expectNativeEl(fixture).toHaveClass('mat-class');
   });
 
   it('should work with ngClass object notation', () => {
@@ -231,58 +229,58 @@ describe('class directive', () => {
       hasX1: true,
       hasX2: true,
       hasX3: true,
-    }).toHaveCssClass('x1');
+    }).toHaveClass('x1');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: true,
       hasX3: true,
-    }).not.toHaveCssClass('x2');
+    }).not.toHaveClass('x2');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: true,
       hasX3: true,
-    }).toHaveCssClass('x3');
+    }).toHaveClass('x3');
 
     mediaController.activate('X');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: false,
       hasX3: false,
-    }).toHaveCssClass('x1');
+    }).toHaveClass('x1');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: false,
       hasX3: false,
-    }).not.toHaveCssClass('x2');
+    }).not.toHaveClass('x2');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: false,
       hasX3: false,
-    }).not.toHaveCssClass('x3');
+    }).not.toHaveClass('x3');
 
     mediaController.activate('md');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: false,
       hasX3: true,
-    }).toHaveCssClass('x1');
+    }).toHaveClass('x1');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: false,
       hasX3: true,
-    }).not.toHaveCssClass('x2');
+    }).not.toHaveClass('x2');
     expectNativeEl(fixture, {
       hasX1: true,
       hasX2: false,
       hasX3: true,
-    }).toHaveCssClass('x3');
+    }).toHaveClass('x3');
   });
 
   it('should work with ngClass array notation', () => {
     createTestComponent(`<div [ngClass.xs]="['xs-1', 'xs-2']"></div>`);
     mediaController.activate('xs');
-    expectNativeEl(fixture).toHaveCssClass('xs-1');
-    expectNativeEl(fixture).toHaveCssClass('xs-2');
+    expectNativeEl(fixture).toHaveClass('xs-1');
+    expectNativeEl(fixture).toHaveClass('xs-2');
   });
 
   it('should work with changing overlapping breakpoint activations', () => {
@@ -290,16 +288,16 @@ describe('class directive', () => {
       '<div class="white" ngClass.lt-sm="green" ngClass.lt-md="blue"></div>',
     );
 
-    expectNativeEl(fixture).toHaveCssClass('white');
+    expectNativeEl(fixture).toHaveClass('white');
 
     mediaController.activate('xs', true);
-    expectNativeEl(fixture).toHaveCssClass('green');
+    expectNativeEl(fixture).toHaveClass('green');
 
     mediaController.activate('sm', true);
-    expectNativeEl(fixture).toHaveCssClass('blue');
+    expectNativeEl(fixture).toHaveClass('blue');
 
     mediaController.activate('xs', true);
-    expectNativeEl(fixture).toHaveCssClass('green');
+    expectNativeEl(fixture).toHaveClass('green');
   });
 
   it('should work with material buttons', () => {
@@ -316,24 +314,20 @@ describe('class directive', () => {
     let button = queryFor(fixture, '[mat-raised-button]')[0].nativeElement;
 
     if (!isPlatformServer(platformId)) {
-      expect(button).toHaveAttributes({
-        'mat-raised-button': '',
-      });
+      expect(button).toHaveAttribute('mat-raised-button', '');
     }
-    expect(button).toHaveCssClass('btn-xs');
-    expect(button).toHaveCssClass('mat-primary');
+    expect(button).toHaveClass('btn-xs');
+    expect(button).toHaveClass('mat-primary');
 
     fixture.componentInstance.formButtonXs = false;
     fixture.detectChanges();
     button = queryFor(fixture, '[mat-raised-button]')[0].nativeElement;
 
     if (!isPlatformServer(platformId)) {
-      expect(button).toHaveAttributes({
-        'mat-raised-button': '',
-      });
+      expect(button).toHaveAttribute('mat-raised-button', '');
     }
-    expect(button).not.toHaveCssClass('btn-xs');
-    expect(button).toHaveCssClass('mat-primary');
+    expect(button).not.toHaveClass('btn-xs');
+    expect(button).toHaveClass('mat-primary');
   });
 });
 

@@ -65,8 +65,39 @@ jobs:
         run: pnpm lint
 
   tests_local_browsers:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.playwright-version == '1.37.1' && 'ubuntu-22.04' || 'ubuntu-latest' }} # Ubuntu 24.04 fails when trying to install the libasound2 package, a Playwright system dependency
     needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        browser:
+          - chromium
+          - firefox
+          - webkit
+        browser-version:
+          - latest
+        playwright-version:
+          - 1.51.0 # Latest/same as in `package.json`
+        include:
+          # Match Angular browser support when Angular 19 was released
+          - browser: chromium
+            browser-version: 130 # Previous major Chrome version when Angular 19 was released
+            playwright-version: 1.48.2
+          - browser: firefox
+            browser-version: 130 # Firefox 131 was the previous major version when Angular 19 was released but this is not supported by any Playwright version
+            playwright-version: 1.48.2
+          - browser: firefox
+            browser-version: esr-115 # Old ESR when Firefox 131 was released
+            playwright-version: 1.37.1
+          - browser: firefox
+            browser-version: esr-128 # New ESR when Firefox 131 was released
+            playwright-version: 1.46.1
+          - browser: webkit
+            browser-version: 16 # Previous major Safari version when Angular 19 was released
+            playwright-version: 1.45.3
+    container:
+      image: mcr.microsoft.com/playwright:v${{ matrix.playwright-version }}
+      options: --user 1001
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -80,25 +111,31 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+      - name: Cache Vitest cache
+        uses: actions/cache@v4
+        with:
+          path: .vite
+          key: vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}-${{ github.run_id }}
+          restore-keys: |
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.mts', '**/test-setup.ts') }}
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}-${{ matrix.browser-version }}
+            vitest-browser-${{ runner.os }}-${{ matrix.browser }}
       - name: Download package
         uses: actions/download-artifact@v4
         with:
           name: package
           path: dist/releases
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-      - name: Install Firefox
-        uses: browser-actions/setup-firefox@v1
       - name: Install dependencies
         run: pnpm install
+      - name: Install Playwright (${{ matrix.playwright-version }})
+        run: pnpm add --save-dev playwright@${{ matrix.playwright-version }}
+      # - name: Install Playwright system dependencies
+      #   run: pnpm exec playwright install-deps ${{ matrix.browser }}
+      # - name: Install Playwright browser (${{ matrix.browser }} ${{ matrix.browser-version }})
+      #   run: pnpm exec playwright install ${{ matrix.browser }}
       - name: Run local browser tests
-        env:
-          TEST_PLATFORM: local
-          CIRCLECI: true
-          CIRCLE_NODE_INDEX: 0
-          CIRCLE_NODE_TOTAL: 1
-          KARMA_PARALLEL_BROWSERS: 1
-        run: pnpm run test
+        run: pnpm exec nx run-many --targets=test --parallel=1 --browser=${{ matrix.browser }}
 
   tests_ssr:
     runs-on: ubuntu-latest
@@ -116,6 +153,15 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+      - name: Cache Vitest cache
+        uses: actions/cache@v4
+        with:
+          path: .vite
+          key: vitest-ssr-${{ runner.os }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}-${{ github.run_id }}
+          restore-keys: |
+            vitest-ssr-${{ runner.os }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}-tests-${{ hashFiles('**/**.spec.ts') }}
+            vitest-ssr-${{ runner.os }}-configuration-${{ hashFiles('vitest.workspace.ts', '**/vite.config.ssr.mts', '**/test-setup.ssr.ts') }}
+            vitest-ssr-${{ runner.os }}
       - name: Download package
         uses: actions/download-artifact@v4
         with:
@@ -124,7 +170,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Run SSR tests
-        run: pnpm test:ssr
+        run: pnpm exec nx run-many --projects="@ngbracket/ngx-layout" --projects=universal-demo-app --targets=test --parallel=1 --configuration=ssr
 
   integration_tests:
     runs-on: ubuntu-latest

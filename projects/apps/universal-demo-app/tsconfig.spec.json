@@ -3,12 +3,32 @@
   "compilerOptions": {
     "outDir": "../../../out-tsc/spec",
     "types": [
-      "jasmine"
+      "@vitest/browser/matchers",
+      "@vitest/browser/providers/playwright",
+      "vitest/globals",
+      "vitest/importMeta",
+      "vite/client",
+      "node",
+      "vitest"
     ]
   },
-  "files": ["src/test.ts"],
+  "files": [
+    "src/test-setup.ts",
+    "src/test-setup.ssr.ts"
+  ],
   "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "vite.config.ts",
+    "vite.config.mts",
+    "vitest.config.ts",
+    "vitest.config.mts",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.test.tsx",
+    "**/*.spec.tsx",
+    "**/*.test.js",
+    "**/*.spec.js",
+    "**/*.test.jsx",
+    "**/*.spec.jsx",
+    "**/*.d.ts"
   ]
 }

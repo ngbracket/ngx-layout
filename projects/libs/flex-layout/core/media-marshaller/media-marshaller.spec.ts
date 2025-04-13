@@ -26,8 +26,8 @@ describe('media-marshaller', () => {
       TestBed.configureTestingModule({
         providers: [MockMatchMediaProvider],
       });
-      spyOn(MediaMarshaller.prototype, 'onMediaChange').and.callThrough();
-      spyOn(MediaMarshaller.prototype, 'updateStyles').and.callThrough();
+      vi.spyOn(MediaMarshaller.prototype, 'onMediaChange');
+      vi.spyOn(MediaMarshaller.prototype, 'updateStyles');
     });
 
     beforeEach(inject(
@@ -169,8 +169,8 @@ describe('media-marshaller', () => {
           },
         ],
       });
-      spyOn(MediaMarshaller.prototype, 'onMediaChange').and.callThrough();
-      spyOn(MediaMarshaller.prototype, 'updateStyles').and.callThrough();
+      vi.spyOn(MediaMarshaller.prototype, 'onMediaChange');
+      vi.spyOn(MediaMarshaller.prototype, 'updateStyles');
     });
 
     beforeEach(inject(

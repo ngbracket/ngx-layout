@@ -1,3 +1,6 @@
+import '@analogjs/vitest-angular/setup-zone';
+import './styles.scss';
+
 import { getTestBed } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
@@ -7,7 +10,4 @@ import {
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting(),
-  {
-    teardown: { destroyAfterEach: false },
-  },
 );

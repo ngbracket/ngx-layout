@@ -18,8 +18,6 @@ import {
 
 import {
   _dom as _,
-  customMatchers,
-  expect,
   expectEl,
   makeCreateTestComponent,
   queryFor,
@@ -78,7 +76,7 @@ describe('img-src directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
+
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
@@ -110,9 +108,7 @@ describe('img-src directive', () => {
       const img = queryFor(fixture, 'img')[0].nativeElement;
 
       fixture.detectChanges();
-      expect(img).toHaveAttributes({
-        src: '',
-      });
+      expect(img).toHaveAttribute('src', '');
     });
 
     it('should work standard input bindings', () => {
@@ -124,7 +120,7 @@ describe('img-src directive', () => {
 
       fixture.detectChanges();
       if (isPlatformServer(platformId)) {
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: 'url(https://dummyimage.com/300x300/c72538/ffffff.png)',
           },
@@ -134,21 +130,19 @@ describe('img-src directive', () => {
         let url = 'https://dummyimage.com/700x400/258cc7/fff.png';
         fixture.componentInstance.defaultSrc = url;
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${url})`,
           },
           styler,
         );
       } else {
-        expect(imgEl).toHaveAttributes({
-          src: 'https://dummyimage.com/300x300/c72538/ffffff.png',
-        });
+        expect(imgEl).toHaveAttribute('src', 'https://dummyimage.com/300x300/c72538/ffffff.png');
 
         let url = 'https://dummyimage.com/700x400/258cc7/fff.png';
         fixture.componentInstance.defaultSrc = url;
         fixture.detectChanges();
-        expect(imgEl).toHaveAttributes({ src: url });
+        expect(imgEl).toHaveAttribute('src', url);
       }
     });
 
@@ -159,9 +153,7 @@ describe('img-src directive', () => {
 
       const img = queryFor(fixture, 'img')[0].nativeElement;
       fixture.detectChanges();
-      expect(img).toHaveAttributes({
-        src: '',
-      });
+      expect(img).toHaveAttribute('src', '');
     });
 
     it('should only work with "<img>" elements.', () => {
@@ -171,9 +163,7 @@ describe('img-src directive', () => {
 
       const img = queryFor(fixture, 'iframe')[0].nativeElement;
       fixture.detectChanges();
-      expect(img).not.toHaveAttributes({
-        src: '',
-      });
+      expect(img).not.toHaveAttribute('src', '');
     });
 
     it('should not replace src on the server', () => {
@@ -184,7 +174,7 @@ describe('img-src directive', () => {
 
         const img = queryFor(fixture, 'img')[0];
         fixture.detectChanges();
-        expectEl(img).not.toHaveStyle(
+        expectEl(img).not.toHaveInlineStyle(
           {
             content: 'url(https://dummyimage.com/300x300/c72538/ffffff.png)',
           },
@@ -204,7 +194,7 @@ describe('img-src directive', () => {
 
         const img = queryFor(fixture, 'img')[0];
 
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(https://dummyimage.com/300x300/c72538/ffffff.png)`,
           },
@@ -213,7 +203,7 @@ describe('img-src directive', () => {
 
         mediaController.activate('md');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
@@ -236,7 +226,7 @@ describe('img-src directive', () => {
       fixture.detectChanges();
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
@@ -246,23 +236,19 @@ describe('img-src directive', () => {
         // When activating an unused breakpoint, fallback to default [src] value
         mediaController.activate('xl');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['xs'][0]})`,
           },
           styler,
         );
       } else {
-        expect(imgEl).toHaveAttributes({
-          src: SRC_URLS['md'][0],
-        });
+        expect(imgEl).toHaveAttribute('src', SRC_URLS['md'][0]);
 
         // When activating an unused breakpoint, fallback to default [src] value
         mediaController.activate('xl');
         fixture.detectChanges();
-        expect(imgEl).toHaveAttributes({
-          src: SRC_URLS['xs'][0],
-        });
+        expect(imgEl).toHaveAttribute('src', SRC_URLS['xs'][0]);
       }
     });
 
@@ -278,7 +264,7 @@ describe('img-src directive', () => {
       let imgEl = img.nativeElement;
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${defaultSrc})`,
           },
@@ -287,7 +273,7 @@ describe('img-src directive', () => {
 
         mediaController.activate('xs');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${xsSrc})`,
           },
@@ -296,28 +282,22 @@ describe('img-src directive', () => {
 
         mediaController.activate('lg');
         fixture.detectChanges();
-        expectEl(img).toHaveStyle(
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${defaultSrc})`,
           },
           styler,
         );
       } else {
-        expect(imgEl).toHaveAttributes({
-          src: defaultSrc,
-        });
+        expect(imgEl).toHaveAttribute('src', defaultSrc);
 
         mediaController.activate('xs');
         fixture.detectChanges();
-        expect(imgEl).toHaveAttributes({
-          src: xsSrc,
-        });
+        expect(imgEl).toHaveAttribute('src', xsSrc);
 
         mediaController.activate('lg');
         fixture.detectChanges();
-        expect(imgEl).toHaveAttributes({
-          src: defaultSrc,
-        });
+        expect(imgEl).toHaveAttribute('src', defaultSrc);
       }
     });
 
@@ -333,10 +313,8 @@ describe('img-src directive', () => {
       let imgEl = img.nativeElement;
       expect(imgEl).toBeDefined();
       if (isPlatformServer(platformId)) {
-        expect(imgEl).toHaveAttributes({
-          src: '',
-        });
-        expectEl(img).toHaveStyle(
+        expect(imgEl).toHaveAttribute('src', '');
+        expectEl(img).toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
@@ -346,26 +324,20 @@ describe('img-src directive', () => {
         // When activating an unused breakpoint, fallback to default [src] value
         mediaController.activate('xl');
         fixture.detectChanges();
-        expectEl(img).not.toHaveStyle(
+        expectEl(img).not.toHaveInlineStyle(
           {
             content: `url(${SRC_URLS['md'][0]})`,
           },
           styler,
         );
-        expect(imgEl).toHaveAttributes({
-          src: '',
-        });
+        expect(imgEl).toHaveAttribute('src', '');
       } else {
-        expect(imgEl).toHaveAttributes({
-          src: SRC_URLS['md'][0],
-        });
+        expect(imgEl).toHaveAttribute('src', SRC_URLS['md'][0]);
 
         // When activating an unused breakpoint, fallback to default [src] value
         mediaController.activate('xl');
         fixture.detectChanges();
-        expect(imgEl).toHaveAttributes({
-          src: '',
-        });
+        expect(imgEl).toHaveAttribute('src', '');
       }
     });
   });

@@ -1,4 +1,4 @@
-import { OptionalBreakPoint } from './breakpoints';
+import { OptionalBreakPoint } from './breakpoints/break-point-registry';
 import { MediaChange } from './media-change';
 
 /**
