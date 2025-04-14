@@ -37,7 +37,6 @@ export class GridRowsStyleBuilder extends StyleBuilder {
   }
 }
 
-
 const inputs = [
   'gdRows',
   'gdRows.xs',

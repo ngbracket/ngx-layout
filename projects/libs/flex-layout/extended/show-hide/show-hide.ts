@@ -101,7 +101,7 @@ export class ShowHideDirective
     marshal: MediaMarshaller,
     @Inject(LAYOUT_CONFIG) protected layoutConfig: LayoutConfigOptions,
     @Inject(PLATFORM_ID) protected platformId: object,
-    @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean
+    @Inject(SERVER_TOKEN) protected serverModuleLoaded: boolean,
   ) {
     super(elementRef, styleBuilder, styler, marshal);
   }
@@ -133,7 +133,7 @@ export class ShowHideDirective
     const defaultValue = this.marshal.getValue(
       this.nativeElement,
       this.DIRECTIVE_KEY,
-      ''
+      '',
     );
     if (defaultValue === undefined || defaultValue === '') {
       this.setValue(true, '');

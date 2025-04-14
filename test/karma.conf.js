@@ -1,20 +1,20 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-const {customLaunchers, platformMap} = require('./browser-providers');
+const { customLaunchers, platformMap } = require('./browser-providers');
 
 module.exports = function (config) {
   config.set({
-    basePath: "",
-    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    basePath: '',
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
-      require("karma-jasmine"),
-      require("karma-browserstack-launcher"),
+      require('karma-jasmine'),
+      require('karma-browserstack-launcher'),
       require('karma-firefox-launcher'),
-      require("karma-sauce-launcher"),
-      require("karma-chrome-launcher"),
-      require("karma-jasmine-html-reporter"),
-      require("@angular-devkit/build-angular/plugins/karma"),
+      require('karma-sauce-launcher'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('@angular-devkit/build-angular/plugins/karma'),
     ],
     client: {
       jasmine: {
@@ -28,7 +28,7 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     sauceLabs: {
-      testName: "Angular Layout Unit Tests",
+      testName: 'Angular Layout Unit Tests',
       startConnect: false,
       recordVideo: false,
       recordScreenshots: false,
@@ -38,7 +38,7 @@ module.exports = function (config) {
     },
 
     browserStack: {
-      project: "Angular Layout Unit Tests",
+      project: 'Angular Layout Unit Tests',
       startTunnel: true,
       retryLimit: 3,
       timeout: 1800,
@@ -46,13 +46,13 @@ module.exports = function (config) {
     },
 
     // Try Websocket for a faster transmission first. Fallback to polling if necessary.
-    transports: ["websocket", "polling"],
+    transports: ['websocket', 'polling'],
     browserDisconnectTimeout: 180000,
     browserDisconnectTolerance: 3,
     browserNoActivityTimeout: 300000,
     captureTimeout: 180000,
     browsers: ['ChromeHeadlessLocal'],
-    reporters: ["progress", "kjhtml"],
+    reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -61,35 +61,35 @@ module.exports = function (config) {
     restartOnFileChange: true,
   });
 
-  if (process.env["CIRCLECI"]) {
-    const containerInstanceIndex = Number(process.env["CIRCLE_NODE_INDEX"]);
+  if (process.env['CIRCLECI']) {
+    const containerInstanceIndex = Number(process.env['CIRCLE_NODE_INDEX']);
     const maxParallelContainerInstances = Number(
-      process.env["CIRCLE_NODE_TOTAL"]
+      process.env['CIRCLE_NODE_TOTAL'],
     );
-    const tunnelIdentifier = `angular-layout-${process.env["CIRCLE_BUILD_NUM"]}-${containerInstanceIndex}`;
+    const tunnelIdentifier = `angular-layout-${process.env['CIRCLE_BUILD_NUM']}-${containerInstanceIndex}`;
     const buildIdentifier = `circleci-${tunnelIdentifier}`;
-    const testPlatform = process.env["TEST_PLATFORM"];
+    const testPlatform = process.env['TEST_PLATFORM'];
 
     // This defines how often a given browser should be launched in the same CircleCI
     // container. This is helpful if we want to shard tests across the same browser.
     const parallelBrowserInstances =
-      Number(process.env["KARMA_PARALLEL_BROWSERS"]) || 1;
+      Number(process.env['KARMA_PARALLEL_BROWSERS']) || 1;
 
     // In case there should be multiple instances of the browsers, we need to set up the
     // the karma-parallel plugin.
     if (parallelBrowserInstances > 1) {
-      config.frameworks.unshift("parallel");
-      config.plugins.push(require("karma-parallel"));
+      config.frameworks.unshift('parallel');
+      config.plugins.push(require('karma-parallel'));
       config.parallelOptions = {
         executors: parallelBrowserInstances,
-        shardStrategy: "round-robin",
+        shardStrategy: 'round-robin',
       };
     }
 
-    if (testPlatform === "browserstack") {
+    if (testPlatform === 'browserstack') {
       config.browserStack.build = buildIdentifier;
       config.browserStack.tunnelIdentifier = tunnelIdentifier;
-    } else if (testPlatform === "saucelabs") {
+    } else if (testPlatform === 'saucelabs') {
       config.sauceLabs.build = buildIdentifier;
       config.sauceLabs.tunnelIdentifier = tunnelIdentifier;
     }
@@ -97,7 +97,7 @@ module.exports = function (config) {
     const platformBrowsers = platformMap[testPlatform];
     const browserInstanceChunks = splitBrowsersIntoInstances(
       platformBrowsers,
-      maxParallelContainerInstances
+      maxParallelContainerInstances,
     );
 
     // Configure Karma to launch the browsers that belong to the given test platform and
@@ -117,7 +117,7 @@ function splitBrowsersIntoInstances(browsers, maxInstances) {
 
   for (let i = 0; i < maxInstances; i++) {
     const chunkSize = Math.floor(
-      (browsers.length - assignedBrowsers) / (maxInstances - i)
+      (browsers.length - assignedBrowsers) / (maxInstances - i),
     );
     chunks[i] = browsers.slice(assignedBrowsers, assignedBrowsers + chunkSize);
     assignedBrowsers += chunkSize;

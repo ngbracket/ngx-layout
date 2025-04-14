@@ -1,0 +1,21 @@
+{
+  "name": "projects-apps-docs-documentation",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "./projects/apps/docs/documentation/src",
+  "targets": {
+    "build": {
+      "executor": "@nx-extend/docusaurus:browser",
+      "options": {
+        "outputPath": "dist/./projects/apps/docs/documentation"
+      }
+    },
+    "serve": {
+      "executor": "@nx-extend/docusaurus:dev-server",
+      "options": {
+        "port": 3000
+      }
+    }
+  },
+  "tags": []
+}

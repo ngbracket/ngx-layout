@@ -10,7 +10,6 @@
       "outputs": ["{workspaceRoot}/dist/releases/ngx-layout"],
       "options": {
         "project": "projects/libs/flex-layout/ng-package.json"
-
       },
       "configurations": {
         "production": {

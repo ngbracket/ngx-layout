@@ -1,5 +1,8 @@
 const { resolve } = require('path');
-const { AngularWebpackPlugin, AngularWebpackLoaderPath } = require('@ngtools/webpack');
+const {
+  AngularWebpackPlugin,
+  AngularWebpackLoaderPath,
+} = require('@ngtools/webpack');
 
 module.exports = {
   mode: 'development',
