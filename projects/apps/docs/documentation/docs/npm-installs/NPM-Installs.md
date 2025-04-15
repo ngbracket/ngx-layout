@@ -2,7 +2,7 @@
 sidebar_position: 30
 ---
 
-## Install Latest NPM Release
+# Install Latest NPM Release
 
 ```bash
 npm install --save @ngbracket/ngx-layout@latest

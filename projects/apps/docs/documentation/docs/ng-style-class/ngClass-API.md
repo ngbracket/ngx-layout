@@ -2,7 +2,7 @@
 sidebar_position: 28
 ---
 
-## ngClass
+# ngClass
 
 The _@ngbracket/ngx-layout_ [**ngClass**][ngclass] directive is a subclass of the _@angular/common_
 [**ngClass**][aiongclass] directive.

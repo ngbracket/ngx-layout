@@ -2,7 +2,7 @@
 sidebar_position: 18
 ---
 
-## FxHide
+# FxHide
 
 The **fxHide** directive allows developers to dynamically and/or responsively show/hide the hosting element. The fxHide
 logic defaults to **hiding** an element.

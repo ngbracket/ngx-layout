@@ -2,7 +2,7 @@
 sidebar_position: 16
 ---
 
-## FxFlexOffset
+# FxFlexOffset
 
 The [**fxFlexOffset** directive][offset] should be used on on elements within a **fxLayout** container and
 dictates the margin between elements (RTL support coming soon!)

@@ -2,7 +2,7 @@
 sidebar_position: 10
 ---
 
-## Static API Overview
+# Static API Overview
 
 The ngx-layout features provide smart, syntactic directives to allow developers to easily and intuitively create
 responsive and adaptive layouts using Flexbox CSS.

@@ -2,7 +2,7 @@
 sidebar_position: 20
 ---
 
-## FxLayoutAlign
+# FxLayoutAlign
 
 The [**fxLayoutAlign** directive][layout] should be used on DOM containers whose children should be aligned on the main
 and cross-axis (optional)

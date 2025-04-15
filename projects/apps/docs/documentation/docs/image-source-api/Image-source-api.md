@@ -2,7 +2,7 @@
 sidebar_position: 24
 ---
 
-## FxImgSrc
+# FxImgSrc
 
 The [**imgSrc** directive][imgsrc] is a responsive extension of the HTML &lt;img&gt; `src` attribute and can be used on any
 &lt;img&gt; tag in the markup

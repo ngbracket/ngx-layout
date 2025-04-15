@@ -2,7 +2,7 @@
 sidebar_position: 19
 ---
 
-## FxLayout
+# FxLayout
 
 The [**fxLayout** directive][layout] should be used on DOM containers whose children should layout or flow as the text
 direction along the main-axis or the cross-axis.

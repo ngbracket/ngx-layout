@@ -2,7 +2,7 @@
 sidebar_position: 12
 ---
 
-## NPM Install
+# NPM Install
 
 ```terminal
 npm install https://github.com/ngbracket/ngx-layout-builds --save

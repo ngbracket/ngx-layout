@@ -2,7 +2,7 @@
 sidebar_position: 14
 ---
 
-## FxFlexAlign
+# FxFlexAlign
 
 The [**fxFlexAlign** directive][align] should be used on on elements within a sorted **fxLayout** container and
 dictates how the element should be aligned, overriding the container cross-axis alignment setting

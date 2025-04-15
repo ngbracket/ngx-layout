@@ -2,7 +2,7 @@
 sidebar_position: 22
 ---
 
-## FxShow
+# FxShow
 
 The **fxShow** directive allows developers to dynamically and/or responsively show/hide the hosting element. The fxShow
 logic defaults to **showing** an element.

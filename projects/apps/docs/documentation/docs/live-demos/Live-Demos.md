@@ -2,7 +2,7 @@
 sidebar_position: 26
 ---
 
-## Live Layout Demos
+# Live Layout Demos
 
 Real-world usages of Layouts (both static and responsive) are available on the
 [ngx-layout Demos](https://ngx-layout.ngbracket.com) site. The samples available are

@@ -2,7 +2,7 @@
 sidebar_position: 17
 ---
 
-## FxFlexOrder
+# FxFlexOrder
 
 The [**fxFlexOrder** directive][order] should be used on elements within a sorted **fxLayout** container and identifies
 the positional ordering of the element

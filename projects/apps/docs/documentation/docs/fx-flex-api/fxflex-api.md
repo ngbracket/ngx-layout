@@ -2,7 +2,7 @@
 sidebar_position: 13
 ---
 
-## FxFlex
+# FxFlex
 
 The [**fxFlex** directive][fxflex] should be used on elements within a **fxLayout** container and identifies the
 resizing of that element within the flexbox container flow.

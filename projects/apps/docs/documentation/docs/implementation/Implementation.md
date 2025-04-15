@@ -2,7 +2,7 @@
 sidebar_position: 25
 ---
 
-## Implementation
+# Implementation
 
 The Angular architecture for Layouts eliminates `all` external Flexbox stylesheets and SCSS files formerly used in
 the AngularJS Material Layout implementations.

@@ -2,7 +2,7 @@
 sidebar_position: 21
 ---
 
-## FxLayoutGap
+# FxLayoutGap
 
 The [**fxLayoutGap** directive](https://github.com/ngbracket/ngx-layout/blob/main/src/lib/flex/layout-gap/layout-gap.ts#L38)
 should be used on to specify margin gaps on children within a flexbox container (e.g. nested within a fxLayout container).

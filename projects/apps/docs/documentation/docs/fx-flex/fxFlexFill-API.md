@@ -2,7 +2,7 @@
 sidebar_position: 15
 ---
 
-## FxFlexFill
+# FxFlexFill
 
 The [**fxFlexFill** directive][fill] should be used on elements within a **fxLayout** container and identifies the
 element whose width and height should be maximized

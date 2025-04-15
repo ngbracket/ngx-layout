@@ -2,7 +2,7 @@
 sidebar_position: 11
 ---
 
-## Getting your environment set up
+# Getting your environment set up
 
 1. Make sure you have `node` installed with a version at _least_ 20
 2. Install `nx` from Nx.dev
