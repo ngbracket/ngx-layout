@@ -16,9 +16,7 @@
     "noImplicitAny": true,
     "target": "es2020",
     "removeComments": true,
-    "types": [
-      "node"
-    ],
-    "baseUrl": ".",
+    "types": ["node"],
+    "baseUrl": "."
   }
 }
