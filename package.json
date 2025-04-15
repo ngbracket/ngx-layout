@@ -22,6 +22,7 @@
     "docs": "nx serve documentation",
     "stamp": "ts-node tools/package-tools/version-placeholders.ts --module=commonjs",
     "build:demo-app": "nx run demo-app:build:production",
+    "build:docs": "nx run documentation:build:production",
     "build:universal-demo-app": "nx run universal-demo-app:build:production",
     "serve:universal-demo-app": "nx run universal-demo-app:serve-ssr",
     "test": "nx test @ngbracket/ngx-layout",
