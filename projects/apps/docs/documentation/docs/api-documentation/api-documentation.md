@@ -1,12 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 # API Documentation
 
 ## JavaScript API (Imperative)
 
-Most of the @ngbracket/ngx-layout functionality is provided via Directives used declaratively in template HTML. There are three (3) programmatic features, however, that are published for programmatic usages:
+Most of the **ngx-layout** functionality is provided via Directives used declaratively in template HTML. There are three (3) programmatic features that are published for programmatic usages:
 
 [ObservableMedia](https://github.com/ngbracket/ngx-layout/wiki/ObservableMedia): Injectable Observable used to subscribe to MediaQuery activation changes.
 
@@ -32,12 +32,12 @@ export class ClassDirective extends NgClass { ... }
 
 ## HTML API (Declarative)
 
-The features of ngx-layout are best used declaratively in template HTML. This API has two (2) significant feature sets:
+The features of **ngx-layout** are best used declaratively in template HTML. This API has two (2) significant feature sets:
 
 - [Static API](https://github.com/ngbracket/ngx-layout/wiki/Declarative-API-Overview): Summary of static API features.
 - [Responsive API](https://github.com/ngbracket/ngx-layout/wiki/Responsive-API): Introducing Responsive API and BreakPoints details.
 
-As each directive (aka API) within @ngbracket/ngx-layout has its own constraints and options, the links below should be used to navigate to the specific documentation pages for each directive
+As each directive (aka API) within **ngx-layout** has its own constraints and options, the links below should be used to navigate to the specific documentation pages for each directive
 
 This API set applies flexbox CSS stylings for DOM container elements with 1 or more nested flex children:
 

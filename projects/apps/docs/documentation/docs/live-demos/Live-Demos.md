@@ -1,5 +1,5 @@
 ---
-sidebar_position: 26
+sidebar_position: 260
 ---
 
 # Live Layout Demos
@@ -8,7 +8,7 @@ Real-world usages of Layouts (both static and responsive) are available on the
 [ngx-layout Demos](https://ngx-layout.ngbracket.com) site. The samples available are
 curated from the following sources:
 
-- Layout Documentation (AngularJS Material)
+- Layout Documentation (Angular Material)
 - GitHub Issuses
 - StackOverflow Issues
 - CodePen Issues
@@ -24,7 +24,7 @@ nx run updated:demo
 
 ### Universal (SSR) Demos
 
-A small-scale application that demonstrates how to use ngx-layout on the server. This site is not
+A small-scale application that demonstrates how to use **ngx-layout** on the server. This site is not
 available publically, but can be run with the following command:
 
 `nx run serve:universal-demo-app`

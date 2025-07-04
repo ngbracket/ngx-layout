@@ -1,11 +1,8 @@
 ---
-sidebar_position: 25
+sidebar_position: 250
 ---
 
 # Implementation
-
-The Angular architecture for Layouts eliminates `all` external Flexbox stylesheets and SCSS files formerly used in
-the AngularJS Material Layout implementations.
 
 This is pure TypeScript, Angular Layout engine that is independent of Angular Material... yet can be used easily
 within any Angular Material application.

@@ -1,16 +1,12 @@
 ---
-sidebar_position: 12
+sidebar_position: 120
 ---
 
-# NPM Install
+# Fast Starts
 
-```terminal
-npm install https://github.com/ngbracket/ngx-layout-builds --save
-```
+Modify your `app.module.ts` to use the `FlexLayoutModule`:
 
-> Note: this installs a nightly build required for Angular 4.x; until Beta.9 is released.
-
-Next, modify your `app.module.ts` to use the `FlexLayoutModule`:
+This is deprecated and will be removed in a future version.
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -27,53 +23,24 @@ import { DemoAppComponent } from './demo-app/demo-app';
 export class DemoAppModule {}
 ```
 
-<br/>
-
-### SystemJS + UMD
-
-If your project is using SystemJS for module loading, you will need to add `@ngbracket/ngx-layout` to the SystemJS
-configuration.
-
-Here is a example configuration where `@ngbracket/ngx-layout` is used:
-
-```js
-System.config({
-  // Existing configuration options
-  map: {
-    // ...
-    '@ngbracket/ngx-layout':
-      'npm:@ngbracket/ngx-layout/bundles/flex-layout.umd.js',
-    // ...
-  },
-});
-```
-
----
-
-### 1) Angular CLI + **`npm`** + `@ngbracket/ngx-layout`
-
-If you are using the Angular CLI to bundle and serve your application (using `ng serve`), run the following command:
-
-```terminal
-npm install ngbracket/ngx-layout-builds
-```
-
-Next, modify your `app.module.ts` to use the `FlexLayoutModule`:
+Modify your `component` to use the `FlexLayout` Directives:
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-
-import { DemoAppComponent } from './demo-app/demo-app';
-
-@NgModule({
-  declarations: [DemoAppComponent],
-  bootstrap: [DemoAppComponent],
-  imports: [BrowserModule, FlexLayoutModule],
+@Component({
+  selector: 'app-component',
+  imports: [
+    FlexDirective,
+    LayoutAlignDirective,
+    LayoutDirective,
+    FlexDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
+  ],
+  //class details
 })
-export class DemoAppModule {}
 ```
+
+Add the directives you need to your standalone component
 
 ### Local Builds
 

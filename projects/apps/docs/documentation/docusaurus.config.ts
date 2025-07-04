@@ -10,7 +10,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs-ngx-layout.ngbracket.com',
+  url: 'https://docs.ngx-layout.ngbracket.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -105,14 +105,14 @@ const config: Config = {
               label: 'Stack Overflow',
               href: 'https://stackoverflow.com/questions/tagged/@angular-flex-layout',
             },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/#',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/#',
-            },
+            // {
+            //   label: 'Discord',
+            //   href: 'https://discordapp.com/invite/#',
+            // },
+            // {
+            //   label: 'X',
+            //   href: 'https://x.com/#',
+            // },
           ],
         },
         {

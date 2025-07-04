@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Breakpoints
 
-The token BREAKPOINTS is an injection token in @ngbracket/ngx-layout that is used to build a Provider for a raw list of breakpoints.
+The token BREAKPOINTS is an injection token in **ngx-layout** that is used to build a Provider for a raw list of breakpoints.
 
 ```typescript
 import {
@@ -91,7 +91,7 @@ The default value for this breakpoint is false
 
 ## Adding the orientation breakpoints
 
-The orientation breakpoints are a set of breakpoints that detect when a device is in portrait or landscape mode. Flex Layout has a set of these that conform to the Material Design spec built-in to the library. They can be found in the `ORIENTATION_BREAKPOINTS` `InjectionToken`. To have these added to the default breakpoints, you can provide the token `ADD_ORIENTATION_BREAKPOINTS` to your app as follows:
+The orientation breakpoints are a set of breakpoints that detect when a device is in portrait or landscape mode. **Ngx-layout** has a set of these that conform to the Material Design spec built-in to the library. They can be found in the `ORIENTATION_BREAKPOINTS` `InjectionToken`. To have these added to the default breakpoints, you can provide the token `ADD_ORIENTATION_BREAKPOINTS` to your app as follows:
 
 ```typescript
 import {ADD_ORIENTATION_BREAKPOINTS} from '@ngbracket/ngx-layout';
@@ -103,7 +103,7 @@ The default value for this breakpoint is false
 
 ## Custom Breakpoints and Directives
 
-It must be noted that simply registering custom breakpoints will not automatically mean that ngx-layout API will support those as selectors.
+It must be noted that simply registering custom breakpoints will not automatically mean that **ngx-layout** API will support those as selectors.
 
 In the above example the custom Breakpoint has been registered, but HTML selectors for xs.print` will not work automatically. Consider the scenario below where some content should be hidden while printing and other content has different layouts while printing:
 

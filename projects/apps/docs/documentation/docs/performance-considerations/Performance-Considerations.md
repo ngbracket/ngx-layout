@@ -1,12 +1,12 @@
 ---
-sidebar_position: 32
+sidebar_position: 320
 ---
 
 # Performance considerations with Tables
 
 **@ngbracket/ngx-layout** performs extremely well for most usage scenarios EXCEPT large tables.
 
-Developers generating dynamic tables (using `*ngFor`) should be aware of performance impacts using Flex-Layout
+Developers generating dynamic tables (using `@for`) should be aware of performance impacts using Flex-Layout
 directives.
 
 For small number of rows (e.g. < 100), @ngbracket/ngx-layout is a excellent choice for layouts. Consider the table
@@ -14,11 +14,13 @@ definition below were each row has column elements; each using a `fxFlex`. Since
 each element in each row, large tables may manifest performance impacts with dynamic inline stylings.
 
 ```html
-<div *ngFor="let obj of data" fxLayout fxLayout.xs="column">
+@for(obj of data; track obj.origin){
+<div fxLayout fxLayout.xs="column">
   <div fxFlex="40">{{obj.origin}}</div>
   <div fxFlex="40">{{obj.destination}}</div>
   <div fxFlex="20">{{obj.price}}</div>
 </div>
+}
 ```
 
 Note that both the **initial** and **media-query**-triggered layout phase manifest redraw-performance issues.

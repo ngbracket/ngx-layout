@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { Directionality } from '@angular/cdk/bidi';
 import {
   AfterContentInit,
