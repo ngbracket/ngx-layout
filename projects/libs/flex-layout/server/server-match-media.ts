@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
+
+import { Inject, Injectable, NgZone, PLATFORM_ID, DOCUMENT } from '@angular/core';
 import {
   BreakPoint,
   BREAKPOINTS,

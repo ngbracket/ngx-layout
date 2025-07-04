@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -71,13 +71,12 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
     `,
   ],
   imports: [
-    CommonModule,
     MatSidenavModule,
     MatListModule,
     RouterModule,
     MatIconModule,
-    MenuItemComponent,
-  ],
+    MenuItemComponent
+],
 })
 export class CustomSidenavComponent {
   collapsed = input<boolean>(false);

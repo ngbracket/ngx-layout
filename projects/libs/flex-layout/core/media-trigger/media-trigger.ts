@@ -1,5 +1,5 @@
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID, DOCUMENT } from '@angular/core';
 
 import { fromEvent, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';

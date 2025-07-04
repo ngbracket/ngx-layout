@@ -1,8 +1,9 @@
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {
   APP_BOOTSTRAP_LISTENER,
   InjectionToken,
   PLATFORM_ID,
+  DOCUMENT
 } from '@angular/core';
 
 /**

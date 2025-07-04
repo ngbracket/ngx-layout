@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import { BEFORE_APP_SERIALIZED } from '@angular/platform-server';
 import {
   BreakPoint,
@@ -11,7 +11,7 @@ import {
   StylesheetMap,
 } from '@ngbracket/ngx-layout/core';
 
-import { CSP_NONCE, Inject, Optional } from '@angular/core';
+import { CSP_NONCE, Inject, Optional, DOCUMENT } from '@angular/core';
 import { ServerMatchMedia } from './server-match-media';
 
 /**

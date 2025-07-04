@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
         </li>
       </ul>
     </div>
-  `,
+    `,
   styleUrls: ['./media-query-status.component.scss'],
   standalone: false,
 })

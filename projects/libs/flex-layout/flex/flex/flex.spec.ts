@@ -1233,7 +1233,7 @@ describe('flex directive', () => {
           <div fxFlex></div>
         </div>
       `);
-      styleBuilder = TestBed.get(FlexStyleBuilder);
+      styleBuilder = TestBed.inject(FlexStyleBuilder);
 
       // Reset the cache because the layout config is only set at startup
       styleBuilder.shouldCache = false;
