@@ -1,41 +1,41 @@
 import clsx from 'clsx';
-import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: JSX.Element;
+  description: React.JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Simple to Use',
+    Svg: require('@site/static/img/blank.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Ngx-layout is a sophisticated layout API using FlexBox CSS + mediaQuery.
+        Providing Angular developers with component layout features using a
+        custom Layout API.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Focus on your application',
+    Svg: require('@site/static/img/blank.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        The Layout engine intelligently automates the process of applying
+        appropriate FlexBox CSS to browser view hierarchies.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Powered by TypeScript',
+    Svg: require('@site/static/img/blank.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Ngx-layout is a pure-Typescript Layout engine; unlike the pure CSS-only
+        implementations published in other Flexbox libraries.
       </>
     ),
   },
@@ -45,19 +45,20 @@ function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <Svg className={styles['featureSvg']} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
+        {/* <Heading as="h3">{title}</Heading> */}
+        <h3>{title}</h3>
         <p>{description}</p>
       </div>
     </div>
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures(): React.JSX.Element {
   return (
-    <section className={styles.features}>
+    <section className={styles['features']}>
       <div className="container">
         <div className="row">
           {FeatureList.map((props, idx) => (

@@ -43,7 +43,7 @@ export class FlexLayoutModule {
 
   constructor(
     @Inject(SERVER_TOKEN) serverModuleLoaded: boolean,
-    @Inject(PLATFORM_ID) platformId: Object,
+    @Inject(PLATFORM_ID) platformId: object,
   ) {
     if (isPlatformServer(platformId) && !serverModuleLoaded) {
       console.warn(

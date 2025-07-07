@@ -1,5 +1,5 @@
 ---
-sidebar_position: 31
+sidebar_position: 310
 ---
 
 # Observable Media
@@ -41,19 +41,19 @@ Shown below is the service injection and the subscription to the observable: to 
 regarding mediaQuery activations.
 
 ```typescript
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { MediaChange, ObservableMedia } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'responsive-component',
 })
-export class MyDemo implements OnDestroy {
-  watcher: Subscription;
+export class MyDemo {
+  private readonly media = inject(ObservableMedia);
   activeMediaQuery = '';
 
-  constructor(media: ObservableMedia) {
-    this.watcher = media.subscribe((change: MediaChange) => {
+  constructor() {
+    this.media.subscribe((change: MediaChange) => {
       this.activeMediaQuery = change
         ? `'${change.mqAlias}' = (${change.mediaQuery})`
         : '';
@@ -61,10 +61,6 @@ export class MyDemo implements OnDestroy {
         this.loadMobileContent();
       }
     });
-  }
-
-  ngOnDestroy() {
-    this.watcher.unsubscribe();
   }
 
   loadMobileContent() {
@@ -145,7 +141,7 @@ const PRINT_MOBILE = 'print and (max-width: 600px)';
   `,
 })
 export class MyDemo implements OnInit {
-  constructor(public media: ObservableMedia) {}
+  private readonly media = inject(ObservableMedia);
 
   ngOnInit() {
     if (this.media.isActive('xs') && !this.media.isActive(PRINT_MOBILE)) {

@@ -1,256 +1,256 @@
-# Configuration file for https://circleci.com/gh/angular/flex-layout
-# based on the configuration for https://circleci.com/gh/angular/material2
-# Credit for file goes to Paul Gschwendtner (@DevVersion)
+# # Configuration file for https://circleci.com/gh/angular/flex-layout
+# # based on the configuration for https://circleci.com/gh/angular/material2
+# # Credit for file goes to Paul Gschwendtner (@DevVersion)
 
-# Note: YAML anchors allow an object to be re-used, reducing duplication.
-# The ampersand declares an alias for an object, then later the `<<: *name`
-# syntax dereferences it.
-# See http://blog.daemonl.com/2016/02/yaml.html
-# To validate changes, use an online parser, eg.
-# http://yaml-online-parser.appspot.com/
+# # Note: YAML anchors allow an object to be re-used, reducing duplication.
+# # The ampersand declares an alias for an object, then later the `<<: *name`
+# # syntax dereferences it.
+# # See http://blog.daemonl.com/2016/02/yaml.html
+# # To validate changes, use an online parser, eg.
+# # http://yaml-online-parser.appspot.com/
 
-var_1: &docker_image cimg/node:20.15.1
-var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "pnpm-lock.yaml" }}
+# var_1: &docker_image cimg/node:20.15.1
+# var_2: &cache_key v2-ng-layout-{{ .Branch }}-{{ checksum "pnpm-lock.yaml" }}
 
-# Settings common to each job
-var_3: &job_defaults
-  working_directory: ~/ng
-  docker:
-    - image: *docker_image
+# # Settings common to each job
+# var_3: &job_defaults
+#   working_directory: ~/ng
+#   docker:
+#     - image: *docker_image
 
-# Job step for checking out the source code from GitHub. This also ensures that the source code
-# is rebased on top of master.
-var_4: &checkout_code
-  checkout:
-    # After checkout, rebase on top of master. By default, PRs are not rebased on top of master,
-    # which we want. See https://discuss.circleci.com/t/1662
-    post: git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
+# # Job step for checking out the source code from GitHub. This also ensures that the source code
+# # is rebased on top of master.
+# var_4: &checkout_code
+#   checkout:
+#     # After checkout, rebase on top of master. By default, PRs are not rebased on top of master,
+#     # which we want. See https://discuss.circleci.com/t/1662
+#     post: git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
 
-# Restores the cache that could be available for the current pnpm lock file. The cache usually
-# includes the node modules and the build cache.
-var_5: &restore_cache
-  restore_cache:
-    key: *cache_key
+# # Restores the cache that could be available for the current pnpm lock file. The cache usually
+# # includes the node modules and the build cache.
+# var_5: &restore_cache
+#   restore_cache:
+#     key: *cache_key
 
-# Saves the cache for the current pnpm lock file. We store the node modules and the build
-# cache in order to make subsequent builds faster.
-var_6: &save_cache
-  save_cache:
-    key: *cache_key
-    paths:
-      - ~/.cache/pnpm
+# # Saves the cache for the current pnpm lock file. We store the node modules and the build
+# # cache in order to make subsequent builds faster.
+# var_6: &save_cache
+#   save_cache:
+#     key: *cache_key
+#     paths:
+#       - ~/.cache/pnpm
 
-# Job step that ensures that the node module dependencies are installed and up-to-date. We use
-# pnpm with the frozen lockfile option in order to make sure that lock file and package.json are
-# in sync. Unlike in Travis, we don't need to manually purge the node modules if stale because
-# CircleCI automatically discards the cache if the checksum of the lock file has changed.
-var_7: &pnpm_install
-  run: pnpm install # --frozen-lockfile --non-interactive //when set up with yarn
+# # Job step that ensures that the node module dependencies are installed and up-to-date. We use
+# # pnpm with the frozen lockfile option in order to make sure that lock file and package.json are
+# # in sync. Unlike in Travis, we don't need to manually purge the node modules if stale because
+# # CircleCI automatically discards the cache if the checksum of the lock file has changed.
+# var_7: &pnpm_install
+#   run: pnpm install # --frozen-lockfile --non-interactive //when set up with yarn
 
-# Sets up a different Docker image that includes a moe recent Firefox version which
-# is needed for headless testing.
-var_8: &docker-firefox-image
-  # TODO(devversion): Temporarily use a image that includes Firefox 62 because the
-  # ngcontainer image does include an old Firefox version that does not support headless.
-  # See the PR that fixes this: https://github.com/angular/angular/pull/26435
-  - image: cimg/node:20.18.1-browsers
+# # Sets up a different Docker image that includes a moe recent Firefox version which
+# # is needed for headless testing.
+# var_8: &docker-firefox-image
+#   # TODO(devversion): Temporarily use a image that includes Firefox 62 because the
+#   # ngcontainer image does include an old Firefox version that does not support headless.
+#   # See the PR that fixes this: https://github.com/angular/angular/pull/26435
+#   - image: cimg/node:20.18.1-browsers
 
-# Attaches the release output which has been stored in the workspace to the current job.
-# https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
-var_9: &attach_release_output
-  attach_workspace:
-    at: .
+# # Attaches the release output which has been stored in the workspace to the current job.
+# # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+# var_9: &attach_release_output
+#   attach_workspace:
+#     at: .
 
-# -----------------------------
-# Container version of CircleCI
-# -----------------------------
-version: 2.1
-orbs:
-  browser-tools: circleci/browser-tools@1.4.8
+# # -----------------------------
+# # Container version of CircleCI
+# # -----------------------------
+# version: 2.1
+# orbs:
+#   browser-tools: circleci/browser-tools@1.4.8
 
-# -----------------------------------------------------------------------------------------
-# Job definitions. Jobs which are defined just here, will not run automatically. Each job
-# must be part of a workflow definition in order to run for PRs and push builds.
-# -----------------------------------------------------------------------------------------
-jobs:
-  # -----------------------------------
-  # Build job
-  # -----------------------------------
-  build:
-    <<: *job_defaults
-    steps:
-      - *checkout_code
-      - *restore_cache
-      - *pnpm_install
+# # -----------------------------------------------------------------------------------------
+# # Job definitions. Jobs which are defined just here, will not run automatically. Each job
+# # must be part of a workflow definition in order to run for PRs and push builds.
+# # -----------------------------------------------------------------------------------------
+# jobs:
+#   # -----------------------------------
+#   # Build job
+#   # -----------------------------------
+#   build:
+#     <<: *job_defaults
+#     steps:
+#       - *checkout_code
+#       - *restore_cache
+#       - *pnpm_install
 
-      - run: pnpm build
+#       - run: pnpm build
 
-      # Note: We want to save the cache in this job because the workspace cache also
-      # includes the build cache that will be updated in this job.
-      - *save_cache
+#       # Note: We want to save the cache in this job because the workspace cache also
+#       # includes the build cache that will be updated in this job.
+#       - *save_cache
 
-      # Store the release output in the workspace storage. This means that other jobs
-      # in the same workflow can attach the release output to their job.
-      - persist_to_workspace:
-          root: '.'
-          paths:
-            - node_modules
-            - dist/releases
-  # ------------------------------------------------------------------------------------------
-  # Job that runs the unit tests on locally installed browsers (Chrome and Firefox headless).
-  # The available browsers are installed through the angular/ngcontainer Docker image.
-  # ------------------------------------------------------------------------------------------
-  tests_local_browsers:
-    docker: *docker-firefox-image
-    steps:
-      - *checkout_code
-      - *attach_release_output
-      - browser-tools/install-browser-tools
+#       # Store the release output in the workspace storage. This means that other jobs
+#       # in the same workflow can attach the release output to their job.
+#       - persist_to_workspace:
+#           root: '.'
+#           paths:
+#             - node_modules
+#             - dist/releases
+#   # ------------------------------------------------------------------------------------------
+#   # Job that runs the unit tests on locally installed browsers (Chrome and Firefox headless).
+#   # The available browsers are installed through the angular/ngcontainer Docker image.
+#   # ------------------------------------------------------------------------------------------
+#   tests_local_browsers:
+#     docker: *docker-firefox-image
+#     steps:
+#       - *checkout_code
+#       - *attach_release_output
+#       - browser-tools/install-browser-tools
 
-      - run: ./scripts/circleci/run-local-browser-tests.sh
+#       - run: ./scripts/circleci/run-local-browser-tests.sh
 
-  # ----------------------------------------------------------------------------
-  # Job that runs the unit tests on Browserstack. The browsers that will be used
-  # to run the unit tests on Browserstack are set in: test/browser-providers.js
-  # ----------------------------------------------------------------------------
-  # tests_browserstack:
-  #  <<: *job_defaults
-  #  resource_class: xlarge
-  #  environment:
-  #    BROWSER_STACK_USERNAME: 'adamplumer1'
-  #    BROWSER_STACK_ACCESS_KEY: 'WgLjxoB2zQ3tqmsznKnz'
-  #  steps:
-  #    - *checkout_code
-  #    - *restore_cache
-  #    - *attach_release_output
-  #    - run: ./scripts/circleci/run-browserstack-tests.sh
+#   # ----------------------------------------------------------------------------
+#   # Job that runs the unit tests on Browserstack. The browsers that will be used
+#   # to run the unit tests on Browserstack are set in: test/browser-providers.js
+#   # ----------------------------------------------------------------------------
+#   # tests_browserstack:
+#   #  <<: *job_defaults
+#   #  resource_class: xlarge
+#   #  environment:
+#   #    BROWSER_STACK_USERNAME: 'adamplumer1'
+#   #    BROWSER_STACK_ACCESS_KEY: 'WgLjxoB2zQ3tqmsznKnz'
+#   #  steps:
+#   #    - *checkout_code
+#   #    - *restore_cache
+#   #    - *attach_release_output
+#   #    - run: ./scripts/circleci/run-browserstack-tests.sh
 
-  # ----------------------------------------------------------------------------
-  # Job that runs the unit tests on Saucelabs. The browsers that will be used
-  # to run the unit tests on Saucelabs are set in: test/browser-providers.js
-  # ----------------------------------------------------------------------------
+#   # ----------------------------------------------------------------------------
+#   # Job that runs the unit tests on Saucelabs. The browsers that will be used
+#   # to run the unit tests on Saucelabs are set in: test/browser-providers.js
+#   # ----------------------------------------------------------------------------
 
-  # tests_saucelabs:
-  #   <<: *job_defaults
-  #   environment:
-  #     SAUCE_USERNAME: 'angular-flex-layout'
-  #     SAUCE_ACCESS_KEY: 'fa20eb1f457c-1f1a-c4c4-41ea-ef9e7f13'
-  #     # Note: This number should not be too high because otherwise we might run into
-  #     # a rate limit exception.
-  #     KARMA_PARALLEL_BROWSERS: 2
-  #   steps:
-  #     - *checkout_code
-  #     - *attach_release_output
-  #     - browser-tools/install-browser-tools
+#   # tests_saucelabs:
+#   #   <<: *job_defaults
+#   #   environment:
+#   #     SAUCE_USERNAME: 'angular-flex-layout'
+#   #     SAUCE_ACCESS_KEY: 'fa20eb1f457c-1f1a-c4c4-41ea-ef9e7f13'
+#   #     # Note: This number should not be too high because otherwise we might run into
+#   #     # a rate limit exception.
+#   #     KARMA_PARALLEL_BROWSERS: 2
+#   #   steps:
+#   #     - *checkout_code
+#   #     - *attach_release_output
+#   #     - browser-tools/install-browser-tools
 
-  #     - run: ./scripts/circleci/run-saucelabs-tests.sh
+#   #     - run: ./scripts/circleci/run-saucelabs-tests.sh
 
-  # --------------------------------------------------
-  # Job that runs the unit tests on the SSR platform
-  # --------------------------------------------------
-  tests_ssr:
-    <<: *job_defaults
-    steps:
-      - *checkout_code
-      - *restore_cache
-      - *attach_release_output
+#   # --------------------------------------------------
+#   # Job that runs the unit tests on the SSR platform
+#   # --------------------------------------------------
+#   tests_ssr:
+#     <<: *job_defaults
+#     steps:
+#       - *checkout_code
+#       - *restore_cache
+#       - *attach_release_output
 
-      - run: pnpm test:ssr
+#       - run: pnpm test:ssr
 
-  # -------------------------------------------------------------------------
-  # Job that pre-render's the universal app with `@angular/platform-server`.
-  # This verifies that Angular Layout can be rendered within Node.
-  # -------------------------------------------------------------------------
-  integration_tests:
-    <<: *job_defaults
-    steps:
-      - *checkout_code
-      - *attach_release_output
+#   # -------------------------------------------------------------------------
+#   # Job that pre-render's the universal app with `@angular/platform-server`.
+#   # This verifies that Angular Layout can be rendered within Node.
+#   # -------------------------------------------------------------------------
+#   integration_tests:
+#     <<: *job_defaults
+#     steps:
+#       - *checkout_code
+#       - *attach_release_output
 
-      - run: pnpm run build
-      - run: pnpm build:universal-demo-app
+#       - run: pnpm run build
+#       - run: pnpm build:universal-demo-app
 
-  # ----------------------------------
-  # Lint job. Runs the gulp lint task.
-  # ----------------------------------
-  lint:
-    <<: *job_defaults
-    steps:
-      - *checkout_code
-      - *restore_cache
-      - *pnpm_install
+#   # ----------------------------------
+#   # Lint job. Runs the gulp lint task.
+#   # ----------------------------------
+#   lint:
+#     <<: *job_defaults
+#     steps:
+#       - *checkout_code
+#       - *restore_cache
+#       - *pnpm_install
 
-      - run: pnpm lint
+#       - run: pnpm lint
 
-  # ----------------------------------------
-  # Job that publishes the build snapshots
-  # ----------------------------------------
-  publish_snapshots:
-    <<: *job_defaults
-    steps:
-      # Since CircleCI currently does not have any way to easily restrict jobs to only run
-      # for push builds, we need to manually skip publishing if the jobs runs for a PR.
-      # https://discuss.circleci.com/t/workflows-pull-request-filter/14396/11
-      - run:
-          name: Check whether this job should be skipped.
-          command: '[[ -n ${CIRCLE_PR_NUMBER} ]] && circleci step halt || true'
+#   # ----------------------------------------
+#   # Job that publishes the build snapshots
+#   # ----------------------------------------
+#   publish_snapshots:
+#     <<: *job_defaults
+#     steps:
+#       # Since CircleCI currently does not have any way to easily restrict jobs to only run
+#       # for push builds, we need to manually skip publishing if the jobs runs for a PR.
+#       # https://discuss.circleci.com/t/workflows-pull-request-filter/14396/11
+#       - run:
+#           name: Check whether this job should be skipped.
+#           command: '[[ -n ${CIRCLE_PR_NUMBER} ]] && circleci step halt || true'
 
-      - *checkout_code
-      - *attach_release_output
-      - run: pnpm stamp
+#       - *checkout_code
+#       - *attach_release_output
+#       - run: pnpm stamp
 
-      # CircleCI has a config setting to enforce SSH for all github connections.
-      # This is not compatible with our mechanism of using a Personal Access Token
-      # to publish the build snapshots. In order to fix this, we unset the global option.
-      - run: git config --global --unset "url.ssh://git@github.com.insteadof"
+#       # CircleCI has a config setting to enforce SSH for all github connections.
+#       # This is not compatible with our mechanism of using a Personal Access Token
+#       # to publish the build snapshots. In order to fix this, we unset the global option.
+#       - run: git config --global --unset "url.ssh://git@github.com.insteadof"
 
-      - run: ./scripts/circleci/publish-snapshots.sh
+#       - run: ./scripts/circleci/publish-snapshots.sh
 
-# ----------------------------------------------------------------------------------------
-# Workflow definitions. A workflow usually groups multiple jobs together. This is useful if
-# one job depends on another.
-#
-# NOTE: When updating this configuration section, make sure to update GitHub robot
-#       config to match the new workflow jobs.
-# ----------------------------------------------------------------------------------------
-workflows:
-  version: 2
-  default_workflow:
-    jobs:
-      # Build and test workflow. A workflow includes multiple jobs that run in parallel. All jobs
-      # that build and test source code should be part of this workflow
-      - build
-      - lint
-      - tests_local_browsers:
-          requires:
-            - build
-      #- tests_browserstack:
-      #    requires:
-      #      - build
-      # - tests_saucelabs:
-      #     requires:
-      #       - build
-      - tests_ssr:
-          requires:
-            - build
-      - integration_tests:
-          requires:
-            - build
-      - publish_snapshots:
-          requires:
-            # - tests_browserstack
-            # - tests_saucelabs
-            - tests_local_browsers
-            - integration_tests
+# # ----------------------------------------------------------------------------------------
+# # Workflow definitions. A workflow usually groups multiple jobs together. This is useful if
+# # one job depends on another.
+# #
+# # NOTE: When updating this configuration section, make sure to update GitHub robot
+# #       config to match the new workflow jobs.
+# # ----------------------------------------------------------------------------------------
+# workflows:
+#   version: 2
+#   default_workflow:
+#     jobs:
+#       # Build and test workflow. A workflow includes multiple jobs that run in parallel. All jobs
+#       # that build and test source code should be part of this workflow
+#       - build
+#       - lint
+#       - tests_local_browsers:
+#           requires:
+#             - build
+#       #- tests_browserstack:
+#       #    requires:
+#       #      - build
+#       # - tests_saucelabs:
+#       #     requires:
+#       #       - build
+#       - tests_ssr:
+#           requires:
+#             - build
+#       - integration_tests:
+#           requires:
+#             - build
+#       - publish_snapshots:
+#           requires:
+#             # - tests_browserstack
+#             # - tests_saucelabs
+#             - tests_local_browsers
+#             - integration_tests
 
-# ---------------------------
-# General setup for CircleCI
-# ---------------------------
-general:
-  branches:
-    only:
-      - main
-      # 5.2.x, 6.0.x, etc
-      - /\d+\.\d+\.x/
-      # 5.x, 6.x, etc
-      - /\d+\.x/
+# # ---------------------------
+# # General setup for CircleCI
+# # ---------------------------
+# general:
+#   branches:
+#     only:
+#       - main
+#       # 5.2.x, 6.0.x, etc
+#       - /\d+\.\d+\.x/
+#       # 5.x, 6.x, etc
+#       - /\d+\.x/
