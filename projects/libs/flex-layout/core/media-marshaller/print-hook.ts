@@ -1,6 +1,6 @@
-import { Inject, Injectable, OnDestroy } from '@angular/core';
+import { Inject, Injectable, OnDestroy, DOCUMENT } from '@angular/core';
 
-import { DOCUMENT } from '@angular/common';
+
 import { mergeAlias } from '../add-alias';
 import { BreakPoint } from '../breakpoints/break-point';
 import {

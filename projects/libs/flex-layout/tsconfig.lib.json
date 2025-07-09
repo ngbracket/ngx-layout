@@ -5,7 +5,8 @@
     "declaration": true,
     "declarationMap": false,
     "inlineSources": true,
-    "types": ["jasmine"]
+    "types": ["jasmine"],
+    "moduleResolution": "bundler"
   },
   "exclude": ["test.ts", "**/*.spec.ts", "**/testing/**/*.ts"],
   "include": ["**/*.ts"]

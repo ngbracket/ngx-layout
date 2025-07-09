@@ -5,8 +5,9 @@ import {
   Inject,
   Output,
   PLATFORM_ID,
+  DOCUMENT
 } from '@angular/core';
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { fromEvent, Observable } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
 

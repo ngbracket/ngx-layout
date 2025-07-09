@@ -1,9 +1,9 @@
+import { provideServerRendering } from '@angular/ssr';
 import {
   ApplicationConfig,
   importProvidersFrom,
   mergeApplicationConfig,
 } from '@angular/core';
-import { provideServerRendering } from '@angular/platform-server';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { appConfig } from './app.config';
 
