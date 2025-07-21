@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "^18.19.0 || >=20.18.1",
+    "node": "^20.18.1 || >=22.17.1",
     "npm": "Please use pnpm to install dependencies"
   },
   "scripts": {
@@ -22,7 +22,7 @@
     "docs": "nx serve documentation",
     "stamp": "ts-node tools/package-tools/version-placeholders.ts --module=commonjs",
     "build:demo-app": "nx run demo-app:build:production",
-    "build:docs": "nx run documentation:build:production",
+    "build:docs": "nx run docs/documentation:build:production",
     "build:universal-demo-app": "nx run universal-demo-app:build:production",
     "serve:universal-demo-app": "nx run universal-demo-app:serve-ssr",
     "test": "nx test @ngbracket/ngx-layout",
@@ -54,12 +54,12 @@
     "@angular/router": "20.1.2",
     "@angular/ssr": "20.1.1",
     "@docusaurus/preset-classic": "3.8.1",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
+    "@mdx-js/react": "^3.1.0",
+    "clsx": "^2.1.1",
     "express": "^4.21.2",
     "prism-react-renderer": "^2.3.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.8.1",
     "zone.js": "^0.15.0"
