@@ -48,6 +48,7 @@ const selector = `
 @Directive({ selector, inputs })
 export class ImgSrcDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'img-src';
+  protected override inputs = inputs;
   protected defaultSrc = '';
 
   @Input('src')
