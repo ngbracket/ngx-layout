@@ -88,6 +88,7 @@ export class ShowHideDirective
   implements AfterViewInit, OnChanges
 {
   protected override DIRECTIVE_KEY = 'show-hide';
+  protected override inputs = inputs;
 
   /** Original DOM Element CSS display style */
   protected display = '';
