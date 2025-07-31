@@ -38,6 +38,7 @@ const selector = `
 @Directive({ selector, inputs })
 export class ClassDirective extends BaseDirective2 implements DoCheck {
   protected override DIRECTIVE_KEY = 'ngClass';
+  protected override inputs = inputs;
 
   /**
    * Capture class assignments so we cache the default classes
