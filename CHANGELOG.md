@@ -1,3 +1,67 @@
+# [20.0.0](https://github.com/ngbracket/ngx-layout/compare/17.0.0...20.0.0) (2025-11-07)
+
+
+### Bug Fixes
+
+* **etag:** removed etag ([22ba2d9](https://github.com/ngbracket/ngx-layout/commit/22ba2d90b521cdd3ec62eefb7d31992acf1858a3))
+* **flex-layout:** use aliased imports from primary entry point to secondary entry point ([#76](https://github.com/ngbracket/ngx-layout/issues/76)) ([021f1ae](https://github.com/ngbracket/ngx-layout/commit/021f1aed563d2b3488beb759675f2c92dc7d39bc))
+* **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
+* **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
+* remove unused FlexLayoutModule imports and replace with specific directives ([#83](https://github.com/ngbracket/ngx-layout/issues/83)) ([079e5fe](https://github.com/ngbracket/ngx-layout/commit/079e5fe5857383fab52ae0e338cfa8f7c69130b9))
+* **styles:** fixes the card colors when in dark mode ([#88](https://github.com/ngbracket/ngx-layout/issues/88)) ([d5a496b](https://github.com/ngbracket/ngx-layout/commit/d5a496b5521d8adc3b9c555f54a06a2eb2cf3e7b))
+* **typescript:** version of typescript was too high ([8358bc4](https://github.com/ngbracket/ngx-layout/commit/8358bc49493730b636ef3c384dd7452f9625b9ca))
+* **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
+* **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
+* **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
+
+
+### Features
+
+* add provider function for standalone components ([ee08c92](https://github.com/ngbracket/ngx-layout/commit/ee08c92a5b8025398d1d1db9675d6f55b48bd670))
+* **angular19:** migrate app to version 19 of Angular ([#61](https://github.com/ngbracket/ngx-layout/issues/61)) ([11d3dfe](https://github.com/ngbracket/ngx-layout/commit/11d3dfe9b0dd84922300d2e67a13197cda69222a))
+* **dashboard:** add cards to the dashboard ([#87](https://github.com/ngbracket/ngx-layout/issues/87)) ([7c4778b](https://github.com/ngbracket/ngx-layout/commit/7c4778bcfab6294d9911bb59699b2f7eaecb5d54))
+* **docs:** added some of the documentation ([#93](https://github.com/ngbracket/ngx-layout/issues/93)) ([2e04d6b](https://github.com/ngbracket/ngx-layout/commit/2e04d6bf4f2bf14b4b9f3e1f17a9ceb99f808396))
+* **grid, layout, responsive, stackoverflow:** add material cards with routing for improved navigation and layout presentation ([#91](https://github.com/ngbracket/ngx-layout/issues/91)) ([467c6ac](https://github.com/ngbracket/ngx-layout/commit/467c6ac1258a427c5e31835cba933dfbc97bca71))
+* initialize updated-demo app with Angular components and configu… ([#78](https://github.com/ngbracket/ngx-layout/issues/78)) ([02e821b](https://github.com/ngbracket/ngx-layout/commit/02e821bb9a4c07c7f79f20b61c87d5e0d47434d1))
+* **prettier:** add prettier ([#85](https://github.com/ngbracket/ngx-layout/issues/85)) ([b3a776a](https://github.com/ngbracket/ngx-layout/commit/b3a776a0016e64c344f9f56307b72ed8e03ba206))
+* **styles:** enhance card components with subtitle styling and layout adjustments ([#84](https://github.com/ngbracket/ngx-layout/issues/84)) ([1d60e50](https://github.com/ngbracket/ngx-layout/commit/1d60e5019def35321e55b6f976110cc883116b12))
+* **styles:** enhance code element ([#86](https://github.com/ngbracket/ngx-layout/issues/86)) ([a38254f](https://github.com/ngbracket/ngx-layout/commit/a38254fe14e233ddd99fc56895b47adb8e107c75))
+* Upgrade to Angular 20 ([#97](https://github.com/ngbracket/ngx-layout/issues/97)) ([c453756](https://github.com/ngbracket/ngx-layout/commit/c4537563cef22b905e7ba5bc65ed8ddbebe9fb76))
+
+
+
+# [20.0.0](https://github.com/ngbracket/ngx-layout/compare/17.0.0...20.0.0) (2025-11-07)
+
+
+### Bug Fixes
+
+* **etag:** removed etag ([22ba2d9](https://github.com/ngbracket/ngx-layout/commit/22ba2d90b521cdd3ec62eefb7d31992acf1858a3))
+* **flex-layout:** use aliased imports from primary entry point to secondary entry point ([#76](https://github.com/ngbracket/ngx-layout/issues/76)) ([021f1ae](https://github.com/ngbracket/ngx-layout/commit/021f1aed563d2b3488beb759675f2c92dc7d39bc))
+* **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
+* **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
+* remove unused FlexLayoutModule imports and replace with specific directives ([#83](https://github.com/ngbracket/ngx-layout/issues/83)) ([079e5fe](https://github.com/ngbracket/ngx-layout/commit/079e5fe5857383fab52ae0e338cfa8f7c69130b9))
+* **styles:** fixes the card colors when in dark mode ([#88](https://github.com/ngbracket/ngx-layout/issues/88)) ([d5a496b](https://github.com/ngbracket/ngx-layout/commit/d5a496b5521d8adc3b9c555f54a06a2eb2cf3e7b))
+* **typescript:** version of typescript was too high ([8358bc4](https://github.com/ngbracket/ngx-layout/commit/8358bc49493730b636ef3c384dd7452f9625b9ca))
+* **update:** update orbs in CI ([bc4c83e](https://github.com/ngbracket/ngx-layout/commit/bc4c83e5b77b99eac09ff58f55c6d089b3b2cea0))
+* **yarn:** lock issues failing CI ([f9e54b8](https://github.com/ngbracket/ngx-layout/commit/f9e54b88ab356f119d446d0659658e210fa2217f))
+* **yarn:** removed mitt.1.2 ([3eb9920](https://github.com/ngbracket/ngx-layout/commit/3eb99205b195f65cc9a9e95f82c8623d627a0cd6))
+
+
+### Features
+
+* add provider function for standalone components ([ee08c92](https://github.com/ngbracket/ngx-layout/commit/ee08c92a5b8025398d1d1db9675d6f55b48bd670))
+* **angular19:** migrate app to version 19 of Angular ([#61](https://github.com/ngbracket/ngx-layout/issues/61)) ([11d3dfe](https://github.com/ngbracket/ngx-layout/commit/11d3dfe9b0dd84922300d2e67a13197cda69222a))
+* **dashboard:** add cards to the dashboard ([#87](https://github.com/ngbracket/ngx-layout/issues/87)) ([7c4778b](https://github.com/ngbracket/ngx-layout/commit/7c4778bcfab6294d9911bb59699b2f7eaecb5d54))
+* **docs:** added some of the documentation ([#93](https://github.com/ngbracket/ngx-layout/issues/93)) ([2e04d6b](https://github.com/ngbracket/ngx-layout/commit/2e04d6bf4f2bf14b4b9f3e1f17a9ceb99f808396))
+* **grid, layout, responsive, stackoverflow:** add material cards with routing for improved navigation and layout presentation ([#91](https://github.com/ngbracket/ngx-layout/issues/91)) ([467c6ac](https://github.com/ngbracket/ngx-layout/commit/467c6ac1258a427c5e31835cba933dfbc97bca71))
+* initialize updated-demo app with Angular components and configu… ([#78](https://github.com/ngbracket/ngx-layout/issues/78)) ([02e821b](https://github.com/ngbracket/ngx-layout/commit/02e821bb9a4c07c7f79f20b61c87d5e0d47434d1))
+* **prettier:** add prettier ([#85](https://github.com/ngbracket/ngx-layout/issues/85)) ([b3a776a](https://github.com/ngbracket/ngx-layout/commit/b3a776a0016e64c344f9f56307b72ed8e03ba206))
+* **styles:** enhance card components with subtitle styling and layout adjustments ([#84](https://github.com/ngbracket/ngx-layout/issues/84)) ([1d60e50](https://github.com/ngbracket/ngx-layout/commit/1d60e5019def35321e55b6f976110cc883116b12))
+* **styles:** enhance code element ([#86](https://github.com/ngbracket/ngx-layout/issues/86)) ([a38254f](https://github.com/ngbracket/ngx-layout/commit/a38254fe14e233ddd99fc56895b47adb8e107c75))
+* Upgrade to Angular 20 ([#97](https://github.com/ngbracket/ngx-layout/issues/97)) ([c453756](https://github.com/ngbracket/ngx-layout/commit/c4537563cef22b905e7ba5bc65ed8ddbebe9fb76))
+
+
+
 # [19.0.0](https://github.com/ngbracket/ngx-layout/compare/18.0.0...19.0.0) (2024-12-15)
 
 ### Bug Fixes

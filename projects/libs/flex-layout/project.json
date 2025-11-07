@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "@ngbracket/ngx-layout",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "projects/libs/flex-layout",
   "prefix": "fx",
@@ -9,15 +9,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/releases/ngx-layout"],
       "options": {
-        "project": "projects/libs/flex-layout/ng-package.json"
+        "project": "projects/libs/flex-layout/ng-package.json",
+        "tsConfig": "projects/libs/flex-layout/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "projects/libs/flex-layout/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "projects/libs/flex-layout/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     },
