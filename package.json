@@ -1,7 +1,7 @@
 {
   "name": "@ngx-layout/source",
   "description": "ngx-layout",
-  "version": "20.0.0",
+  "version": "21.0.0-rc.1",
   "homepage": "https://github.com/ngbracket/ngx-layout",
   "bugs": "https://github.com/ngbracket/ngx-layout/issues",
   "repository": {
