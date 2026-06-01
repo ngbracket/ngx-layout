@@ -1,5 +1,11 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, computed, input, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterLinkActive, RouterModule } from '@angular/router';
@@ -7,7 +13,6 @@ import { MenuItem } from '../../menu-items';
 
 @Component({
   selector: 'app-menu-item',
-  standalone: true,
   imports: [RouterModule, RouterLinkActive, MatListModule, MatIconModule],
   template: `
     <a
@@ -84,6 +89,7 @@ import { MenuItem } from '../../menu-items';
       );
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   animations: [
     trigger('expandContractMenu', [
       transition(':enter', [

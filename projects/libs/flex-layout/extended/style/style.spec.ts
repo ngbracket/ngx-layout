@@ -45,8 +45,7 @@ describe('style directive', () => {
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective],
-      declarations: [TestStyleComponent],
+      imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective, TestStyleComponent],
       providers: [MockMatchMediaProvider],
     });
   });
@@ -208,7 +207,7 @@ describe('style directive', () => {
 @Component({
   selector: 'test-style-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective],
 })
 class TestStyleComponent {
   fontSize = 0;

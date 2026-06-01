@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SectionPageComponent } from '../../components/section-page/section-page.component';
 import { menuItems } from '../../menu-items';
 
 @Component({
   selector: 'app-stackoverflow',
-  standalone: true,
   imports: [SectionPageComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <app-section-page
       icon="filter_none"
@@ -18,5 +18,6 @@ import { menuItems } from '../../menu-items';
   `,
 })
 export class StackoverflowComponent {
-  readonly items = menuItems.find(m => m.route === 'stackoverflow')?.subItems ?? [];
+  readonly items =
+    menuItems.find((m) => m.route === 'stackoverflow')?.subItems ?? [];
 }

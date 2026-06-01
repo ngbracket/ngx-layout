@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { FlexDirective, LayoutAlignDirective, LayoutDirective } from '@ngbracket/ngx-layout';
-
+import {
+  FlexDirective,
+  LayoutAlignDirective,
+  LayoutDirective,
+} from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-alignment',
@@ -134,6 +137,7 @@ import { FlexDirective, LayoutAlignDirective, LayoutDirective } from '@ngbracket
       </div>
     </mat-card-footer>
   </mat-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       @use '@angular/material' as mat;

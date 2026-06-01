@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   FlexAlignDirective,
@@ -55,6 +55,7 @@ const ALIGN_OPTIONS = ['auto', 'start', 'center', 'baseline', 'end', 'stretch'];
       <div class="hint">&lt;div fxFlexAlign="{{ alignTo }}"&gt;</div>
     </mat-card-footer>
   </mat-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       @use '@angular/material' as mat;

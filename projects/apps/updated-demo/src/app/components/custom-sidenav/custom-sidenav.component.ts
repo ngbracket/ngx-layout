@@ -1,5 +1,9 @@
-
-import { Component, computed, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -9,7 +13,6 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({
   selector: 'app-custom-sidenav',
-  standalone: true,
   template: `
     <div class="sidenav-header">
       <img
@@ -70,13 +73,14 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatSidenavModule,
     MatListModule,
     RouterModule,
     MatIconModule,
-    MenuItemComponent
-],
+    MenuItemComponent,
+  ],
 })
 export class CustomSidenavComponent {
   collapsed = input<boolean>(false);

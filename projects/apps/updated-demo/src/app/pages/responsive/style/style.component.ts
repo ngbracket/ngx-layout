@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -116,6 +116,7 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
       </mat-card-footer>
     </mat-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       @use '@angular/material' as mat;

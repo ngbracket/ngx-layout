@@ -52,8 +52,7 @@ describe('grid auto parent directive', () => {
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, GridModule],
-      declarations: [TestGridAutoComponent],
+      imports: [CommonModule, GridModule, TestGridAutoComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -323,7 +322,7 @@ describe('grid auto parent directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, GridModule],
 })
 class TestGridAutoComponent {
   auto = 'row';

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { LayoutDirective } from '@ngbracket/ngx-layout';
 const DIRECTIONS = ['column', 'column-reverse'];
@@ -50,6 +50,7 @@ const DIRECTIONS = ['column', 'column-reverse'];
       <div class="hint">&lt;fxLayout="{{ direction }}"&gt;</div>
     </mat-card-footer>
   </mat-card> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .containerX {

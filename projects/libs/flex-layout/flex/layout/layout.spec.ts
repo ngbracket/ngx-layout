@@ -50,8 +50,7 @@ describe('layout directive', () => {
       imports: [
         CommonModule,
         FlexLayoutModule.withConfig({ detectLayoutDisplay: true }),
-      ],
-      declarations: [TestLayoutComponent],
+      , TestLayoutComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -525,7 +524,7 @@ export class MockLayoutStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestLayoutComponent implements OnInit {
   direction = 'column';

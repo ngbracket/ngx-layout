@@ -59,8 +59,7 @@ describe('flex-offset directive', () => {
             unit: 'px',
           },
         }),
-      ],
-      declarations: [TestFlexComponent],
+      , TestFlexComponent],
       providers: [
         { provide: DIR_DOCUMENT, useValue: fakeDocument },
         { provide: SERVER_TOKEN, useValue: true },
@@ -225,8 +224,8 @@ describe('flex-offset directive', () => {
             useColumnBasisZero: false,
             serverLoaded: true,
           }),
+          TestFlexComponent,
         ],
-        declarations: [TestFlexComponent],
         providers: [
           MockMatchMediaProvider,
           {
@@ -265,7 +264,7 @@ export class MockFlexOffsetStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-component-shell',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestFlexComponent {
   direction = 'column';

@@ -63,8 +63,7 @@ describe('grid area child directive', () => {
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, GridModule],
-      declarations: [TestGridAreaComponent],
+      imports: [CommonModule, GridModule, TestGridAreaComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -257,7 +256,7 @@ describe('grid area child directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, GridModule],
 })
 class TestGridAreaComponent {
   area = 'sidebar';

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   FlexDirective,
@@ -59,6 +59,7 @@ import {
       </div>
     </mat-card-footer>
   </mat-card> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       @use '@angular/material' as mat;

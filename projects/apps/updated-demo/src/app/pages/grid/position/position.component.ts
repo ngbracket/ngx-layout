@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   GridAreaDirective,
@@ -56,6 +56,7 @@ import {
       </div>
     </mat-card-content>
   </mat-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .topleft {

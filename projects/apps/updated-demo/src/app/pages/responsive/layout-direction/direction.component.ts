@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FlexDirective, LayoutDirective } from '@ngbracket/ngx-layout';
 import { MediaQueryStatusComponent } from '../../media-query-status/media-query-status.component';
@@ -38,6 +38,7 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
       <app-media-query-status></app-media-query-status>
     </mat-card-footer>
   </mat-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       @use '@angular/material' as mat;

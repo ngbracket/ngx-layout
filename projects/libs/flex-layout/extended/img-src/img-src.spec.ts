@@ -82,8 +82,7 @@ describe('img-src directive', () => {
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, FlexLayoutModule],
-      declarations: [TestSrcComponent],
+      imports: [CommonModule, FlexLayoutModule, TestSrcComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -378,7 +377,7 @@ describe('img-src directive', () => {
 @Component({
   selector: 'test-src-api',
   template: '',
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestSrcComponent {
   defaultSrc = '';

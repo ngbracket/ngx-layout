@@ -57,8 +57,7 @@ describe('align directive', () => {
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, FlexLayoutModule],
-      declarations: [TestAlignComponent],
+      imports: [CommonModule, FlexLayoutModule, TestAlignComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -382,7 +381,7 @@ describe('align directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

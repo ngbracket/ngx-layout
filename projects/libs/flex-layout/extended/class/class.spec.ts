@@ -57,8 +57,8 @@ describe('class directive', () => {
         CommonModule,
         CoreModule,
         DefaultClassDirective,
+        TestClassComponent,
       ],
-      declarations: [TestClassComponent],
       providers: [MockMatchMediaProvider],
     });
   });
@@ -344,7 +344,7 @@ describe('class directive', () => {
 @Component({
   selector: 'test-class-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [MatButtonModule, CommonModule, CoreModule, DefaultClassDirective],
 })
 class TestClassComponent {
   hasXs1: boolean = false;
@@ -381,7 +381,7 @@ describe('binding to CSS class list', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent],
+      imports: [TestComponent],
     });
   });
 
@@ -713,7 +713,7 @@ describe('binding to CSS class list', () => {
 @Component({
   selector: 'test-cmp',
   template: '',
-  standalone: false,
+  imports: [CommonModule],
 })
 class TestComponent {
   condition = true;

@@ -78,8 +78,7 @@ describe('layout-gap directive', () => {
             unit: 'px',
           },
         }),
-      ],
-      declarations: [TestLayoutGapComponent],
+      , TestLayoutGapComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: DIR_DOCUMENT, useValue: fakeDocument },
@@ -741,7 +740,6 @@ describe('layout-gap directive', () => {
             serverLoaded: true,
           }),
         ],
-        declarations: [],
         providers: [
           {
             provide: LayoutGapStyleBuilder,
@@ -776,7 +774,7 @@ export class MockLayoutGapStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestLayoutGapComponent implements OnInit {
   ngOnInit(): void {

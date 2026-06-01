@@ -1,5 +1,5 @@
 import { Direction } from '@angular/cdk/bidi';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import {
@@ -51,6 +51,7 @@ import {
       </mat-card-footer>
     </mat-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       @use '@angular/material' as mat;

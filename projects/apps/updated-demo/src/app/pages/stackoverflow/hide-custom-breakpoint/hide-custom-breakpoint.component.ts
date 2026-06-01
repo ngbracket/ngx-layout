@@ -1,4 +1,4 @@
-import { Component, Directive } from '@angular/core';
+import { Component, Directive, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   BREAKPOINT,
@@ -65,6 +65,7 @@ export class CustomHideDirective extends ShowHideDirective {
       </div>
     </mat-card-footer>
   </mat-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .bounds {
