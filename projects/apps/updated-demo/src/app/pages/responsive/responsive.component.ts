@@ -1,28 +1,22 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { SectionPageComponent } from '../../components/section-page/section-page.component';
+import { menuItems } from '../../menu-items';
 
 @Component({
   selector: 'app-responsive',
-  imports: [RouterOutlet, RouterLink, MatCardModule],
+  standalone: true,
+  imports: [SectionPageComponent],
   template: `
-    <h1>Responsive</h1>
-    <div fxFlex="45%">
-      <mat-card routerLink="/responsive">
-        <mat-card-content>
-          <div class="card-content">
-            <div class="card-title">Responsive</div>
-            <div class="card-summary">
-              Responsive design ensures your UI adapts to different screen
-              sizes.
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-
-    <router-outlet />
+    <app-section-page
+      icon="devices"
+      title="Responsive"
+      subtitle="Adapt any layout to any screen size with xs / sm / md / lg / xl breakpoint aliases"
+      gradient="linear-gradient(135deg, #bf360c 0%, #e64a19 100%)"
+      baseRoute="/responsive"
+      [items]="items"
+    />
   `,
-  styles: [],
 })
-export class ResponsiveComponent {}
+export class ResponsiveComponent {
+  readonly items = menuItems.find(m => m.route === 'responsive')?.subItems ?? [];
+}

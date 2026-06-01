@@ -36,7 +36,6 @@ export class SplitHandleDirective {
     });
 
     if (isPlatformBrowser(this._platformId)) {
-      /* tslint:disable */
       const mousedown$ = fromEvent<MouseEvent>(
         ref.nativeElement,
         'mousedown',
@@ -47,8 +46,6 @@ export class SplitHandleDirective {
       const mouseup$ = fromEvent<MouseEvent>(_document, 'mouseup').pipe(
         map(getMouseEventPosition),
       );
-
-      /* tslint:enable*/
       this.drag = mousedown$.pipe(
         switchMap(() => mousemove$.pipe(takeUntil(mouseup$))),
       );

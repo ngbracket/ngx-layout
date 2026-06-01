@@ -2,30 +2,20 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type { Config } from '@docusaurus/types';
 import { themes as prismThemes } from 'prism-react-renderer';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
 const config: Config = {
-  title: 'Ngx-Layout',
-  tagline: 'Ngx-Layout',
+  title: 'ngx-layout',
+  tagline: 'Responsive layout engine for Angular',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
   url: 'https://docs.ngx-layout.ngbracket.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'ngbracket', // Usually your GitHub org/user name.
-  projectName: 'ngx-layout', // Usually your repo name.
+  organizationName: 'ngbracket',
+  projectName: 'ngx-layout',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -37,24 +27,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/ngbracket/ngx-layout',
+          editUrl: 'https://github.com/ngbracket/ngx-layout/edit/main/projects/apps/docs/documentation/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            // xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/ngbracket/ngx-layout',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          // onInlineAuthors: 'warn',
-          // onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -63,12 +38,15 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/ngx-layout-icon.svg',
+    colorMode: {
+      defaultMode: 'light',
+      respectPrefersColorScheme: true,
+    },
     navbar: {
-      title: 'Ngx-Layout',
+      title: 'ngx-layout',
       logo: {
-        alt: 'ngx-layout',
+        alt: 'ngx-layout logo',
         src: 'img/ngx-layout-icon.svg',
       },
       items: [
@@ -76,13 +54,18 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'ngxlayoutSidebar',
           position: 'left',
-          label: 'Ngx-Layout',
+          label: 'Docs',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          to: '/docs/api-documentation',
+          position: 'left',
+          label: 'API',
+        },
         {
           href: 'https://github.com/ngbracket/ngx-layout/',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
@@ -90,50 +73,47 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Getting Started',
           items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
+            { label: 'Introduction', to: '/docs/intro' },
+            { label: 'Installation', to: '/docs/install-ngx-layout' },
+            { label: 'Configuration', to: '/docs/configuration' },
+            { label: 'Developer Setup', to: '/docs/developer-setup' },
+          ],
+        },
+        {
+          title: 'API Reference',
+          items: [
+            { label: 'fxLayout', to: '/docs/fx-flex/fxLayout-API' },
+            { label: 'fxFlex', to: '/docs/fx-flex-api/fxflex-api' },
+            { label: 'Breakpoints', to: '/docs/breakpoints' },
+            { label: 'MediaObserver', to: '/docs/media-observable/media-observer' },
           ],
         },
         {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/@angular-flex-layout',
-            },
-            // {
-            //   label: 'Discord',
-            //   href: 'https://discordapp.com/invite/#',
-            // },
-            // {
-            //   label: 'X',
-            //   href: 'https://x.com/#',
-            // },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            // {
-            //   label: 'Blog',
-            //   to: '/blog',
-            // },
-            {
               label: 'GitHub',
               href: 'https://github.com/ngbracket/ngx-layout',
+            },
+            {
+              label: 'Stack Overflow',
+              href: 'https://stackoverflow.com/questions/tagged/angular-flex-layout',
+            },
+            {
+              label: 'Issues',
+              href: 'https://github.com/ngbracket/ngx-layout/issues',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Ngx-Layout, Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ngbracket. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash', 'typescript'],
     },
   } satisfies Preset.ThemeConfig,
 };

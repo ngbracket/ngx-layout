@@ -3,9 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { FlexDirective } from '@ngbracket/ngx-layout';
-import { LayoutAlignDirective } from 'projects/libs/flex-layout/flex/layout-align/layout-align';
-import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
+import { FlexDirective, LayoutAlignDirective, LayoutDirective } from '@ngbracket/ngx-layout';
+
 
 @Component({
   selector: 'app-alignment',
@@ -143,8 +142,8 @@ import { LayoutDirective } from 'projects/libs/flex-layout/flex/layout/layout';
         top: 20px;
         @include mat.card-overrides(
           (
-            elevated-container-color: #fff,
-            elevated-container-shape: 6px,
+            elevated-container-color: var(--mat-sys-surface-container-low),
+            elevated-container-shape: var(--mat-sys-corner-medium),
           )
         );
       }

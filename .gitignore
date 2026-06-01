@@ -28,24 +28,16 @@ testem.log
 /.chrome
 !/test/karma.conf.js
 
-src/apps/universal-app/package-lock.json
-src/apps/universal-app/pnpm-lock.yaml
-src/apps/demo-app/pnpm-lock.yaml
-src/apps/demo-app/package-lock.json
-src/apps/hello-world/package-lock.json
-src/apps/hello-world/pnpm-lock.yaml
 pnpm-error.log
+node_modules.pnpm-backup/
 .angular/cache
 out-tsc
 
 
 
-.nx/cache
-.nx/workspace-data
+.nx/
 .angular
 
 # Generated Docusaurus files
 .docusaurus/
 .cache-loader/
-.cursor/rules/nx-rules.mdc
-.github/instructions/nx.instructions.md

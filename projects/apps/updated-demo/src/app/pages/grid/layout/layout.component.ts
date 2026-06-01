@@ -7,7 +7,7 @@ import {
   GridColumnsDirective,
   GridGapDirective,
 } from '@ngbracket/ngx-layout';
-import { StyleDirective } from 'projects/libs/flex-layout/extended/style/style';
+import { StyleDirective } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-grid-layout',

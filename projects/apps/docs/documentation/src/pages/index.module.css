@@ -1,23 +1,202 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
+  padding: 80px 24px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  color: var(--hero-text);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+.heroInner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.heroLogo {
+  border-radius: 16px;
+  filter: drop-shadow(0 4px 20px rgba(232, 179, 255, 0.35));
+  margin-bottom: 4px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--hero-text);
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--hero-text-muted);
+  font-weight: 300;
+}
+
+.versionBadge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: rgba(246, 217, 255, 0.12);
+  border: 1px solid rgba(246, 217, 255, 0.28);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--hero-text);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.btnPrimary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: rgba(246, 217, 255, 0.22);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid rgba(246, 217, 255, 0.5);
+  text-decoration: none !important;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btnPrimary:hover {
+  background: rgba(246, 217, 255, 0.32);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: rgba(246, 217, 255, 0.1);
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 2px solid rgba(246, 217, 255, 0.3);
+  text-decoration: none !important;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btnSecondary:hover {
+  background: rgba(246, 217, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.btnOutline {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(246, 217, 255, 0.8) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 2px solid rgba(246, 217, 255, 0.18);
+  text-decoration: none !important;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.btnOutline:hover {
+  border-color: rgba(246, 217, 255, 0.4);
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* ── Stats ──────────────────────────────────────────────────────────────── */
+.statsSection {
+  padding: 40px 0 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.buttons {
+.statCard {
+  background: var(--stat-card-bg);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(139, 50, 185, 0.15);
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--stat-value-color);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--ifm-color-secondary);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 500;
+}
+
+/* ── Install snippet ────────────────────────────────────────────────────── */
+.installSection {
+  padding: 40px 0 64px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.installCard {
+  background: var(--feature-card-bg);
+  border: 1px solid var(--feature-card-border);
+  border-radius: 12px;
+  padding: 24px 28px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.installCode {
+  margin: 0;
+  background: transparent;
+  font-size: 1.05rem;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  border: none;
+  padding: 0;
+}
+
+.installDocsLink {
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.installDocsLink:hover {
+  opacity: 0.75;
+  text-decoration: none !important;
 }

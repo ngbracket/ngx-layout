@@ -1,40 +1,26 @@
-const nx = require('@nx/eslint-plugin');
+const tseslint = require('typescript-eslint');
+const angularEslint = require('angular-eslint');
 
-module.exports = [
-  ...nx.configs['flat/base'],
-  ...nx.configs['flat/typescript'],
-  ...nx.configs['flat/javascript'],
+module.exports = tseslint.config(
   {
-    ignores: ['**/dist'],
+    ignores: ['**/dist', '**/node_modules'],
   },
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    rules: {
-      '@nx/enforce-module-boundaries': [
-        'error',
-        {
-          enforceBuildableLibDependency: true,
-          allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
-          depConstraints: [
-            {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
-            },
-          ],
-        },
-      ],
-    },
-  },
-  {
-    files: [
-      '**/*.ts',
-      '**/*.tsx',
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.cjs',
-      '**/*.mjs',
+    files: ['**/*.ts', '**/*.tsx'],
+    extends: [
+      ...tseslint.configs.recommended,
+      ...angularEslint.configs.tsRecommended,
     ],
-    // Override or add rules here
-    rules: {},
+    processor: angularEslint.processInlineTemplates,
   },
-];
+  {
+    files: ['**/*.html'],
+    extends: [
+      ...angularEslint.configs.templateRecommended,
+    ],
+  },
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
+    extends: [...tseslint.configs.recommended],
+  },
+);

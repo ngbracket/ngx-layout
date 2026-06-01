@@ -1,27 +1,22 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { SectionPageComponent } from '../../components/section-page/section-page.component';
+import { menuItems } from '../../menu-items';
 
 @Component({
   selector: 'app-stackoverflow',
-  imports: [RouterOutlet, RouterLink, MatCardModule],
+  standalone: true,
+  imports: [SectionPageComponent],
   template: `
-    <h1>Stackoverflow</h1>
-    <div fxFlex="45%">
-      <mat-card routerLink="/stackoverflow">
-        <mat-card-content>
-          <div class="card-content">
-            <div class="card-title">Other Demos</div>
-            <div class="card-summary">
-              These Layout demos are curated from the AngularJS Material
-              documentation, GitHub Issues, StackOverflow, and CodePen.
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <router-outlet />
+    <app-section-page
+      icon="filter_none"
+      title="Real-world Examples"
+      subtitle="Curated demos from Stack Overflow, GitHub Issues and Angular Material documentation"
+      gradient="linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%)"
+      baseRoute="/stackoverflow"
+      [items]="items"
+    />
   `,
-  styles: [],
 })
-export class StackoverflowComponent {}
+export class StackoverflowComponent {
+  readonly items = menuItems.find(m => m.route === 'stackoverflow')?.subItems ?? [];
+}

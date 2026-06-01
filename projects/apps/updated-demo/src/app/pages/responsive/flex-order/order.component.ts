@@ -49,8 +49,8 @@ import { MediaQueryStatusComponent } from '../../media-query-status/media-query-
         top: 20px;
         @include mat.card-overrides(
           (
-            elevated-container-color: #fff,
-            elevated-container-shape: 6px,
+            elevated-container-color: var(--mat-sys-surface-container-low),
+            elevated-container-shape: var(--mat-sys-corner-medium),
           )
         );
       }

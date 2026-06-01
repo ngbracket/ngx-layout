@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 @import './app/styles/theme.css';
 
@@ -6,13 +5,13 @@ mat-toolbar {
   @include mat.toolbar-overrides(
     (
       container-background-color: var(--mat-sys-primary-container),
-      container-text-color: var(--mat-sys-on-primary),
+      container-text-color: var(--mat-sys-on-primary-container),
     )
   );
 }
 
 body {
-  background: var(--mat-sys-primary);
+  background: var(--mat-sys-background);
   color: var(--mat-sys-on-surface);
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   margin: 0;
@@ -26,17 +25,14 @@ body {
 
 body.dark-mode {
   color-scheme: dark;
-  mat-card {
-    --mat-card-elevated-container-color: none;
-  }
-  .mat-mdc-card {
-    border-color: #fff;
-    border-width: 1px;
-  }
 }
 
 h3 {
-  background-color: #cdb295;
+  background-color: var(--mat-sys-surface-container-highest);
+  color: var(--mat-sys-on-surface);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.95rem;
 }
 
 div {
@@ -47,10 +43,7 @@ div {
   min-height: 128px;
   padding-bottom: 40px;
   display: block;
-  background-color: #eee;
-}
-mat-card {
-  background-color: white;
+  background-color: var(--mat-sys-surface-container);
 }
 
 .colorNested,
