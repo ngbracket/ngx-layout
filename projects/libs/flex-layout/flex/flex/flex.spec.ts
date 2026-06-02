@@ -9,7 +9,6 @@ import {
 } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  customMatchers,
   expect,
   expectEl,
   expectNativeEl,
@@ -58,7 +57,6 @@ describe('flex directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     TestBed.configureTestingModule({
       imports: [

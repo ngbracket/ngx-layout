@@ -18,7 +18,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expect,
   expectNativeEl,
   makeCreateTestComponent,
@@ -65,7 +64,6 @@ describe('hide directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({

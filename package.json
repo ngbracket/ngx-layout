@@ -15,7 +15,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve updated-demo",
-    "build": "ng-packagr -p projects/libs/flex-layout/ng-package.json",
+    "build": "ng build @ngbracket/ngx-layout",
     "demo:serve": "ng serve updated-demo",
     "docs": "cd projects/apps/docs/documentation && npx docusaurus start --port 3000",
     "stamp": "ts-node tools/package-tools/version-placeholders.ts --module=commonjs",
@@ -62,7 +62,6 @@
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "22.0.0-rc.3",
     "@angular-devkit/core": "22.0.0-rc.3",
     "@angular-devkit/schematics": "22.0.0-rc.3",
     "@angular/build": "22.0.0-rc.3",
@@ -77,7 +76,6 @@
     "@ngtools/webpack": "22.0.0-rc.3",
     "@schematics/angular": "22.0.0-rc.3",
     "@types/express": "^4.17.25",
-    "@types/jasmine": "^5.1.13",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^20.19.25",
     "@typescript-eslint/utils": "8.60.0",
@@ -87,17 +85,6 @@
     "eslint": "^9.39.1",
     "eslint-config-prettier": "10.1.5",
     "istanbul-lib-instrument": "^6.0.3",
-    "jasmine": "^5.12.0",
-    "jasmine-core": "^5.12.1",
-    "karma": "^6.4.4",
-    "karma-browserstack-launcher": "^1.6.0",
-    "karma-chrome-launcher": "^3.2.0",
-    "karma-coverage": "^2.2.1",
-    "karma-firefox-launcher": "^2.1.3",
-    "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
-    "karma-parallel": "^0.3.1",
-    "karma-sauce-launcher": "^4.3.6",
     "minimatch": "^9.0.5",
     "ng-packagr": "22.0.0-rc.0",
     "postcss": "^8.5.6",
@@ -109,14 +96,13 @@
     "tsutils": "^3.21.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.60.0",
+    "vitest": "^4.1.8",
     "webpack": "5.95.0",
     "webpack-cli": "^5.1.4"
   },
-  "resolutions": {
-    "browser-sync-client": "2.29.3"
-  },
   "overrides": {
-    "webpack": "5.95.0"
+    "webpack": "5.95.0",
+    "browser-sync-client": "2.29.3"
   },
   "volta": {
     "node": "24.15.0"

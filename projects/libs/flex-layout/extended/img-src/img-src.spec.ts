@@ -18,7 +18,6 @@ import {
 
 import {
   _dom as _,
-  customMatchers,
   expect,
   expectEl,
   makeCreateTestComponent,
@@ -78,7 +77,6 @@ describe('img-src directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({

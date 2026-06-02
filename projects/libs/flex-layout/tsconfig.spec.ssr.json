@@ -2,7 +2,7 @@
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../../out-tsc/spec",
-    "types": ["jasmine"],
+    "types": ["vitest/globals"],
     "target": "ES2015"
   },
   "files": ["test.ssr.ts"],

@@ -18,7 +18,6 @@ import {
 } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  customMatchers,
   expect,
   expectEl,
   expectNativeEl,
@@ -65,7 +64,6 @@ describe('layout-gap directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
     fakeDocument = { body: {}, documentElement: {} };
 
     // Configure testbed to prepare services
@@ -729,7 +727,6 @@ describe('layout-gap directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
 
       // Configure testbed to prepare services
       TestBed.configureTestingModule({

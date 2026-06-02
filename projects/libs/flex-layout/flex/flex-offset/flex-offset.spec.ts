@@ -18,7 +18,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 import { FlexModule, FlexOffsetStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
-  customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
@@ -46,7 +45,6 @@ describe('flex-offset directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
     fakeDocument = { body: {}, documentElement: {} };
 
     // Configure testbed to prepare services
@@ -214,7 +212,6 @@ describe('flex-offset directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
 
       // Configure testbed to prepare services
       TestBed.configureTestingModule({

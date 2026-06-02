@@ -24,7 +24,6 @@ import {
 import { DefaultClassDirective } from '@ngbracket/ngx-layout/extended';
 
 import {
-  customMatchers,
   expect,
   expectNativeEl,
   makeCreateTestComponent,
@@ -48,7 +47,6 @@ describe('class directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({

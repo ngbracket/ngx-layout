@@ -19,7 +19,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 import { FlexModule, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
-  customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
@@ -43,7 +42,6 @@ describe('layout directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
@@ -477,7 +475,6 @@ describe('layout directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
 
       // Configure testbed to prepare services
       TestBed.configureTestingModule({

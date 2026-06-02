@@ -1,0 +1,3 @@
+[build]
+  command = "cd projects/apps/docs/documentation && npx docusaurus build"
+  publish = "projects/apps/docs/documentation/build"
