@@ -1,9 +1,8 @@
 import {
-  Component,
-  computed,
-  inject,
-  input,
   ChangeDetectionStrategy,
+  Component,
+  inject,
+  input
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatCardModule } from '@angular/material/card';
@@ -16,12 +15,11 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import {
-  FlexDirective,
   GridColumnsDirective,
   GridGapDirective,
   LayoutAlignDirective,
   LayoutDirective,
-  LayoutGapDirective,
+  LayoutGapDirective
 } from '@ngbracket/ngx-layout';
 import { filter, map, startWith } from 'rxjs/operators';
 import { MenuItem } from '../../menu-items';
@@ -33,7 +31,6 @@ import { MenuItem } from '../../menu-items';
     RouterModule,
     MatCardModule,
     MatIconModule,
-    FlexDirective,
     LayoutDirective,
     LayoutGapDirective,
     LayoutAlignDirective,

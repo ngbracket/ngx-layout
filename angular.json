@@ -40,7 +40,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/projects/apps/updated-demo",
+            "outputPath": "dist/projects/apps/updated-demo/browser",
             "index": "projects/apps/updated-demo/src/index.html",
             "browser": "projects/apps/updated-demo/src/main.ts",
             "polyfills": ["zone.js"],
@@ -120,7 +120,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/universal-demo-app",
+            "outputPath": "dist/universal-demo-app/browser",
             "index": "projects/apps/universal-demo-app/src/index.html",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/apps/universal-demo-app/tsconfig.app.json",
