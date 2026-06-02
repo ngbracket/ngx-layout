@@ -19,7 +19,7 @@
     "demo:serve": "ng serve updated-demo",
     "docs": "cd projects/apps/docs/documentation && npx docusaurus start --port 3000",
     "stamp": "ts-node tools/package-tools/version-placeholders.ts --module=commonjs",
-    "build:demo-app": "ng build updated-demo --configuration=production",
+    "build:demo-app": "ng build updated-demo",
     "build:docs": "cd projects/apps/docs/documentation && npx docusaurus build",
     "build:universal-demo-app": "ng build universal-demo-app --configuration=production",
     "serve:universal-demo-app": "ng serve universal-demo-app",
