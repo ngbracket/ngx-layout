@@ -18,7 +18,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -57,12 +56,10 @@ describe('grid area parent directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, GridModule],
-      declarations: [TestGridAreaComponent],
+      imports: [CommonModule, GridModule, TestGridAreaComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -249,7 +246,7 @@ describe('grid area parent directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, GridModule],
 })
 class TestGridAreaComponent {
   areas = 'sidebar | sidebar';

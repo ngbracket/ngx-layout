@@ -6,7 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import {
-  customMatchers,
   expect,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import {
@@ -21,7 +20,6 @@ import {
 
 describe('ngStyleUtils', () => {
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
   });
 
   it('should parse a raw string of key:value pairs', () => {

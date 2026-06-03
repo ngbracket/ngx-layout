@@ -14,7 +14,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
@@ -56,7 +55,6 @@ describe('show directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
@@ -68,8 +66,8 @@ describe('show directive', () => {
         MatSelectModule,
         MatLabel,
         NoopAnimationsModule,
+        TestShowComponent,
       ],
-      declarations: [TestShowComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -344,7 +342,6 @@ describe('show directive', () => {
 
   describe('with custom breakpoints', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
 
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
@@ -373,7 +370,6 @@ describe('show directive', () => {
             ],
           ),
         ],
-        declarations: [],
         providers: [MockMatchMediaProvider],
       });
     });
@@ -416,7 +412,7 @@ class FxShowHideDirective extends ShowHideDirective {
 @Component({
   selector: 'test-show-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, MatFormFieldModule, FlexLayoutModule, FormsModule, MatSelectModule, MatLabel, NoopAnimationsModule],
 })
 class TestShowComponent implements OnInit {
   isVisible = 0;

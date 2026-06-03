@@ -2,27 +2,39 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Layout from '@theme/Layout';
-import clsx from 'clsx';
 import React from 'react';
 
 import styles from './index.module.css';
 
-function HomepageHeader() {
+
+function Hero(): React.JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles['heroBanner'])}>
-      <div className="container">
-        {/* <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading> */}
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles['buttons']}>
+    <header className={styles.hero}>
+      <div className={styles.heroInner}>
+        <img
+          src="/img/ngx-layout-icon.svg"
+          width={88}
+          height={88}
+          alt="ngx-layout logo"
+          className={styles.heroLogo}
+        />
+        <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+        <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+        <span className={styles.versionBadge}>v21.2.x</span>
+
+        <div className={styles.heroActions}>
+          <Link className={styles.btnPrimary} to="/docs/intro">
+            Get Started
+          </Link>
+          <Link className={styles.btnSecondary} to="/docs/api-documentation">
+            API Reference
+          </Link>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
+            className={styles.btnOutline}
+            href="https://github.com/ngbracket/ngx-layout"
           >
-            Ngx-layout Tutorial - 5min ⏱️
+            GitHub
           </Link>
         </div>
       </div>
@@ -30,16 +42,33 @@ function HomepageHeader() {
   );
 }
 
+
+function InstallSnippet(): React.JSX.Element {
+  return (
+    <section className={styles.installSection}>
+      <div className="container">
+        <h2 className={styles.sectionTitle}>Quick Install</h2>
+        <div className={styles.installCard}>
+          <pre className={styles.installCode}>
+            <code>npm install @ngbracket/ngx-layout</code>
+          </pre>
+          <Link className={styles.installDocsLink} to="/docs/install-ngx-layout">
+            Full setup guide →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home(): React.JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
-    >
-      <HomepageHeader />
+    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+      <Hero />
       <main>
         <HomepageFeatures />
+        <InstallSnippet />
       </main>
     </Layout>
   );

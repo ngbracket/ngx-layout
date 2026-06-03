@@ -1,29 +1,22 @@
-import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { SectionPageComponent } from '../../components/section-page/section-page.component';
+import { menuItems } from '../../menu-items';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, RouterLink, MatCardModule],
+  imports: [SectionPageComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
-    <h1>Layout</h1>
-    <div fxFlex="45%">
-      <mat-card routerLink="/layout">
-        <mat-card-content>
-          <div class="card-content">
-            <div class="card-title">Layout</div>
-            <div class="card-summary">
-              Layout in CSS determines how elements are positioned and arranged.
-              Flexbox and Grid are the two main techniques for creating modern
-              layouts.
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-
-    <router-outlet />
+    <app-section-page
+      icon="view_column"
+      title="Flexbox Layout"
+      subtitle="Flexible one-dimensional layout with fxLayout, fxFlex and alignment directives"
+      gradient="linear-gradient(135deg, #0d47a1 0%, #1565c0 100%)"
+      baseRoute="/layout"
+      [items]="items"
+    />
   `,
-  styles: [],
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  readonly items = menuItems.find((m) => m.route === 'layout')?.subItems ?? [];
+}

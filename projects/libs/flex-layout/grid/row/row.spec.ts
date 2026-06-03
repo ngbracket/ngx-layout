@@ -18,7 +18,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expectEl,
   makeCreateTestComponent,
   queryFor,
@@ -58,12 +57,10 @@ describe('grid row child directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, GridModule],
-      declarations: [TestGridRowComponent],
+      imports: [CommonModule, GridModule, TestGridRowComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -194,7 +191,7 @@ describe('grid row child directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, GridModule],
 })
 class TestGridRowComponent {
   row = 'apples';

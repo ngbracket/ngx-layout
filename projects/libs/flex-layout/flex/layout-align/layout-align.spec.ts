@@ -12,7 +12,6 @@ import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -52,12 +51,10 @@ describe('layout-align directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, FlexLayoutModule],
-      declarations: [TestLayoutAlignComponent],
+      imports: [CommonModule, FlexLayoutModule, TestLayoutAlignComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -602,7 +599,6 @@ describe('layout-align directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
 
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
@@ -613,7 +609,6 @@ describe('layout-align directive', () => {
             serverLoaded: true,
           }),
         ],
-        declarations: [],
         providers: [
           MockMatchMediaProvider,
           {
@@ -654,7 +649,7 @@ export class MockLayoutAlignStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestLayoutAlignComponent implements OnInit {
   direction = 'column';

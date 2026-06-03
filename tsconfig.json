@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@angular/core/rxjs-interop": ["node_modules/@angular/core/types/rxjs-interop.d.ts"],
       "@ngbracket/ngx-layout": ["projects/libs/flex-layout/public-api.ts"],
       "@ngbracket/ngx-layout/_private-utils": [
         "projects/libs/flex-layout/_private-utils/index.ts"
@@ -27,6 +28,7 @@
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "ignoreDeprecations": "6.0",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -37,7 +39,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",

@@ -22,7 +22,6 @@ import { Subscription } from 'rxjs';
   host: {
     class: 'ngx-split',
   },
-  standalone: false,
 })
 export class SplitDirective implements AfterContentInit, OnDestroy {
   watcher?: Subscription;

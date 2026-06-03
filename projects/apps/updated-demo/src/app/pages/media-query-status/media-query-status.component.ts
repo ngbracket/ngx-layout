@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { Observable } from 'rxjs';
 
@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
       }
     </ul>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .mqInfo {

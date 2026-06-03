@@ -17,7 +17,6 @@ import {
 
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -53,12 +52,10 @@ describe('align rows directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, GridModule],
-      declarations: [TestAlignComponent],
+      imports: [CommonModule, GridModule, TestAlignComponent],
       providers: [MockMatchMediaProvider],
     });
   });
@@ -431,7 +428,7 @@ describe('align rows directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, GridModule],
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

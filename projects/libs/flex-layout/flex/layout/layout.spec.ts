@@ -19,7 +19,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 import { FlexModule, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
-  customMatchers,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
@@ -43,15 +42,13 @@ describe('layout directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
         FlexLayoutModule.withConfig({ detectLayoutDisplay: true }),
-      ],
-      declarations: [TestLayoutComponent],
+      , TestLayoutComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -478,7 +475,6 @@ describe('layout directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-      jasmine.addMatchers(customMatchers);
 
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
@@ -525,7 +521,7 @@ export class MockLayoutStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestLayoutComponent implements OnInit {
   direction = 'column';

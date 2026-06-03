@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {
   GridAreaDirective,
@@ -7,7 +7,7 @@ import {
   GridColumnsDirective,
   GridGapDirective,
 } from '@ngbracket/ngx-layout';
-import { StyleDirective } from 'projects/libs/flex-layout/extended/style/style';
+import { StyleDirective } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-grid-layout',
@@ -50,6 +50,7 @@ import { StyleDirective } from 'projects/libs/flex-layout/extended/style/style';
       </div>
     </mat-card-content>
   </mat-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [],
 })
 export class GridLayoutComponent {}

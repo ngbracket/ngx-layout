@@ -9,7 +9,6 @@ import {
 } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  customMatchers,
   expect,
   expectEl,
   expectNativeEl,
@@ -58,14 +57,14 @@ describe('flex directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
         FlexLayoutModule.withConfig({ serverLoaded: true }),
+        TestFlexComponent,
+        TestQueryWithFlexComponent,
       ],
-      declarations: [TestFlexComponent, TestQueryWithFlexComponent],
       providers: [MockMatchMediaProvider],
     });
   });
@@ -1131,8 +1130,9 @@ describe('flex directive', () => {
             addFlexToParent: true,
             serverLoaded: true,
           }),
+          TestFlexComponent,
+          TestQueryWithFlexComponent,
         ],
-        declarations: [TestFlexComponent, TestQueryWithFlexComponent],
         providers: [MockMatchMediaProvider],
       });
     });
@@ -1172,8 +1172,9 @@ describe('flex directive', () => {
             disableVendorPrefixes: true,
             serverLoaded: true,
           }),
+          TestFlexComponent,
+          TestQueryWithFlexComponent,
         ],
-        declarations: [TestFlexComponent, TestQueryWithFlexComponent],
         providers: [MockMatchMediaProvider],
       });
     });
@@ -1217,8 +1218,9 @@ describe('flex directive', () => {
             useColumnBasisZero: false,
             serverLoaded: true,
           }),
+          TestFlexComponent,
+          TestQueryWithFlexComponent,
         ],
-        declarations: [TestFlexComponent, TestQueryWithFlexComponent],
         providers: [MockMatchMediaProvider],
       });
     });
@@ -1253,8 +1255,9 @@ describe('flex directive', () => {
             useColumnBasisZero: false,
             serverLoaded: true,
           }),
+          TestFlexComponent,
+          TestQueryWithFlexComponent,
         ],
-        declarations: [TestFlexComponent, TestQueryWithFlexComponent],
         providers: [
           MockMatchMediaProvider,
           {
@@ -1298,7 +1301,7 @@ export class MockFlexStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestFlexComponent {
   direction = 'column';
@@ -1312,7 +1315,7 @@ class TestFlexComponent {
       <div fxFlex="50%" fxFlex.sm="71%"></div>
     </div>
   `,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestQueryWithFlexComponent {
   @ViewChild(DefaultFlexDirective, { static: true })

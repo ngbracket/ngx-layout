@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FlexDirective } from '@ngbracket/ngx-layout';
 
@@ -58,6 +58,7 @@ import { FlexDirective } from '@ngbracket/ngx-layout';
       </div>
     </mat-card-footer>
   </mat-card> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .containerX {

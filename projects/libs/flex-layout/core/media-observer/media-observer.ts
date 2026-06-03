@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @angular-eslint/prefer-inject */
 import { Injectable, OnDestroy } from '@angular/core';
 import { asapScheduler, Observable, of, Subject } from 'rxjs';
 import {
@@ -223,6 +225,6 @@ function toMediaQuery(
  */
 function splitQueries(queries: string[]): string[] {
   return queries
-    .flatMap((query) => query.split(','))
+    .reduce<string[]>((acc, query) => acc.concat(query.split(',')), [])
     .map((query) => query.trim());
 }

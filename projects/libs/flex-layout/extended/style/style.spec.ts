@@ -18,7 +18,6 @@ import {
 import { LayoutDirective } from '@ngbracket/ngx-layout/flex';
 
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -41,12 +40,10 @@ describe('style directive', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective],
-      declarations: [TestStyleComponent],
+      imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective, TestStyleComponent],
       providers: [MockMatchMediaProvider],
     });
   });
@@ -208,7 +205,7 @@ describe('style directive', () => {
 @Component({
   selector: 'test-style-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective],
 })
 class TestStyleComponent {
   fontSize = 0;

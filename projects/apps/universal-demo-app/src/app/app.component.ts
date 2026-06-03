@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { SplitModule } from './split/split.module';
 
@@ -6,6 +6,7 @@ import { SplitModule } from './split/split.module';
   selector: 'responsive-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FlexLayoutModule, SplitModule],
 })
 export class AppComponent {

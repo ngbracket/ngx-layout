@@ -10,7 +10,6 @@ import { Component, PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -37,12 +36,10 @@ describe('styler', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
 
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule],
-      declarations: [TestLayoutComponent],
+      imports: [CommonModule, TestLayoutComponent],
     });
   });
 
@@ -95,6 +92,6 @@ describe('styler', () => {
 @Component({
   selector: 'test-style-utils',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule],
 })
 class TestLayoutComponent {}

@@ -17,7 +17,6 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  customMatchers,
   expectNativeEl,
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
@@ -40,10 +39,8 @@ describe('flex-order', () => {
   };
 
   beforeEach(() => {
-    jasmine.addMatchers(customMatchers);
     TestBed.configureTestingModule({
-      declarations: [TestOrderComponent],
-      imports: [CommonModule, FlexLayoutModule],
+      imports: [CommonModule, FlexLayoutModule, TestOrderComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -97,7 +94,7 @@ describe('flex-order', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  standalone: false,
+  imports: [CommonModule, FlexLayoutModule],
 })
 class TestOrderComponent {
   constructor() {}

@@ -5,7 +5,7 @@ import {
   Inject,
   Output,
   PLATFORM_ID,
-  DOCUMENT
+  DOCUMENT,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { fromEvent, Observable } from 'rxjs';
@@ -17,7 +17,6 @@ import { map, switchMap, takeUntil } from 'rxjs/operators';
     class: 'ngx-split-handle',
     title: 'Drag to resize',
   },
-  standalone: false,
 })
 export class SplitHandleDirective {
   @Output() drag: Observable<{ x: number; y: number }> = new EventEmitter<{
@@ -36,7 +35,6 @@ export class SplitHandleDirective {
     });
 
     if (isPlatformBrowser(this._platformId)) {
-      /* tslint:disable */
       const mousedown$ = fromEvent<MouseEvent>(
         ref.nativeElement,
         'mousedown',
@@ -47,8 +45,6 @@ export class SplitHandleDirective {
       const mouseup$ = fromEvent<MouseEvent>(_document, 'mouseup').pipe(
         map(getMouseEventPosition),
       );
-
-      /* tslint:enable*/
       this.drag = mousedown$.pipe(
         switchMap(() => mousemove$.pipe(takeUntil(mouseup$))),
       );

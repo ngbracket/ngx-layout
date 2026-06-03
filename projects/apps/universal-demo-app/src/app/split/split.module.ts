@@ -7,8 +7,13 @@ import { SplitHandleDirective } from './split-handle.directive';
 import { SplitDirective } from './split.directive';
 
 @NgModule({
-  imports: [CommonModule, FlexLayoutModule],
-  declarations: [SplitHandleDirective, SplitDirective, SplitAreaDirective],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    SplitHandleDirective,
+    SplitDirective,
+    SplitAreaDirective,
+  ],
   exports: [SplitHandleDirective, SplitDirective, SplitAreaDirective],
 })
 export class SplitModule {}
