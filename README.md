@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/%40ngbracket%2Fngx-layout.svg)](https://www.npmjs.com/package/@ngbracket/ngx-layout)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/ngbracket/ngx-layout/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ngbracket/ngx-layout/tree/main)
+[![CI](https://github.com/ngbracket/ngx-layout/actions/workflows/ci.yml/badge.svg)](https://github.com/ngbracket/ngx-layout/actions/workflows/ci.yml)
 [![Gitter](https://badges.gitter.im/angular/flex-layout.svg)](https://gitter.im/angular/flex-layout)
 [![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=flat&logo=github)](https://wallabyjs.com/oss/)
 
