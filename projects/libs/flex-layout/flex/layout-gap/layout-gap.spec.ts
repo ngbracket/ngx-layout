@@ -18,7 +18,13 @@ import {
 } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  expect,
+  DefaultFlexDirective,
+  DefaultFlexOrderDirective,
+  DefaultLayoutDirective,
+  DefaultLayoutGapDirective,
+} from '@ngbracket/ngx-layout/flex';
+import { DefaultShowHideDirective } from '@ngbracket/ngx-layout/extended';
+import {
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
@@ -76,7 +82,7 @@ describe('layout-gap directive', () => {
             unit: 'px',
           },
         }),
-      , TestLayoutGapComponent],
+        TestLayoutGapComponent],
       providers: [
         MockMatchMediaProvider,
         { provide: DIR_DOCUMENT, useValue: fakeDocument },
@@ -771,12 +777,10 @@ export class MockLayoutGapStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, FlexLayoutModule],
+  imports: [CommonModule, DefaultLayoutDirective, DefaultLayoutGapDirective, DefaultFlexDirective, DefaultFlexOrderDirective, DefaultShowHideDirective],
 })
 class TestLayoutGapComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
   direction = 'column';
   gap = '8px';
   shouldHide = true;

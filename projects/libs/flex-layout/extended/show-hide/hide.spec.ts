@@ -18,13 +18,18 @@ import {
 } from '@ngbracket/ngx-layout/core';
 
 import {
-  expect,
   expectNativeEl,
   makeCreateTestComponent,
   NgMatchers,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
+import { DefaultShowHideDirective } from '@ngbracket/ngx-layout/extended';
+import {
+  DefaultFlexDirective,
+  DefaultLayoutAlignDirective,
+  DefaultLayoutDirective,
+} from '@ngbracket/ngx-layout/flex';
 
 describe('hide directive', () => {
   let fixture: ComponentFixture<any>;
@@ -370,7 +375,7 @@ describe('hide directive', () => {
 @Component({
   selector: 'test-hide-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, FlexLayoutModule],
+  imports: [CommonModule, DefaultShowHideDirective, DefaultLayoutDirective, DefaultLayoutAlignDirective, DefaultFlexDirective],
 })
 class TestHideComponent {
   isVisible = 0;

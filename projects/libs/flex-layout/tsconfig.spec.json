@@ -5,5 +5,5 @@
     "types": ["vitest/globals"],
     "moduleResolution": "bundler"
   },
-  "include": ["**/*.spec.ts", "**/*.d.ts", "**/testing/**/*.ts"]
+  "include": ["**/*.spec.ts", "**/*.d.ts", "**/testing/**/*.ts", "test-setup.ts"]
 }

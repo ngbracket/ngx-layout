@@ -23,6 +23,7 @@ import {
 
 import { Platform } from '@angular/cdk/platform';
 import { GridModule } from '../module';
+import { DefaultGridAlignRowsDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('align rows directive', () => {
   let fixture: ComponentFixture<any>;
@@ -428,7 +429,7 @@ describe('align rows directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, GridModule],
+  imports: [CommonModule, DefaultGridAlignRowsDirective],
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

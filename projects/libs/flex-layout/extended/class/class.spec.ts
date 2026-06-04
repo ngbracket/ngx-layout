@@ -24,7 +24,6 @@ import {
 import { DefaultClassDirective } from '@ngbracket/ngx-layout/extended';
 
 import {
-  expect,
   expectNativeEl,
   makeCreateTestComponent,
   queryFor,

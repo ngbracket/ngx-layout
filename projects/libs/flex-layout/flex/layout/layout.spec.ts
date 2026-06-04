@@ -17,7 +17,7 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { FlexModule, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
+import { FlexModule, LayoutDirective, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
   expectNativeEl,
@@ -48,7 +48,7 @@ describe('layout directive', () => {
       imports: [
         CommonModule,
         FlexLayoutModule.withConfig({ detectLayoutDisplay: true }),
-      , TestLayoutComponent],
+      ],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
@@ -521,7 +521,7 @@ export class MockLayoutStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, FlexLayoutModule],
+  imports: [CommonModule, LayoutDirective],
 })
 class TestLayoutComponent implements OnInit {
   direction = 'column';

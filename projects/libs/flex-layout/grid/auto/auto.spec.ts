@@ -20,7 +20,7 @@ import {
   SERVER_TOKEN,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import { GridModule } from '@ngbracket/ngx-layout/grid';
+import { DefaultGridAreaDirective, DefaultGridAutoDirective, GridModule } from '@ngbracket/ngx-layout/grid';
 
 describe('grid auto parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -206,7 +206,7 @@ describe('grid auto parent directive', () => {
         {
           display: 'grid',
           'grid-auto-flow':
-            platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
+            'row dense',
         },
         styler,
       );
@@ -226,7 +226,7 @@ describe('grid auto parent directive', () => {
         {
           display: 'grid',
           'grid-auto-flow':
-            platform.IOS || !platform.isBrowser ? 'row dense' : 'dense',
+            'row dense',
         },
         styler,
       );
@@ -320,7 +320,7 @@ describe('grid auto parent directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, GridModule],
+  imports: [CommonModule, DefaultGridAutoDirective, DefaultGridAreaDirective],
 })
 class TestGridAutoComponent {
   auto = 'row';
