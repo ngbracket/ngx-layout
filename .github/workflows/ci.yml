@@ -126,28 +126,28 @@ jobs:
           npm run build
           npm run build:universal-demo-app
 
-  publish_snapshots:
-    environment: FLEX_LAYOUT_BUILDS_TOKEN
-    runs-on: ubuntu-latest
-    needs: [tests_local_browsers, integration_tests]
-    # if: github.event_name == 'push' && github.event.pull_request == null
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - name: Download package
-        uses: actions/download-artifact@v4
-        with:
-          name: package
-          path: dist/releases
-      - name: Install dependencies
-        run: npm install
-      - name: Stamp
-        run: npm run stamp
-      - name: Publish snapshots
-        env:
-          FLEX_LAYOUT_BUILDS_TOKEN: ${{ secrets.FLEX_LAYOUT_BUILDS_TOKEN }}
-        run: ./scripts/deploy/publish-build-artifacts.sh --no-build
+  # publish_snapshots:
+  #   environment: FLEX_LAYOUT_BUILDS_TOKEN
+  #   runs-on: ubuntu-latest
+  #   needs: [tests_local_browsers, integration_tests]
+  #   # if: github.event_name == 'push' && github.event.pull_request == null
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #     - name: Install Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 24
+  #     - name: Download package
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: package
+  #         path: dist/releases
+  #     - name: Install dependencies
+  #       run: npm install
+  #     - name: Stamp
+  #       run: npm run stamp
+  #     - name: Publish snapshots
+  #       env:
+  #         FLEX_LAYOUT_BUILDS_TOKEN: ${{ secrets.FLEX_LAYOUT_BUILDS_TOKEN }}
+  #       run: ./scripts/deploy/publish-build-artifacts.sh --no-build

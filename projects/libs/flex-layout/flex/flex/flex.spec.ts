@@ -1198,7 +1198,9 @@ describe('flex directive', () => {
       // The parent flex-direction not found;
       // A flex-direction should have been auto-injected to the parent...
       // fallback to 'row' and set child width styles accordingly
-      expect(parent.nativeElement.getAttribute('style')).not.toContain(
+      // `getAttribute('style')` is `null` when no inline styles are present
+      // (e.g. under server-side rendering); coerce to '' so `toContain` works.
+      expect(parent.nativeElement.getAttribute('style') ?? '').not.toContain(
         '-webkit-flex-direction',
       );
       expectEl(element).toHaveStyle({ 'min-width': '40px' }, styler);

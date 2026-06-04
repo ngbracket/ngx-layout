@@ -31,6 +31,16 @@
             "runnerConfig": true,
             "setupFiles": ["projects/libs/flex-layout/test-setup.ts"]
           }
+        },
+        "test-ssr": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/libs/flex-layout/tsconfig.spec.json",
+            "buildTarget": "updated-demo:build:development",
+            "runnerConfig": true,
+            "setupFiles": ["projects/libs/flex-layout/test-setup.ts"],
+            "providersFile": "projects/libs/flex-layout/test-providers.ssr.ts"
+          }
         }
       }
     },

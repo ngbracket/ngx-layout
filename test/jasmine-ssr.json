@@ -1,5 +1,0 @@
-{
-  "spec_dir": "dist/spec/flex-layout",
-  "spec_files": ["**/*.js"],
-  "random": false
-}

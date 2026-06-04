@@ -25,7 +25,7 @@
     "serve:universal-demo-app": "ng serve universal-demo-app",
     "serve:updated-demo-static": "ng build updated-demo --configuration=production && npx serve dist/projects/apps/updated-demo/browser -s",
     "test": "ng test @ngbracket/ngx-layout",
-    "test:ssr": "webpack --config test/webpack-spec-ssr-bundle.js && jasmine --config=test/jasmine-ssr.json",
+    "test:ssr": "ng run @ngbracket/ngx-layout:test-ssr",
     "lint": "stylelint projects/libs/**/*.scss --config=stylelint-config.json",
     "release": "npm run build && npm run stamp",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -73,7 +73,6 @@
     "@docusaurus/tsconfig": "^3.8.1",
     "@docusaurus/types": "^3.8.1",
     "@eslint/js": "^9.39.1",
-    "@ngtools/webpack": "22.0.0-rc.3",
     "@schematics/angular": "22.0.0-rc.3",
     "@types/express": "^4.17.25",
     "@types/minimatch": "^5.1.2",
@@ -97,9 +96,7 @@
     "tsutils": "^3.21.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.60.0",
-    "vitest": "^4.1.8",
-    "webpack": "5.95.0",
-    "webpack-cli": "^5.1.4"
+    "vitest": "^4.1.8"
   },
   "overrides": {
     "webpack": "5.95.0",
