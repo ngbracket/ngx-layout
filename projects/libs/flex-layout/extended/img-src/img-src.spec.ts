@@ -18,12 +18,12 @@ import {
 
 import {
   _dom as _,
-  expect,
   expectEl,
   makeCreateTestComponent,
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
+import { DefaultImgSrcDirective } from '@ngbracket/ngx-layout/extended';
 
 const SRC_URLS = {
   xs: [
@@ -375,7 +375,7 @@ describe('img-src directive', () => {
 @Component({
   selector: 'test-src-api',
   template: '',
-  imports: [CommonModule, FlexLayoutModule],
+  imports: [CommonModule, DefaultImgSrcDirective],
 })
 class TestSrcComponent {
   defaultSrc = '';

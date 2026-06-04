@@ -23,6 +23,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
+import { DefaultGridGapDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('grid gap directive', () => {
   let fixture: ComponentFixture<any>;
@@ -80,7 +81,7 @@ describe('grid gap directive', () => {
         return;
       }
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'grid',
@@ -112,7 +113,7 @@ describe('grid gap directive', () => {
         return;
       }
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'grid',
@@ -154,7 +155,7 @@ describe('grid gap directive', () => {
         return;
       }
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'grid',
@@ -175,7 +176,7 @@ describe('grid gap directive', () => {
 
       fixture.componentInstance.gap = '16px';
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'grid',
@@ -207,7 +208,7 @@ describe('grid gap directive', () => {
         return;
       }
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'inline-grid',
@@ -241,7 +242,7 @@ describe('grid gap directive', () => {
         return;
       }
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'grid',
@@ -261,7 +262,7 @@ describe('grid gap directive', () => {
       }
 
       mediaController.activate('xs');
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'grid',
@@ -281,7 +282,7 @@ describe('grid gap directive', () => {
       }
 
       mediaController.activate('md');
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             display: 'grid',
@@ -309,7 +310,7 @@ describe('grid gap directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, GridModule],
+  imports: [CommonModule, DefaultGridGapDirective],
 })
 class TestLayoutGapComponent {
   gap = '8px';

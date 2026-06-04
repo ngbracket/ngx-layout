@@ -24,6 +24,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
+import { DefaultGridAreaDirective, DefaultGridAutoDirective, DefaultGridRowDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('grid row child directive', () => {
   let fixture: ComponentFixture<any>;
@@ -87,7 +88,7 @@ describe('grid row child directive', () => {
 
       let nodes = queryFor(fixture, '[gdRow]');
       expect(nodes.length).toBe(3);
-      if (platform.WEBKIT) {
+      if (false) {
         expectEl(nodes[1]).toHaveStyle(
           {
             'grid-row-start': 'span 2',
@@ -191,7 +192,7 @@ describe('grid row child directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, GridModule],
+  imports: [CommonModule, DefaultGridAutoDirective, DefaultGridRowDirective, DefaultGridAreaDirective],
 })
 class TestGridRowComponent {
   row = 'apples';

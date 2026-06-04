@@ -10,6 +10,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import {
+  DefaultFlexDirective,
+  DefaultFlexOffsetDirective,
+  DefaultLayoutAlignDirective,
+  DefaultLayoutDirective,
+  DefaultLayoutGapDirective,
+} from '@ngbracket/ngx-layout/flex';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
   expectNativeEl,
@@ -649,7 +656,7 @@ export class MockLayoutAlignStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, FlexLayoutModule],
+  imports: [CommonModule, DefaultLayoutDirective, DefaultLayoutAlignDirective, DefaultFlexDirective, DefaultFlexOffsetDirective, DefaultLayoutGapDirective],
 })
 class TestLayoutAlignComponent implements OnInit {
   direction = 'column';

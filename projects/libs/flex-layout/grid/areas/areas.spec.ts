@@ -23,6 +23,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
+import { DefaultGridAreaDirective, DefaultGridAreasDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('grid area parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -246,7 +247,7 @@ describe('grid area parent directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, GridModule],
+  imports: [CommonModule, DefaultGridAreasDirective, DefaultGridAreaDirective],
 })
 class TestGridAreaComponent {
   areas = 'sidebar | sidebar';

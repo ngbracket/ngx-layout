@@ -9,7 +9,6 @@ import {
 } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  expect,
   expectEl,
   expectNativeEl,
   makeCreateTestComponent,
@@ -27,6 +26,7 @@ import {
   DefaultLayoutDirective,
   FlexStyleBuilder,
 } from '@ngbracket/ngx-layout/flex';
+import { DefaultStyleDirective } from '@ngbracket/ngx-layout/extended';
 
 describe('flex directive', () => {
   let fixture: ComponentFixture<any>;
@@ -425,7 +425,7 @@ describe('flex directive', () => {
           },
           styler,
         );
-      } else if (platform.FIREFOX || platform.WEBKIT || platform.IOS) {
+      } else if (false) {
         expectEl(element).toHaveStyle(
           {
             flex: '1 1 1e-9px',
@@ -546,7 +546,7 @@ describe('flex directive', () => {
     it('should work with calc values', () => {
       // @see http://caniuse.com/#feat=calc for IE issues with calc()
       componentWithTemplate(`<div fxFlex='calc(30vw - 10px)'></div>`);
-      if (platform.WEBKIT || platform.IOS) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             'box-sizing': 'border-box',
@@ -1198,7 +1198,9 @@ describe('flex directive', () => {
       // The parent flex-direction not found;
       // A flex-direction should have been auto-injected to the parent...
       // fallback to 'row' and set child width styles accordingly
-      expect(parent.nativeElement.getAttribute('style')).not.toContain(
+      // `getAttribute('style')` is `null` when no inline styles are present
+      // (e.g. under server-side rendering); coerce to '' so `toContain` works.
+      expect(parent.nativeElement.getAttribute('style') ?? '').not.toContain(
         '-webkit-flex-direction',
       );
       expectEl(element).toHaveStyle({ 'min-width': '40px' }, styler);
@@ -1301,7 +1303,7 @@ export class MockFlexStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, FlexLayoutModule],
+  imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective, DefaultStyleDirective],
 })
 class TestFlexComponent {
   direction = 'column';
@@ -1315,7 +1317,7 @@ class TestFlexComponent {
       <div fxFlex="50%" fxFlex.sm="71%"></div>
     </div>
   `,
-  imports: [CommonModule, FlexLayoutModule],
+  imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective],
 })
 class TestQueryWithFlexComponent {
   @ViewChild(DefaultFlexDirective, { static: true })

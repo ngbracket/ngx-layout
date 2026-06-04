@@ -6,9 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import {
-  expect,
-} from '@ngbracket/ngx-layout/_private-utils/testing';
-import {
   buildMapFromList,
   buildMapFromSet,
   buildRawList,

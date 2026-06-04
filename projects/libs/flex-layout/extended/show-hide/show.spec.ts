@@ -11,8 +11,14 @@ import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { DefaultShowHideDirective } from '@ngbracket/ngx-layout/extended';
+import {
+  DefaultFlexDirective,
+  DefaultLayoutAlignDirective,
+  DefaultLayoutDirective,
+} from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
   expectNativeEl,
@@ -65,12 +71,12 @@ describe('show directive', () => {
         FormsModule,
         MatSelectModule,
         MatLabel,
-        NoopAnimationsModule,
         TestShowComponent,
       ],
       providers: [
         MockMatchMediaProvider,
         { provide: SERVER_TOKEN, useValue: true },
+        provideNoopAnimations(),
       ],
     });
   });
@@ -412,7 +418,7 @@ class FxShowHideDirective extends ShowHideDirective {
 @Component({
   selector: 'test-show-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, MatFormFieldModule, FlexLayoutModule, FormsModule, MatSelectModule, MatLabel, NoopAnimationsModule],
+  imports: [CommonModule, MatFormFieldModule, FormsModule, MatSelectModule, MatLabel, DefaultShowHideDirective, DefaultLayoutDirective, DefaultLayoutAlignDirective, DefaultFlexDirective, FxShowHideDirective],
 })
 class TestShowComponent implements OnInit {
   isVisible = 0;
@@ -421,7 +427,6 @@ class TestShowComponent implements OnInit {
 
   constructor(public media: MediaObserver) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   toggleMenu() {

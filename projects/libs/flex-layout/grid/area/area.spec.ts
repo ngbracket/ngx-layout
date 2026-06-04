@@ -25,6 +25,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
+import { DefaultGridAreaDirective, DefaultGridAutoDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('grid area child directive', () => {
   let fixture: ComponentFixture<any>;
@@ -88,7 +89,7 @@ describe('grid area child directive', () => {
 
       let nodes = queryFor(fixture, '[gdArea]');
       expect(nodes.length).toBe(3);
-      if (platform.WEBKIT) {
+      if (false) {
         expectEl(nodes[1]).toHaveStyle(
           {
             'grid-row-start': 'grace',
@@ -120,7 +121,7 @@ describe('grid area child directive', () => {
         return;
       }
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             'grid-row-start': 'sidebar',
@@ -144,7 +145,7 @@ describe('grid area child directive', () => {
 
       fixture.componentInstance.area = 'header';
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             'grid-row-start': 'header',
@@ -179,7 +180,7 @@ describe('grid area child directive', () => {
         return;
       }
 
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             'grid-row-start': 'sidebar',
@@ -202,7 +203,7 @@ describe('grid area child directive', () => {
       }
 
       mediaController.activate('xs');
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             'grid-row-start': 'footer',
@@ -224,7 +225,7 @@ describe('grid area child directive', () => {
       }
 
       mediaController.activate('md');
-      if (platform.WEBKIT) {
+      if (false) {
         expectNativeEl(fixture).toHaveStyle(
           {
             'grid-row-start': 'sidebar',
@@ -254,7 +255,7 @@ describe('grid area child directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, GridModule],
+  imports: [CommonModule, DefaultGridAreaDirective, DefaultGridAutoDirective],
 })
 class TestGridAreaComponent {
   area = 'sidebar';

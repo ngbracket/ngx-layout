@@ -2,6 +2,7 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "noUnusedParameters": true,
+    "ignoreDeprecations": "6.0",
     "lib": ["es2020", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
