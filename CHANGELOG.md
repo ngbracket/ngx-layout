@@ -5,6 +5,7 @@
 
 * **etag:** removed etag ([22ba2d9](https://github.com/ngbracket/ngx-layout/commit/22ba2d90b521cdd3ec62eefb7d31992acf1858a3))
 * **flex-layout:** use aliased imports from primary entry point to secondary entry point ([#76](https://github.com/ngbracket/ngx-layout/issues/76)) ([021f1ae](https://github.com/ngbracket/ngx-layout/commit/021f1aed563d2b3488beb759675f2c92dc7d39bc))
+* **layout-gap:** use direction-independent (logical) CSS properties for `fxLayoutGap` so layouts are not broken under `direction: rtl` ([#95](https://github.com/ngbracket/ngx-layout/issues/95))
 * **package:** remove package lock file ([9f75640](https://github.com/ngbracket/ngx-layout/commit/9f75640221d012856f90cf4d92bbf3ed4dbfad1e))
 * **package:** update package json to match yarn lock for browser-sync-client ([ab0549a](https://github.com/ngbracket/ngx-layout/commit/ab0549a3d4fe1304212ae8909528b92fe647083b))
 * remove duplicate dependencies from package.json ([2812287](https://github.com/ngbracket/ngx-layout/commit/281228716d24a3c2fd6a90748f929a7e8a78d07a))

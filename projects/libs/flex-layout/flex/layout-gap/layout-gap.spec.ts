@@ -119,7 +119,7 @@ describe('layout-gap directive', () => {
           `;
       createTestComponent(template);
       expectEl(queryFor(fixture, '[fxFlex]')[0]).not.toHaveStyle(
-        { 'margin-right': '13px;' },
+        { 'margin-inline-end': '13px;' },
         styler,
       );
     });
@@ -137,10 +137,10 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
     });
 
     it('should add gap styles to all children except the 1st child w/ multiplier', () => {
@@ -156,10 +156,10 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '52px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '52px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '52px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '52px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '52px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '52px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
     });
 
     it('should add gap styles to all children except the 1st child w/o unit', () => {
@@ -175,10 +175,10 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
     });
 
     it('should add gap styles in proper order when order style is applied', () => {
@@ -194,10 +194,10 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[2]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
     });
 
     it('should add gap styles to dynamics rows EXCEPT first', () => {
@@ -212,11 +212,11 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(4);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
     });
 
     it('should add update gap styles when row items are removed', waitForAsync(() => {
@@ -243,10 +243,10 @@ describe('layout-gap directive', () => {
         expect(nodes.length).toEqual(3);
 
         if (typeof MutationObserver !== 'undefined') {
-          expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-          expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
+          expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+          expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
           expectEl(nodes[2]).not.toHaveStyle(
-            { 'margin-right': '13px' },
+            { 'margin-inline-end': '13px' },
             styler,
           );
         }
@@ -266,8 +266,8 @@ describe('layout-gap directive', () => {
       let nodes = queryFor(fixture, '[fxFlex]');
 
       expect(nodes.length).toEqual(4);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle({ 'margin-right': '13px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
 
       fixture.componentInstance.rows = new Array(1);
       fixture.detectChanges();
@@ -281,7 +281,7 @@ describe('layout-gap directive', () => {
         expect(nodes.length).toEqual(1);
         if (typeof MutationObserver !== 'undefined') {
           expectEl(nodes[0]).not.toHaveStyle(
-            { 'margin-right': '13px' },
+            { 'margin-inline-end': '13px' },
             styler,
           );
         }
@@ -289,15 +289,15 @@ describe('layout-gap directive', () => {
     }));
 
     it('should apply margin-top for column layouts', () => {
-      verifyCorrectMargin('column', 'margin-bottom');
+      verifyCorrectMargin('column', 'margin-block-end');
     });
 
-    it('should apply margin-left for row-reverse layouts', () => {
-      verifyCorrectMargin('row-reverse', 'margin-left');
+    it('should apply margin-inline-start for row-reverse layouts', () => {
+      verifyCorrectMargin('row-reverse', 'margin-inline-start');
     });
 
-    it('should apply margin-top for column-reverse layouts', () => {
-      verifyCorrectMargin('column-reverse', 'margin-top');
+    it('should apply margin-block-start for column-reverse layouts', () => {
+      verifyCorrectMargin('column-reverse', 'margin-block-start');
     });
 
     it('should remove obsolete margin and apply valid margin for layout changes', () => {
@@ -315,24 +315,24 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
       let nodes = queryFor(fixture, 'span');
 
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '8px' }, styler);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-bottom': '8px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '8px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
 
-      // layout = column-reverse, use margin-bottom
+      // layout = column-reverse, use margin-block-start
       instance.direction = 'column-reverse';
       fixture.detectChanges();
       nodes = queryFor(fixture, 'span');
 
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '8px' }, styler);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-top': '8px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '8px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-block-start': '8px' }, styler);
 
-      // layout = row-reverse, use margin-right
+      // layout = row-reverse, use margin-inline-start
       instance.direction = 'row-reverse';
       fixture.detectChanges();
       nodes = queryFor(fixture, 'span');
 
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '8px' }, styler);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-left': '8px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '8px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-start': '8px' }, styler);
     });
 
     it('should recognize hidden elements when applying gaps', () => {
@@ -353,10 +353,10 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(3);
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '16px' }, styler);
-        expectEl(nodes[1]).toHaveStyle({ 'margin-right': '16px' }, styler);
-        expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '16px' }, styler);
+        expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+        expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
       }
     });
 
@@ -382,10 +382,10 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(4);
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '16px' }, styler);
-        expectEl(nodes[1]).toHaveStyle({ 'margin-right': '16px' }, styler);
-        expectEl(nodes[2]).toHaveStyle({ 'margin-right': '16px' }, styler);
-        expectEl(nodes[3]).not.toHaveStyle({ 'margin-right': '16px' }, styler);
+        expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
       }
 
       fixture.componentInstance.gap = '8px';
@@ -397,10 +397,10 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(4);
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '8px' }, styler);
-        expectEl(nodes[1]).toHaveStyle({ 'margin-bottom': '8px' }, styler);
-        expectEl(nodes[2]).toHaveStyle({ 'margin-bottom': '8px' }, styler);
-        expectEl(nodes[3]).not.toHaveStyle({ 'margin-bottom': '8px' }, styler);
+        expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '8px' }, styler);
+        expectEl(nodes[1]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
+        expectEl(nodes[2]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
+        expectEl(nodes[3]).not.toHaveStyle({ 'margin-block-end': '8px' }, styler);
       }
     });
   });
@@ -419,17 +419,17 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
 
       mediaController.activate('md');
       fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
     });
 
     it('should set gap without fallback', () => {
@@ -446,21 +446,21 @@ describe('layout-gap directive', () => {
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       mediaController.activate('sm');
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-right': '*' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
 
       mediaController.activate('md');
       fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '0px' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
 
       mediaController.activate('sm');
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-right': '*' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
     });
 
     it('should set gap with responsive layout change', () => {
@@ -476,15 +476,15 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
 
       mediaController.activate('xs');
       fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
     });
 
     it('should remove gaps with responsive layout change', () => {
@@ -500,22 +500,22 @@ describe('layout-gap directive', () => {
 
       mediaController.activate('md');
       fixture.detectChanges();
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
 
       mediaController.activate('xs');
       fixture.detectChanges();
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
 
       mediaController.activate('md');
       fixture.detectChanges();
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-bottom': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
     });
 
     it('should add gap styles in proper order when order style is applied on responsive layout change', () => {
@@ -532,15 +532,15 @@ describe('layout-gap directive', () => {
       mediaController.activate('md');
       fixture.detectChanges();
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
 
       mediaController.activate('xs');
       fixture.detectChanges();
-      expectEl(nodes[2]).toHaveStyle({ 'margin-bottom': '20px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-bottom': '20px' }, styler);
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-bottom': '*' }, styler);
+      expectEl(nodes[2]).toHaveStyle({ 'margin-block-end': '20px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-block-end': '20px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
     });
 
     it('should work with dynamic fxHide', () => {
@@ -555,15 +555,15 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(2);
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-right': '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
 
       const instance = fixture.componentInstance;
       instance.shouldHide = false;
       fixture.detectChanges();
 
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '10px' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '10px' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
     });
 
     it('should work with responsive fxHide', () => {
@@ -579,38 +579,41 @@ describe('layout-gap directive', () => {
 
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
 
       mediaController.activate('sm');
       fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-right': '*' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
 
       mediaController.activate('lg');
       fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-right': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-right': '*' }, styler);
+      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
     });
   });
 
   describe('rtl support', () => {
-    it('uses margin-left when document body has rtl dir', () => {
+    // Logical properties (margin-inline-end) are direction-independent: the
+    // directive emits the same property regardless of `dir`, and the browser
+    // resolves it against the writing direction. See issue #95.
+    it('uses margin-inline-end when document body has rtl dir', () => {
       fakeDocument.body.dir = 'rtl';
-      verifyCorrectMargin('row', 'margin-left');
+      verifyCorrectMargin('row', 'margin-inline-end');
     });
 
-    it('uses margin-left when documentElement has rtl dir', () => {
+    it('uses margin-inline-end when documentElement has rtl dir', () => {
       fakeDocument.documentElement.dir = 'rtl';
-      verifyCorrectMargin('row', 'margin-left');
+      verifyCorrectMargin('row', 'margin-inline-end');
     });
 
-    it('still uses margin-bottom in column layout when body has rtl dir', () => {
+    it('still uses margin-block-end in column layout when body has rtl dir', () => {
       fakeDocument.body.dir = 'rtl';
-      verifyCorrectMargin('column', 'margin-bottom');
+      verifyCorrectMargin('column', 'margin-block-end');
     });
   });
 
@@ -627,8 +630,14 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
 
       const nodes = queryFor(fixture, '[fxFlex]');
-      const expectedMargin = { margin: '0px -13px -13px 0px' };
-      const expectedPadding = { padding: '0px 13px 13px 0px' };
+      const expectedMargin = {
+        'margin-inline': '0px -13px',
+        'margin-block': '0px -13px',
+      };
+      const expectedPadding = {
+        'padding-inline': '0px 13px',
+        'padding-block': '0px 13px',
+      };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
@@ -648,8 +657,14 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
 
       const nodes = queryFor(fixture, '[fxFlex]');
-      const expectedMargin = { margin: '0px -52px -52px 0px' };
-      const expectedPadding = { padding: '0px 52px 52px 0px' };
+      const expectedMargin = {
+        'margin-inline': '0px -52px',
+        'margin-block': '0px -52px',
+      };
+      const expectedPadding = {
+        'padding-inline': '0px 52px',
+        'padding-block': '0px 52px',
+      };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
@@ -669,8 +684,14 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
 
       const nodes = queryFor(fixture, '[fxFlex]');
-      const expectedMargin = { margin: '0px -13px -12px 0px' };
-      const expectedPadding = { padding: '0px 13px 12px 0px' };
+      const expectedMargin = {
+        'margin-inline': '0px -13px',
+        'margin-block': '0px -12px',
+      };
+      const expectedPadding = {
+        'padding-inline': '0px 13px',
+        'padding-block': '0px 12px',
+      };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
@@ -692,23 +713,29 @@ describe('layout-gap directive', () => {
       const nodes = queryFor(fixture, '[fxFlex]');
       expect(nodes.length).toEqual(3);
       mediaController.activate('sm');
-      expectEl(nodes[0]).not.toHaveStyle({ padding: '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ padding: '*' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ padding: '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'padding-inline': '*' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'padding-inline': '*' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'padding-inline': '*' }, styler);
 
       mediaController.activate('md');
       fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ padding: '0px 24px 24px 0px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ padding: '0px 24px 24px 0px' }, styler);
-      expectEl(nodes[2]).toHaveStyle({ padding: '0px 24px 24px 0px' }, styler);
+      const expectedPadding = {
+        'padding-inline': '0px 24px',
+        'padding-block': '0px 24px',
+      };
+      expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
+      expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
+      expectEl(nodes[2]).toHaveStyle(expectedPadding, styler);
 
       mediaController.activate('sm');
-      expectEl(nodes[0]).not.toHaveStyle({ padding: '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ padding: '*' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ padding: '*' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle({ 'padding-inline': '*' }, styler);
+      expectEl(nodes[1]).not.toHaveStyle({ 'padding-inline': '*' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle({ 'padding-inline': '*' }, styler);
     });
 
     it('should add gap styles correctly for rtl', () => {
+      // Logical properties are direction-independent, so the emitted styles are
+      // identical to the ltr case; the browser resolves them against `rtl`.
       fakeDocument.body.dir = 'rtl';
       const template = `
         <div fxLayoutGap='13px grid'>
@@ -721,8 +748,14 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
 
       const nodes = queryFor(fixture, '[fxFlex]');
-      const expectedMargin = { margin: '0px 0px -13px -13px' };
-      const expectedPadding = { padding: '0px 0px 13px 13px' };
+      const expectedMargin = {
+        'margin-inline': '0px -13px',
+        'margin-block': '0px -13px',
+      };
+      const expectedPadding = {
+        'padding-inline': '0px 13px',
+        'padding-block': '0px 13px',
+      };
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle(expectedPadding, styler);
       expectEl(nodes[1]).toHaveStyle(expectedPadding, styler);
