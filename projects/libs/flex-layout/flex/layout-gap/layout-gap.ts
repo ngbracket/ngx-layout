@@ -1,5 +1,4 @@
 /* eslint-disable prefer-const */
-import { Directionality } from '@angular/cdk/bidi';
 import {
   AfterContentInit,
   Directive,
@@ -25,16 +24,15 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 export interface LayoutGapParent {
-  directionality: string;
   items: HTMLElement[];
   layout: string;
 }
 
 const CLEAR_MARGIN_CSS = {
-  'margin-left': null,
-  'margin-right': null,
-  'margin-top': null,
-  'margin-bottom': null,
+  'margin-inline-start': null,
+  'margin-inline-end': null,
+  'margin-block-start': null,
+  'margin-block-end': null,
 };
 
 @Injectable({ providedIn: 'root' })
@@ -52,7 +50,7 @@ export class LayoutGapStyleBuilder extends StyleBuilder {
       gapValue = multiply(gapValue, this._config.multiplier);
 
       // Add the margin to the host element
-      return buildGridMargin(gapValue, parent.directionality);
+      return buildGridMargin(gapValue);
     } else {
       return {};
     }
@@ -68,7 +66,7 @@ export class LayoutGapStyleBuilder extends StyleBuilder {
       gapValue = gapValue.slice(0, gapValue.indexOf(GRID_SPECIFIER));
       gapValue = multiply(gapValue, this._config.multiplier);
       // For each `element` children, set the padding
-      const paddingStyles = buildGridPadding(gapValue, parent.directionality);
+      const paddingStyles = buildGridPadding(gapValue);
       this._styler.applyStyleToElements(paddingStyles, parent.items);
     } else {
       gapValue = multiply(gapValue, this._config.multiplier);
@@ -143,16 +141,12 @@ export class LayoutGapDirective
   constructor(
     elRef: ElementRef,
     protected zone: NgZone,
-    protected directionality: Directionality,
     protected styleUtils: StyleUtils,
     styleBuilder: LayoutGapStyleBuilder,
     marshal: MediaMarshaller,
   ) {
     super(elRef, styleBuilder, styleUtils, marshal);
-    const extraTriggers = [
-      this.directionality.change,
-      this.observerSubject.asObservable(),
-    ];
+    const extraTriggers = [this.observerSubject.asObservable()];
     this.init(extraTriggers);
     this.marshal
       .trackValue(this.nativeElement, 'layout')
@@ -220,38 +214,30 @@ export class LayoutGapDirective
       });
 
     if (items.length > 0) {
-      const directionality = this.directionality.value;
-      const layout = this.layout;
-      if (layout === 'row' && directionality === 'rtl') {
-        this.styleCache = layoutGapCacheRowRtl;
-      } else if (layout === 'row' && directionality !== 'rtl') {
-        this.styleCache = layoutGapCacheRowLtr;
-      } else if (layout === 'column' && directionality === 'rtl') {
-        this.styleCache = layoutGapCacheColumnRtl;
-      } else if (layout === 'column' && directionality !== 'rtl') {
-        this.styleCache = layoutGapCacheColumnLtr;
-      }
-      this.addStyles(value, { directionality, items, layout });
+      this.addStyles(value, { items, layout: this.layout });
     }
   }
 
   /** We need to override clearStyles because in most cases mru isn't populated */
   protected override clearStyles() {
     const gridMode = Object.keys(this.mru).length > 0;
-    const childrenStyle = gridMode
-      ? 'padding'
-      : getMarginType(this.directionality.value, this.layout);
 
     // If there are styles on the parent remove them
     if (gridMode) {
       super.clearStyles();
-    }
 
-    // Then remove the children styles too
-    this.styleUtils.applyStyleToElements(
-      { [childrenStyle]: '' },
-      this.childrenNodes,
-    );
+      // Then remove the children grid padding too
+      this.styleUtils.applyStyleToElements(
+        { 'padding-inline': '', 'padding-block': '' },
+        this.childrenNodes,
+      );
+    } else {
+      // Remove the children gap margin
+      this.styleUtils.applyStyleToElements(
+        { [getMarginType(this.layout)]: '' },
+        this.childrenNodes,
+      );
+    }
   }
 
   /** Determine if an element will show or hide based on current activation */
@@ -297,72 +283,53 @@ export class DefaultLayoutGapDirective extends LayoutGapDirective {
   protected override inputs = inputs;
 }
 
-const layoutGapCacheRowRtl: Map<string, StyleDefinition> = new Map();
-const layoutGapCacheColumnRtl: Map<string, StyleDefinition> = new Map();
-const layoutGapCacheRowLtr: Map<string, StyleDefinition> = new Map();
-const layoutGapCacheColumnLtr: Map<string, StyleDefinition> = new Map();
-
 const GRID_SPECIFIER = ' grid';
 
-function buildGridPadding(
-  value: string,
-  directionality: string,
-): StyleDefinition {
+function buildGridPadding(value: string): StyleDefinition {
   const [between, below] = value.split(' ');
   const bottom = below ?? between;
-  let paddingRight = '0px',
-    paddingBottom = bottom,
-    paddingLeft = '0px';
 
-  if (directionality === 'rtl') {
-    paddingLeft = between;
-  } else {
-    paddingRight = between;
-  }
-
-  return { padding: `0px ${paddingRight} ${paddingBottom} ${paddingLeft}` };
+  // Use logical properties so the gap follows the writing direction
+  // (e.g. `direction: rtl`) without inspecting the directionality.
+  return {
+    'padding-inline': `0px ${between}`,
+    'padding-block': `0px ${bottom}`,
+  };
 }
 
-function buildGridMargin(
-  value: string,
-  directionality: string,
-): StyleDefinition {
+function buildGridMargin(value: string): StyleDefinition {
   const [between, below] = value.split(' ');
   const bottom = below ?? between;
   const minus = (str: string) => `-${str}`;
-  let marginRight = '0px',
-    marginBottom = minus(bottom),
-    marginLeft = '0px';
 
-  if (directionality === 'rtl') {
-    marginLeft = minus(between);
-  } else {
-    marginRight = minus(between);
-  }
-
-  return { margin: `0px ${marginRight} ${marginBottom} ${marginLeft}` };
+  // Use logical properties so the gap follows the writing direction
+  // (e.g. `direction: rtl`) without inspecting the directionality.
+  return {
+    'margin-inline': `0px ${minus(between)}`,
+    'margin-block': `0px ${minus(bottom)}`,
+  };
 }
 
-function getMarginType(directionality: string, layout: string) {
+function getMarginType(layout: string) {
   switch (layout) {
     case 'column':
-      return 'margin-bottom';
+      return 'margin-block-end';
     case 'column-reverse':
-      return 'margin-top';
+      return 'margin-block-start';
     case 'row':
-      return directionality === 'rtl' ? 'margin-left' : 'margin-right';
+      return 'margin-inline-end';
     case 'row-reverse':
-      return directionality === 'rtl' ? 'margin-right' : 'margin-left';
+      return 'margin-inline-start';
     default:
-      return directionality === 'rtl' ? 'margin-left' : 'margin-right';
+      return 'margin-inline-end';
   }
 }
 
 function buildGapCSS(
   gapValue: string,
-  parent: { directionality: string; layout: string },
+  parent: { layout: string },
 ): StyleDefinition {
-  const key = getMarginType(parent.directionality, parent.layout);
+  const key = getMarginType(parent.layout);
   const margins: { [key: string]: string | null } = { ...CLEAR_MARGIN_CSS };
   margins[key] = gapValue;
   return margins;
