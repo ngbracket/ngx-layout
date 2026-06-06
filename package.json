@@ -50,7 +50,7 @@
     "@angular/platform-server": "22.0.0-rc.3",
     "@angular/router": "22.0.0-rc.3",
     "@angular/ssr": "22.0.0-rc.3",
-    "@docusaurus/preset-classic": "^3.10.1",
+    "@docusaurus/preset-classic": "^3.10.0",
     "@mdx-js/react": "^3.1.1",
     "clsx": "^2.1.1",
     "express": "^4.21.2",
@@ -67,8 +67,8 @@
     "@angular/cli": "22.0.0-rc.3",
     "@angular/compiler-cli": "22.0.0-rc.3",
     "@angular/language-service": "22.0.0-rc.3",
-    "@docusaurus/module-type-aliases": "^3.10.1",
-    "@docusaurus/tsconfig": "^3.8.1",
+    "@docusaurus/module-type-aliases": "^3.10.0",
+    "@docusaurus/tsconfig": "^3.10.1",
     "@docusaurus/types": "^3.8.1",
     "@types/express": "^4.17.25",
     "@types/node": "^20.19.25",
@@ -88,8 +88,10 @@
     "vitest": "^4.1.8"
   },
   "overrides": {
-    "webpack": "5.95.0",
-    "browser-sync-client": "2.29.3"
+    "webpack": "5.107.2",
+    "browser-sync-client": "2.29.3",
+    "serialize-javascript": "7.0.5",
+    "uuid": "11.1.1"
   },
   "volta": {
     "node": "24.15.0"
