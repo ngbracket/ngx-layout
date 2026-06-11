@@ -77,17 +77,56 @@ With the above changes, when printing on mobile-sized viewports the xs.print med
 
 Thus, you can use the token to segment which breakpoints you provide and in which order. For instance, you can provide all print breakpoints in an array called `PRINT_BREAKPOINTS` and then all mobile breakpoints in another array called `MOBILE_BREAKPOINTS`. You can also simply provide one additional breakpoint if that's all you need.
 
-## Disabling the default breakpoints
+## Material breakpoints preset
 
-To disable the default breakpoints, you simply provide the new **DISABLE_DEFAULT_BREAKPOINTS** token as follows:
+The library's `DEFAULT_BREAKPOINTS` retain the original `@angular/flex-layout`
+ranges, where `md` starts at **960px**. If you prefer the modern Material Design 3
+ranges (`md` at **900px**), an opt-in `MATERIAL_BREAKPOINTS` preset is provided:
+
+| alias | range                |
+| ----- | -------------------- |
+| xs    | `< 600px`            |
+| sm    | `600px – 899.98px`   |
+| md    | `900px – 1199.98px`  |
+| lg    | `1200px – 1535.98px` |
+| xl    | `>= 1536px`          |
+
+To use it, disable the default breakpoints and provide the preset:
 
 ```typescript
-import {DISABLE_DEFAULT_BREAKPOINTS} from '@ngbracket/ngx-layout';
+import { FlexLayoutModule, MATERIAL_BREAKPOINTS } from '@ngbracket/ngx-layout';
 
-{provide: DISABLE_DEFAULT_BREAKPOINTS, useValue: true}
+FlexLayoutModule.withConfig({ disableDefaultBps: true }, MATERIAL_BREAKPOINTS);
 ```
 
-The default value for this breakpoint is false
+or, with the standalone provider:
+
+```typescript
+import { provideFlexLayout, MATERIAL_BREAKPOINTS } from '@ngbracket/ngx-layout';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideFlexLayout({ disableDefaultBps: true }, MATERIAL_BREAKPOINTS),
+  ],
+};
+```
+
+The preset uses the same `xs`/`sm`/`md`/`lg`/`xl` aliases (plus the `lt-*` and
+`gt-*` variants) as the defaults, so existing responsive selectors keep working —
+only the activation ranges change.
+
+## Disabling the default breakpoints
+
+To disable the default breakpoints, set the `disableDefaultBps` config option to
+`true` (for example via `FlexLayoutModule.withConfig` or `provideFlexLayout`):
+
+```typescript
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+
+FlexLayoutModule.withConfig({ disableDefaultBps: true });
+```
+
+The default value for this option is `false`.
 
 ## Adding the orientation breakpoints
 
