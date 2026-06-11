@@ -24,11 +24,11 @@ import {
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
-import { DefaultShowHideDirective } from '@ngbracket/ngx-layout/extended';
+import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
 import {
-  DefaultFlexDirective,
-  DefaultLayoutAlignDirective,
-  DefaultLayoutDirective,
+  FlexDirective,
+  LayoutAlignDirective,
+  LayoutDirective,
 } from '@ngbracket/ngx-layout/flex';
 
 describe('hide directive', () => {
@@ -377,10 +377,10 @@ describe('hide directive', () => {
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
-    DefaultShowHideDirective,
-    DefaultLayoutDirective,
-    DefaultLayoutAlignDirective,
-    DefaultFlexDirective,
+    ShowHideDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
+    FlexDirective,
   ],
 })
 class TestHideComponent {

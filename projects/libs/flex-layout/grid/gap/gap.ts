@@ -48,6 +48,12 @@ const selector = `
   [gdGap.gt-xs], [gdGap.gt-sm], [gdGap.gt-md], [gdGap.gt-lg]
 `;
 
+/**
+ * 'grid-gap' CSS Grid styling directive
+ * Configures the gap between items in the grid
+ * Syntax: <row gap> [<column-gap>]
+ * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-17
+ */
 @Directive({ selector, inputs })
 export class GridGapDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-gap';
@@ -84,18 +90,3 @@ export class GridGapDirective extends BaseDirective2 {
 
 const gapCache: Map<string, StyleDefinition> = new Map();
 const gapInlineCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * 'grid-gap' CSS Grid styling directive
- * Configures the gap between items in the grid
- * Syntax: <row gap> [<column-gap>]
- * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-17
- */
-/**
- * @deprecated The DefaultGridGapDirective will be removed in version 21.
- * Use GridGapDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridGapDirective extends GridGapDirective {
-  protected override inputs = inputs;
-}

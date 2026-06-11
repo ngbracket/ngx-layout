@@ -94,20 +94,3 @@ export class ImgSrcDirective extends BaseDirective2 {
 }
 
 const imgSrcCache: Map<string, StyleDefinition> = new Map();
-
-/**
- *  *  @deprecated The DefaultImgSrcDirective will be removed in version 21.
- * Use ImgSrcDirective directly instead.
- *
- * This directive provides a responsive API for the HTML <img> 'src' attribute
- * and will update the img.src property upon each responsive activation.
- *
- * e.g.
- *      <img src="defaultScene.jpg" src.xs="mobileScene.jpg"></img>
- *
- * @see https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-src/
- */
-@Directive({ selector, inputs })
-export class DefaultImgSrcDirective extends ImgSrcDirective {
-  protected override inputs = inputs;
-}

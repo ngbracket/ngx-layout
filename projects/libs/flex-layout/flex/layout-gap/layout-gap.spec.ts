@@ -24,12 +24,12 @@ import {
 } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  DefaultFlexDirective,
-  DefaultFlexOrderDirective,
-  DefaultLayoutDirective,
-  DefaultLayoutGapDirective,
+  FlexDirective,
+  FlexOrderDirective,
+  LayoutDirective,
+  LayoutGapDirective,
 } from '@ngbracket/ngx-layout/flex';
-import { DefaultShowHideDirective } from '@ngbracket/ngx-layout/extended';
+import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
 import {
   expectEl,
   expectNativeEl,
@@ -915,11 +915,11 @@ export class MockLayoutGapStyleBuilder extends StyleBuilder {
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
-    DefaultLayoutDirective,
-    DefaultLayoutGapDirective,
-    DefaultFlexDirective,
-    DefaultFlexOrderDirective,
-    DefaultShowHideDirective,
+    LayoutDirective,
+    LayoutGapDirective,
+    FlexDirective,
+    FlexOrderDirective,
+    ShowHideDirective,
   ],
 })
 class TestLayoutGapComponent implements OnInit {

@@ -24,8 +24,8 @@ import {
 
 import { GridModule } from '../module';
 import {
-  DefaultGridAreaDirective,
-  DefaultGridRowsDirective,
+  GridAreaDirective,
+  GridRowsDirective,
 } from '@ngbracket/ngx-layout/grid';
 
 describe('grid rows parent directive', () => {
@@ -222,7 +222,7 @@ describe('grid rows parent directive', () => {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultGridRowsDirective, DefaultGridAreaDirective],
+  imports: [CommonModule, GridRowsDirective, GridAreaDirective],
 })
 class TestGridRowsComponent {
   cols = '50px 1fr';
