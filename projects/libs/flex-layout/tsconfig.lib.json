@@ -8,5 +8,13 @@
     "moduleResolution": "bundler"
   },
   "exclude": ["test.ts", "**/*.spec.ts", "**/testing/**/*.ts"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

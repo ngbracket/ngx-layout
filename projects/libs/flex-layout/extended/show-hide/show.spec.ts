@@ -6,7 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Directive, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Directive,
+  OnInit,
+  PLATFORM_ID,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -61,7 +67,6 @@ describe('show directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [
@@ -348,7 +353,6 @@ describe('show directive', () => {
 
   describe('with custom breakpoints', () => {
     beforeEach(() => {
-
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
@@ -418,7 +422,19 @@ class FxShowHideDirective extends ShowHideDirective {
 @Component({
   selector: 'test-show-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, MatFormFieldModule, FormsModule, MatSelectModule, MatLabel, DefaultShowHideDirective, DefaultLayoutDirective, DefaultLayoutAlignDirective, DefaultFlexDirective, FxShowHideDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSelectModule,
+    MatLabel,
+    DefaultShowHideDirective,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    DefaultFlexDirective,
+    FxShowHideDirective,
+  ],
 })
 class TestShowComponent implements OnInit {
   isVisible = 0;
@@ -426,8 +442,7 @@ class TestShowComponent implements OnInit {
   menuOpen = true;
 
   constructor(public media: MediaObserver) {}
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;

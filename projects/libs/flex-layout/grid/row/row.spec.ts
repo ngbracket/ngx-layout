@@ -7,7 +7,7 @@
  */
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   SERVER_TOKEN,
@@ -24,7 +24,11 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
-import { DefaultGridAreaDirective, DefaultGridAutoDirective, DefaultGridRowDirective } from '@ngbracket/ngx-layout/grid';
+import {
+  DefaultGridAreaDirective,
+  DefaultGridAutoDirective,
+  DefaultGridRowDirective,
+} from '@ngbracket/ngx-layout/grid';
 
 describe('grid row child directive', () => {
   let fixture: ComponentFixture<any>;
@@ -58,7 +62,6 @@ describe('grid row child directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule, TestGridRowComponent],
@@ -192,7 +195,13 @@ describe('grid row child directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultGridAutoDirective, DefaultGridRowDirective, DefaultGridAreaDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    CommonModule,
+    DefaultGridAutoDirective,
+    DefaultGridRowDirective,
+    DefaultGridAreaDirective,
+  ],
 })
 class TestGridRowComponent {
   row = 'apples';

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import {
@@ -36,7 +36,6 @@ describe('styler', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, TestLayoutComponent],
@@ -92,6 +91,7 @@ describe('styler', () => {
 @Component({
   selector: 'test-style-utils',
   template: `<span>PlaceHolder Template HTML</span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule],
 })
 class TestLayoutComponent {}

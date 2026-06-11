@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   ɵMatchMedia as MatchMedia,
@@ -69,7 +69,6 @@ describe('hide directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, FlexLayoutModule, TestHideComponent],
@@ -375,7 +374,14 @@ describe('hide directive', () => {
 @Component({
   selector: 'test-hide-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultShowHideDirective, DefaultLayoutDirective, DefaultLayoutAlignDirective, DefaultFlexDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    CommonModule,
+    DefaultShowHideDirective,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    DefaultFlexDirective,
+  ],
 })
 class TestHideComponent {
   isVisible = 0;

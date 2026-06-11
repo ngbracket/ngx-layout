@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   ɵMatchMedia as MatchMedia,
@@ -77,7 +77,6 @@ describe('img-src directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, FlexLayoutModule, TestSrcComponent],
@@ -375,6 +374,7 @@ describe('img-src directive', () => {
 @Component({
   selector: 'test-src-api',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule, DefaultImgSrcDirective],
 })
 class TestSrcComponent {

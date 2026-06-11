@@ -6,7 +6,12 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule } from '@angular/common';
-import { Component, Injectable, OnInit } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
@@ -17,7 +22,11 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { FlexModule, LayoutDirective, LayoutStyleBuilder } from '@ngbracket/ngx-layout/flex';
+import {
+  FlexModule,
+  LayoutDirective,
+  LayoutStyleBuilder,
+} from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
   expectNativeEl,
@@ -42,7 +51,6 @@ describe('layout directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [
@@ -475,7 +483,6 @@ describe('layout directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
@@ -521,6 +528,7 @@ export class MockLayoutStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule, LayoutDirective],
 })
 class TestLayoutComponent implements OnInit {

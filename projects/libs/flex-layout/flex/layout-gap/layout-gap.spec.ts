@@ -9,7 +9,13 @@
  */
 import { DIR_DOCUMENT } from '@angular/cdk/bidi';
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, Injectable, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  OnInit,
+  PLATFORM_ID,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   ComponentFixture,
   inject,
@@ -82,7 +88,8 @@ describe('layout-gap directive', () => {
             unit: 'px',
           },
         }),
-        TestLayoutGapComponent],
+        TestLayoutGapComponent,
+      ],
       providers: [
         MockMatchMediaProvider,
         { provide: DIR_DOCUMENT, useValue: fakeDocument },
@@ -139,8 +146,14 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '13px' },
+        styler,
+      );
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
     });
 
     it('should add gap styles to all children except the 1st child w/ multiplier', () => {
@@ -158,8 +171,14 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '52px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '52px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '52px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '52px' },
+        styler,
+      );
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
     });
 
     it('should add gap styles to all children except the 1st child w/o unit', () => {
@@ -177,8 +196,14 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '13px' },
+        styler,
+      );
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
     });
 
     it('should add gap styles in proper order when order style is applied', () => {
@@ -196,8 +221,14 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(3);
       expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle(
+        { 'margin-inline-end': '13px' },
+        styler,
+      );
+      expectEl(nodes[0]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
     });
 
     it('should add gap styles to dynamics rows EXCEPT first', () => {
@@ -215,8 +246,14 @@ describe('layout-gap directive', () => {
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
       expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[3]).not.toHaveStyle(
+        { 'margin-inline-end': '13px' },
+        styler,
+      );
+      expectEl(nodes[3]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
     });
 
     it('should add update gap styles when row items are removed', waitForAsync(() => {
@@ -243,8 +280,14 @@ describe('layout-gap directive', () => {
         expect(nodes.length).toEqual(3);
 
         if (typeof MutationObserver !== 'undefined') {
-          expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-          expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+          expectEl(nodes[0]).toHaveStyle(
+            { 'margin-inline-end': '13px' },
+            styler,
+          );
+          expectEl(nodes[1]).toHaveStyle(
+            { 'margin-inline-end': '13px' },
+            styler,
+          );
           expectEl(nodes[2]).not.toHaveStyle(
             { 'margin-inline-end': '13px' },
             styler,
@@ -267,7 +310,10 @@ describe('layout-gap directive', () => {
 
       expect(nodes.length).toEqual(4);
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
+      expectEl(nodes[3]).not.toHaveStyle(
+        { 'margin-inline-end': '13px' },
+        styler,
+      );
 
       fixture.componentInstance.rows = new Array(1);
       fixture.detectChanges();
@@ -315,7 +361,10 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
       let nodes = queryFor(fixture, 'span');
 
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '8px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle(
+        { 'margin-inline-end': '8px' },
+        styler,
+      );
       expectEl(nodes[0]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
 
       // layout = column-reverse, use margin-block-start
@@ -323,7 +372,10 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
       nodes = queryFor(fixture, 'span');
 
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '8px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle(
+        { 'margin-inline-end': '8px' },
+        styler,
+      );
       expectEl(nodes[0]).toHaveStyle({ 'margin-block-start': '8px' }, styler);
 
       // layout = row-reverse, use margin-inline-start
@@ -353,10 +405,19 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(3);
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[0]).not.toHaveStyle(
+          { 'margin-inline-end': '0px' },
+          styler,
+        );
+        expectEl(nodes[0]).not.toHaveStyle(
+          { 'margin-inline-end': '16px' },
+          styler,
+        );
         expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
-        expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[2]).not.toHaveStyle(
+          { 'margin-inline-end': '16px' },
+          styler,
+        );
       }
     });
 
@@ -382,10 +443,16 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(4);
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[0]).not.toHaveStyle(
+          { 'margin-inline-end': '16px' },
+          styler,
+        );
         expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
         expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
-        expectEl(nodes[3]).not.toHaveStyle({ 'margin-inline-end': '16px' }, styler);
+        expectEl(nodes[3]).not.toHaveStyle(
+          { 'margin-inline-end': '16px' },
+          styler,
+        );
       }
 
       fixture.componentInstance.gap = '8px';
@@ -397,10 +464,16 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(4);
       // TODO(CaerusKaru): Domino is unable to detect this style
       if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '8px' }, styler);
+        expectEl(nodes[0]).not.toHaveStyle(
+          { 'margin-block-end': '8px' },
+          styler,
+        );
         expectEl(nodes[1]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
         expectEl(nodes[2]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
-        expectEl(nodes[3]).not.toHaveStyle({ 'margin-block-end': '8px' }, styler);
+        expectEl(nodes[3]).not.toHaveStyle(
+          { 'margin-block-end': '8px' },
+          styler,
+        );
       }
     });
   });
@@ -421,15 +494,27 @@ describe('layout-gap directive', () => {
       expect(nodes.length).toEqual(3);
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '13px' },
+        styler,
+      );
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
 
       mediaController.activate('md');
       fixture.detectChanges();
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '24px' },
+        styler,
+      );
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
     });
 
     it('should set gap without fallback', () => {
@@ -454,8 +539,14 @@ describe('layout-gap directive', () => {
       fixture.detectChanges();
       expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
       expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '0px' }, styler);
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '24px' },
+        styler,
+      );
+      expectEl(nodes[2]).not.toHaveStyle(
+        { 'margin-inline-end': '0px' },
+        styler,
+      );
 
       mediaController.activate('sm');
       expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
@@ -500,8 +591,14 @@ describe('layout-gap directive', () => {
 
       mediaController.activate('md');
       fixture.detectChanges();
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle(
+        { 'margin-block-end': '24px' },
+        styler,
+      );
+      expectEl(nodes[1]).not.toHaveStyle(
+        { 'margin-block-end': '24px' },
+        styler,
+      );
       expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
 
       mediaController.activate('xs');
@@ -513,8 +610,14 @@ describe('layout-gap directive', () => {
 
       mediaController.activate('md');
       fixture.detectChanges();
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-block-end': '24px' }, styler);
+      expectEl(nodes[0]).not.toHaveStyle(
+        { 'margin-block-end': '24px' },
+        styler,
+      );
+      expectEl(nodes[1]).not.toHaveStyle(
+        { 'margin-block-end': '24px' },
+        styler,
+      );
       expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
     });
 
@@ -766,7 +869,6 @@ describe('layout-gap directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
@@ -810,7 +912,15 @@ export class MockLayoutGapStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultLayoutDirective, DefaultLayoutGapDirective, DefaultFlexDirective, DefaultFlexOrderDirective, DefaultShowHideDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    CommonModule,
+    DefaultLayoutDirective,
+    DefaultLayoutGapDirective,
+    DefaultFlexDirective,
+    DefaultFlexOrderDirective,
+    DefaultShowHideDirective,
+  ],
 })
 class TestLayoutGapComponent implements OnInit {
   ngOnInit(): void {}

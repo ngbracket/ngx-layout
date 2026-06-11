@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -46,7 +46,6 @@ describe('class directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [
@@ -341,6 +340,7 @@ describe('class directive', () => {
 @Component({
   selector: 'test-class-api',
   template: `<span>PlaceHolder Template HTML</span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, CommonModule, CoreModule, DefaultClassDirective],
 })
 class TestClassComponent {
@@ -710,6 +710,7 @@ describe('binding to CSS class list', () => {
 @Component({
   selector: 'test-cmp',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule],
 })
 class TestComponent {

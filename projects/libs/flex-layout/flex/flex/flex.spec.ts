@@ -1,6 +1,12 @@
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, Injectable, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  PLATFORM_ID,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -57,7 +63,6 @@ describe('flex directive', () => {
   };
 
   beforeEach(() => {
-
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
@@ -1303,7 +1308,13 @@ export class MockFlexStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective, DefaultStyleDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    CommonModule,
+    DefaultLayoutDirective,
+    DefaultFlexDirective,
+    DefaultStyleDirective,
+  ],
 })
 class TestFlexComponent {
   direction = 'column';
@@ -1317,6 +1328,7 @@ class TestFlexComponent {
       <div fxFlex="50%" fxFlex.sm="71%"></div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective],
 })
 class TestQueryWithFlexComponent {

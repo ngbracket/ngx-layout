@@ -7,7 +7,12 @@
  */
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
-import { Component, Injectable, OnInit } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
@@ -58,7 +63,6 @@ describe('layout-align directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, FlexLayoutModule, TestLayoutAlignComponent],
@@ -606,7 +610,6 @@ describe('layout-align directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
@@ -656,7 +659,15 @@ export class MockLayoutAlignStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultLayoutDirective, DefaultLayoutAlignDirective, DefaultFlexDirective, DefaultFlexOffsetDirective, DefaultLayoutGapDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    CommonModule,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    DefaultFlexDirective,
+    DefaultFlexOffsetDirective,
+    DefaultLayoutGapDirective,
+  ],
 })
 class TestLayoutAlignComponent implements OnInit {
   direction = 'column';

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   CoreModule,
@@ -40,10 +40,15 @@ describe('style directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
-      imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective, TestStyleComponent],
+      imports: [
+        CommonModule,
+        CoreModule,
+        StyleDirective,
+        LayoutDirective,
+        TestStyleComponent,
+      ],
       providers: [MockMatchMediaProvider],
     });
   });
@@ -205,6 +210,7 @@ describe('style directive', () => {
 @Component({
   selector: 'test-style-api',
   template: `<span>PlaceHolder Template HTML</span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule, CoreModule, StyleDirective, LayoutDirective],
 })
 class TestStyleComponent {
