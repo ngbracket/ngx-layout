@@ -22,9 +22,9 @@ import {
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
 import {
-  DefaultFlexDirective,
-  DefaultFlexOffsetDirective,
-  DefaultLayoutDirective,
+  FlexDirective,
+  FlexOffsetDirective,
+  LayoutDirective,
   FlexModule,
   FlexOffsetStyleBuilder,
 } from '@ngbracket/ngx-layout/flex';
@@ -273,12 +273,7 @@ export class MockFlexOffsetStyleBuilder extends StyleBuilder {
   selector: 'test-component-shell',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [
-    CommonModule,
-    DefaultLayoutDirective,
-    DefaultFlexDirective,
-    DefaultFlexOffsetDirective,
-  ],
+  imports: [CommonModule, LayoutDirective, FlexDirective, FlexOffsetDirective],
 })
 class TestFlexComponent {
   direction = 'column';

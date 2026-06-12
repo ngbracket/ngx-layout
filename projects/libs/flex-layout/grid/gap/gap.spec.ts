@@ -23,7 +23,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
-import { DefaultGridGapDirective } from '@ngbracket/ngx-layout/grid';
+import { GridGapDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('grid gap directive', () => {
   let fixture: ComponentFixture<any>;
@@ -310,7 +310,7 @@ describe('grid gap directive', () => {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultGridGapDirective],
+  imports: [CommonModule, GridGapDirective],
 })
 class TestLayoutGapComponent {
   gap = '8px';

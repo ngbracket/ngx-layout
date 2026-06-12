@@ -23,7 +23,7 @@ import {
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
-import { DefaultImgSrcDirective } from '@ngbracket/ngx-layout/extended';
+import { ImgSrcDirective } from '@ngbracket/ngx-layout/extended';
 
 const SRC_URLS = {
   xs: [
@@ -375,7 +375,7 @@ describe('img-src directive', () => {
   selector: 'test-src-api',
   template: '',
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultImgSrcDirective],
+  imports: [CommonModule, ImgSrcDirective],
 })
 class TestSrcComponent {
   defaultSrc = '';

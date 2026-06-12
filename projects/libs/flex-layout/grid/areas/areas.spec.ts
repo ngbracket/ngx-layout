@@ -24,8 +24,8 @@ import {
 
 import { GridModule } from '../module';
 import {
-  DefaultGridAreaDirective,
-  DefaultGridAreasDirective,
+  GridAreaDirective,
+  GridAreasDirective,
 } from '@ngbracket/ngx-layout/grid';
 
 describe('grid area parent directive', () => {
@@ -250,7 +250,7 @@ describe('grid area parent directive', () => {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultGridAreasDirective, DefaultGridAreaDirective],
+  imports: [CommonModule, GridAreasDirective, GridAreaDirective],
 })
 class TestGridAreaComponent {
   areas = 'sidebar | sidebar';

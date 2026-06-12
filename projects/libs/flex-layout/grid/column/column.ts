@@ -40,6 +40,11 @@ const selector = `
   [gdColumn.gt-xs], [gdColumn.gt-sm], [gdColumn.gt-md], [gdColumn.gt-lg]
 `;
 
+/**
+ * 'grid-column' CSS Grid styling directive
+ * Configures the name or position of an element within the grid
+ * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-26
+ */
 @Directive({ selector, inputs })
 export class GridColumnDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-column';
@@ -59,17 +64,3 @@ export class GridColumnDirective extends BaseDirective2 {
 }
 
 const columnCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * 'grid-column' CSS Grid styling directive
- * Configures the name or position of an element within the grid
- * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-26
- */
-/**
- * @deprecated The DefaultGridColumnDirective will be removed in version 21.
- * Use GridColumnDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridColumnDirective extends GridColumnDirective {
-  protected override inputs = inputs;
-}

@@ -39,6 +39,11 @@ const selector = `
   [gdArea.gt-xs], [gdArea.gt-sm], [gdArea.gt-md], [gdArea.gt-lg]
 `;
 
+/**
+ * 'grid-area' CSS Grid styling directive
+ * Configures the name or position of an element within the grid
+ * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-27
+ */
 @Directive({ selector, inputs })
 export class GridAreaDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-area';
@@ -58,17 +63,3 @@ export class GridAreaDirective extends BaseDirective2 {
 }
 
 const gridAreaCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * 'grid-area' CSS Grid styling directive
- * Configures the name or position of an element within the grid
- * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-27
- */
-/**
- * @deprecated The DefaultGridAreaDirective will be removed in version 21.
- * Use GridAreaDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridAreaDirective extends GridAreaDirective {
-  protected override inputs = inputs;
-}

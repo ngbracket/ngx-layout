@@ -16,11 +16,11 @@ import {
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
-  DefaultFlexDirective,
-  DefaultFlexOffsetDirective,
-  DefaultLayoutAlignDirective,
-  DefaultLayoutDirective,
-  DefaultLayoutGapDirective,
+  FlexDirective,
+  FlexOffsetDirective,
+  LayoutAlignDirective,
+  LayoutDirective,
+  LayoutGapDirective,
 } from '@ngbracket/ngx-layout/flex';
 import { extendObject } from '@ngbracket/ngx-layout/_private-utils';
 import {
@@ -662,11 +662,11 @@ export class MockLayoutAlignStyleBuilder extends StyleBuilder {
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
-    DefaultLayoutDirective,
-    DefaultLayoutAlignDirective,
-    DefaultFlexDirective,
-    DefaultFlexOffsetDirective,
-    DefaultLayoutGapDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
+    FlexDirective,
+    FlexOffsetDirective,
+    LayoutGapDirective,
   ],
 })
 class TestLayoutAlignComponent implements OnInit {

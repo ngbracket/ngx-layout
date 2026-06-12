@@ -69,15 +69,6 @@ const alignCache: Map<string, StyleDefinition> = new Map();
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-justify-self
  *  @see https://css-tricks.com/snippets/css/complete-guide-grid/#prop-align-self
  */
-/**
- * @deprecated The DefaultGridAlignDirective will be removed in version 21.
- * Use GridAlignDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridAlignDirective extends GridAlignDirective {
-  protected override inputs = inputs;
-}
-
 function buildCss(align: string = '') {
   const css: { [key: string]: string } = {},
     [rowAxis, columnAxis] = align.split(' ');

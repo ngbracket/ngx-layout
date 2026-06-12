@@ -61,6 +61,12 @@ const selector = `
   [gdRows.gt-xs], [gdRows.gt-sm], [gdRows.gt-md], [gdRows.gt-lg]
 `;
 
+/**
+ * 'grid-template-rows' CSS Grid styling directive
+ * Configures the sizing for the rows in the grid
+ * Syntax: <column value> [auto]
+ * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-13
+ */
 @Directive({ selector, inputs })
 export class GridRowsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-rows';
@@ -97,18 +103,3 @@ export class GridRowsDirective extends BaseDirective2 {
 
 const rowsCache: Map<string, StyleDefinition> = new Map();
 const rowsInlineCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * 'grid-template-rows' CSS Grid styling directive
- * Configures the sizing for the rows in the grid
- * Syntax: <column value> [auto]
- * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-13
- */
-/**
- * @deprecated The DefaultGridRowsDirective will be removed in version 21.
- * Use GridRowsDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridRowsDirective extends GridRowsDirective {
-  protected override inputs = inputs;
-}

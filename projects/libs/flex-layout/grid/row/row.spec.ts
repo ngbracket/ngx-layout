@@ -25,9 +25,9 @@ import {
 
 import { GridModule } from '../module';
 import {
-  DefaultGridAreaDirective,
-  DefaultGridAutoDirective,
-  DefaultGridRowDirective,
+  GridAreaDirective,
+  GridAutoDirective,
+  GridRowDirective,
 } from '@ngbracket/ngx-layout/grid';
 
 describe('grid row child directive', () => {
@@ -198,9 +198,9 @@ describe('grid row child directive', () => {
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
-    DefaultGridAutoDirective,
-    DefaultGridRowDirective,
-    DefaultGridAreaDirective,
+    GridAutoDirective,
+    GridRowDirective,
+    GridAreaDirective,
   ],
 })
 class TestGridRowComponent {

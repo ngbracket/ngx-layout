@@ -137,20 +137,6 @@ export class StyleDirective extends BaseDirective2 implements DoCheck {
   }
 }
 
-/**
- * Directive to add responsive support for ngStyle.
- * * @deprecated The DefaultStyleDirective will be removed in version 21.
- * Use StyleDirective directly instead.
- *
- */
-/* @deprecated The DefaultStyleDirective will be removed in version 21.
- * Use StyleDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultStyleDirective extends StyleDirective implements DoCheck {
-  protected override inputs = inputs;
-}
-
 /** Build a styles map from a list of styles, while sanitizing bad values first */
 function buildMapFromList(
   styles: NgStyleRawList,

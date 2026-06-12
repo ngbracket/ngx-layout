@@ -28,11 +28,11 @@ import {
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 import {
-  DefaultFlexDirective,
-  DefaultLayoutDirective,
+  FlexDirective,
+  LayoutDirective,
   FlexStyleBuilder,
 } from '@ngbracket/ngx-layout/flex';
-import { DefaultStyleDirective } from '@ngbracket/ngx-layout/extended';
+import { StyleDirective } from '@ngbracket/ngx-layout/extended';
 
 describe('flex directive', () => {
   let fixture: ComponentFixture<any>;
@@ -1037,7 +1037,7 @@ describe('flex directive', () => {
       fixture = TestBed.createComponent(TestQueryWithFlexComponent);
       fixture.detectChanges();
 
-      const layout: DefaultLayoutDirective =
+      const layout: LayoutDirective =
         fixture.debugElement.componentInstance.layout;
 
       expect(layout).toBeDefined();
@@ -1063,8 +1063,7 @@ describe('flex directive', () => {
       fixture = TestBed.createComponent(TestQueryWithFlexComponent);
       fixture.detectChanges();
 
-      const flex: DefaultFlexDirective =
-        fixture.debugElement.componentInstance.flex;
+      const flex: FlexDirective = fixture.debugElement.componentInstance.flex;
 
       // Test for percentage value assignments
       expect(flex).toBeDefined();
@@ -1095,8 +1094,7 @@ describe('flex directive', () => {
       fixture = TestBed.createComponent(TestQueryWithFlexComponent);
       fixture.detectChanges();
 
-      const flex: DefaultFlexDirective =
-        fixture.debugElement.componentInstance.flex;
+      const flex: FlexDirective = fixture.debugElement.componentInstance.flex;
 
       // Test for raw value assignments that are converted to percentages
       expect(flex).toBeDefined();
@@ -1309,12 +1307,7 @@ export class MockFlexStyleBuilder extends StyleBuilder {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [
-    CommonModule,
-    DefaultLayoutDirective,
-    DefaultFlexDirective,
-    DefaultStyleDirective,
-  ],
+  imports: [CommonModule, LayoutDirective, FlexDirective, StyleDirective],
 })
 class TestFlexComponent {
   direction = 'column';
@@ -1329,11 +1322,11 @@ class TestFlexComponent {
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective],
+  imports: [CommonModule, LayoutDirective, FlexDirective],
 })
 class TestQueryWithFlexComponent {
-  @ViewChild(DefaultFlexDirective, { static: true })
-  flex!: DefaultFlexDirective;
-  @ViewChild(DefaultLayoutDirective, { static: true })
-  layout!: DefaultLayoutDirective;
+  @ViewChild(FlexDirective, { static: true })
+  flex!: FlexDirective;
+  @ViewChild(LayoutDirective, { static: true })
+  layout!: LayoutDirective;
 }

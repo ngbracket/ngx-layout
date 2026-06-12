@@ -23,7 +23,7 @@ import {
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
-import { DefaultGridAlignDirective } from '@ngbracket/ngx-layout/grid';
+import { GridAlignDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('align directive', () => {
   let fixture: ComponentFixture<any>;
@@ -380,7 +380,7 @@ describe('align directive', () => {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultGridAlignDirective],
+  imports: [CommonModule, GridAlignDirective],
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

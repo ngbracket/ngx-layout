@@ -21,7 +21,7 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { DefaultClassDirective } from '@ngbracket/ngx-layout/extended';
+import { ClassDirective } from '@ngbracket/ngx-layout/extended';
 
 import {
   expectNativeEl,
@@ -52,7 +52,7 @@ describe('class directive', () => {
         MatButtonModule,
         CommonModule,
         CoreModule,
-        DefaultClassDirective,
+        ClassDirective,
         TestClassComponent,
       ],
       providers: [MockMatchMediaProvider],
@@ -341,7 +341,7 @@ describe('class directive', () => {
   selector: 'test-class-api',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [MatButtonModule, CommonModule, CoreModule, DefaultClassDirective],
+  imports: [MatButtonModule, CommonModule, CoreModule, ClassDirective],
 })
 class TestClassComponent {
   hasXs1: boolean = false;

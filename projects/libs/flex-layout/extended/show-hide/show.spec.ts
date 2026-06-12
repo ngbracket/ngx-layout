@@ -19,11 +19,11 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-import { DefaultShowHideDirective } from '@ngbracket/ngx-layout/extended';
+import { ShowHideDirective } from '@ngbracket/ngx-layout/extended';
 import {
-  DefaultFlexDirective,
-  DefaultLayoutAlignDirective,
-  DefaultLayoutDirective,
+  FlexDirective,
+  LayoutAlignDirective,
+  LayoutDirective,
 } from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
@@ -39,7 +39,6 @@ import {
   SERVER_TOKEN,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import { ShowHideDirective } from '../../extended/show-hide/show-hide';
 
 describe('show directive', () => {
   let fixture: ComponentFixture<any>;
@@ -429,10 +428,10 @@ class FxShowHideDirective extends ShowHideDirective {
     FormsModule,
     MatSelectModule,
     MatLabel,
-    DefaultShowHideDirective,
-    DefaultLayoutDirective,
-    DefaultLayoutAlignDirective,
-    DefaultFlexDirective,
+    ShowHideDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
+    FlexDirective,
     FxShowHideDirective,
   ],
 })

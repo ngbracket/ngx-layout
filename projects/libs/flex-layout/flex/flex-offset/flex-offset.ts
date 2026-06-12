@@ -123,15 +123,6 @@ export class FlexOffsetDirective extends BaseDirective2 implements OnChanges {
   }
 }
 
-/**
- * @deprecated The DefaultFlexOffsetDirective will be removed in version 21.
- * Use FlexOffsetDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultFlexOffsetDirective extends FlexOffsetDirective {
-  protected override inputs = inputs;
-}
-
 const flexOffsetCacheRowRtl: Map<string, StyleDefinition> = new Map();
 const flexOffsetCacheColumnRtl: Map<string, StyleDefinition> = new Map();
 const flexOffsetCacheRowLtr: Map<string, StyleDefinition> = new Map();
