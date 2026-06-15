@@ -90,15 +90,6 @@ const alignRowsInlineCache: Map<string, StyleDefinition> = new Map();
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-18
  * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-20
  */
-/**
- * @deprecated The DefaultGridAlignRowsDirective will be removed in version 21.
- * Use GridAlignRowsDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridAlignRowsDirective extends GridAlignRowsDirective {
-  protected override inputs = inputs;
-}
-
 function buildCss(align: string, inline: boolean): StyleDefinition {
   const css: { [key: string]: string } = {},
     [mainAxis, crossAxis] = align.split(' ');

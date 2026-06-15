@@ -343,15 +343,6 @@ export class FlexDirective extends BaseDirective2 implements OnInit {
   }
 }
 
-/**
- * @deprecated The DefaultFlexDirective will be removed in version 21.
- * Use FlexDirective directly instead.
- */
-@Directive({ inputs, selector })
-export class DefaultFlexDirective extends FlexDirective {
-  protected override inputs = inputs;
-}
-
 const flexRowCache: Map<string, StyleDefinition> = new Map();
 const flexColumnCache: Map<string, StyleDefinition> = new Map();
 const flexRowWrapCache: Map<string, StyleDefinition> = new Map();

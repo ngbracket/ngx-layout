@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   ɵMatchMedia as MatchMedia,
@@ -23,7 +23,7 @@ import {
   queryFor,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
-import { DefaultImgSrcDirective } from '@ngbracket/ngx-layout/extended';
+import { ImgSrcDirective } from '@ngbracket/ngx-layout/extended';
 
 const SRC_URLS = {
   xs: [
@@ -77,7 +77,6 @@ describe('img-src directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, FlexLayoutModule, TestSrcComponent],
@@ -375,7 +374,8 @@ describe('img-src directive', () => {
 @Component({
   selector: 'test-src-api',
   template: '',
-  imports: [CommonModule, DefaultImgSrcDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, ImgSrcDirective],
 })
 class TestSrcComponent {
   defaultSrc = '';

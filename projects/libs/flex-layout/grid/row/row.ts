@@ -40,6 +40,11 @@ const selector = `
   [gdRow.gt-xs], [gdRow.gt-sm], [gdRow.gt-md], [gdRow.gt-lg]
 `;
 
+/**
+ * 'grid-row' CSS Grid styling directive
+ * Configures the name or position of an element within the grid
+ * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-26
+ */
 @Directive({ selector, inputs })
 export class GridRowDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-row';
@@ -59,17 +64,3 @@ export class GridRowDirective extends BaseDirective2 {
 }
 
 const rowCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * 'grid-row' CSS Grid styling directive
- * Configures the name or position of an element within the grid
- * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-26
- */
-/**
- * @deprecated The DefaultGridRowDirective will be removed in version 21.
- * Use GridRowDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridRowDirective extends GridRowDirective {
-  protected override inputs = inputs;
-}

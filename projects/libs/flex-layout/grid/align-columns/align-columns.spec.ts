@@ -7,7 +7,7 @@
  */
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   ɵMatchMedia as MatchMedia,
@@ -23,7 +23,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
-import { DefaultGridAlignColumnsDirective } from '@ngbracket/ngx-layout/grid';
+import { GridAlignColumnsDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('align columns directive', () => {
   let fixture: ComponentFixture<any>;
@@ -53,7 +53,6 @@ describe('align columns directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule, TestAlignComponent],
@@ -429,7 +428,8 @@ describe('align columns directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultGridAlignColumnsDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, GridAlignColumnsDirective],
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

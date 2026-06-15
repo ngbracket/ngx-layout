@@ -7,7 +7,12 @@
  */
 import { DIR_DOCUMENT } from '@angular/cdk/bidi';
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, Injectable, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  PLATFORM_ID,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import {
@@ -16,7 +21,13 @@ import {
   StyleUtils,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { DefaultFlexDirective, DefaultFlexOffsetDirective, DefaultLayoutDirective, FlexModule, FlexOffsetStyleBuilder } from '@ngbracket/ngx-layout/flex';
+import {
+  FlexDirective,
+  FlexOffsetDirective,
+  LayoutDirective,
+  FlexModule,
+  FlexOffsetStyleBuilder,
+} from '@ngbracket/ngx-layout/flex';
 import {
   expectEl,
   expectNativeEl,
@@ -57,7 +68,8 @@ describe('flex-offset directive', () => {
             unit: 'px',
           },
         }),
-        TestFlexComponent],
+        TestFlexComponent,
+      ],
       providers: [
         { provide: DIR_DOCUMENT, useValue: fakeDocument },
         { provide: SERVER_TOKEN, useValue: true },
@@ -212,7 +224,6 @@ describe('flex-offset directive', () => {
 
   describe('with custom builder', () => {
     beforeEach(() => {
-
       // Configure testbed to prepare services
       TestBed.configureTestingModule({
         imports: [
@@ -261,7 +272,8 @@ export class MockFlexOffsetStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-component-shell',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective, DefaultFlexOffsetDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, LayoutDirective, FlexDirective, FlexOffsetDirective],
 })
 class TestFlexComponent {
   direction = 'column';

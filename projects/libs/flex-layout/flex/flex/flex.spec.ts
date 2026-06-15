@@ -1,6 +1,12 @@
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, Injectable, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  PLATFORM_ID,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -22,11 +28,11 @@ import {
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 import {
-  DefaultFlexDirective,
-  DefaultLayoutDirective,
+  FlexDirective,
+  LayoutDirective,
   FlexStyleBuilder,
 } from '@ngbracket/ngx-layout/flex';
-import { DefaultStyleDirective } from '@ngbracket/ngx-layout/extended';
+import { StyleDirective } from '@ngbracket/ngx-layout/extended';
 
 describe('flex directive', () => {
   let fixture: ComponentFixture<any>;
@@ -57,7 +63,6 @@ describe('flex directive', () => {
   };
 
   beforeEach(() => {
-
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
@@ -1032,7 +1037,7 @@ describe('flex directive', () => {
       fixture = TestBed.createComponent(TestQueryWithFlexComponent);
       fixture.detectChanges();
 
-      const layout: DefaultLayoutDirective =
+      const layout: LayoutDirective =
         fixture.debugElement.componentInstance.layout;
 
       expect(layout).toBeDefined();
@@ -1058,8 +1063,7 @@ describe('flex directive', () => {
       fixture = TestBed.createComponent(TestQueryWithFlexComponent);
       fixture.detectChanges();
 
-      const flex: DefaultFlexDirective =
-        fixture.debugElement.componentInstance.flex;
+      const flex: FlexDirective = fixture.debugElement.componentInstance.flex;
 
       // Test for percentage value assignments
       expect(flex).toBeDefined();
@@ -1090,8 +1094,7 @@ describe('flex directive', () => {
       fixture = TestBed.createComponent(TestQueryWithFlexComponent);
       fixture.detectChanges();
 
-      const flex: DefaultFlexDirective =
-        fixture.debugElement.componentInstance.flex;
+      const flex: FlexDirective = fixture.debugElement.componentInstance.flex;
 
       // Test for raw value assignments that are converted to percentages
       expect(flex).toBeDefined();
@@ -1303,7 +1306,8 @@ export class MockFlexStyleBuilder extends StyleBuilder {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective, DefaultStyleDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, LayoutDirective, FlexDirective, StyleDirective],
 })
 class TestFlexComponent {
   direction = 'column';
@@ -1317,11 +1321,12 @@ class TestFlexComponent {
       <div fxFlex="50%" fxFlex.sm="71%"></div>
     </div>
   `,
-  imports: [CommonModule, DefaultLayoutDirective, DefaultFlexDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, LayoutDirective, FlexDirective],
 })
 class TestQueryWithFlexComponent {
-  @ViewChild(DefaultFlexDirective, { static: true })
-  flex!: DefaultFlexDirective;
-  @ViewChild(DefaultLayoutDirective, { static: true })
-  layout!: DefaultLayoutDirective;
+  @ViewChild(FlexDirective, { static: true })
+  flex!: FlexDirective;
+  @ViewChild(LayoutDirective, { static: true })
+  layout!: LayoutDirective;
 }

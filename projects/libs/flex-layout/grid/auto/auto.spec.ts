@@ -7,7 +7,7 @@
  */
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   expectNativeEl,
@@ -20,7 +20,11 @@ import {
   SERVER_TOKEN,
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
-import { DefaultGridAreaDirective, DefaultGridAutoDirective, GridModule } from '@ngbracket/ngx-layout/grid';
+import {
+  GridAreaDirective,
+  GridAutoDirective,
+  GridModule,
+} from '@ngbracket/ngx-layout/grid';
 
 describe('grid auto parent directive', () => {
   let fixture: ComponentFixture<any>;
@@ -47,7 +51,6 @@ describe('grid auto parent directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule, TestGridAutoComponent],
@@ -205,8 +208,7 @@ describe('grid auto parent directive', () => {
       expectNativeEl(fixture).toHaveStyle(
         {
           display: 'grid',
-          'grid-auto-flow':
-            'row dense',
+          'grid-auto-flow': 'row dense',
         },
         styler,
       );
@@ -225,8 +227,7 @@ describe('grid auto parent directive', () => {
       expectNativeEl(fixture).toHaveStyle(
         {
           display: 'grid',
-          'grid-auto-flow':
-            'row dense',
+          'grid-auto-flow': 'row dense',
         },
         styler,
       );
@@ -320,7 +321,8 @@ describe('grid auto parent directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultGridAutoDirective, DefaultGridAreaDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, GridAutoDirective, GridAreaDirective],
 })
 class TestGridAutoComponent {
   auto = 'row';

@@ -7,7 +7,7 @@
  */
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   SERVER_TOKEN,
@@ -23,7 +23,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
-import { DefaultGridGapDirective } from '@ngbracket/ngx-layout/grid';
+import { GridGapDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('grid gap directive', () => {
   let fixture: ComponentFixture<any>;
@@ -57,7 +57,6 @@ describe('grid gap directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule, TestLayoutGapComponent],
@@ -310,7 +309,8 @@ describe('grid gap directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultGridGapDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, GridGapDirective],
 })
 class TestLayoutGapComponent {
   gap = '8px';

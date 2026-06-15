@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule, isPlatformServer } from '@angular/common';
-import { Component, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, ChangeDetectionStrategy } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -21,7 +21,7 @@ import {
   ɵMockMatchMedia as MockMatchMedia,
   ɵMockMatchMediaProvider as MockMatchMediaProvider,
 } from '@ngbracket/ngx-layout/core';
-import { DefaultClassDirective } from '@ngbracket/ngx-layout/extended';
+import { ClassDirective } from '@ngbracket/ngx-layout/extended';
 
 import {
   expectNativeEl,
@@ -46,14 +46,13 @@ describe('class directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [
         MatButtonModule,
         CommonModule,
         CoreModule,
-        DefaultClassDirective,
+        ClassDirective,
         TestClassComponent,
       ],
       providers: [MockMatchMediaProvider],
@@ -341,7 +340,8 @@ describe('class directive', () => {
 @Component({
   selector: 'test-class-api',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [MatButtonModule, CommonModule, CoreModule, DefaultClassDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [MatButtonModule, CommonModule, CoreModule, ClassDirective],
 })
 class TestClassComponent {
   hasXs1: boolean = false;
@@ -710,6 +710,7 @@ describe('binding to CSS class list', () => {
 @Component({
   selector: 'test-cmp',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule],
 })
 class TestComponent {

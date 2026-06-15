@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   ɵMatchMedia as MatchMedia,
@@ -21,7 +21,7 @@ import {
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
-import { DefaultFlexOrderDirective } from '@ngbracket/ngx-layout/flex';
+import { FlexOrderDirective } from '@ngbracket/ngx-layout/flex';
 
 describe('flex-order', () => {
   let fixture: ComponentFixture<any>;
@@ -95,7 +95,8 @@ describe('flex-order', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultFlexOrderDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, FlexOrderDirective],
 })
 class TestOrderComponent {
   constructor() {}

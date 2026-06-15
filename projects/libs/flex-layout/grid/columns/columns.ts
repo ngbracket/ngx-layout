@@ -61,6 +61,12 @@ const selector = `
   [gdColumns.gt-xs], [gdColumns.gt-sm], [gdColumns.gt-md], [gdColumns.gt-lg]
 `;
 
+/**
+ * 'grid-template-columns' CSS Grid styling directive
+ * Configures the sizing for the columns in the grid
+ * Syntax: <column value> [auto]
+ * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-13
+ */
 @Directive({ selector, inputs })
 export class GridColumnsDirective extends BaseDirective2 {
   protected override DIRECTIVE_KEY = 'grid-columns';
@@ -97,18 +103,3 @@ export class GridColumnsDirective extends BaseDirective2 {
 
 const columnsCache: Map<string, StyleDefinition> = new Map();
 const columnsInlineCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * 'grid-template-columns' CSS Grid styling directive
- * Configures the sizing for the columns in the grid
- * Syntax: <column value> [auto]
- * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-13
- */
-/**
- * @deprecated The DefaultGridColumnsDirective will be removed in version 21.
- * Use GridColumnsDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridColumnsDirective extends GridColumnsDirective {
-  protected override inputs = inputs;
-}

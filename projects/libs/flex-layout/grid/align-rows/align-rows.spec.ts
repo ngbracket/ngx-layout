@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   StyleUtils,
@@ -23,7 +23,7 @@ import {
 
 import { Platform } from '@angular/cdk/platform';
 import { GridModule } from '../module';
-import { DefaultGridAlignRowsDirective } from '@ngbracket/ngx-layout/grid';
+import { GridAlignRowsDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('align rows directive', () => {
   let fixture: ComponentFixture<any>;
@@ -53,7 +53,6 @@ describe('align rows directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule, TestAlignComponent],
@@ -429,7 +428,8 @@ describe('align rows directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultGridAlignRowsDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, GridAlignRowsDirective],
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

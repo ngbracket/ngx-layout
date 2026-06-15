@@ -1,5 +1,5 @@
 import { Directive, Optional, Self } from '@angular/core';
-import { DefaultFlexDirective } from '@ngbracket/ngx-layout';
+import { FlexDirective } from '@ngbracket/ngx-layout';
 
 @Directive({
   selector: '[ngxSplitArea]',
@@ -8,5 +8,5 @@ import { DefaultFlexDirective } from '@ngbracket/ngx-layout';
   },
 })
 export class SplitAreaDirective {
-  constructor(@Optional() @Self() public flex: DefaultFlexDirective) {}
+  constructor(@Optional() @Self() public flex: FlexDirective) {}
 }

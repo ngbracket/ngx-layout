@@ -7,7 +7,7 @@
  */
 import { Platform } from '@angular/cdk/platform';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import {
   ɵMatchMedia as MatchMedia,
@@ -25,7 +25,10 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
-import { DefaultGridAreaDirective, DefaultGridAutoDirective } from '@ngbracket/ngx-layout/grid';
+import {
+  GridAreaDirective,
+  GridAutoDirective,
+} from '@ngbracket/ngx-layout/grid';
 
 describe('grid area child directive', () => {
   let fixture: ComponentFixture<any>;
@@ -59,7 +62,6 @@ describe('grid area child directive', () => {
   };
 
   beforeEach(() => {
-
     // Configure testbed to prepare services
     TestBed.configureTestingModule({
       imports: [CommonModule, GridModule, TestGridAreaComponent],
@@ -255,7 +257,8 @@ describe('grid area child directive', () => {
 @Component({
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
-  imports: [CommonModule, DefaultGridAreaDirective, DefaultGridAutoDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [CommonModule, GridAreaDirective, GridAutoDirective],
 })
 class TestGridAreaComponent {
   area = 'sidebar';

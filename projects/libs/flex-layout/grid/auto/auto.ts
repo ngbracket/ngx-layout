@@ -58,6 +58,11 @@ const selector = `
   [gdAuto.gt-xs], [gdAuto.gt-sm], [gdAuto.gt-md], [gdAuto.gt-lg]
 `;
 
+/**
+ * 'grid-auto-flow' CSS Grid styling directive
+ * Configures the auto placement algorithm for the grid
+ * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-23
+ */
 @Directive({ selector, inputs })
 export class GridAutoDirective extends BaseDirective2 {
   @Input('gdInline')
@@ -94,17 +99,3 @@ export class GridAutoDirective extends BaseDirective2 {
 
 const autoCache: Map<string, StyleDefinition> = new Map();
 const autoInlineCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * 'grid-auto-flow' CSS Grid styling directive
- * Configures the auto placement algorithm for the grid
- * @see https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-23
- */
-/**
- * @deprecated The DefaultGridAutoDirective will be removed in version 21.
- * Use GridAutoDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultGridAutoDirective extends GridAutoDirective {
-  protected override inputs = inputs;
-}

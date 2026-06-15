@@ -2,24 +2,24 @@ import { BidiModule } from '@angular/cdk/bidi';
 import { NgModule } from '@angular/core';
 import { CoreModule } from '@ngbracket/ngx-layout/core';
 
-import { DefaultFlexAlignDirective } from './flex-align/flex-align';
+import { FlexAlignDirective } from './flex-align/flex-align';
 import { FlexFillDirective } from './flex-fill/flex-fill';
-import { DefaultFlexOffsetDirective } from './flex-offset/flex-offset';
-import { DefaultFlexOrderDirective } from './flex-order/flex-order';
-import { DefaultFlexDirective } from './flex/flex';
-import { DefaultLayoutAlignDirective } from './layout-align/layout-align';
-import { DefaultLayoutGapDirective } from './layout-gap/layout-gap';
-import { DefaultLayoutDirective } from './layout/layout';
+import { FlexOffsetDirective } from './flex-offset/flex-offset';
+import { FlexOrderDirective } from './flex-order/flex-order';
+import { FlexDirective } from './flex/flex';
+import { LayoutAlignDirective } from './layout-align/layout-align';
+import { LayoutGapDirective } from './layout-gap/layout-gap';
+import { LayoutDirective } from './layout/layout';
 
 const ALL_DIRECTIVES = [
-  DefaultLayoutDirective,
-  DefaultLayoutGapDirective,
-  DefaultLayoutAlignDirective,
-  DefaultFlexOrderDirective,
-  DefaultFlexOffsetDirective,
+  LayoutDirective,
+  LayoutGapDirective,
+  LayoutAlignDirective,
+  FlexOrderDirective,
+  FlexOffsetDirective,
   FlexFillDirective,
-  DefaultFlexAlignDirective,
-  DefaultFlexDirective,
+  FlexAlignDirective,
+  FlexDirective,
 ];
 
 /**
