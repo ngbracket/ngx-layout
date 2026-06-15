@@ -4,14 +4,20 @@ sidebar_position: 210
 
 # FxLayoutGap
 
-The [**fxLayoutGap** directive](https://github.com/ngbracket/ngx-layout/blob/main/src/lib/flex/layout-gap/layout-gap.ts#L38)
-should be used on to specify margin gaps on children within a flexbox container (e.g. nested within a fxLayout container).
+The [**fxLayoutGap** directive](https://github.com/ngbracket/ngx-layout/blob/main/src/lib/flex/layout-gap/layout-gap.ts)
+specifies the spacing between children within a flexbox container (e.g. nested within a fxLayout container).
 
-- `margin-right` used when the parent container `flex-direction` == "row"
-- `margin-bottom` used when the parent container `flex-direction` == "column"
+It applies the native CSS [`gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/gap) property to the
+container itself, so the spacing is added _between_ items along the layout axis **and between wrapped rows/columns**.
 
-> Note that the last child item will **NOT** have a margin gap specified; only the inside gaps are specified. Additionally,
-> `fxLayoutGap` does not respond to reveresed flow directions: `column-reverse` or `row-reverse` are used.
+- A single value (e.g. `fxLayoutGap="20px"`) sets both the row and column gap.
+- Two values (e.g. `fxLayoutGap="10px 20px"`) map to the CSS `gap` shorthand: `<row-gap> <column-gap>`.
+- The gap is direction-independent: it behaves identically for `row`/`column`, reversed flows, and `rtl`.
+
+> **Breaking change (v22):** `fxLayoutGap` now uses CSS `gap` instead of applying `margin` to each child.
+> The element must be a flex container (apply `fxLayout`) for the gap to take effect. The legacy `" grid"`
+> suffix (e.g. `fxLayoutGap="10px grid"`) is still accepted but is now equivalent to a plain gap, since
+> `gap` already spaces wrapped rows correctly.
 
 ## Examples:
 
@@ -65,8 +71,12 @@ should be used on to specify margin gaps on children within a flexbox container 
 
 ### Using fxLayoutGap with **Wrap**
 
-When using `wrap` with `fxLayout` to wrap rows or columns, developers should account for the gap sizes when specifying
-the child item sizes (using fxFlex).
+Because `fxLayoutGap` now uses the CSS `gap` property, spacing is automatically applied **between wrapped rows and
+columns** as well as between items — without the extra leading-margin artifacts the previous margin-based
+implementation produced on the last/short row.
+
+When sizing wrapped children with `fxFlex`, still account for the gap so items fit per row, e.g.
+`fxFlex="calc(50% - 25px)"`.
 
 #### Issue: Rendered Layout without gap considerations:
 
