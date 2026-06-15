@@ -1,7 +1,7 @@
 {
   "name": "@ngx-layout/source",
   "description": "ngx-layout",
-  "version": "22.0.0-rc",
+  "version": "22.0.0",
   "homepage": "https://github.com/ngbracket/ngx-layout",
   "bugs": "https://github.com/ngbracket/ngx-layout/issues",
   "repository": {
@@ -74,6 +74,7 @@
     "@types/node": "^20.19.25",
     "angular-eslint": "22.0.0",
     "conventional-changelog": "^7.2.0",
+    "conventional-changelog-angular": "^8.3.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "10.1.5",
     "jsdom": "^29.1.1",
