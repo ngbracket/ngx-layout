@@ -96,6 +96,109 @@ export class LayoutGapDirective extends BaseDirective2 {
     super(elRef, styleBuilder, styler, marshal);
     this.init();
   }
+
+  // *********************************************
+  // Protected methods
+  // *********************************************
+
+  /**
+   * Cache the parent container 'flex-direction' and update the 'margin' styles
+   */
+  protected onLayoutChange(matcher: ElementMatcher) {
+    const layout: string = matcher.value;
+
+    // Make sure to filter out 'wrap' option
+    let newDirection = layout.split(' ')[0];
+
+    if (!LAYOUT_VALUES.find((x) => x === newDirection)) {
+      newDirection = 'row';
+    }
+
+    // Clear the previous style before we change the layout
+    if (this.layout && this.layout !== newDirection) {
+      this.clearStyles();
+    }
+
+    this.layout = newDirection;
+    this.triggerUpdate();
+  }
+
+  /**
+   *
+   */
+  protected override updateWithValue(value: string) {
+    // Gather all non-hidden Element nodes
+    const items = this.childrenNodes
+      .filter((el) => el.nodeType === 1 && this.willDisplay(el))
+      .sort((a, b) => {
+        const orderA = +this.styler.lookupStyle(a, 'order');
+        const orderB = +this.styler.lookupStyle(b, 'order');
+        if (isNaN(orderA) || isNaN(orderB) || orderA === orderB) {
+          return 0;
+        } else {
+          return orderA > orderB ? 1 : -1;
+        }
+      });
+
+    if (items.length > 0) {
+      this.addStyles(value, { items, layout: this.layout });
+    }
+  }
+
+  /** We need to override clearStyles because in most cases mru isn't populated */
+  protected override clearStyles() {
+    const gridMode = Object.keys(this.mru).length > 0;
+
+    // If there are styles on the parent remove them
+    if (gridMode) {
+      super.clearStyles();
+
+      // Then remove the children grid padding too
+      this.styleUtils.applyStyleToElements(
+        { 'padding-inline': '', 'padding-block': '' },
+        this.childrenNodes,
+      );
+    } else {
+      // Remove the children gap margin
+      this.styleUtils.applyStyleToElements(
+        { [getMarginType(this.layout)]: '' },
+        this.childrenNodes,
+      );
+    }
+  }
+
+  /** Determine if an element will show or hide based on current activation */
+  protected willDisplay(source: HTMLElement): boolean {
+    const value = this.marshal.getValue(source, 'show-hide');
+    return (
+      value === true ||
+      (value === undefined &&
+        this.styleUtils.lookupStyle(source, 'display') !== 'none')
+    );
+  }
+
+  protected buildChildObservable(): void {
+    this.zone.runOutsideAngular(() => {
+      if (typeof MutationObserver !== 'undefined') {
+        this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+          const validatedChanges = (it: MutationRecord): boolean => {
+            return (
+              (it.addedNodes && it.addedNodes.length > 0) ||
+              (it.removedNodes && it.removedNodes.length > 0)
+            );
+          };
+
+          // update gap styles only for child 'added' or 'removed' events
+          if (mutations.some(validatedChanges)) {
+            this.observerSubject.next();
+          }
+        });
+        this.observer.observe(this.nativeElement, { childList: true });
+      }
+    });
+  }
+
+  protected observer?: MutationObserver;
 }
 
 const GRID_SPECIFIER = ' grid';
