@@ -140,9 +140,15 @@ export class StyleUtils {
             isPlatformBrowser(this._platformId) ||
             !this._serverModuleLoaded
           ) {
-            isPlatformBrowser(this._platformId)
-              ? element.style.setProperty(key, value)
-              : setServerStyle(element, key, value);
+            if (isPlatformBrowser(this._platformId)) {
+              // The element may have been detached/destroyed between a resize
+              // event firing and this style flush (e.g. on window resize), in
+              // which case it is no longer a styleable HTMLElement. Skip it
+              // rather than throwing and aborting the whole update pass.
+              element?.style?.setProperty(key, value);
+            } else {
+              setServerStyle(element, key, value);
+            }
           } else {
             this._serverStylesheet.addStyleToElement(element, key, value);
           }

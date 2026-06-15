@@ -29,29 +29,29 @@ const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
         <div
           fxFlexFill
           [fxLayout]="direction + ' wrap'"
-          fxLayoutGap="10px 5px grid"
+          fxLayoutGap="10px"
           style="cursor: pointer;"
           (click)="toggleDirection()"
         >
-          <div fxFlex="25">
+          <div fxFlex="calc(25% - 7.5px)">
             <div class="one" fxFlexFill fxLayoutAlign="center center">A</div>
           </div>
-          <div fxFlex="25">
+          <div fxFlex="calc(25% - 7.5px)">
             <div class="two" fxFlexFill fxLayoutAlign="center center">B</div>
           </div>
-          <div fxFlex="25">
+          <div fxFlex="calc(25% - 7.5px)">
             <div class="three" fxFlexFill fxLayoutAlign="center center">C</div>
           </div>
-          <div fxFlex="25">
+          <div fxFlex="calc(25% - 7.5px)">
             <div class="four" fxFlexFill fxLayoutAlign="center center">D</div>
           </div>
-          <div fxFlex="25">
+          <div fxFlex="calc(25% - 7.5px)">
             <div class="five" fxFlexFill fxLayoutAlign="center center">E</div>
           </div>
-          <div fxFlex="25">
+          <div fxFlex="calc(25% - 7.5px)">
             <div class="six" fxFlexFill fxLayoutAlign="center center">F</div>
           </div>
-          <div fxFlex="25">
+          <div fxFlex="calc(25% - 7.5px)">
             <div class="seven" fxFlexFill fxLayoutAlign="center center">G</div>
           </div>
         </div>
