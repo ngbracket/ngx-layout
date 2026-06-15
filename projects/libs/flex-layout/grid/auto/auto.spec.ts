@@ -21,8 +21,8 @@ import {
   StyleUtils,
 } from '@ngbracket/ngx-layout/core';
 import {
-  DefaultGridAreaDirective,
-  DefaultGridAutoDirective,
+  GridAreaDirective,
+  GridAutoDirective,
   GridModule,
 } from '@ngbracket/ngx-layout/grid';
 
@@ -322,7 +322,7 @@ describe('grid auto parent directive', () => {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultGridAutoDirective, DefaultGridAreaDirective],
+  imports: [CommonModule, GridAutoDirective, GridAreaDirective],
 })
 class TestGridAutoComponent {
   auto = 'row';

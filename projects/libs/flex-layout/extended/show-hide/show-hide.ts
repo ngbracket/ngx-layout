@@ -216,13 +216,3 @@ export class ShowHideDirective
 }
 
 const DISPLAY_MAP: WeakMap<HTMLElement, string> = new WeakMap();
-
-/**
- * 'show' Layout API directive
- *  @deprecated The DefaultShowHideDirective will be removed in version 21.
- * Use ShowHideDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultShowHideDirective extends ShowHideDirective {
-  protected override inputs = inputs;
-}

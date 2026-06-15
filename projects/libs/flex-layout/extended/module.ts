@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from '@ngbracket/ngx-layout/core';
 
-import { DefaultClassDirective } from './class/class';
-import { DefaultImgSrcDirective } from './img-src/img-src';
-import { DefaultShowHideDirective } from './show-hide/show-hide';
-import { DefaultStyleDirective } from './style/style';
+import { ClassDirective } from './class/class';
+import { ImgSrcDirective } from './img-src/img-src';
+import { ShowHideDirective } from './show-hide/show-hide';
+import { StyleDirective } from './style/style';
 
 const ALL_DIRECTIVES = [
-  DefaultShowHideDirective,
-  DefaultClassDirective,
-  DefaultStyleDirective,
-  DefaultImgSrcDirective,
+  ShowHideDirective,
+  ClassDirective,
+  StyleDirective,
+  ImgSrcDirective,
 ];
 
 /**

@@ -23,7 +23,7 @@ import {
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 
 import { GridModule } from '../module';
-import { DefaultGridAlignColumnsDirective } from '@ngbracket/ngx-layout/grid';
+import { GridAlignColumnsDirective } from '@ngbracket/ngx-layout/grid';
 
 describe('align columns directive', () => {
   let fixture: ComponentFixture<any>;
@@ -429,7 +429,7 @@ describe('align columns directive', () => {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultGridAlignColumnsDirective],
+  imports: [CommonModule, GridAlignColumnsDirective],
 })
 class TestAlignComponent implements OnInit {
   mainAxis = 'start';

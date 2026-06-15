@@ -200,15 +200,6 @@ export class LayoutAlignDirective extends BaseDirective2 {
   }
 }
 
-/**
- * @deprecated The DefaultLayoutAlignDirective will be removed in version 21.
- * Use LayoutAlignDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultLayoutAlignDirective extends LayoutAlignDirective {
-  protected override inputs = inputs;
-}
-
 const layoutAlignHorizontalCache: Map<string, StyleDefinition> = new Map();
 const layoutAlignVerticalCache: Map<string, StyleDefinition> = new Map();
 const layoutAlignHorizontalRevCache: Map<string, StyleDefinition> = new Map();

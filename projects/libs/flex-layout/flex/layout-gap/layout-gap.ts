@@ -98,13 +98,4 @@ export class LayoutGapDirective extends BaseDirective2 {
   }
 }
 
-/**
- * @deprecated The DefaultLayoutGapDirective will be removed in version 21.
- * Use LayoutGapDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultLayoutGapDirective extends LayoutGapDirective {
-  protected override inputs = inputs;
-}
-
 const GRID_SPECIFIER = ' grid';

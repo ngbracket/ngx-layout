@@ -77,12 +77,3 @@ export class FlexAlignDirective extends BaseDirective2 {
 }
 
 const flexAlignCache: Map<string, StyleDefinition> = new Map();
-
-/**
- * @deprecated The DefaultFlexAlignDirective will be removed in version 21.
- * Use FlexAlignDirective directly instead.
- */
-@Directive({ selector, inputs })
-export class DefaultFlexAlignDirective extends FlexAlignDirective {
-  protected override inputs = inputs;
-}

@@ -21,7 +21,7 @@ import {
   makeCreateTestComponent,
 } from '@ngbracket/ngx-layout/_private-utils/testing';
 import { FlexLayoutModule } from '../../module';
-import { DefaultFlexOrderDirective } from '@ngbracket/ngx-layout/flex';
+import { FlexOrderDirective } from '@ngbracket/ngx-layout/flex';
 
 describe('flex-order', () => {
   let fixture: ComponentFixture<any>;
@@ -96,7 +96,7 @@ describe('flex-order', () => {
   selector: 'test-layout',
   template: `<span>PlaceHolder Template HTML</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CommonModule, DefaultFlexOrderDirective],
+  imports: [CommonModule, FlexOrderDirective],
 })
 class TestOrderComponent {
   constructor() {}
