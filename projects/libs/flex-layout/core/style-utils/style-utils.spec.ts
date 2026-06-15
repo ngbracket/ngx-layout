@@ -81,6 +81,19 @@ describe('styler', () => {
         expectNativeEl(fixture).toHaveCSS({ display: 'table' }, styler);
       }
     });
+
+    it('should not throw when the target element has no style property', () => {
+      // Reproduces issue #57: a detached/destroyed element can still be flushed
+      // during a media (resize) update, where `element.style` is undefined.
+      componentWithTemplate(`<div></div>`);
+
+      if (!isPlatformServer(platformId)) {
+        const fakeEl = { style: undefined } as unknown as HTMLElement;
+        expect(() =>
+          styler.applyStyleToElement(fakeEl, { display: 'flex' }),
+        ).not.toThrow();
+      }
+    });
   });
 });
 
