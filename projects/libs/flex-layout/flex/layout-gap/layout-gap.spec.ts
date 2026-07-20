@@ -8,14 +8,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { DIR_DOCUMENT } from '@angular/cdk/bidi';
-import { CommonModule, isPlatformServer } from '@angular/common';
-import {
-  Component,
-  Injectable,
-  OnInit,
-  PLATFORM_ID,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -125,20 +118,7 @@ describe('layout-gap directive', () => {
               </div>
           `;
       createTestComponent(template);
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '13px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
+      expectNativeEl(fixture).toHaveStyle({ gap: '13px' }, styler);
     });
 
     it('should set the gap on the container even with a single child', () => {
@@ -148,20 +128,7 @@ describe('layout-gap directive', () => {
               </div>
           `;
       createTestComponent(template);
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '52px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '52px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '52px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
+      expectNativeEl(fixture).toHaveStyle({ gap: '13px' }, styler);
     });
 
     it('should apply the multiplier to the gap value', () => {
@@ -172,45 +139,7 @@ describe('layout-gap directive', () => {
               </div>
           `;
       createTestComponent(template);
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '13px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
-    });
-
-    it('should add gap styles in proper order when order style is applied', () => {
-      const template = `
-        <div fxLayoutAlign='center center' fxLayoutGap='13px'>
-          <div fxFlex fxFlexOrder="3"></div>
-          <div fxFlex fxFlexOrder="2"></div>
-          <div fxFlex fxFlexOrder="1"></div>
-        </div>
-      `;
-      createTestComponent(template);
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(3);
-      expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[0]).not.toHaveStyle(
-        { 'margin-inline-end': '13px' },
-        styler,
-      );
-      expectEl(nodes[0]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
+      expectNativeEl(fixture).toHaveStyle({ gap: '52px' }, styler);
     });
 
     it('should add the default unit when the gap value has no unit', () => {
@@ -221,243 +150,26 @@ describe('layout-gap directive', () => {
               </div>
           `;
       createTestComponent(template);
-      fixture.componentInstance.direction = 'row';
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(4);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle(
-        { 'margin-inline-end': '13px' },
-        styler,
-      );
-      expectEl(nodes[3]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
+      expectNativeEl(fixture).toHaveStyle({ gap: '13px' }, styler);
     });
 
     it('should support a two-value (row/column) gap', () => {
       const template = `
-              <div fxLayoutAlign='center center' fxLayoutGap='13px'>
-                  <div fxFlex *ngFor='let row of rows'></div>
+              <div fxLayout='row wrap' fxLayoutGap='13px 24px'>
+                  <div fxFlex></div>
+                  <div fxFlex></div>
               </div>
           `;
       createTestComponent(template);
-      fixture.componentInstance.direction = 'row';
-      fixture.detectChanges();
-
-      let nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(4);
-
-      fixture.componentInstance.rows = new Array(3);
-      fixture.detectChanges();
-
-      setTimeout(() => {
-        // Since the layoutGap directive detects the *ngFor changes by using a MutationObserver, the
-        // browser will take up some time, to actually announce the changes to the directive.
-        // (Kudos to @DevVersion)
-        nodes = queryFor(fixture, '[fxFlex]');
-        expect(nodes.length).toEqual(3);
-
-        if (typeof MutationObserver !== 'undefined') {
-          expectEl(nodes[0]).toHaveStyle(
-            { 'margin-inline-end': '13px' },
-            styler,
-          );
-          expectEl(nodes[1]).toHaveStyle(
-            { 'margin-inline-end': '13px' },
-            styler,
-          );
-          expectEl(nodes[2]).not.toHaveStyle(
-            { 'margin-inline-end': '13px' },
-            styler,
-          );
-        }
-      });
-    }));
-
-    it('should add update gap styles when only 1 row is remaining', waitForAsync(() => {
-      const template = `
-              <div fxLayoutAlign='center center' fxLayoutGap='13px'>
-                  <div fxFlex *ngFor='let row of rows'></div>
-              </div>
-          `;
-      createTestComponent(template);
-      fixture.componentInstance.direction = 'row';
-      fixture.detectChanges();
-
-      let nodes = queryFor(fixture, '[fxFlex]');
-
-      expect(nodes.length).toEqual(4);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[3]).not.toHaveStyle(
-        { 'margin-inline-end': '13px' },
-        styler,
-      );
-
-      fixture.componentInstance.rows = new Array(1);
-      fixture.detectChanges();
-
-      setTimeout(() => {
-        // Since the layoutGap directive detects the *ngFor changes by using a MutationObserver, the
-        // browser will take up some time, to actually announce the changes to the directive.
-        // (Kudos to @DevVersion)
-        nodes = queryFor(fixture, '[fxFlex]');
-
-        expect(nodes.length).toEqual(1);
-        if (typeof MutationObserver !== 'undefined') {
-          expectEl(nodes[0]).not.toHaveStyle(
-            { 'margin-inline-end': '13px' },
-            styler,
-          );
-        }
-      });
-    }));
-
-    it('should apply margin-top for column layouts', () => {
-      verifyCorrectMargin('column', 'margin-block-end');
+      expectNativeEl(fixture).toHaveStyle({ gap: '13px 24px' }, styler);
     });
 
     it('should set the gap for a row layout', () => {
       verifyContainerGap('row', '8px');
     });
 
-    it('should apply margin-block-start for column-reverse layouts', () => {
-      verifyCorrectMargin('column-reverse', 'margin-block-start');
-    });
-
-    it('should remove obsolete margin and apply valid margin for layout changes', () => {
-      createTestComponent(`
-          <div [fxLayout]='direction' [fxLayoutGap]='gap'>
-              <span></span>
-              <span></span>
-          </div>
-      `);
-      const instance = fixture.componentInstance;
-
-      // layout = column, use margin-top
-      instance.direction = 'column';
-      instance.gap = '8px';
-      fixture.detectChanges();
-      let nodes = queryFor(fixture, 'span');
-
-      expectEl(nodes[0]).not.toHaveStyle(
-        { 'margin-inline-end': '8px' },
-        styler,
-      );
-      expectEl(nodes[0]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
-
-      // layout = column-reverse, use margin-block-start
-      instance.direction = 'column-reverse';
-      fixture.detectChanges();
-      nodes = queryFor(fixture, 'span');
-
-      expectEl(nodes[0]).not.toHaveStyle(
-        { 'margin-inline-end': '8px' },
-        styler,
-      );
-      expectEl(nodes[0]).toHaveStyle({ 'margin-block-start': '8px' }, styler);
-
-      // layout = row-reverse, use margin-inline-start
-      instance.direction = 'row-reverse';
-      fixture.detectChanges();
-      nodes = queryFor(fixture, 'span');
-
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-block-end': '8px' }, styler);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-start': '8px' }, styler);
-    });
-
-    it('should recognize hidden elements when applying gaps', () => {
-      const styles = ['.col1 { display:none !important;'];
-      const template = `
-        <div class='container' fxLayout='row' fxLayoutGap='16px'>
-          <div fxFlex class='col1'>Div 1</div>
-          <div fxFlex class='col2'>Div 2</div>
-          <div fxFlex class='col3'>Div 3</div>
-        </div>
-      `;
-      createTestComponent(template, styles);
-      fixture.componentInstance.direction = 'row';
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-
-      expect(nodes.length).toEqual(3);
-      // TODO(CaerusKaru): Domino is unable to detect this style
-      if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle(
-          { 'margin-inline-end': '0px' },
-          styler,
-        );
-        expectEl(nodes[0]).not.toHaveStyle(
-          { 'margin-inline-end': '16px' },
-          styler,
-        );
-        expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
-        expectEl(nodes[2]).not.toHaveStyle(
-          { 'margin-inline-end': '16px' },
-          styler,
-        );
-      }
-    });
-
-    it('should adjust gaps based on layout-wrap presence', () => {
-      const styles = ['.col1 { display:none !important;'];
-      const template = `
-            <div class='container'
-                 [fxLayout]='direction + " wrap"'
-                 [fxLayoutGap]='gap'>
-              <div fxFlex class='col1'>Div 1</div>
-              <div fxFlex class='col2'>Div 2</div>
-              <div fxFlex class='col3'>Div 2</div>
-              <div fxFlex class='col4'>Div 3</div>
-            </div>
-          `;
-      createTestComponent(template, styles);
-      fixture.componentInstance.gap = '16px';
-      fixture.componentInstance.direction = 'row';
-      fixture.detectChanges();
-
-      let nodes = queryFor(fixture, '[fxFlex]');
-
-      expect(nodes.length).toEqual(4);
-      // TODO(CaerusKaru): Domino is unable to detect this style
-      if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle(
-          { 'margin-inline-end': '16px' },
-          styler,
-        );
-        expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
-        expectEl(nodes[2]).toHaveStyle({ 'margin-inline-end': '16px' }, styler);
-        expectEl(nodes[3]).not.toHaveStyle(
-          { 'margin-inline-end': '16px' },
-          styler,
-        );
-      }
-
-      fixture.componentInstance.gap = '8px';
-      fixture.componentInstance.direction = 'column';
-      fixture.detectChanges();
-
-      nodes = queryFor(fixture, '[fxFlex]');
-
-      expect(nodes.length).toEqual(4);
-      // TODO(CaerusKaru): Domino is unable to detect this style
-      if (!isPlatformServer(platformId)) {
-        expectEl(nodes[0]).not.toHaveStyle(
-          { 'margin-block-end': '8px' },
-          styler,
-        );
-        expectEl(nodes[1]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
-        expectEl(nodes[2]).toHaveStyle({ 'margin-block-end': '8px' }, styler);
-        expectEl(nodes[3]).not.toHaveStyle(
-          { 'margin-block-end': '8px' },
-          styler,
-        );
-      }
+    it('should set the same gap for a column layout', () => {
+      verifyContainerGap('column', '8px');
     });
   });
 
@@ -474,33 +186,7 @@ describe('layout-gap directive', () => {
         </div>
       `;
       createTestComponent(template);
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(3);
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '13px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '13px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
-
-      mediaController.activate('md');
-      fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '24px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
+      expectNativeEl(fixture).toHaveStyle({ gap: '13px' }, styler);
     });
 
     it('should apply the multiplier with the grid suffix', () => {
@@ -511,32 +197,7 @@ describe('layout-gap directive', () => {
         </div>
       `;
       createTestComponent(template);
-      fixture.detectChanges();
-
-      const nodes = queryFor(fixture, '[fxFlex]');
-      expect(nodes.length).toEqual(3);
-      mediaController.activate('sm');
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
-
-      mediaController.activate('md');
-      fixture.detectChanges();
-      expectEl(nodes[0]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[1]).toHaveStyle({ 'margin-inline-end': '24px' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '24px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle(
-        { 'margin-inline-end': '0px' },
-        styler,
-      );
-
-      mediaController.activate('sm');
-      expectEl(nodes[0]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
-      expectEl(nodes[1]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-inline-end': '*' }, styler);
+      expectNativeEl(fixture).toHaveStyle({ gap: '52px' }, styler);
     });
 
     it('should support two values with the grid suffix', () => {
@@ -560,34 +221,13 @@ describe('layout-gap directive', () => {
         </div>
       `;
       createTestComponent(template);
-      const nodes = queryFor(fixture, '[fxFlex]');
-
-      mediaController.activate('md');
-      fixture.detectChanges();
-      expectEl(nodes[0]).not.toHaveStyle(
-        { 'margin-block-end': '24px' },
-        styler,
-      );
-      expectEl(nodes[1]).not.toHaveStyle(
-        { 'margin-block-end': '24px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
+      expectNativeEl(fixture).toHaveStyle({ gap: '8px' }, styler);
 
       mediaController.activate('xs');
       expectNativeEl(fixture).toHaveStyle({ gap: '16px' }, styler);
 
-      mediaController.activate('md');
-      fixture.detectChanges();
-      expectEl(nodes[0]).not.toHaveStyle(
-        { 'margin-block-end': '24px' },
-        styler,
-      );
-      expectEl(nodes[1]).not.toHaveStyle(
-        { 'margin-block-end': '24px' },
-        styler,
-      );
-      expectEl(nodes[2]).not.toHaveStyle({ 'margin-block-end': '*' }, styler);
+      mediaController.activate('lg');
+      expectNativeEl(fixture).toHaveStyle({ gap: '8px' }, styler);
     });
 
     it('should clear the gap when a breakpoint-only value deactivates', () => {
