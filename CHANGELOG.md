@@ -1,3 +1,17 @@
+# [22.0.1](https://github.com/ngbracket/ngx-layout/compare/22.0.0...22.0.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* **deps:** patch known security vulnerabilities in build toolchain ([#116](https://github.com/ngbracket/ngx-layout/issues/116)) ([7085327](https://github.com/ngbracket/ngx-layout/commit/70853277e96c93ddfd0895b58a8c8bbdf81d4f4d))
+
+
+### Code Refactoring
+
+* **layout-gap:** use native CSS gap instead of child margins ([#117](https://github.com/ngbracket/ngx-layout/issues/117)) ([cd66b7f](https://github.com/ngbracket/ngx-layout/commit/cd66b7f01477d002772bd4f7c272054d407e1522))
+
+
+
 # [22.0.0](https://github.com/ngbracket/ngx-layout/compare/17.0.0...22.0.0) (2026-06-15)
 
 
