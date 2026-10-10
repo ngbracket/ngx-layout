@@ -1,3 +1,15 @@
+## [22.0.2](https://github.com/ngbracket/ngx-layout/compare/22.0.1...22.0.2) (2026-10-10)
+
+
+### Build System
+
+* **deps:** update Angular to 22.2.2 ([07557be](https://github.com/ngbracket/ngx-layout/commit/07557be))
+* **deps:** fix npm audit vulnerabilities ([45dcb2c](https://github.com/ngbracket/ngx-layout/commit/45dcb2c))
+* **deps:** upgrade stylelint to 17 and hand formatting to Prettier ([5593f5b](https://github.com/ngbracket/ngx-layout/commit/5593f5b))
+* publish to npm with trusted publishing and provenance on GitHub release ([483f93f](https://github.com/ngbracket/ngx-layout/commit/483f93f))
+
+
+
 # [22.0.1](https://github.com/ngbracket/ngx-layout/compare/22.0.0...22.0.1) (2026-07-20)
 
 
