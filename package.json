@@ -97,9 +97,9 @@
     "esbuild": "0.28.2",
     "hono": "4.13.7",
     "http-proxy-middleware": "2.0.10",
-    "joi": "17.13.7",
+    "joi": "17.13.8",
     "js-yaml": "4.3.2",
-    "piscina": "5.2.0",
+    "piscina": "5.3.2",
     "qs": "6.16.0",
     "undici": "7.29.1",
     "vite": "7.3.6",
@@ -109,6 +109,9 @@
     },
     "node-gyp": {
       "undici": "6.27.0"
+    },
+    "@docusaurus/core": {
+      "tinypool": "2.2.0"
     }
   },
   "volta": {
