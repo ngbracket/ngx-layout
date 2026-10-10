@@ -1,7 +1,7 @@
 {
   "name": "@ngx-layout/source",
   "description": "ngx-layout",
-  "version": "22.0.1",
+  "version": "22.0.2",
   "homepage": "https://github.com/ngbracket/ngx-layout",
   "bugs": "https://github.com/ngbracket/ngx-layout/issues",
   "repository": {
@@ -39,17 +39,17 @@
   "private": true,
   "requiredAngularVersion": ">=22.0.0",
   "dependencies": {
-    "@angular/animations": "22.2.0",
-    "@angular/common": "^22.2.0",
-    "@angular/compiler": "22.2.0",
-    "@angular/core": "22.2.0",
-    "@angular/forms": "22.2.0",
-    "@angular/material": "22.2.0",
-    "@angular/platform-browser": "22.2.0",
-    "@angular/platform-browser-dynamic": "22.2.0",
-    "@angular/platform-server": "^22.2.0",
-    "@angular/router": "22.2.0",
-    "@angular/ssr": "22.2.0",
+    "@angular/animations": "22.2.2",
+    "@angular/common": "^22.2.2",
+    "@angular/compiler": "22.2.2",
+    "@angular/core": "22.2.2",
+    "@angular/forms": "22.2.2",
+    "@angular/material": "22.2.2",
+    "@angular/platform-browser": "22.2.2",
+    "@angular/platform-browser-dynamic": "22.2.2",
+    "@angular/platform-server": "^22.2.2",
+    "@angular/router": "22.2.2",
+    "@angular/ssr": "22.2.2",
     "@docusaurus/preset-classic": "^3.10.0",
     "@mdx-js/react": "^3.1.1",
     "clsx": "^2.1.1",
@@ -62,11 +62,11 @@
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "^22.2.0",
-    "@angular/cdk": "22.2.0",
-    "@angular/cli": "^22.2.0",
-    "@angular/compiler-cli": "22.2.0",
-    "@angular/language-service": "22.2.0",
+    "@angular/build": "^22.2.2",
+    "@angular/cdk": "22.2.2",
+    "@angular/cli": "^22.2.2",
+    "@angular/compiler-cli": "22.2.2",
+    "@angular/language-service": "22.2.2",
     "@docusaurus/module-type-aliases": "^3.10.0",
     "@docusaurus/tsconfig": "^3.10.1",
     "@docusaurus/types": "^3.8.1",
@@ -78,11 +78,11 @@
     "eslint": "^9.39.1",
     "eslint-config-prettier": "10.1.5",
     "jsdom": "^29.1.1",
-    "ng-packagr": "22.2.1",
+    "ng-packagr": "22.2.4",
     "postcss": "^8.5.6",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.6.2",
-    "stylelint": "^15.11.0",
+    "stylelint": "^17.16.0",
     "ts-node": "^10.9.2",
     "typescript": "6.0.3",
     "typescript-eslint": "8.60.0",
@@ -97,9 +97,9 @@
     "esbuild": "0.28.2",
     "hono": "4.13.7",
     "http-proxy-middleware": "2.0.10",
-    "joi": "17.13.7",
+    "joi": "17.13.8",
     "js-yaml": "4.3.2",
-    "piscina": "5.2.0",
+    "piscina": "5.3.2",
     "qs": "6.16.0",
     "undici": "7.29.1",
     "vite": "7.3.6",
@@ -109,7 +109,11 @@
     },
     "node-gyp": {
       "undici": "6.27.0"
-    }
+    },
+    "@docusaurus/core": {
+      "tinypool": "2.2.0"
+    },
+    "postcss-selector-parser": "7.1.6"
   },
   "volta": {
     "node": "24.15.0"
