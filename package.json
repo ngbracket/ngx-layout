@@ -75,7 +75,7 @@
     "angular-eslint": "22.5.0",
     "conventional-changelog": "^7.2.0",
     "conventional-changelog-angular": "^8.3.1",
-    "eslint": "^9.39.1",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "10.1.5",
     "jsdom": "^29.1.1",
     "ng-packagr": "22.2.4",
