@@ -13,6 +13,8 @@ updates:
           - '@schematics/angular'
           - 'ng-packagr'
           - 'angular-eslint'
+          - 'typescript'
+          - 'zone.js'
         update-types:
           - minor
           - patch
@@ -28,15 +30,37 @@ updates:
           - minor
           - patch
     ignore:
-      # Major bumps are done by hand with ng update.
-      - dependency-name: '*'
+      # Major bumps of these are done by hand with ng update.
+      - dependency-name: '@angular/*'
         update-types:
           - version-update:semver-major
+      - dependency-name: '@angular-devkit/*'
+        update-types:
+          - version-update:semver-major
+      - dependency-name: '@schematics/angular'
+        update-types:
+          - version-update:semver-major
+      - dependency-name: 'ng-packagr'
+        update-types:
+          - version-update:semver-major
+      - dependency-name: 'angular-eslint'
+        update-types:
+          - version-update:semver-major
+      # TypeScript minors are tied to the Angular version.
+      - dependency-name: 'typescript'
+        update-types:
+          - version-update:semver-major
+          - version-update:semver-minor
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    ignore:
+      # labeler v5 changed the labeler.yml format; upgrade it separately.
+      - dependency-name: 'actions/labeler'
+        update-types:
+          - version-update:semver-major
     groups:
       actions:
         patterns:
