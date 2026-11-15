@@ -16,6 +16,9 @@ on:
       # 5.x, 6.x, etc
       - /\d+\.x/
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
