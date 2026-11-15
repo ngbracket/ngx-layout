@@ -12,16 +12,19 @@ export function app(): express.Express {
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
-  const commonEngine = new CommonEngine();
+  // Local hosts only. NG_ALLOWED_HOSTS, when set, replaces this list.
+  const commonEngine = new CommonEngine({
+    allowedHosts: ['localhost', '127.0.0.1'],
+  });
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
   // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  // server.get('/api/{*splat}', (req, res) => { });
   // Serve static files from /browser
   server.get(
-    '**',
+    '/{*splat}',
     express.static(browserDistFolder, {
       maxAge: '1y',
       index: 'index.html',
@@ -29,7 +32,7 @@ export function app(): express.Express {
   );
 
   // All regular routes use the Angular engine
-  server.get('**', (req, res, next) => {
+  server.get('/{*splat}', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine
@@ -52,7 +55,10 @@ function run(): void {
 
   // Start up the Node server
   const server = app();
-  server.listen(port, () => {
+  server.listen(port, (error) => {
+    if (error) {
+      throw error;
+    }
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
