@@ -24,8 +24,22 @@ updates:
         update-types:
           - minor
           - patch
+      # react and react-dom must move together or the docs build fails.
+      react:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
       dev-tooling:
         dependency-type: development
+        # Dependabot ranks a dependency-type-only group above any wildcard
+        # pattern, so every wildcard used by another group must be excluded
+        # here or its devDependencies get split off into this group.
+        exclude-patterns:
+          - '@angular/*'
+          - '@angular-devkit/*'
+          - '@docusaurus/*'
         update-types:
           - minor
           - patch
@@ -44,6 +58,14 @@ updates:
         update-types:
           - version-update:semver-major
       - dependency-name: 'angular-eslint'
+        update-types:
+          - version-update:semver-major
+      # eslint and typescript-eslint majors need checking against
+      # angular-eslint first.
+      - dependency-name: 'eslint'
+        update-types:
+          - version-update:semver-major
+      - dependency-name: 'typescript-eslint'
         update-types:
           - version-update:semver-major
       # TypeScript minors are tied to the Angular version.
