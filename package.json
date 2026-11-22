@@ -77,7 +77,7 @@
     "conventional-changelog-angular": "^8.3.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "10.1.8",
-    "jsdom": "^29.1.1",
+    "jsdom": "^31.0.1",
     "ng-packagr": "22.2.6",
     "postcss": "^8.5.32",
     "postcss-scss": "^4.0.9",
